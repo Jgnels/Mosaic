@@ -58,6 +58,24 @@ class GoalExecutionGate:
         self._accepted: set[str] = set()
         self._completed: set[str] = set()
 
+    @classmethod
+    def from_audit_state(cls, state: dict[str, Iterable[str]]) -> "GoalExecutionGate":
+        required = {"evaluated_request_ids", "accepted_request_ids", "completed_request_ids"}
+        if set(state) != required:
+            raise ValueError("execution ledger schema mismatch")
+        evaluated = {str(item) for item in state["evaluated_request_ids"]}
+        accepted = {str(item) for item in state["accepted_request_ids"]}
+        completed = {str(item) for item in state["completed_request_ids"]}
+        if any(not _SAFE_ID.fullmatch(item) for item in evaluated | accepted | completed):
+            raise ValueError("unsafe execution ledger identifier")
+        if not accepted <= evaluated or not completed <= accepted:
+            raise ValueError("execution ledger set invariant violated")
+        gate = cls()
+        gate._evaluated = evaluated
+        gate._accepted = accepted
+        gate._completed = completed
+        return gate
+
     def evaluate(
         self,
         request: GoalExecutionRequest,
