@@ -259,3 +259,11 @@ world revision, feasibility, exact target, evidence contract, evidence freshness
 are revalidated. Six time-of-check failure cases routed to replan; replayed request IDs and duplicate
 outcomes were rejected; failed jobs routed to replan. The gate records audit state but deliberately
 issues no game job. Final RimWorld-native reservation and validation remain future C# responsibilities.
+
+## 2026-07-20 execution replay recovery checkpoint
+
+The execution audit ledger now has versioned, individual/lineage-bound, hash-verified atomic
+persistence. Offline recovery preserved exact evaluated/accepted/completed sets; accepted and
+rejected request IDs remained non-replayable; an accepted unfinished request could record exactly
+one outcome; completed work could not complete twice. Tampering, impossible set relationships,
+identity mismatch, and interrupted writes failed closed or preserved the last good ledger.

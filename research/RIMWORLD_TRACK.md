@@ -121,3 +121,7 @@ Do not attribute every crash to Dagmay.
 before a future C# job adapter: single-use requests, current revision/feasibility/target/evidence/
 reachability revalidation, bounded outcomes, and replan-on-failure. Passing it still does not issue a
 job; RimWorld must perform game-native reservation and validation.
+
+`syntheticlab/src/dagmay_synthetic_lab/goal_execution_snapshot.py` persists the single-use execution
+ledger across crashes with identity/lineage binding, integrity checks, set invariants, and atomic
+replacement. A future C# adapter must preserve equivalent replay protection across save/load.

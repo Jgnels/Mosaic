@@ -187,3 +187,10 @@ Status: Accepted; implemented in SyntheticLab reference layer
 A bounded goal decision never directly authorizes a game job. A single-use execution request must
 pass a fresh world-revision, feasibility, target, evidence, and reachability check. Any mismatch or
 failed outcome returns to replanning. The reference gate never performs the job itself.
+
+## D-037 — Crash recovery cannot reopen consumed action authority
+Status: Accepted; implemented in SyntheticLab reference layer
+
+Persist every evaluated, accepted, and completed execution request in an identity-bound integrity-
+checked ledger. Restore enforces `completed subset accepted subset evaluated`; all evaluated IDs
+remain single-use across restart, and atomic writes preserve the last good authority state.
