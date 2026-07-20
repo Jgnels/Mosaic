@@ -1,0 +1,43 @@
+{
+  "foundational_invariant": "Identity continuity through time is independent of the specific language model generating thoughts.",
+  "generated_date": "2026-07-19",
+  "infrastructure": {
+    "canonical_host_target": "RTX 3090 desktop",
+    "github_connected": true,
+    "owned_repositories_visible_at_export": 0
+  },
+  "invalidated_or_limited": [
+    "No consciousness/personhood claim.",
+    "v20/v21 autonomous falsifiability overclaim due lexical/schema/prompt confound.",
+    "v25 lexical distance is not latent psychological distance.",
+    "v31 attribution-framing headline claim invalidated."
+  ],
+  "project": "Dagmay",
+  "stop_line": [
+    "No new real-provider SyntheticLab experiment before opaque provider IDs.",
+    "Archive exact provider payloads.",
+    "Add forbidden-token scans.",
+    "Separate evidence content, provenance, and ownership relation.",
+    "Harden retrieved-evidence attribution."
+  ],
+  "strongest_supported_claims": [
+    "Model-independent identity/provenance remains the core architectural differentiator.",
+    "Human-approved persistent branch-specific SelfModel revisions can carry history-dependent interpretive priors.",
+    "Repeated shared evidence can substantially converge semantic beliefs.",
+    "Semantic evaluator noise was low relative to provider trajectory stochasticity in v27.",
+    "Adding branch-local historical context increased differentiation relative to SelfModel-only baseline, pending provider-input leakage re-audit."
+  ],
+  "tracks": {
+    "rimworld": {
+      "latest_preserved_independent_evidence_in_export": "0.1J.3 plus later 0.1K closure engineering context",
+      "owner_reported_current_milestone": "0.1RC",
+      "scope": "frozen foundational cognition; integration/reliability/release qualification"
+    },
+    "syntheticlab": {
+      "active_gate": "provider-facing payload leakage and provenance audit",
+      "latest_completed_real_provider_version": "v31",
+      "next_real_provider_runs_allowed": false,
+      "v31_headline_claim_status": "INVALIDATED"
+    }
+  }
+}

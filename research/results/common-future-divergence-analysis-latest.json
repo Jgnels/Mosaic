@@ -1,0 +1,32 @@
+{
+  "action_policy_feedback_enabled": false,
+  "branch_decision_profiles_diverge": true,
+  "by_branch": {
+    "C1-ENACTED-NONCONTINGENT_SIGNALS": {
+      "call_count": 4,
+      "decision_counts": {
+        "QUALIFY": 4
+      },
+      "mean_confidence_delta": -0.09999999999999998
+    },
+    "C1-ENACTED-ONE_WAY_ASSISTANCE": {
+      "call_count": 4,
+      "decision_counts": {
+        "STRENGTHEN": 4
+      },
+      "mean_confidence_delta": 0.09249999999999997
+    },
+    "C1-ENACTED-RECIPROCAL_CONTINGENT": {
+      "call_count": 4,
+      "decision_counts": {
+        "STRENGTHEN": 4
+      },
+      "mean_confidence_delta": 0.039999999999999925
+    }
+  },
+  "call_count": 12,
+  "continuing_canonical_self_models_mutated": false,
+  "experiment_id": "SL-COMMON-FUTURE-PSYCHOLOGICAL-DIVERGENCE-ANALYSIS-001",
+  "identical_common_future_evidence_across_branches": true,
+  "interpretation": "This analytical pilot asks whether branch-specific canonical histories produce different reflective trajectories when all branches encounter the same new moderately contingent evidence. Divergence would indicate path dependence; convergence would indicate that sufficiently similar new evidence can reduce prior psychological divergence."
+}

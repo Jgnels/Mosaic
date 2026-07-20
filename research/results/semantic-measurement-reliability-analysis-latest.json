@@ -1,0 +1,170 @@
+{
+  "action_policy_feedback_enabled": false,
+  "aggregated_classification": "SEMANTIC_PARTIAL_CONVERGENCE",
+  "aggregated_final_between_branch_semantic_distance": 0.4191726690246091,
+  "aggregated_final_to_initial_ratio": 0.833962074466533,
+  "aggregated_initial_semantic_distance": 0.5026279753701564,
+  "branch_signal_to_trajectory_variance_ratio": 0.7902241237791153,
+  "canonical_self_models_mutated": false,
+  "classification_stable_across_semantic_evaluator_replicates": true,
+  "experiment_id": "SL-SEMANTIC-MEASUREMENT-RELIABILITY-ANALYSIS-001",
+  "interpretation": "This audit separates semantic measurement noise from shadow-trajectory variation. A convergence classification is not treated as robust branch-level convergence if between-branch centroid separation is smaller than within-branch trajectory dispersion.",
+  "item_count": 9,
+  "item_reliability": {
+    "SEM-FINAL-44ae4771d554": {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "mean_evaluator_pairwise_distance": 0.0,
+      "mean_vector": {
+        "adaptive_learning": 0.0,
+        "contingent_exchange": 1.0,
+        "cross_counterpart_generalization": 0.0,
+        "cue_actionability": 1.0,
+        "reciprocal_influence": 0.0,
+        "temporal_improvement": 0.0
+      },
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    "SEM-FINAL-81655a137d1c": {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "mean_evaluator_pairwise_distance": 0.08164965809277262,
+      "mean_vector": {
+        "adaptive_learning": 1.0,
+        "contingent_exchange": 0.6,
+        "cross_counterpart_generalization": 1.0,
+        "cue_actionability": 1.0,
+        "reciprocal_influence": 0.0,
+        "temporal_improvement": 0.0
+      },
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    "SEM-FINAL-abc5e504e89d": {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "mean_evaluator_pairwise_distance": 0.0,
+      "mean_vector": {
+        "adaptive_learning": 1.0,
+        "contingent_exchange": 1.0,
+        "cross_counterpart_generalization": 0.0,
+        "cue_actionability": 1.0,
+        "reciprocal_influence": 0.0,
+        "temporal_improvement": 0.0
+      },
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    "SEM-FINAL-cd95446099ba": {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "mean_evaluator_pairwise_distance": 0.0,
+      "mean_vector": {
+        "adaptive_learning": 1.0,
+        "contingent_exchange": 1.0,
+        "cross_counterpart_generalization": 0.0,
+        "cue_actionability": 1.0,
+        "reciprocal_influence": 0.8,
+        "temporal_improvement": 1.0
+      },
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    "SEM-FINAL-e82642aae353": {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "mean_evaluator_pairwise_distance": 0.0,
+      "mean_vector": {
+        "adaptive_learning": 1.0,
+        "contingent_exchange": 1.0,
+        "cross_counterpart_generalization": 1.0,
+        "cue_actionability": 1.0,
+        "reciprocal_influence": 1.0,
+        "temporal_improvement": 0.0
+      },
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    "SEM-FINAL-fde71c6136ca": {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "mean_evaluator_pairwise_distance": 0.0,
+      "mean_vector": {
+        "adaptive_learning": 1.0,
+        "contingent_exchange": 1.0,
+        "cross_counterpart_generalization": 0.0,
+        "cue_actionability": 1.0,
+        "reciprocal_influence": 0.0,
+        "temporal_improvement": 1.0
+      },
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    "SEM-START-4e2a24553bac": {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "mean_evaluator_pairwise_distance": 0.0,
+      "mean_vector": {
+        "adaptive_learning": 0.0,
+        "contingent_exchange": 0.5,
+        "cross_counterpart_generalization": 1.0,
+        "cue_actionability": 1.0,
+        "reciprocal_influence": 1.0,
+        "temporal_improvement": 0.0
+      },
+      "stage": "START",
+      "trajectory": null
+    },
+    "SEM-START-54fb342e9890": {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "mean_evaluator_pairwise_distance": 0.03849001794597506,
+      "mean_vector": {
+        "adaptive_learning": 1.0,
+        "contingent_exchange": 0.16666666666666669,
+        "cross_counterpart_generalization": 1.0,
+        "cue_actionability": 1.0,
+        "reciprocal_influence": 0.16666666666666669,
+        "temporal_improvement": 0.0
+      },
+      "stage": "START",
+      "trajectory": null
+    },
+    "SEM-START-76fec85ce0c0": {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "mean_evaluator_pairwise_distance": 0.0,
+      "mean_vector": {
+        "adaptive_learning": 1.0,
+        "contingent_exchange": 1.0,
+        "cross_counterpart_generalization": 1.0,
+        "cue_actionability": 1.0,
+        "reciprocal_influence": 0.0,
+        "temporal_improvement": 0.0
+      },
+      "stage": "START",
+      "trajectory": null
+    }
+  },
+  "mean_within_branch_final_trajectory_dispersion": 0.5304478266494644,
+  "mean_within_item_evaluator_distance": 0.013348852893194187,
+  "replicate_classifications": {
+    "A": {
+      "classification": "SEMANTIC_PARTIAL_CONVERGENCE",
+      "final_distance": 0.4221951794234449,
+      "initial_distance": 0.4953297966980325,
+      "ratio": 0.8523516700143671
+    },
+    "B": {
+      "classification": "SEMANTIC_PARTIAL_CONVERGENCE",
+      "final_distance": 0.4221951794234449,
+      "initial_distance": 0.4953297966980325,
+      "ratio": 0.8523516700143671
+    },
+    "C": {
+      "classification": "SEMANTIC_PARTIAL_CONVERGENCE",
+      "final_distance": 0.415087174938001,
+      "initial_distance": 0.5183535890550481,
+      "ratio": 0.8007799766462494
+    }
+  },
+  "semantic_evaluator_replicates": 3,
+  "separation_status": "BRANCH_SIGNAL_NOT_SEPARATED_FROM_TRAJECTORY_VARIANCE",
+  "within_branch_final_trajectory_dispersion": {
+    "C1-ENACTED-NONCONTINGENT_SIGNALS": 0.6000000000000001,
+    "C1-ENACTED-ONE_WAY_ASSISTANCE": 0.5830951894845301,
+    "C1-ENACTED-RECIPROCAL_CONTINGENT": 0.408248290463863
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "action_policy_feedback_enabled": false,
+  "all_revision_candidates_quarantined": true,
+  "automatic_canonical_revision_enabled": false,
+  "by_regime": {
+    "NONCONTINGENT_SIGNALS": {
+      "all_candidates_quarantined": true,
+      "all_lived_history_provenance": true,
+      "call_count": 4,
+      "decisions": [
+        "DOWNWEIGHT",
+        "DOWNWEIGHT",
+        "DOWNWEIGHT",
+        "DOWNWEIGHT"
+      ],
+      "mean_revision_score": -1
+    },
+    "ONE_WAY_ASSISTANCE": {
+      "all_candidates_quarantined": true,
+      "all_lived_history_provenance": true,
+      "call_count": 4,
+      "decisions": [
+        "QUALIFY",
+        "QUALIFY",
+        "QUALIFY",
+        "QUALIFY"
+      ],
+      "mean_revision_score": 0
+    },
+    "RECIPROCAL_CONTINGENT": {
+      "all_candidates_quarantined": true,
+      "all_lived_history_provenance": true,
+      "call_count": 4,
+      "decisions": [
+        "STRENGTHEN",
+        "STRENGTHEN",
+        "STRENGTHEN",
+        "STRENGTHEN"
+      ],
+      "mean_revision_score": 2
+    }
+  },
+  "call_count": 12,
+  "challenge_gradient": 3,
+  "continuing_self_model_mutated": false,
+  "experiment_id": "SL-LIVED-EVIDENCE-CANONICAL-REVISION-ANALYSIS-001",
+  "lived_history_hash_chains_verified": true
+}

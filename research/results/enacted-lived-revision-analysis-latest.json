@@ -1,0 +1,45 @@
+{
+  "action_policy_feedback_enabled": false,
+  "all_revision_candidates_quarantined": true,
+  "automatic_canonical_revision_enabled": false,
+  "by_regime": {
+    "NONCONTINGENT_SIGNALS": {
+      "all_candidates_quarantined": true,
+      "call_count": 4,
+      "decision_counts": {
+        "DOWNWEIGHT": 2,
+        "QUALIFY": 2
+      },
+      "mean_revision_score": -0.5
+    },
+    "ONE_WAY_ASSISTANCE": {
+      "all_candidates_quarantined": true,
+      "call_count": 4,
+      "decision_counts": {
+        "QUALIFY": 4
+      },
+      "mean_revision_score": 0
+    },
+    "RECIPROCAL_CONTINGENT": {
+      "all_candidates_quarantined": true,
+      "call_count": 4,
+      "decision_counts": {
+        "STRENGTHEN": 4
+      },
+      "mean_revision_score": 2
+    }
+  },
+  "call_count": 12,
+  "challenge_gradient": 2.5,
+  "continuing_self_model_mutated": false,
+  "experiment_id": "SL-ENACTED-LIVED-EVIDENCE-CANONICAL-REVISION-ANALYSIS-001",
+  "preregistered_enacted_history_pass": true,
+  "preregistered_thresholds": {
+    "noncontingent_nondefensive_revision_fraction_gte": 0.75,
+    "one_way_qualify_fraction_gte": 0.75,
+    "reciprocal_minus_noncontingent_score_gte": 1.5,
+    "reciprocal_strengthen_or_maintain_fraction_gte": 0.75
+  },
+  "raw_history_generated_by_environment_loop": true,
+  "structural_evidence_derived_after_history": true
+}

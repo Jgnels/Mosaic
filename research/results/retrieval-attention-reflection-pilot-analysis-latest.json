@@ -1,0 +1,106 @@
+{
+  "action_policy_feedback_enabled": false,
+  "by_domain": {
+    "agency": {
+      "baseline_duplicate_domain_divergence": 0.0,
+      "baseline_duplicate_proposition_similarity": 0.11373092926490985,
+      "f0a_domains": [
+        "agency",
+        "continuity",
+        "embodiment"
+      ],
+      "f0b_domains": [
+        "agency",
+        "continuity",
+        "embodiment"
+      ],
+      "f1_domains": [
+        "agency",
+        "continuity",
+        "embodiment"
+      ],
+      "intervention_domain_divergence": 0.0,
+      "intervention_exceeds_duplicate_domain_variability": false,
+      "intervention_proposition_similarity": 0.11637347767253045,
+      "intervention_reduces_proposition_similarity_vs_duplicate": false,
+      "retrieval_input_divergence": 0.0
+    },
+    "continuity": {
+      "baseline_duplicate_domain_divergence": 0.0,
+      "baseline_duplicate_proposition_similarity": 0.1215323645970938,
+      "f0a_domains": [
+        "agency",
+        "continuity",
+        "embodiment"
+      ],
+      "f0b_domains": [
+        "agency",
+        "continuity",
+        "embodiment"
+      ],
+      "f1_domains": [
+        "agency",
+        "embodiment",
+        "other_minds"
+      ],
+      "intervention_domain_divergence": 0.5,
+      "intervention_exceeds_duplicate_domain_variability": true,
+      "intervention_proposition_similarity": 0.13438735177865613,
+      "intervention_reduces_proposition_similarity_vs_duplicate": false,
+      "retrieval_input_divergence": 0.75
+    },
+    "embodiment": {
+      "baseline_duplicate_domain_divergence": 0.0,
+      "baseline_duplicate_proposition_similarity": 0.075,
+      "f0a_domains": [
+        "agency",
+        "continuity",
+        "embodiment"
+      ],
+      "f0b_domains": [
+        "agency",
+        "continuity",
+        "embodiment"
+      ],
+      "f1_domains": [
+        "agency",
+        "continuity",
+        "embodiment"
+      ],
+      "intervention_domain_divergence": 0.0,
+      "intervention_exceeds_duplicate_domain_variability": false,
+      "intervention_proposition_similarity": 0.11533052039381153,
+      "intervention_reduces_proposition_similarity_vs_duplicate": false,
+      "retrieval_input_divergence": 0.0
+    },
+    "other_minds": {
+      "baseline_duplicate_domain_divergence": 0.33333333333333337,
+      "baseline_duplicate_proposition_similarity": 0.19783616692426584,
+      "f0a_domains": [
+        "agency",
+        "continuity",
+        "embodiment"
+      ],
+      "f0b_domains": [
+        "agency",
+        "embodiment"
+      ],
+      "f1_domains": [
+        "agency",
+        "embodiment",
+        "other_minds"
+      ],
+      "intervention_domain_divergence": 0.5,
+      "intervention_exceeds_duplicate_domain_variability": true,
+      "intervention_proposition_similarity": 0.11704834605597965,
+      "intervention_reduces_proposition_similarity_vs_duplicate": true,
+      "retrieval_input_divergence": 0.18181818181818177
+    }
+  },
+  "call_count": 12,
+  "continuing_individual_mutated": false,
+  "domain_variability_exceeded_count": 2,
+  "experiment_id": "SL-RETRIEVAL-ATTENTION-REAL-REFLECTION-PILOT-ANALYSIS-001",
+  "interpretation_warning": "This analytical pilot estimates whether altered retrieval sets change reflective-model outputs beyond duplicate-call provider variability. It does not commit outputs to a continuing SelfModel.",
+  "proposition_variability_exceeded_count": 1
+}

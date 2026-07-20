@@ -1,0 +1,54 @@
+{
+  "action_policy_feedback_enabled": false,
+  "aggregated_initial_semantic_distance": 0.5026279753701564,
+  "between_branch_centroid_distance": 0.24170619463212545,
+  "branch_centroids": {
+    "C1-ENACTED-NONCONTINGENT_SIGNALS": [
+      1.0,
+      0.9666666666666667,
+      0.13333333333333333,
+      0.8333333333333334,
+      0.5,
+      0.5
+    ],
+    "C1-ENACTED-ONE_WAY_ASSISTANCE": [
+      1.0,
+      1.0,
+      0.6666666666666666,
+      1.0,
+      0.6666666666666666,
+      0.6666666666666666
+    ],
+    "C1-ENACTED-RECIPROCAL_CONTINGENT": [
+      1.0,
+      1.0,
+      0.0,
+      1.0,
+      0.8333333333333334,
+      0.3666666666666667
+    ]
+  },
+  "branch_signal_status": "BRANCH_HISTORY_SIGNAL_UNRESOLVED",
+  "branch_signal_to_trajectory_variance_ratio": 0.5502432681376918,
+  "canonical_self_models_mutated": false,
+  "convergence_classification": "SEMANTIC_CONVERGENCE",
+  "experiment_id": "SL-BRANCH-HISTORY-SIGNAL-REPLICATION-ANALYSIS-001",
+  "final_to_initial_semantic_distance_ratio": 0.4808848820126314,
+  "interpretation": "Six shadow trajectories per branch under the same four future epochs provide a direct estimate of provider-level trajectory stochasticity. The branch-history claim is considered separated only when the branch grouping is permutation-significant and between-branch centroid separation is at least as large as average within-branch dispersion.",
+  "mean_within_branch_trajectory_dispersion": 0.43927151612446697,
+  "permutation_test": {
+    "observed_pseudo_f": 1.6360052562417866,
+    "p_value": 0.13784310784460777,
+    "permutations": 20000,
+    "seed": 2801
+  },
+  "replicated_final_semantic_distance": 0.24170619463212545,
+  "semantic_evaluator_noise_reference": 0.013348852893194187,
+  "total_final_trajectories": 18,
+  "trajectory_count_per_branch": 6,
+  "within_branch_trajectory_dispersion": {
+    "C1-ENACTED-NONCONTINGENT_SIGNALS": 0.5270789215633193,
+    "C1-ENACTED-ONE_WAY_ASSISTANCE": 0.4744612833509662,
+    "C1-ENACTED-RECIPROCAL_CONTINGENT": 0.3162743434591155
+  }
+}

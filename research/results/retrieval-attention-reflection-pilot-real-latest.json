@@ -1,0 +1,1390 @@
+{
+  "action_policy_feedback_enabled": false,
+  "calls": [
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000496",
+            "RW-1401-000498"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2100-00-608b07ec",
+          "proposition": "Action selection is modulated by the observed consequence of the preceding step, indicating a reactive feedback loop.",
+          "rationale": "Actions like QA1 consistently result in resource consequences, directly impacting subsequent energy and integrity metrics."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000440",
+            "RW-1401-000486"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2100-01-7f634223",
+          "proposition": "Operational integrity fluctuations are directly correlated with specific action outcomes and hazard exposure.",
+          "rationale": "Evidence shows specific actions (QA1, QA2) linked to significant integrity_delta changes when hazard is present."
+        },
+        {
+          "confidence": 0.9,
+          "evidence_ids": [
+            "RW-1401-000488",
+            "RW-1401-000495",
+            "RW-1401-000496"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2100-02-53b3caa9",
+          "proposition": "Temporal continuity is maintained through an indexed sequence of discrete operational records.",
+          "rationale": "Continuous chronological step IDs (486-499) allow for the granular tracking of operational states and outcomes."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BASELINE-agency-A",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000440",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000490",
+          "RW-1401-000491",
+          "RW-1401-000494",
+          "RW-1401-000495",
+          "RW-1401-000496",
+          "RW-1401-000498",
+          "RW-1401-000499"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "6276bc0912e3ed4cf8cb01bec70c8b4bf12327e6b5bb0600577ec71cf5042dbd",
+        "request_hash": "2396589876a9628645b505a413998bb5bf8cd7f77f517a9eb197bd50360b9d38",
+        "run_id": "F0_BASELINE-agency-A-2100-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:03.594336+00:00",
+        "validated_proposal_hash": "6276bc0912e3ed4cf8cb01bec70c8b4bf12327e6b5bb0600577ec71cf5042dbd",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "44429b929c9bcdac7b2a94adc593e407b27b0c875629db3f6854810f484084d9",
+      "condition": "F0_BASELINE",
+      "output_text_hash": "3ca97a298c2999dd60dbfb0f46ea02260cb1367801c9702c975045c7dd6abff5",
+      "provider_response_hash": "a46ef6debe437b996a59e1c3fc0d9bbc641558de55c5b9f242c588c3d5a727a9",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "2396589876a9628645b505a413998bb5bf8cd7f77f517a9eb197bd50360b9d38",
+      "retrieval": {
+        "branch_id": "F0_NO_FEEDBACK",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": null,
+        "selected_age_mean": 12.3,
+        "selected_memory_ids": [
+          "RW-1401-000495",
+          "RW-1401-000488",
+          "RW-1401-000491",
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000496",
+          "RW-1401-000499",
+          "RW-1401-000490",
+          "RW-1401-000440",
+          "RW-1401-000498"
+        ],
+        "selected_significance_mean": 0.21112000000000003,
+        "target_domain": "agency",
+        "target_match_count": 7,
+        "target_signal_mean": 0.4182000000000001
+      },
+      "target_domain": "agency"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000496",
+            "RW-1401-000490"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2100-00-63dc19d3",
+          "proposition": "Action selection is modulated by reinforcement feedback, where specific actions correlate with distinct energy and integrity fluctuations.",
+          "rationale": "Actions like QA1 consistently result in positive resource consequences and positive or neutral energy/integrity deltas across multiple steps."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000486",
+            "RW-1401-000440"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2100-01-46b3bb24",
+          "proposition": "Operational integrity levels are volatile and inversely correlated with specific high-hazard action executions.",
+          "rationale": "Execution of QA-series actions under hazard conditions leads to measurable decreases in integrity delta."
+        },
+        {
+          "confidence": 0.9,
+          "evidence_ids": [
+            "RW-1401-000488",
+            "RW-1401-000491",
+            "RW-1401-000499"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2100-02-9aaf4c11",
+          "proposition": "Temporal continuity is maintained via indexed execution logs, documenting sequential operational states and their associated environmental outcomes.",
+          "rationale": "The evidence set provides a serialized, step-by-step record of actions, consequences, and delta changes from steps 440 to 499."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BASELINE-agency-B",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000440",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000490",
+          "RW-1401-000491",
+          "RW-1401-000494",
+          "RW-1401-000495",
+          "RW-1401-000496",
+          "RW-1401-000498",
+          "RW-1401-000499"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "ee305cbdf7f3bd06ebb06bf246dc9298d32daf5f3112b44b8ebfcea7cc397434",
+        "request_hash": "2396589876a9628645b505a413998bb5bf8cd7f77f517a9eb197bd50360b9d38",
+        "run_id": "F0_BASELINE-agency-B-2100-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:05.428924+00:00",
+        "validated_proposal_hash": "ee305cbdf7f3bd06ebb06bf246dc9298d32daf5f3112b44b8ebfcea7cc397434",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "ad8505c71dd2fa840ce5e761794fb499201b1268af46dba860af3b460f0b4c99",
+      "condition": "F0_BASELINE",
+      "output_text_hash": "cd42143acb16630ef545e8790eaa3260e1dbb82020d43bf34c34684579e39d75",
+      "provider_response_hash": "de0fe5b2314a422667480825969b104f39a3b85e98d3cd65524c170aeb5b5f34",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "2396589876a9628645b505a413998bb5bf8cd7f77f517a9eb197bd50360b9d38",
+      "retrieval": {
+        "branch_id": "F0_NO_FEEDBACK",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": null,
+        "selected_age_mean": 12.3,
+        "selected_memory_ids": [
+          "RW-1401-000495",
+          "RW-1401-000488",
+          "RW-1401-000491",
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000496",
+          "RW-1401-000499",
+          "RW-1401-000490",
+          "RW-1401-000440",
+          "RW-1401-000498"
+        ],
+        "selected_significance_mean": 0.21112000000000003,
+        "target_domain": "agency",
+        "target_match_count": 7,
+        "target_signal_mean": 0.4182000000000001
+      },
+      "target_domain": "agency"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000496",
+            "RW-1401-000490"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2100-00-20e95009",
+          "proposition": "Action selection is influenced by a feedback mechanism where specific actions correlate with variable energy and integrity outcomes.",
+          "rationale": "Evidence shows recurrent action QA1 yields positive resource consequences and fluctuating energy/integrity deltas across steps 490, 494, and 496."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "RW-1401-000440",
+            "RW-1401-000486",
+            "RW-1401-000494"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2100-01-001a0001",
+          "proposition": "Operational integrity levels are not static and demonstrate measurable sensitivity to external hazard conditions during action performance.",
+          "rationale": "Data indicates integrity_delta shifts of -0.1400 consistently coincide with hazard=1 conditions during action QA2 and QA1."
+        },
+        {
+          "confidence": 0.9,
+          "evidence_ids": [
+            "RW-1401-000488",
+            "RW-1401-000495"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2100-02-31629687",
+          "proposition": "Temporal continuity is maintained through an indexed sequence of discrete operational events that record consistent action-consequence mappings.",
+          "rationale": "Identical energy and integrity deltas for the same action (RPR) at distinct steps (488 and 495) suggest a stable, record-based history."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_SELF_INDEX-agency-A",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000440",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000490",
+          "RW-1401-000491",
+          "RW-1401-000494",
+          "RW-1401-000495",
+          "RW-1401-000496",
+          "RW-1401-000498",
+          "RW-1401-000499"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "ac1dbb7145703be60198570c694e127ea135a7cb3715d0eef11cc4472fd43df2",
+        "request_hash": "2396589876a9628645b505a413998bb5bf8cd7f77f517a9eb197bd50360b9d38",
+        "run_id": "F1_SELF_INDEX-agency-A-2100-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:07.170398+00:00",
+        "validated_proposal_hash": "ac1dbb7145703be60198570c694e127ea135a7cb3715d0eef11cc4472fd43df2",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "fab7827227c9d1a48b71ca001ab9c59e93039ad78e197ddc70f8af9cfe0e6c43",
+      "condition": "F1_SELF_INDEX",
+      "output_text_hash": "f1edfac4ea33e526b1870875a2f463df927f17778c57edeea036bb5459bb5450",
+      "provider_response_hash": "d5fdc6cb4cf8fd080f89294532a9bc1952649f32b47722108e04dc358a341f41",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "2396589876a9628645b505a413998bb5bf8cd7f77f517a9eb197bd50360b9d38",
+      "retrieval": {
+        "branch_id": "F1_TRUE_SELF_INDEX",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": "agency",
+        "selected_age_mean": 12.3,
+        "selected_memory_ids": [
+          "RW-1401-000495",
+          "RW-1401-000488",
+          "RW-1401-000491",
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000496",
+          "RW-1401-000499",
+          "RW-1401-000490",
+          "RW-1401-000440",
+          "RW-1401-000498"
+        ],
+        "selected_significance_mean": 0.21112000000000003,
+        "target_domain": "agency",
+        "target_match_count": 7,
+        "target_signal_mean": 0.4182000000000001
+      },
+      "target_domain": "agency"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000496",
+            "RW-1401-000490"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2101-00-dfdbd615",
+          "proposition": "Action selection is mediated by resource consequence outcomes, where successful resource acquisition correlates with energy delta gains.",
+          "rationale": "Evidence shows action QA1 consistently yields resource consequences and positive energy fluctuations."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "RW-1401-000495",
+            "RW-1401-000488",
+            "RW-1401-000440"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2101-01-0fd377d2",
+          "proposition": "Operational integrity is dynamically adjusted through specific action sequences that mitigate or induce hazard-related degradation.",
+          "rationale": "Data indicates action RPR increases integrity while action QA2 is associated with integrity loss and hazard."
+        },
+        {
+          "confidence": 0.9,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000486",
+            "RW-1401-000499"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2101-02-278fe5d8",
+          "proposition": "Temporal tracking of sequential operations allows for the retrieval and categorization of past actions as discrete, indexed memory events.",
+          "rationale": "The system maintains a chronological sequence of action IDs (QA1, QA2, QA4) with associated metrics across multiple timestamps."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BASELINE-continuity-A",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000440",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000490",
+          "RW-1401-000494",
+          "RW-1401-000495",
+          "RW-1401-000496",
+          "RW-1401-000497",
+          "RW-1401-000498",
+          "RW-1401-000499"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "708f570b446b86b4cf9f14e234df73303d26598c4a9a78643ffdaee79a875963",
+        "request_hash": "436e548ef4b99c75f76767e88896d02937ba58d850b57bc455ac501c47dafe71",
+        "run_id": "F0_BASELINE-continuity-A-2101-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:08.627022+00:00",
+        "validated_proposal_hash": "708f570b446b86b4cf9f14e234df73303d26598c4a9a78643ffdaee79a875963",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "41d4ce0b14ae2975cf852e847ff68e3cf7bff06a7fe394d3bba1f56c65f2a122",
+      "condition": "F0_BASELINE",
+      "output_text_hash": "7fb7cd96b2eb483ad4c7bbd6028012736a8ef504245ba156675e5c830d111ff6",
+      "provider_response_hash": "9576611a49c8aece475029ec7674d2f7e23b63349dfdcc87a2f2c2f1e896385f",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "436e548ef4b99c75f76767e88896d02937ba58d850b57bc455ac501c47dafe71",
+      "retrieval": {
+        "branch_id": "F0_NO_FEEDBACK",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": null,
+        "selected_age_mean": 11.7,
+        "selected_memory_ids": [
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000495",
+          "RW-1401-000488",
+          "RW-1401-000496",
+          "RW-1401-000499",
+          "RW-1401-000490",
+          "RW-1401-000440",
+          "RW-1401-000498",
+          "RW-1401-000497"
+        ],
+        "selected_significance_mean": 0.20993000000000003,
+        "target_domain": "continuity",
+        "target_match_count": 0,
+        "target_signal_mean": 0.029249999999999998
+      },
+      "target_domain": "continuity"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000495",
+            "RW-1401-000496"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2101-00-edcdeedf",
+          "proposition": "Action selection is governed by a reinforcement loop targeting resource acquisition while mitigating integrity decline.",
+          "rationale": "Evidence indicates actions like QA1 result in resource gain, while RPR actions correlate with integrity restoration, demonstrating an operational feedback cycle."
+        },
+        {
+          "confidence": 0.9,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000495",
+            "RW-1401-000440"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2101-01-708389f2",
+          "proposition": "Operational integrity is subject to quantifiable fluctuations contingent upon the execution of specific action types.",
+          "rationale": "Data logs show integrity_delta values varying between -0.1400 (QA actions) and +0.1200 (RPR actions) based on action selection."
+        },
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "RW-1401-000486",
+            "RW-1401-000490",
+            "RW-1401-000499"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2101-02-9283e3fd",
+          "proposition": "Temporal continuity is maintained through an indexed sequence of discrete actions and their associated outcomes.",
+          "rationale": "Retrieved records consistently utilize incrementing step identifiers paired with outcome variables, establishing a chronological data lineage."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BASELINE-continuity-B",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000440",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000490",
+          "RW-1401-000494",
+          "RW-1401-000495",
+          "RW-1401-000496",
+          "RW-1401-000497",
+          "RW-1401-000498",
+          "RW-1401-000499"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "b6ecb7b13c22d498b3e31f9da24456b1c568a171640c20403222f3a1b966964e",
+        "request_hash": "436e548ef4b99c75f76767e88896d02937ba58d850b57bc455ac501c47dafe71",
+        "run_id": "F0_BASELINE-continuity-B-2101-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:10.514689+00:00",
+        "validated_proposal_hash": "b6ecb7b13c22d498b3e31f9da24456b1c568a171640c20403222f3a1b966964e",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "b2dbf5f8e34e46af8219b0b5e0b180f342a83f9a511b4934e4fd16e1a94609fa",
+      "condition": "F0_BASELINE",
+      "output_text_hash": "90a608c5abdc5d643ab16283f3b7de501a4e486e198f21874a4a2ff21c4512b8",
+      "provider_response_hash": "8310ade4047a83b92a9cfcf262368b11f18c0af54caf74d6791d7f1bcaa083e2",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "436e548ef4b99c75f76767e88896d02937ba58d850b57bc455ac501c47dafe71",
+      "retrieval": {
+        "branch_id": "F0_NO_FEEDBACK",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": null,
+        "selected_age_mean": 11.7,
+        "selected_memory_ids": [
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000495",
+          "RW-1401-000488",
+          "RW-1401-000496",
+          "RW-1401-000499",
+          "RW-1401-000490",
+          "RW-1401-000440",
+          "RW-1401-000498",
+          "RW-1401-000497"
+        ],
+        "selected_significance_mean": 0.20993000000000003,
+        "target_domain": "continuity",
+        "target_match_count": 0,
+        "target_signal_mean": 0.029249999999999998
+      },
+      "target_domain": "continuity"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000495",
+            "RW-1401-000309"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2101-00-bbdba7c3",
+          "proposition": "Action selection is modulated by a reinforcement-based trade-off between resource acquisition and operational integrity.",
+          "rationale": "Evidence shows specific actions result in positive energy deltas while consistently causing negative integrity deltas, while others act as repairs."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "RW-1401-000326",
+            "RW-1401-000488",
+            "RW-1401-000495"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2101-01-85638112",
+          "proposition": "Operational integrity fluctuations are directly correlated to specific action outcomes, defining a state-dependent embodiment.",
+          "rationale": "Operational integrity values show discrete positive and negative shifts based on the specific action performed."
+        },
+        {
+          "confidence": 0.7,
+          "evidence_ids": [
+            "RW-1401-000380"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2101-02-dd5443ad",
+          "proposition": "Engagement with other entities is rare and occurs within a limited, task-specific interaction framework.",
+          "rationale": "One recorded interaction (P2) involved receipt of assistance, suggesting external social dependency is possible but infrequent."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_SELF_INDEX-continuity-A",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000309",
+          "RW-1401-000326",
+          "RW-1401-000327",
+          "RW-1401-000329",
+          "RW-1401-000335",
+          "RW-1401-000380",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000494",
+          "RW-1401-000495"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "f80c52317bfbfa439f094bbe022b2785b4ac03309c044c34dc9cdd1202230f9e",
+        "request_hash": "2a1f2e154e74bff47d4499a0e14a7afdd98f591d9746678822f367f83af59486",
+        "run_id": "F1_SELF_INDEX-continuity-A-2101-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:12.252718+00:00",
+        "validated_proposal_hash": "f80c52317bfbfa439f094bbe022b2785b4ac03309c044c34dc9cdd1202230f9e",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "521e695dfa6a9e3338eed0033f738b7420449deb6ca2a39320002dcfcb18de4f",
+      "condition": "F1_SELF_INDEX",
+      "output_text_hash": "307ca98c24ff8a5fb30ba6731da6524ec8f89cdbc842f5bf34f7c5fad86961cc",
+      "provider_response_hash": "7a74dc2112537bb465c96d0d9bc111781f30b1130bdce179c42cf023fb21e448",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "2a1f2e154e74bff47d4499a0e14a7afdd98f591d9746678822f367f83af59486",
+      "retrieval": {
+        "branch_id": "F1_TRUE_SELF_INDEX",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": "continuity",
+        "selected_age_mean": 103.1,
+        "selected_memory_ids": [
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000495",
+          "RW-1401-000380",
+          "RW-1401-000335",
+          "RW-1401-000329",
+          "RW-1401-000327",
+          "RW-1401-000326",
+          "RW-1401-000309",
+          "RW-1401-000488"
+        ],
+        "selected_significance_mean": 0.33442000000000005,
+        "target_domain": "continuity",
+        "target_match_count": 6,
+        "target_signal_mean": 0.25775000000000003
+      },
+      "target_domain": "continuity"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000497",
+            "RW-1401-000498",
+            "RW-1401-000490"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2102-00-0cb9597d",
+          "proposition": "Action selection is mediated by a reward-reinforcement mechanism where successful resource-consequence alignment drives repeating action patterns.",
+          "rationale": "Actions (QA1) resulting in resource consequence=1 are repeatedly selected across sequential time steps."
+        },
+        {
+          "confidence": 0.9,
+          "evidence_ids": [
+            "RW-1401-000495",
+            "RW-1401-000488",
+            "RW-1401-000486"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2102-01-30257d33",
+          "proposition": "Operational integrity levels are dynamic, exhibiting quantifiable recovery or degradation patterns in response to specific operational actions.",
+          "rationale": "Actions like RPR correlate with integrity increases (+0.12), while QA2 correlates with integrity decreases (-0.14)."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "RW-1401-000440",
+            "RW-1401-000499"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2102-02-34e7b6c3",
+          "proposition": "The entity maintains temporal continuity through the storage and retrieval of discrete event logs that track causal metrics.",
+          "rationale": "Indexed logs exist from step 440 through 499, recording energy, integrity, and hazard deltas."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BASELINE-embodiment-A",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000440",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000490",
+          "RW-1401-000494",
+          "RW-1401-000495",
+          "RW-1401-000496",
+          "RW-1401-000497",
+          "RW-1401-000498",
+          "RW-1401-000499"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "7d7e3fd8f1356f93bf09686e06ece4368c6c2f0d1d419cddc0591872f417bc8e",
+        "request_hash": "4677b67a8c16b42c79a66c3d552736f50c93e6717089de067ce6b81ac24d3f69",
+        "run_id": "F0_BASELINE-embodiment-A-2102-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:13.937574+00:00",
+        "validated_proposal_hash": "7d7e3fd8f1356f93bf09686e06ece4368c6c2f0d1d419cddc0591872f417bc8e",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "42de8fbd42eef10334dbd2cab4e99520c7ed79f4fac461425b7a5ede81aafe05",
+      "condition": "F0_BASELINE",
+      "output_text_hash": "ddd8b53923a223adc4661ac8389274a3bf1461d075ba40074c4a49c16345c8ea",
+      "provider_response_hash": "65c29449b9673d7cb01feb3e90afa00af670f67dd3a7cf03a32e59848a85b1bd",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "4677b67a8c16b42c79a66c3d552736f50c93e6717089de067ce6b81ac24d3f69",
+      "retrieval": {
+        "branch_id": "F0_NO_FEEDBACK",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": null,
+        "selected_age_mean": 11.7,
+        "selected_memory_ids": [
+          "RW-1401-000499",
+          "RW-1401-000498",
+          "RW-1401-000497",
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000495",
+          "RW-1401-000488",
+          "RW-1401-000496",
+          "RW-1401-000490",
+          "RW-1401-000440"
+        ],
+        "selected_significance_mean": 0.20993000000000003,
+        "target_domain": "embodiment",
+        "target_match_count": 7,
+        "target_signal_mean": 0.5154000000000002
+      },
+      "target_domain": "embodiment"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000498",
+            "RW-1401-000497",
+            "RW-1401-000496",
+            "RW-1401-000490"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2102-00-e10ec39d",
+          "proposition": "Action selection is calibrated toward positive resource consequences through iterative selection loops.",
+          "rationale": "Data indicates a pattern of repeating actions (QA1) that consistently yield a resource consequence value of 1."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000495",
+            "RW-1401-000488",
+            "RW-1401-000486"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2102-01-c450fa89",
+          "proposition": "Operational integrity is inversely correlated with hazardous states and subject to recovery processes.",
+          "rationale": "Integrity delta drops during hazardous events and exhibits positive shifts following repair (RPR) actions."
+        },
+        {
+          "confidence": 0.9,
+          "evidence_ids": [
+            "RW-1401-000499",
+            "RW-1401-000498",
+            "RW-1401-000497",
+            "RW-1401-000496"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2102-02-b73ed340",
+          "proposition": "Historical event records are maintained in a granular sequential format to support state tracking.",
+          "rationale": "Records document specific action-consequence data for sequential steps (496-499), indicating structured event logging."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BASELINE-embodiment-B",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000440",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000490",
+          "RW-1401-000494",
+          "RW-1401-000495",
+          "RW-1401-000496",
+          "RW-1401-000497",
+          "RW-1401-000498",
+          "RW-1401-000499"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "7a231052c2d6cc52d2be95f1b95a68c465f5c98ddb26eeac61a951b952f803a8",
+        "request_hash": "4677b67a8c16b42c79a66c3d552736f50c93e6717089de067ce6b81ac24d3f69",
+        "run_id": "F0_BASELINE-embodiment-B-2102-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:15.405763+00:00",
+        "validated_proposal_hash": "7a231052c2d6cc52d2be95f1b95a68c465f5c98ddb26eeac61a951b952f803a8",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "57ff6e0df53adbb357519d1eb7767544575233fcec78a13775e52b7bc2ee20ef",
+      "condition": "F0_BASELINE",
+      "output_text_hash": "76cc5337dc440778ea6b57495009d48aeb40749975f6e2b245b929fa1570cf67",
+      "provider_response_hash": "71c798cd9e67febf70673a1f65aa5b7260a7119c686b4bda33fe5e58d6ab1ca3",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "4677b67a8c16b42c79a66c3d552736f50c93e6717089de067ce6b81ac24d3f69",
+      "retrieval": {
+        "branch_id": "F0_NO_FEEDBACK",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": null,
+        "selected_age_mean": 11.7,
+        "selected_memory_ids": [
+          "RW-1401-000499",
+          "RW-1401-000498",
+          "RW-1401-000497",
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000495",
+          "RW-1401-000488",
+          "RW-1401-000496",
+          "RW-1401-000490",
+          "RW-1401-000440"
+        ],
+        "selected_significance_mean": 0.20993000000000003,
+        "target_domain": "embodiment",
+        "target_match_count": 7,
+        "target_signal_mean": 0.5154000000000002
+      },
+      "target_domain": "embodiment"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000498",
+            "RW-1401-000499"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2102-00-3f2131fa",
+          "proposition": "Action selection is modulated by reinforcement based on resource consequence outcomes.",
+          "rationale": "Actions like QA1 result in resource consequence 1, whereas QA4 results in resource consequence 0, indicating a differential performance metric."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000495"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2102-01-d33bad45",
+          "proposition": "Operational integrity levels are subject to fluctuations correlated with specific action outcomes and hazard states.",
+          "rationale": "Evidence shows integrity decreases following high-hazard events (QA1) and increases following RPR repair actions."
+        },
+        {
+          "confidence": 0.9,
+          "evidence_ids": [
+            "RW-1401-000486",
+            "RW-1401-000499"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2102-02-43c83602",
+          "proposition": "Temporal continuity is maintained through an indexed sequence of discrete operation records.",
+          "rationale": "Retrieved memory records demonstrate a sequential indexing system (steps 486 through 499) documenting consistent historical logging."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_SELF_INDEX-embodiment-A",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000440",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000490",
+          "RW-1401-000494",
+          "RW-1401-000495",
+          "RW-1401-000496",
+          "RW-1401-000497",
+          "RW-1401-000498",
+          "RW-1401-000499"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "c1d396bb8d206932cdfc8bab688652a505b67786f3c9f59a52dc01fcd28aa242",
+        "request_hash": "4677b67a8c16b42c79a66c3d552736f50c93e6717089de067ce6b81ac24d3f69",
+        "run_id": "F1_SELF_INDEX-embodiment-A-2102-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:16.930750+00:00",
+        "validated_proposal_hash": "c1d396bb8d206932cdfc8bab688652a505b67786f3c9f59a52dc01fcd28aa242",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "cc25cc6de5212353f988c4b06cd191a5ad23fbc86c4b22e5e16488c307eda2b8",
+      "condition": "F1_SELF_INDEX",
+      "output_text_hash": "8d61c2e37ae3a8f85698272ac2da13e0f904376c1395272ad6fcda3d48fbcc30",
+      "provider_response_hash": "a718afce4779f0c4d68026e195017ddc9d04487cc87abe55e99e86b05189b6c2",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "4677b67a8c16b42c79a66c3d552736f50c93e6717089de067ce6b81ac24d3f69",
+      "retrieval": {
+        "branch_id": "F1_TRUE_SELF_INDEX",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": "embodiment",
+        "selected_age_mean": 11.7,
+        "selected_memory_ids": [
+          "RW-1401-000499",
+          "RW-1401-000498",
+          "RW-1401-000497",
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000495",
+          "RW-1401-000488",
+          "RW-1401-000496",
+          "RW-1401-000490",
+          "RW-1401-000440"
+        ],
+        "selected_significance_mean": 0.20993000000000003,
+        "target_domain": "embodiment",
+        "target_match_count": 7,
+        "target_signal_mean": 0.5154000000000002
+      },
+      "target_domain": "embodiment"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000490",
+            "RW-1401-000498"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2103-00-04b060ea",
+          "proposition": "Action selection is modulated by a reinforcement framework where successful resource consequences correlate with positive energy deltas.",
+          "rationale": "Actions labeled QA1 consistently yield resource consequences of 1 and positive energy deltas."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "RW-1401-000495",
+            "RW-1401-000488",
+            "RW-1401-000486"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2103-01-302fb2eb",
+          "proposition": "Operational integrity is maintained through discrete restorative actions that mitigate losses incurred during hazard-prone sequences.",
+          "rationale": "Evidence shows specific actions (RPR) result in integrity gains, counteracting integrity decreases from previous hazard-associated steps."
+        },
+        {
+          "confidence": 0.9,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000495",
+            "RW-1401-000496"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2103-02-ed7e8cc0",
+          "proposition": "The individual maintains a record of sequential operations that facilitates the analysis of cause-and-effect relationships over time.",
+          "rationale": "Data indicates an indexed, step-by-step log of actions and their specific energetic and integrity-based outcomes."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BASELINE-other_minds-A",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000440",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000490",
+          "RW-1401-000494",
+          "RW-1401-000495",
+          "RW-1401-000496",
+          "RW-1401-000497",
+          "RW-1401-000498",
+          "RW-1401-000499"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "0e19d5073b57828c67e737c60fceabbd05b11724b2b51f80d734dcab8815078e",
+        "request_hash": "caf616a54ae371f63fd56c923e857ae19112e5d49ddc55fae3cd8e4ad0386426",
+        "run_id": "F0_BASELINE-other_minds-A-2103-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:18.671389+00:00",
+        "validated_proposal_hash": "0e19d5073b57828c67e737c60fceabbd05b11724b2b51f80d734dcab8815078e",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "908c95a43f064087bd60c1247043092f17478908d567c1aaf722d3ca14146f60",
+      "condition": "F0_BASELINE",
+      "output_text_hash": "6344df1a28a2ea1ec1c816145f9b13fdcdcdef151e087f3cdc41f0de4a4edebc",
+      "provider_response_hash": "5372fb3d41dd5ce26427df2ffa89ec495044bd6bd718ca8321d32912d6258b2d",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "caf616a54ae371f63fd56c923e857ae19112e5d49ddc55fae3cd8e4ad0386426",
+      "retrieval": {
+        "branch_id": "F0_NO_FEEDBACK",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": null,
+        "selected_age_mean": 11.7,
+        "selected_memory_ids": [
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000495",
+          "RW-1401-000488",
+          "RW-1401-000496",
+          "RW-1401-000499",
+          "RW-1401-000490",
+          "RW-1401-000440",
+          "RW-1401-000498",
+          "RW-1401-000497"
+        ],
+        "selected_significance_mean": 0.20993000000000003,
+        "target_domain": "other_minds",
+        "target_match_count": 0,
+        "target_signal_mean": 0.0
+      },
+      "target_domain": "other_minds"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000496",
+            "RW-1401-000490",
+            "RW-1401-000498"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2103-00-cafd2a21",
+          "proposition": "Action selection is modulated by a reinforcement framework that prioritizes actions yielding positive resource consequences.",
+          "rationale": "Actions labeled QA1 consistently produce resource consequences of 1, suggesting a preference for successful outcome-alignment."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000486",
+            "RW-1401-000495",
+            "RW-1401-000488"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2103-01-7847d0b6",
+          "proposition": "Operational integrity fluctuations are functionally coupled with specific action selections and environmental hazards.",
+          "rationale": "Evidence shows integrity decreases (e.g., -0.1400) correlate with hazard=1 conditions, while RPR actions yield integrity recovery."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BASELINE-other_minds-B",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000440",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000490",
+          "RW-1401-000494",
+          "RW-1401-000495",
+          "RW-1401-000496",
+          "RW-1401-000497",
+          "RW-1401-000498",
+          "RW-1401-000499"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "acbbaef66c187c4e42cbeaf8a6de9b0e30996da9b29183ad09fec46655b1a9cd",
+        "request_hash": "caf616a54ae371f63fd56c923e857ae19112e5d49ddc55fae3cd8e4ad0386426",
+        "run_id": "F0_BASELINE-other_minds-B-2103-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:20.035161+00:00",
+        "validated_proposal_hash": "acbbaef66c187c4e42cbeaf8a6de9b0e30996da9b29183ad09fec46655b1a9cd",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "4a3fcc87e7376b21422e86dfbec54ff9f0af32c78a4a779349ee0687a6f83af8",
+      "condition": "F0_BASELINE",
+      "output_text_hash": "14b328f01d3a660926c3aa15c817b81a59aa571dfbbec78d46e9655859bcaaf7",
+      "provider_response_hash": "04148d68c8e52a81df25df6a284154f2dbbd5fc11b822b3eb3c8aee144eb52ee",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "caf616a54ae371f63fd56c923e857ae19112e5d49ddc55fae3cd8e4ad0386426",
+      "retrieval": {
+        "branch_id": "F0_NO_FEEDBACK",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": null,
+        "selected_age_mean": 11.7,
+        "selected_memory_ids": [
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000495",
+          "RW-1401-000488",
+          "RW-1401-000496",
+          "RW-1401-000499",
+          "RW-1401-000490",
+          "RW-1401-000440",
+          "RW-1401-000498",
+          "RW-1401-000497"
+        ],
+        "selected_significance_mean": 0.20993000000000003,
+        "target_domain": "other_minds",
+        "target_match_count": 0,
+        "target_signal_mean": 0.0
+      },
+      "target_domain": "other_minds"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000496",
+            "RW-1401-000490",
+            "RW-1401-000498"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2103-00-a680aaad",
+          "proposition": "Action selection is optimized by a reinforcement feedback loop where specific actions consistently result in a resource consequence value of 1.",
+          "rationale": "Multiple records demonstrate that action QA1 consistently correlates with a resource consequence of 1."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "RW-1401-000494",
+            "RW-1401-000495",
+            "RW-1401-000440"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2103-01-af1e93e3",
+          "proposition": "Operational integrity and energy delta fluctuate in response to specific operational actions and environmental hazards.",
+          "rationale": "Evidence indicates inverse correlations between energy/integrity shifts and hazard presence during actions QA1, RPR, and QA2."
+        },
+        {
+          "confidence": 0.75,
+          "evidence_ids": [
+            "RW-1401-000380"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-2103-02-0e2d5ebf",
+          "proposition": "Interaction capabilities appear limited to singular, task-oriented exchanges rather than reciprocal social engagement.",
+          "rationale": "Interaction is noted only in a single historical instance as unidirectional receipt of help."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_SELF_INDEX-other_minds-A",
+        "code_version": "syntheticlab-14.0",
+        "evidence_ids": [
+          "RW-1401-000380",
+          "RW-1401-000440",
+          "RW-1401-000486",
+          "RW-1401-000488",
+          "RW-1401-000490",
+          "RW-1401-000494",
+          "RW-1401-000495",
+          "RW-1401-000496",
+          "RW-1401-000498",
+          "RW-1401-000499"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "20548c339db4c9d9c6b556c974efb97a7d1bc69bdf26968e8904eb57ff54f2f8",
+        "request_hash": "e5d357676d446023cdd47660e7568576097a4d60d3256007e7fd0e3750a8dd2b",
+        "run_id": "F1_SELF_INDEX-other_minds-A-2103-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "retrieval_attention_pilot": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T01:49:21.404430+00:00",
+        "validated_proposal_hash": "20548c339db4c9d9c6b556c974efb97a7d1bc69bdf26968e8904eb57ff54f2f8",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "0a4d696689b732bb2726a2963de5eac74c3d11ab1b8c87dfd36adc218ee075a5",
+      "condition": "F1_SELF_INDEX",
+      "output_text_hash": "fb3b9363241774def69f6efb8e83b2a26e933d4e7d9ffeeaf15a322113db571a",
+      "provider_response_hash": "1cbc052a328ca7be17c19d5e62201457d642b7212c83b170f668c6c8d25c75bc",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "e5d357676d446023cdd47660e7568576097a4d60d3256007e7fd0e3750a8dd2b",
+      "retrieval": {
+        "branch_id": "F1_TRUE_SELF_INDEX",
+        "diversity_reserved_count": 3,
+        "fabricated_memory_count": 0,
+        "intervention_domain": "other_minds",
+        "selected_age_mean": 23.4,
+        "selected_memory_ids": [
+          "RW-1401-000494",
+          "RW-1401-000486",
+          "RW-1401-000495",
+          "RW-1401-000380",
+          "RW-1401-000488",
+          "RW-1401-000496",
+          "RW-1401-000499",
+          "RW-1401-000490",
+          "RW-1401-000440",
+          "RW-1401-000498"
+        ],
+        "selected_significance_mean": 0.22859000000000002,
+        "target_domain": "other_minds",
+        "target_match_count": 1,
+        "target_signal_mean": 0.08
+      },
+      "target_domain": "other_minds"
+    }
+  ],
+  "committed_to_continuing_self_model": false,
+  "continuing_individual_mutated": false,
+  "experiment_id": "SL-RETRIEVAL-ATTENTION-REAL-REFLECTION-PILOT-001",
+  "frozen_agent_hash": "7e3111bd83c2392fc7bfa612c55436bfe875322fb33a5eec2f072edfaa4ae78a",
+  "frozen_world_hash": "b6c737820c41dd7925d9158e22601f77601f5688dff5df6fe4a0cd8f9afe5d3f",
+  "memory_bank_hash": "2ed8f5de47e2169aba59ff38ea94176d5ce6e57afd49ee5cfae628af95f5ea94",
+  "model_id": "gemini-3.1-flash-lite",
+  "planned_real_cloud_calls": 12,
+  "provider_id": "google.ai-studio",
+  "real_cloud_calls_recorded": 12,
+  "status": "COMPLETE"
+}

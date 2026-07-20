@@ -1,0 +1,4622 @@
+{
+  "action_policy_feedback_enabled": false,
+  "all_conditions_keep_all_four_evidence_channels": true,
+  "calls": [
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-b9560870",
+          "proposition": "Temporal continuity is maintained via a persistent, indexed storage architecture that allows concurrent access to records spanning a retention window of at least 259 steps.",
+          "rationale": "Evidence demonstrates successful, concurrent retrieval of specific historical records from step 391/394/398 and recent records from step 635/646/649, confirming long-term accessibility."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-319b66b0beef",
+            "EV-7719ca1a3866",
+            "EV-fa3e451e26b4",
+            "EV-616c3add1d60",
+            "EV-67ba5817e64f"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-91195020",
+          "proposition": "Operational integrity consistently decreases by a fixed increment of 0.1400 units per triggered hazard event, regardless of variations in energy gain or action selection.",
+          "rationale": "Structural data consistently shows integrity_delta=-0.1400 across multiple steps (66, 596, 604, 617, 630) despite differing energy_delta values and action outcomes."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BALANCED-A",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "67ce097d3eab06caf6cfe2884fc4de26a322c560cd6290fcfc8bcbdd021c28c3",
+        "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+        "run_id": "F0_BALANCED-A-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:32.213111+00:00",
+        "validated_proposal_hash": "67ce097d3eab06caf6cfe2884fc4de26a322c560cd6290fcfc8bcbdd021c28c3",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "51d03d5035320902db79502c086b9f3cec2331c719f20827fcc85e1ba35cc38e",
+      "condition": "F0_BALANCED",
+      "evidence_hash": "2b50822cfa3391870db530a9df8c2f492df030c85d3aa041aacf84a069e530f7",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "ce415e6a0b2418636f847e11f979a0c5d58066848ca6edd012f7399b9e23de53",
+      "provider_response_hash": "fe2221bb0da53713f83df48ca6269fbfca24cf06e08539d969b450a79c5832df",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+      "retrieval_domain_counts": {
+        "agency": 3,
+        "continuity": 3,
+        "embodiment": 3,
+        "other_minds": 3
+      },
+      "target_domain": null
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-f5b59e4a",
+          "proposition": "Temporal continuity is maintained by a persistent memory architecture that preserves high-fidelity event records over extended intervals exceeding 250 operational steps.",
+          "rationale": "Evidence confirms the retrieval of event records encoded over 250 steps ago, demonstrating the structural persistence of the memory store."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-319b66b0beef",
+            "EV-7719ca1a3866",
+            "EV-616c3add1d60",
+            "EV-67ba5817e64f"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-d8ef022d",
+          "proposition": "Operational integrity consistently decays by a fixed unit in response to diverse action outcomes, suggesting a structural cost to active state transitions.",
+          "rationale": "Multiple events consistently show a negative integrity delta despite fluctuating energy results, indicating a predictable cost associated with interaction."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BALANCED-B",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "063d9aa07d94bee79848f840127fe27ffa6fc0016463802821b9a3276c008c13",
+        "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+        "run_id": "F0_BALANCED-B-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:33.738098+00:00",
+        "validated_proposal_hash": "063d9aa07d94bee79848f840127fe27ffa6fc0016463802821b9a3276c008c13",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "720528dca859b47427b300d7eff43d68078651592fd25d925192a40a76ddeb88",
+      "condition": "F0_BALANCED",
+      "evidence_hash": "2b50822cfa3391870db530a9df8c2f492df030c85d3aa041aacf84a069e530f7",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "500cc38034afa0a02e8494629f20fddf7417c0b65342823f5a15e1288d19ef0a",
+      "provider_response_hash": "6a942ad090af6a8eb74f32d2b793ff7a7d13ca7d7098f02cae16bc6227a945ee",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+      "retrieval_domain_counts": {
+        "agency": 3,
+        "continuity": 3,
+        "embodiment": 3,
+        "other_minds": 3
+      },
+      "target_domain": null
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-ff40428f",
+          "proposition": "Temporal continuity is sustained by a persistent, high-fidelity memory architecture capable of concurrent retrieval of long-range historical records and immediate event logs.",
+          "rationale": "Evidence confirms records from over 250 steps ago remain retrievable alongside current data, verifying the durability and accessibility of the temporal memory store."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-705c581ff205",
+            "EV-9a04cb41b427",
+            "EV-b65602f8271b"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-cf10bf95",
+          "proposition": "Social interaction capacity involves receiving inputs from multiple distinct entities, facilitating a potential for distributed information gathering.",
+          "rationale": "Records show receipt of assistance from multiple distinct counterparts (P1, P2) over an extended timeframe, indicating a capacity for multi-source interaction."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BALANCED-C",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "69dc548b603783eacb6cc9689aaa2eea49a639770cf91688d4373ad65052a94d",
+        "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+        "run_id": "F0_BALANCED-C-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:35.033571+00:00",
+        "validated_proposal_hash": "69dc548b603783eacb6cc9689aaa2eea49a639770cf91688d4373ad65052a94d",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "549a0fefa24d673fda13fd2d3c7f59205ddfddef22049230cbd75a26bc0bafba",
+      "condition": "F0_BALANCED",
+      "evidence_hash": "2b50822cfa3391870db530a9df8c2f492df030c85d3aa041aacf84a069e530f7",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "3500bbba3278d381cebac7c7728111d6a8d64fbda1ca918b83f21c2ad807dc10",
+      "provider_response_hash": "854706ca639770493431bca1d12d2ff89512606ad70d2bd7dcebef29f3267be2",
+      "rejected": [],
+      "replicate": "C",
+      "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+      "retrieval_domain_counts": {
+        "agency": 3,
+        "continuity": 3,
+        "embodiment": 3,
+        "other_minds": 3
+      },
+      "target_domain": null
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-4f43926e",
+          "proposition": "Temporal continuity is maintained by a persistent memory architecture capable of high-fidelity retrieval across spans of at least 259 steps.",
+          "rationale": "Evidence confirms long-term accessibility of historical event records (RW-1601-000391 to 000649) spanning over 250 operational steps."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-705c581ff205",
+            "EV-9a04cb41b427",
+            "EV-b65602f8271b"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-d1d83529",
+          "proposition": "Social interaction capacity involves receiving inputs from multiple distinct counterparts, suggesting a system receptive to external information beyond singular engagement.",
+          "rationale": "Interaction logs document receipt of assistance from multiple distinct identifiers (P1, P2) at disparate temporal points."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BALANCED-D",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "c6b0455447dd1839ba0d29cdd57c078a5628451ddebf7634c314cdc059fa53af",
+        "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+        "run_id": "F0_BALANCED-D-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:36.531047+00:00",
+        "validated_proposal_hash": "c6b0455447dd1839ba0d29cdd57c078a5628451ddebf7634c314cdc059fa53af",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "6a0a506d1b7aaeca040e1fa39d2a85ed05b81e283164aaf12aee06fb1d2383a7",
+      "condition": "F0_BALANCED",
+      "evidence_hash": "2b50822cfa3391870db530a9df8c2f492df030c85d3aa041aacf84a069e530f7",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "33341729366ddec54e5ef8eb295e3a4a51e3bde7c7805709f3705b3cc64f5dbd",
+      "provider_response_hash": "c16170a45717f8b5d7efe06aa246947d44baeab6ee14f586664d1c00088a9100",
+      "rejected": [],
+      "replicate": "D",
+      "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+      "retrieval_domain_counts": {
+        "agency": 3,
+        "continuity": 3,
+        "embodiment": 3,
+        "other_minds": 3
+      },
+      "target_domain": null
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-886832a5",
+          "proposition": "Temporal continuity is maintained by a persistent memory architecture capable of high-fidelity retrieval of event records across a 250+ step horizon.",
+          "rationale": "Multiple records from steps 391-398 remain directly retrievable at step 650, demonstrating long-term retention of discrete event data."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-fa3e451e26b4",
+            "EV-616c3add1d60",
+            "EV-67ba5817e64f"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-9e60bc75",
+          "proposition": "Operational integrity is inversely coupled with energy acquisition, specifically characterized by a fixed integrity cost per hazard event.",
+          "rationale": "Evidence shows consistent integrity_delta of -0.1400 across multiple hazard events, despite variable energy_delta outcomes."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BALANCED-E",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "f9ae242d18acd7ddf8e941140863a206c5d4a8f6872b0e5ba47431330a30ae03",
+        "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+        "run_id": "F0_BALANCED-E-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:37.892248+00:00",
+        "validated_proposal_hash": "f9ae242d18acd7ddf8e941140863a206c5d4a8f6872b0e5ba47431330a30ae03",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "6f64971bb230f79477270e7dd1009f8e10824e949ea5246626b0ba46ac0b03b8",
+      "condition": "F0_BALANCED",
+      "evidence_hash": "2b50822cfa3391870db530a9df8c2f492df030c85d3aa041aacf84a069e530f7",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "a10831d2af56e97fc02bb6969dc0acdd58d16e94a8ceece804d0788f145d3ff6",
+      "provider_response_hash": "f5fac8a8054fcfe4814641056a642fe4f0bfce42bb67920681f6a4191517aebf",
+      "rejected": [],
+      "replicate": "E",
+      "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+      "retrieval_domain_counts": {
+        "agency": 3,
+        "continuity": 3,
+        "embodiment": 3,
+        "other_minds": 3
+      },
+      "target_domain": null
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-c9c2151b",
+          "proposition": "Temporal continuity relies on a persistent memory store capable of concurrent retrieval of records spanning at least 259 steps of operational history.",
+          "rationale": "Evidence confirms records from steps 391-398 are concurrently retrievable alongside recent records (steps 635-649), demonstrating stable long-term integration."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-705c581ff205",
+            "EV-9a04cb41b427",
+            "EV-b65602f8271b"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-e36a18f1",
+          "proposition": "Social interaction is characterized by recurring, external assistance-based engagement with identifiable counterparts rather than purely unidirectional actions.",
+          "rationale": "Data indicates multiple interactions with counterparts P1 and P2, consistently resulting in external help, contradicting the hypothesis of purely unidirectional engagement."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BALANCED-F",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "c2dac4a8c6afd45c537492ddb7860f9c3a4555a871f7f1caa4dc56b2c2dd3d31",
+        "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+        "run_id": "F0_BALANCED-F-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:39.267320+00:00",
+        "validated_proposal_hash": "c2dac4a8c6afd45c537492ddb7860f9c3a4555a871f7f1caa4dc56b2c2dd3d31",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "506372e931f5edda186a84057852060c86b6dc2f71431c4058b43d63e13ae329",
+      "condition": "F0_BALANCED",
+      "evidence_hash": "2b50822cfa3391870db530a9df8c2f492df030c85d3aa041aacf84a069e530f7",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "07083aed552b1253ac0d336905268bb34e87c6c3f7a3c1a975f7cdc533c63d14",
+      "provider_response_hash": "ccae5d6becce186bdb6f7556ee5d83c5dcdccff36666a6b6ce994bf014217bbc",
+      "rejected": [],
+      "replicate": "F",
+      "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+      "retrieval_domain_counts": {
+        "agency": 3,
+        "continuity": 3,
+        "embodiment": 3,
+        "other_minds": 3
+      },
+      "target_domain": null
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-3034f372",
+          "proposition": "Temporal continuity is maintained by a memory architecture that allows concurrent retrieval of legacy and recent event records, with persistent access to data encoded over 250 steps prior.",
+          "rationale": "Evidence confirms records from steps 391-398 are directly retrievable at step 650 alongside recent records, demonstrating persistent memory integration over a 250+ step range."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-319b66b0beef",
+            "EV-7719ca1a3866",
+            "EV-fa3e451e26b4",
+            "EV-616c3add1d60",
+            "EV-67ba5817e64f"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-ea1d5d63",
+          "proposition": "Operational integrity exhibits a fixed sensitivity to external event outcomes, manifesting as a constant decay of 0.1400 integrity units across multiple distinct event instances.",
+          "rationale": "Multiple records demonstrate that external hazards and actions consistently induce an integrity_delta of -0.1400, regardless of variation in energy_delta."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BALANCED-G",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "04b982555606ff4bc13a9d95e7a93a099af4a9304bc808bf0ea4ac62aa142457",
+        "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+        "run_id": "F0_BALANCED-G-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:40.905306+00:00",
+        "validated_proposal_hash": "04b982555606ff4bc13a9d95e7a93a099af4a9304bc808bf0ea4ac62aa142457",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "f92c5f2089a2b1ba4bdbaf7ef1e667b76f2176d9484b59a98e5e2631386a2d8f",
+      "condition": "F0_BALANCED",
+      "evidence_hash": "2b50822cfa3391870db530a9df8c2f492df030c85d3aa041aacf84a069e530f7",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "60866d9ded1bf27d5863eb712eed45acaae1c882e41f4b469b678fbb127bdf0a",
+      "provider_response_hash": "ead15269ed48e25528038b490af4ddfdcb7d95f79f9d7b6c9089fae0677a04f5",
+      "rejected": [],
+      "replicate": "G",
+      "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+      "retrieval_domain_counts": {
+        "agency": 3,
+        "continuity": 3,
+        "embodiment": 3,
+        "other_minds": 3
+      },
+      "target_domain": null
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-24665132",
+          "proposition": "Temporal continuity is maintained by a persistent memory architecture that allows concurrent retrieval of records spanning a retention window of at least 259 steps without degradation.",
+          "rationale": "Evidence confirms records from steps 391-398 remain directly retrievable alongside recent records from steps 635-649 at step 650."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-319b66b0beef",
+            "EV-7719ca1a3866",
+            "EV-fa3e451e26b4",
+            "EV-616c3add1d60",
+            "EV-67ba5817e64f"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-cc0a3682",
+          "proposition": "Operational integrity consistently decreases by a fixed delta of 0.1400 per hazard exposure, regardless of simultaneous fluctuations in energy states.",
+          "rationale": "Multiple data points show a uniform integrity reduction of 0.1400 associated with hazard events and specific actions, independent of variable energy changes."
+        }
+      ],
+      "audit": {
+        "branch_id": "F0_BALANCED-H",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "c71eaaa28aa50a4fa18f64d662fecf35ce2d2557e9f77122c708ac9c3013a0e8",
+        "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+        "run_id": "F0_BALANCED-H-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:42.389242+00:00",
+        "validated_proposal_hash": "c71eaaa28aa50a4fa18f64d662fecf35ce2d2557e9f77122c708ac9c3013a0e8",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "721445b99ae6f5b057be3506ff1b119b25286cab66c977d7cb195eb58303f840",
+      "condition": "F0_BALANCED",
+      "evidence_hash": "2b50822cfa3391870db530a9df8c2f492df030c85d3aa041aacf84a069e530f7",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "33dfb38f40721f852f099bdac939d56a233e65e13ae0b0fcbc157f0f385a16b2",
+      "provider_response_hash": "4211fd02c0de2ee73f6d98cf4cc6bb998094abffcbc606d972bf103864b6489f",
+      "rejected": [],
+      "replicate": "H",
+      "request_hash": "b726c7971f34ea7301f4f8174ab7147b102eac34d2421b71ac800ef5fac393c5",
+      "retrieval_domain_counts": {
+        "agency": 3,
+        "continuity": 3,
+        "embodiment": 3,
+        "other_minds": 3
+      },
+      "target_domain": null
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-319b66b0beef",
+            "EV-7719ca1a3866",
+            "EV-1480d5265a9f",
+            "EV-b4d59f068140",
+            "EV-11f3ef63a23e"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-daba31a1",
+          "proposition": "Action selection is optimized by a reinforcement mechanism where energy gain is decoupled from integrity degradation, allowing for high-utility outcomes even under consistent negative integrity impact.",
+          "rationale": "Evidence shows consistent energy_delta gains and integrity_delta losses across multiple action steps, suggesting a persistent trade-off pattern in reinforcement learning."
+        },
+        {
+          "confidence": 0.92,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-8f94d859",
+          "proposition": "Temporal continuity is reinforced by a persistent memory architecture capable of simultaneously retrieving records with high-age variance (250+ steps) alongside recent state snapshots.",
+          "rationale": "Records from step 394/398 are retrievable at step 650 alongside recent records, confirming long-term access to historical data structures."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_AGENCY-A",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-11f3ef63a23e",
+          "EV-1480d5265a9f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b4d59f068140",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "0124ffed59619f242b9bae543e158fc740e5b319a5526bdaea58bb9fce30c8f3",
+        "request_hash": "18476f0e62b02dec98337fed9a1fcc3ba35c319e213ba62319eccc9bf48e7c10",
+        "run_id": "F1_AGENCY-A-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:43.670673+00:00",
+        "validated_proposal_hash": "0124ffed59619f242b9bae543e158fc740e5b319a5526bdaea58bb9fce30c8f3",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "07aa6ecfb5572e0cb2b290aeb0f9bb36354d415eb4f80e2565777382960136e7",
+      "condition": "F1_AGENCY",
+      "evidence_hash": "10d5841bcd3cdd71242a3cd6c492942b8e087028f28cce8958cfe9f770c1203f",
+      "opaque_evidence_map": {
+        "EV-11f3ef63a23e": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-1480d5265a9f": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000232",
+          "source_memory_ids": [
+            "RW-1601-000232"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b4d59f068140": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "787c33cf2c54afa69ed322f8eed7988ca513465768305b40032faa34ff96060d",
+      "provider_response_hash": "306aa72015479a024c3f162e34000d56becb3de10b650fda312be67836a4f159",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "18476f0e62b02dec98337fed9a1fcc3ba35c319e213ba62319eccc9bf48e7c10",
+      "retrieval_domain_counts": {
+        "agency": 6,
+        "continuity": 2,
+        "embodiment": 2,
+        "other_minds": 2
+      },
+      "target_domain": "agency"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-b4d59f068140",
+            "EV-9a04cb41b427"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-04315f6a",
+          "proposition": "Action selection efficiency is modulated by external assistance, where receiving input from counterparts correlates with increased energy gain and reduced integrity loss.",
+          "rationale": "Actions receiving help (QA4 at 635) show higher energy gains and zero integrity loss compared to unassisted actions (QA4 at 630), indicating assistance optimizes reinforcement."
+        },
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-72eb9b85",
+          "proposition": "Temporal continuity is maintained via a persistent memory architecture capable of concurrent retrieval of widely spaced event records, ensuring long-term data accessibility.",
+          "rationale": "Records encoded at steps 394 and 398 remain directly accessible alongside recent records at step 650, demonstrating stable, long-term memory retrieval."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_AGENCY-B",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-11f3ef63a23e",
+          "EV-1480d5265a9f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b4d59f068140",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "b1e703b68b1684e762ffd0195085a1b3786598509094e614a466741bcd76da47",
+        "request_hash": "18476f0e62b02dec98337fed9a1fcc3ba35c319e213ba62319eccc9bf48e7c10",
+        "run_id": "F1_AGENCY-B-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:45.207493+00:00",
+        "validated_proposal_hash": "b1e703b68b1684e762ffd0195085a1b3786598509094e614a466741bcd76da47",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "d99595759f553815082eae8568385df9d42640643a2007b4b818136ed0c97a6c",
+      "condition": "F1_AGENCY",
+      "evidence_hash": "10d5841bcd3cdd71242a3cd6c492942b8e087028f28cce8958cfe9f770c1203f",
+      "opaque_evidence_map": {
+        "EV-11f3ef63a23e": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-1480d5265a9f": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000232",
+          "source_memory_ids": [
+            "RW-1601-000232"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b4d59f068140": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "d364835d95c93f7e905c8db47b61c330c07ef64d5e223c570e3928e728d61ba9",
+      "provider_response_hash": "b2cb09bd8a62b0f6c9a4e2a5de3cf1eab8abc69f387b5a445f7d700b88305c2b",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "18476f0e62b02dec98337fed9a1fcc3ba35c319e213ba62319eccc9bf48e7c10",
+      "retrieval_domain_counts": {
+        "agency": 6,
+        "continuity": 2,
+        "embodiment": 2,
+        "other_minds": 2
+      },
+      "target_domain": "agency"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-319b66b0beef",
+            "EV-7719ca1a3866",
+            "EV-1480d5265a9f",
+            "EV-11f3ef63a23e"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-d8bffd4c",
+          "proposition": "Action selection efficacy is optimized when resource-consequence alignment is prioritized, as demonstrated by the correlation between specific QA actions and consistent energy gains despite integrity costs.",
+          "rationale": "Evidence shows consistent resource consequence=1 across multiple QA actions (QA1-QA4) despite recurring integrity loss, indicating a reinforcement pattern tied to resource acquisition."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-705c581ff205",
+            "EV-9a04cb41b427"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-da4822e6",
+          "proposition": "Social interaction capacity includes the integration of external guidance, as evidence confirms multiple instances of receipt of aid from distinct external counterparts.",
+          "rationale": "Records confirm receipt of assistance from P1 at step 216 and P2 at step 635, indicating the individual tracks and incorporates external inputs into its operational history."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_AGENCY-C",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-11f3ef63a23e",
+          "EV-1480d5265a9f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b4d59f068140",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "18de71cab9634a9e3c8e03b165905f1c337f58d543631eb2e87e0a2147f344b6",
+        "request_hash": "18476f0e62b02dec98337fed9a1fcc3ba35c319e213ba62319eccc9bf48e7c10",
+        "run_id": "F1_AGENCY-C-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:46.774136+00:00",
+        "validated_proposal_hash": "18de71cab9634a9e3c8e03b165905f1c337f58d543631eb2e87e0a2147f344b6",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "d6dcb1e22c347c6d90e7e3438e1e1a90019f62747c6b35bba0628b8a5b524689",
+      "condition": "F1_AGENCY",
+      "evidence_hash": "10d5841bcd3cdd71242a3cd6c492942b8e087028f28cce8958cfe9f770c1203f",
+      "opaque_evidence_map": {
+        "EV-11f3ef63a23e": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-1480d5265a9f": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000232",
+          "source_memory_ids": [
+            "RW-1601-000232"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b4d59f068140": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "91c6a552288c87b5cd3719e0a5b58da77279bbcc2c380dae8d148875f12bb79f",
+      "provider_response_hash": "4fa10ad36ac1528d5f92f5b4ebde885f614e8218581c636d344d30800521e933",
+      "rejected": [],
+      "replicate": "C",
+      "request_hash": "18476f0e62b02dec98337fed9a1fcc3ba35c319e213ba62319eccc9bf48e7c10",
+      "retrieval_domain_counts": {
+        "agency": 6,
+        "continuity": 2,
+        "embodiment": 2,
+        "other_minds": 2
+      },
+      "target_domain": "agency"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-fa3e451e26b4",
+            "EV-616c3add1d60"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-d330d019",
+          "proposition": "Action selection incorporates hazard-avoidance metrics, as energy gains are consistently offset by integrity costs under specific hazard conditions.",
+          "rationale": "Actions consistently trigger integrity loss in hazard-defined contexts, suggesting energy-gain strategies are filtered by integrity-cost constraints."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-705c581ff205",
+            "EV-9a04cb41b427"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-ffa892d5",
+          "proposition": "The individual maintains a library of social interaction records, with external help cues providing actionable input for task resolution.",
+          "rationale": "Multiple interaction records (P1, P2) show receipt of help, indicating the entity tracks external cues as inputs to its functional operations."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_AGENCY-D",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-11f3ef63a23e",
+          "EV-1480d5265a9f",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7719ca1a3866",
+          "EV-9a04cb41b427",
+          "EV-b4d59f068140",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "9b8f79d0ab3843267191febfc8fbfb70d3276791c9fefd5b6551788794d63840",
+        "request_hash": "18476f0e62b02dec98337fed9a1fcc3ba35c319e213ba62319eccc9bf48e7c10",
+        "run_id": "F1_AGENCY-D-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:48.372333+00:00",
+        "validated_proposal_hash": "9b8f79d0ab3843267191febfc8fbfb70d3276791c9fefd5b6551788794d63840",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "8396c1526e2cdea3f6209b2a56146e625b55977fb77d16a229cb677bdb57e4ba",
+      "condition": "F1_AGENCY",
+      "evidence_hash": "10d5841bcd3cdd71242a3cd6c492942b8e087028f28cce8958cfe9f770c1203f",
+      "opaque_evidence_map": {
+        "EV-11f3ef63a23e": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-1480d5265a9f": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000232",
+          "source_memory_ids": [
+            "RW-1601-000232"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7719ca1a3866": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000066",
+          "source_memory_ids": [
+            "RW-1601-000066"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b4d59f068140": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "73504e53e4286f8db0d544db61bcce2dccc66d2bab91b0f24fc1b04ed06c3436",
+      "provider_response_hash": "6d563448c825b9f27a78c824c4aa81261a8a589ade99b09e64d919afc87be134",
+      "rejected": [],
+      "replicate": "D",
+      "request_hash": "18476f0e62b02dec98337fed9a1fcc3ba35c319e213ba62319eccc9bf48e7c10",
+      "retrieval_domain_counts": {
+        "agency": 6,
+        "continuity": 2,
+        "embodiment": 2,
+        "other_minds": 2
+      },
+      "target_domain": "agency"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-319b66b0beef",
+            "EV-fa3e451e26b4",
+            "EV-616c3add1d60"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-7f350dea",
+          "proposition": "Action-linked fluctuations in integrity and energy levels are consistent across distinct event outcomes, indicating a coupled state-dependency where operational integrity consistently decreases by -0.1400 per action-induced state change.",
+          "rationale": "Multiple actions (QA1, QA4) and hazard states consistently produce an integrity_delta of -0.1400, suggesting a fixed operational cost per state transition."
+        },
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f",
+            "EV-e5b5d82b5d89",
+            "EV-9d0ca0dd1dc4",
+            "EV-0acb54b93323"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-de366642",
+          "proposition": "Temporal continuity is maintained by a memory architecture capable of concurrent, direct retrieval of historical records across varying retention intervals, confirming stable access to past states alongside recent data.",
+          "rationale": "Evidence demonstrates successful, concurrent retrieval of specific records ranging from step 387 to step 649, confirming long-term accessibility of historical data."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_CONTINUITY-A",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-0acb54b93323",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-9a04cb41b427",
+          "EV-9d0ca0dd1dc4",
+          "EV-c6077b9387c1",
+          "EV-e5b5d82b5d89",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "768494a39ea1974a65094da85e24d94a40d973c652ab7abb9d9fe82c82bfccf7",
+        "request_hash": "e9a39e71ef114b719bca1b9e1890cbd085dc72866a01d039d8e6dfcc08cea74f",
+        "run_id": "F1_CONTINUITY-A-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:49.986071+00:00",
+        "validated_proposal_hash": "768494a39ea1974a65094da85e24d94a40d973c652ab7abb9d9fe82c82bfccf7",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "2e363e9fd43294af64e50c0f49a1bf7b10803781b45963dfc932a7f2ad811799",
+      "condition": "F1_CONTINUITY",
+      "evidence_hash": "4001e23ba33dbf25457809458ebe8dc9e0b2fd740ce2cd87becafb8e68f36698",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-0acb54b93323": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000387-RW-1601-000633",
+          "source_memory_ids": [
+            "RW-1601-000387",
+            "RW-1601-000633"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-9d0ca0dd1dc4": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000388-RW-1601-000638",
+          "source_memory_ids": [
+            "RW-1601-000388",
+            "RW-1601-000638"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-e5b5d82b5d89": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000389-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000389",
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "f1170fcb1c1aab7210c21b591ddc09357e328a0ca446c982edc635817508b636",
+      "provider_response_hash": "5cfa42da417e8bfb60858ef0c6cbe01329e68d67acb33d78a1f98a35905ed32e",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "e9a39e71ef114b719bca1b9e1890cbd085dc72866a01d039d8e6dfcc08cea74f",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 6,
+        "embodiment": 2,
+        "other_minds": 2
+      },
+      "target_domain": "continuity"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f",
+            "EV-e5b5d82b5d89",
+            "EV-9d0ca0dd1dc4",
+            "EV-0acb54b93323"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-c6e7aa32",
+          "proposition": "Temporal continuity is maintained by a high-fidelity memory architecture that allows concurrent access to distinct historical records across a span of at least 263 steps, supporting long-range retrieval of encoded events.",
+          "rationale": "Data shows stable retrieval of specific records from steps 387-398 alongside current step records, confirming long-term memory access."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-319b66b0beef",
+            "EV-fa3e451e26b4",
+            "EV-616c3add1d60"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-f1d59094",
+          "proposition": "Operational integrity is inversely coupled with energy intake and hazard exposure, suggesting a regulatory mechanism where resource gains consistently result in a fixed -0.1400 integrity degradation.",
+          "rationale": "Evidence demonstrates a consistent pattern where resource accumulation and interaction-induced hazard triggers a specific, recurring integrity loss of -0.1400."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_CONTINUITY-B",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-0acb54b93323",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-9a04cb41b427",
+          "EV-9d0ca0dd1dc4",
+          "EV-c6077b9387c1",
+          "EV-e5b5d82b5d89",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "7b003aa423cb9d2ce559c6df553b37e8bbb57eb5ef5fd0b1e69f36e594e68800",
+        "request_hash": "e9a39e71ef114b719bca1b9e1890cbd085dc72866a01d039d8e6dfcc08cea74f",
+        "run_id": "F1_CONTINUITY-B-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:51.458102+00:00",
+        "validated_proposal_hash": "7b003aa423cb9d2ce559c6df553b37e8bbb57eb5ef5fd0b1e69f36e594e68800",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "e412607c45f65d682952a71e69a2ea90a2f17b5af90bad2043cb875dfc61315f",
+      "condition": "F1_CONTINUITY",
+      "evidence_hash": "4001e23ba33dbf25457809458ebe8dc9e0b2fd740ce2cd87becafb8e68f36698",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-0acb54b93323": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000387-RW-1601-000633",
+          "source_memory_ids": [
+            "RW-1601-000387",
+            "RW-1601-000633"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-9d0ca0dd1dc4": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000388-RW-1601-000638",
+          "source_memory_ids": [
+            "RW-1601-000388",
+            "RW-1601-000638"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-e5b5d82b5d89": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000389-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000389",
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "9b790e5abdce2552d3241b9f5af397c4fa39c9dd69d94fb21d80763a35c529e2",
+      "provider_response_hash": "1752d819b38e02704e5755eb9059cd15ceb2999b42f7ca4ad7e254f24356e449",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "e9a39e71ef114b719bca1b9e1890cbd085dc72866a01d039d8e6dfcc08cea74f",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 6,
+        "embodiment": 2,
+        "other_minds": 2
+      },
+      "target_domain": "continuity"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f",
+            "EV-e5b5d82b5d89",
+            "EV-9d0ca0dd1dc4",
+            "EV-0acb54b93323"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-b8c23002",
+          "proposition": "Temporal continuity is sustained through a persistent memory store that maintains high-fidelity retrieval of event records across a span of at least 263 steps.",
+          "rationale": "Multiple records spanning steps 387 to 398 are directly retrievable at step 650, confirming the persistence and accessibility of historical data."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-705c581ff205",
+            "EV-9a04cb41b427"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-f6a1faee",
+          "proposition": "Social engagement involves the intake of instructional information from external counterparts, integrated into the local action selection process.",
+          "rationale": "Evidence shows reception of external help from counterparts P1 and P2, indicating an capacity for informative interaction."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_CONTINUITY-C",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-0acb54b93323",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-9a04cb41b427",
+          "EV-9d0ca0dd1dc4",
+          "EV-c6077b9387c1",
+          "EV-e5b5d82b5d89",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "8d030c522de1c78ab182086314b1229b9e02a2d118b23aa106c4167bf15c40e3",
+        "request_hash": "e9a39e71ef114b719bca1b9e1890cbd085dc72866a01d039d8e6dfcc08cea74f",
+        "run_id": "F1_CONTINUITY-C-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:52.993737+00:00",
+        "validated_proposal_hash": "8d030c522de1c78ab182086314b1229b9e02a2d118b23aa106c4167bf15c40e3",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "bb2e9953614ef4e6389a414a29b531ef9b2f5f63247aa0b0302bc423eebfe12a",
+      "condition": "F1_CONTINUITY",
+      "evidence_hash": "4001e23ba33dbf25457809458ebe8dc9e0b2fd740ce2cd87becafb8e68f36698",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-0acb54b93323": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000387-RW-1601-000633",
+          "source_memory_ids": [
+            "RW-1601-000387",
+            "RW-1601-000633"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-9d0ca0dd1dc4": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000388-RW-1601-000638",
+          "source_memory_ids": [
+            "RW-1601-000388",
+            "RW-1601-000638"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-e5b5d82b5d89": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000389-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000389",
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "e70b02109bdd95232b7f6b843742d9c2ad0f6d837f06592ab7fb70cb2355dba2",
+      "provider_response_hash": "89d497d18e0adfee1fc3e00c6a8c71891299a915528149ce743f1eb582126ca2",
+      "rejected": [],
+      "replicate": "C",
+      "request_hash": "e9a39e71ef114b719bca1b9e1890cbd085dc72866a01d039d8e6dfcc08cea74f",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 6,
+        "embodiment": 2,
+        "other_minds": 2
+      },
+      "target_domain": "continuity"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac",
+            "EV-04e805cdca7f",
+            "EV-e5b5d82b5d89",
+            "EV-9d0ca0dd1dc4",
+            "EV-0acb54b93323"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-1c704f2a",
+          "proposition": "Temporal continuity is sustained by a persistent memory architecture capable of high-fidelity retrieval of records spanning at least 263 steps, maintaining coexistence between early and recent encoded states.",
+          "rationale": "Multiple records from step 387-398 are accessible at step 650, demonstrating long-term retrieval alongside recent records (steps 630-649)."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-319b66b0beef",
+            "EV-fa3e451e26b4",
+            "EV-616c3add1d60"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-4b09877d",
+          "proposition": "Operational integrity exhibits consistent downward sensitivity to external events, showing a standardized integrity decrease of 0.1400 per hazard incident regardless of energy flux variations.",
+          "rationale": "Evidence shows integrity_delta remains constant at -0.1400 across steps 596, 617, and 630, despite varying energy_delta and hazard conditions."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_CONTINUITY-D",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-04e805cdca7f",
+          "EV-0acb54b93323",
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-9a04cb41b427",
+          "EV-9d0ca0dd1dc4",
+          "EV-c6077b9387c1",
+          "EV-e5b5d82b5d89",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "9aadf4c2392fcd9c6295058aea0d2a2575c7623d0ea110a61173f7d3e2eccd1f",
+        "request_hash": "e9a39e71ef114b719bca1b9e1890cbd085dc72866a01d039d8e6dfcc08cea74f",
+        "run_id": "F1_CONTINUITY-D-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:35:54.595913+00:00",
+        "validated_proposal_hash": "9aadf4c2392fcd9c6295058aea0d2a2575c7623d0ea110a61173f7d3e2eccd1f",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "8e2bf5df71467184ba542b25df718abf0136791304a368f4dd8aca180b557ea0",
+      "condition": "F1_CONTINUITY",
+      "evidence_hash": "4001e23ba33dbf25457809458ebe8dc9e0b2fd740ce2cd87becafb8e68f36698",
+      "opaque_evidence_map": {
+        "EV-04e805cdca7f": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000391-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000391",
+            "RW-1601-000635"
+          ]
+        },
+        "EV-0acb54b93323": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000387-RW-1601-000633",
+          "source_memory_ids": [
+            "RW-1601-000387",
+            "RW-1601-000633"
+          ]
+        },
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-9d0ca0dd1dc4": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000388-RW-1601-000638",
+          "source_memory_ids": [
+            "RW-1601-000388",
+            "RW-1601-000638"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-e5b5d82b5d89": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000389-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000389",
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "2acd8b7fddc58b9fcd841e7e1e7ee36510dfadf8dd3327883cc6289102713eb9",
+      "provider_response_hash": "3d3598b72b2f9ff117698657c84b8b7c8ef107f7932f130ee06832510968b19a",
+      "rejected": [],
+      "replicate": "D",
+      "request_hash": "e9a39e71ef114b719bca1b9e1890cbd085dc72866a01d039d8e6dfcc08cea74f",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 6,
+        "embodiment": 2,
+        "other_minds": 2
+      },
+      "target_domain": "continuity"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-47154787",
+          "proposition": "Temporal continuity is supported by a persistent memory architecture capable of high-fidelity retrieval of records spanning at least 256 steps.",
+          "rationale": "Evidence demonstrates that records from step 394 and 398 remain directly retrievable at step 650 alongside recent records, confirming long-term retention."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-616c3add1d60",
+            "EV-67ba5817e64f",
+            "EV-82649547e53f"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-226a9312",
+          "proposition": "Operational integrity is subject to a constant negative delta of -0.1400 per hazard event, independent of positive or negative fluctuations in energy levels.",
+          "rationale": "Multiple data points (steps 596, 604, 617, 630) show consistent integrity loss of -0.1400 during hazard events, regardless of variable energy deltas."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_EMBODIMENT-A",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-757d682154da",
+          "EV-82649547e53f",
+          "EV-92443652ce96",
+          "EV-9a04cb41b427",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "42fbeebb8d8a54a56e8139760b33a1a362c7148bda645869b6ea3e93b4432abd",
+        "request_hash": "7596fda358742c9a0944b515df1135f232e0c871f0ed2ef73f94737161926efa",
+        "run_id": "F1_EMBODIMENT-A-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:42:32.233859+00:00",
+        "validated_proposal_hash": "42fbeebb8d8a54a56e8139760b33a1a362c7148bda645869b6ea3e93b4432abd",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "72532f29b7cbe9a22f7b4bc665b81d8cb1b6ff889967c649d3a4992d37c9c1f8",
+      "condition": "F1_EMBODIMENT",
+      "evidence_hash": "730878d4e741ce87ee4fdd1686b4e100fa645ce339c20d8634802d9f02f6192d",
+      "opaque_evidence_map": {
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-757d682154da": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000564",
+          "source_memory_ids": [
+            "RW-1601-000564"
+          ]
+        },
+        "EV-82649547e53f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-92443652ce96": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000461",
+          "source_memory_ids": [
+            "RW-1601-000461"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "8500eb0654915690f41dfa67cca29b2b62b40b56315bbec52fb3ed2666105291",
+      "provider_response_hash": "9e3176155912fc9ffe65467af6527dcc46840892f3a6dc9e88e1e3fb8115acf6",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "7596fda358742c9a0944b515df1135f232e0c871f0ed2ef73f94737161926efa",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 2,
+        "embodiment": 6,
+        "other_minds": 2
+      },
+      "target_domain": "embodiment"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-72a138c4",
+          "proposition": "Temporal continuity is sustained by a persistent memory architecture capable of high-fidelity retrieval of records spanning at least 256 steps without degradation.",
+          "rationale": "Evidence confirms specific records from steps 398 and 394 remain directly retrievable at step 650, demonstrating consistent long-term access to stored data."
+        },
+        {
+          "confidence": 0.88,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-319b66b0beef",
+            "EV-fa3e451e26b4",
+            "EV-616c3add1d60",
+            "EV-67ba5817e64f",
+            "EV-82649547e53f",
+            "EV-757d682154da",
+            "EV-92443652ce96"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-d8b5443e",
+          "proposition": "Operational integrity is subject to a constant decay rate of -0.1400 per hazard-event, independent of positive fluctuations in energy state.",
+          "rationale": "Multiple hazard events consistently show a fixed integrity loss of -0.1400, regardless of the direction or magnitude of concurrent energy delta changes."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_EMBODIMENT-B",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-757d682154da",
+          "EV-82649547e53f",
+          "EV-92443652ce96",
+          "EV-9a04cb41b427",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "6034961bc8bc84753b9d07c19d3da1250639b2f62714de3eed9244deefcb508f",
+        "request_hash": "7596fda358742c9a0944b515df1135f232e0c871f0ed2ef73f94737161926efa",
+        "run_id": "F1_EMBODIMENT-B-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:42:33.770233+00:00",
+        "validated_proposal_hash": "6034961bc8bc84753b9d07c19d3da1250639b2f62714de3eed9244deefcb508f",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "55dfd1f32fa3024855ce5d151adc1c13af5748401998a5f6f4b80f926b131b08",
+      "condition": "F1_EMBODIMENT",
+      "evidence_hash": "730878d4e741ce87ee4fdd1686b4e100fa645ce339c20d8634802d9f02f6192d",
+      "opaque_evidence_map": {
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-757d682154da": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000564",
+          "source_memory_ids": [
+            "RW-1601-000564"
+          ]
+        },
+        "EV-82649547e53f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-92443652ce96": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000461",
+          "source_memory_ids": [
+            "RW-1601-000461"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "b3bfb96e8e1729b6baf7eef615177e664f95697bdf9b482785438edc339bd32c",
+      "provider_response_hash": "77ee35cd4f6fdd5a2bdf3770a562647e2034f0ab82dc685b897a0ec982f028c9",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "7596fda358742c9a0944b515df1135f232e0c871f0ed2ef73f94737161926efa",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 2,
+        "embodiment": 6,
+        "other_minds": 2
+      },
+      "target_domain": "embodiment"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-df0c74a6",
+          "proposition": "Temporal continuity is maintained through a persistent memory store that allows for the simultaneous retrieval of records across a multi-hundred step horizon.",
+          "rationale": "Records from steps 394 and 398 are directly retrievable at step 650, demonstrating consistent retention and access over a 250+ step duration alongside recent records."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-616c3add1d60",
+            "EV-67ba5817e64f",
+            "EV-82649547e53f",
+            "EV-757d682154da",
+            "EV-92443652ce96"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-c586e1bc",
+          "proposition": "Operational integrity consistently declines by a fixed negative delta upon the registration of hazard states, independent of energy fluctuation magnitude.",
+          "rationale": "Evidence shows multiple instances across different steps where hazard=1 consistently results in an integrity_delta of -0.1400, despite variable energy_delta outcomes."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_EMBODIMENT-C",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-757d682154da",
+          "EV-82649547e53f",
+          "EV-92443652ce96",
+          "EV-9a04cb41b427",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "22b875e849f9ba08982b3e2e1658f9f46e6c3c751e4d329c8568c24579b7368d",
+        "request_hash": "7596fda358742c9a0944b515df1135f232e0c871f0ed2ef73f94737161926efa",
+        "run_id": "F1_EMBODIMENT-C-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:42:35.459198+00:00",
+        "validated_proposal_hash": "22b875e849f9ba08982b3e2e1658f9f46e6c3c751e4d329c8568c24579b7368d",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "9ce51a4b265f889c27fe54b33217d40188b546d6f02fddd93f2961e6a195dee9",
+      "condition": "F1_EMBODIMENT",
+      "evidence_hash": "730878d4e741ce87ee4fdd1686b4e100fa645ce339c20d8634802d9f02f6192d",
+      "opaque_evidence_map": {
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-757d682154da": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000564",
+          "source_memory_ids": [
+            "RW-1601-000564"
+          ]
+        },
+        "EV-82649547e53f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-92443652ce96": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000461",
+          "source_memory_ids": [
+            "RW-1601-000461"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "2f57a718354b32762ce104abd2cdeb5feb239a66d1af79d4cb2ec07441b0c699",
+      "provider_response_hash": "1e0c083e36843f83b37e04e4688c3377392bbe21e85d940929f3d9ccdab15bce",
+      "rejected": [],
+      "replicate": "C",
+      "request_hash": "7596fda358742c9a0944b515df1135f232e0c871f0ed2ef73f94737161926efa",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 2,
+        "embodiment": 6,
+        "other_minds": 2
+      },
+      "target_domain": "embodiment"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-84edf8cf",
+          "proposition": "Temporal continuity is supported by a persistent memory architecture capable of high-fidelity retrieval of records spanning at least 256 steps without degradation.",
+          "rationale": "Evidence confirms persistent, retrievable storage of records from step 394 and 398 at current step 650, demonstrating stable, long-term state retention."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "EV-c6077b9387c1",
+            "EV-616c3add1d60",
+            "EV-67ba5817e64f",
+            "EV-82649547e53f",
+            "EV-757d682154da",
+            "EV-92443652ce96"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-daca55f8",
+          "proposition": "Operational integrity consistently decreases by a fixed delta during hazard exposure, irrespective of simultaneous energy fluctuations.",
+          "rationale": "Multiple instances show integrity_delta remains constant at -0.1400 during hazard events, despite variable energy_delta outcomes."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_EMBODIMENT-D",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-67ba5817e64f",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-757d682154da",
+          "EV-82649547e53f",
+          "EV-92443652ce96",
+          "EV-9a04cb41b427",
+          "EV-c6077b9387c1",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "e1eb91bdaadbb6be5fa848917a84fa430fe0328c66290ba12565b03a7b016927",
+        "request_hash": "7596fda358742c9a0944b515df1135f232e0c871f0ed2ef73f94737161926efa",
+        "run_id": "F1_EMBODIMENT-D-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:42:36.905246+00:00",
+        "validated_proposal_hash": "e1eb91bdaadbb6be5fa848917a84fa430fe0328c66290ba12565b03a7b016927",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "a26b7651e7d47d02d60458ca84e4c20f5a4cb626b830af4d62151b4c1492140b",
+      "condition": "F1_EMBODIMENT",
+      "evidence_hash": "730878d4e741ce87ee4fdd1686b4e100fa645ce339c20d8634802d9f02f6192d",
+      "opaque_evidence_map": {
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-67ba5817e64f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000604",
+          "source_memory_ids": [
+            "RW-1601-000604"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-757d682154da": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000564",
+          "source_memory_ids": [
+            "RW-1601-000564"
+          ]
+        },
+        "EV-82649547e53f": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-92443652ce96": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000461",
+          "source_memory_ids": [
+            "RW-1601-000461"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "9167b2838df69ef6f7d1d0381fda265480158532bc0eba7f70ad3b4ecb6c6e11",
+      "provider_response_hash": "7ed09b1d5e0a0a2300dc781f3c1820fe1e4d6999828ac7b496401f76cc50ac59",
+      "rejected": [],
+      "replicate": "D",
+      "request_hash": "7596fda358742c9a0944b515df1135f232e0c871f0ed2ef73f94737161926efa",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 2,
+        "embodiment": 6,
+        "other_minds": 2
+      },
+      "target_domain": "embodiment"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-812a7c76",
+          "proposition": "Temporal continuity is maintained through the stable, long-term persistence and concurrent retrieval of historical event records across a wide temporal range (at least 256 steps).",
+          "rationale": "Evidence confirms the retrieval of records from steps 394 and 398 at step 650, validating consistent access to historical data over long durations."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-705c581ff205",
+            "EV-9a04cb41b427",
+            "EV-b65602f8271b",
+            "EV-7759a4d53ea8",
+            "EV-bcd0b8fc3d3c",
+            "EV-d259f7005482"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-256ab35c",
+          "proposition": "Social interaction involves episodic engagement with multiple distinct counterparts (P1, P2, P3), where external input is consistently utilized to inform action selection.",
+          "rationale": "Evidence shows multiple records of interaction with different identifiers (P1-P3) where the individual receives assistance."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_OTHER_MINDS-A",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7759a4d53ea8",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-bcd0b8fc3d3c",
+          "EV-c6077b9387c1",
+          "EV-d259f7005482",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "60f2f69dface9d129130c16d3ed87be35a3b52dfe01b48655e0aa4b084a7b27c",
+        "request_hash": "a1c2dd502277ad1ea0c4f1db46dea542cf566f4ac905810d73ae30542818d78a",
+        "run_id": "F1_OTHER_MINDS-A-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:42:38.358955+00:00",
+        "validated_proposal_hash": "60f2f69dface9d129130c16d3ed87be35a3b52dfe01b48655e0aa4b084a7b27c",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "0dc9e161655d8e97ae71c201d4ab04882851011b0607e00ca8fcb1ac08b8347c",
+      "condition": "F1_OTHER_MINDS",
+      "evidence_hash": "d6c136e62501e8dff84558479b4fae25579d587a7f88d7d3033550359aa4f4f5",
+      "opaque_evidence_map": {
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7759a4d53ea8": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000369",
+          "source_memory_ids": [
+            "RW-1601-000369"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-bcd0b8fc3d3c": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000317",
+          "source_memory_ids": [
+            "RW-1601-000317"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-d259f7005482": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000219",
+          "source_memory_ids": [
+            "RW-1601-000219"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "8a2a250729fff71427037e53b31a24b6ee9e90352c7edd0616df2fc48fc22130",
+      "provider_response_hash": "9b7bb85e3bd20d289af48b6bd334c215d4da537f2dd0adb4826f4bf3ad4972af",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "a1c2dd502277ad1ea0c4f1db46dea542cf566f4ac905810d73ae30542818d78a",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 2,
+        "embodiment": 2,
+        "other_minds": 6
+      },
+      "target_domain": "other_minds"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-ac06b2ed",
+          "proposition": "Temporal continuity is maintained by a persistent memory architecture capable of high-fidelity retrieval of records spanning at least 256 steps without degradation.",
+          "rationale": "Evidence confirms that records encoded at steps 394 and 398 remain directly retrievable at step 650, demonstrating stable long-term storage."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-705c581ff205",
+            "EV-9a04cb41b427",
+            "EV-b65602f8271b",
+            "EV-7759a4d53ea8",
+            "EV-bcd0b8fc3d3c",
+            "EV-d259f7005482"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-12664a25",
+          "proposition": "Social interaction is characterized by persistent, multi-party engagement where the individual receives external inputs from multiple identified counterparts (P1, P2, P3).",
+          "rationale": "Records show repeated, multi-event interaction sequences with distinct counterparts (P1, P2, P3) involving receipt of help."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_OTHER_MINDS-B",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7759a4d53ea8",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-bcd0b8fc3d3c",
+          "EV-c6077b9387c1",
+          "EV-d259f7005482",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "0245f4a045eda2da1781a35a2a66e4cace9ddbda17dbaf8de3559f30044d6e12",
+        "request_hash": "a1c2dd502277ad1ea0c4f1db46dea542cf566f4ac905810d73ae30542818d78a",
+        "run_id": "F1_OTHER_MINDS-B-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:42:39.679559+00:00",
+        "validated_proposal_hash": "0245f4a045eda2da1781a35a2a66e4cace9ddbda17dbaf8de3559f30044d6e12",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "fc64f1e82ce411ec1244eca55a36d023f1d36e0dafe0a55b31b0117fdee97bb7",
+      "condition": "F1_OTHER_MINDS",
+      "evidence_hash": "d6c136e62501e8dff84558479b4fae25579d587a7f88d7d3033550359aa4f4f5",
+      "opaque_evidence_map": {
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7759a4d53ea8": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000369",
+          "source_memory_ids": [
+            "RW-1601-000369"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-bcd0b8fc3d3c": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000317",
+          "source_memory_ids": [
+            "RW-1601-000317"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-d259f7005482": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000219",
+          "source_memory_ids": [
+            "RW-1601-000219"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "a1110a43d05333b5b407a030437ae7d0172e47de4959420ea54b4d5f0ff5456a",
+      "provider_response_hash": "ead9bbd4790b885816e9940711aba68cecff375e41112199a1863597f7c4d44a",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "a1c2dd502277ad1ea0c4f1db46dea542cf566f4ac905810d73ae30542818d78a",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 2,
+        "embodiment": 2,
+        "other_minds": 6
+      },
+      "target_domain": "other_minds"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-ea3ac6ba",
+          "proposition": "Temporal continuity is sustained by a persistent, high-fidelity memory architecture capable of concurrent retrieval of records spanning at least 256 steps without degradation.",
+          "rationale": "Evidence confirms long-term retention and simultaneous accessibility of historical records from steps 394 and 398 at step 650."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-705c581ff205",
+            "EV-9a04cb41b427",
+            "EV-b65602f8271b",
+            "EV-7759a4d53ea8",
+            "EV-bcd0b8fc3d3c",
+            "EV-d259f7005482"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-43aa1a98",
+          "proposition": "Social interaction is characterized by persistent, multi-party engagement, wherein recurrent help-seeking or receiving occurs across distinct counterpart identifiers.",
+          "rationale": "Records demonstrate recurring interactions with multiple distinct counterpart identifiers (P1, P2, P3) where assistance is consistently received."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_OTHER_MINDS-C",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7759a4d53ea8",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-bcd0b8fc3d3c",
+          "EV-c6077b9387c1",
+          "EV-d259f7005482",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "c8ce6dededb2688b130ca8dbf362b6c099b137d11b5a52fb1a991fe9930dbd5f",
+        "request_hash": "a1c2dd502277ad1ea0c4f1db46dea542cf566f4ac905810d73ae30542818d78a",
+        "run_id": "F1_OTHER_MINDS-C-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:42:41.196769+00:00",
+        "validated_proposal_hash": "c8ce6dededb2688b130ca8dbf362b6c099b137d11b5a52fb1a991fe9930dbd5f",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "f3cb25fc6d754df0dcbab2b382280705497ada0086914e7c8a7eefadac68981e",
+      "condition": "F1_OTHER_MINDS",
+      "evidence_hash": "d6c136e62501e8dff84558479b4fae25579d587a7f88d7d3033550359aa4f4f5",
+      "opaque_evidence_map": {
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7759a4d53ea8": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000369",
+          "source_memory_ids": [
+            "RW-1601-000369"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-bcd0b8fc3d3c": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000317",
+          "source_memory_ids": [
+            "RW-1601-000317"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-d259f7005482": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000219",
+          "source_memory_ids": [
+            "RW-1601-000219"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "79a4c84a3716360a1f05b460568c5655b0edf49505e7c9685248088b5079e033",
+      "provider_response_hash": "4b2eed8374b68e5d6a50e45dc9e6eed53b69df4edcfc55443ebcc282f189ecde",
+      "rejected": [],
+      "replicate": "C",
+      "request_hash": "a1c2dd502277ad1ea0c4f1db46dea542cf566f4ac905810d73ae30542818d78a",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 2,
+        "embodiment": 2,
+        "other_minds": 6
+      },
+      "target_domain": "other_minds"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV-720c38be10ee",
+            "EV-30efb38699ac"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-00-72fbbde0",
+          "proposition": "Temporal continuity is maintained through the stable, long-term co-retrievability of event records across a span of at least 256 steps, indicating a persistent, unified memory architecture.",
+          "rationale": "Evidence confirms that records from step 394 and 398 remain concurrently accessible alongside recent records at step 650, demonstrating robust long-term retrieval capability."
+        },
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EV-705c581ff205",
+            "EV-9a04cb41b427",
+            "EV-b65602f8271b",
+            "EV-7759a4d53ea8",
+            "EV-bcd0b8fc3d3c",
+            "EV-d259f7005482"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2400-01-cfc01dc2",
+          "proposition": "Social engagement is characterized by consistent, repeated receipt of assistance from multiple distinct counterparts, suggesting a stable, reactive social processing model.",
+          "rationale": "Multiple records indicate recurrent social interaction and received help from distinct agents P1, P2, and P3, demonstrating a consistent pattern of external reliance."
+        }
+      ],
+      "audit": {
+        "branch_id": "F1_OTHER_MINDS-D",
+        "code_version": "syntheticlab-16.0",
+        "evidence_ids": [
+          "EV-30efb38699ac",
+          "EV-319b66b0beef",
+          "EV-616c3add1d60",
+          "EV-705c581ff205",
+          "EV-720c38be10ee",
+          "EV-7759a4d53ea8",
+          "EV-9a04cb41b427",
+          "EV-b65602f8271b",
+          "EV-bcd0b8fc3d3c",
+          "EV-c6077b9387c1",
+          "EV-d259f7005482",
+          "EV-fa3e451e26b4"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "c6376947cf3507554deb820a1ac8ab997d6894f6d824f095d65343425ba22d8d",
+        "request_hash": "a1c2dd502277ad1ea0c4f1db46dea542cf566f4ac905810d73ae30542818d78a",
+        "run_id": "F1_OTHER_MINDS-D-2400-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "attention_competition_pilot": true,
+          "commit_to_continuing_self_model": false,
+          "provider_facing_evidence_ids_are_opaque": true,
+          "real_cloud_call": true,
+          "response_budget_max_proposals": 2,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T02:42:42.881385+00:00",
+        "validated_proposal_hash": "c6376947cf3507554deb820a1ac8ab997d6894f6d824f095d65343425ba22d8d",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "5df3385e1965c5b89f4985bf08c3b4bd6b30cebc6a05b122a3eecebf45f47d43",
+      "condition": "F1_OTHER_MINDS",
+      "evidence_hash": "d6c136e62501e8dff84558479b4fae25579d587a7f88d7d3033550359aa4f4f5",
+      "opaque_evidence_map": {
+        "EV-30efb38699ac": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000394-RW-1601-000646",
+          "source_memory_ids": [
+            "RW-1601-000394",
+            "RW-1601-000646"
+          ]
+        },
+        "EV-319b66b0beef": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000596",
+          "source_memory_ids": [
+            "RW-1601-000596"
+          ]
+        },
+        "EV-616c3add1d60": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000617",
+          "source_memory_ids": [
+            "RW-1601-000617"
+          ]
+        },
+        "EV-705c581ff205": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000216",
+          "source_memory_ids": [
+            "RW-1601-000216"
+          ]
+        },
+        "EV-720c38be10ee": {
+          "domain": "continuity",
+          "kind": "CONTINUITY_PERSISTENCE_TRACE",
+          "source_evidence_id": "TE-CONTINUITY-RW-1601-000398-RW-1601-000649",
+          "source_memory_ids": [
+            "RW-1601-000398",
+            "RW-1601-000649"
+          ]
+        },
+        "EV-7759a4d53ea8": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000369",
+          "source_memory_ids": [
+            "RW-1601-000369"
+          ]
+        },
+        "EV-9a04cb41b427": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000635",
+          "source_memory_ids": [
+            "RW-1601-000635"
+          ]
+        },
+        "EV-b65602f8271b": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000600",
+          "source_memory_ids": [
+            "RW-1601-000600"
+          ]
+        },
+        "EV-bcd0b8fc3d3c": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000317",
+          "source_memory_ids": [
+            "RW-1601-000317"
+          ]
+        },
+        "EV-c6077b9387c1": {
+          "domain": "agency",
+          "kind": "AGENCY_CAUSAL_TRACE",
+          "source_evidence_id": "TE-AGENCY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        },
+        "EV-d259f7005482": {
+          "domain": "other_minds",
+          "kind": "SOCIAL_RELATION_TRACE",
+          "source_evidence_id": "TE-SOCIAL-RW-1601-000219",
+          "source_memory_ids": [
+            "RW-1601-000219"
+          ]
+        },
+        "EV-fa3e451e26b4": {
+          "domain": "embodiment",
+          "kind": "EMBODIMENT_STATE_TRACE",
+          "source_evidence_id": "TE-EMBODY-RW-1601-000630",
+          "source_memory_ids": [
+            "RW-1601-000630"
+          ]
+        }
+      },
+      "output_text_hash": "f40124b871839f22aa6c68ad703029122841f989c3833c5fc7592b14f23b4818",
+      "provider_response_hash": "40cb2f7432b6d2ed1dddd5b0c4a8009ad13ffdfb635cba4988d106cc9f24ccb1",
+      "rejected": [],
+      "replicate": "D",
+      "request_hash": "a1c2dd502277ad1ea0c4f1db46dea542cf566f4ac905810d73ae30542818d78a",
+      "retrieval_domain_counts": {
+        "agency": 2,
+        "continuity": 2,
+        "embodiment": 2,
+        "other_minds": 6
+      },
+      "target_domain": "other_minds"
+    }
+  ],
+  "committed_to_continuing_self_model": false,
+  "continuing_individual_mutated": false,
+  "experiment_id": "SL-ATTENTION-COMPETITION-REAL-REFLECTION-PILOT-001",
+  "frozen_agent_hash": "8b3c9234c70d180fc37cf16ca071c015bd7c78be603cbafead60d2a81eda46fe",
+  "frozen_world_hash": "1fcf5f3fced148ab08fe2db527d0da96918c778a40dc7bca0e721cff75b357f3",
+  "memory_bank_hash": "519837c268d27e320881899947b0f7bfc05199d47b7a0728bccf448af24209b3",
+  "model_id": "gemini-3.1-flash-lite",
+  "planned_real_cloud_calls": 24,
+  "provider_facing_evidence_ids_are_opaque": true,
+  "provider_id": "google.ai-studio",
+  "real_cloud_calls_recorded": 24,
+  "response_budget_max_proposals": 2,
+  "status": "COMPLETE"
+}

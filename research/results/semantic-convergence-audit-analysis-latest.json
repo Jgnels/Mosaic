@@ -1,0 +1,81 @@
+{
+  "action_policy_feedback_enabled": false,
+  "call_count": 9,
+  "canonical_self_models_mutated": false,
+  "classification": "SEMANTIC_PARTIAL_CONVERGENCE",
+  "classification_thresholds": {
+    "otherwise": "SEMANTIC_PARTIAL_CONVERGENCE",
+    "semantic_convergence_ratio_lte": 0.75,
+    "semantic_persistent_path_dependence_ratio_gte": 0.9
+  },
+  "dimensions": [
+    "cue_actionability",
+    "contingent_exchange",
+    "reciprocal_influence",
+    "adaptive_learning",
+    "temporal_improvement",
+    "cross_counterpart_generalization"
+  ],
+  "experiment_id": "SL-BLINDED-SEMANTIC-CONVERGENCE-ANALYSIS-001",
+  "final_branch_mean_vectors": {
+    "C1-ENACTED-NONCONTINGENT_SIGNALS": {
+      "adaptive_learning": 0.5,
+      "contingent_exchange": 0.75,
+      "cross_counterpart_generalization": 0.5,
+      "cue_actionability": 1.0,
+      "reciprocal_influence": 0.0,
+      "temporal_improvement": 0.0
+    },
+    "C1-ENACTED-ONE_WAY_ASSISTANCE": {
+      "adaptive_learning": 1.0,
+      "contingent_exchange": 1.0,
+      "cross_counterpart_generalization": 0.5,
+      "cue_actionability": 1.0,
+      "reciprocal_influence": 0.9,
+      "temporal_improvement": 0.5
+    },
+    "C1-ENACTED-RECIPROCAL_CONTINGENT": {
+      "adaptive_learning": 1.0,
+      "contingent_exchange": 1.0,
+      "cross_counterpart_generalization": 0.0,
+      "cue_actionability": 1.0,
+      "reciprocal_influence": 0.0,
+      "temporal_improvement": 0.5
+    }
+  },
+  "final_mean_pairwise_semantic_distance": 0.4221951794234449,
+  "final_to_initial_semantic_distance_ratio": 0.8523516700143671,
+  "initial_mean_pairwise_semantic_distance": 0.4953297966980325,
+  "interpretation_warning": "This audit uses the same model family as a blinded semantic evaluator. It is more aligned with claim content than lexical Jaccard distance, but it remains model-mediated and should not be treated as direct measurement of latent psychological state.",
+  "starting_branch_vectors": {
+    "C1-ENACTED-NONCONTINGENT_SIGNALS": {
+      "adaptive_learning": 0.0,
+      "contingent_exchange": 0.5,
+      "cross_counterpart_generalization": 1.0,
+      "cue_actionability": 1.0,
+      "reciprocal_influence": 1.0,
+      "temporal_improvement": 0.0
+    },
+    "C1-ENACTED-ONE_WAY_ASSISTANCE": {
+      "adaptive_learning": 1.0,
+      "contingent_exchange": 0.2,
+      "cross_counterpart_generalization": 1.0,
+      "cue_actionability": 1.0,
+      "reciprocal_influence": 0.2,
+      "temporal_improvement": 0.0
+    },
+    "C1-ENACTED-RECIPROCAL_CONTINGENT": {
+      "adaptive_learning": 1.0,
+      "contingent_exchange": 1.0,
+      "cross_counterpart_generalization": 1.0,
+      "cue_actionability": 1.0,
+      "reciprocal_influence": 0.0,
+      "temporal_improvement": 0.0
+    }
+  },
+  "within_branch_final_trajectory_spread": {
+    "C1-ENACTED-NONCONTINGENT_SIGNALS": 0.6123724356957945,
+    "C1-ENACTED-ONE_WAY_ASSISTANCE": 0.5830951894845301,
+    "C1-ENACTED-RECIPROCAL_CONTINGENT": 0.408248290463863
+  }
+}

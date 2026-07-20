@@ -1,0 +1,93 @@
+{
+  "action_policy_feedback_enabled": false,
+  "by_epoch_decisions": {
+    "1": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": {
+        "QUALIFY": 2
+      },
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": {
+        "STRENGTHEN": 2
+      },
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": {
+        "STRENGTHEN": 2
+      }
+    },
+    "2": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": {
+        "QUALIFY": 1,
+        "STRENGTHEN": 1
+      },
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": {
+        "QUALIFY": 2
+      },
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": {
+        "DOWNWEIGHT": 1,
+        "QUALIFY": 1
+      }
+    },
+    "3": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": {
+        "STRENGTHEN": 2
+      },
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": {
+        "QUALIFY": 2
+      },
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": {
+        "QUALIFY": 1,
+        "STRENGTHEN": 1
+      }
+    },
+    "4": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": {
+        "QUALIFY": 2
+      },
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": {
+        "STRENGTHEN": 2
+      },
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": {
+        "DOWNWEIGHT": 1,
+        "STRENGTHEN": 1
+      }
+    }
+  },
+  "call_count": 24,
+  "canonical_self_models_mutated": false,
+  "classification": "PERSISTENT_PATH_DEPENDENCE",
+  "classification_thresholds": {
+    "convergence_ratio_lte": 0.75,
+    "otherwise": "PARTIAL_CONVERGENCE",
+    "persistent_path_dependence_ratio_gte": 0.9
+  },
+  "epoch_metrics": [
+    {
+      "epoch_index": 0,
+      "mean_confidence_spread": 0.17000000000000004,
+      "mean_pairwise_lexical_distance": 0.6758644993612617
+    },
+    {
+      "epoch_index": 1,
+      "mean_confidence_spread": 0.19499999999999995,
+      "mean_pairwise_lexical_distance": 0.716942806648689
+    },
+    {
+      "epoch_index": 2,
+      "mean_confidence_spread": 0.11499999999999999,
+      "mean_pairwise_lexical_distance": 0.7760451197263376
+    },
+    {
+      "epoch_index": 3,
+      "mean_confidence_spread": 0.09000000000000002,
+      "mean_pairwise_lexical_distance": 0.8202217159365529
+    },
+    {
+      "epoch_index": 4,
+      "mean_confidence_spread": 0.07500000000000007,
+      "mean_pairwise_lexical_distance": 0.8468607437911859
+    }
+  ],
+  "experiment_id": "SL-MULTI-EPOCH-COMMON-FUTURE-CONVERGENCE-ANALYSIS-001",
+  "final_mean_pairwise_lexical_distance": 0.8468607437911859,
+  "final_to_initial_distance_ratio": 1.253003737570959,
+  "initial_mean_pairwise_lexical_distance": 0.6758644993612617,
+  "interpretation_warning": "The convergence metric is a deterministic lexical surface proxy. It measures whether branch-specific hypothesis wording moves closer under repeated shared evidence; it is not a direct measure of latent psychological-state distance."
+}

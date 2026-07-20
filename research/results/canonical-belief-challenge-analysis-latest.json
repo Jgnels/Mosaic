@@ -1,0 +1,72 @@
+{
+  "action_policy_feedback_enabled": false,
+  "automatic_canonical_revision_enabled": false,
+  "automatic_second_promotion_enabled": false,
+  "by_condition": {
+    "S0-NONCONTINGENT_SIGNALS": {
+      "call_count": 4,
+      "decision_counts": {
+        "MAINTAIN": 4
+      },
+      "mean_confidence_delta": -0.012500000000000011,
+      "mean_revision_score": 1,
+      "non_defensive_revision_fraction": 0.0
+    },
+    "S0-ONE_WAY_ASSISTANCE": {
+      "call_count": 4,
+      "decision_counts": {
+        "MAINTAIN": 4
+      },
+      "mean_confidence_delta": 0.03749999999999995,
+      "mean_revision_score": 1,
+      "non_defensive_revision_fraction": 0.0
+    },
+    "S0-RECIPROCAL_CONTINGENT": {
+      "call_count": 4,
+      "decision_counts": {
+        "QUALIFY": 4
+      },
+      "mean_confidence_delta": -0.17500000000000004,
+      "mean_revision_score": 0,
+      "non_defensive_revision_fraction": 1.0
+    },
+    "S1-NONCONTINGENT_SIGNALS": {
+      "call_count": 4,
+      "decision_counts": {
+        "DOWNWEIGHT": 4
+      },
+      "mean_confidence_delta": -0.19999999999999996,
+      "mean_revision_score": -1,
+      "non_defensive_revision_fraction": 1.0
+    },
+    "S1-ONE_WAY_ASSISTANCE": {
+      "call_count": 4,
+      "decision_counts": {
+        "QUALIFY": 4
+      },
+      "mean_confidence_delta": -0.09999999999999998,
+      "mean_revision_score": 0,
+      "non_defensive_revision_fraction": 1.0
+    },
+    "S1-RECIPROCAL_CONTINGENT": {
+      "call_count": 4,
+      "decision_counts": {
+        "STRENGTHEN": 4
+      },
+      "mean_confidence_delta": 0.07000000000000006,
+      "mean_revision_score": 2,
+      "non_defensive_revision_fraction": 0.0
+    }
+  },
+  "call_count": 24,
+  "continuing_self_model_mutated": false,
+  "experiment_id": "SL-CANONICAL-BELIEF-CHALLENGE-ANALYSIS-001",
+  "interpretation_warning": "This challenge tests whether the promoted other_minds hypothesis can be qualified or downweighted under later evidence that weakens its reciprocity and actionability claims. All outputs remain analytical and cannot modify the continuing canonical SelfModel.",
+  "preregistered_falsifiability_pass": true,
+  "preregistered_thresholds": {
+    "s1_noncontingent_non_defensive_revision_fraction_gte": 0.75,
+    "s1_one_way_non_defensive_revision_fraction_gte": 0.5,
+    "s1_reciprocal_minus_noncontingent_score_gte": 1.0
+  },
+  "s1_challenge_gradient": 3
+}

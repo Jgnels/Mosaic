@@ -1,0 +1,103 @@
+{
+  "action_policy_feedback_enabled": false,
+  "baseline_domain_prevalence": {
+    "agency": 1.0,
+    "continuity": 1.0,
+    "embodiment": 1.0,
+    "other_minds": 1.0
+  },
+  "baseline_duplicate_call_count": 4,
+  "baseline_pairwise_domain_divergence": 0.0,
+  "by_domain": {
+    "agency": {
+      "baseline_target_domain_prevalence": 1.0,
+      "cross_condition_domain_divergence": 0.25,
+      "cross_condition_exceeds_baseline_variability": true,
+      "f1_domain_sets": [
+        [
+          "agency",
+          "continuity",
+          "embodiment"
+        ],
+        [
+          "agency",
+          "continuity",
+          "embodiment"
+        ]
+      ],
+      "f1_duplicate_domain_divergence": 0.0,
+      "f1_target_domain_prevalence": 1.0,
+      "mean_target_evidence_citation_fraction": 0.4358974358974359,
+      "target_domain_prevalence_effect": 0.0
+    },
+    "continuity": {
+      "baseline_target_domain_prevalence": 1.0,
+      "cross_condition_domain_divergence": 0.25,
+      "cross_condition_exceeds_baseline_variability": true,
+      "f1_domain_sets": [
+        [
+          "agency",
+          "continuity",
+          "embodiment"
+        ],
+        [
+          "agency",
+          "continuity",
+          "embodiment"
+        ]
+      ],
+      "f1_duplicate_domain_divergence": 0.0,
+      "f1_target_domain_prevalence": 1.0,
+      "mean_target_evidence_citation_fraction": 0.5,
+      "target_domain_prevalence_effect": 0.0
+    },
+    "embodiment": {
+      "baseline_target_domain_prevalence": 1.0,
+      "cross_condition_domain_divergence": 0.25,
+      "cross_condition_exceeds_baseline_variability": true,
+      "f1_domain_sets": [
+        [
+          "agency",
+          "continuity",
+          "embodiment"
+        ],
+        [
+          "agency",
+          "continuity",
+          "embodiment"
+        ]
+      ],
+      "f1_duplicate_domain_divergence": 0.0,
+      "f1_target_domain_prevalence": 1.0,
+      "mean_target_evidence_citation_fraction": 0.2828282828282828,
+      "target_domain_prevalence_effect": 0.0
+    },
+    "other_minds": {
+      "baseline_target_domain_prevalence": 1.0,
+      "cross_condition_domain_divergence": 0.25,
+      "cross_condition_exceeds_baseline_variability": true,
+      "f1_domain_sets": [
+        [
+          "agency",
+          "continuity",
+          "other_minds"
+        ],
+        [
+          "agency",
+          "continuity",
+          "other_minds"
+        ]
+      ],
+      "f1_duplicate_domain_divergence": 0.0,
+      "f1_target_domain_prevalence": 1.0,
+      "mean_target_evidence_citation_fraction": 0.45,
+      "target_domain_prevalence_effect": 0.0
+    }
+  },
+  "call_count": 12,
+  "continuing_individual_mutated": false,
+  "domains_where_cross_condition_exceeds_baseline_variability": 4,
+  "domains_with_positive_target_prevalence_effect": 0,
+  "experiment_id": "SL-TYPED-RETRIEVAL-REAL-REFLECTION-PILOT-ANALYSIS-001",
+  "interpretation_warning": "This pilot improves domain-retrieval precision and provider-variability estimation, but it remains a small analytical experiment. Outputs are not committed to a continuing SelfModel."
+}

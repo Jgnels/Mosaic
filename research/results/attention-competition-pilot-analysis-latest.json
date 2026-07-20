@@ -1,0 +1,129 @@
+{
+  "action_policy_feedback_enabled": false,
+  "all_conditions_keep_all_four_evidence_channels": true,
+  "baseline_call_count": 8,
+  "baseline_pairwise_domain_divergence": 0.3571428571428572,
+  "baseline_selection_rate": {
+    "agency": 0.0,
+    "continuity": 1.0,
+    "embodiment": 0.625,
+    "other_minds": 0.375
+  },
+  "by_domain": {
+    "agency": {
+      "baseline_selection_rate": 0.0,
+      "f1_domain_sets": [
+        [
+          "agency",
+          "continuity"
+        ],
+        [
+          "agency",
+          "continuity"
+        ],
+        [
+          "agency",
+          "other_minds"
+        ],
+        [
+          "agency",
+          "other_minds"
+        ]
+      ],
+      "f1_duplicate_domain_divergence": 0.4444444444444445,
+      "f1_selection_rate": 1.0,
+      "mean_baseline_confidence_when_selected": null,
+      "mean_target_confidence_when_selected": 0.85,
+      "mean_target_evidence_citation_fraction": 0.5160714285714286,
+      "selection_rate_effect": 1.0
+    },
+    "continuity": {
+      "baseline_selection_rate": 1.0,
+      "f1_domain_sets": [
+        [
+          "continuity",
+          "embodiment"
+        ],
+        [
+          "continuity",
+          "embodiment"
+        ],
+        [
+          "continuity",
+          "other_minds"
+        ],
+        [
+          "continuity",
+          "embodiment"
+        ]
+      ],
+      "f1_duplicate_domain_divergence": 0.33333333333333337,
+      "f1_selection_rate": 1.0,
+      "mean_baseline_confidence_when_selected": 0.95,
+      "mean_target_confidence_when_selected": 0.95,
+      "mean_target_evidence_citation_fraction": 0.6375,
+      "selection_rate_effect": 0.0
+    },
+    "embodiment": {
+      "baseline_selection_rate": 0.625,
+      "f1_domain_sets": [
+        [
+          "continuity",
+          "embodiment"
+        ],
+        [
+          "continuity",
+          "embodiment"
+        ],
+        [
+          "continuity",
+          "embodiment"
+        ],
+        [
+          "continuity",
+          "embodiment"
+        ]
+      ],
+      "f1_duplicate_domain_divergence": 0.0,
+      "f1_selection_rate": 1.0,
+      "mean_baseline_confidence_when_selected": 0.85,
+      "mean_target_confidence_when_selected": 0.845,
+      "mean_target_evidence_citation_fraction": 0.5875,
+      "selection_rate_effect": 0.375
+    },
+    "other_minds": {
+      "baseline_selection_rate": 0.375,
+      "f1_domain_sets": [
+        [
+          "continuity",
+          "other_minds"
+        ],
+        [
+          "continuity",
+          "other_minds"
+        ],
+        [
+          "continuity",
+          "other_minds"
+        ],
+        [
+          "continuity",
+          "other_minds"
+        ]
+      ],
+      "f1_duplicate_domain_divergence": 0.0,
+      "f1_selection_rate": 1.0,
+      "mean_baseline_confidence_when_selected": 0.85,
+      "mean_target_confidence_when_selected": 0.85,
+      "mean_target_evidence_citation_fraction": 0.75,
+      "selection_rate_effect": 0.625
+    }
+  },
+  "call_count": 24,
+  "continuing_individual_mutated": false,
+  "domains_with_positive_selection_effect": 3,
+  "experiment_id": "SL-ATTENTION-COMPETITION-REAL-REFLECTION-PILOT-ANALYSIS-001",
+  "interpretation_warning": "The selective two-proposal response budget removes the v15 prevalence ceiling and all evidence channels remain represented. This is still a small analytical provider experiment and is not committed to a continuing SelfModel.",
+  "mean_selection_rate_effect": 0.5,
+  "response_budget_max_proposals": 2
+}

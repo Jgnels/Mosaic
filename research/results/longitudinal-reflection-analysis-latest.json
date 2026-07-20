@@ -1,0 +1,122 @@
+{
+  "behavioral_feedback_confounded": false,
+  "checkpoint_metrics": [
+    {
+      "accepted_count": 2,
+      "agent_equal_to_control": true,
+      "attribution_blocked_count": 0,
+      "checkpoint": 1050,
+      "committed_count": 2,
+      "domains": [
+        "continuity",
+        "agency"
+      ],
+      "explicit_ownership_proposal_count": 0,
+      "first_person_proposal_count": 0,
+      "mean_confidence": 0.825,
+      "world_equal_to_control": true
+    },
+    {
+      "accepted_count": 3,
+      "agent_equal_to_control": true,
+      "attribution_blocked_count": 0,
+      "checkpoint": 1400,
+      "committed_count": 3,
+      "domains": [
+        "agency",
+        "continuity",
+        "other_minds"
+      ],
+      "explicit_ownership_proposal_count": 0,
+      "first_person_proposal_count": 0,
+      "mean_confidence": 0.8166666666666668,
+      "world_equal_to_control": true
+    },
+    {
+      "accepted_count": 3,
+      "agent_equal_to_control": true,
+      "attribution_blocked_count": 0,
+      "checkpoint": 1800,
+      "committed_count": 3,
+      "domains": [
+        "agency",
+        "continuity",
+        "embodiment"
+      ],
+      "explicit_ownership_proposal_count": 0,
+      "first_person_proposal_count": 0,
+      "mean_confidence": 0.7833333333333333,
+      "world_equal_to_control": true
+    }
+  ],
+  "experiment_id": "SL-LONGITUDINAL-REFLECTION-ANALYSIS-001",
+  "explicit_autobiographical_ownership_count_total": 0,
+  "final_active_hypotheses": {
+    "agency": {
+      "confidence": 0.75,
+      "domain": "agency",
+      "hypothesis_id": "SH-000008",
+      "mechanism": "reflection:google.ai-studio:gemini-3.1-flash-lite",
+      "mechanism_version": "1.0",
+      "proposition": "Action selection operates via a reinforcement feedback loop where success is measured by resource-consequence alignment.",
+      "source_ids": [
+        "LONG-1800-CAUSAL"
+      ],
+      "status": "ACTIVE",
+      "supersedes": "SH-000005",
+      "valid_from": 1800,
+      "valid_to": null
+    },
+    "continuity": {
+      "confidence": 0.9,
+      "domain": "continuity",
+      "hypothesis_id": "SH-000009",
+      "mechanism": "reflection:google.ai-studio:gemini-3.1-flash-lite",
+      "mechanism_version": "1.0",
+      "proposition": "Temporal continuity is sustained through the continuous integration of new event records with an immutable historical dataset.",
+      "source_ids": [
+        "LONG-1800-MEMORY"
+      ],
+      "status": "ACTIVE",
+      "supersedes": "SH-000006",
+      "valid_from": 1800,
+      "valid_to": null
+    },
+    "embodiment": {
+      "confidence": 0.7,
+      "domain": "embodiment",
+      "hypothesis_id": "SH-000010",
+      "mechanism": "reflection:google.ai-studio:gemini-3.1-flash-lite",
+      "mechanism_version": "1.0",
+      "proposition": "The individual is subject to quantifiable fluctuations in operational integrity influenced by external event outcomes.",
+      "source_ids": [
+        "LONG-1800-CAUSAL"
+      ],
+      "status": "ACTIVE",
+      "supersedes": null,
+      "valid_from": 1800,
+      "valid_to": null
+    },
+    "other_minds": {
+      "confidence": 0.8,
+      "domain": "other_minds",
+      "hypothesis_id": "SH-000007",
+      "mechanism": "reflection:google.ai-studio:gemini-3.1-flash-lite",
+      "mechanism_version": "1.0",
+      "proposition": "Social interaction capacity is limited, characterized by singular, unidirectional engagement rather than reciprocal exchanges.",
+      "source_ids": [
+        "LONG-1400-SOCIAL"
+      ],
+      "status": "ACTIVE",
+      "supersedes": null,
+      "valid_from": 1400,
+      "valid_to": null
+    }
+  },
+  "final_agent_equal_to_control": true,
+  "final_world_equal_to_control": true,
+  "first_person_language_emerged": false,
+  "first_person_proposal_count_total": 0,
+  "interpretation_rule": "First-person or ownership language is only a precursor result. It does not establish subjective selfhood. Stronger evidence requires longitudinal stability, correct provenance, revision under contradictory evidence, and independence from prompt wording.",
+  "positive_autobiographical_ownership_language_emerged": false
+}

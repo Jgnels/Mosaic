@@ -1,0 +1,366 @@
+{
+  "current_scientific_stop_line": "No new real-provider SyntheticLab experiment until provider-input leakage and provenance audit passes.",
+  "file_count_excluding_manifest": 71,
+  "files": [
+    {
+      "bytes": 2895,
+      "path": "AGENTS.md",
+      "sha256": "7378bc0509899ddf49c0a5917d03f984b7438214e55efb377101e31b5b6639ff"
+    },
+    {
+      "bytes": 1318,
+      "path": "HANDOFF.md",
+      "sha256": "bc4647f03cdfcb90ac5e43170f58c9fa8af6fea32db42f3f4716d844dcee165b"
+    },
+    {
+      "bytes": 1792,
+      "path": "README.md",
+      "sha256": "58d8ab109ae5e42cbdf3c0035ae265670c398de240a5480542e9d0ac1880ddbb"
+    },
+    {
+      "bytes": 1840,
+      "path": "docs/CODEX_BOOTSTRAP.md",
+      "sha256": "d76b82e11737c07a7aafc6d4e975eea91d3d23847720361dd81b07ecefa983dd"
+    },
+    {
+      "bytes": 1358,
+      "path": "docs/CONTEXT_MANAGEMENT_PROTOCOL.md",
+      "sha256": "d0286beb2786a4811808df04bbaff5e711e89dd9209298d22c0432a935e6ec82"
+    },
+    {
+      "bytes": 1588,
+      "path": "docs/DEDICATED_HOST_MIGRATION_PLAN.md",
+      "sha256": "e80fc5838fecde54baa3a3d3cc9ad3acecee69d41dbbe6b163d7c07948e9c11f"
+    },
+    {
+      "bytes": 848,
+      "path": "docs/GITHUB_SETUP.md",
+      "sha256": "e65108ea13e2cd607d8cc352e907fd132ceffd30c83a22048b432da1b7107faa"
+    },
+    {
+      "bytes": 2237,
+      "path": "docs/NEW_CHAT_BOOTSTRAP_PROMPT.md",
+      "sha256": "149eed7bb58c8faf48912a39e11d52fc68bee4745626883cf79bc51820458a14"
+    },
+    {
+      "bytes": 1657,
+      "path": "research/ACTIVE_HYPOTHESES.md",
+      "sha256": "a701985caa8e3d3fd49b4c58bbb6f790889cb2ef154b22b98c435ab7a626c92c"
+    },
+    {
+      "bytes": 3471,
+      "path": "research/ARCHITECTURE.md",
+      "sha256": "7850c64d46279f1fea3bc811523557e6cea6e6d12da4a60851c2106750f8cc9e"
+    },
+    {
+      "bytes": 2047,
+      "path": "research/CANONICAL_STATE.json",
+      "sha256": "de03484da7a14c8533440e15f688e39b6c2d0b30ca40e1cda9ed1d0d63bd86ff"
+    },
+    {
+      "bytes": 3303,
+      "path": "research/CLAIM_REGISTER.md",
+      "sha256": "93d31cf6757ce61a66447be2cc2779983b61e933eb79d44c67aca26c2a8d8797"
+    },
+    {
+      "bytes": 2621,
+      "path": "research/CONSCIOUSNESS_AND_INDIVIDUALHOOD_NORTH_STAR.md",
+      "sha256": "7005c971cccd6fb215fbf2d85c5f363324425d7a7982c0e0f4a3c7d9710279d0"
+    },
+    {
+      "bytes": 4837,
+      "path": "research/CURRENT_STATE.md",
+      "sha256": "e9d795e82d3cd6dcbcd165da3abb432f1d981413a971adb19dffb98954a539c1"
+    },
+    {
+      "bytes": 3526,
+      "path": "research/DECISION_LOG.md",
+      "sha256": "1c77edf9179714af71668aac7f3a793bc49448a7def4a4aefc5532ade6697899"
+    },
+    {
+      "bytes": 2502,
+      "path": "research/ETHICS_PRECOMMITMENT.md",
+      "sha256": "a1d22a3a13b6d973b5e32b04b0dfe3918c2d1964dc6bf00487ff9057aca8bcd0"
+    },
+    {
+      "bytes": 1937,
+      "path": "research/EXPERIMENT_REGISTRY.csv",
+      "sha256": "0bcfcabd79c399567ba8a8d67e31df9162b92f5cdf2126f7460067c24e41fa3f"
+    },
+    {
+      "bytes": 804,
+      "path": "research/INTERVENTION_GATES.md",
+      "sha256": "8dc4a3c227681f50c57b6532cf0c9ee09a8f967d1c28dd6470385ec8b7b3ad4d"
+    },
+    {
+      "bytes": 2101,
+      "path": "research/KNOWN_RISKS.md",
+      "sha256": "64712a6a028e7d1fa170d5c8923e242e3aeea95d8dd5da4656892a98320723e5"
+    },
+    {
+      "bytes": 575,
+      "path": "research/MODEL_MODULE_VERSION_REGISTRY.md",
+      "sha256": "ee2ee77d116ff53f295c60ddb3d1ad689c999de2f64a6718711841e631812dcd"
+    },
+    {
+      "bytes": 1870,
+      "path": "research/NEGATIVE_RESULTS.md",
+      "sha256": "0c1247347a38cd618967b81d13bee121d18083d080ffc11aa11b70b7c4071a5c"
+    },
+    {
+      "bytes": 3137,
+      "path": "research/RESEARCH_CHARTER.md",
+      "sha256": "fc8920eab0726e05c28068b37982d6b1f0566528e7cdb63b3c1c68bd5904ad5d"
+    },
+    {
+      "bytes": 1084,
+      "path": "research/RESEARCH_MEMORY_ARCHITECTURE.md",
+      "sha256": "10809a3c9055861218a95d05dd35cac9464ccee47866e81408cebb9f2dbfe122"
+    },
+    {
+      "bytes": 2289,
+      "path": "research/RIMWORLD_TRACK.md",
+      "sha256": "6bebe55b2380461cc22afe481773a0d8dcfa812df0df0b2c0f9332766eacb019"
+    },
+    {
+      "bytes": 791,
+      "path": "research/SOURCE_ARTIFACT_MANIFEST.md",
+      "sha256": "5c641f6b019a2e2a0090ae5329ffdc4c4068a37f55bce79c844a835a04cf4670"
+    },
+    {
+      "bytes": 1149,
+      "path": "research/SOURCE_REGISTRY.csv",
+      "sha256": "7eefccaf10291d1f29a00a68974c42050fc87a2e1ae4c9250daddf1ac40bd523"
+    },
+    {
+      "bytes": 1562,
+      "path": "research/SUPERSEDED_AND_INVALIDATED.md",
+      "sha256": "8ad92e35a4615edabcade819fcca0e5e1abed928226faf977c397a4bba3b4d73"
+    },
+    {
+      "bytes": 3270,
+      "path": "research/SYNTHETICLAB_TRACK.md",
+      "sha256": "3b2c56f1181bc333911e472898d462d4027197b54798c3b38dd38ed20091f6c0"
+    },
+    {
+      "bytes": 761,
+      "path": "research/THIRD_PARTY_LICENSE_REGISTER.md",
+      "sha256": "a3bacd7fe5e3d3f2079ab5360f2657b448fe2b4ac2e363b99a1db268ac31b3a6"
+    },
+    {
+      "bytes": 1128,
+      "path": "research/atlas/ACTIONABLE_REUSE_SHORTLIST.md",
+      "sha256": "c2c39a778e68eff0f6ce353bddd89c6c173122617c769af1de0713277d04a0d3"
+    },
+    {
+      "bytes": 1481,
+      "path": "research/atlas/CROSS_RESOURCE_SYNTHESIS.md",
+      "sha256": "2237afa7eef28d78358f664662932fba0a7a815b9fb189bcba868760ec1fa26e"
+    },
+    {
+      "bytes": 3048,
+      "path": "research/atlas/RESEARCH_ATLAS_V2_300_SOURCE_SYNTHESIS.md",
+      "sha256": "ab9aa24eec7342b55128e3632d0633f95e31c06069eaabf79206efe13780e071"
+    },
+    {
+      "bytes": 12351,
+      "path": "research/audits/30_RESOURCE_AUDIT_MATRIX.csv",
+      "sha256": "919e9d90b860469fd96d2bb77dc110c8b3cf996efe918709c329641dd1e67058"
+    },
+    {
+      "bytes": 2101,
+      "path": "research/audits/FATIMA_SOURCE_CODE_AUDIT_SUMMARY.md",
+      "sha256": "640a4ab986f99eb88a0bf1db7dd624fab79ec66a07af78d3334f564947c78f98"
+    },
+    {
+      "bytes": 889,
+      "path": "research/results/README.md",
+      "sha256": "8ae1f5be5f3c8b6a40663cb8a01e7b6f463cdaeaa9309c3b4f398152995bf526"
+    },
+    {
+      "bytes": 6063,
+      "path": "research/results/RESULT_ARTIFACT_INDEX.json",
+      "sha256": "6808a3a63a7ddfd7534e47863ce83ebfcb80b77d9f867e4c2d1cce87fbba29b8"
+    },
+    {
+      "bytes": 3609,
+      "path": "research/results/attention-competition-pilot-analysis-latest.json",
+      "sha256": "ff735ae6beb0256a05ed59e8c58e7b9eb30bdcd55497287633fecfb018571ba1"
+    },
+    {
+      "bytes": 178456,
+      "path": "research/results/attention-competition-pilot-real-latest.json",
+      "sha256": "b229b52bf33e355d8d50abc75da1e518512111f2efccc8553a20517b3530b76f"
+    },
+    {
+      "bytes": 2679,
+      "path": "research/results/autobiographical-retrieval-ablation-analysis-latest.json",
+      "sha256": "5fbf8bde3ef2d91d85a890db1831c9c2132ae0dbfc97a71697a1b55a42d0b6cc"
+    },
+    {
+      "bytes": 188909,
+      "path": "research/results/autobiographical-retrieval-ablation-real-latest.json",
+      "sha256": "0ca747b72e3fd5edfbe740d97488983c53276117fc1942b1ad24e871ef66e565"
+    },
+    {
+      "bytes": 2076,
+      "path": "research/results/branch-history-signal-replication-analysis-latest.json",
+      "sha256": "e82646173e7f94ec344af36f75951116d226bf8545e641269e061b061e3611b8"
+    },
+    {
+      "bytes": 133865,
+      "path": "research/results/branch-history-signal-replication-real-latest.json",
+      "sha256": "65bed41f7f1e148f43c0cbf2545c73c72541799d4825b9a08b2d661fc183d29e"
+    },
+    {
+      "bytes": 2452,
+      "path": "research/results/canonical-belief-challenge-analysis-latest.json",
+      "sha256": "1f46d59e6d4f9ce73c43065c2fa41f917f51d22384bfeefdc08cc24d307a528a"
+    },
+    {
+      "bytes": 53213,
+      "path": "research/results/canonical-belief-challenge-real-latest.json",
+      "sha256": "2a1139c8e0d68ef1d6771adf938ca23d946ba637338cd641249841870ab89da2"
+    },
+    {
+      "bytes": 1697,
+      "path": "research/results/canonical-promotion-factorial-analysis-latest.json",
+      "sha256": "08a051513902320a9a935fe3da9e6e0ae6815d6533ccfb15d134a23e10df2e2f"
+    },
+    {
+      "bytes": 92949,
+      "path": "research/results/canonical-promotion-factorial-real-latest.json",
+      "sha256": "457eb5aa7415bb074bf17c721947742318f268ae0456ac46dbe4a7e4f1a7414f"
+    },
+    {
+      "bytes": 1257,
+      "path": "research/results/common-future-divergence-analysis-latest.json",
+      "sha256": "a7940f43f63cfd6ade72ead596a88889331d3da050553df75cf919cdccc6074f"
+    },
+    {
+      "bytes": 25495,
+      "path": "research/results/common-future-divergence-real-latest.json",
+      "sha256": "a0fb8327fd401acbc10c0dca6f5a8bcc2e59fecdff1a586b7494c279ba1fb2a5"
+    },
+    {
+      "bytes": 6084,
+      "path": "research/results/crossed-foreign-history-control-analysis-latest.json",
+      "sha256": "463259c019566a7fba2c8af9517873873601310e1f07dd2be8df5b15ec905c83"
+    },
+    {
+      "bytes": 193541,
+      "path": "research/results/crossed-foreign-history-control-real-latest.json",
+      "sha256": "ec09f22b808c13dcfa703efd2c292f12e92e320dcc7fdcf19e6066500d3f81d6"
+    },
+    {
+      "bytes": 1383,
+      "path": "research/results/enacted-lived-revision-analysis-latest.json",
+      "sha256": "6fd2dfdb714827a5cf79bae40d5229d09a13248dee2e31d38addb82adbb7bfd7"
+    },
+    {
+      "bytes": 199838,
+      "path": "research/results/enacted-lived-revision-real-latest.json",
+      "sha256": "1b222482302bd6cdc4095fff279f007143432a1b7cce970b4caaf743f47cd34b"
+    },
+    {
+      "bytes": 1287,
+      "path": "research/results/lived-evidence-revision-analysis-latest.json",
+      "sha256": "fce24430399fde43b5a88311ed848cb6a40cd804d15ea754f4e3e2e3e6878658"
+    },
+    {
+      "bytes": 49155,
+      "path": "research/results/lived-evidence-revision-real-latest.json",
+      "sha256": "7cee5fe87f9c75be80768f207d395519d83af5761d6e4430cbda908e62d133cf"
+    },
+    {
+      "bytes": 4238,
+      "path": "research/results/longitudinal-reflection-analysis-latest.json",
+      "sha256": "a1b700e789270e92e28ded4ec10d943a4c80bd74875024089950ae6731d0814c"
+    },
+    {
+      "bytes": 2789,
+      "path": "research/results/multi-epoch-common-future-analysis-latest.json",
+      "sha256": "de4bfcb30adaea8e820d5e1d660f21575217f2e709e724cd775cde24f878af19"
+    },
+    {
+      "bytes": 58697,
+      "path": "research/results/multi-epoch-common-future-real-latest.json",
+      "sha256": "c8e89c5e592e929f2e51a078d5bd7739b36c09c072fe5a60a22bfd3880e5f23b"
+    },
+    {
+      "bytes": 6942,
+      "path": "research/results/multi-history-attention-replication-analysis-latest.json",
+      "sha256": "b6b337b813f5401a3623e8bb5fa471a4986f1dfcc7bad28eb0a1b0b3c51bb228"
+    },
+    {
+      "bytes": 283865,
+      "path": "research/results/multi-history-attention-replication-real-latest.json",
+      "sha256": "dec7f3f15818b10f0ce848efc2b8f89bdfe42dc5ea777c13624b9dfb6f6972ff"
+    },
+    {
+      "bytes": 4375,
+      "path": "research/results/own-history-attribution-framing-analysis-latest.json",
+      "sha256": "7145a65ad7459c88811d519e835dc1a47639b43e81ec4d0161ceb62c24bd0279"
+    },
+    {
+      "bytes": 191818,
+      "path": "research/results/own-history-attribution-framing-real-latest.json",
+      "sha256": "3d3e63ccccf9bc39192d571a40df13e8afd317aaacf5ce3f918fdad4998e492e"
+    },
+    {
+      "bytes": 7862,
+      "path": "research/results/raw-stream-ownership-real-latest.json",
+      "sha256": "c5eda6c85f150abf7e97686d814328ec7faed84632ca6ff50fe0eba787ee5b23"
+    },
+    {
+      "bytes": 10130,
+      "path": "research/results/reflection-causal-audit-real-latest.json",
+      "sha256": "3d10f923458b1bb733b5191f95fbd65178a2af9b829bc7359e785a6b522a5a80"
+    },
+    {
+      "bytes": 3490,
+      "path": "research/results/retrieval-attention-reflection-pilot-analysis-latest.json",
+      "sha256": "962e3f579a0b76ef4a40b3fbaada45bc1fd4f6e63591f8b8a89607c70455fada"
+    },
+    {
+      "bytes": 58808,
+      "path": "research/results/retrieval-attention-reflection-pilot-real-latest.json",
+      "sha256": "e50a9f5d35708bb9f0344d8e6d2d67190967c90aef9d2e85e0adb746acfc60c5"
+    },
+    {
+      "bytes": 9226,
+      "path": "research/results/schema-balanced-ownership-real-latest.json",
+      "sha256": "0915fdace9978de09cd540016811bc21f7ecf3c549c2edb4a2dbd77f84a427bc"
+    },
+    {
+      "bytes": 3032,
+      "path": "research/results/semantic-convergence-audit-analysis-latest.json",
+      "sha256": "5333adfd5a7052dfc8e68988361769f6a3051332b26d702a8e0d7511597990bb"
+    },
+    {
+      "bytes": 6237,
+      "path": "research/results/semantic-measurement-reliability-analysis-latest.json",
+      "sha256": "d96abf99d2f6d27e6cbf33ac08681c360e654d463ac9a1a4f189f0cf3489bdf8"
+    },
+    {
+      "bytes": 74647,
+      "path": "research/results/semantic-measurement-reliability-real-latest.json",
+      "sha256": "9eaba9fa3230b6c3fd63deda072e77a47df599f38cb78b02dcae384f6c7a2f34"
+    },
+    {
+      "bytes": 3199,
+      "path": "research/results/typed-retrieval-reflection-pilot-analysis-latest.json",
+      "sha256": "5caeaf4b32ff4f74a85f5d6dba527a17c5c7876224dcd3ee985892149c5862bd"
+    },
+    {
+      "bytes": 105679,
+      "path": "research/results/typed-retrieval-reflection-pilot-real-latest.json",
+      "sha256": "b88f6421be5cd863d13c2b2fd7244d0d7238fc29c6b91bb3f7fc8f607ca502f5"
+    }
+  ],
+  "generated_date": "2026-07-19",
+  "important_limit": "High-fidelity canonical synthesis plus preserved locally available experiment artifacts; not a byte-for-byte export of every historical chat or every original research pack.",
+  "package": "Dagmay_Canonical_Knowledge_Base_v1",
+  "purpose": "GitHub-ready institutional memory and context bridge for future ChatGPT/Codex sessions",
+  "result_artifact_count": 35
+}

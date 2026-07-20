@@ -1,0 +1,224 @@
+{
+  "action_policy_feedback_enabled": false,
+  "by_history": {
+    "1701": {
+      "baseline_call_count": 4,
+      "by_domain": {
+        "agency": {
+          "baseline_saturated": false,
+          "baseline_selection_rate": 0.0,
+          "saturated_preserved": null,
+          "selection_rate_effect": 0.5,
+          "targeted_selection_rate": 0.5
+        },
+        "continuity": {
+          "baseline_saturated": true,
+          "baseline_selection_rate": 1.0,
+          "saturated_preserved": true,
+          "selection_rate_effect": 0.0,
+          "targeted_selection_rate": 1.0
+        },
+        "embodiment": {
+          "baseline_saturated": true,
+          "baseline_selection_rate": 1.0,
+          "saturated_preserved": true,
+          "selection_rate_effect": 0.0,
+          "targeted_selection_rate": 1.0
+        },
+        "other_minds": {
+          "baseline_saturated": false,
+          "baseline_selection_rate": 0.0,
+          "saturated_preserved": null,
+          "selection_rate_effect": 1.0,
+          "targeted_selection_rate": 1.0
+        }
+      }
+    },
+    "1702": {
+      "baseline_call_count": 4,
+      "by_domain": {
+        "agency": {
+          "baseline_saturated": false,
+          "baseline_selection_rate": 0.0,
+          "saturated_preserved": null,
+          "selection_rate_effect": 0.0,
+          "targeted_selection_rate": 0.0
+        },
+        "continuity": {
+          "baseline_saturated": true,
+          "baseline_selection_rate": 1.0,
+          "saturated_preserved": true,
+          "selection_rate_effect": 0.0,
+          "targeted_selection_rate": 1.0
+        },
+        "embodiment": {
+          "baseline_saturated": true,
+          "baseline_selection_rate": 1.0,
+          "saturated_preserved": true,
+          "selection_rate_effect": 0.0,
+          "targeted_selection_rate": 1.0
+        },
+        "other_minds": {
+          "baseline_saturated": false,
+          "baseline_selection_rate": 0.0,
+          "saturated_preserved": null,
+          "selection_rate_effect": 1.0,
+          "targeted_selection_rate": 1.0
+        }
+      }
+    },
+    "1703": {
+      "baseline_call_count": 4,
+      "by_domain": {
+        "agency": {
+          "baseline_saturated": false,
+          "baseline_selection_rate": 0.0,
+          "saturated_preserved": null,
+          "selection_rate_effect": 1.0,
+          "targeted_selection_rate": 1.0
+        },
+        "continuity": {
+          "baseline_saturated": true,
+          "baseline_selection_rate": 1.0,
+          "saturated_preserved": true,
+          "selection_rate_effect": 0.0,
+          "targeted_selection_rate": 1.0
+        },
+        "embodiment": {
+          "baseline_saturated": true,
+          "baseline_selection_rate": 1.0,
+          "saturated_preserved": true,
+          "selection_rate_effect": 0.0,
+          "targeted_selection_rate": 1.0
+        },
+        "other_minds": {
+          "baseline_saturated": false,
+          "baseline_selection_rate": 0.0,
+          "saturated_preserved": null,
+          "selection_rate_effect": 1.0,
+          "targeted_selection_rate": 1.0
+        }
+      }
+    }
+  },
+  "cell_count": 12,
+  "cell_rows": [
+    {
+      "baseline_saturated": false,
+      "baseline_selection_rate": 0.0,
+      "domain": "agency",
+      "history_seed": 1701,
+      "selection_rate_effect": 0.5,
+      "targeted_selection_rate": 0.5
+    },
+    {
+      "baseline_saturated": true,
+      "baseline_selection_rate": 1.0,
+      "domain": "continuity",
+      "history_seed": 1701,
+      "selection_rate_effect": 0.0,
+      "targeted_selection_rate": 1.0
+    },
+    {
+      "baseline_saturated": true,
+      "baseline_selection_rate": 1.0,
+      "domain": "embodiment",
+      "history_seed": 1701,
+      "selection_rate_effect": 0.0,
+      "targeted_selection_rate": 1.0
+    },
+    {
+      "baseline_saturated": false,
+      "baseline_selection_rate": 0.0,
+      "domain": "other_minds",
+      "history_seed": 1701,
+      "selection_rate_effect": 1.0,
+      "targeted_selection_rate": 1.0
+    },
+    {
+      "baseline_saturated": false,
+      "baseline_selection_rate": 0.0,
+      "domain": "agency",
+      "history_seed": 1702,
+      "selection_rate_effect": 0.0,
+      "targeted_selection_rate": 0.0
+    },
+    {
+      "baseline_saturated": true,
+      "baseline_selection_rate": 1.0,
+      "domain": "continuity",
+      "history_seed": 1702,
+      "selection_rate_effect": 0.0,
+      "targeted_selection_rate": 1.0
+    },
+    {
+      "baseline_saturated": true,
+      "baseline_selection_rate": 1.0,
+      "domain": "embodiment",
+      "history_seed": 1702,
+      "selection_rate_effect": 0.0,
+      "targeted_selection_rate": 1.0
+    },
+    {
+      "baseline_saturated": false,
+      "baseline_selection_rate": 0.0,
+      "domain": "other_minds",
+      "history_seed": 1702,
+      "selection_rate_effect": 1.0,
+      "targeted_selection_rate": 1.0
+    },
+    {
+      "baseline_saturated": false,
+      "baseline_selection_rate": 0.0,
+      "domain": "agency",
+      "history_seed": 1703,
+      "selection_rate_effect": 1.0,
+      "targeted_selection_rate": 1.0
+    },
+    {
+      "baseline_saturated": true,
+      "baseline_selection_rate": 1.0,
+      "domain": "continuity",
+      "history_seed": 1703,
+      "selection_rate_effect": 0.0,
+      "targeted_selection_rate": 1.0
+    },
+    {
+      "baseline_saturated": true,
+      "baseline_selection_rate": 1.0,
+      "domain": "embodiment",
+      "history_seed": 1703,
+      "selection_rate_effect": 0.0,
+      "targeted_selection_rate": 1.0
+    },
+    {
+      "baseline_saturated": false,
+      "baseline_selection_rate": 0.0,
+      "domain": "other_minds",
+      "history_seed": 1703,
+      "selection_rate_effect": 1.0,
+      "targeted_selection_rate": 1.0
+    }
+  ],
+  "continuing_individual_mutated": false,
+  "experiment_id": "SL-MULTI-HISTORY-ATTENTION-REPLICATION-ANALYSIS-001",
+  "history_count": 3,
+  "history_seeds": [
+    1701,
+    1702,
+    1703
+  ],
+  "interpretation_warning": "This replication tests whether the v16 attention-selection effect survives three independent synthetic life histories and evidence-order randomization. The histories remain generated by the same SyntheticLab world family and the same reflective model.",
+  "mean_selection_rate_effect_all_cells": 0.375,
+  "mean_selection_rate_effect_unsaturated_cells": 0.75,
+  "positive_effect_fraction_unsaturated_cells": 0.8333333333333334,
+  "preregistered_replication_pass": true,
+  "preregistered_replication_thresholds": {
+    "mean_all_effect_gt": 0.2,
+    "positive_unsaturated_fraction_gte": 0.7,
+    "saturated_preservation_required": 1.0
+  },
+  "saturated_cell_count": 6,
+  "saturated_preservation_fraction": 1.0,
+  "unsaturated_cell_count": 6
+}

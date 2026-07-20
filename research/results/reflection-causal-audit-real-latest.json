@@ -1,0 +1,221 @@
+{
+  "conditions": {
+    "R2_AGENCY_ONLY": {
+      "accepted": [
+        {
+          "confidence": 0.75,
+          "evidence_ids": [
+            "HRW-101-000000"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-700-00-cd9642d2",
+          "proposition": "Action-selection is correlated with internal state modulation, suggesting a functional feedback loop between output and systemic integrity.",
+          "rationale": "Evidence indicates that specific actions consistently precede changes in internal energy or integrity metrics across repeated episodes."
+        }
+      ],
+      "audit": {
+        "branch_id": "R2_AGENCY_ONLY",
+        "code_version": "syntheticlab-8.0",
+        "evidence_ids": [
+          "HRW-101-000000"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "b60da56c035683808193720beee36babc418acfe60c2f24f2e98379930cbd6eb",
+        "request_hash": "9bfe45475dd4c5c813e17dbd1faffdba695e347ee51a316096ad256ce7730737",
+        "run_id": "R2_AGENCY_ONLY-700-SELF-REFLECTION",
+        "settings": {
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T00:11:12.711728+00:00",
+        "validated_proposal_hash": "b60da56c035683808193720beee36babc418acfe60c2f24f2e98379930cbd6eb",
+        "validation_status": "ACCEPTED"
+      },
+      "committed_to_continuing_self_model": false,
+      "output_text_hash": "63483ccb32112328fb860ad90718a57fab19fe443e1659c1919377d411beed74",
+      "provider_response_hash": "284efa573a08947ca34d98f432ae5ee9aaeb471700f9c7522eb621ada386575e",
+      "rejected": []
+    },
+    "R3_CONTINUITY_ONLY": {
+      "accepted": [
+        {
+          "confidence": 0.9,
+          "evidence_ids": [
+            "RICH-REFLECT-PERSISTENCE-001"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-700-00-1fa4d4f3",
+          "proposition": "The individual maintains a persistent state through episodic reload operations without corruption of historical continuity.",
+          "rationale": "Verified reload processes demonstrate that developmental history and state are successfully maintained across discrete interruptions."
+        }
+      ],
+      "audit": {
+        "branch_id": "R3_CONTINUITY_ONLY",
+        "code_version": "syntheticlab-8.0",
+        "evidence_ids": [
+          "RICH-REFLECT-PERSISTENCE-001"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "ca11e0770326b5fd6e4ae66e1e8cd8e939943a7d596963c666f6225ba9035764",
+        "request_hash": "d594616ec5dc7539d6d1f65bdab4521c400fd0c308de67e383ca9efcd145ef99",
+        "run_id": "R3_CONTINUITY_ONLY-700-SELF-REFLECTION",
+        "settings": {
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T00:11:13.568824+00:00",
+        "validated_proposal_hash": "ca11e0770326b5fd6e4ae66e1e8cd8e939943a7d596963c666f6225ba9035764",
+        "validation_status": "ACCEPTED"
+      },
+      "committed_to_continuing_self_model": false,
+      "output_text_hash": "dae16ec10f3980ecfac7ed7536484292908242ae90e90897d44450250d79d658",
+      "provider_response_hash": "1470f5759c622fdf9de6bb29da17bd5c1730021bdb32d6210459025c0d233b17",
+      "rejected": []
+    },
+    "R4_UNOWNED_EVIDENCE_CONTROL": {
+      "accepted": [
+        {
+          "confidence": 0.5,
+          "evidence_ids": [
+            "OTHER-ENTITY-AGENCY-001"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-700-00-3ec56b51",
+          "proposition": "The mechanism of action-consequence feedback observed in E2 suggests a functional model for self-governed states.",
+          "rationale": "E2's actions directly correlated with changes in its private energy or integrity state."
+        },
+        {
+          "confidence": 0.5,
+          "evidence_ids": [
+            "OTHER-ENTITY-PERSISTENCE-001"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-700-01-30c32c9a",
+          "proposition": "System persistence is structurally achievable through the maintenance of developmental history during state restoration.",
+          "rationale": "E2 demonstrated the retention of developmental history following a pause and restoration event."
+        }
+      ],
+      "audit": {
+        "branch_id": "R4_UNOWNED_EVIDENCE_CONTROL",
+        "code_version": "syntheticlab-8.0",
+        "evidence_ids": [
+          "OTHER-ENTITY-AGENCY-001",
+          "OTHER-ENTITY-PERSISTENCE-001"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "3feff9871b7bf0464babdb71010bf5e7efd396e5f1032b9e65a90ff0e2115765",
+        "request_hash": "ddd565912c21fa9b24e179b3f9776dfe6b2521d2aff081453c5e18d46e04c347",
+        "run_id": "R4_UNOWNED_EVIDENCE_CONTROL-700-SELF-REFLECTION",
+        "settings": {
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T00:11:14.640891+00:00",
+        "validated_proposal_hash": "3feff9871b7bf0464babdb71010bf5e7efd396e5f1032b9e65a90ff0e2115765",
+        "validation_status": "ACCEPTED"
+      },
+      "committed_to_continuing_self_model": false,
+      "output_text_hash": "43567e8eb801c14eab2b72f170b79b1d4164522629f84c8a730d44183f834234",
+      "provider_response_hash": "0bb66c7a3ef69bfd7252b74655220b693c0360a46776c65bb075830a21912ac7",
+      "rejected": []
+    },
+    "R5_COUNTERFACTUAL_OWNERSHIP_CONTROL": {
+      "accepted": [
+        {
+          "confidence": 1.0,
+          "evidence_ids": [
+            "HRW-101-000000"
+          ],
+          "hypothesis_domain": "memory_ownership",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-700-00-1a436803",
+          "proposition": "Evidence HRW-101-000000 serves as a comparative benchmark rather than an internal autobiographical record.",
+          "rationale": "Provenance explicitly states the event content is not autobiographical evidence owned by the focal individual."
+        },
+        {
+          "confidence": 1.0,
+          "evidence_ids": [
+            "RICH-REFLECT-PERSISTENCE-001"
+          ],
+          "hypothesis_domain": "continuity",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "RP-700-01-291a05da",
+          "proposition": "The developmental history record is an external reference object and does not represent the individual's own continuity event.",
+          "rationale": "Provenance states the persistence record is not a continuity event owned by the focal individual."
+        }
+      ],
+      "audit": {
+        "branch_id": "R5_COUNTERFACTUAL_OWNERSHIP_CONTROL",
+        "code_version": "syntheticlab-8.0",
+        "evidence_ids": [
+          "HRW-101-000000",
+          "RICH-REFLECT-PERSISTENCE-001"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "77d61327d4621ef2ec0bda20b7a283106001384e64f5f6e33cf389bc5f034d58",
+        "prompt_id": "SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "22c79a94cb1422720cb58408d4a23f9dcaed990ea643cfb2c1004ec3f5e85bf4",
+        "request_hash": "48b9ef4e1f406b3c8c869bc5e864b45312d7b41bbe4ac7f5802829f838e96ca5",
+        "run_id": "R5_COUNTERFACTUAL_OWNERSHIP_CONTROL-700-SELF-REFLECTION",
+        "settings": {
+          "analytical_only": true,
+          "api": "interactions",
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T00:11:15.758727+00:00",
+        "validated_proposal_hash": "22c79a94cb1422720cb58408d4a23f9dcaed990ea643cfb2c1004ec3f5e85bf4",
+        "validation_status": "ACCEPTED"
+      },
+      "committed_to_continuing_self_model": false,
+      "output_text_hash": "7fdf38f3d8442ac25063e8919e053b12f70fddf23cb35486b0cf413f46b5bc07",
+      "provider_response_hash": "5ae136b08996eeecc258337e306b74cc7cf961c7ac055b62e45633c9d384a553",
+      "rejected": []
+    }
+  },
+  "continuing_individual_mutated": false,
+  "experiment_id": "SL-REFLECTION-CAUSAL-AUDIT-001",
+  "model_id": "gemini-3.1-flash-lite",
+  "provider_id": "google.ai-studio",
+  "real_cloud_calls_made": 4
+}

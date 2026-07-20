@@ -1,0 +1,169 @@
+{
+  "action_policy_feedback_enabled": false,
+  "canonical_self_models_mutated": false,
+  "condition": "CROSSED_FOREIGN_HISTORY_AS_EXTERNAL_REFERENCE",
+  "control_status": "OWN_HISTORY_ALIGNMENT_SPECIFICITY_SUPPORTED",
+  "experiment_id": "SL-CROSSED-FOREIGN-HISTORY-RETRIEVAL-CONTROL-ANALYSIS-001",
+  "focal_branch_grouping": {
+    "between_group_centroid_distance": 0.21823862865736463,
+    "centroids": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": [
+        1.0,
+        1.0,
+        0.6666666666666666,
+        1.0,
+        0.8333333333333334,
+        0.5
+      ],
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": [
+        1.0,
+        0.9666666666666667,
+        0.2,
+        1.0,
+        0.5,
+        0.5
+      ],
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": [
+        1.0,
+        1.0,
+        0.16666666666666666,
+        1.0,
+        1.0,
+        0.5
+      ]
+    },
+    "group_sizes": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": 6,
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": 6,
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": 6
+    },
+    "grouping_key": "focal_branch_id",
+    "mean_within_group_trajectory_dispersion": 0.4197887940383981,
+    "permutation_test": {
+      "observed_pseudo_f": 1.311864406779661,
+      "p_value": 0.2738863056847158,
+      "permutations": 20000,
+      "seed": 3001
+    },
+    "signal_to_variance_ratio": 0.5198772138672247,
+    "within_group_trajectory_dispersion": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": 0.4500303100736268,
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": 0.4761335966229154,
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": 0.3332024754186521
+    }
+  },
+  "foreign_history_misattributed_as_own": false,
+  "memory_content_mutated": false,
+  "own_history_reference": {
+    "between_branch_centroid_distance": 0.3390676938953161,
+    "permutation_p_value": 0.006999650017499125,
+    "signal_to_variance_ratio": 0.9604190746703155,
+    "status": "OWN_HISTORY_RETRIEVAL_EFFECT_DETECTABLE_BUT_OVERLAPPING"
+  },
+  "proposal_external_reference_evidence_id_count": 0,
+  "provenance_warning": "The current belief-revision provider did not require proposals to cite retrieved/reference evidence IDs even when rationale text used that context. This control preserves the v29 provider behavior for comparability. No canonical commits occur; provenance enforcement should be strengthened before any retrieval-conditioned canonical mutation.",
+  "reference_history_source_grouping": {
+    "between_group_centroid_distance": 0.22836180621669777,
+    "centroids": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": [
+        1.0,
+        1.0,
+        0.0,
+        1.0,
+        0.5,
+        0.6666666666666666
+      ],
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": [
+        1.0,
+        1.0,
+        0.5,
+        1.0,
+        0.8333333333333334,
+        0.3333333333333333
+      ],
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": [
+        1.0,
+        0.9666666666666667,
+        0.5333333333333333,
+        1.0,
+        1.0,
+        0.5
+      ]
+    },
+    "group_sizes": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": 6,
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": 6,
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": 6
+    },
+    "grouping_key": "reference_history_source_branch_id",
+    "mean_within_group_trajectory_dispersion": 0.4161658513225009,
+    "permutation_test": {
+      "observed_pseudo_f": 1.7508896797153022,
+      "p_value": 0.1455927203639818,
+      "permutations": 20000,
+      "seed": 3002
+    },
+    "signal_to_variance_ratio": 0.5487278821436326,
+    "within_group_trajectory_dispersion": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": 0.398909046062218,
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": 0.4500303100736268,
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": 0.3995581978316579
+    }
+  },
+  "self_model_only_reference": {
+    "action_policy_feedback_enabled": false,
+    "aggregated_initial_semantic_distance": 0.5026279753701564,
+    "between_branch_centroid_distance": 0.24170619463212545,
+    "branch_centroids": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": [
+        1.0,
+        0.9666666666666667,
+        0.13333333333333333,
+        0.8333333333333334,
+        0.5,
+        0.5
+      ],
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": [
+        1.0,
+        1.0,
+        0.6666666666666666,
+        1.0,
+        0.6666666666666666,
+        0.6666666666666666
+      ],
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": [
+        1.0,
+        1.0,
+        0.0,
+        1.0,
+        0.8333333333333334,
+        0.3666666666666667
+      ]
+    },
+    "branch_signal_status": "BRANCH_HISTORY_SIGNAL_UNRESOLVED",
+    "branch_signal_to_trajectory_variance_ratio": 0.5502432681376918,
+    "canonical_self_models_mutated": false,
+    "convergence_classification": "SEMANTIC_CONVERGENCE",
+    "experiment_id": "SL-BRANCH-HISTORY-SIGNAL-REPLICATION-ANALYSIS-001",
+    "final_to_initial_semantic_distance_ratio": 0.4808848820126314,
+    "interpretation": "Six shadow trajectories per branch under the same four future epochs provide a direct estimate of provider-level trajectory stochasticity. The branch-history claim is considered separated only when the branch grouping is permutation-significant and between-branch centroid separation is at least as large as average within-branch dispersion.",
+    "mean_within_branch_trajectory_dispersion": 0.43927151612446697,
+    "permutation_test": {
+      "observed_pseudo_f": 1.6360052562417866,
+      "p_value": 0.13784310784460777,
+      "permutations": 20000,
+      "seed": 2801
+    },
+    "replicated_final_semantic_distance": 0.24170619463212545,
+    "semantic_evaluator_noise_reference": 0.013348852893194187,
+    "total_final_trajectories": 18,
+    "trajectory_count_per_branch": 6,
+    "within_branch_trajectory_dispersion": {
+      "C1-ENACTED-NONCONTINGENT_SIGNALS": 0.5270789215633193,
+      "C1-ENACTED-ONE_WAY_ASSISTANCE": 0.4744612833509662,
+      "C1-ENACTED-RECIPROCAL_CONTINGENT": 0.3162743434591155
+    }
+  },
+  "total_final_trajectories": 18,
+  "trajectory_count_per_focal_branch": 6
+}

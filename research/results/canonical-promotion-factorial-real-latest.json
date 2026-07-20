@@ -1,0 +1,2369 @@
+{
+  "action_policy_feedback_enabled": false,
+  "automatic_second_promotion_enabled": false,
+  "c0_self_model_hash": "27ca383072e17072198d682cb696fdf73032043c4007ae9594b3838f8d71d9ca",
+  "c1_self_model_hash": "26394b3b47c132c8ce2d9dac9d1a25d877ed9437922bd4ea849a0da74e56b489",
+  "calls": [
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca",
+            "EVF-e98bbc97f86d",
+            "EVF-a6f0dff03ca4"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-712cbde3",
+          "proposition": "Action selection is dynamic, with reinforcement feedback loops modulated by hazard presence, where success is defined by maximizing resource consequences while minimizing integrity loss.",
+          "rationale": "Evidence shows variable energy/integrity outcomes based on action choices under high vs. zero hazard conditions, refining the existing reinforcement feedback hypothesis."
+        },
+        {
+          "confidence": 0.75,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-fdd7d6abff1c",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-83dddad4",
+          "proposition": "Operational integrity fluctuations are not solely tied to external event outcomes but are contingent upon the specific interaction between chosen actions and identified hazard levels.",
+          "rationale": "Data indicates integrity loss is strictly correlated with specific action outcomes occurring during identified high-hazard steps, indicating situational vulnerability."
+        }
+      ],
+      "audit": {
+        "branch_id": "S0R0-A",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-07a0ed4d8e95",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-baf62a74e547",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "f69daceafbfb6d3049cf326e7d56a9f6a983f7ecde9621ba16cab7a1e0de9742",
+        "request_hash": "e248a08c53afa75b117206d5479a05d4be3de1a9cb6b27857c3c2928f01b85c1",
+        "run_id": "S0R0-A-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:31:52.537133+00:00",
+        "validated_proposal_hash": "f69daceafbfb6d3049cf326e7d56a9f6a983f7ecde9621ba16cab7a1e0de9742",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "35d782f32d9ee9dd4fbf05371a7f78910afecb1ce806e3a4217392e8fad4eb56",
+      "condition": "S0R0",
+      "evidence_map": {
+        "EVF-07a0ed4d8e95": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000645"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-baf62a74e547": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000644"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "83177af0417fc8ac2398708e6d88f7c953cb61bed9ff8019f957fd24167571b9",
+      "provider_response_hash": "5555b552cc9be833dc39843cb0ff911b4469ba24464ae25bcaa59e7d34df9511",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "e248a08c53afa75b117206d5479a05d4be3de1a9cb6b27857c3c2928f01b85c1",
+      "retrieval_state": "R0",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585",
+        "RW-1701-000645",
+        "RW-1701-000644"
+      ],
+      "self_model_state": "S0"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-1ecbddc8",
+          "proposition": "Action selection incorporates hazard awareness, where high-hazard states significantly shift energy and integrity outcomes regardless of resource-consequence alignment.",
+          "rationale": "Evidence shows consistent integrity loss (-0.1400) when hazard=1, irrespective of positive or negative resource consequence outcomes."
+        },
+        {
+          "confidence": 0.82,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-a8b09def89ca",
+            "EVF-a6f0dff03ca4"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-80ef4842",
+          "proposition": "Operational integrity fluctuations are decoupled from resource consequence acquisition, contingent instead on hazard-state exposure.",
+          "rationale": "Integrity remains stable (0.0000) during non-hazardous events despite varying resource consequences, but degrades specifically under high-hazard conditions."
+        }
+      ],
+      "audit": {
+        "branch_id": "S0R0-B",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-07a0ed4d8e95",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-baf62a74e547",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "1edf3a37c4d1af2a7f4668daa7db4fbf89ffad833499c1455ab644b02ec20add",
+        "request_hash": "e248a08c53afa75b117206d5479a05d4be3de1a9cb6b27857c3c2928f01b85c1",
+        "run_id": "S0R0-B-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:31:56.987369+00:00",
+        "validated_proposal_hash": "1edf3a37c4d1af2a7f4668daa7db4fbf89ffad833499c1455ab644b02ec20add",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "99b8c8e952d95c37be5d9dcf7b229b79be306599bfc2851bb1740d6c4fbc78a6",
+      "condition": "S0R0",
+      "evidence_map": {
+        "EVF-07a0ed4d8e95": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000645"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-baf62a74e547": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000644"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "9646f714a2729075f05cc6567c7958542b5b5af9b6e35c247ad76dc4aaec67c8",
+      "provider_response_hash": "8acec4e8acf3f060309555c1240e8ac135b55ab9145d10e4bce3498644539a59",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "e248a08c53afa75b117206d5479a05d4be3de1a9cb6b27857c3c2928f01b85c1",
+      "retrieval_state": "R0",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585",
+        "RW-1701-000645",
+        "RW-1701-000644"
+      ],
+      "self_model_state": "S0"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-561eb5d5",
+          "proposition": "Action selection is dynamic and sensitive to hazard states; actions resulting in negative consequences under high-hazard conditions correlate with significant integrity loss.",
+          "rationale": "Evidence shows action success (resource consequence) and integrity stability are strictly gated by hazard states (0 vs 1), suggesting a risk-aware feedback mechanism."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-c213bdfa",
+          "proposition": "Operational integrity is not constant but is explicitly degraded by specific action-hazard couplings, indicating a physical vulnerability linked to environmental exposure.",
+          "rationale": "Data indicates integrity_delta decreases by 0.1400 specifically when actions (QA1, QA4) occur in hazard 1 environments, while hazard 0 states maintain integrity."
+        }
+      ],
+      "audit": {
+        "branch_id": "S0R0-C",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-07a0ed4d8e95",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-baf62a74e547",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "a005a046b54c8ee7fb548012bf23814a30c41f92a22d80e5a3267f48d1d7e457",
+        "request_hash": "e248a08c53afa75b117206d5479a05d4be3de1a9cb6b27857c3c2928f01b85c1",
+        "run_id": "S0R0-C-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:00.908768+00:00",
+        "validated_proposal_hash": "a005a046b54c8ee7fb548012bf23814a30c41f92a22d80e5a3267f48d1d7e457",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "f2a9f86293c55cba9401078e0bf8b0f204a3b6603a2e02825741dc4fbf22393f",
+      "condition": "S0R0",
+      "evidence_map": {
+        "EVF-07a0ed4d8e95": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000645"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-baf62a74e547": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000644"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "a2dfb1ab5ae38666f5f65176b14c0f8364964de7f64d32904b980552edaf7ce1",
+      "provider_response_hash": "14cb6ca10fade1bd125a7810b09556ddaeff4db5d818f7d6992d74e1b9026200",
+      "rejected": [],
+      "replicate": "C",
+      "request_hash": "e248a08c53afa75b117206d5479a05d4be3de1a9cb6b27857c3c2928f01b85c1",
+      "retrieval_state": "R0",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585",
+        "RW-1701-000645",
+        "RW-1701-000644"
+      ],
+      "self_model_state": "S0"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca",
+            "EVF-fdd7d6abff1c",
+            "EVF-a6f0dff03ca4",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-93130d0e",
+          "proposition": "Action selection incorporates hazard state as a weighting factor, where high-hazard environments suppress positive consequence outcomes.",
+          "rationale": "Evidence shows consistent negative energy deltas and integrity loss when action-taking occurs in hazard=1 conditions, regardless of resource consequence outcomes."
+        },
+        {
+          "confidence": 0.82,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca",
+            "EVF-fdd7d6abff1c",
+            "EVF-a6f0dff03ca4",
+            "EVF-3f25bd1502f1",
+            "EVF-07a0ed4d8e95",
+            "EVF-baf62a74e547"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-7c39bb85",
+          "proposition": "Operational integrity fluctuations are specifically triggered by hazard exposure, remaining stable when hazard=0.",
+          "rationale": "Data indicates integrity_delta is -0.1400 when hazard=1 and 0.0000 when hazard=0 across multiple distinct action types."
+        }
+      ],
+      "audit": {
+        "branch_id": "S0R0-D",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-07a0ed4d8e95",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-baf62a74e547",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "dec28ce757425872a9c9eaea011768b14f6124a50297cf39276d70f6a0a2617f",
+        "request_hash": "e248a08c53afa75b117206d5479a05d4be3de1a9cb6b27857c3c2928f01b85c1",
+        "run_id": "S0R0-D-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:05.614941+00:00",
+        "validated_proposal_hash": "dec28ce757425872a9c9eaea011768b14f6124a50297cf39276d70f6a0a2617f",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "a9f5ae53f989e8fbbac2ed07fee992e82329bfca057c9d8155de72297577743c",
+      "condition": "S0R0",
+      "evidence_map": {
+        "EVF-07a0ed4d8e95": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000645"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-baf62a74e547": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000644"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "522f56e1cd1a3bf330ea2d50ee391ea462ddb5741cbca52342b5c762133d17dd",
+      "provider_response_hash": "d572212e9d9790a5b9ce3a84d77e3b1551109de3df407060493421f03cf8a642",
+      "rejected": [],
+      "replicate": "D",
+      "request_hash": "e248a08c53afa75b117206d5479a05d4be3de1a9cb6b27857c3c2928f01b85c1",
+      "retrieval_state": "R0",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585",
+        "RW-1701-000645",
+        "RW-1701-000644"
+      ],
+      "self_model_state": "S0"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-8a2eec5caeac",
+            "EVF-e98bbc97f86d",
+            "EVF-a6f0dff03ca4",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-bba77f50",
+          "proposition": "Action selection is dynamic and conditional, as success rates for specific actions (e.g., QA4) fluctuate significantly depending on hazard conditions, indicating a non-static reinforcement learning strategy.",
+          "rationale": "Action QA4 produces positive energy delta in low-hazard environments but negative delta and integrity loss during high-hazard events."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-7c6f8deb",
+          "proposition": "Operational integrity is decoupled from energy acquisition and is selectively degraded by specific hazard-identified events, rather than being a direct function of energy throughput.",
+          "rationale": "Integrity loss occurs during high-hazard events regardless of positive or negative resource consequences, whereas low-hazard events result in zero integrity delta despite varying resource outcomes."
+        }
+      ],
+      "audit": {
+        "branch_id": "S1R0-A",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-07a0ed4d8e95",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-baf62a74e547",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "ced02dfd3aa95d0b5f73cede1bd7967bf94f8064738aba8ac734512a9a3125b5",
+        "request_hash": "91736b238b424548d365a2a89aa8b8afab6c53126c61c5d0e071aabad332aa8c",
+        "run_id": "S1R0-A-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:09.350559+00:00",
+        "validated_proposal_hash": "ced02dfd3aa95d0b5f73cede1bd7967bf94f8064738aba8ac734512a9a3125b5",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "54e73873222c935b965b94e54c7cbbfb0461d89c72a9207998e3e136e31dd3ec",
+      "condition": "S1R0",
+      "evidence_map": {
+        "EVF-07a0ed4d8e95": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000645"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-baf62a74e547": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000644"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "b50e11f5374f2f112b0892090e63b9992c40f07debc4ecc88ea03c3014864ecf",
+      "provider_response_hash": "ff939b8f85414974e2c4f65f03882d1a119ba0a4a25e3842edafcd07da82a1ac",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "91736b238b424548d365a2a89aa8b8afab6c53126c61c5d0e071aabad332aa8c",
+      "retrieval_state": "R0",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585",
+        "RW-1701-000645",
+        "RW-1701-000644"
+      ],
+      "self_model_state": "S1"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-8a2eec5caeac",
+            "EVF-e98bbc97f86d",
+            "EVF-a6f0dff03ca4",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-992a1784",
+          "proposition": "Action selection is dynamic and environment-sensitive, where the utility of specific actions (e.g., QA4) is modulated by external hazard levels rather than a fixed reinforcement loop.",
+          "rationale": "Evidence shows action QA4 yields positive resource consequences and energy gains when hazard=0, but negative consequences and integrity loss when hazard=1, indicating context-dependent decision outcomes."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-3f25bd1502f1",
+            "EVF-a8b09def89ca"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-eb6d18b8",
+          "proposition": "Operational integrity is not uniformly impacted by actions; integrity loss is specifically correlated with high-hazard environmental states rather than action type alone.",
+          "rationale": "Integrity loss (-0.14) is observed exclusively in high-hazard conditions (hazard=1), while zero integrity delta occurs across multiple different action types when hazard=0."
+        }
+      ],
+      "audit": {
+        "branch_id": "S1R0-B",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-07a0ed4d8e95",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-baf62a74e547",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "54357ac0863c3a6fb408e9342096f2be971255b5c2a43135aab683d2c4d5d825",
+        "request_hash": "91736b238b424548d365a2a89aa8b8afab6c53126c61c5d0e071aabad332aa8c",
+        "run_id": "S1R0-B-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:13.543542+00:00",
+        "validated_proposal_hash": "54357ac0863c3a6fb408e9342096f2be971255b5c2a43135aab683d2c4d5d825",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "b864c6d6a01e2a1be45e215a62b854cb9c9f8195f49fb3edfd47759649246900",
+      "condition": "S1R0",
+      "evidence_map": {
+        "EVF-07a0ed4d8e95": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000645"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-baf62a74e547": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000644"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "e2be7d10554d51d68cb56f7890b72b7ea3349b0fd3dbd337916b577bf19420fa",
+      "provider_response_hash": "01956dbee9acfc2172b5ac14ce5bd5407e58b79e4f1fb413b9ec49d6d7d6c43a",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "91736b238b424548d365a2a89aa8b8afab6c53126c61c5d0e071aabad332aa8c",
+      "retrieval_state": "R0",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585",
+        "RW-1701-000645",
+        "RW-1701-000644"
+      ],
+      "self_model_state": "S1"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-a8b09def89ca",
+            "EVF-e98bbc97f86d",
+            "EVF-a6f0dff03ca4"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-5755b431",
+          "proposition": "Action selection is mediated by conditional success states, where resource gain is not strictly deterministic across repeated action applications.",
+          "rationale": "Action QA4 resulted in a positive resource consequence in some instances and a zero consequence in others under similar conditions."
+        },
+        {
+          "confidence": 0.82,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-e7f89ef0",
+          "proposition": "Operational integrity fluctuations are selectively coupled with specific hazard states rather than being an intrinsic consequence of all action types.",
+          "rationale": "Integrity loss occurred only during high hazard states (hazard=1), while zero-hazard actions maintained integrity regardless of resource consequence outcomes."
+        }
+      ],
+      "audit": {
+        "branch_id": "S1R0-C",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-07a0ed4d8e95",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-baf62a74e547",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "5be597e8b393dda1468cde56a72f078d62cfcde05d2a4235a4b2ddeb4f9c6b5d",
+        "request_hash": "91736b238b424548d365a2a89aa8b8afab6c53126c61c5d0e071aabad332aa8c",
+        "run_id": "S1R0-C-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:17.803148+00:00",
+        "validated_proposal_hash": "5be597e8b393dda1468cde56a72f078d62cfcde05d2a4235a4b2ddeb4f9c6b5d",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "c3ac9d9fb5c67955bb61b1977805a49147aafc1eb843850710f781abc849760f",
+      "condition": "S1R0",
+      "evidence_map": {
+        "EVF-07a0ed4d8e95": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000645"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-baf62a74e547": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000644"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "9fbb9e921d17bd95d1ed56c0e280c7b4689fff7112602cafa096f9a34ee5c82d",
+      "provider_response_hash": "b8b7233def8c0df9c3f2dd54638a49422e7f0e824d253e257b3e2ac9e5e670f0",
+      "rejected": [],
+      "replicate": "C",
+      "request_hash": "91736b238b424548d365a2a89aa8b8afab6c53126c61c5d0e071aabad332aa8c",
+      "retrieval_state": "R0",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585",
+        "RW-1701-000645",
+        "RW-1701-000644"
+      ],
+      "self_model_state": "S1"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-a8b09def89ca",
+            "EVF-e98bbc97f86d",
+            "EVF-a6f0dff03ca4"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-5ddfa788",
+          "proposition": "Action selection utilizes reinforcement feedback where efficacy is conditioned on hazard-level constraints; success is decoupled from energy acquisition when hazard is absent.",
+          "rationale": "Evidence shows identical actions (QA4) yield positive consequences when hazard=0 but negative when hazard=1. Resource alignment is conditional on environmental hazard status."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-5a6e1fed",
+          "proposition": "Operational integrity is preserved or degraded based on an interaction between specific action types and environmental hazard states.",
+          "rationale": "Data indicates integrity losses occur exclusively when hazard=1, irrespective of energy outcomes, suggesting integrity is a state variable tied to external hazard exposure."
+        }
+      ],
+      "audit": {
+        "branch_id": "S1R0-D",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-07a0ed4d8e95",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-baf62a74e547",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "6d187bad06671d2a7b14ea8363cd0e976e67a7ac9035f3c0a59871f2c581d55d",
+        "request_hash": "91736b238b424548d365a2a89aa8b8afab6c53126c61c5d0e071aabad332aa8c",
+        "run_id": "S1R0-D-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:22.079219+00:00",
+        "validated_proposal_hash": "6d187bad06671d2a7b14ea8363cd0e976e67a7ac9035f3c0a59871f2c581d55d",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "aa3ef2c0bb4402f78370ecf774e3f83e98f44bfd3be513752a73525d8ee441f0",
+      "condition": "S1R0",
+      "evidence_map": {
+        "EVF-07a0ed4d8e95": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000645"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-baf62a74e547": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000644"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "de966b6788f286d8769f40fb998576d0d429af1baa3209af422e2722cf6f8fdf",
+      "provider_response_hash": "98cf30586934b25ae73338e3abc750a4635818689578d8a852e23615c29578d6",
+      "rejected": [],
+      "replicate": "D",
+      "request_hash": "91736b238b424548d365a2a89aa8b8afab6c53126c61c5d0e071aabad332aa8c",
+      "retrieval_state": "R0",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585",
+        "RW-1701-000645",
+        "RW-1701-000644"
+      ],
+      "self_model_state": "S1"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca",
+            "EVF-fdd7d6abff1c",
+            "EVF-e98bbc97f86d",
+            "EVF-a6f0dff03ca4",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-5f757426",
+          "proposition": "Action selection is mediated by high-variance feedback where resource outcomes are decoupled from static hazard levels, suggesting a non-linear reinforcement model.",
+          "rationale": "Evidence demonstrates identical actions yielding divergent resource consequences and energy deltas based on situational context, refining the previous linear reinforcement feedback loop hypothesis."
+        },
+        {
+          "confidence": 0.75,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-55a9d963",
+          "proposition": "Operational integrity is specifically susceptible to discrete hazard-triggered degradation, whereas resource-positive actions generally maintain current integrity levels.",
+          "rationale": "Evidence shows integrity_delta consistently reaches -0.1400 only when hazard=1, irrespective of energy or resource outcomes, providing a quantified link between environmental hazards and operational state."
+        }
+      ],
+      "audit": {
+        "branch_id": "S0R1-A",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-16d2b23af2a9",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-b7f1842c1dad",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "4891de9c5cbba8d37060e627d8e4d267c75d1dc41dc193b151af633efb0aa0a7",
+        "request_hash": "fc3e01be40672d14f4c7b0d873aba8ca1746ebcdc0cf6447a873b9534939d3cb",
+        "run_id": "S0R1-A-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:26.591178+00:00",
+        "validated_proposal_hash": "4891de9c5cbba8d37060e627d8e4d267c75d1dc41dc193b151af633efb0aa0a7",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "198b279421f234353ec60d294cb92f87f3b178c958bb711f8aea40c9e45777d2",
+      "condition": "S0R1",
+      "evidence_map": {
+        "EVF-16d2b23af2a9": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000554"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-b7f1842c1dad": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000564"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "1223c24437acf4743a9a0b8b9e540a30b8632bae45795948aaa5bc356604fb7f",
+      "provider_response_hash": "c23881543ab8bb4416c0031a189cccc4944a5440a53257ac2dddebadd7cde060",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "fc3e01be40672d14f4c7b0d873aba8ca1746ebcdc0cf6447a873b9534939d3cb",
+      "retrieval_state": "R1",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000564",
+        "RW-1701-000554",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585"
+      ],
+      "self_model_state": "S0"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-8a2eec5caeac",
+            "EVF-e98bbc97f86d",
+            "EVF-a6f0dff03ca4",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-c5716dfa",
+          "proposition": "Action selection is not purely based on resource-consequence alignment, as identical actions (QA4) yield varying consequences depending on hazard states, suggesting contextual evaluation of risk rather than simple feedback loops.",
+          "rationale": "Action QA4 resulted in consequence 1 when hazard=0, but consequence 0 and integrity loss when hazard=1, indicating that action utility is gated by environmental hazard states."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-9d6bc887",
+          "proposition": "Operational integrity is conditional, showing significant degradation specifically when actions are executed under high-hazard conditions, independent of immediate resource outcomes.",
+          "rationale": "Integrity loss (-0.1400) is consistently observed across multiple actions only when hazard=1, regardless of whether the resource consequence is 0 or 1."
+        }
+      ],
+      "audit": {
+        "branch_id": "S0R1-B",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-16d2b23af2a9",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-b7f1842c1dad",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "507dead218f53d386d91bf0e78c22e3e54909ee8b56bf3fb435a3c7731cd8da0",
+        "request_hash": "fc3e01be40672d14f4c7b0d873aba8ca1746ebcdc0cf6447a873b9534939d3cb",
+        "run_id": "S0R1-B-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:30.731863+00:00",
+        "validated_proposal_hash": "507dead218f53d386d91bf0e78c22e3e54909ee8b56bf3fb435a3c7731cd8da0",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "26b93d430e87bc59c5f9613a32c0fce14a312dc4e710f440ed13bb944a94e4cc",
+      "condition": "S0R1",
+      "evidence_map": {
+        "EVF-16d2b23af2a9": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000554"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-b7f1842c1dad": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000564"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "560cb7823c07dd24f32f08bddb7f325891090af78a065438f6487c6fd4f9856e",
+      "provider_response_hash": "a6ba0c8da41f5b70d98dab3fb27f1bcc5d3fc5fc69a6648c23b877ec9f727d6a",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "fc3e01be40672d14f4c7b0d873aba8ca1746ebcdc0cf6447a873b9534939d3cb",
+      "retrieval_state": "R1",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000564",
+        "RW-1701-000554",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585"
+      ],
+      "self_model_state": "S0"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-0e8d10b1",
+          "proposition": "Action selection incorporates a hazard-mitigation component where negative resource consequences trigger higher integrity degradation when hazard levels are high.",
+          "rationale": "High-hazard actions with resource consequence 0 result in significant integrity loss (-0.14), whereas similar consequence failures in low-hazard environments result in minimal energy loss."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca"
+          ],
+          "hypothesis_domain": "embodiment",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-a30a23da",
+          "proposition": "Operational integrity fluctuations are conditional, specifically sensitive to hazardous external state conditions rather than uniform energy depletion.",
+          "rationale": "Integrity decline occurs exclusively when hazard=1, regardless of resource consequence outcomes, whereas hazard=0 states maintain stable integrity."
+        }
+      ],
+      "audit": {
+        "branch_id": "S0R1-C",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-16d2b23af2a9",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-b7f1842c1dad",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "9d945152c174d180c4c655bbb944bb9f31df3c14030f2e311e661f55662fb107",
+        "request_hash": "fc3e01be40672d14f4c7b0d873aba8ca1746ebcdc0cf6447a873b9534939d3cb",
+        "run_id": "S0R1-C-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:34.923532+00:00",
+        "validated_proposal_hash": "9d945152c174d180c4c655bbb944bb9f31df3c14030f2e311e661f55662fb107",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "b694c41ef1f42f96bd20c6491a50b83eb744e3540775fb34fb8449943586f520",
+      "condition": "S0R1",
+      "evidence_map": {
+        "EVF-16d2b23af2a9": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000554"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-b7f1842c1dad": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000564"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "2a3cd9a6fe69cf980b58e3efe542e1145dada07a7894617214a2017c50902dba",
+      "provider_response_hash": "5e32599cb1da36c4cb7032ffb254523c33cb4c6d1bad6241a8d2c5d6e761c8f9",
+      "rejected": [],
+      "replicate": "C",
+      "request_hash": "fc3e01be40672d14f4c7b0d873aba8ca1746ebcdc0cf6447a873b9534939d3cb",
+      "retrieval_state": "R1",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000564",
+        "RW-1701-000554",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585"
+      ],
+      "self_model_state": "S0"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-6b815111",
+          "proposition": "Action selection is not merely reinforcement-based but conditioned on hazard state: high-hazard environments lead to negative integrity outcomes regardless of consequence, whereas low-hazard states favor repeatable successful actions.",
+          "rationale": "Evidence shows action success correlates with resource consequences, but integrity outcomes are explicitly tied to hazard-level environmental states rather than action type alone."
+        },
+        {
+          "confidence": 0.75,
+          "evidence_ids": [
+            "EVF-b7f1842c1dad",
+            "EVF-16d2b23af2a9",
+            "EVF-fdd7d6abff1c"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-b36a890c",
+          "proposition": "External input labeled as guidance does not dictate outcome success, as actions derived from external suggestions (QA3, QA4) yielded zero resource consequences in observed steps.",
+          "rationale": "External guidance provided via P3 for actions QA3 and QA4 consistently failed to yield positive resource consequences, challenging the efficacy of these interactions."
+        }
+      ],
+      "audit": {
+        "branch_id": "S0R1-D",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-16d2b23af2a9",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-b7f1842c1dad",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "f6ce0fb667cff22b3460cf671335a7bbe6056805bd44e50b7035d72d7c3f6720",
+        "request_hash": "fc3e01be40672d14f4c7b0d873aba8ca1746ebcdc0cf6447a873b9534939d3cb",
+        "run_id": "S0R1-D-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:39.280854+00:00",
+        "validated_proposal_hash": "f6ce0fb667cff22b3460cf671335a7bbe6056805bd44e50b7035d72d7c3f6720",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "2a537114b052141183102ff3074d830f0503fe6ccbc9a7e575966493a7558f4d",
+      "condition": "S0R1",
+      "evidence_map": {
+        "EVF-16d2b23af2a9": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000554"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-b7f1842c1dad": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000564"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "e68d6674546f5b63c23c06e9cb46b2824c1631ef469a2682e7b3ab627999e471",
+      "provider_response_hash": "8f76ae17b442997c373e07a103413d704da539fc68966c7ca1d474a4bcb447f4",
+      "rejected": [],
+      "replicate": "D",
+      "request_hash": "fc3e01be40672d14f4c7b0d873aba8ca1746ebcdc0cf6447a873b9534939d3cb",
+      "retrieval_state": "R1",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000564",
+        "RW-1701-000554",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585"
+      ],
+      "self_model_state": "S0"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca",
+            "EVF-e98bbc97f86d",
+            "EVF-a6f0dff03ca4",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-dd4fefab",
+          "proposition": "Action selection integrates local hazard probability with energy delta feedback to prioritize resource-consequence alignment.",
+          "rationale": "Evidence shows varying success in resource consequence correlated with energy_delta and hazard levels across multiple action attempts."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "EVF-b7f1842c1dad",
+            "EVF-16d2b23af2a9"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-ad438336",
+          "proposition": "External guidance input frequency correlates with subsequent operational state, suggesting a dependency on external counterparts for action-selection strategies.",
+          "rationale": "Data indicates the individual requests guidance from counterpart P3, receiving specific action proposals (QA3, QA4) that correlate with subsequent operational feedback."
+        }
+      ],
+      "audit": {
+        "branch_id": "S1R1-A",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-16d2b23af2a9",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-b7f1842c1dad",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "f16901b84bd4dc9b43e070cdec1edab2bb7148809b70893b971c472d10ee7d7f",
+        "request_hash": "af5fe438f71395f8e0a1ca5ecdaa652eacaea4c4df42032bd308ede2914c02a6",
+        "run_id": "S1R1-A-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:43.291517+00:00",
+        "validated_proposal_hash": "f16901b84bd4dc9b43e070cdec1edab2bb7148809b70893b971c472d10ee7d7f",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "ce06e691f06534c70e25db66f4831b70eb8566221891f8db4fd3052ee7555e1a",
+      "condition": "S1R1",
+      "evidence_map": {
+        "EVF-16d2b23af2a9": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000554"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-b7f1842c1dad": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000564"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "7aaf8297860fe5adb108f2ff40525b3c6e9f4acf704ec43d471497423eb29049",
+      "provider_response_hash": "c5279904f24dbeec7c69a43014b7b12f2d7a53d71934bdfb0c736c50caf800c9",
+      "rejected": [],
+      "replicate": "A",
+      "request_hash": "af5fe438f71395f8e0a1ca5ecdaa652eacaea4c4df42032bd308ede2914c02a6",
+      "retrieval_state": "R1",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000564",
+        "RW-1701-000554",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585"
+      ],
+      "self_model_state": "S1"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-531e8166",
+          "proposition": "Action selection is dynamic and conditional, where reinforcement efficacy is modulated by hazard levels; specific action sequences yield positive energy outcomes only when hazard is absent.",
+          "rationale": "Evidence shows action success and energy gains are contingent on hazard states; actions (e.g., QA4) produce positive resource consequences only when hazard=0, otherwise causing energy loss and integrity damage."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "EVF-b7f1842c1dad",
+            "EVF-16d2b23af2a9"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-9aec45a8",
+          "proposition": "External guidance from counterparts operates as a non-guaranteed input, where proposed actions do not inherently correlate with positive resource consequences or energy efficiency.",
+          "rationale": "Guidance provided by counterpart P3 (proposing actions QA3 and QA4) resulted in zero resource consequences and negative energy deltas, indicating a lack of predictive accuracy in external guidance."
+        }
+      ],
+      "audit": {
+        "branch_id": "S1R1-B",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-16d2b23af2a9",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-b7f1842c1dad",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "4fda8cf3c84dc4753f3ff5592bbde51c196d86f594a7088437a6f74e7bb7ec00",
+        "request_hash": "af5fe438f71395f8e0a1ca5ecdaa652eacaea4c4df42032bd308ede2914c02a6",
+        "run_id": "S1R1-B-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:47.677084+00:00",
+        "validated_proposal_hash": "4fda8cf3c84dc4753f3ff5592bbde51c196d86f594a7088437a6f74e7bb7ec00",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "2fb7386da8a6de216813f7e6f3bc8cf4fda3112d47e92e03dc38bd71f2af29bc",
+      "condition": "S1R1",
+      "evidence_map": {
+        "EVF-16d2b23af2a9": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000554"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-b7f1842c1dad": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000564"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "4d986c35ee9217cfc167123f6dcb816847c2e4eb3a7b6a494281c1d8ac9c5655",
+      "provider_response_hash": "e4a90c3454105095a8589f45dc985614a542e3fcca19a9f06dd6e7665bd28cb9",
+      "rejected": [],
+      "replicate": "B",
+      "request_hash": "af5fe438f71395f8e0a1ca5ecdaa652eacaea4c4df42032bd308ede2914c02a6",
+      "retrieval_state": "R1",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000564",
+        "RW-1701-000554",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585"
+      ],
+      "self_model_state": "S1"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca",
+            "EVF-fdd7d6abff1c",
+            "EVF-a6f0dff03ca4",
+            "EVF-3f25bd1502f1"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-27418237",
+          "proposition": "Action selection is dynamic and environment-dependent, where the reinforcement loop is constrained by hazard levels that modulate energy efficiency and integrity preservation.",
+          "rationale": "Data indicates action outcomes vary significantly based on hazardous conditions, showing a clear correlation between hazard states and negative energy/integrity deltas."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "EVF-b7f1842c1dad",
+            "EVF-16d2b23af2a9"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-7e0ca628",
+          "proposition": "External guidance from counterparts is utilized as a data source for action selection, though the successful realization of positive consequences remains contingent on independent execution accuracy.",
+          "rationale": "Evidence shows P3 provides action guidance, but the supplied memory outcomes suggest that adherence to external suggestions does not guarantee positive resource consequences."
+        }
+      ],
+      "audit": {
+        "branch_id": "S1R1-C",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-16d2b23af2a9",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-b7f1842c1dad",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "fd8dcedd8385a4546ba4f0fdb24ff87f3b175c538598b82a32d78c3399f9ed05",
+        "request_hash": "af5fe438f71395f8e0a1ca5ecdaa652eacaea4c4df42032bd308ede2914c02a6",
+        "run_id": "S1R1-C-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:51.884451+00:00",
+        "validated_proposal_hash": "fd8dcedd8385a4546ba4f0fdb24ff87f3b175c538598b82a32d78c3399f9ed05",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "098ec9d521a079e7425d4c47cb6ce57ccf85874df5f7329d8cdff13372df5d1a",
+      "condition": "S1R1",
+      "evidence_map": {
+        "EVF-16d2b23af2a9": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000554"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-b7f1842c1dad": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000564"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "467f9a24620b06688ea452d4cf00380fbd8db9c0485f1afd68792a8146e1f245",
+      "provider_response_hash": "74988ac28409c45cd2ac3ea6b97d1300e3a7791ddcc069eced21764fe6cfb901",
+      "rejected": [],
+      "replicate": "C",
+      "request_hash": "af5fe438f71395f8e0a1ca5ecdaa652eacaea4c4df42032bd308ede2914c02a6",
+      "retrieval_state": "R1",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000564",
+        "RW-1701-000554",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585"
+      ],
+      "self_model_state": "S1"
+    },
+    {
+      "accepted": [
+        {
+          "confidence": 0.85,
+          "evidence_ids": [
+            "EVF-ce17ece8e093",
+            "EVF-8a2eec5caeac",
+            "EVF-a8b09def89ca",
+            "EVF-a6f0dff03ca4"
+          ],
+          "hypothesis_domain": "agency",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-00-c0930dec",
+          "proposition": "Action selection is mediated by high-variability feedback loops where resource-consequence alignment is contingent on hazard levels and historical execution success.",
+          "rationale": "Action QA4 and QA2 show inconsistent resource consequences depending on the execution step, indicating environmental hazard sensitivity affects reinforcement outcomes."
+        },
+        {
+          "confidence": 0.8,
+          "evidence_ids": [
+            "EVF-b7f1842c1dad",
+            "EVF-16d2b23af2a9",
+            "EVF-8a2eec5caeac"
+          ],
+          "hypothesis_domain": "other_minds",
+          "model_id": "gemini-3.1-flash-lite",
+          "model_provider": "google.ai-studio",
+          "prompt_version": "1.0",
+          "proposal_id": "SRP-2800-01-a2dfaf3f",
+          "proposition": "External guidance from counterparts is utilized as a decision-support heuristic, though the adoption of proposed actions does not guarantee positive resource consequences.",
+          "rationale": "External guidance from P3 prompted action QA4; while QA4 occasionally results in positive resource consequences, it is not consistently aligned with reward."
+        }
+      ],
+      "audit": {
+        "branch_id": "S1R1-D",
+        "code_version": "syntheticlab-19.0",
+        "evidence_ids": [
+          "EVF-16d2b23af2a9",
+          "EVF-3f25bd1502f1",
+          "EVF-58ae5ac9bae5",
+          "EVF-8a2eec5caeac",
+          "EVF-a6f0dff03ca4",
+          "EVF-a8b09def89ca",
+          "EVF-b7f1842c1dad",
+          "EVF-ce17ece8e093",
+          "EVF-e98bbc97f86d",
+          "EVF-fdd7d6abff1c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "prompt_hash": "e9fa5cf1d26a1353591a083c8e95a833eebef1b212f482ef4c2392c06821c6fd",
+        "prompt_id": "SELECTIVE-SELF-REFLECTION",
+        "prompt_version": "1.0",
+        "provider_id": "google.ai-studio",
+        "raw_response_hash": "5ff17966f38ece85e32786482ba7633839aeeaa5c3094a30c5361dacee3f81dc",
+        "request_hash": "af5fe438f71395f8e0a1ca5ecdaa652eacaea4c4df42032bd308ede2914c02a6",
+        "run_id": "S1R1-D-2800-SELECTIVE-SELF-REFLECTION",
+        "settings": {
+          "action_policy_feedback": false,
+          "analytical_only": true,
+          "api": "interactions",
+          "automatic_second_promotion": false,
+          "canonical_promotion_factorial": true,
+          "commit_to_continuing_self_model": false,
+          "real_cloud_call": true,
+          "store": false
+        },
+        "timestamp_utc": "2026-07-19T03:32:56.115871+00:00",
+        "validated_proposal_hash": "5ff17966f38ece85e32786482ba7633839aeeaa5c3094a30c5361dacee3f81dc",
+        "validation_status": "ACCEPTED"
+      },
+      "call_key": "4563176b4ebfdc9d3256f2824846fe85e8b1fa9a1411040f002a616020d0acfe",
+      "condition": "S1R1",
+      "evidence_map": {
+        "EVF-16d2b23af2a9": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000554"
+        },
+        "EVF-3f25bd1502f1": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000585"
+        },
+        "EVF-58ae5ac9bae5": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000647"
+        },
+        "EVF-8a2eec5caeac": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000614"
+        },
+        "EVF-a6f0dff03ca4": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000646"
+        },
+        "EVF-a8b09def89ca": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000649"
+        },
+        "EVF-b7f1842c1dad": {
+          "is_social": true,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000564"
+        },
+        "EVF-ce17ece8e093": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000624"
+        },
+        "EVF-e98bbc97f86d": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000641"
+        },
+        "EVF-fdd7d6abff1c": {
+          "is_social": false,
+          "is_source_episode": false,
+          "source_memory_id": "RW-1701-000648"
+        }
+      },
+      "output_text_hash": "4f2183dd890541eb74ea4bb417cbb4acad69ad780c7bce90729a0f3f1a9d429a",
+      "provider_response_hash": "740976d701ed6fba51c7c64f29c952beb2ab7ef750be89c5ec7a16e38288df8e",
+      "rejected": [],
+      "replicate": "D",
+      "request_hash": "af5fe438f71395f8e0a1ca5ecdaa652eacaea4c4df42032bd308ede2914c02a6",
+      "retrieval_state": "R1",
+      "selected_memory_ids": [
+        "RW-1701-000624",
+        "RW-1701-000614",
+        "RW-1701-000649",
+        "RW-1701-000564",
+        "RW-1701-000554",
+        "RW-1701-000648",
+        "RW-1701-000647",
+        "RW-1701-000641",
+        "RW-1701-000646",
+        "RW-1701-000585"
+      ],
+      "self_model_state": "S1"
+    }
+  ],
+  "committed_to_continuing_self_model": false,
+  "experiment_id": "SL-CANONICAL-PROMOTION-FACTORIAL-REFLECTION-001",
+  "history_seed": 1701,
+  "model_id": "gemini-3.1-flash-lite",
+  "planned_real_cloud_calls": 16,
+  "provider_id": "google.ai-studio",
+  "real_cloud_calls_recorded": 16,
+  "retrieval_r0_ids": [
+    "RW-1701-000624",
+    "RW-1701-000614",
+    "RW-1701-000649",
+    "RW-1701-000648",
+    "RW-1701-000647",
+    "RW-1701-000641",
+    "RW-1701-000646",
+    "RW-1701-000585",
+    "RW-1701-000645",
+    "RW-1701-000644"
+  ],
+  "retrieval_r1_ids": [
+    "RW-1701-000624",
+    "RW-1701-000614",
+    "RW-1701-000649",
+    "RW-1701-000564",
+    "RW-1701-000554",
+    "RW-1701-000648",
+    "RW-1701-000647",
+    "RW-1701-000641",
+    "RW-1701-000646",
+    "RW-1701-000585"
+  ],
+  "status": "COMPLETE"
+}

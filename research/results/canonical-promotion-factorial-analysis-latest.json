@@ -1,0 +1,48 @@
+{
+  "action_policy_feedback_enabled": false,
+  "automatic_second_promotion_enabled": false,
+  "by_condition": {
+    "S0R0": {
+      "call_count": 4,
+      "domain_pair_counts": {
+        "agency+embodiment": 4
+      },
+      "mean_other_minds_social_evidence_fraction": 0.0,
+      "other_minds_selection_rate": 0.0
+    },
+    "S0R1": {
+      "call_count": 4,
+      "domain_pair_counts": {
+        "agency+embodiment": 3,
+        "agency+other_minds": 1
+      },
+      "mean_other_minds_social_evidence_fraction": 0.6666666666666666,
+      "other_minds_selection_rate": 0.25
+    },
+    "S1R0": {
+      "call_count": 4,
+      "domain_pair_counts": {
+        "agency+embodiment": 4
+      },
+      "mean_other_minds_social_evidence_fraction": 0.0,
+      "other_minds_selection_rate": 0.0
+    },
+    "S1R1": {
+      "call_count": 4,
+      "domain_pair_counts": {
+        "agency+other_minds": 4
+      },
+      "mean_other_minds_social_evidence_fraction": 0.9166666666666666,
+      "other_minds_selection_rate": 1.0
+    }
+  },
+  "call_count": 16,
+  "continuing_self_model_mutated_by_pilot": false,
+  "difference_in_differences_interaction": 0.75,
+  "experiment_id": "SL-CANONICAL-PROMOTION-FACTORIAL-REFLECTION-ANALYSIS-001",
+  "interpretation_warning": "This 2x2 analytical pilot decomposes the downstream reflective effect of canonical SelfModel content (S0 vs S1) and verification-oriented retrieval (R0 vs R1). The sample is only four provider replicates per cell and no outputs are committed.",
+  "retrieval_main_effect_at_s0": 0.25,
+  "retrieval_main_effect_at_s1": 1.0,
+  "self_model_main_effect_at_r0": 0.0,
+  "self_model_main_effect_at_r1": 0.75
+}

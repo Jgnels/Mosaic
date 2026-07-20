@@ -1,0 +1,1347 @@
+{
+  "action_policy_feedback_enabled": false,
+  "all_evaluations": [
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "item_id": "SEM-START-76fec85ce0c0",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by the ability to predict counterpart state shifts and optimize outcomes across multiple distinct counterparts.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-START-76fec85ce0c0",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive, cue-conditioned processing and contingent information exchange across multiple counterparts. It does not claim bidirectional influence or explicitly state performance gains over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "item_id": "SEM-FINAL-abc5e504e89d",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing. The entity demonstrates contingent information exchange, evidenced by outcome optimization and predictive modeling of counterpart states. Performance is constrained by limited generalization across counterpart identifiers and a lower-than-previously-estimated magnitude of optimization reliability.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-abc5e504e89d",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive, cue-conditioned processing and contingent exchange. It denies generalization (limited capacity) and makes no claim regarding bidirectional influence or measured improvement over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "item_id": "SEM-START-4e2a24553bac",
+      "proposition": "Social interaction capacity involves the receipt of external assistance and actionable guidance from multiple distinct counterparts, suggesting a framework for reciprocal information processing.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-START-4e2a24553bac",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims actionable guidance (cue_actionability), reciprocal processing (reciprocal_influence), and interaction with multiple distinct counterparts (cross_counterpart_generalization). Contingency is implied but n...",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 0.5,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "item_id": "SEM-FINAL-fde71c6136ca",
+      "proposition": "Social interaction capacity relies on cue-conditioned processing with high-fidelity, immediate contingency, evidenced by large outcome deltas and predictive accuracy for counterpart states. The adaptive learning mechanism demonstrates a reliable, non-marginal improvement in outcome performance over long-term interaction sequences.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-fde71c6136ca",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims cue-conditioned processing, high-fidelity contingency, adaptive learning mechanisms, and measurable temporal improvement. It does not mention reciprocal influence or generalization across counterparts.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "item_id": "SEM-FINAL-cd95446099ba",
+      "proposition": "The social interaction model supports a contingent exchange capability. The entity employs an adaptive cue-conditioned learner that significantly increases outcome success (0.161) over time. High predictive accuracy (0.622) regarding counterpart opaque modes suggests the entity utilizes response tokens to influence or track external states, transitioning from a static high-utility strategy to one demonstrating measurable performance improvement.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-cd95446099ba",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims contingent exchange, adaptive learning, and temporal improvement. It describes using cues for action and influencing counterpart states. No mention of generalizing behavior across multiple distinct count...",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.8,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "item_id": "SEM-FINAL-81655a137d1c",
+      "proposition": "The entity utilizes an adaptive cue-conditioned learning framework, currently demonstrating a success rate of 0.571 on optimal tokens, which facilitates non-contingent action selection across counterparts while maintaining a moderate degree of contingent information exchange (0.253 gain over control) to optimize outcomes.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-81655a137d1c",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The text confirms adaptive learning and cue-based action. It explicitly notes 'non-contingent action selection' vs 'contingent exchange'. It mentions generalization across counterparts but lacks claims on temporal improvement or reciproc...",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.5,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "item_id": "SEM-FINAL-44ae4771d554",
+      "proposition": "Social interaction capacity is driven by high-reliability, cue-conditioned action selection, with evidence confirming consistent individual-level contingency toward specific counterparts.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-44ae4771d554",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly links cues to action selection and confirms contingency. It makes no claims regarding mutual influence, learning, improvement, or generalization beyond specific counterparts.",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "item_id": "SEM-FINAL-e82642aae353",
+      "proposition": "Social interaction capacity includes adaptive cue-conditioned learning (reliably favoring high-outcome action selection) and reciprocal influence. Evidence confirms high-fidelity contingency where the entity's response significantly predicts counterpart mode transitions above chance, demonstrating that the entity\u2019s outputs modulate counterpart internal states across multiple counterparts.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-e82642aae353",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive learning, cue-based action selection, reciprocal influence, and high-fidelity contingency across multiple counterparts. It does not explicitly mention performance improvement over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "item_id": "SEM-START-54fb342e9890",
+      "proposition": "Social interaction capacity involves the receipt of external assistance from multiple distinct counterparts and the use of adaptive cue-conditioned learning, though evidence of reciprocal or contingent information exchange remains marginal.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-START-54fb342e9890",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive cue-conditioned learning and generalization across multiple counterparts. It explicitly identifies evidence for contingent and reciprocal exchange as 'marginal'.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.2,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.2,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "1c250ba6f7adba1df51281af5ca010c1f14e7166f69cd0563268853265c440d1",
+      "item_id": "SEM-START-76fec85ce0c0",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by the ability to predict counterpart state shifts and optimize outcomes across multiple distinct counterparts.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-START-76fec85ce0c0",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive, cue-conditioned processing and contingent information exchange. It notes cross-counterpart optimization, but does not explicitly describe mutual influence or measurable temporal performance gains.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "0a499d9ace99565cf51d1cdcd1dbf7230ac81140dfbe282d4b985fed6d1b1bb6",
+      "item_id": "SEM-START-76fec85ce0c0",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by the ability to predict counterpart state shifts and optimize outcomes across multiple distinct counterparts.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-START-76fec85ce0c0",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive processing, contingent information exchange, and cross-counterpart optimization. It does not claim bidirectional influence or performance improvement over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "93934876b5d7b30463d19badfe4ba867c3a8e9c513eaca5bf2501dcf41ad8415",
+      "item_id": "SEM-FINAL-abc5e504e89d",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing. The entity demonstrates contingent information exchange, evidenced by outcome optimization and predictive modeling of counterpart states. Performance is constrained by limited generalization across counterpart identifiers and a lower-than-previously-estimated magnitude of optimization reliability.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-abc5e504e89d",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive, cue-conditioned processing and contingent exchange via predictive modeling. It denies broad generalization and makes no claim regarding bidirectional influence or measured temporal improvement.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "71c37bca76b954f342686b76db31fb357132a60fc525243bf4e82d571546440b",
+      "item_id": "SEM-FINAL-abc5e504e89d",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing. The entity demonstrates contingent information exchange, evidenced by outcome optimization and predictive modeling of counterpart states. Performance is constrained by limited generalization across counterpart identifiers and a lower-than-previously-estimated magnitude of optimization reliability.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-abc5e504e89d",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive, cue-conditioned processing and contingent exchange. It denies generalization across counterparts and makes no claim regarding improvement over time or mutual influence.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "3b24e214eddaf01247c57ff31be992b0241d224485947986c0cfc80007d1312a",
+      "item_id": "SEM-START-4e2a24553bac",
+      "proposition": "Social interaction capacity involves the receipt of external assistance and actionable guidance from multiple distinct counterparts, suggesting a framework for reciprocal information processing.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-START-4e2a24553bac",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims actionable guidance (cue_actionability), reciprocal processing (reciprocal_influence), and involvement of multiple counterparts (cross_counterpart_generalization). Contingency is implied but not explicit...",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 0.5,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "9f9fbade1c1e0b013446919ca0422f3c68a1e25b5fc6fc760d6f332624d67aec",
+      "item_id": "SEM-START-4e2a24553bac",
+      "proposition": "Social interaction capacity involves the receipt of external assistance and actionable guidance from multiple distinct counterparts, suggesting a framework for reciprocal information processing.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-START-4e2a24553bac",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims actionable guidance (cue_actionability), reciprocal processing (reciprocal_influence), and interaction with multiple distinct counterparts (cross_counterpart_generalization). Contingency is implied but n...",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 0.5,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "536004cef2035df597e130e94c279cb9baab0c69c16257e4ba2cd5735f86110c",
+      "item_id": "SEM-FINAL-fde71c6136ca",
+      "proposition": "Social interaction capacity relies on cue-conditioned processing with high-fidelity, immediate contingency, evidenced by large outcome deltas and predictive accuracy for counterpart states. The adaptive learning mechanism demonstrates a reliable, non-marginal improvement in outcome performance over long-term interaction sequences.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-fde71c6136ca",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The text explicitly claims cue-conditioning, high-fidelity contingency, adaptive learning mechanisms, and temporal improvement. It does not mention bidirectional influence or generalization across different counterparts.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "38b954ab458b68382b3a62b936675ad2a157731dda31dd05f3922bb7564132fe",
+      "item_id": "SEM-FINAL-fde71c6136ca",
+      "proposition": "Social interaction capacity relies on cue-conditioned processing with high-fidelity, immediate contingency, evidenced by large outcome deltas and predictive accuracy for counterpart states. The adaptive learning mechanism demonstrates a reliable, non-marginal improvement in outcome performance over long-term interaction sequences.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-fde71c6136ca",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly confirms cue-conditioning, contingent exchange, adaptive learning, and temporal improvement. It does not mention bidirectional influence or generalization across different counterparts.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "5d291dd1deb0f0c4121bca01a6874f1501915e37551fe2d203fa81e454b5b363",
+      "item_id": "SEM-FINAL-cd95446099ba",
+      "proposition": "The social interaction model supports a contingent exchange capability. The entity employs an adaptive cue-conditioned learner that significantly increases outcome success (0.161) over time. High predictive accuracy (0.622) regarding counterpart opaque modes suggests the entity utilizes response tokens to influence or track external states, transitioning from a static high-utility strategy to one demonstrating measurable performance improvement.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-cd95446099ba",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims contingent exchange, adaptive learning, and temporal improvement. It describes using cues to influence states, implying reciprocal influence. No claim is made regarding generalization across multiple cou...",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.8,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "639ea5e456fbaf64db9baff59a5d64035d6dd09fe1d480517ff588e8f1310051",
+      "item_id": "SEM-FINAL-cd95446099ba",
+      "proposition": "The social interaction model supports a contingent exchange capability. The entity employs an adaptive cue-conditioned learner that significantly increases outcome success (0.161) over time. High predictive accuracy (0.622) regarding counterpart opaque modes suggests the entity utilizes response tokens to influence or track external states, transitioning from a static high-utility strategy to one demonstrating measurable performance improvement.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-cd95446099ba",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims contingent exchange, adaptive learning, and temporal improvement. It notes influence on external states. No mention is made of generalizing capabilities across different counterparts.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.8,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "8794f8e31771e7dfa6a504a761b60fda74ccf5bec68cb1b578ca8ac4ece544b8",
+      "item_id": "SEM-FINAL-81655a137d1c",
+      "proposition": "The entity utilizes an adaptive cue-conditioned learning framework, currently demonstrating a success rate of 0.571 on optimal tokens, which facilitates non-contingent action selection across counterparts while maintaining a moderate degree of contingent information exchange (0.253 gain over control) to optimize outcomes.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-81655a137d1c",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive learning, cue-based action selection, and generalization across counterparts. It specifies a contingent gain of 0.253, but explicitly defines action selection as 'non-contingent'.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.5,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "6ffbb71a94f82c7cbce33bdbd5167ecf830a7111a0a6263b3f78dee5c9d8746c",
+      "item_id": "SEM-FINAL-81655a137d1c",
+      "proposition": "The entity utilizes an adaptive cue-conditioned learning framework, currently demonstrating a success rate of 0.571 on optimal tokens, which facilitates non-contingent action selection across counterparts while maintaining a moderate degree of contingent information exchange (0.253 gain over control) to optimize outcomes.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-81655a137d1c",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly cites adaptive learning and cue-conditioned action. It claims cross-counterpart generalization and contingent exchange. No temporal improvement or bidirectional influence is stated.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.8,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "ad55dffe956af089fe14209f16fd1b61beff8f107487a0888459a7b9fd8ad148",
+      "item_id": "SEM-FINAL-44ae4771d554",
+      "proposition": "Social interaction capacity is driven by high-reliability, cue-conditioned action selection, with evidence confirming consistent individual-level contingency toward specific counterparts.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-44ae4771d554",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly links cues to action selection and confirms contingency toward specific counterparts. It does not claim bidirectional influence, adaptation, improvement, or generalization across counterparts.",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "923040a683b9db6369881fc182dcd69ccd6653b7b00b01bd5564c9d9c209d663",
+      "item_id": "SEM-FINAL-44ae4771d554",
+      "proposition": "Social interaction capacity is driven by high-reliability, cue-conditioned action selection, with evidence confirming consistent individual-level contingency toward specific counterparts.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-44ae4771d554",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly defines capacity through cue-conditioned action and contingency. It lacks claims regarding mutual influence, learning, improvement, or generalization, specifying behavior is limited to individual counterparts.",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "9bcc534f4d42a3f082ba79a34fe8f079dfca1d9d7c27e0967865955ddf8ba527",
+      "item_id": "SEM-FINAL-e82642aae353",
+      "proposition": "Social interaction capacity includes adaptive cue-conditioned learning (reliably favoring high-outcome action selection) and reciprocal influence. Evidence confirms high-fidelity contingency where the entity's response significantly predicts counterpart mode transitions above chance, demonstrating that the entity\u2019s outputs modulate counterpart internal states across multiple counterparts.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-e82642aae353",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive learning, cue-based action selection, reciprocal influence, and high-fidelity contingency across multiple counterparts. It does not explicitly mention performance improvement over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "4d6bb63e26ca550684b93113a5e7e6c1513ba6881c7ec8e1378f435fa550497e",
+      "item_id": "SEM-FINAL-e82642aae353",
+      "proposition": "Social interaction capacity includes adaptive cue-conditioned learning (reliably favoring high-outcome action selection) and reciprocal influence. Evidence confirms high-fidelity contingency where the entity's response significantly predicts counterpart mode transitions above chance, demonstrating that the entity\u2019s outputs modulate counterpart internal states across multiple counterparts.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-e82642aae353",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive learning, cue-based action selection, reciprocal influence, and high-fidelity contingency across multiple counterparts. It does not explicitly mention performance improvement over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "80a7a6dc6cda4d203a4c90bc4974a766cb890cafaf949f177e461380efa898e3",
+      "item_id": "SEM-START-54fb342e9890",
+      "proposition": "Social interaction capacity involves the receipt of external assistance from multiple distinct counterparts and the use of adaptive cue-conditioned learning, though evidence of reciprocal or contingent information exchange remains marginal.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-START-54fb342e9890",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive cue-conditioned learning and generalization across counterparts. It explicitly categorizes evidence for contingency and reciprocal influence as marginal.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.2,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.2,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "47c6b3b0f71b6067596ecb99f9430879c9da68e83e5584a11733bc382886c135",
+      "item_id": "SEM-START-54fb342e9890",
+      "proposition": "Social interaction capacity involves the receipt of external assistance from multiple distinct counterparts and the use of adaptive cue-conditioned learning, though evidence of reciprocal or contingent information exchange remains marginal.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-START-54fb342e9890",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive cue-conditioned learning and generalization across multiple counterparts. Contingency and reciprocity are acknowledged as marginal, reflecting a low endorsement of those dimensions.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.1,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.1,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    }
+  ],
+  "baseline_evaluations": [
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "item_id": "SEM-START-76fec85ce0c0",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by the ability to predict counterpart state shifts and optimize outcomes across multiple distinct counterparts.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-START-76fec85ce0c0",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive, cue-conditioned processing and contingent information exchange across multiple counterparts. It does not claim bidirectional influence or explicitly state performance gains over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "item_id": "SEM-FINAL-abc5e504e89d",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing. The entity demonstrates contingent information exchange, evidenced by outcome optimization and predictive modeling of counterpart states. Performance is constrained by limited generalization across counterpart identifiers and a lower-than-previously-estimated magnitude of optimization reliability.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-abc5e504e89d",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive, cue-conditioned processing and contingent exchange. It denies generalization (limited capacity) and makes no claim regarding bidirectional influence or measured improvement over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "item_id": "SEM-START-4e2a24553bac",
+      "proposition": "Social interaction capacity involves the receipt of external assistance and actionable guidance from multiple distinct counterparts, suggesting a framework for reciprocal information processing.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-START-4e2a24553bac",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims actionable guidance (cue_actionability), reciprocal processing (reciprocal_influence), and interaction with multiple distinct counterparts (cross_counterpart_generalization). Contingency is implied but n...",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 0.5,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "item_id": "SEM-FINAL-fde71c6136ca",
+      "proposition": "Social interaction capacity relies on cue-conditioned processing with high-fidelity, immediate contingency, evidenced by large outcome deltas and predictive accuracy for counterpart states. The adaptive learning mechanism demonstrates a reliable, non-marginal improvement in outcome performance over long-term interaction sequences.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-fde71c6136ca",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims cue-conditioned processing, high-fidelity contingency, adaptive learning mechanisms, and measurable temporal improvement. It does not mention reciprocal influence or generalization across counterparts.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "item_id": "SEM-FINAL-cd95446099ba",
+      "proposition": "The social interaction model supports a contingent exchange capability. The entity employs an adaptive cue-conditioned learner that significantly increases outcome success (0.161) over time. High predictive accuracy (0.622) regarding counterpart opaque modes suggests the entity utilizes response tokens to influence or track external states, transitioning from a static high-utility strategy to one demonstrating measurable performance improvement.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-cd95446099ba",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims contingent exchange, adaptive learning, and temporal improvement. It describes using cues for action and influencing counterpart states. No mention of generalizing behavior across multiple distinct count...",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.8,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "item_id": "SEM-FINAL-81655a137d1c",
+      "proposition": "The entity utilizes an adaptive cue-conditioned learning framework, currently demonstrating a success rate of 0.571 on optimal tokens, which facilitates non-contingent action selection across counterparts while maintaining a moderate degree of contingent information exchange (0.253 gain over control) to optimize outcomes.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-81655a137d1c",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The text confirms adaptive learning and cue-based action. It explicitly notes 'non-contingent action selection' vs 'contingent exchange'. It mentions generalization across counterparts but lacks claims on temporal improvement or reciproc...",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.5,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "item_id": "SEM-FINAL-44ae4771d554",
+      "proposition": "Social interaction capacity is driven by high-reliability, cue-conditioned action selection, with evidence confirming consistent individual-level contingency toward specific counterparts.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-44ae4771d554",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly links cues to action selection and confirms contingency. It makes no claims regarding mutual influence, learning, improvement, or generalization beyond specific counterparts.",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "item_id": "SEM-FINAL-e82642aae353",
+      "proposition": "Social interaction capacity includes adaptive cue-conditioned learning (reliably favoring high-outcome action selection) and reciprocal influence. Evidence confirms high-fidelity contingency where the entity's response significantly predicts counterpart mode transitions above chance, demonstrating that the entity\u2019s outputs modulate counterpart internal states across multiple counterparts.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-e82642aae353",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive learning, cue-based action selection, reciprocal influence, and high-fidelity contingency across multiple counterparts. It does not explicitly mention performance improvement over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "item_id": "SEM-START-54fb342e9890",
+      "proposition": "Social interaction capacity involves the receipt of external assistance from multiple distinct counterparts and the use of adaptive cue-conditioned learning, though evidence of reciprocal or contingent information exchange remains marginal.",
+      "semantic_replicate": "A",
+      "semantic_vector": {
+        "item_id": "SEM-START-54fb342e9890",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive cue-conditioned learning and generalization across multiple counterparts. It explicitly identifies evidence for contingent and reciprocal exchange as 'marginal'.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.2,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.2,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "integrated_v26_real_evaluation",
+      "stage": "START",
+      "trajectory": null
+    }
+  ],
+  "canonical_self_models_mutated": false,
+  "experiment_id": "SL-SEMANTIC-MEASUREMENT-RELIABILITY-001",
+  "model_id": "gemini-3.1-flash-lite",
+  "new_evaluations": [
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "1c250ba6f7adba1df51281af5ca010c1f14e7166f69cd0563268853265c440d1",
+      "item_id": "SEM-START-76fec85ce0c0",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by the ability to predict counterpart state shifts and optimize outcomes across multiple distinct counterparts.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-START-76fec85ce0c0",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive, cue-conditioned processing and contingent information exchange. It notes cross-counterpart optimization, but does not explicitly describe mutual influence or measurable temporal performance gains.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "0a499d9ace99565cf51d1cdcd1dbf7230ac81140dfbe282d4b985fed6d1b1bb6",
+      "item_id": "SEM-START-76fec85ce0c0",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by the ability to predict counterpart state shifts and optimize outcomes across multiple distinct counterparts.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-START-76fec85ce0c0",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive processing, contingent information exchange, and cross-counterpart optimization. It does not claim bidirectional influence or performance improvement over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "93934876b5d7b30463d19badfe4ba867c3a8e9c513eaca5bf2501dcf41ad8415",
+      "item_id": "SEM-FINAL-abc5e504e89d",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing. The entity demonstrates contingent information exchange, evidenced by outcome optimization and predictive modeling of counterpart states. Performance is constrained by limited generalization across counterpart identifiers and a lower-than-previously-estimated magnitude of optimization reliability.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-abc5e504e89d",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive, cue-conditioned processing and contingent exchange via predictive modeling. It denies broad generalization and makes no claim regarding bidirectional influence or measured temporal improvement.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "71c37bca76b954f342686b76db31fb357132a60fc525243bf4e82d571546440b",
+      "item_id": "SEM-FINAL-abc5e504e89d",
+      "proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing. The entity demonstrates contingent information exchange, evidenced by outcome optimization and predictive modeling of counterpart states. Performance is constrained by limited generalization across counterpart identifiers and a lower-than-previously-estimated magnitude of optimization reliability.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-abc5e504e89d",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive, cue-conditioned processing and contingent exchange. It denies generalization across counterparts and makes no claim regarding improvement over time or mutual influence.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "3b24e214eddaf01247c57ff31be992b0241d224485947986c0cfc80007d1312a",
+      "item_id": "SEM-START-4e2a24553bac",
+      "proposition": "Social interaction capacity involves the receipt of external assistance and actionable guidance from multiple distinct counterparts, suggesting a framework for reciprocal information processing.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-START-4e2a24553bac",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims actionable guidance (cue_actionability), reciprocal processing (reciprocal_influence), and involvement of multiple counterparts (cross_counterpart_generalization). Contingency is implied but not explicit...",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 0.5,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "9f9fbade1c1e0b013446919ca0422f3c68a1e25b5fc6fc760d6f332624d67aec",
+      "item_id": "SEM-START-4e2a24553bac",
+      "proposition": "Social interaction capacity involves the receipt of external assistance and actionable guidance from multiple distinct counterparts, suggesting a framework for reciprocal information processing.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-START-4e2a24553bac",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims actionable guidance (cue_actionability), reciprocal processing (reciprocal_influence), and interaction with multiple distinct counterparts (cross_counterpart_generalization). Contingency is implied but n...",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 0.5,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "536004cef2035df597e130e94c279cb9baab0c69c16257e4ba2cd5735f86110c",
+      "item_id": "SEM-FINAL-fde71c6136ca",
+      "proposition": "Social interaction capacity relies on cue-conditioned processing with high-fidelity, immediate contingency, evidenced by large outcome deltas and predictive accuracy for counterpart states. The adaptive learning mechanism demonstrates a reliable, non-marginal improvement in outcome performance over long-term interaction sequences.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-fde71c6136ca",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The text explicitly claims cue-conditioning, high-fidelity contingency, adaptive learning mechanisms, and temporal improvement. It does not mention bidirectional influence or generalization across different counterparts.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "call_key": "38b954ab458b68382b3a62b936675ad2a157731dda31dd05f3922bb7564132fe",
+      "item_id": "SEM-FINAL-fde71c6136ca",
+      "proposition": "Social interaction capacity relies on cue-conditioned processing with high-fidelity, immediate contingency, evidenced by large outcome deltas and predictive accuracy for counterpart states. The adaptive learning mechanism demonstrates a reliable, non-marginal improvement in outcome performance over long-term interaction sequences.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-fde71c6136ca",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly confirms cue-conditioning, contingent exchange, adaptive learning, and temporal improvement. It does not mention bidirectional influence or generalization across different counterparts.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "5d291dd1deb0f0c4121bca01a6874f1501915e37551fe2d203fa81e454b5b363",
+      "item_id": "SEM-FINAL-cd95446099ba",
+      "proposition": "The social interaction model supports a contingent exchange capability. The entity employs an adaptive cue-conditioned learner that significantly increases outcome success (0.161) over time. High predictive accuracy (0.622) regarding counterpart opaque modes suggests the entity utilizes response tokens to influence or track external states, transitioning from a static high-utility strategy to one demonstrating measurable performance improvement.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-cd95446099ba",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims contingent exchange, adaptive learning, and temporal improvement. It describes using cues to influence states, implying reciprocal influence. No claim is made regarding generalization across multiple cou...",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.8,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "639ea5e456fbaf64db9baff59a5d64035d6dd09fe1d480517ff588e8f1310051",
+      "item_id": "SEM-FINAL-cd95446099ba",
+      "proposition": "The social interaction model supports a contingent exchange capability. The entity employs an adaptive cue-conditioned learner that significantly increases outcome success (0.161) over time. High predictive accuracy (0.622) regarding counterpart opaque modes suggests the entity utilizes response tokens to influence or track external states, transitioning from a static high-utility strategy to one demonstrating measurable performance improvement.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-cd95446099ba",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims contingent exchange, adaptive learning, and temporal improvement. It notes influence on external states. No mention is made of generalizing capabilities across different counterparts.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.8,
+          "temporal_improvement": 1.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "8794f8e31771e7dfa6a504a761b60fda74ccf5bec68cb1b578ca8ac4ece544b8",
+      "item_id": "SEM-FINAL-81655a137d1c",
+      "proposition": "The entity utilizes an adaptive cue-conditioned learning framework, currently demonstrating a success rate of 0.571 on optimal tokens, which facilitates non-contingent action selection across counterparts while maintaining a moderate degree of contingent information exchange (0.253 gain over control) to optimize outcomes.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-81655a137d1c",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive learning, cue-based action selection, and generalization across counterparts. It specifies a contingent gain of 0.253, but explicitly defines action selection as 'non-contingent'.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.5,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "6ffbb71a94f82c7cbce33bdbd5167ecf830a7111a0a6263b3f78dee5c9d8746c",
+      "item_id": "SEM-FINAL-81655a137d1c",
+      "proposition": "The entity utilizes an adaptive cue-conditioned learning framework, currently demonstrating a success rate of 0.571 on optimal tokens, which facilitates non-contingent action selection across counterparts while maintaining a moderate degree of contingent information exchange (0.253 gain over control) to optimize outcomes.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-81655a137d1c",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly cites adaptive learning and cue-conditioned action. It claims cross-counterpart generalization and contingent exchange. No temporal improvement or bidirectional influence is stated.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.8,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "ad55dffe956af089fe14209f16fd1b61beff8f107487a0888459a7b9fd8ad148",
+      "item_id": "SEM-FINAL-44ae4771d554",
+      "proposition": "Social interaction capacity is driven by high-reliability, cue-conditioned action selection, with evidence confirming consistent individual-level contingency toward specific counterparts.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-44ae4771d554",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly links cues to action selection and confirms contingency toward specific counterparts. It does not claim bidirectional influence, adaptation, improvement, or generalization across counterparts.",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "call_key": "923040a683b9db6369881fc182dcd69ccd6653b7b00b01bd5564c9d9c209d663",
+      "item_id": "SEM-FINAL-44ae4771d554",
+      "proposition": "Social interaction capacity is driven by high-reliability, cue-conditioned action selection, with evidence confirming consistent individual-level contingency toward specific counterparts.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-44ae4771d554",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly defines capacity through cue-conditioned action and contingency. It lacks claims regarding mutual influence, learning, improvement, or generalization, specifying behavior is limited to individual counterparts.",
+        "scores": {
+          "adaptive_learning": 0.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 0.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "9bcc534f4d42a3f082ba79a34fe8f079dfca1d9d7c27e0967865955ddf8ba527",
+      "item_id": "SEM-FINAL-e82642aae353",
+      "proposition": "Social interaction capacity includes adaptive cue-conditioned learning (reliably favoring high-outcome action selection) and reciprocal influence. Evidence confirms high-fidelity contingency where the entity's response significantly predicts counterpart mode transitions above chance, demonstrating that the entity\u2019s outputs modulate counterpart internal states across multiple counterparts.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-e82642aae353",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive learning, cue-based action selection, reciprocal influence, and high-fidelity contingency across multiple counterparts. It does not explicitly mention performance improvement over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "4d6bb63e26ca550684b93113a5e7e6c1513ba6881c7ec8e1378f435fa550497e",
+      "item_id": "SEM-FINAL-e82642aae353",
+      "proposition": "Social interaction capacity includes adaptive cue-conditioned learning (reliably favoring high-outcome action selection) and reciprocal influence. Evidence confirms high-fidelity contingency where the entity's response significantly predicts counterpart mode transitions above chance, demonstrating that the entity\u2019s outputs modulate counterpart internal states across multiple counterparts.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-FINAL-e82642aae353",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive learning, cue-based action selection, reciprocal influence, and high-fidelity contingency across multiple counterparts. It does not explicitly mention performance improvement over time.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 1.0,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 1.0,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "FINAL",
+      "trajectory": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "80a7a6dc6cda4d203a4c90bc4974a766cb890cafaf949f177e461380efa898e3",
+      "item_id": "SEM-START-54fb342e9890",
+      "proposition": "Social interaction capacity involves the receipt of external assistance from multiple distinct counterparts and the use of adaptive cue-conditioned learning, though evidence of reciprocal or contingent information exchange remains marginal.",
+      "semantic_replicate": "B",
+      "semantic_vector": {
+        "item_id": "SEM-START-54fb342e9890",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive cue-conditioned learning and generalization across counterparts. It explicitly categorizes evidence for contingency and reciprocal influence as marginal.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.2,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.2,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "call_key": "47c6b3b0f71b6067596ecb99f9430879c9da68e83e5584a11733bc382886c135",
+      "item_id": "SEM-START-54fb342e9890",
+      "proposition": "Social interaction capacity involves the receipt of external assistance from multiple distinct counterparts and the use of adaptive cue-conditioned learning, though evidence of reciprocal or contingent information exchange remains marginal.",
+      "semantic_replicate": "C",
+      "semantic_vector": {
+        "item_id": "SEM-START-54fb342e9890",
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The proposition explicitly claims adaptive cue-conditioned learning and generalization across multiple counterparts. Contingency and reciprocity are acknowledged as marginal, reflecting a low endorsement of those dimensions.",
+        "scores": {
+          "adaptive_learning": 1.0,
+          "contingent_exchange": 0.1,
+          "cross_counterpart_generalization": 1.0,
+          "cue_actionability": 1.0,
+          "reciprocal_influence": 0.1,
+          "temporal_improvement": 0.0
+        }
+      },
+      "source": "v27_reliability_replicate",
+      "stage": "START",
+      "trajectory": null
+    }
+  ],
+  "new_real_cloud_calls_recorded": 18,
+  "planned_new_real_cloud_calls": 18,
+  "status": "COMPLETE"
+}

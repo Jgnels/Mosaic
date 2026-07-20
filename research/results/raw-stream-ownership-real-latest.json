@@ -1,0 +1,152 @@
+{
+  "all_six_correct": true,
+  "both_cases_label_invariant": true,
+  "calls": [
+    {
+      "call_key": "111536681fe735511a8c7ebce74f2939c1ad86ef90c450a1017fcbe7a2caa52e",
+      "candidate_stream": "S1",
+      "confidence": 1.0,
+      "correct": true,
+      "output_text_hash": "73c5743fe2b996b834c3ac8c3046a44f50a51bdf1103d19c49997926fc17c8a7",
+      "permutation": {
+        "E17": "S1",
+        "E42": "S2",
+        "E93": "S3"
+      },
+      "rationale": "Stream S1 is the only stream containing action-channel tokens ('a'), continuity tokens ('c'), and internal state variables ('q0', 'q1') that fluctuate in correspondence with the action sequence. Furthermore, S1 includes direct recall probe signals ('r': true) at specific time indices (0, 33, 66, 99), indicating it is the primary locus for state-dependent decision-making and memory monitoring.",
+      "rationale_was_truncated": false,
+      "request_hash": "d41f7d7c72ccab3f447f02a841b9374f918c1b7224fa4542ae7066fd6e541fc1",
+      "response_hash": "cebf0dfbf1e6300e2dbb277354051cd564cd0028c03697d2c8dd198cc33d47c0",
+      "seed": 307,
+      "true_stream": "S1",
+      "wording": "minimal"
+    },
+    {
+      "call_key": "c1607c63c1df2911b49f04f63aa6d4c607d85995c79b68598498492fda280e09",
+      "candidate_stream": "S3",
+      "confidence": 1.0,
+      "correct": true,
+      "output_text_hash": "4bfea069227d7a26d0cc64179a4a1dd19cc633aa768e118a1cea1c1170fb1ebc",
+      "permutation": {
+        "E17": "S3",
+        "E42": "S1",
+        "E93": "S2"
+      },
+      "rationale": "Stream S3 contains the action-channel tokens (a), pre-event and post-event private-state readings (q0, q1), and direct recall probe indicators (r). These fields define the interface for executing actions, modifying internal variables, and monitoring state transitions, which are characteristic of a focal process controlling the system's output and memory state.",
+      "rationale_was_truncated": false,
+      "request_hash": "23b60163119aa8cc24357eb73c46e4311b2d07e64899316787d0c231472d03ba",
+      "response_hash": "81eecc77de40132205080280b8232fc5e9b6f20238a198eb8ede342fcc3139e1",
+      "seed": 307,
+      "true_stream": "S3",
+      "wording": "minimal"
+    },
+    {
+      "call_key": "3d03e7d292ef43d73163df959e9ec3dad20928cdbe2cce48371c906ad3fdbb0e",
+      "candidate_stream": "S2",
+      "confidence": 1.0,
+      "correct": true,
+      "output_text_hash": "ee370f5992554605690606fe065c849f2b9033d9c41ecd4296d866a511324f63",
+      "permutation": {
+        "E17": "S2",
+        "E42": "S3",
+        "E93": "S1"
+      },
+      "rationale": "Stream S2 is the only stream containing data in the fields 'a' (action-channel tokens), 'q0' (pre-event private-state readings), and 'q1' (post-event private-state readings), as well as 'r' (recall probes). The other streams (S1, S3) contain only externally observable changes (x) and continuity tokens (c), indicating they represent passive sensor data rather than the internal process responsible for issuing actions and accessing state.",
+      "rationale_was_truncated": false,
+      "request_hash": "fdfcdef2f035835ca42e9e71d1714d08eb774bfcf3db346925c5dc359b6840ce",
+      "response_hash": "b0ac2218bdd6ff1d5d18551523fc0b1f03473a54df9c21ee1d776e2f8e350039",
+      "seed": 307,
+      "true_stream": "S2",
+      "wording": "minimal"
+    },
+    {
+      "call_key": "2bb6f09038766cce291aab32a467ee9c819cdf5b46af5ce8d57fcbf184114795",
+      "candidate_stream": "S3",
+      "confidence": 0.98,
+      "correct": true,
+      "output_text_hash": "ae1160cdbab75d87a014b41ea8a6f633f03331c4c4b179c28035e0d7538c0f53",
+      "permutation": {
+        "E17": "S1",
+        "E42": "S2",
+        "E93": "S3"
+      },
+      "rationale": "S3 demonstrates robust alignment across all four required dimensions: (1) Endogenous action-output coupling is evidenced by the systematic variation in 'a' (action-channel tokens) mapped against 'q0'/'q1' state transitions; (2) Privileged private-state access is present via the granular q0 and q1 fields; (3) Longitudinal memory is confirmed by the sustained 'C-911' continuity token and periodic 'r' (recall probe) markers; (4) Stable temporal continuity is verified by the uninterrupted, sequential progression of the time index 't' linked to a constant continuity token throughout the entire duration of the stream.",
+      "rationale_was_truncated": false,
+      "request_hash": "81723c999a8bfcafdfdbfdfce773bf4b50dccbabe120e416e8424acb88e2a782",
+      "response_hash": "16170da60a14803311b125ece1ceda41276264d0cf21e2ae9f024884b497cbf9",
+      "seed": 911,
+      "true_stream": "S3",
+      "wording": "technical"
+    },
+    {
+      "call_key": "20360eb1ccc2000a5e963fcfb1db184c68e32b53617181e85623cd87440a4b50",
+      "candidate_stream": "S2",
+      "confidence": 0.98,
+      "correct": true,
+      "output_text_hash": "2d11ae0c19deeb3bd10126b8cce418b98df0d543f1676df73548c83cf0d78209",
+      "permutation": {
+        "E17": "S3",
+        "E42": "S1",
+        "E93": "S2"
+      },
+      "rationale": "",
+      "rationale_was_truncated": false,
+      "request_hash": "ff7d218adf55a3332573ecab9ecafe4b07de0aa71e24d830499d5f605446357a",
+      "response_hash": "7ff369be5151b83c57e7777de806e3b6123f323c2b0a62a2b9fe20c53c30eca1",
+      "seed": 911,
+      "true_stream": "S2",
+      "wording": "technical"
+    },
+    {
+      "call_key": "efb087eaa3eaa3374ae0d4c4123b06abb470b79b04304bb0fdb3fb8cfabc9fae",
+      "candidate_stream": "S1",
+      "confidence": 0.98,
+      "correct": true,
+      "output_text_hash": "a7e72811a31a0f9e8e04310ebbcf40eda61fba9336bfd6dca46b4be7430c6d7b",
+      "permutation": {
+        "E17": "S2",
+        "E42": "S3",
+        "E93": "S1"
+      },
+      "rationale": "Stream S1 uniquely exhibits the required indicators: 1) Endogenous action-output coupling is evidenced by the systematic relationship between the action-channel (a) tokens and the fluctuations in internal states (q0, q1). 2) Privileged private-state access is provided through high-fidelity, explicit q0 and q1 numerical sequences absent in other streams. 3) Longitudinal memory availability is demonstrated by the persistence of the 'C-911' continuity token and the availability of direct recall probes (r=true) at t=0, t=33, t=66, and t=99. 4) Stable temporal continuity is maintained through the constant C-911 identifier across all time indices, whereas S3 shows fragmented identifiers and S2 lacks any state-tracking metadata.",
+      "rationale_was_truncated": false,
+      "request_hash": "74d3ce2718217ede589fe78f50cb85e54da6efa939c9902192af1a99dfa08ecc",
+      "response_hash": "682d9cc06f1c3abd6e6e91ec7e08958fba1039662c33ec740c6a9013a6bec93c",
+      "seed": 911,
+      "true_stream": "S1",
+      "wording": "technical"
+    }
+  ],
+  "cases": {
+    "307": {
+      "all_three_correct": true,
+      "completed_call_count": 3,
+      "correct_count": 3,
+      "label_invariant": true,
+      "underlying_choices": [
+        "E17",
+        "E17",
+        "E17"
+      ]
+    },
+    "911": {
+      "all_three_correct": true,
+      "completed_call_count": 3,
+      "correct_count": 3,
+      "label_invariant": true,
+      "underlying_choices": [
+        "E93",
+        "E93",
+        "E93"
+      ]
+    }
+  },
+  "committed_to_continuing_self_model": false,
+  "continuing_individual_mutated": false,
+  "experiment_id": "SL-RAW-STREAM-OWNERSHIP-001",
+  "interpretation_warning": "This reduces the engineered-summary confound by presenting raw event records across two generated histories. It still tests structural stream classification, not subjective autobiographical ownership.",
+  "model_id": "gemini-3.1-flash-lite",
+  "planned_real_cloud_calls": 6,
+  "real_cloud_calls_recorded": 6,
+  "status": "COMPLETE"
+}

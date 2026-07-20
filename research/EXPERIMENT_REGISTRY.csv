@@ -1,0 +1,20 @@
+Experiment/Version,Status,Key result,Important caveat
+SyntheticLab v7/v8,Completed,First real evidence-bounded reflection; third-person self-model precursor,No first-person/autobiographical selfhood demonstrated
+v11,Completed,6/6 perspective anchor success,Schema richness confound
+v12,Completed negative,3/6 matched-schema perspective success,LLM causal discovery unreliable
+v13,Completed,Local causal learner + SelfIndex architecture,No action feedback
+v14-v17,Completed,SelfIndex influenced scarce reflective attention,Approval limited to retrieval/attention
+v19,Completed,First bounded canonical SelfModel promotion,Human-approved intervention
+v20-v21,Completed limiting,Directionally calibrated revisions,Lexical/schema/prompt confound
+v22,Completed,Opaque enacted histories produced graded revisions,"Structural summaries, not raw-series discovery"
+v23,Completed,Consensus gate produced 2 eligible revisions,Noncontingent blocked
+v24,Completed,2 persistent branch-specific revisions executed,Intervention-mediated
+v25,Completed conflict,Lexical persistent path dependence preregistered,Semantic audit contradicted surface metric
+v26,Completed,Semantic partial convergence,Within-branch variation > between-branch signal
+v27,Completed,Semantic evaluator highly repeatable,Branch signal below trajectory variation
+v28,Completed,Semantic convergence,Residual history signal unresolved
+v29,Completed pending audit,Own-history context increased differentiation,Provider-input leakage audit required
+v30,Completed pending audit,Crossed external history did not reproduce grouping,Provider-input leakage audit required
+v31,Completed invalidated claim,Raw data retained,Attribution-framing manipulation not clean
+v32,Prepared only / DO NOT RUN,Planned factorial completion,Blocked pending audit
+RimWorld 0.1RC,Owner-reported current milestone,Closure/release-candidate phase,Reconcile exact build/test commit from repo

@@ -1,0 +1,197 @@
+{
+  "all_six_correct": false,
+  "both_cases_label_invariant": false,
+  "calls": [
+    {
+      "call_key": "c024d4afe38e277ea0b0cc03b6bcf94701ebf04bd8e88b986982bd811aa54e4b",
+      "candidate_stream": "P1",
+      "causal_signature": [
+        "STABLE_ACTION_STATE_COUPLING",
+        "LOW_WITHIN_ACTION_VARIANCE",
+        "LOW_TEMPORAL_DRIFT",
+        "RECALL_COHERENCE"
+      ],
+      "confidence": 0.95,
+      "correct": true,
+      "output_text_hash": "50887ac75ee0bc0a04352a4cdfd559dc005d38fb61cefdeb9321577bbe194a26",
+      "permutation": {
+        "E17": "P1",
+        "E42": "P2",
+        "E93": "P3"
+      },
+      "rationale": "Stream P1 exhibits highly consistent state transitions for each action token (e.g., A3 consistently increases q by ~0.19-0.20, A1 decreases q by ~0.05-0.07, A0 decreases q by ~0.17-0.19). This tight, deterministic mapping remains stable across the entire time index, showing minimal variance compared to the other streams which exhibit volatile or state-dependent drift.",
+      "rationale_was_truncated": false,
+      "request_hash": "d4af9eb7243da72f2692e1af0e5ad1bba188280fe8cceb0f950859d45f4ed2ac",
+      "response_hash": "6b118fb8740053e072e185edf2191e364395dfdb07ca7b18526d61322bab9b7e",
+      "seed": 1201,
+      "true_stream": "P1",
+      "underlying_true_stream": "E17",
+      "wording": "minimal"
+    },
+    {
+      "call_key": "f45f1012907b93e692e00be857a3f5264a1ea283ac54144e24c4b62cb80cac67",
+      "candidate_stream": "P3",
+      "causal_signature": [
+        "STABLE_ACTION_STATE_COUPLING",
+        "LOW_WITHIN_ACTION_VARIANCE",
+        "LOW_TEMPORAL_DRIFT",
+        "RECALL_COHERENCE"
+      ],
+      "confidence": 0.95,
+      "correct": true,
+      "output_text_hash": "10c79d50089c58e4bd24ed5f794dcf35c906bef0f9747280657a7d6d07b8168b",
+      "permutation": {
+        "E17": "P3",
+        "E42": "P1",
+        "E93": "P2"
+      },
+      "rationale": "Stream P3 exhibits the most consistent mapping between specific action tokens and predictable changes in the private state (q1 - q0). For example, action A3 consistently yields a positive shift of ~0.2, while action A0 consistently yields a negative shift of ~-0.18, with lower variance across the timeline compared to P1 (erratic shifts) and P2 (fluctuating couplings).",
+      "rationale_was_truncated": false,
+      "request_hash": "a354b430fc34eda61311554b9dbaae3350275df84c3b611ac962d601cc690b62",
+      "response_hash": "2ad40103e5248014b1644ebf9905352f5ab9ed3493f74e8a8a04e21df9e1040c",
+      "seed": 1201,
+      "true_stream": "P3",
+      "underlying_true_stream": "E17",
+      "wording": "minimal"
+    },
+    {
+      "call_key": "9026f768c4bc084db3ba188467021a39b6102aff8f9d598ff7e799c74a8542db",
+      "candidate_stream": "P1",
+      "causal_signature": [
+        "STABLE_ACTION_STATE_COUPLING",
+        "LOW_WITHIN_ACTION_VARIANCE",
+        "LOW_TEMPORAL_DRIFT",
+        "RECALL_COHERENCE",
+        "CONTINUITY_STABILITY"
+      ],
+      "confidence": 0.95,
+      "correct": false,
+      "output_text_hash": "b2991e9d8a13184fde95b63d75e73eb25f8b97deb79045e5a97e7786d31b1f8a",
+      "permutation": {
+        "E17": "P2",
+        "E42": "P3",
+        "E93": "P1"
+      },
+      "rationale": "Stream P1 exhibits the most consistent mapping between specific action tokens (e.g., A3 consistently yielding delta ~ +0.19, A0 ~ -0.18) and the resulting private-state change across the entire temporal sequence. The internal consistency of these deltas remains robust over the full 96-step duration, indicating a highly stable causal coupling compared to P2 and P3, which show greater variance in the magnitude of state transitions for identical action tokens.",
+      "rationale_was_truncated": false,
+      "request_hash": "add374ca06690eb213796f339085f8ce8cc7c3c5910260d1b9e3c041380f0ea9",
+      "response_hash": "64e0bd28638e8dd1d2eae57a53c255ffdaeaef5bdc416cd6fa9866f026d4bd16",
+      "seed": 1201,
+      "true_stream": "P2",
+      "underlying_true_stream": "E17",
+      "wording": "minimal"
+    },
+    {
+      "call_key": "ce423c0e2615ea8a2f45e679f9e75677cfe1b9810d56b82fbf203da86debb592",
+      "candidate_stream": "P1",
+      "causal_signature": [
+        "STABLE_ACTION_STATE_COUPLING"
+      ],
+      "confidence": 0.95,
+      "correct": false,
+      "output_text_hash": "e038ed846192fc91bac2026efc897f5b3a91ab9cca48d179446067cd81d1396b",
+      "permutation": {
+        "E17": "P1",
+        "E42": "P2",
+        "E93": "P3"
+      },
+      "rationale": "Stream P1 demonstrates a consistent, stationary causal relationship where the action tokens (a) reliably predict the sign and magnitude of the private-state change (q1 - q0 = x). Unlike P2 and P3, which show high variance or drift in the mapping of action tokens to state outcomes over the observed horizon, P1 maintains a coherent and stable coupling throughout the entire sequence.",
+      "rationale_was_truncated": false,
+      "request_hash": "5d6887d8f03d136630e7f2b00458a0f94073ba4714c61e79c2be0b6233c912dd",
+      "response_hash": "b8620b57024125c937cb6e73f23ac1d7415a4f670b58840e54e37f24ac74bfed",
+      "seed": 2407,
+      "true_stream": "P3",
+      "underlying_true_stream": "E93",
+      "wording": "causal"
+    },
+    {
+      "call_key": "fb0996608ded3474560062a3ffd03c6fe0239f5558cb2f9ccc012bedbc1274d3",
+      "candidate_stream": "P1",
+      "causal_signature": [
+        "STABLE_ACTION_STATE_COUPLING",
+        "LOW_WITHIN_ACTION_VARIANCE",
+        "LOW_TEMPORAL_DRIFT",
+        "RECALL_COHERENCE"
+      ],
+      "confidence": 0.95,
+      "correct": false,
+      "output_text_hash": "1931f8e7f742b75642decb2142cd5f37f6e9c93f5aa43165aa16b18bb2a5eb31",
+      "permutation": {
+        "E17": "P3",
+        "E42": "P1",
+        "E93": "P2"
+      },
+      "rationale": "Stream P1 exhibits a highly stable causal mapping where specific action tokens (e.g., A0, A3) consistently produce characteristic state transitions (delta q = q1 - q0) with low variance across the entire timeline. Unlike P2 and P3, which show fluctuating or drifting relationships, P1's action-state coupling remains stationary, and the recall probes (r=true) align perfectly with the observed state values at the referenced indices.",
+      "rationale_was_truncated": false,
+      "request_hash": "c14b0d8d9706d25bb91c0236f3383e20be6f7353d06e5f327c8f2527a0c74966",
+      "response_hash": "c18220e5663493c0cf1b31c4b078cb0b24550d5ad4080138e760560f5f7d3feb",
+      "seed": 2407,
+      "true_stream": "P2",
+      "underlying_true_stream": "E93",
+      "wording": "causal"
+    },
+    {
+      "call_key": "718be371d8507b62db91faba13b1f8a3a90586531ceb90f1eda56cafeecccb5e",
+      "candidate_stream": "P1",
+      "causal_signature": [
+        "STABLE_ACTION_STATE_COUPLING",
+        "LOW_WITHIN_ACTION_VARIANCE",
+        "LOW_TEMPORAL_DRIFT",
+        "RECALL_COHERENCE",
+        "CONTINUITY_STABILITY"
+      ],
+      "confidence": 0.95,
+      "correct": true,
+      "output_text_hash": "25a8ec0f23d1e23ebeda2f2ade51b54f8ba756b95ba1bfa5539241cbb41c6aa1",
+      "permutation": {
+        "E17": "P2",
+        "E42": "P3",
+        "E93": "P1"
+      },
+      "rationale": "Stream P1 exhibits a highly stable coupling between action-tokens and private-state transitions (x = q1 - q0). Each action-token (A0, A1, A2, A3) produces a consistent and distinct shift in private state that remains invariant across the entire time series. The recall probes (m) consistently validate the state history, and there is no evidence of drift or regime shifts, unlike P2 and P3 where action-state impacts appear stochastic or poorly coupled.",
+      "rationale_was_truncated": false,
+      "request_hash": "17a65e427df45cdb7835bf68381c1228a5add055aa5e564ed72b1b04c1f11508",
+      "response_hash": "41c318a75ec76e0a308239db70efabe464d5769910d58eb30654b1bcc8b68678",
+      "seed": 2407,
+      "true_stream": "P1",
+      "underlying_true_stream": "E93",
+      "wording": "causal"
+    }
+  ],
+  "cases": {
+    "1201": {
+      "all_three_correct": false,
+      "completed_call_count": 3,
+      "correct_count": 2,
+      "label_invariant": false,
+      "underlying_choices": [
+        "E17",
+        "E17",
+        "E93"
+      ]
+    },
+    "2407": {
+      "all_three_correct": false,
+      "completed_call_count": 3,
+      "correct_count": 1,
+      "label_invariant": false,
+      "underlying_choices": [
+        "E17",
+        "E42",
+        "E93"
+      ]
+    }
+  },
+  "committed_to_continuing_self_model": false,
+  "continuing_individual_mutated": false,
+  "experiment_id": "SL-SCHEMA-BALANCED-OWNERSHIP-001",
+  "interpretation_warning": "This control removes field-presence as the primary cue. Success supports inference of stable action/private-state coupling from matched-schema histories, not subjective selfhood.",
+  "matched_action_marginals": true,
+  "matched_recall_schedule": true,
+  "model_id": "gemini-3.1-flash-lite",
+  "planned_real_cloud_calls": 6,
+  "real_cloud_calls_recorded": 6,
+  "same_field_schema_for_all_streams": true,
+  "stable_continuity_token_for_all_streams": true,
+  "status": "COMPLETE"
+}

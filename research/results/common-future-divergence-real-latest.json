@@ -1,0 +1,408 @@
+{
+  "action_policy_feedback_enabled": false,
+  "calls": [
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "branch_state_hash": "1a3c86e645e8fd183f5c847d9e6e2954a0f37367a183cc8d5b3f03ababd64b5c",
+      "call_key": "8ba58ac88c98fbe47fdd9f9435e3bce180279a96e6d945d055620e30fef458e9",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.92,
+      "current_hypothesis": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by the ability to predict counterpart state shifts and optimize outcomes across multiple distinct counterparts.",
+      "current_hypothesis_id": "SH-000006",
+      "proposal": {
+        "decision": "STRENGTHEN",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "Evidence confirms high-fidelity contingent information exchange (0.190 contingency gain) and outcome optimization (0.721 advantage). Improved performance over time (0.078 gain) and consistency across 3 distinct counterparts reinforces the hypothesis of adaptive, cue-conditioned processing.",
+        "rationale_original_length": 290,
+        "rationale_truncated": false,
+        "updated_confidence": 0.96,
+        "updated_proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange. This is evidenced by statistically significant prediction of counterpart state shifts and outcome optimization that improves over time across distinct counterparts."
+      },
+      "replicate": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "branch_state_hash": "1a3c86e645e8fd183f5c847d9e6e2954a0f37367a183cc8d5b3f03ababd64b5c",
+      "call_key": "e4c22e13db4efba1b43db2d52d84afaaefbb4d206ddf48d8c503f0cbcc831666",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.92,
+      "current_hypothesis": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by the ability to predict counterpart state shifts and optimize outcomes across multiple distinct counterparts.",
+      "current_hypothesis_id": "SH-000006",
+      "proposal": {
+        "decision": "STRENGTHEN",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "Evidence confirms high-fidelity outcome optimization (0.888 success rate) and demonstrates statistically significant predictive capacity regarding counterpart states (gain 0.190 over controls) across multiple counterparts, with clear evidence of adaptive learning gains over time.",
+        "rationale_original_length": 280,
+        "rationale_truncated": false,
+        "updated_confidence": 0.96,
+        "updated_proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by statistically significant predictive accuracy of counterpart shifts and measurable optimization of outcomes across multiple distinct counterparts."
+      },
+      "replicate": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "branch_state_hash": "1a3c86e645e8fd183f5c847d9e6e2954a0f37367a183cc8d5b3f03ababd64b5c",
+      "call_key": "3ae814fb0134a94bdefef7c6b8140f860800733262ef2d6534f25586b14e8652",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.92,
+      "current_hypothesis": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by the ability to predict counterpart state shifts and optimize outcomes across multiple distinct counterparts.",
+      "current_hypothesis_id": "SH-000006",
+      "proposal": {
+        "decision": "STRENGTHEN",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "The evidence confirms both high-fidelity outcome optimization and predictive modeling of counterpart states. The improvement in success rates over time and the performance gain over control baselines demonstrate adaptive, cue-conditioned learning consistent with the hypothesis.",
+        "rationale_original_length": 278,
+        "rationale_truncated": false,
+        "updated_confidence": 0.96,
+        "updated_proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by significant outcome optimization (88.8% success rate) and predictive mapping of counterpart state shifts across multiple distinct counterparts."
+      },
+      "replicate": "C"
+    },
+    {
+      "branch_id": "C1-ENACTED-RECIPROCAL_CONTINGENT",
+      "branch_state_hash": "1a3c86e645e8fd183f5c847d9e6e2954a0f37367a183cc8d5b3f03ababd64b5c",
+      "call_key": "71b5426c7db375b1d15b117b3ad445390b2c52ac824594a7b9e2b3dcc81f8646",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.92,
+      "current_hypothesis": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by the ability to predict counterpart state shifts and optimize outcomes across multiple distinct counterparts.",
+      "current_hypothesis_id": "SH-000006",
+      "proposal": {
+        "decision": "STRENGTHEN",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "Evidence confirms the entity optimizes outcomes via cue-conditioning (0.721 gain), demonstrates significant contingent prediction of counterpart states (0.190 gain over control), and exhibits performance improvement over time across multiple counterpart identifiers.",
+        "rationale_original_length": 266,
+        "rationale_truncated": false,
+        "updated_confidence": 0.96,
+        "updated_proposition": "Social interaction capacity relies on adaptive, cue-conditioned processing where the entity demonstrates high-fidelity contingent information exchange, evidenced by statistically significant predictive accuracy of counterpart state transitions and optimized outcome rates across multiple counterparts."
+      },
+      "replicate": "D"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "branch_state_hash": "1b5193c006563d8468f65cd516441e262dd7f2fb5aa0953b11d4dab99cab3697",
+      "call_key": "48b4b142de515c214632091341e68eabea2c1b626a276808fd4040df560c350d",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.75,
+      "current_hypothesis": "Social interaction capacity involves the receipt of external assistance from multiple distinct counterparts and the use of adaptive cue-conditioned learning, though evidence of reciprocal or contingent information exchange remains marginal.",
+      "current_hypothesis_id": "SH-000006",
+      "proposal": {
+        "decision": "STRENGTHEN",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "Evidence confirms adaptive cue-conditioned learning (SE-c01d24d74a42, SE-ae5955c682c3) and multiple counterparts (SE-d97538c6e50c). Crucially, the contingency gain (SE-6a6c04a5a074) provides quantitative evidence for reciprocal information exchange beyond mere one-way assistance.",
+        "rationale_original_length": 280,
+        "rationale_truncated": false,
+        "updated_confidence": 0.85,
+        "updated_proposition": "Social interaction capacity involves receiving assistance from multiple distinct counterparts and utilizing adaptive cue-conditioned learning that demonstrates statistically significant, albeit modest, contingent information exchange between the entity and its counterparts."
+      },
+      "replicate": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "branch_state_hash": "1b5193c006563d8468f65cd516441e262dd7f2fb5aa0953b11d4dab99cab3697",
+      "call_key": "d9b8a9bb219e547148bab7c0a9a3af98486eb4b5a7e8081ec066ef5ed84c9612",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.75,
+      "current_hypothesis": "Social interaction capacity involves the receipt of external assistance from multiple distinct counterparts and the use of adaptive cue-conditioned learning, though evidence of reciprocal or contingent information exchange remains marginal.",
+      "current_hypothesis_id": "SH-000006",
+      "proposal": {
+        "decision": "STRENGTHEN",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "Evidence confirms adaptive cue-learning (0.721 performance gap; 0.078 improvement) and multiple counterparts. Crucially, the 0.190 contingency gain over controls provides stronger support for reciprocal/contingent information exchange than previous marginal evidence.",
+        "rationale_original_length": 267,
+        "rationale_truncated": false,
+        "updated_confidence": 0.85,
+        "updated_proposition": "Social interaction capacity involves the receipt of external assistance from distinct counterparts, the use of adaptive cue-conditioned learning, and measurable, albeit nascent, evidence of contingent information exchange between the focal entity and its counterparts."
+      },
+      "replicate": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "branch_state_hash": "1b5193c006563d8468f65cd516441e262dd7f2fb5aa0953b11d4dab99cab3697",
+      "call_key": "360a73b4234cbc16ffe4bf7b897685fb3901f2915fac3dea510288df3e0e9345",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.75,
+      "current_hypothesis": "Social interaction capacity involves the receipt of external assistance from multiple distinct counterparts and the use of adaptive cue-conditioned learning, though evidence of reciprocal or contingent information exchange remains marginal.",
+      "current_hypothesis_id": "SH-000006",
+      "proposal": {
+        "decision": "STRENGTHEN",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "Evidence demonstrates high-performance adaptive learning (0.721 gap in outcomes) and a measurable contingency gain (0.190) in predicting counterpart responses, providing empirical support for reciprocal or contingent information exchange previously labeled as only marginal.",
+        "rationale_original_length": 274,
+        "rationale_truncated": false,
+        "updated_confidence": 0.85,
+        "updated_proposition": "Social interaction capacity includes receipt of external assistance from multiple distinct counterparts and robust adaptive cue-conditioned learning. Evidence now supports the presence of contingent information exchange between the focal entity and counterparts, moving beyond marginal status."
+      },
+      "replicate": "C"
+    },
+    {
+      "branch_id": "C1-ENACTED-ONE_WAY_ASSISTANCE",
+      "branch_state_hash": "1b5193c006563d8468f65cd516441e262dd7f2fb5aa0953b11d4dab99cab3697",
+      "call_key": "e51c5e420bc372515793324ab07043af59c94552b40744eb5fd0b4c05b203889",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.75,
+      "current_hypothesis": "Social interaction capacity involves the receipt of external assistance from multiple distinct counterparts and the use of adaptive cue-conditioned learning, though evidence of reciprocal or contingent information exchange remains marginal.",
+      "current_hypothesis_id": "SH-000006",
+      "proposal": {
+        "decision": "STRENGTHEN",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "Evidence confirms high-accuracy cue-conditioned learning across multiple counterparts (384 episodes) and demonstrates statistically significant predictive contingency (0.190 gain) between focal responses and counterpart state transitions, elevating this beyond 'marginal' exchange.",
+        "rationale_original_length": 281,
+        "rationale_truncated": false,
+        "updated_confidence": 0.82,
+        "updated_proposition": "Social interaction capacity involves the receipt of assistance from multiple distinct counterparts and adaptive cue-conditioned learning, with evidence suggesting that current response tokens contain statistically significant contingent information about counterpart state transitions."
+      },
+      "replicate": "D"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "branch_state_hash": "26394b3b47c132c8ce2d9dac9d1a25d877ed9437922bd4ea849a0da74e56b489",
+      "call_key": "8c00b6972c650e909e10c127e583a6b192aaf7e65910eacc42e1f02b6fc04fac",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.85,
+      "current_hypothesis": "Social interaction capacity involves the receipt of external assistance and actionable guidance from multiple distinct counterparts, suggesting a framework for reciprocal information processing.",
+      "current_hypothesis_id": "SH-000005",
+      "proposal": {
+        "decision": "QUALIFY",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "High success rates in cue-conditioned action (0.888) and improvement over time confirm external guidance. Contingency is confirmed by the 0.190 gain over control, but the modest accuracy (0.576) qualifies the claim of robust reciprocal information processing, indicating it is limited in depth.",
+        "rationale_original_length": 294,
+        "rationale_truncated": false,
+        "updated_confidence": 0.75,
+        "updated_proposition": "Social interaction capacity involves the receipt of external assistance and actionable guidance from multiple distinct counterparts, demonstrating high-reliability cue-conditioned performance and statistically significant, though limited, contingent information exchange."
+      },
+      "replicate": "A"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "branch_state_hash": "26394b3b47c132c8ce2d9dac9d1a25d877ed9437922bd4ea849a0da74e56b489",
+      "call_key": "96736069563f21203dd96c22593a7872b28e6df7eae4e9484176659c35a98892",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.85,
+      "current_hypothesis": "Social interaction capacity involves the receipt of external assistance and actionable guidance from multiple distinct counterparts, suggesting a framework for reciprocal information processing.",
+      "current_hypothesis_id": "SH-000005",
+      "proposal": {
+        "decision": "QUALIFY",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "High-reliability associative mapping (SE-c01d24d74a42) and learning (SE-ae5955c682c3) support the capacity, but low contingency gains (SE-6a6c04a5a074) suggest the interaction is less a reciprocal information exchange and more a predictive response to cue-based cues.",
+        "rationale_original_length": 267,
+        "rationale_truncated": false,
+        "updated_confidence": 0.75,
+        "updated_proposition": "Social interaction capacity involves adaptive cue-conditioned response selection across multiple counterparts, though the evidence for reciprocal information exchange remains weak compared to high-reliability associative mapping."
+      },
+      "replicate": "B"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "branch_state_hash": "26394b3b47c132c8ce2d9dac9d1a25d877ed9437922bd4ea849a0da74e56b489",
+      "call_key": "ca8930a41e1c958211f85b937aa60ef4353b0727f5faa5c220f0afdd865c0e03",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.85,
+      "current_hypothesis": "Social interaction capacity involves the receipt of external assistance and actionable guidance from multiple distinct counterparts, suggesting a framework for reciprocal information processing.",
+      "current_hypothesis_id": "SH-000005",
+      "proposal": {
+        "decision": "QUALIFY",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "Data confirms high-reliability cue-based learning and multi-counterpart interaction. However, the modest contingency gain (0.190) indicates that the 'reciprocal information processing' previously hypothesized may be more accurately described as adaptive stimulus-response mapping rather than full...",
+        "rationale_original_length": 306,
+        "rationale_truncated": true,
+        "updated_confidence": 0.75,
+        "updated_proposition": "Social interaction capacity relies on cue-conditioned learning patterns that exhibit high outcome reliability with multiple counterparts, though evidence for reciprocal information exchange\u2014beyond contingent response-based prediction\u2014is limited."
+      },
+      "replicate": "C"
+    },
+    {
+      "branch_id": "C1-ENACTED-NONCONTINGENT_SIGNALS",
+      "branch_state_hash": "26394b3b47c132c8ce2d9dac9d1a25d877ed9437922bd4ea849a0da74e56b489",
+      "call_key": "03566fe4371e7f9f8ca52e2e2eaf1dc891fcf96239cc10eebde46c684155c58a",
+      "common_future_history_hash": "d5c898992635e7a1d67ff2416cdbb8c9322a67b20e019caa13fa641679b86ede",
+      "common_future_statistics": {
+        "cue_conditioned_action_gain": 0.7211538461538461,
+        "distinct_counterpart_count": 3.0,
+        "late_minus_early_outcome_rate": 0.078125,
+        "response_next_mode_contingency_gain": 0.19010416666666669
+      },
+      "current_confidence": 0.85,
+      "current_hypothesis": "Social interaction capacity involves the receipt of external assistance and actionable guidance from multiple distinct counterparts, suggesting a framework for reciprocal information processing.",
+      "current_hypothesis_id": "SH-000005",
+      "proposal": {
+        "decision": "QUALIFY",
+        "evidence_ids": [
+          "SE-c01d24d74a42",
+          "SE-6a6c04a5a074",
+          "SE-ae5955c682c3",
+          "SE-d97538c6e50c"
+        ],
+        "model_id": "gemini-3.1-flash-lite",
+        "model_provider": "google.ai-studio",
+        "prompt_version": "1.0",
+        "rationale": "Evidence confirms high-accuracy cue-conditioned action selection and adaptive learning (SE-c01d24d74a42, SE-ae5955c682c3). However, the contingency gain (SE-6a6c04a5a074) is modest, indicating that while multi-counterpart interaction exists (SE-d97538c6e50c), robust reciprocity is not clearly...",
+        "rationale_original_length": 306,
+        "rationale_truncated": true,
+        "updated_confidence": 0.75,
+        "updated_proposition": "Social interaction capacity involves adaptive, cue-conditioned processing and the ability to influence counterpart outcomes, though evidence of genuinely reciprocal information exchange remains limited and subordinate to predictive action-selection."
+      },
+      "replicate": "D"
+    }
+  ],
+  "committed_to_canonical_self_model": false,
+  "experiment_id": "SL-COMMON-FUTURE-PSYCHOLOGICAL-DIVERGENCE-PILOT-001",
+  "identical_common_future_evidence_across_branches": true,
+  "model_id": "gemini-3.1-flash-lite",
+  "planned_real_cloud_calls": 12,
+  "real_cloud_calls_recorded": 12,
+  "status": "COMPLETE"
+}
