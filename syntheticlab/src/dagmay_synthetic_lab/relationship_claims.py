@@ -9,6 +9,7 @@ from typing import Iterable
 ALLOWED_VALENCES = frozenset({"POSITIVE", "NEGATIVE"})
 ALLOWED_ASSESSMENTS = frozenset({"TRUST", "MIXED", "DISTRUST", "INSUFFICIENT_EVIDENCE"})
 DETERMINISTIC_CLAUSE_SOURCE = "DETERMINISTIC_ENVIRONMENT_ADAPTER"
+MAX_EVIDENCE_PER_VALENCE = 2
 
 
 @dataclass(frozen=True)
@@ -62,6 +63,10 @@ def validate_assessment(
     cited = assessment.positive_evidence_ids + assessment.negative_evidence_ids
     if len(cited) != len(set(cited)):
         raise ValueError("duplicate evidence citation")
+    if len(assessment.positive_evidence_ids) > MAX_EVIDENCE_PER_VALENCE:
+        raise ValueError("too many positive evidence citations")
+    if len(assessment.negative_evidence_ids) > MAX_EVIDENCE_PER_VALENCE:
+        raise ValueError("too many negative evidence citations")
     if not set(cited) <= set(by_id):
         raise ValueError("fabricated evidence citation")
     if any(by_id[item].valence != "POSITIVE" for item in assessment.positive_evidence_ids):

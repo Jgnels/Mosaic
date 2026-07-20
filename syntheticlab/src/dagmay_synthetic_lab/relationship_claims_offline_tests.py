@@ -35,6 +35,7 @@ def run() -> dict[str, object]:
         RelationshipAssessment("Mira", "TRUST", ("P1",), ("N1",)),
         RelationshipAssessment("Mira", "DISTRUST", (), ("P1",)),
         RelationshipAssessment("Mira", "TRUST", ("FAKE",), ()),
+        RelationshipAssessment("Mira", "TRUST", ("P1", "P2", "P3"), ()),
     )
     rejected = 0
     for candidate in invalid_cases:
