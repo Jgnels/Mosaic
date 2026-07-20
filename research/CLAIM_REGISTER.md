@@ -128,3 +128,10 @@ Across 128 seeded fixture histories, selection retained all four older direct re
 selected no rumors, preserved mixed evidence, and kept dialogue bounded. A recency-only baseline
 selected only the eight newest rumors. Generalization to organic RimWorld histories is not yet
 established.
+
+## C-021 — Bounded commitment reduces goal thrashing without blocking emergencies
+Status: SUPPORTED UNDER CONSTRUCTED OFFLINE BENCHMARK
+
+Across 256 seeded 200-tick histories, commitment-aware selection reduced switches by about 93.9%,
+kept mean utility regret near 0.040, responded to every emergency, and resumed every interrupted
+ordinary commitment. Organic RimWorld workload shifts remain untested.

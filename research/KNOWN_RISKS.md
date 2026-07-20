@@ -92,3 +92,11 @@ The first long-history fixture deliberately contrasts high-quality direct events
 Its perfect result validates causal plumbing and failure resistance, not optimal retrieval weights.
 Future tests need distribution shifts, retractions, repeated low-grade direct evidence, conflicting
 sources, and organic RimWorld event traces.
+
+## KR-017 — Goal commitment may become sticky under regime change
+Severity: PRODUCT / ENGINEERING
+
+The first continuity fixture uses near-tied stationary work goals plus brief emergencies. Its low
+regret does not establish safe behavior when task utility changes permanently, feasibility becomes
+stale, or commitments depend on multi-step prerequisites. Add nonstationary and stale-sensor tests
+before RimWorld job control.

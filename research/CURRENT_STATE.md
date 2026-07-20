@@ -235,3 +235,11 @@ existing candidate ID and are independently revalidated. Offline tests passed em
 continuity, infeasible-choice rejection, missing-evidence rejection, 128 order-invariance trials,
 unsafe ID/target rejection, and fail-closed behavior when no feasible goal exists. This reference
 does not issue RimWorld jobs or mutate canonical action policy.
+
+## 2026-07-20 longitudinal goal-continuity benchmark
+
+A 256-seed, 200-tick offline benchmark compared commitment-aware bounded goals with a memoryless
+bounded baseline under fluctuating work utility and three periodic emergencies. Mosaic averaged
+6.0 switches versus 98.91, a 0.939 reduction; mean utility regret was 0.0397; emergency compliance
+and post-emergency commitment resumption were both 1.00. This validates the authored continuity
+mechanism under the fixture, not general behavior under organic colony regime changes.
