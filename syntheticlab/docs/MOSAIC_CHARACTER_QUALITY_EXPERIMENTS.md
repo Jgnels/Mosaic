@@ -29,3 +29,27 @@ events. Compare Mosaic retrieval against a recency-only baseline at the same ret
 is an engineering baseline, not evidence that the weighting scheme is generally optimal. The next
 experiment should introduce partially matching and contradictory distractors so precision, not only
 recall, becomes discriminative.
+
+## MOSAIC-MEMORY-ADVERSARIAL-002
+
+**Purpose:** test whether provenance-aware retrieval preserves reliable causal memories despite
+recent same-character/same-topic rumors and partial semantic matches.
+
+**Baselines:** recency-only and surface-overlap retrieval at the same four-memory budget.
+
+**Primary metrics:** relevant recall, complete causal-pair recovery, and rumor selection rate.
+
+**Boundary status:** accepted; the experiment measures memory reliability and hallucination
+resistance, makes no provider calls, and performs no canonical mutation.
+
+### Result (128 seeds)
+
+- Mosaic recall / causal-pair recovery / precision: `1.000 / 1.000 / 1.000`
+- Mosaic rumor selection rate: `0.000`
+- Surface-overlap and recency recall: `0.000`
+- Surface-overlap and recency rumor selection rate: `1.000`
+- Suite result hash: `49d9ef66efd20e91e4a9383d8685894d4874af270beeed5e1742d2e60137d5c6`
+
+**Limitation:** this is a deterministic adversarial regression around a known scoring design. It
+establishes that provenance quality and abstention prevent this failure mode; it does not establish
+general retrieval superiority over learned or embedding-based systems.

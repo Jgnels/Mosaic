@@ -1,0 +1,44 @@
+{
+  "result": {
+    "adversarial_memory": {
+      "canonical_mutation": false,
+      "classification": "PERSISTENT_CHARACTER_ENGINEERING",
+      "experiment_id": "MOSAIC-MEMORY-ADVERSARIAL-002",
+      "provider_calls": 0,
+      "seeds": 128,
+      "summary": {
+        "mosaic_causal_pair": 1.0,
+        "mosaic_precision": 1.0,
+        "mosaic_recall": 1.0,
+        "mosaic_rumor_rate": 0.0,
+        "recency_causal_pair": 0.0,
+        "recency_precision": 0.0,
+        "recency_recall": 0.0,
+        "recency_rumor_rate": 1.0,
+        "surface_causal_pair": 0.0,
+        "surface_precision": 0.0,
+        "surface_recall": 0.0,
+        "surface_rumor_rate": 1.0
+      }
+    },
+    "memory_relevance": {
+      "canonical_mutation": false,
+      "classification": "PERSISTENT_CHARACTER_ENGINEERING",
+      "experiment_id": "MOSAIC-MEMORY-RELEVANCE-001",
+      "provider_calls": 0,
+      "seeds": 128,
+      "summary": {
+        "causal_pair_gain_over_recency": 1.0,
+        "mosaic_causal_pair": 1.0,
+        "mosaic_precision": 1.0,
+        "mosaic_recall": 1.0,
+        "recall_gain_over_recency": 1.0,
+        "recency_causal_pair": 0.0,
+        "recency_precision": 0.0,
+        "recency_recall": 0.0
+      }
+    },
+    "suite_id": "MOSAIC-CHARACTER-QUALITY-V0.2"
+  },
+  "result_hash": "49d9ef66efd20e91e4a9383d8685894d4874af270beeed5e1742d2e60137d5c6"
+}
