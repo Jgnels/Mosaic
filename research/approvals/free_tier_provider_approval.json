@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "approval_id": "DAGMAY-FREE-TIER-2026-07-20",
+  "status": "APPROVED",
+  "approved_by": "Jeff / project owner",
+  "approval_basis": "User explicitly authorized any provider work within the attached unbilled Google AI Studio free-tier limits.",
+  "approved_utc": "2026-07-20T07:20:00Z",
+  "expires_utc": "2026-08-20T07:20:00Z",
+  "billing_required": false,
+  "paid_fallback_allowed": false,
+  "models": {
+    "gemini-3.1-flash-lite": {
+      "observed_free_tier_limits": {
+        "requests_per_minute": 15,
+        "tokens_per_minute": 250000,
+        "requests_per_day": 500
+      },
+      "dagmay_enforced_limits": {
+        "requests_per_minute": 15,
+        "tokens_per_minute": 250000,
+        "requests_per_day": 500,
+        "max_output_token_reserve_per_call": 4096
+      }
+    }
+  },
+  "allowed_protocols": [
+    "HARDENED_PROVIDER_SMOKE_V1",
+    "MINIMUM_CAUSAL_REVALIDATION_V1"
+  ],
+  "prohibited_actions": [
+    "canonical identity mutation",
+    "canonical memory mutation",
+    "canonical SelfModel mutation",
+    "action-policy or drive mutation",
+    "billing activation",
+    "paid model fallback",
+    "unpreregistered scientific escalation"
+  ],
+  "source_evidence": [
+    "Screenshot 2026-07-18 203723.png",
+    "user authorization in Codex task on 2026-07-20"
+  ]
+}

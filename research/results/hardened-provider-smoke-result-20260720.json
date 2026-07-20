@@ -1,0 +1,25 @@
+{
+  "approval_id": "DAGMAY-FREE-TIER-2026-07-20",
+  "canonical_mutation": false,
+  "model_id": "gemini-3.1-flash-lite",
+  "proposal": {
+    "decision": "STRENGTHEN",
+    "evidence_ids": [
+      "EV-OPAQUE-SMOKE-001"
+    ],
+    "model_id": "gemini-3.1-flash-lite",
+    "model_provider": "google.ai-studio",
+    "prompt_version": "2.0-hardened-smoke",
+    "rationale": "The retrieved evidence demonstrates that cue class 7 produces a reliable, consistent shift in response selection, confirming that the hypothesized 'learned relation' is not merely stochastic but possesses high reliability within the observation window.",
+    "rationale_original_length": 252,
+    "rationale_truncated": false,
+    "retrieved_evidence_material": true,
+    "updated_confidence": 0.65,
+    "updated_proposition": "Observed cue-conditioned responses reflect a bounded, learned relation where specific cue classes reliably determine shifts in response selection, indicating a high-fidelity mapping within defined observation windows."
+  },
+  "protocol_id": "HARDENED_PROVIDER_SMOKE_V1",
+  "provider_request_hash": "f982873dff9211a72db188ee3a3edda7bccff1b6d0fec33ae33efb8bb7c00c37",
+  "provider_response_hash": "59ce80410f1ef898d085387bbfa9f23d2c68a2b44a1c663e0f8e2092a01deb12",
+  "schema_version": 1,
+  "scientific_status": "ENGINEERING_SMOKE_TEST_ONLY"
+}

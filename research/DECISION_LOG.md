@@ -134,3 +134,8 @@ Persistent provider credentials do not constitute authorization for provider cal
 Status: Accepted
 
 The hardened provider boundary is opt-in so historical experiments remain reproducible and auditable. Every new real-provider protocol must use the hardened boundary; legacy mode is not an acceptable unattended execution path.
+
+## D-031 — Full unbilled Gemini 3.1 Flash Lite quota approved with local enforcement
+Status: Accepted
+
+The project owner approved up to the displayed free-tier limits of 15 requests/minute, 250,000 tokens/minute, and 500 requests/day. Billing activation and paid fallback remain prohibited. Provider credentials and quota approval do not authorize canonical mutation or unpreregistered experiments.

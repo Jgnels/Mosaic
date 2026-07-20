@@ -33,11 +33,14 @@ try {
     }
 
     $providerRunner = Get-Content -LiteralPath (Join-Path $PSScriptRoot "Invoke-DagmayApprovedProviderRun.ps1") -Raw
-    if ($providerRunner -notmatch "Real-provider execution is deliberately disabled") {
-        throw "Provider runner does not contain the fail-closed stop line."
+    if ($providerRunner -notmatch 'ValidateSet\("HARDENED_PROVIDER_SMOKE_V1"\)') {
+        throw "Provider runner permits an unreviewed protocol surface."
+    }
+    if ($providerRunner -notmatch "real_provider_authorized") {
+        throw "Provider runner does not enforce the canonical provider gate."
     }
 
-    Write-Host "PASS: DPAPI credential lifecycle and provider fail-closed controls." -ForegroundColor Green
+    Write-Host "PASS: DPAPI credential lifecycle and bounded provider controls." -ForegroundColor Green
 }
 finally {
     if (Test-Path -LiteralPath $testRoot) {

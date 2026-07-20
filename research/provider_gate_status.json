@@ -1,23 +1,30 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-07-20T07:10:00Z",
-  "real_provider_authorized": false,
-  "status": "HARDENED_BOUNDARY_IMPLEMENTED_NOT_YET_MIGRATED",
+  "updated_utc": "2026-07-20T07:59:27Z",
+  "real_provider_authorized": true,
+  "authorized_protocols": [
+    "HARDENED_PROVIDER_SMOKE_V1"
+  ],
+  "status": "HARDENED_ENGINEERING_SMOKE_PASSED",
   "controls": {
     "opaque_subject_ids": "PASS_IN_HARDENED_BOUNDARY",
     "exact_secret_free_payload_archive": "PASS_IN_HARDENED_BOUNDARY",
     "final_serialized_payload_forbidden_token_scan": "PASS_IN_HARDENED_BOUNDARY",
     "typed_evidence_provenance_ownership_temporal_role": "PASS_IN_HARDENED_BOUNDARY",
     "retrieved_evidence_materiality_and_citation_gate": "PASS_IN_HARDENED_BOUNDARY",
-    "all_real_provider_entry_points_migrated": "NOT_COMPLETE",
-    "enforceable_provider_call_budget": "NOT_COMPLETE",
-    "bounded_human_approval_record": "NOT_COMPLETE",
+    "approved_provider_entry_point_migrated": "PASS_FOR_SMOKE_ONLY",
+    "legacy_provider_entry_points_blocked_from_unattended_runner": "PASS",
+    "enforceable_provider_call_budget": "PASS_OFFLINE",
+    "bounded_human_approval_record": "PASS_FOR_SMOKE_AND_NAMED_REVALIDATION_PROTOCOL",
+    "hardened_live_engineering_smoke": "PASS",
     "minimum_causal_chain_revalidation": "NOT_STARTED"
   },
   "test_module": "dagmay_synthetic_lab.provider_payload_security_offline_tests",
   "notes": [
     "Historical v31 source and artifacts remain unchanged in scientific interpretation.",
     "Possession of an encrypted provider credential is not authorization to use it.",
-    "Invoke-DagmayApprovedProviderRun.ps1 remains fail-closed."
+    "HARDENED_PROVIDER_SMOKE_V1 passed one bounded live call with no payload leak detected.",
+    "Provider request hash: f982873dff9211a72db188ee3a3edda7bccff1b6d0fec33ae33efb8bb7c00c37.",
+    "Causal revalidation remains closed pending a new preregistered hardened runner."
   ]
 }
