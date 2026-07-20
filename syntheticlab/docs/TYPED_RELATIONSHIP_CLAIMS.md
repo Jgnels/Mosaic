@@ -24,7 +24,8 @@ layer, but it cannot add claims.
 
 The environment adapter may attach a deterministic `first_person_clause` to each verified event,
 for example `Mira warned me before a raid`. It must begin with the recorded actor, remain under 160
-characters, and contain no terminal punctuation. The renderer prefers this clause over the legacy
+characters, contain no terminal punctuation, and carry the exact provenance marker
+`DETERMINISTIC_ENVIRONMENT_ADAPTER`. The renderer prefers this clause over the legacy
 third-person summary. The reflective provider never writes or edits it.
 
 This keeps factual wording grounded in typed game events while producing grammatical dialogue. A

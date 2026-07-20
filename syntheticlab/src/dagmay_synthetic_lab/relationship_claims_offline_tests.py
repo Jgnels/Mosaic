@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from .claim_grounding import evaluate_dialogue_claims
 from .relationship_claims import (
+    DETERMINISTIC_CLAUSE_SOURCE,
     RelationshipAssessment,
     RelationshipEvidence,
     render_assessment,
@@ -11,10 +12,10 @@ from .relationship_claims import (
 
 def run() -> dict[str, object]:
     evidence = (
-        RelationshipEvidence("P1", "Mira", "warned Rowan before a raid", "POSITIVE", "Mira warned me before a raid"),
-        RelationshipEvidence("P2", "Mira", "shared food during a shortage", "POSITIVE", "Mira shared food with me during a shortage"),
-        RelationshipEvidence("N1", "Mira", "took Rowan's medicine without permission", "NEGATIVE", "Mira took my medicine without permission"),
-        RelationshipEvidence("N2", "Mira", "abandoned an agreed guard shift", "NEGATIVE", "Mira abandoned our agreed guard shift"),
+        RelationshipEvidence("P1", "Mira", "warned Rowan before a raid", "POSITIVE", "Mira warned me before a raid", DETERMINISTIC_CLAUSE_SOURCE),
+        RelationshipEvidence("P2", "Mira", "shared food during a shortage", "POSITIVE", "Mira shared food with me during a shortage", DETERMINISTIC_CLAUSE_SOURCE),
+        RelationshipEvidence("N1", "Mira", "took Rowan's medicine without permission", "NEGATIVE", "Mira took my medicine without permission", DETERMINISTIC_CLAUSE_SOURCE),
+        RelationshipEvidence("N2", "Mira", "abandoned an agreed guard shift", "NEGATIVE", "Mira abandoned our agreed guard shift", DETERMINISTIC_CLAUSE_SOURCE),
     )
     mixed = RelationshipAssessment("Mira", "MIXED", ("P1", "P2"), ("N1", "N2"))
     rendered = render_assessment(mixed, evidence)
@@ -50,11 +51,18 @@ def run() -> dict[str, object]:
     clause_rejections = 0
     for clause, _ in invalid_clauses:
         try:
-            RelationshipEvidence("X", "Mira", "summary", "POSITIVE", clause)
+            RelationshipEvidence("X", "Mira", "summary", "POSITIVE", clause, DETERMINISTIC_CLAUSE_SOURCE)
         except ValueError:
             clause_rejections += 1
     assert clause_rejections == len(invalid_clauses)
-    return {"rendered": rendered, "invalid_claim_sets_rejected": rejected, "invalid_clauses_rejected": clause_rejections}
+    provenance_rejections = 0
+    for clause, source in (("Mira warned me", None), (None, DETERMINISTIC_CLAUSE_SOURCE), ("Mira warned me", "MODEL_OUTPUT")):
+        try:
+            RelationshipEvidence("X", "Mira", "summary", "POSITIVE", clause, source)
+        except ValueError:
+            provenance_rejections += 1
+    assert provenance_rejections == 3
+    return {"rendered": rendered, "invalid_claim_sets_rejected": rejected, "invalid_clauses_rejected": clause_rejections, "invalid_provenance_rejected": provenance_rejections}
 
 
 if __name__ == "__main__":

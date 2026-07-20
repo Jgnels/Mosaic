@@ -8,6 +8,7 @@ from typing import Iterable
 
 ALLOWED_VALENCES = frozenset({"POSITIVE", "NEGATIVE"})
 ALLOWED_ASSESSMENTS = frozenset({"TRUST", "MIXED", "DISTRUST", "INSUFFICIENT_EVIDENCE"})
+DETERMINISTIC_CLAUSE_SOURCE = "DETERMINISTIC_ENVIRONMENT_ADAPTER"
 
 
 @dataclass(frozen=True)
@@ -17,6 +18,7 @@ class RelationshipEvidence:
     summary: str
     valence: str
     first_person_clause: str | None = None
+    clause_source: str | None = None
 
     def __post_init__(self) -> None:
         if not self.evidence_id or not self.actor or not self.summary:
@@ -24,6 +26,8 @@ class RelationshipEvidence:
         if self.valence not in ALLOWED_VALENCES:
             raise ValueError("invalid evidence valence")
         if self.first_person_clause is not None:
+            if self.clause_source != DETERMINISTIC_CLAUSE_SOURCE:
+                raise ValueError("first-person clause lacks deterministic adapter provenance")
             clause = self.first_person_clause.strip()
             if not clause or len(clause) > 160:
                 raise ValueError("invalid first-person evidence clause")
@@ -31,6 +35,8 @@ class RelationshipEvidence:
                 raise ValueError("first-person clause must begin with the observed actor")
             if clause.endswith((".", "!", "?", ";")):
                 raise ValueError("first-person clause must not contain terminal punctuation")
+        elif self.clause_source is not None:
+            raise ValueError("clause provenance supplied without a first-person clause")
 
 
 @dataclass(frozen=True)
