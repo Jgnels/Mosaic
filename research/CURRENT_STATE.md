@@ -207,3 +207,12 @@ adapter provenance, rejects unsafe or unsupported fields, and caps rendered evid
 per valence. Offline coverage passed all 24 event kinds and five adversarial invalid-event cases.
 This is a graduation reference, not a claim that the missing owner-reported 0.1RC C# source has been
 recovered or modified.
+
+## 2026-07-20 relationship long-history benchmark
+
+A 128-seed offline benchmark now tests four older direct counterpart events against 96 unrelated
+distractors and eight newer same-counterpart rumors. Provenance-aware balanced selection achieved
+1.00 direct-event recall, 0.00 rumor rate, 1.00 mixed-disposition preservation, and 1.00 bounded
+dialogue. Recency-only achieved 0.00 recall and 1.00 rumor rate in this constructed challenge. This
+validates the intended mechanism under the registered fixture, not general superiority across
+unseen memory distributions.

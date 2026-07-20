@@ -1,0 +1,15 @@
+{
+  "canonical_mutation": false,
+  "classification": "PERSISTENT_CHARACTER_ENGINEERING",
+  "experiment_id": "MOSAIC-RELATIONSHIP-HISTORY-001",
+  "provider_calls": 0,
+  "seeds": 128,
+  "summary": {
+    "mosaic_balanced": 1.0,
+    "mosaic_dialogue_bounded": 1.0,
+    "mosaic_recall": 1.0,
+    "mosaic_rumor_rate": 0.0,
+    "recency_recall": 0.0,
+    "recency_rumor_rate": 1.0
+  }
+}

@@ -84,3 +84,11 @@ Severity: PRODUCT / PLAYER VALUE
 
 V3 removed unsupported claims but exposed ungrammatical legacy summary fragments. A safe renderer
 needs typed event semantics, first-person transformation, and style tests that cannot add facts.
+
+## KR-016 — Relationship-history benchmark matches its authored scoring assumptions
+Severity: SCIENTIFIC
+
+The first long-history fixture deliberately contrasts high-quality direct events with weak rumors.
+Its perfect result validates causal plumbing and failure resistance, not optimal retrieval weights.
+Future tests need distribution shifts, retractions, repeated low-grade direct evidence, conflicting
+sources, and organic RimWorld event traces.

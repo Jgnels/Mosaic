@@ -120,3 +120,11 @@ Status: NEGATIVE / LIMITING RESULT
 
 V3 remained grounded but produced awkward fragments such as "because warned Rowan before a raid."
 Typed event semantics and grammatical templates are required before RimWorld graduation.
+
+## C-020 — Bounded provenance-aware selection resists recent rumor displacement
+Status: SUPPORTED UNDER CONSTRUCTED OFFLINE BENCHMARK
+
+Across 128 seeded fixture histories, selection retained all four older direct relationship events,
+selected no rumors, preserved mixed evidence, and kept dialogue bounded. A recency-only baseline
+selected only the eight newest rumors. Generalization to organic RimWorld histories is not yet
+established.
