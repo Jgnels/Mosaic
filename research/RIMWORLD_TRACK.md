@@ -94,6 +94,11 @@ first-person rendering, explicit clause provenance, strict labels/details, valen
 bounded citation counts. It does not alter frozen 0.1 scope and must not be represented as installed
 RimWorld code until the actual 0.1RC source is recovered and reconciled.
 
+`syntheticlab/src/dagmay_synthetic_lab/relationship_history_snapshot.py` additionally specifies the
+0.2 persistence boundary: identity/lineage binding, full-payload integrity hash, strict versioned
+schema, atomic replacement, and exact post-restore selection/dialogue equivalence. It is a reference
+contract only, not an installed C# implementation.
+
 ## Non-Dagmay instability context
 
 Historical game/system instability included:

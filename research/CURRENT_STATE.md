@@ -216,3 +216,12 @@ distractors and eight newer same-counterpart rumors. Provenance-aware balanced s
 dialogue. Recency-only achieved 0.00 recall and 1.00 rumor rate in this constructed challenge. This
 validates the intended mechanism under the registered fixture, not general superiority across
 unseen memory distributions.
+
+## 2026-07-20 relationship persistence reference checkpoint
+
+The relationship-history reference now supports versioned, individual/lineage-bound snapshots,
+canonical payload hashes, strict schema restoration, duplicate and dangling-retraction rejection,
+and atomic same-directory replacement. Offline tests reproduced identical selected evidence and
+dialogue after restore; tampering, version/schema drift, identity mismatch, and truncated JSON failed
+closed; a simulated interrupted temporary write preserved the last good snapshot. This remains a
+Python 0.2 reference until the actual RimWorld C# source is recovered.

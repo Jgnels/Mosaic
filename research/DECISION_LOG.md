@@ -164,3 +164,11 @@ grounding mechanism.
 V2 showed citation-complete free prose can still invent traits. V3 showed typed selection preserves
 relationship nuance without provider-authored factual claims. The event contract repairs V3's
 grammar limitation while keeping facts under adapter control.
+
+## D-034 — Relationship histories require identity-bound atomic snapshots
+Status: Accepted; implemented in SyntheticLab reference layer
+
+Persist the ordered typed evidence and correction history with individual and lineage IDs, a strict
+schema version, and a canonical hash over the full payload. Restore must fail closed on identity,
+integrity, schema, or retraction errors. Writes use flushed same-directory temporary files followed
+by atomic replacement, and recovery must reproduce the same evidence selection and dialogue.
