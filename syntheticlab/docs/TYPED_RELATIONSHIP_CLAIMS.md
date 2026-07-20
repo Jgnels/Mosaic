@@ -19,3 +19,14 @@ new factual clauses or durable personality traits.
 
 This is intentionally conservative. Richer prose may later be added as a separately validated style
 layer, but it cannot add claims.
+
+## Adapter-authored first-person clauses
+
+The environment adapter may attach a deterministic `first_person_clause` to each verified event,
+for example `Mira warned me before a raid`. It must begin with the recorded actor, remain under 160
+characters, and contain no terminal punctuation. The renderer prefers this clause over the legacy
+third-person summary. The reflective provider never writes or edits it.
+
+This keeps factual wording grounded in typed game events while producing grammatical dialogue. A
+RimWorld adapter should generate these clauses from event kinds and fields, not from unconstrained
+model prose.

@@ -16,12 +16,21 @@ class RelationshipEvidence:
     actor: str
     summary: str
     valence: str
+    first_person_clause: str | None = None
 
     def __post_init__(self) -> None:
         if not self.evidence_id or not self.actor or not self.summary:
             raise ValueError("relationship evidence fields must be non-empty")
         if self.valence not in ALLOWED_VALENCES:
             raise ValueError("invalid evidence valence")
+        if self.first_person_clause is not None:
+            clause = self.first_person_clause.strip()
+            if not clause or len(clause) > 160:
+                raise ValueError("invalid first-person evidence clause")
+            if not clause.casefold().startswith(self.actor.casefold() + " "):
+                raise ValueError("first-person clause must begin with the observed actor")
+            if clause.endswith((".", "!", "?", ";")):
+                raise ValueError("first-person clause must not contain terminal punctuation")
 
 
 @dataclass(frozen=True)
@@ -76,7 +85,10 @@ def render_assessment(
     by_id = {record.evidence_id: record for record in records}
 
     def summaries(ids: tuple[str, ...]) -> str:
-        return "; ".join(by_id[item].summary.rstrip(".") for item in ids)
+        return "; ".join(
+            (by_id[item].first_person_clause or by_id[item].summary).rstrip(".")
+            for item in ids
+        )
 
     name = assessment.counterpart
     if assessment.disposition == "TRUST":
