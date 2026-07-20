@@ -172,3 +172,11 @@ Persist the ordered typed evidence and correction history with individual and li
 schema version, and a canonical hash over the full payload. Restore must fail closed on identity,
 integrity, schema, or retraction errors. Writes use flushed same-directory temporary files followed
 by atomic replacement, and recovery must reproduce the same evidence selection and dialogue.
+
+## D-035 — Goals are bounded environment candidates, never free model inventions
+Status: Accepted; implemented in SyntheticLab reference layer
+
+The environment supplies feasible goal candidates with observed evidence, bounded urgency, utility,
+personality fit, risk, and optional target IDs. Mosaic selects or validates only those candidates.
+Critical needs form a priority pool; personality cannot suppress emergencies. Generated language
+renders the validated goal deterministically and cannot add motives or new objectives.

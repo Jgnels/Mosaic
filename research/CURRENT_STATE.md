@@ -225,3 +225,13 @@ and atomic same-directory replacement. Offline tests reproduced identical select
 dialogue after restore; tampering, version/schema drift, identity mismatch, and truncated JSON failed
 closed; a simulated interrupted temporary write preserved the last good snapshot. This remains a
 Python 0.2 reference until the actual RimWorld C# source is recovered.
+
+## 2026-07-20 bounded game-goal reference checkpoint
+
+SyntheticLab now selects only feasible, evidence-backed goals from a fixed game vocabulary. Critical
+needs override personality and commitment; a bounded personality term breaks ordinary ties; a small
+commitment bonus prevents needless thrashing. Provider proposals, if later enabled, may name only an
+existing candidate ID and are independently revalidated. Offline tests passed emergency override,
+continuity, infeasible-choice rejection, missing-evidence rejection, 128 order-invariance trials,
+unsafe ID/target rejection, and fail-closed behavior when no feasible goal exists. This reference
+does not issue RimWorld jobs or mutate canonical action policy.

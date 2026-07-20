@@ -99,6 +99,11 @@ RimWorld code until the actual 0.1RC source is recovered and reconciled.
 schema, atomic replacement, and exact post-restore selection/dialogue equivalence. It is a reference
 contract only, not an installed C# implementation.
 
+`syntheticlab/src/dagmay_synthetic_lab/bounded_game_goals.py` defines the 0.2 goal-selection
+reference: fixed game goal kinds, environment-confirmed feasibility, evidence IDs, emergency
+priority, bounded personality influence, anti-thrashing commitment, safe targets, and deterministic
+dialogue. It remains advisory/reference-only until deliberate C# integration review.
+
 ## Non-Dagmay instability context
 
 Historical game/system instability included:
