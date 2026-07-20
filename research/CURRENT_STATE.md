@@ -131,3 +131,7 @@ The canonical repository now contains the verified SyntheticLab v31 source under
 Static provider-boundary inspection independently confirmed both active scientific concerns: condition labels can leak through provider-facing `individual_id` values, and the v31 attribution-withheld runner still labels retrieved material as prior lived-history evidence. See `research/audits/PROVIDER_PAYLOAD_AUDIT_V31.md`.
 
 No real-provider experiments are authorized. The next SyntheticLab engineering task remains a payload-boundary hardening change plus offline regression tests. The actual RimWorld 0.1RC source has not yet been located or imported; its status remains owner-reported pending recovery of the source tree or archive.
+
+## 2026-07-20 unattended infrastructure checkpoint
+
+Unattended offline maintenance is implemented and validated. It clears provider credentials, compiles SyntheticLab, runs the deterministic offline suite, and writes reports outside Git. A one-time Windows DPAPI credential setup is available for the current Windows user, but real-provider execution remains technically fail-closed until the provider-payload stop line, call-budget enforcement, and a bounded human approval mechanism are complete.

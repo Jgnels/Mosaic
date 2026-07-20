@@ -122,3 +122,10 @@ Status: Accepted
 Chat is discussion.
 
 Repository is durable project memory.
+
+## D-029 — Unattended work is capability-separated
+Status: Accepted
+
+Offline compilation, testing, auditing, documentation, and bounded engineering may run unattended.
+
+Persistent provider credentials do not constitute authorization for provider calls. Real-provider execution remains fail-closed until payload controls, enforceable call budgets, and a bounded human approval record pass offline validation.
