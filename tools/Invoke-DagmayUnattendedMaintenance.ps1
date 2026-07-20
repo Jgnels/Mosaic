@@ -67,6 +67,11 @@ try {
         throw "Mosaic objective-surface audit failed with exit code $LASTEXITCODE."
     }
 
+    & $Python -m dagmay_synthetic_lab.claim_grounding_offline_tests
+    if ($LASTEXITCODE -ne 0) {
+        throw "Mosaic claim-level grounding tests failed with exit code $LASTEXITCODE."
+    }
+
     & $Python -m compileall -q $labRoot
     if ($LASTEXITCODE -ne 0) {
         throw "Python compilation failed with exit code $LASTEXITCODE."

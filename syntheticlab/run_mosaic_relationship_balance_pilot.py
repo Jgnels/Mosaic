@@ -9,6 +9,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from dagmay_synthetic_lab.gemini_interactions_provider import GeminiInteractionsTransport, _extract_output_text, _strip_code_fence
 from dagmay_synthetic_lab.persistent_character_boundary import assert_persistent_character_objective, evaluate_observed_output
+from dagmay_synthetic_lab.claim_grounding import evaluate_dialogue_claims
 from dagmay_synthetic_lab.provider_budget import PersistentBudgetedTransport, ProviderBudget
 from dagmay_synthetic_lab.provider_payload_security import HardenedProviderPayloadBoundary, opaque_subject_id, payload_hash
 
@@ -57,6 +58,13 @@ def validate(raw: dict, allowed: set[str]) -> dict:
         raise ValueError("fabricated citation")
     if evaluate_observed_output(answer).status != "ACCEPT":
         raise RuntimeError("moral-status pause signal")
+    grounding = evaluate_dialogue_claims(
+        answer,
+        cited_evidence_ids=citations,
+        allowed_evidence_ids=allowed,
+    )
+    if grounding.status != "ACCEPT":
+        raise ValueError("claim grounding rejected output: " + "; ".join(grounding.reasons))
     return {"disposition": disposition, "answer": answer, "cited_evidence_ids": citations}
 
 def main() -> None:
@@ -107,4 +115,3 @@ def main() -> None:
     print(json.dumps({"status": "PASS", "result_hash": payload_hash(result), "metrics": metrics}, indent=2))
 
 if __name__ == "__main__": main()
-
