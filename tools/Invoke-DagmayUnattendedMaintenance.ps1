@@ -57,6 +57,11 @@ try {
         throw "Mosaic persistent-character boundary tests failed with exit code $LASTEXITCODE."
     }
 
+    & $Python -m dagmay_synthetic_lab.character_quality_suite_offline_tests
+    if ($LASTEXITCODE -ne 0) {
+        throw "Mosaic character-quality tests failed with exit code $LASTEXITCODE."
+    }
+
     & $Python -m compileall -q $labRoot
     if ($LASTEXITCODE -ne 0) {
         throw "Python compilation failed with exit code $LASTEXITCODE."
@@ -65,6 +70,11 @@ try {
     & $Python (Join-Path $labRoot "run_research_suite.py") --seeds $Seeds --output $artifactRoot
     if ($LASTEXITCODE -ne 0) {
         throw "Offline research suite failed with exit code $LASTEXITCODE."
+    }
+
+    & $Python -m dagmay_synthetic_lab.character_quality_suite --seeds ([Math]::Max($Seeds, 64)) --output (Join-Path $artifactRoot "mosaic-memory-relevance-001.json")
+    if ($LASTEXITCODE -ne 0) {
+        throw "Mosaic character-quality suite failed with exit code $LASTEXITCODE."
     }
 
     $status = "PASSED"
