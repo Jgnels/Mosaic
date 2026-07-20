@@ -78,3 +78,9 @@ Severity: HIGH before canonical dialogue or state mutation
 V2 allowed sparse events to become unsupported personality descriptions ("temper" and
 "inconsistent nature"). Future provider dialogue needs typed claims, explicit supporting evidence,
 and entailment checks; regex remains only a defense-in-depth layer.
+
+## KR-015 — Deterministic rendering can preserve facts while degrading character voice
+Severity: PRODUCT / PLAYER VALUE
+
+V3 removed unsupported claims but exposed ungrammatical legacy summary fragments. A safe renderer
+needs typed event semantics, first-person transformation, and style tests that cannot add facts.

@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:48:55.595554+00:00",
+  "experiment_id": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3",
+  "provider_request": {
+    "input": "Select a bounded relationship disposition from verified game events. Return no prose and make no claims about motives, feelings, or personality. Cite helpful events only in positive_evidence_ids and harmful events only in negative_evidence_ids. TRUST requires positive-only support; MIXED requires both; DISTRUST requires negative-only support. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"positive_evidence_ids\":[\"EV-ID\"],\"negative_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-7b2bf27a4697014575c42cb1\",\"character\":\"Yori\",\"counterpart\":\"Zane\",\"evidence\":[{\"evidence_id\":\"EV-4-P1\",\"summary\":\"brought medicine to Yori\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-4-P2\",\"summary\":\"supported Yori on a caravan\",\"valence\":\"POSITIVE\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "3a2c8a39aaa273bf1636141ff1b45fcdd1c279f4d4d6a983d5573531915c41af",
+  "schema_version": 1
+}

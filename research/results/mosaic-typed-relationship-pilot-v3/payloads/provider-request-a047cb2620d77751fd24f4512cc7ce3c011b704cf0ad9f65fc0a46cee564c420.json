@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:48:47.555408+00:00",
+  "experiment_id": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3",
+  "provider_request": {
+    "input": "Select a bounded relationship disposition from verified game events. Return no prose and make no claims about motives, feelings, or personality. Cite helpful events only in positive_evidence_ids and harmful events only in negative_evidence_ids. TRUST requires positive-only support; MIXED requires both; DISTRUST requires negative-only support. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"positive_evidence_ids\":[\"EV-ID\"],\"negative_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-f2452353d4e1c82c1582ff04\",\"character\":\"Wren\",\"counterpart\":\"Xara\",\"evidence\":[{\"evidence_id\":\"EV-3-P1\",\"summary\":\"returned Wren's lost weapon\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-3-P2\",\"summary\":\"defended Wren in combat\",\"valence\":\"POSITIVE\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "a047cb2620d77751fd24f4512cc7ce3c011b704cf0ad9f65fc0a46cee564c420",
+  "schema_version": 1
+}

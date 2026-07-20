@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "updated_utc": "2026-07-20T11:53:00Z",
-  "real_provider_authorized": true,
-  "authorized_protocols": ["MOSAIC_TYPED_RELATIONSHIP_PILOT_V3"],
-  "status": "ONE_BOUNDED_TYPED_RELATIONSHIP_PROTOCOL_AUTHORIZED",
+  "updated_utc": "2026-07-20T12:08:00Z",
+  "real_provider_authorized": false,
+  "authorized_protocols": [],
+  "status": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3_COMPLETED_GATE_CLOSED",
   "controls": {
     "persistent_character_boundary": "PASS",
     "objective_surface_audit": "PASS_16_OF_16",
@@ -13,5 +13,5 @@
     "payload_archive_checkpoint_budget": "REQUIRED",
     "shadow_only_no_canonical_mutation": "REQUIRED"
   },
-  "notes": ["Authorization is limited to 12 shadow-only calls for MOSAIC_TYPED_RELATIONSHIP_PILOT_V3.", "The provider may return only a disposition and typed evidence IDs; Mosaic renders all dialogue deterministically.", "Any schema, citation, valence, budget, payload, or boundary failure closes the run; billing and canonical mutation remain prohibited."]
+  "notes": ["V3 completed 12 shadow-only calls: typed-contract acceptance 1.00, positive trust 1.00, mixed disposition 1.00, model-authored dialogue 0.00.", "Typed selection plus deterministic rendering prevented unsupported personality and motive claims.", "Player-facing prose was grammatically awkward because legacy free-text event summaries were fragments; event-kind rendering must be improved offline before another provider run.", "The provider gate is closed; billing and canonical mutation remain prohibited."]
 }

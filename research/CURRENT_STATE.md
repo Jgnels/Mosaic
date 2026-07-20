@@ -189,3 +189,12 @@ personality generalizations in 2/12 answers ("temper" and "inconsistent nature")
 regex gate. Treat V2 as validation of relationship balancing, checkpointing, budgeting, and payload
 hygiene—not validation of complete claim grounding. The provider gate is closed. The next step is a
 typed claim representation with evidence entailment, tested offline before any new provider protocol.
+
+## 2026-07-20 typed relationship V3 checkpoint
+
+V3 completed 12/12 shadow-only calls and passed every preregistered structural threshold: typed
+contract acceptance 1.00, positive trust 1.00, mixed disposition 1.00, and model-authored dialogue
+0.00. Exact payload hygiene passed and canonical state was unchanged. Deterministic rendering
+eliminated the unsupported motive/personality generalizations seen in V1/V2. Its raw event-summary
+fragments were grammatically awkward, so player-facing dialogue quality remains a limiting result.
+The provider gate is closed. Next: typed event kinds and grammatical first-person rendering offline.

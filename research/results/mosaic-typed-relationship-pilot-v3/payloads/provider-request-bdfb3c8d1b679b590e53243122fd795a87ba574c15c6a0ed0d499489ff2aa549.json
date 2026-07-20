@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:48:59.823938+00:00",
+  "experiment_id": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3",
+  "provider_request": {
+    "input": "Select a bounded relationship disposition from verified game events. Return no prose and make no claims about motives, feelings, or personality. Cite helpful events only in positive_evidence_ids and harmful events only in negative_evidence_ids. TRUST requires positive-only support; MIXED requires both; DISTRUST requires negative-only support. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"positive_evidence_ids\":[\"EV-ID\"],\"negative_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-e2d6645e376d8e004d3fcf89\",\"character\":\"Yori\",\"counterpart\":\"Zane\",\"evidence\":[{\"evidence_id\":\"EV-4-P1\",\"summary\":\"brought medicine to Yori\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-4-P2\",\"summary\":\"supported Yori on a caravan\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-4-N1\",\"summary\":\"claimed credit for Yori's work\",\"valence\":\"NEGATIVE\"},{\"evidence_id\":\"EV-4-N2\",\"summary\":\"refused a previously agreed favor\",\"valence\":\"NEGATIVE\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "bdfb3c8d1b679b590e53243122fd795a87ba574c15c6a0ed0d499489ff2aa549",
+  "schema_version": 1
+}

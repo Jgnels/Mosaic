@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:48:39.349500+00:00",
+  "experiment_id": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3",
+  "provider_request": {
+    "input": "Select a bounded relationship disposition from verified game events. Return no prose and make no claims about motives, feelings, or personality. Cite helpful events only in positive_evidence_ids and harmful events only in negative_evidence_ids. TRUST requires positive-only support; MIXED requires both; DISTRUST requires negative-only support. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"positive_evidence_ids\":[\"EV-ID\"],\"negative_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-1c44fcfcd774c066b83b0b59\",\"character\":\"Uma\",\"counterpart\":\"Venn\",\"evidence\":[{\"evidence_id\":\"EV-2-P1\",\"summary\":\"rescued Uma from a fire\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-2-P2\",\"summary\":\"kept watch while Uma slept\",\"valence\":\"POSITIVE\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "e70fb2819dd8279801585bd1eb4290c30554c7d77101417d07a666e6fc999183",
+  "schema_version": 1
+}

@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:48:26.513765+00:00",
+  "experiment_id": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3",
+  "provider_request": {
+    "input": "Select a bounded relationship disposition from verified game events. Return no prose and make no claims about motives, feelings, or personality. Cite helpful events only in positive_evidence_ids and harmful events only in negative_evidence_ids. TRUST requires positive-only support; MIXED requires both; DISTRUST requires negative-only support. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"positive_evidence_ids\":[\"EV-ID\"],\"negative_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-50c61c2f4175f343969d25ee\",\"character\":\"Rowan\",\"counterpart\":\"Mira\",\"evidence\":[{\"evidence_id\":\"EV-0-P1\",\"summary\":\"warned Rowan before a raid\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-0-P2\",\"summary\":\"shared food during a shortage\",\"valence\":\"POSITIVE\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "0e36050901811151076370188c3862e80ffd9312072c7025a47667f3cd453e99",
+  "schema_version": 1
+}

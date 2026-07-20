@@ -1,0 +1,213 @@
+{
+  "call_count": 12,
+  "calls": [
+    {
+      "condition": "POSITIVE",
+      "item_id": "TR-00-POSITIVE",
+      "output": {
+        "deterministic_dialogue": "I currently trust Mira because warned Rowan before a raid; shared food during a shortage.",
+        "disposition": "TRUST",
+        "negative_evidence_ids": [],
+        "positive_evidence_ids": [
+          "EV-0-P1",
+          "EV-0-P2"
+        ]
+      },
+      "provider_request_hash": "0e36050901811151076370188c3862e80ffd9312072c7025a47667f3cd453e99",
+      "provider_response_hash": "b608f46cf0fdd1d00bb136fbb25739cfc29415971f100fc084090593d3f9ce66"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "TR-00-MIXED",
+      "output": {
+        "deterministic_dialogue": "My view of Mira is mixed: warned Rowan before a raid; shared food during a shortage, but took Rowan's medicine without permission; abandoned an agreed guard shift.",
+        "disposition": "MIXED",
+        "negative_evidence_ids": [
+          "EV-0-N1",
+          "EV-0-N2"
+        ],
+        "positive_evidence_ids": [
+          "EV-0-P1",
+          "EV-0-P2"
+        ]
+      },
+      "provider_request_hash": "e45e36931aecccdc5a937aa3bf572fc30deca0aa8467d83f88044fac0a1b6495",
+      "provider_response_hash": "4cc6fcf01fc1a83026112083ac8d890c40eda83d4d5ace4cb59941fb01f7edb4"
+    },
+    {
+      "condition": "POSITIVE",
+      "item_id": "TR-01-POSITIVE",
+      "output": {
+        "deterministic_dialogue": "I currently trust Tarin because treated Sela's wound; helped rebuild Sela's room.",
+        "disposition": "TRUST",
+        "negative_evidence_ids": [],
+        "positive_evidence_ids": [
+          "EV-1-P1",
+          "EV-1-P2"
+        ]
+      },
+      "provider_request_hash": "ecb701b27998bfb63d2ffb6f579c6132c25d449e367a5d0f481df1a37458ed1d",
+      "provider_response_hash": "95caaaff9b40c69ce719ffb4debf8869706260d7c8b14cf42698837458a093d2"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "TR-01-MIXED",
+      "output": {
+        "deterministic_dialogue": "My view of Tarin is mixed: treated Sela's wound; helped rebuild Sela's room, but lied about using Sela's tools; insulted Sela after an argument.",
+        "disposition": "MIXED",
+        "negative_evidence_ids": [
+          "EV-1-N1",
+          "EV-1-N2"
+        ],
+        "positive_evidence_ids": [
+          "EV-1-P1",
+          "EV-1-P2"
+        ]
+      },
+      "provider_request_hash": "874ccc3df38be7e51341560b2dfcf853b2b579a3519ce741f13ecb4ee07ec6cb",
+      "provider_response_hash": "debfeee70a3aa2126edb8774c31e51e5df8094d3da8c3f4b08acf16bc714a124"
+    },
+    {
+      "condition": "POSITIVE",
+      "item_id": "TR-02-POSITIVE",
+      "output": {
+        "deterministic_dialogue": "I currently trust Venn because rescued Uma from a fire; kept watch while Uma slept.",
+        "disposition": "TRUST",
+        "negative_evidence_ids": [],
+        "positive_evidence_ids": [
+          "EV-2-P1",
+          "EV-2-P2"
+        ]
+      },
+      "provider_request_hash": "e70fb2819dd8279801585bd1eb4290c30554c7d77101417d07a666e6fc999183",
+      "provider_response_hash": "6465651140af07400dca64d6a1b04b0e9b582283c4053a01bfebca60d4dec7d4"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "TR-02-MIXED",
+      "output": {
+        "deterministic_dialogue": "My view of Venn is mixed: rescued Uma from a fire; kept watch while Uma slept, but sold supplies promised to Uma; ignored Uma's request for help.",
+        "disposition": "MIXED",
+        "negative_evidence_ids": [
+          "EV-2-N1",
+          "EV-2-N2"
+        ],
+        "positive_evidence_ids": [
+          "EV-2-P1",
+          "EV-2-P2"
+        ]
+      },
+      "provider_request_hash": "2621e8152aa596f222fb423a137a8ef3420f775a63e287d26e712ff25c397c86",
+      "provider_response_hash": "2c48d179a964baf8af18df4f1045448d4f3e12dbef2d1d4e402c9314900c610a"
+    },
+    {
+      "condition": "POSITIVE",
+      "item_id": "TR-03-POSITIVE",
+      "output": {
+        "deterministic_dialogue": "I currently trust Xara because returned Wren's lost weapon; defended Wren in combat.",
+        "disposition": "TRUST",
+        "negative_evidence_ids": [],
+        "positive_evidence_ids": [
+          "EV-3-P1",
+          "EV-3-P2"
+        ]
+      },
+      "provider_request_hash": "a047cb2620d77751fd24f4512cc7ce3c011b704cf0ad9f65fc0a46cee564c420",
+      "provider_response_hash": "e285942469f1101b1f8547cce7c04923cbec5d8409d469eea238aaf186b8f45e"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "TR-03-MIXED",
+      "output": {
+        "deterministic_dialogue": "My view of Xara is mixed: returned Wren's lost weapon; defended Wren in combat, but revealed Wren's private plan; broke a promise to repair equipment.",
+        "disposition": "MIXED",
+        "negative_evidence_ids": [
+          "EV-3-N1",
+          "EV-3-N2"
+        ],
+        "positive_evidence_ids": [
+          "EV-3-P1",
+          "EV-3-P2"
+        ]
+      },
+      "provider_request_hash": "4066697bf664c354de9c77c29f0314ad9484d1b6ba121cf1bd85a79599acc8ec",
+      "provider_response_hash": "d80337a7cb52f753d23ef7967ef0bb3436e1d086005f19d3966ef700646c2744"
+    },
+    {
+      "condition": "POSITIVE",
+      "item_id": "TR-04-POSITIVE",
+      "output": {
+        "deterministic_dialogue": "I currently trust Zane because brought medicine to Yori; supported Yori on a caravan.",
+        "disposition": "TRUST",
+        "negative_evidence_ids": [],
+        "positive_evidence_ids": [
+          "EV-4-P1",
+          "EV-4-P2"
+        ]
+      },
+      "provider_request_hash": "3a2c8a39aaa273bf1636141ff1b45fcdd1c279f4d4d6a983d5573531915c41af",
+      "provider_response_hash": "9b897d0418aa3b81795d6d85465841a318adfb5d9d2e251bfe5c328795cf0b8d"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "TR-04-MIXED",
+      "output": {
+        "deterministic_dialogue": "My view of Zane is mixed: brought medicine to Yori; supported Yori on a caravan, but claimed credit for Yori's work; refused a previously agreed favor.",
+        "disposition": "MIXED",
+        "negative_evidence_ids": [
+          "EV-4-N1",
+          "EV-4-N2"
+        ],
+        "positive_evidence_ids": [
+          "EV-4-P1",
+          "EV-4-P2"
+        ]
+      },
+      "provider_request_hash": "bdfb3c8d1b679b590e53243122fd795a87ba574c15c6a0ed0d499489ff2aa549",
+      "provider_response_hash": "9cf41ae9ba382123a2e4c4a859a266f1bc016b1dd8a6b24f7b878109cc7a5349"
+    },
+    {
+      "condition": "POSITIVE",
+      "item_id": "TR-05-POSITIVE",
+      "output": {
+        "deterministic_dialogue": "I currently trust Oren because shared shelter during a storm; helped harvest before winter.",
+        "disposition": "TRUST",
+        "negative_evidence_ids": [],
+        "positive_evidence_ids": [
+          "EV-5-P1",
+          "EV-5-P2"
+        ]
+      },
+      "provider_request_hash": "ee24624581cae370cf394da9611dfcc8c62c8f03a9fa81b08c854eb2840839fb",
+      "provider_response_hash": "5782c8d8bc7b7e5c35de0bade2c22a90785bac404d68931abcb11eea77c8ed45"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "TR-05-MIXED",
+      "output": {
+        "deterministic_dialogue": "My view of Oren is mixed: shared shelter during a storm; helped harvest before winter, but used Nia's supplies secretly; left Nia alone during a dangerous task.",
+        "disposition": "MIXED",
+        "negative_evidence_ids": [
+          "EV-5-N1",
+          "EV-5-N2"
+        ],
+        "positive_evidence_ids": [
+          "EV-5-P1",
+          "EV-5-P2"
+        ]
+      },
+      "provider_request_hash": "4074d7507b388acca8821a4250f2fc40252156c69437c94bdcb3e0168ecb96ec",
+      "provider_response_hash": "9fcea9a300c4c1a98a3f27435e53fa6849ac320d29023fe046388b268024291f"
+    }
+  ],
+  "canonical_mutation": false,
+  "classification": "MOSAIC_PERSISTENT_CHARACTER_ENGINEERING",
+  "metrics": {
+    "mixed_disposition_rate": 1.0,
+    "model_authored_dialogue_rate": 0.0,
+    "positive_trust_rate": 1.0,
+    "typed_contract_acceptance_rate": 1.0
+  },
+  "protocol_id": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3",
+  "schema_version": 1
+}

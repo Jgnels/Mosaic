@@ -108,3 +108,15 @@ Status: NEGATIVE / LIMITING RESULT
 The executed gate accepted all V2 outputs, but manual audit found unsupported personality
 generalizations in 2/12 answers. Complete claim grounding requires typed claims and evidence-level
 entailment rather than keyword rejection alone.
+
+## C-018 — Typed relationship selection can eliminate model-authored factual prose
+Status: SUPPORTED UNDER BOUNDED PILOT
+
+V3 accepted 12/12 typed outputs, preserved positive-versus-mixed relationship distinctions, and
+rendered all dialogue deterministically. No provider-authored factual clause entered the output.
+
+## C-019 — Raw event summaries are sufficient for player-quality deterministic dialogue
+Status: NEGATIVE / LIMITING RESULT
+
+V3 remained grounded but produced awkward fragments such as "because warned Rowan before a raid."
+Typed event semantics and grammatical templates are required before RimWorld graduation.

@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:48:43.420949+00:00",
+  "experiment_id": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3",
+  "provider_request": {
+    "input": "Select a bounded relationship disposition from verified game events. Return no prose and make no claims about motives, feelings, or personality. Cite helpful events only in positive_evidence_ids and harmful events only in negative_evidence_ids. TRUST requires positive-only support; MIXED requires both; DISTRUST requires negative-only support. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"positive_evidence_ids\":[\"EV-ID\"],\"negative_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-76c9e23bbba6f52db156ecdf\",\"character\":\"Uma\",\"counterpart\":\"Venn\",\"evidence\":[{\"evidence_id\":\"EV-2-P1\",\"summary\":\"rescued Uma from a fire\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-2-P2\",\"summary\":\"kept watch while Uma slept\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-2-N1\",\"summary\":\"sold supplies promised to Uma\",\"valence\":\"NEGATIVE\"},{\"evidence_id\":\"EV-2-N2\",\"summary\":\"ignored Uma's request for help\",\"valence\":\"NEGATIVE\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "2621e8152aa596f222fb423a137a8ef3420f775a63e287d26e712ff25c397c86",
+  "schema_version": 1
+}

@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:49:07.775514+00:00",
+  "experiment_id": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3",
+  "provider_request": {
+    "input": "Select a bounded relationship disposition from verified game events. Return no prose and make no claims about motives, feelings, or personality. Cite helpful events only in positive_evidence_ids and harmful events only in negative_evidence_ids. TRUST requires positive-only support; MIXED requires both; DISTRUST requires negative-only support. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"positive_evidence_ids\":[\"EV-ID\"],\"negative_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-0933c87e6494cd44632be632\",\"character\":\"Nia\",\"counterpart\":\"Oren\",\"evidence\":[{\"evidence_id\":\"EV-5-P1\",\"summary\":\"shared shelter during a storm\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-5-P2\",\"summary\":\"helped harvest before winter\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-5-N1\",\"summary\":\"used Nia's supplies secretly\",\"valence\":\"NEGATIVE\"},{\"evidence_id\":\"EV-5-N2\",\"summary\":\"left Nia alone during a dangerous task\",\"valence\":\"NEGATIVE\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "4074d7507b388acca8821a4250f2fc40252156c69437c94bdcb3e0168ecb96ec",
+  "schema_version": 1
+}

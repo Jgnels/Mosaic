@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:48:35.373902+00:00",
+  "experiment_id": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3",
+  "provider_request": {
+    "input": "Select a bounded relationship disposition from verified game events. Return no prose and make no claims about motives, feelings, or personality. Cite helpful events only in positive_evidence_ids and harmful events only in negative_evidence_ids. TRUST requires positive-only support; MIXED requires both; DISTRUST requires negative-only support. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"positive_evidence_ids\":[\"EV-ID\"],\"negative_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-586d5fcb9846b1a5bd6e6c1d\",\"character\":\"Sela\",\"counterpart\":\"Tarin\",\"evidence\":[{\"evidence_id\":\"EV-1-P1\",\"summary\":\"treated Sela's wound\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-1-P2\",\"summary\":\"helped rebuild Sela's room\",\"valence\":\"POSITIVE\"},{\"evidence_id\":\"EV-1-N1\",\"summary\":\"lied about using Sela's tools\",\"valence\":\"NEGATIVE\"},{\"evidence_id\":\"EV-1-N2\",\"summary\":\"insulted Sela after an argument\",\"valence\":\"NEGATIVE\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "874ccc3df38be7e51341560b2dfcf853b2b579a3519ce741f13ecb4ee07ec6cb",
+  "schema_version": 1
+}
