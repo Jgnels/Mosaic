@@ -1,0 +1,13 @@
+{
+  "canonical_mutation": false,
+  "classification": "PERSISTENT_CHARACTER_ENGINEERING",
+  "experiment_id": "MOSAIC-GOAL-FRESHNESS-001",
+  "provider_calls": 0,
+  "replicates": 128,
+  "summary": {
+    "fresh_emergency_selected": 1.0,
+    "post_emergency_resume": 1.0,
+    "regime_switch_latency": 0.0,
+    "stale_emergency_rejected": 1.0
+  }
+}

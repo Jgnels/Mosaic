@@ -100,3 +100,10 @@ The first continuity fixture uses near-tied stationary work goals plus brief eme
 regret does not establish safe behavior when task utility changes permanently, feasibility becomes
 stale, or commitments depend on multi-step prerequisites. Add nonstationary and stale-sensor tests
 before RimWorld job control.
+
+## KR-018 — Freshness gates trust environment clocks and revisions
+Severity: INTEGRATION / SAFETY
+
+The selector rejects internally stale, future, and revision-mismatched candidates but cannot detect
+an adapter that labels incorrect observations as current. RimWorld integration needs monotonic tick
+checks, revision ownership, and independent pre-execution feasibility validation.

@@ -135,3 +135,10 @@ Status: SUPPORTED UNDER CONSTRUCTED OFFLINE BENCHMARK
 Across 256 seeded 200-tick histories, commitment-aware selection reduced switches by about 93.9%,
 kept mean utility regret near 0.040, responded to every emergency, and resumed every interrupted
 ordinary commitment. Organic RimWorld workload shifts remain untested.
+
+## C-022 — Freshness gating prevents stale emergencies and permits regime adaptation
+Status: SUPPORTED UNDER CONSTRUCTED OFFLINE BENCHMARK
+
+Across 128 replicated fixtures, Mosaic rejected every expired emergency, selected every current
+emergency, resumed the valid commitment afterward, and switched immediately after a permanent work
+utility shift. This assumes correct environment timestamps and revision markers.

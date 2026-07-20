@@ -243,3 +243,11 @@ bounded baseline under fluctuating work utility and three periodic emergencies. 
 6.0 switches versus 98.91, a 0.939 reduction; mean utility regret was 0.0397; emergency compliance
 and post-emergency commitment resumption were both 1.00. This validates the authored continuity
 mechanism under the fixture, not general behavior under organic colony regime changes.
+
+## 2026-07-20 goal freshness and regime-change checkpoint
+
+A 128-replicate offline benchmark added observation ticks, expiry ticks, and world revisions before
+goal scoring. The committed work goal adapted at the first tick of a permanent utility shift, an
+expired critical signal was rejected, a fresh critical signal was selected, and the new ordinary
+commitment resumed afterward (all rates 1.00; switch latency 0). Future-tick and revision-mismatched
+candidates also failed closed. Trustworthy adapter clocks/revisions remain an external dependency.
