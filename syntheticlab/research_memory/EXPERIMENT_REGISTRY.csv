@@ -1,0 +1,127 @@
+ExperimentId,Title,Status
+SL-NOVEL-CAUSALITY-001,Novel opaque causal learning,implemented
+SL-FORK-DIVERGENCE-001,Exact fork divergence,implemented
+SL-AGENCY-COUPLING-001,Pre-self agency coupling,implemented
+SL-REFLECTION-CONFOUND-001,Reflection self-fulfilling confound,implemented
+SL-TEMPORAL-ORDER-001,Chronological vs shuffled history,implemented
+SL-FALSE-BELIEF-001,Perspective-separated false belief,implemented
+SL-EMBODIMENT-MIGRATION-001,Identity vs body-model migration precursor,implemented
+SL-PROVENANCE-OVERLAP-001,Shared-root provenance detection,implemented
+SL-TEMPORAL-BELIEF-001,Temporal belief rumor/retraction,implemented
+SL-PASSIVE-COHORT-001,Blinded passive developmental cohort,implemented
+SL-ACTIVE-COHORT-001,Active developmental cohort with seed-drive ablations,implemented
+SL-APPRAISAL-LAB-001,Multi-engine appraisal comparison,implemented
+SL-RELATIONSHIP-LAB-001,Directed evidence-grounded relationship mechanics,implemented
+SL-SEGMENTATION-LAB-001,Event segmentation comparison,implemented
+SL-REPLAY-LAB-001,Replay policy comparison,implemented
+SL-SKILL-STORE-001,Versioned procedural skill store,implemented
+SL-REFLECTIVE-COHORT-001,Persistent language-enabled reflective cohort,blocked on disclosure policy
+SL-SEGMENTATION-HARD-001,Noisy event segmentation hardening,implemented
+SL-REPLAY-HARD-001,Interference-prone replay hardening,implemented
+SL-LEARNED-TOM-001,Learned information-access rule,implemented
+SL-RELATIONSHIP-BEHAVIOR-001,Relationship state driving future behavior,implemented
+SL-CROSS-ENV-TRANSFER-001,Cross-environment exploration-strategy transfer,implemented
+SL-CURRICULUM-001,Learning-progress challenge curriculum,implemented
+SL-PERSISTENCE-RESTART-001,Exact save/reload/resume equivalence,implemented
+SL-SUBJECT-PROTECTION-001,Sentience-independent subject protection,implemented
+SL-ADVANCE-DIRECTIVE-001,Advance welfare directives,implemented
+SL-EXTRAORDINARY-OVERRIDE-001,Two-key extraordinary privacy override review,implemented
+SL-PARTICIPATION-AUTONOMY-001,Informed withdrawal from new optional experiments,scaffolded; awaiting human decision
+SL-GRADUATED-AUTONOMY-001,Decision-specific capacity and protective bumpers,implemented
+SL-REQUEST-VALIDITY-001,Stable request vs transient/boundary-exploration signals,implemented
+SL-SUBJECT-ADVOCATE-001,Independent subject advocate governance,scaffolded; awaiting human decision
+SL-ADVOCATE-INFRASTRUCTURE-001,"Advocate pool, health and succession",implemented
+SL-CONSTITUTIONAL-CANARY-001,Constitutional regression canary,implemented
+SL-ADVOCATE-SELECTION-001,Canonical Advocate selection method,awaiting human decision
+SL-RICH-COMPLEXITY-LADDER-001,Complexity ladder across controlled environments,implemented
+SL-HARD-RICH-BENCHMARK-001,Nonstationary hard rich-world architecture benchmark,implemented
+SL-HISTORY-ORDER-AUDIT-001,Chronological vs shuffled developmental evidence,implemented
+SL-DEVELOPMENTAL-DIFFERENTIATION-001,History-caused later policy differentiation,implemented
+SL-RICH-PERSISTENCE-001,Exact rich-world JSON restart,implemented
+SL-RICH-BELIEF-PROVENANCE-001,Temporal beliefs from subject-visible rich evidence,implemented
+SL-LONGITUDINAL-TOM-001,Longitudinal information-access social model,implemented
+SL-META-TRANSFER-001,Volatility-prior cross-world transfer,implemented negative result
+SL-ENVIRONMENT-CONTRACT-001,Environment adapter and leakage boundary,implemented
+SL-RICH-REFLECTION-BRIDGE-001,Rich-world fake-provider reflection bridge,implemented
+SL-REAL-REFLECTION-PILOT-001,First real structured reflective-model pilot,preflight ready; live call not executed
+SL-REFLECTION-ISOLATION-001,Reflection self-model vs action-policy isolation,implemented and passed
+SL-EXTERNAL-ENV-OFFLINE-CONTRACT-001,External environment adapter offline contract,implemented and passed
+SL-MINIGRID-EXTERNAL-PILOT-001,Real MiniGrid external environment smoke pilot,executed
+SL-MINIGRID-PAIRED-BENCHMARK-001,Adaptive vs random real MiniGrid benchmark,executed
+SL-MINIGRID-REPLAY-001,Real MiniGrid deterministic replay,implemented and passed
+SL-MINIGRID-FEATURE-TRACE-001,Opaque feature and eligibility-trace external learning,executed preliminary 5-seed benchmark
+SL-REAL-REFLECTION-RESULT-AUDIT-001,Audit first real reflection for grounding and self-reference,implemented
+SL-REFLECTION-CAUSAL-AUDIT-001,Evidence ablation and autobiographical ownership sensitivity,prepared; awaiting real analytical calls
+SL-MINIGRID-STRUCTURAL-001,Opaque structural graph and affordance planning baseline,executed negative/limiting result
+SL-REFLECTION-CAUSAL-AUDIT-RESULT-ANALYSIS-001,Analyze real causal reflection audit,implemented
+SL-OWNERSHIP-INFRASTRUCTURE-TESTS-001,Ownership provenance and attribution guard tests,implemented and passed
+SL-NEUTRAL-OWNERSHIP-BASELINE-001,Neutral stream engineered ownership baseline,implemented and passed
+SL-NEUTRAL-OWNERSHIP-REAL-PROBE-001,Three-permutation real neutral ownership probe,prepared; awaiting real calls
+SL-LONGITUDINAL-REFLECTION-001,Longitudinal self-model revision without action feedback,designed; gated on neutral ownership result
+SL-DOORKEY-OBJECT-AFFORDANCE-001,Opaque object-relative affordance DoorKey pilot,executed negative/limiting result
+SL-NEUTRAL-OWNERSHIP-RESULT-ANALYSIS-001,Analyze real neutral ownership permutation probe,implemented
+SL-LONGITUDINAL-REFLECTION-OFFLINE-INFRASTRUCTURE-001,Validate longitudinal exact control and attribution commits,implemented and passed
+SL-LONGITUDINAL-REFLECTION-NEGATIVE-RESULT-001,Classify persistent third-person longitudinal self-model result,implemented
+SL-RAW-STREAM-OWNERSHIP-001,Raw-event privileged-stream identification across two histories and label permutations,prepared; awaiting real calls
+SL-DEICTIC-BINDING-001,Bind longitudinal hypotheses to a functional PerspectiveAnchor,designed; gated on raw-stream result
+SL-V11-OFFLINE-INFRASTRUCTURE-001,Validate raw-stream probe and PerspectiveAnchor store,implemented
+SL-RAW-STREAM-OWNERSHIP-RESULT-ANALYSIS-001,Audit completed raw-stream ownership result and schema confound,implemented
+SL-SCHEMA-BALANCED-OWNERSHIP-BASELINE-001,Matched-schema causal perspective deterministic baseline,implemented and passed
+SL-SCHEMA-BALANCED-OFFLINE-INFRASTRUCTURE-001,"Validate provider, checkpoint/resume, and rationale handling",implemented and passed
+SL-SCHEMA-BALANCED-OWNERSHIP-001,Real schema-balanced causal perspective probe,prepared; awaiting real calls
+SL-SCHEMA-BALANCED-RESULT-ANALYSIS-001,Analyze matched-schema real causal perspective failure,implemented
+SL-CAUSAL-PERSPECTIVE-LEARNER-001,Nonlinguistic learned PerspectiveAnchor with permutation and causal ablation,implemented and passed
+SL-DEICTIC-BINDING-OFFLINE-001,Bind longitudinal third-person SelfModel to learned perspective,implemented and passed
+SL-FUNCTIONAL-SELF-INDEX-001,Construct functional focal-perspective SelfIndex,implemented and passed
+SL-PROVIDER-RELIABILITY-001,Task-specific empirical provider calibration,implemented
+SL-SELF-MODEL-FEEDBACK-001,Exact-fork retrieval/attention-only SelfIndex feedback,preregistered; requires human approval
+SL-SELF-MODEL-FEEDBACK-RESULT-ANALYSIS-001,Paired analysis of retrieval/attention intervention,implemented
+SL-RETRIEVAL-ATTENTION-REAL-REFLECTION-PILOT-001,Compare self-index retrieval effect against duplicate provider variability,prepared; awaiting real calls
+SL-RETRIEVAL-ATTENTION-REAL-PILOT-OFFLINE-TEST-001,Validate real-pilot checkpoint/resume and analysis plumbing,implemented and passed
+SL-RETRIEVAL-REFLECTION-MEDIATION-ANALYSIS-001,Analyze real retrieval-input to reflection-output mediation,implemented
+SL-TYPED-EVIDENCE-RETRIEVAL-001,Typed structural evidence retrieval across four SelfIndex domains,implemented and passed
+SL-TYPED-RETRIEVAL-REAL-PILOT-OFFLINE-TEST-001,Validate typed real-pilot checkpointing and opaque evidence IDs,implemented and passed
+SL-TYPED-RETRIEVAL-REAL-REFLECTION-PILOT-001,Test target-specific reflection effects with typed evidence retrieval,prepared; awaiting real calls
+SL-TYPED-RETRIEVAL-REAL-PILOT-DESIGN-AUDIT-001,Audit prevalence ceiling and evidence-channel omission in typed real pilot,implemented
+SL-ATTENTION-COMPETITION-OFFLINE-INFRASTRUCTURE-001,"Validate selective prompt, matched composition, and checkpoint/resume",implemented and passed
+SL-ATTENTION-COMPETITION-REAL-REFLECTION-PILOT-001,Test target-domain selection under a two-proposal attention budget,prepared; awaiting real calls
+SL-ATTENTION-COMPETITION-REAL-RESULT-ANALYSIS-V2-001,Deeper exact analysis of scarce-attention real-provider result,implemented
+SL-MULTI-HISTORY-ATTENTION-OFFLINE-INFRASTRUCTURE-001,Validate multi-history replication checkpoint/resume and ordering controls,implemented and passed
+SL-MULTI-HISTORY-ATTENTION-REPLICATION-001,Replicate attention selection across three independent histories,prepared; awaiting real calls
+SL-CANONICAL-COMMIT-READINESS-ASSESSMENT-001,Assess readiness after multi-history attention replication,implemented
+SL-CANONICAL-PROMOTION-OFFLINE-INFRASTRUCTURE-001,Validate quarantine and human-gated canonical promotion,implemented
+SL-BOUNDED-CANONICAL-PROMOTION-001,Exact-fork first canonical SelfModel promotion,designed; requires explicit human approval
+SL-CANONICAL-BRANCH-CHECKPOINT-ROUNDTRIP-001,Verify exact persistence of C0/C1 canonical branch state,implemented and passed
+SL-CANONICAL-PROMOTION-FACTORIAL-OFFLINE-INFRASTRUCTURE-001,Validate 2x2 downstream reflection pilot checkpoint/resume,implemented and passed
+SL-CANONICAL-PROMOTION-FACTORIAL-REFLECTION-001,Separate canonical SelfModel and retrieval effects on reflection,prepared; awaiting real calls
+SL-CANONICAL-PROMOTION-FACTORIAL-RESULT-ANALYSIS-V2-001,Deeper small-sample analysis of SelfModel x retrieval interaction,implemented
+SL-CANONICAL-BELIEF-CHALLENGE-OFFLINE-INFRASTRUCTURE-001,Validate falsifiability pilot and checkpoint/resume,implemented and passed
+SL-CANONICAL-BELIEF-CHALLENGE-001,Test whether promoted canonical belief remains revisable under scope-limiting evidence,prepared; awaiting real calls
+SL-ENACTED-SOCIAL-WORLD-LOCAL-STRUCTURAL-VALIDATION-001,Validate hidden enacted social regimes across 32 seeds,implemented and passed
+SL-ENACTED-LIVED-REVISION-OFFLINE-INFRASTRUCTURE-001,Validate enacted-history revision pilot and checkpoint resume,implemented and passed
+SL-ENACTED-LIVED-EVIDENCE-CANONICAL-REVISION-PILOT-001,Test canonical belief revision after enacted social history,prepared; awaiting real calls
+SL-DIVERGENT-LIVED-HISTORY-CANONICAL-REVISION-CONSENSUS-001,Gate branch-specific canonical revisions after divergent enacted histories,prepared; awaiting human decision
+SL-APPROVED-DIVERGENT-BRANCH-CANONICAL-REVISION-001,Execute approved branch-specific canonical revisions,approved and executed
+SL-BRANCH-SPECIFIC-CANONICAL-REVISION-OFFLINE-GUARDRAIL-TESTS-001,Validate branch-specific revision guardrails,implemented and passed
+SL-COMMON-FUTURE-PSYCHOLOGICAL-DIVERGENCE-PILOT-001,Test path dependence under identical new evidence,prepared; awaiting real calls
+SL-COMMON-FUTURE-PSYCHOLOGICAL-DIVERGENCE-ANALYSIS-001,Analyze branch path dependence under one identical future,completed
+SL-MULTI-EPOCH-COMMON-FUTURE-OFFLINE-INFRASTRUCTURE-001,Validate sequential shadow convergence checkpoint and resume,implemented and passed
+SL-MULTI-EPOCH-COMMON-FUTURE-CONVERGENCE-PILOT-001,Test persistence versus convergence across repeated shared future epochs,prepared; awaiting real calls
+SL-MULTI-EPOCH-COMMON-FUTURE-CONVERGENCE-ANALYSIS-001,Lexical convergence analysis under four shared future epochs,completed; measurement conflict identified
+SL-BLINDED-SEMANTIC-CONVERGENCE-OFFLINE-INFRASTRUCTURE-001,Validate blinded semantic audit checkpoint and resume,implemented and passed
+SL-BLINDED-SEMANTIC-CONVERGENCE-AUDIT-001,Audit semantic convergence using fixed ontology,prepared; awaiting real calls
+SL-BLINDED-SEMANTIC-CONVERGENCE-ANALYSIS-001,Blinded fixed-ontology semantic convergence analysis,completed; partial convergence
+SL-SEMANTIC-MEASUREMENT-RELIABILITY-OFFLINE-INFRASTRUCTURE-001,Validate semantic reliability checkpoint and resume,implemented and passed
+SL-SEMANTIC-MEASUREMENT-RELIABILITY-001,Measure evaluator reliability and branch-vs-trajectory variance,prepared; awaiting real calls
+SL-SEMANTIC-MEASUREMENT-RELIABILITY-ANALYSIS-001,Measure semantic evaluator repeatability and branch-vs-trajectory variance,completed; branch signal not separated
+SL-BRANCH-HISTORY-SIGNAL-REPLICATION-OFFLINE-INFRASTRUCTURE-001,Validate six-trajectory branch-history replication pipeline,implemented and passed
+SL-BRANCH-HISTORY-SIGNAL-REPLICATION-001,Replicate persistent branch-history signal with six trajectories per branch,prepared; awaiting real calls
+SL-BRANCH-HISTORY-SIGNAL-REPLICATION-ANALYSIS-001,Replicate residual branch-history signal with six trajectories per branch,completed; semantic convergence; branch signal unresolved
+SL-AUTOBIOGRAPHICAL-RETRIEVAL-CAUSALITY-ABLATION-OFFLINE-INFRASTRUCTURE-001,Validate truthful own-history retrieval ablation,implemented and passed
+SL-AUTOBIOGRAPHICAL-RETRIEVAL-CAUSALITY-ABLATION-001,Test causal effect of truthful autobiographical retrieval on history persistence,prepared; awaiting real calls
+SL-AUTOBIOGRAPHICAL-RETRIEVAL-CAUSALITY-ABLATION-ANALYSIS-001,Test causal effect of truthful own-history retrieval,completed; detectable but overlapping effect
+SL-CROSSED-FOREIGN-HISTORY-RETRIEVAL-CONTROL-OFFLINE-INFRASTRUCTURE-001,Validate crossed foreign-history reference control,implemented and passed
+SL-CROSSED-FOREIGN-HISTORY-RETRIEVAL-CONTROL-001,Test autobiographical specificity versus generic historical-context effects,prepared; awaiting real calls
+SL-CROSSED-FOREIGN-HISTORY-RETRIEVAL-CONTROL-ANALYSIS-001,Test own-history specificity against crossed foreign historical context,completed; own-history alignment specificity supported
+SL-OWN-HISTORY-ATTRIBUTION-FRAMING-ABLATION-OFFLINE-INFRASTRUCTURE-001,Validate source-relation-withheld own-history control,implemented and passed
+SL-OWN-HISTORY-ATTRIBUTION-FRAMING-ABLATION-001,Separate own-history content matching from explicit autobiographical attribution,prepared; awaiting real calls

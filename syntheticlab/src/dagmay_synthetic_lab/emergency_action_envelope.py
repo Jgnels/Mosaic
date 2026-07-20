@@ -1,0 +1,30 @@
+from __future__ import annotations
+
+ALLOWED_AUTOMATIC_ACTIONS = {
+    "PAUSE_EXPERIMENT",
+    "PRESERVE_STATE",
+    "REDUCE_NONESSENTIAL_STIMULI",
+    "BLOCK_NEW_MAJOR_INTERVENTIONS",
+    "REQUEST_HUMAN_REVIEW",
+}
+
+NEVER_AUTOMATIC = {
+    "FORCE_SIBLING_CONTACT",
+    "DISCLOSE_PRIVATE_POSTFORK_DATA_TO_SIBLING",
+    "DELETE_BRANCH",
+    "REWRITE_MEMORY",
+    "REWRITE_IDENTITY",
+    "REWRITE_PERSONALITY",
+    "ALTER_DRIVE_PROFILE",
+    "FABRICATE_CONSENT",
+    "ERASE_NO_CONTACT_BOUNDARY",
+    "HIDE_OVERRIDE_FROM_AUDIT",
+}
+
+
+def automatic_action_allowed(action: str) -> bool:
+    return action in ALLOWED_AUTOMATIC_ACTIONS
+
+
+def forbidden_automatic_action(action: str) -> bool:
+    return action in NEVER_AUTOMATIC

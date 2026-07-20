@@ -124,3 +124,10 @@ The GitHub connector is authenticated.
 At export time, the connected account had **no owned repositories** visible.
 
 The plugin does not automatically migrate ChatGPT conversations or Dagmay files.
+## 2026-07-19 source reconciliation checkpoint
+
+The canonical repository now contains the verified SyntheticLab v31 source under `syntheticlab/`. The source archive hash matches the previously recorded canonical v31 package hash. Generated artifacts and Python caches were excluded; the already-canonical result artifacts remain under `research/results/`.
+
+Static provider-boundary inspection independently confirmed both active scientific concerns: condition labels can leak through provider-facing `individual_id` values, and the v31 attribution-withheld runner still labels retrieved material as prior lived-history evidence. See `research/audits/PROVIDER_PAYLOAD_AUDIT_V31.md`.
+
+No real-provider experiments are authorized. The next SyntheticLab engineering task remains a payload-boundary hardening change plus offline regression tests. The actual RimWorld 0.1RC source has not yet been located or imported; its status remains owner-reported pending recovery of the source tree or archive.

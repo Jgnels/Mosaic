@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dagmay SyntheticLab Result",
+  "type": "object",
+  "required": [
+    "lab_version",
+    "suite_id",
+    "research_claim_status",
+    "summary",
+    "experiments"
+  ],
+  "properties": {
+    "lab_version": {
+      "type": "string"
+    },
+    "suite_id": {
+      "type": "string"
+    },
+    "research_claim_status": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object"
+    },
+    "experiments": {
+      "type": "object"
+    }
+  }
+}

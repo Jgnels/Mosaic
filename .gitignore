@@ -1,0 +1,29 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# .NET and RimWorld build output
+bin/
+obj/
+Assemblies/
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+*.key
+
+# Generated/local experiment output
+artifacts/
+
+# Editor and OS noise
+.vs/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
