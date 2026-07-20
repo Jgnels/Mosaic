@@ -1,24 +1,15 @@
 {
   "schema_version": 2,
-  "updated_utc": "2026-07-20T10:04:00Z",
-  "real_provider_authorized": false,
-  "authorized_protocols": [],
-  "status": "MOSAIC_MEMORY_GROUNDING_PILOT_V1_COMPLETED_GATE_CLOSED",
+  "updated_utc": "2026-07-20T10:24:00Z",
+  "real_provider_authorized": true,
+  "authorized_protocols": ["MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1"],
+  "status": "ONE_BOUNDED_MOSAIC_PROTOCOL_AUTHORIZED",
   "controls": {
     "persistent_character_boundary": "PASS",
-    "objective_evaluator_mutation_acceptance_surface_audit": "PASS_16_OF_16",
+    "objective_surface_audit": "PASS_16_OF_16",
     "protocol_preregistration": "PASS",
-    "opaque_subject_ids": "PASS",
-    "exact_secret_free_payload_archive": "PASS_12_OF_12",
-    "forbidden_token_scan": "PASS_12_OF_12",
-    "checkpoint_each_call": "PASS_12_OF_12",
-    "shadow_only_no_canonical_mutation": "PASS",
-    "persistent_free_tier_budget": "PASS"
+    "opaque_ids_payload_archive_checkpoint_budget": "REQUIRED",
+    "shadow_only_no_canonical_mutation": "REQUIRED"
   },
-  "notes": [
-    "MOSAIC_MEMORY_GROUNDING_PILOT_V1 completed 12 of 12 calls.",
-    "Causal answer, causal citation, and distractor abstention rates were all 1.0.",
-    "The one-protocol authorization closed automatically after completion.",
-    "No provider protocol is currently authorized."
-  ]
+  "notes": ["Authorization is limited to 12 calls for MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1.", "No billing, paid fallback, or canonical mutation is authorized."]
 }

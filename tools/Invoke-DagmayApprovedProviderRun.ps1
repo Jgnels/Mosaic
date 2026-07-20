@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet("HARDENED_PROVIDER_SMOKE_V1", "MOSAIC_MEMORY_GROUNDING_PILOT_V1")]
+    [ValidateSet("HARDENED_PROVIDER_SMOKE_V1", "MOSAIC_MEMORY_GROUNDING_PILOT_V1", "MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1")]
     [string] $Protocol = "HARDENED_PROVIDER_SMOKE_V1",
     [string] $Python
 )
@@ -46,7 +46,12 @@ New-Item -ItemType Directory -Path $runRoot -Force | Out-Null
 Import-Module (Join-Path $PSScriptRoot "Dagmay.Secrets.psm1") -Force
 
 Invoke-WithDagmayGeminiCredential -ScriptBlock {
-    if ($Protocol -eq "MOSAIC_MEMORY_GROUNDING_PILOT_V1") {
+    if ($Protocol -eq "MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1") {
+        & $Python (Join-Path $repoRoot "syntheticlab\run_mosaic_relationship_balance_pilot.py") `
+            --approval $approvalPath --output $output --checkpoint $checkpoint `
+            --ledger $ledger --payload-archive $archive
+    }
+    elseif ($Protocol -eq "MOSAIC_MEMORY_GROUNDING_PILOT_V1") {
         & $Python (Join-Path $repoRoot "syntheticlab\run_mosaic_memory_grounding_pilot.py") `
             --approval $approvalPath --output $output --checkpoint $checkpoint `
             --ledger $ledger --payload-archive $archive

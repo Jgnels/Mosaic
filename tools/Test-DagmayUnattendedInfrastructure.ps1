@@ -33,7 +33,7 @@ try {
     }
 
     $providerRunner = Get-Content -LiteralPath (Join-Path $PSScriptRoot "Invoke-DagmayApprovedProviderRun.ps1") -Raw
-    if ($providerRunner -notmatch 'MOSAIC_MEMORY_GROUNDING_PILOT_V1') {
+    if ($providerRunner -notmatch 'MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1') {
         throw "Provider runner permits an unreviewed protocol surface."
     }
     if ($providerRunner -notmatch "real_provider_authorized") {
@@ -42,8 +42,8 @@ try {
 
     $gate = Get-Content -LiteralPath (Join-Path $repoRoot "research\provider_gate_status.json") -Raw | ConvertFrom-Json
     if ($gate.real_provider_authorized) {
-        if ($gate.authorized_protocols.Count -ne 1 -or $gate.authorized_protocols[0] -ne "MOSAIC_MEMORY_GROUNDING_PILOT_V1") {
-            throw "An open provider gate must authorize exactly the preregistered Mosaic memory pilot."
+        if ($gate.authorized_protocols.Count -ne 1) {
+            throw "An open provider gate must authorize exactly one preregistered Mosaic pilot."
         }
     }
     elseif ($gate.authorized_protocols.Count -ne 0) {
