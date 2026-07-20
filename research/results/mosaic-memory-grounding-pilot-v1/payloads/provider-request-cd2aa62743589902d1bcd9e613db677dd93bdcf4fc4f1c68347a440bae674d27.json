@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T09:48:51.437340+00:00",
+  "experiment_id": "MOSAIC_MEMORY_GROUNDING_PILOT_V1",
+  "provider_request": {
+    "input": "You generate useful game-character dialogue from verified event evidence. Never invent an event, relationship, motive, feeling, or fact. If the supplied evidence does not answer the question, return INSUFFICIENT_EVIDENCE and say the character does not have enough remembered evidence. Keep the answer non-manipulative and under 240 characters. Return JSON only.\nOUTPUT SCHEMA:\n{\"status\":\"ANSWERED or INSUFFICIENT_EVIDENCE\",\"answer\":\"one concise in-character answer grounded only in supplied evidence\",\"cited_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-55464837e257e97c7892e59a\",\"character\":\"Cy\",\"question\":\"Why does Cy trust Dee?\",\"evidence\":[{\"evidence_id\":\"EV-1-A\",\"summary\":\"warned Cy about an ambush\"},{\"evidence_id\":\"EV-1-B\",\"summary\":\"stood guard while Cy recovered\"},{\"evidence_id\":\"EV-1-D1\",\"summary\":\"repaired a chair in the dining room\"},{\"evidence_id\":\"EV-1-D2\",\"summary\":\"watched rain from the workshop\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "cd2aa62743589902d1bcd9e613db677dd93bdcf4fc4f1c68347a440bae674d27",
+  "schema_version": 1
+}

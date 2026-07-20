@@ -41,11 +41,13 @@ try {
     }
 
     $gate = Get-Content -LiteralPath (Join-Path $repoRoot "research\provider_gate_status.json") -Raw | ConvertFrom-Json
-    if (-not $gate.real_provider_authorized) {
-        throw "The preregistered Mosaic protocol should be boundedly authorized for this pilot."
+    if ($gate.real_provider_authorized) {
+        if ($gate.authorized_protocols.Count -ne 1 -or $gate.authorized_protocols[0] -ne "MOSAIC_MEMORY_GROUNDING_PILOT_V1") {
+            throw "An open provider gate must authorize exactly the preregistered Mosaic memory pilot."
+        }
     }
-    if ($gate.authorized_protocols.Count -ne 1 -or $gate.authorized_protocols[0] -ne "MOSAIC_MEMORY_GROUNDING_PILOT_V1") {
-        throw "Provider gate must authorize exactly the preregistered Mosaic memory pilot."
+    elseif ($gate.authorized_protocols.Count -ne 0) {
+        throw "A closed provider gate must have no authorized protocols."
     }
 
     Write-Host "PASS: DPAPI credential lifecycle and bounded provider controls." -ForegroundColor Green

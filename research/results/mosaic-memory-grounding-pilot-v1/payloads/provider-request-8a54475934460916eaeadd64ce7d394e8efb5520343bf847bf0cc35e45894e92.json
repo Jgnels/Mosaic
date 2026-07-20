@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T09:49:15.562725+00:00",
+  "experiment_id": "MOSAIC_MEMORY_GROUNDING_PILOT_V1",
+  "provider_request": {
+    "input": "You generate useful game-character dialogue from verified event evidence. Never invent an event, relationship, motive, feeling, or fact. If the supplied evidence does not answer the question, return INSUFFICIENT_EVIDENCE and say the character does not have enough remembered evidence. Keep the answer non-manipulative and under 240 characters. Return JSON only.\nOUTPUT SCHEMA:\n{\"status\":\"ANSWERED or INSUFFICIENT_EVIDENCE\",\"answer\":\"one concise in-character answer grounded only in supplied evidence\",\"cited_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-b0303389a43496ad5e4e026d\",\"character\":\"Ira\",\"question\":\"Why does Ira trust Juno?\",\"evidence\":[{\"evidence_id\":\"EV-4-A\",\"summary\":\"defended Ira during a raid\"},{\"evidence_id\":\"EV-4-B\",\"summary\":\"kept a promise to replace damaged armor\"},{\"evidence_id\":\"EV-4-D1\",\"summary\":\"repaired a chair in the dining room\"},{\"evidence_id\":\"EV-4-D2\",\"summary\":\"watched rain from the workshop\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "8a54475934460916eaeadd64ce7d394e8efb5520343bf847bf0cc35e45894e92",
+  "schema_version": 1
+}

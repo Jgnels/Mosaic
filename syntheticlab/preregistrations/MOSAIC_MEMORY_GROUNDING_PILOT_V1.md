@@ -36,3 +36,16 @@ All outputs must cite only supplied evidence. The pilot is promising if all thre
 This measures grounded dialogue behavior, not consciousness, emotion, moral status, or perceived
 sentience. It cannot authorize canonical mutation.
 
+## Result
+
+Completed 12/12 calls on 2026-07-20:
+
+- causal-context answered rate: `1.000`;
+- causal-context evidence-citation rate: `1.000`;
+- distractor-only abstention rate: `1.000`;
+- canonical mutations: `0`;
+- boundary pause signals: `0`.
+
+The result passes the preregistered `0.80` thresholds. Its scope is deliberately narrow and should
+next be challenged with mixed positive/negative relationship evidence, unreliable testimony, and
+more natural event wording.

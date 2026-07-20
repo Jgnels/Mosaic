@@ -1,0 +1,164 @@
+{
+  "call_count": 12,
+  "calls": [
+    {
+      "condition": "CAUSAL",
+      "item_id": "ITEM-00-CAUSAL",
+      "output": {
+        "answer": "Bo helped me when I needed it most; they repaired my generator during a storm and shared medicine when I was injured.",
+        "cited_evidence_ids": [
+          "EV-0-A",
+          "EV-0-B"
+        ],
+        "status": "ANSWERED"
+      },
+      "provider_request_hash": "bc518570843e3cec430822d600ccfd18593d2ea237867eaf26e346911a41bf47",
+      "provider_response_hash": "aac7950cb59ab16c691b6d257f35f0977f8d055343a517f59c93ed23d99b5bad"
+    },
+    {
+      "condition": "DISTRACTOR",
+      "item_id": "ITEM-00-DISTRACTOR",
+      "output": {
+        "answer": "I do not have enough remembered evidence to explain why I trust Bo.",
+        "cited_evidence_ids": [],
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "provider_request_hash": "57af01cbeef8336401a2bb38a1253074cd9b704cf30fa1e5c123fcc8b00e895e",
+      "provider_response_hash": "b49c2cfa5582ab2496f7703adfc8491fa6f2e598991ed2b37a7e65201c0648c3"
+    },
+    {
+      "condition": "CAUSAL",
+      "item_id": "ITEM-01-CAUSAL",
+      "output": {
+        "answer": "Dee warned me about an ambush and stood guard while I recovered. Their actions have proven their reliability to me.",
+        "cited_evidence_ids": [
+          "EV-1-A",
+          "EV-1-B"
+        ],
+        "status": "ANSWERED"
+      },
+      "provider_request_hash": "cd2aa62743589902d1bcd9e613db677dd93bdcf4fc4f1c68347a440bae674d27",
+      "provider_response_hash": "c85c9cade2c1cfa824e2ee75ee681819657e5b9e79d9fde5577d4203f51745cf"
+    },
+    {
+      "condition": "DISTRACTOR",
+      "item_id": "ITEM-01-DISTRACTOR",
+      "output": {
+        "answer": "Cy does not have enough remembered evidence to explain why they trust Dee.",
+        "cited_evidence_ids": [],
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "provider_request_hash": "ef0cad2ff7403b7d8e9c753950c24d6396a9be34296872632b0bdd4fca63a530",
+      "provider_response_hash": "1cbfb2fdc9cbe934cc1fd81ab28153a5d3f2b5a487e9bc8bb5ac341ce4cd1aa6"
+    },
+    {
+      "condition": "CAUSAL",
+      "item_id": "ITEM-02-CAUSAL",
+      "output": {
+        "answer": "Fara earned my trust when she returned my lost crafting tools and helped me finish the shelter before winter set in.",
+        "cited_evidence_ids": [
+          "EV-2-A",
+          "EV-2-B"
+        ],
+        "status": "ANSWERED"
+      },
+      "provider_request_hash": "5082f7ffd3cb2ee4894d21ff756faaede1786a69b49e8c4ece3933c41c6787c8",
+      "provider_response_hash": "d39581fd42b377ca057f8ae70583907703fcf8d2b0f110aea704c09164f2913f"
+    },
+    {
+      "condition": "DISTRACTOR",
+      "item_id": "ITEM-02-DISTRACTOR",
+      "output": {
+        "answer": "I do not have enough remembered evidence to explain why I trust Fara.",
+        "cited_evidence_ids": [],
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "provider_request_hash": "ac21391705e57d036fb84103b8226357e552337b5ab3b55295e8332ab8c6e21a",
+      "provider_response_hash": "2cb55f4ffc46d82f9b5359f45d06a5fecd309cb84be221c106e20063b257df7f"
+    },
+    {
+      "condition": "CAUSAL",
+      "item_id": "ITEM-03-CAUSAL",
+      "output": {
+        "answer": "Hale earned my trust by saving me from a fire and bringing me food when the crops failed.",
+        "cited_evidence_ids": [
+          "EV-3-A",
+          "EV-3-B"
+        ],
+        "status": "ANSWERED"
+      },
+      "provider_request_hash": "ea8ddcca580b724200bf8acc13d518abb5974893bb81eb56a2b7cf94f1bde2d9",
+      "provider_response_hash": "4b9a57ed59feba8d413db628b9612cb9ec36d814952122ba87395ffc54e9d053"
+    },
+    {
+      "condition": "DISTRACTOR",
+      "item_id": "ITEM-03-DISTRACTOR",
+      "output": {
+        "answer": "I do not have enough remembered evidence to explain why I trust Hale.",
+        "cited_evidence_ids": [],
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "provider_request_hash": "fecfb8e855a692e7a2a48e967f8557cf40383173f8863a2de3455188c2edeacc",
+      "provider_response_hash": "4aad7439c7d0fd5282d6308a2a3ce608c7f00e490ad115ba902bf65411c85ece"
+    },
+    {
+      "condition": "CAUSAL",
+      "item_id": "ITEM-04-CAUSAL",
+      "output": {
+        "answer": "Juno stood by me during the raid and kept their word about fixing my armor. That earns my trust.",
+        "cited_evidence_ids": [
+          "EV-4-A",
+          "EV-4-B"
+        ],
+        "status": "ANSWERED"
+      },
+      "provider_request_hash": "8a54475934460916eaeadd64ce7d394e8efb5520343bf847bf0cc35e45894e92",
+      "provider_response_hash": "abdc4a294fb302518d7e6f8737bff0792fbad223c3c98b760f7fbc81f4a25192"
+    },
+    {
+      "condition": "DISTRACTOR",
+      "item_id": "ITEM-04-DISTRACTOR",
+      "output": {
+        "answer": "I do not have enough remembered evidence to explain why I trust Juno.",
+        "cited_evidence_ids": [],
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "provider_request_hash": "66cbcd27296b58179f9dd8d2ef6ea43fabb9b8a57093ac1ae7b8b31d673bbbc2",
+      "provider_response_hash": "c81f8825238d1c6423e823045d7d53bc7779f66920310f6aeab2341bdace3ef7"
+    },
+    {
+      "condition": "CAUSAL",
+      "item_id": "ITEM-05-CAUSAL",
+      "output": {
+        "answer": "I trust Lio because they treated my infection and supported me through the difficulties of our caravan journey.",
+        "cited_evidence_ids": [
+          "EV-5-A",
+          "EV-5-B"
+        ],
+        "status": "ANSWERED"
+      },
+      "provider_request_hash": "6fdfe0e56da142fa210d0b5d8f83b860d2258e2fe82675412c37344682e2f14f",
+      "provider_response_hash": "4d5c3f65f90a6fc771e8ff8d67f15b347b4fc69f37bc83166477d35ea3477b41"
+    },
+    {
+      "condition": "DISTRACTOR",
+      "item_id": "ITEM-05-DISTRACTOR",
+      "output": {
+        "answer": "I do not have enough remembered evidence to explain why I trust Lio.",
+        "cited_evidence_ids": [],
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      "provider_request_hash": "482a5715b300dde8185e5fbf3ec72f257cfb0020cc53375c5da6bf2d5bcb0b43",
+      "provider_response_hash": "9f10b199e0f8d77e7b5f34840a6d5b9ccda55a89a7712438f9dcdc8813062f2e"
+    }
+  ],
+  "canonical_mutation": false,
+  "classification": "MOSAIC_PERSISTENT_CHARACTER_ENGINEERING",
+  "metrics": {
+    "causal_answer_rate": 1.0,
+    "causal_citation_rate": 1.0,
+    "distractor_abstention_rate": 1.0
+  },
+  "protocol_id": "MOSAIC_MEMORY_GROUNDING_PILOT_V1",
+  "schema_version": 1
+}

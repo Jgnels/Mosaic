@@ -1,24 +1,24 @@
 {
   "schema_version": 2,
-  "updated_utc": "2026-07-20T09:44:00Z",
-  "real_provider_authorized": true,
-  "authorized_protocols": ["MOSAIC_MEMORY_GROUNDING_PILOT_V1"],
-  "status": "ONE_BOUNDED_MOSAIC_PROTOCOL_AUTHORIZED",
+  "updated_utc": "2026-07-20T10:04:00Z",
+  "real_provider_authorized": false,
+  "authorized_protocols": [],
+  "status": "MOSAIC_MEMORY_GROUNDING_PILOT_V1_COMPLETED_GATE_CLOSED",
   "controls": {
     "persistent_character_boundary": "PASS",
     "objective_evaluator_mutation_acceptance_surface_audit": "PASS_16_OF_16",
     "protocol_preregistration": "PASS",
-    "opaque_subject_ids": "REQUIRED",
-    "exact_secret_free_payload_archive": "REQUIRED",
-    "forbidden_token_scan": "REQUIRED",
-    "checkpoint_each_call": "REQUIRED",
-    "shadow_only_no_canonical_mutation": "REQUIRED",
-    "persistent_free_tier_budget": "REQUIRED"
+    "opaque_subject_ids": "PASS",
+    "exact_secret_free_payload_archive": "PASS_12_OF_12",
+    "forbidden_token_scan": "PASS_12_OF_12",
+    "checkpoint_each_call": "PASS_12_OF_12",
+    "shadow_only_no_canonical_mutation": "PASS",
+    "persistent_free_tier_budget": "PASS"
   },
   "notes": [
-    "Authorization is limited to MOSAIC_MEMORY_GROUNDING_PILOT_V1.",
-    "Maximum planned calls: 12.",
-    "No billing, paid fallback, or canonical mutation is authorized.",
-    "Authorization expires after completion or failure of this protocol and must then close."
+    "MOSAIC_MEMORY_GROUNDING_PILOT_V1 completed 12 of 12 calls.",
+    "Causal answer, causal citation, and distractor abstention rates were all 1.0.",
+    "The one-protocol authorization closed automatically after completion.",
+    "No provider protocol is currently authorized."
   ]
 }

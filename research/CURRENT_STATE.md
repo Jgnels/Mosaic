@@ -18,6 +18,15 @@ Historical Dagmay modules remain preserved but dormant. The general audit prereq
 real-provider access remains false until a specific Mosaic-aligned protocol is preregistered and
 added to the bounded authorization list.
 
+### First Mosaic provider experiment
+
+`MOSAIC_MEMORY_GROUNDING_PILOT_V1` completed all 12 preregistered calls. Across six paired game
+relationship scenarios, causal-memory contexts achieved `1.0` answered and citation rates;
+distractor-only contexts achieved `1.0` honest abstention. All exact requests were archived,
+checkpointing completed after every call, and no canonical state changed. The bounded protocol gate
+closed after completion. This is a promising engineering pilot, not broad evidence across dialogue
+types, models, or natural RimWorld histories.
+
 **Date:** 2026-07-19  
 **Purpose:** first-read canonical state bridge for new ChatGPT/Codex sessions
 
