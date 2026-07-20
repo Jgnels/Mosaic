@@ -51,6 +51,10 @@ Severity: ENGINEERING
 
 External identity/history and RimWorld save checkpoints can diverge.
 
+Mitigation status: the SyntheticLab 0.2 reference now supplies an atomic composite character
+checkpoint and rejects cross-component identity mixing and generation rollback. The risk remains
+open for RimWorld until equivalent C# save/load integration is implemented and tested.
+
 ## KR-011 — Laptop hardware instability
 Severity: OPERATIONAL
 

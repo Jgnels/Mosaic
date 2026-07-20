@@ -194,3 +194,11 @@ Status: Accepted; implemented in SyntheticLab reference layer
 Persist every evaluated, accepted, and completed execution request in an identity-bound integrity-
 checked ledger. Restore enforces `completed subset accepted subset evaluated`; all evaluated IDs
 remain single-use across restart, and atomic writes preserve the last good authority state.
+
+## D-038 — Durable character runtime state shares one atomic checkpoint generation
+Status: Accepted; implemented in SyntheticLab reference layer
+
+Relationship evidence, goal continuity, execution authority, identity/lineage, and world revision
+must not be restored independently. Persist them beneath one versioned outer payload and hash, with
+a monotonically checked generation. Restore fails closed on component identity mismatch, integrity
+failure, or rollback. Component snapshots retain their own validation as defense in depth.

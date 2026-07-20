@@ -125,3 +125,9 @@ job; RimWorld must perform game-native reservation and validation.
 `syntheticlab/src/dagmay_synthetic_lab/goal_execution_snapshot.py` persists the single-use execution
 ledger across crashes with identity/lineage binding, integrity checks, set invariants, and atomic
 replacement. A future C# adapter must preserve equivalent replay protection across save/load.
+
+`syntheticlab/src/dagmay_synthetic_lab/runtime_checkpoint.py` is the composite 0.2 recovery
+reference. A future C# save adapter must bind relationship history, goal commitment, execution
+authority, identity/lineage, world revision, and checkpoint generation into one atomic unit rather
+than saving independently restorable stores. This remains reference code: no 0.1RC C# source has
+been recovered or modified.

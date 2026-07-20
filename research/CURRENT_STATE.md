@@ -267,3 +267,13 @@ persistence. Offline recovery preserved exact evaluated/accepted/completed sets;
 rejected request IDs remained non-replayable; an accepted unfinished request could record exactly
 one outcome; completed work could not complete twice. Tampering, impossible set relationships,
 identity mismatch, and interrupted writes failed closed or preserved the last good ledger.
+
+## 2026-07-20 atomic character-runtime checkpoint
+
+The SyntheticLab reference now binds relationship history, bounded-goal continuity, execution
+authority, individual/lineage identity, world revision, and checkpoint generation inside one
+integrity-checked atomic snapshot. Offline tests reproduced the complete runtime exactly after
+restore and preserved replay blocking. Outer tampering, recomputed cross-component identity mixing,
+generation rollback, and interrupted temporary writes failed closed or preserved the last good
+checkpoint. This closes the reference-layer two-store recovery gap; the missing RimWorld C# adapter
+still requires an equivalent save/load boundary before any job-control graduation.
