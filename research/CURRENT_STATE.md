@@ -198,3 +198,12 @@ contract acceptance 1.00, positive trust 1.00, mixed disposition 1.00, and model
 eliminated the unsupported motive/personality generalizations seen in V1/V2. Its raw event-summary
 fragments were grammatically awkward, so player-facing dialogue quality remains a limiting result.
 The provider gate is closed. Next: typed event kinds and grammatical first-person rendering offline.
+
+## 2026-07-20 RimWorld relationship adapter reference checkpoint
+
+SyntheticLab now contains an executable 24-kind RimWorld-style relationship event contract. It
+maps structured events to valence and grammatical first-person clauses, requires deterministic
+adapter provenance, rejects unsafe or unsupported fields, and caps rendered evidence at two events
+per valence. Offline coverage passed all 24 event kinds and five adversarial invalid-event cases.
+This is a graduation reference, not a claim that the missing owner-reported 0.1RC C# source has been
+recovered or modified.

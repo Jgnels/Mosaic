@@ -152,3 +152,15 @@ compatibility surfaces until a provenance-safe migration is separately tested.
 
 All provider protocols are suspended until objectives, evaluators, mutation criteria, and
 acceptance tests pass the persistent-character boundary audit.
+
+## D-033 — Relationship dialogue uses typed selection and deterministic rendering
+Status: Accepted; implemented in SyntheticLab reference layer
+
+Retain provider reasoning only for bounded disposition/evidence selection. Factual relationship
+clauses are produced from typed environment events, must carry deterministic-adapter provenance,
+and are capped at two examples per valence. Regex scanning remains defense in depth, not the primary
+grounding mechanism.
+
+V2 showed citation-complete free prose can still invent traits. V3 showed typed selection preserves
+relationship nuance without provider-authored factual claims. The event contract repairs V3's
+grammar limitation while keeping facts under adapter control.

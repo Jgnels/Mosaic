@@ -86,6 +86,14 @@ RimWorld 0.1 cognitive scope is frozen.
 
 SyntheticLab discoveries graduate into 0.2 only after deliberate review.
 
+## 0.2 relationship-event reference (not yet integrated)
+
+`syntheticlab/src/dagmay_synthetic_lab/rimworld_relationship_events.py` is now the executable
+reference contract for a future C# adapter. It covers 24 relationship event kinds, deterministic
+first-person rendering, explicit clause provenance, strict labels/details, valence consistency, and
+bounded citation counts. It does not alter frozen 0.1 scope and must not be represented as installed
+RimWorld code until the actual 0.1RC source is recovered and reconciled.
+
 ## Non-Dagmay instability context
 
 Historical game/system instability included:
