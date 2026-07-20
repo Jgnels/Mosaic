@@ -13,3 +13,7 @@ Before any real provider call, satisfy the canonical stop line in `../AGENTS.md`
 5. require explicit attribution of retrieved evidence that materially affects proposals.
 
 The active engineering task is an offline provider-payload leakage and provenance audit. No v31 headline claim should be reinstated without a clean revalidation.
+
+## Hardening progress
+
+An opt-in hardened belief-revision boundary now implements and offline-tests the first five controls above. The real-provider gate remains closed until a new runner uses that boundary and transport-level call budgeting plus bounded human approval are enforced. See `../research/provider_gate_status.json`.

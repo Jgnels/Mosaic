@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-07-20T07:10:00Z",
+  "real_provider_authorized": false,
+  "status": "HARDENED_BOUNDARY_IMPLEMENTED_NOT_YET_MIGRATED",
+  "controls": {
+    "opaque_subject_ids": "PASS_IN_HARDENED_BOUNDARY",
+    "exact_secret_free_payload_archive": "PASS_IN_HARDENED_BOUNDARY",
+    "final_serialized_payload_forbidden_token_scan": "PASS_IN_HARDENED_BOUNDARY",
+    "typed_evidence_provenance_ownership_temporal_role": "PASS_IN_HARDENED_BOUNDARY",
+    "retrieved_evidence_materiality_and_citation_gate": "PASS_IN_HARDENED_BOUNDARY",
+    "all_real_provider_entry_points_migrated": "NOT_COMPLETE",
+    "enforceable_provider_call_budget": "NOT_COMPLETE",
+    "bounded_human_approval_record": "NOT_COMPLETE",
+    "minimum_causal_chain_revalidation": "NOT_STARTED"
+  },
+  "test_module": "dagmay_synthetic_lab.provider_payload_security_offline_tests",
+  "notes": [
+    "Historical v31 source and artifacts remain unchanged in scientific interpretation.",
+    "Possession of an encrypted provider credential is not authorization to use it.",
+    "Invoke-DagmayApprovedProviderRun.ps1 remains fail-closed."
+  ]
+}

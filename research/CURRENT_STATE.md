@@ -135,3 +135,7 @@ No real-provider experiments are authorized. The next SyntheticLab engineering t
 ## 2026-07-20 unattended infrastructure checkpoint
 
 Unattended offline maintenance is implemented and validated. It clears provider credentials, compiles SyntheticLab, runs the deterministic offline suite, and writes reports outside Git. A one-time Windows DPAPI credential setup is available for the current Windows user, but real-provider execution remains technically fail-closed until the provider-payload stop line, call-budget enforcement, and a bounded human approval mechanism are complete.
+
+## 2026-07-20 provider-boundary hardening checkpoint
+
+A new opt-in hardened belief-revision boundary now passes offline tests for opaque subject IDs, typed evidence roles, final-payload forbidden-token rejection, exact secret-free request archives, and retrieved-evidence materiality/citation enforcement. Legacy mode remains available only to reproduce and audit historical experiments. The real-provider gate remains closed because no new experiment runner has been migrated, transport-level call budgets and bounded approval records are not implemented, and no minimum causal-chain revalidation has been authorized. See `research/provider_gate_status.json`.

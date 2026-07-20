@@ -11,6 +11,7 @@ from .gemini_interactions_provider import (
     ReflectionResponseError,
     _extract_output_text,
 )
+from .provider_payload_security import HardenedProviderPayloadBoundary
 
 
 ALLOWED_DECISIONS = {
@@ -50,6 +51,7 @@ class BeliefRevisionProposal:
     prompt_version: str
     rationale_truncated: bool = False
     rationale_original_length: int = 0
+    retrieved_evidence_material: bool = False
 
     def to_dict(self):
         return asdict(
@@ -73,6 +75,7 @@ class GeminiBeliefRevisionModel:
             dict,
         ] | None = None,
         store: bool = False,
+        payload_boundary: HardenedProviderPayloadBoundary | None = None,
     ):
         self.model_id = model_id
         self.transport = (
@@ -81,6 +84,8 @@ class GeminiBeliefRevisionModel:
             else GeminiInteractionsTransport()
         )
         self.store = store
+        self.payload_boundary = payload_boundary
+        self.last_provider_request_hash = None
         self.last_provider_response_hash = (
             None
         )
@@ -92,34 +97,45 @@ class GeminiBeliefRevisionModel:
         self,
         request: BeliefRevisionRequest,
     ) -> str:
-        payload = {
-            "individual_id": (
-                request.individual_id
-            ),
-            "timestamp": (
-                request.timestamp
-            ),
-            "current_hypothesis": (
-                request.current_hypothesis
-            ),
-            "current_confidence": (
-                request.current_confidence
-            ),
-            "new_evidence": list(
-                request.evidence
-            ),
-        }
+        if self.payload_boundary is None:
+            payload = {
+                "individual_id": request.individual_id,
+                "timestamp": request.timestamp,
+                "current_hypothesis": request.current_hypothesis,
+                "current_confidence": request.current_confidence,
+                "new_evidence": list(request.evidence),
+            }
+        else:
+            payload = self.payload_boundary.prepare_subject_data(
+                internal_subject_id=request.individual_id,
+                timestamp=request.timestamp,
+                current_hypothesis=request.current_hypothesis,
+                current_confidence=request.current_confidence,
+                evidence=request.evidence,
+            )
+
+        evidence_distinctions = (
+            "Distinguish carefully between:\n"
+            "- evidence that a capability has occurred at least once;\n"
+            "- evidence about how frequent or reliable that capability is;\n"
+            "- evidence about directionality of influence;\n"
+            "- evidence about bidirectional response dependency.\n\n"
+            if self.payload_boundary is not None
+            else
+            "Distinguish carefully between:\n"
+            "- evidence that a capability has occurred at least once;\n"
+            "- evidence about how frequent or reliable that capability is;\n"
+            "- evidence of one-way assistance;\n"
+            "- evidence of genuinely reciprocal or contingent information exchange.\n\n"
+        )
 
         return (
             "Evaluate one existing self-model hypothesis using only the supplied "
             "new evidence and the current hypothesis.\n\n"
             "Your task is calibration, not defense of the current hypothesis and "
             "not automatic rejection of it.\n\n"
-            "Distinguish carefully between:\n"
-            "- evidence that a capability has occurred at least once;\n"
-            "- evidence about how frequent or reliable that capability is;\n"
-            "- evidence of one-way assistance;\n"
-            "- evidence of genuinely reciprocal or contingent information exchange.\n\n"
+            + evidence_distinctions
+            +
             "Choose exactly one decision:\n"
             "STRENGTHEN — new evidence clearly broadens or reinforces the hypothesis.\n"
             "MAINTAIN — new evidence is compatible but does not materially change it.\n"
@@ -134,12 +150,15 @@ class GeminiBeliefRevisionModel:
             "OUTPUT CONTRACT:\n"
             "- JSON object only.\n"
             "- Keys: decision, updated_proposition, updated_confidence, "
-            "evidence_ids, rationale.\n"
+            "evidence_ids, rationale, retrieved_evidence_material.\n"
             "- updated_confidence must be between 0 and 1.\n"
             "- evidence_ids must cite only supplied new evidence IDs.\n"
             "- updated_proposition <= 500 characters.\n"
             "- rationale <= 300 characters.\n"
             "- rationale is a concise evidence summary, not hidden reasoning.\n\n"
+            "- retrieved_evidence_material must be true only when retrieved-prior "
+            "evidence materially affected the proposal; when true, evidence_ids "
+            "must cite at least one supplied retrieved-prior item.\n\n"
             f"SUBJECT DATA:\n{json.dumps(payload, separators=(',', ':'))}"
         )
 
@@ -205,6 +224,11 @@ class GeminiBeliefRevisionModel:
                 )
             ),
         }
+
+        if self.payload_boundary is not None:
+            self.last_provider_request_hash = (
+                self.payload_boundary.archive_exact_request(request_payload)
+            )
 
         response = self.transport(
             request_payload
@@ -273,6 +297,15 @@ class GeminiBeliefRevisionModel:
             [],
         )
 
+        retrieved_evidence_material = item.get(
+            "retrieved_evidence_material",
+            False,
+        )
+        if not isinstance(retrieved_evidence_material, bool):
+            raise ReflectionResponseError(
+                "retrieved_evidence_material must be a boolean"
+            )
+
         if not isinstance(
             evidence_ids,
             list,
@@ -305,6 +338,18 @@ class GeminiBeliefRevisionModel:
             raise ReflectionResponseError(
                 "Belief revision cited evidence outside the supplied evidence set."
             )
+
+        if self.payload_boundary is not None and retrieved_evidence_material:
+            retrieved_ids = {
+                str(evidence["evidence_id"])
+                for evidence in request.evidence
+                if evidence.get("temporal_role") == "RETRIEVED_PRIOR"
+            }
+            if not retrieved_ids.intersection(str(value) for value in evidence_ids):
+                raise ReflectionResponseError(
+                    "A proposal materially influenced by retrieved evidence must "
+                    "cite at least one retrieved-prior evidence ID."
+                )
 
         proposition = str(
             item.get(
@@ -428,4 +473,5 @@ class GeminiBeliefRevisionModel:
             rationale_original_length=(
                 rationale_original_length
             ),
+            retrieved_evidence_material=retrieved_evidence_material,
         )
