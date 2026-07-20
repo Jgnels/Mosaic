@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework Condition="'$(DagmayLocalVerification)' != 'true'">netstandard2.0</TargetFramework>
+    <TargetFramework Condition="'$(DagmayLocalVerification)' == 'true'">net8.0</TargetFramework>
+    <AssemblyName>Dagmay.Core</AssemblyName>
+    <RootNamespace>Dagmay.Core</RootNamespace>
+    <Description>Provider- and environment-independent identity core for Dagmay.</Description>
+  </PropertyGroup>
+</Project>

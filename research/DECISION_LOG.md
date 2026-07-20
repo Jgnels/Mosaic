@@ -202,3 +202,19 @@ Relationship evidence, goal continuity, execution authority, identity/lineage, a
 must not be restored independently. Persist them beneath one versioned outer payload and hash, with
 a monotonically checked generation. Restore fails closed on component identity mismatch, integrity
 failure, or rollback. Component snapshots retain their own validation as defense in depth.
+
+## D-039 — Recovered RimWorld source is a closure candidate, not an inferred RC
+Status: Accepted
+
+Import the newest recovered audit-work tree at `rimworld/0.1-closure-candidate/`. Preserve its
+Dagmay 0.1K version identifier and later closure patches exactly; do not relabel it 0.1RC without a
+separately versioned artifact or new verified release decision. Treat the old 0.1K manifest as stale
+relative to the final scheduler safety patch.
+
+## D-040 — Raw laptop recovery remains local and runtime data stays out of Git
+Status: Accepted
+
+Retain the complete rescue archives under ignored `local-recovery/` storage. Commit only selected
+secret-safe source, hashes, contextual records, and verification artifacts. Never commit saves,
+identity/reflection stores, experience journals, API credentials, installed assemblies, or raw
+diagnostics containing personal runtime state.

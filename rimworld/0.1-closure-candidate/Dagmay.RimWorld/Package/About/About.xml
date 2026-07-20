@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Dagmay</name>
+  <author>Dagmay Project</author>
+  <packageId>dagmay.research.observer</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Version 0.1K freezes the Dagmay 0.1 cognitive feature set and begins release closure. It retains the tested continuity, checkpoint recovery, Restricted Observer, ordinary Mind view, bounded reflection, salience, and social observation baseline. It adds automatic social-path certification diagnostics that verify real RimWorld social events become stable-counterpart, relationship-sensitive memories, reach a reflection-eligible evidence path, and survive a save/reload. The certification surface is diagnostic only: it does not infer private motives, control pawns, rewrite identity, or add newer SyntheticLab canonical-SelfModel research features.</description>
+</ModMetaData>

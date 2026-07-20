@@ -4,9 +4,15 @@
   "generated_date": "2026-07-20",
   "foundational_invariant": "Character continuity is independent of the specific inference model.",
   "active_objective": "Causally coherent, persistent, robust, believable, efficient, portable, enjoyable game characters.",
-  "provider_gate": {"authorized": false, "status": "PAUSED_FOR_MOSAIC_PERSISTENT_CHARACTER_PIVOT"},
+  "provider_gate": {"authorized": false, "status": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3_COMPLETED_GATE_CLOSED"},
   "tracks": {
-    "rimworld": {"owner_reported_current_milestone": "0.1RC", "source_recovery_status": "NOT_YET_LOCATED"},
+    "rimworld": {
+      "recovered_source_version": "0.1K",
+      "closure_content": ["0.1L persistence torture", "0.1M failure isolation", "read-only scheduler safety patch"],
+      "source_path": "rimworld/0.1-closure-candidate",
+      "source_recovery_status": "RECOVERED_AND_RECONCILED",
+      "exact_0.1RC_status": "UNCONFIRMED"
+    },
     "syntheticlab": {"latest_imported_version": "v31", "active_work": "offline boundary and evaluator audit"}
   }
 }

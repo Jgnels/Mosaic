@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dagmay.local/schemas/environment-event.v1.schema.json",
+  "title": "Dagmay Environment Event v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "eventId",
+    "deduplicationKey",
+    "kind",
+    "environment",
+    "occurredAtUtc",
+    "observedAtUtc",
+    "source",
+    "factualPayload",
+    "subjects"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "eventId": { "$ref": "#/$defs/strongId" },
+    "deduplicationKey": { "type": "string", "minLength": 1, "maxLength": 512 },
+    "kind": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "environment": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "occurredAtUtc": { "type": "string", "format": "date-time" },
+    "observedAtUtc": { "type": "string", "format": "date-time" },
+    "gameTick": { "type": ["integer", "null"] },
+    "source": { "type": "string", "minLength": 1, "maxLength": 512 },
+    "factualPayload": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "subjects": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/strongId" },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "strongId": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{32}$"
+    }
+  }
+}
+

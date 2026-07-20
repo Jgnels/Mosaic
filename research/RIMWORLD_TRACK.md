@@ -76,9 +76,23 @@ Closure campaign:
 - Long-session soak
 - Release Candidate
 
-The owner reports current work at 0.1RC.
+### Recovered closure candidate
 
-Repository build/test artifacts after migration are authoritative.
+The newest recovered source is now canonical at `rimworld/0.1-closure-candidate/` for continued
+0.1 closure work. It self-identifies as 0.1K and contains:
+
+- social-path certification;
+- 0.1L persistence torture;
+- 0.1M failure isolation; and
+- the later read-only scheduler safety patch.
+
+The earlier owner report of 0.1RC is retained as historical context but is not independently
+versioned in the recovered material. Exact RC status is unconfirmed. Long-session soak remains the
+unresolved closure gate unless later evidence is recovered.
+
+Fresh desktop verification on 2026-07-20 passed 42/42 contract tests, all six integration scenarios
+(603 assertions), and the RimWorld assembly/package build with zero warnings/errors. The package was
+not installed or launched; this does not close the live long-session-soak gate.
 
 ## Freeze rule
 
@@ -129,5 +143,5 @@ replacement. A future C# adapter must preserve equivalent replay protection acro
 `syntheticlab/src/dagmay_synthetic_lab/runtime_checkpoint.py` is the composite 0.2 recovery
 reference. A future C# save adapter must bind relationship history, goal commitment, execution
 authority, identity/lineage, world revision, and checkpoint generation into one atomic unit rather
-than saving independently restorable stores. This remains reference code: no 0.1RC C# source has
-been recovered or modified.
+than saving independently restorable stores. This remains reference code and has not been
+integrated into the recovered Observer-only 0.1 C# source.

@@ -111,3 +111,25 @@ Severity: INTEGRATION / SAFETY
 The selector rejects internally stale, future, and revision-mismatched candidates but cannot detect
 an adapter that labels incorrect observations as current. RimWorld integration needs monotonic tick
 checks, revision ownership, and independent pre-execution feasibility validation.
+
+## KR-019 — Recovered 0.1K manifest predates final closure patch
+Severity: PROVENANCE / RELEASE
+
+`rimworld/0.1-closure-candidate/MANIFEST_0.1K.json` does not describe the final recovered tree. It
+predates `ReflectionStorageSafetyPolicy.cs` and the final revision of
+`DagmayIdentityGameComponent.cs`. Use the recovery manifest and Git history for the imported tree;
+do not use the stale manifest to certify a release package.
+
+## KR-020 — Exact RimWorld 0.1RC designation is unconfirmed
+Severity: RELEASE / PROJECT MEMORY
+
+The recovered source self-identifies as 0.1K while incorporating later closure work. No separately
+versioned 0.1RC source or commit was found. Do not infer release-candidate completion from the prior
+conversation label. Long-session soak and a fresh desktop build/live verification remain open.
+
+## KR-021 — Recovered runtime state is private and checkpoint-sensitive
+Severity: DATA INTEGRITY / PRIVACY
+
+The emergency archive contains saves, identity and reflection stores, journals, logs, and config.
+These remain outside Git. Do not restore HourTest with the later Nelson journal; preserve each save
+and external store as a matched recovery set and validate hashes/checkpoints before any live use.

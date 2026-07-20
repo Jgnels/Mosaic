@@ -1,0 +1,693 @@
+{
+  "cognitive_scope_frozen_at": "0.1J.3",
+  "compiled_in_packaging_environment": false,
+  "dagmay_version": "0.1K",
+  "files": [
+    {
+      "bytes": 3760,
+      "path": ".codex/agents/dagmay-implementer.toml",
+      "sha256": "4cbb9576ffe0d6288991987737035be6a8c1b48a407d569559daee39f59ca1bf"
+    },
+    {
+      "bytes": 349,
+      "path": ".editorconfig",
+      "sha256": "0145658101e9288dfd2d8353c50d0924688c3cda8ad8f52be41f45fa04285d61"
+    },
+    {
+      "bytes": 470,
+      "path": ".gitignore",
+      "sha256": "78938db8487e71bff758178177521bf5aab35b3bde8ead0fab664da99625dd5a"
+    },
+    {
+      "bytes": 4110,
+      "path": "AGENTS.md",
+      "sha256": "84fedb7fa89e4051405f617499b3cc0320866accdb03c1c8078d64fb944f759c"
+    },
+    {
+      "bytes": 255,
+      "path": "Dagmay.Core/Abstractions/IClock.cs",
+      "sha256": "61505573b41c0901f1cf034150d8202b9e5cce8ab704be4e07612100f630c7fd"
+    },
+    {
+      "bytes": 1036,
+      "path": "Dagmay.Core/Abstractions/IEventLedger.cs",
+      "sha256": "13b9f7fae1b74dc7354b3446445740e516396fbbefaec51289a8c9cb0ca6adcd"
+    },
+    {
+      "bytes": 573,
+      "path": "Dagmay.Core/Abstractions/IIdentityStore.cs",
+      "sha256": "9ff59c0de4f93745b411159b4f88e124f37ccfddc8b92d5faabc1bb3ec580fe8"
+    },
+    {
+      "bytes": 371,
+      "path": "Dagmay.Core/Abstractions/IModelProvider.cs",
+      "sha256": "da7c1e0c6a0bd5fc45833f40214548555ae6c32364478fcb00123226c468fdfb"
+    },
+    {
+      "bytes": 3958,
+      "path": "Dagmay.Core/Affect/AffectVector.cs",
+      "sha256": "14fcdd0c5978530061985497bf9b207e3af7043d8244ca1809d361fa6ca2e5bd"
+    },
+    {
+      "bytes": 2502,
+      "path": "Dagmay.Core/Beliefs/BeliefRecord.cs",
+      "sha256": "6012b54e43ed680cdebecf2a8df742e3356f6ce92f1691b1dd7cc27318006a25"
+    },
+    {
+      "bytes": 1521,
+      "path": "Dagmay.Core/Contracts/ContractGuard.cs",
+      "sha256": "4ea85ed3aceb7ff8ff7447fc14c6293ca00c7e09868ac25b4ba339dc0abdb753"
+    },
+    {
+      "bytes": 8830,
+      "path": "Dagmay.Core/Contracts/Identifiers.cs",
+      "sha256": "a7a0bd7b6856c92078375f2ef31839d70186041981be7bcbced54a5c858cac95"
+    },
+    {
+      "bytes": 1647,
+      "path": "Dagmay.Core/Contracts/OperationResult.cs",
+      "sha256": "83868c960ff708d50ec7566ad19b33ac6c221191cd35eff1785388a24a8b8a29"
+    },
+    {
+      "bytes": 670,
+      "path": "Dagmay.Core/Contracts/SchemaVersions.cs",
+      "sha256": "e1a0f9842fc7acb4782e99753075109a3cf1fe9a47d1a0b799ab79c68b592ca3"
+    },
+    {
+      "bytes": 471,
+      "path": "Dagmay.Core/Dagmay.Core.csproj",
+      "sha256": "f20c0465157efbc115fc541523bf8513a90e1a5d4033c87088002f5dd351d1b4"
+    },
+    {
+      "bytes": 1970,
+      "path": "Dagmay.Core/Identity/ContinuityProfile.cs",
+      "sha256": "da413e350fdf9ffaa5d27ba0f775624651da0ce956eb021b33080ad3bb3b740f"
+    },
+    {
+      "bytes": 2479,
+      "path": "Dagmay.Core/Identity/Enrollment.cs",
+      "sha256": "1cdf1dcece6fa4b3a01e593434a97691a3ebb253d12c6896eb57c4fc9940b1a4"
+    },
+    {
+      "bytes": 2402,
+      "path": "Dagmay.Core/Identity/IdentitySeed.cs",
+      "sha256": "793013bf7307c960a3761e795b86cab0e4be8141bd69a37cf46d4636ada551e5"
+    },
+    {
+      "bytes": 4517,
+      "path": "Dagmay.Core/Identity/IndividualState.cs",
+      "sha256": "9a48e7ae65c93af91951294a851351fdfc4aed3ea3743291b0df454680c33401"
+    },
+    {
+      "bytes": 2086,
+      "path": "Dagmay.Core/Interaction/InteractionOrigin.cs",
+      "sha256": "9566309d20800813c013791f20f86aad927dcab78bfe7f464f71fa265cd26ea4"
+    },
+    {
+      "bytes": 1318,
+      "path": "Dagmay.Core/Lifecycle/LifecycleRules.cs",
+      "sha256": "c7906b14da6ebe890c7c2f62d0fb52759bfe639b75d9b973279dc3d89429bb0d"
+    },
+    {
+      "bytes": 349,
+      "path": "Dagmay.Core/Lifecycle/LifecycleState.cs",
+      "sha256": "25e8709682b9a7712d2f75ee330aeba78c622436638fd5d83d034deb70f3c7db"
+    },
+    {
+      "bytes": 9793,
+      "path": "Dagmay.Core/Memory/DeterministicExperienceEncoder.cs",
+      "sha256": "d5e3f6223f7a9e2a4d9b54d1ecc90ebcc799673542df24a9e2e4cb4d81c0a0af"
+    },
+    {
+      "bytes": 1789,
+      "path": "Dagmay.Core/Memory/EnvironmentEvent.cs",
+      "sha256": "4f22b657934c8d7a8babf831bea666e52591c952ea8d5af24a6ccf4f03358dde"
+    },
+    {
+      "bytes": 2119,
+      "path": "Dagmay.Core/Memory/MemoryIndex.cs",
+      "sha256": "d1e0f10816fd7cac9ff59a74178e84b8a355d3d309c87b2dc2b85e4fd63302fc"
+    },
+    {
+      "bytes": 1857,
+      "path": "Dagmay.Core/Memory/PerceivedEvent.cs",
+      "sha256": "6106e8d6761e85815bd0d297b0fdf5761258117be85eb622627609a4f57b0b4d"
+    },
+    {
+      "bytes": 2953,
+      "path": "Dagmay.Core/Memory/SubjectiveMemory.cs",
+      "sha256": "6b1644ddc7d7b777a33daffd4c3776d3d63b5f9133e88552a8f2e9edbd409ca8"
+    },
+    {
+      "bytes": 18595,
+      "path": "Dagmay.Core/Observer/ObserverSnapshots.cs",
+      "sha256": "447c46d4bffa93a4a3045d5308349ed9ec4076a88f2a91c681654a6ef9e21688"
+    },
+    {
+      "bytes": 4926,
+      "path": "Dagmay.Core/Persistence/AtomicIdentityArchive.cs",
+      "sha256": "fa7cc25fdfcb26041ba77177764e10489c186cc7992c0103f547d6e773be3891"
+    },
+    {
+      "bytes": 4973,
+      "path": "Dagmay.Core/Persistence/AtomicReflectionStore.cs",
+      "sha256": "cd6be7ff6a415f5122d1c54722e047ab6836836358a18dd550159304ea215843"
+    },
+    {
+      "bytes": 24412,
+      "path": "Dagmay.Core/Persistence/DurableExperienceJournal.cs",
+      "sha256": "8db9eca760e8a3ddd0ee98bdd3325278b5546c23676be43903832b9105980434"
+    },
+    {
+      "bytes": 15138,
+      "path": "Dagmay.Core/Persistence/IdentityArchiveCodec.cs",
+      "sha256": "11bbdccd281be71b0ac283e2b7af5483d817e47f1598419d3e6acd29645fa660"
+    },
+    {
+      "bytes": 2682,
+      "path": "Dagmay.Core/Persistence/IdentityArchiveSnapshot.cs",
+      "sha256": "a09f0ee34c3989b935cea9e8b0bf5aa71ad12aa064b2d4495c20658f63def5e6"
+    },
+    {
+      "bytes": 2289,
+      "path": "Dagmay.Core/Persistence/InMemoryEventLedger.cs",
+      "sha256": "c7677cfe5b791b21d08997811c7047c85d7c841fa3b79adc11de16bb82a4058e"
+    },
+    {
+      "bytes": 1945,
+      "path": "Dagmay.Core/Persistence/InMemoryIdentityStore.cs",
+      "sha256": "ae2511ce205ef91dcfe3f969fcfec8675be6af7171bd74d7a71b0f74f55e2cab"
+    },
+    {
+      "bytes": 18855,
+      "path": "Dagmay.Core/Persistence/ReflectionStoreCodec.cs",
+      "sha256": "cb8604072434c110705aa720a86ca6ae7f397b63576ebbb6a7002bae3d7469d1"
+    },
+    {
+      "bytes": 9521,
+      "path": "Dagmay.Core/Reflection/ModelContracts.cs",
+      "sha256": "54e23476ff9d8811230609aa880c902f6c228d83abb65de2788d27285d03debb"
+    },
+    {
+      "bytes": 1576,
+      "path": "Dagmay.Core/Reflection/ProposedAffectMutation.cs",
+      "sha256": "6a90ecdd59c70bffac456e3d098c11c514a04520abdec6ea7dd8ae13bb47cc5f"
+    },
+    {
+      "bytes": 7771,
+      "path": "Dagmay.Core/Reflection/ReflectionContextBuilder.cs",
+      "sha256": "559f97c4fe9b1c3a3df90854ecdbe9bef193914452ee03571281da99892e503b"
+    },
+    {
+      "bytes": 2217,
+      "path": "Dagmay.Core/Reflection/ReflectionProposal.cs",
+      "sha256": "8ad4164a65aa85c66a186f258f8d747eb05e9375d997d3a9aa8b025e63c6fbb3"
+    },
+    {
+      "bytes": 27134,
+      "path": "Dagmay.Core/Reflection/ReflectionProposalJson.cs",
+      "sha256": "77b849cf538e515a94b683f3a582ab4b42b1cbfad9e29d1af5016ced5b0a0a7e"
+    },
+    {
+      "bytes": 5876,
+      "path": "Dagmay.Core/Reflection/ReflectionProposalValidator.cs",
+      "sha256": "e9e5e94f1971563b154576ed513c90eeb3d7fb546d3c17863d156090e987ec80"
+    },
+    {
+      "bytes": 3305,
+      "path": "Dagmay.Core/Relationships/RelationshipRecord.cs",
+      "sha256": "4984372ce94decfaf96bde7b0f0902520a8ec775d7118759e3661e0825de6ca7"
+    },
+    {
+      "bytes": 6464,
+      "path": "Dagmay.Core/Scheduling/ReflectionBudgetGate.cs",
+      "sha256": "31b660d81c76fc996ba47c956b4ad5a117b4f7141e4881ee7ad6c958ad501d62"
+    },
+    {
+      "bytes": 8363,
+      "path": "Dagmay.Core/Scheduling/ReflectionQueue.cs",
+      "sha256": "9611dec3ad1adf2ece2918bd06f4f486322d309224b1d3dbe9f9b0f580ac51eb"
+    },
+    {
+      "bytes": 16405,
+      "path": "Dagmay.Core/Scheduling/ReflectionRuntimeState.cs",
+      "sha256": "ccfb85f48e3d6218135ea6b4b9546fece1da8b7b4d823538a2517892758ca462"
+    },
+    {
+      "bytes": 5765,
+      "path": "Dagmay.Core/Validation/AffectMutationService.cs",
+      "sha256": "acc1dc2d216cf47d6a1723f9da78c7eb5041eb3eb9804199c0a67756cea7b37f"
+    },
+    {
+      "bytes": 5841,
+      "path": "Dagmay.Core/Views/OrdinaryMindSnapshot.cs",
+      "sha256": "8e7157122f781d1a75939959eb59c3e84c6eb7179d356f8457f1ddad6998b0d1"
+    },
+    {
+      "bytes": 602,
+      "path": "Dagmay.IntegrationHarness/Dagmay.IntegrationHarness.csproj",
+      "sha256": "173a9a1dcede3cf4bff6b05671b45c2777dc7f7ef280fd76801ac40aeb13497a"
+    },
+    {
+      "bytes": 1002,
+      "path": "Dagmay.IntegrationHarness/HarnessAssert.cs",
+      "sha256": "0405cc67c9c0b67577a75cd5b56cce9c3e92c6a166441bd76fb28340750067e7"
+    },
+    {
+      "bytes": 1098,
+      "path": "Dagmay.IntegrationHarness/HarnessReport.cs",
+      "sha256": "aed6ef2ae857e0c172453f84867ba531b80f91e8e36351278c935c29e448780b"
+    },
+    {
+      "bytes": 29644,
+      "path": "Dagmay.IntegrationHarness/IntegrationScenarios.cs",
+      "sha256": "86b0f1ddb40fa8d9829104b864b741477ff65f40d2ed86383206b1df28739cc9"
+    },
+    {
+      "bytes": 4571,
+      "path": "Dagmay.IntegrationHarness/Program.cs",
+      "sha256": "b38ed7880dd29163ea0a6a1ffbbee73e1305a74d11c9b96f1e150f4fd933d44b"
+    },
+    {
+      "bytes": 1540,
+      "path": "Dagmay.Providers/Configuration/UserEnvironmentConfiguration.cs",
+      "sha256": "d542ccfbdbb7fedfbfcded99f761a285db27a89a6f33252d3346fb6dc90bf7a7"
+    },
+    {
+      "bytes": 564,
+      "path": "Dagmay.Providers/Dagmay.Providers.csproj",
+      "sha256": "8fb6c0e6d9f34f8ff1dfbc247ef732ba3fff58f92b66e3d8b1e2fd348d131edd"
+    },
+    {
+      "bytes": 4055,
+      "path": "Dagmay.Providers/Fake/DeterministicFakeProvider.cs",
+      "sha256": "ab660124566e3d533096f42753fe2feec961885cb84806d596df31252ab0420e"
+    },
+    {
+      "bytes": 23639,
+      "path": "Dagmay.Providers/GoogleAIStudio/GoogleAiStudioProvider.cs",
+      "sha256": "11471a698e5cd962bef26487a1161a3745452ee595454bf2565d058d1d19b7ca"
+    },
+    {
+      "bytes": 2619,
+      "path": "Dagmay.Providers/GoogleAIStudio/GoogleAiStudioProviderOptions.cs",
+      "sha256": "4d7b2674b8b80a04c26c1cabd0da7c45102668f6fc67bb40364ef801457079ab"
+    },
+    {
+      "bytes": 1357,
+      "path": "Dagmay.Providers/Resilience/RetryPolicyOptions.cs",
+      "sha256": "abbc8d5b580a0b25801851f49224bf12fc22af5eabb8768c09c02f92c85790a7"
+    },
+    {
+      "bytes": 224,
+      "path": "Dagmay.RimWorld/Bootstrap/DagmayBuildInfo.cs",
+      "sha256": "2732b166d8eeb732b242b15f6df902604d44847f1257eed54de8fa0e79ba906c"
+    },
+    {
+      "bytes": 1174,
+      "path": "Dagmay.RimWorld/Bootstrap/DagmayMod.cs",
+      "sha256": "f2c8333de6e2f1ae6077017df5448b8b051380d1152060ad4cb34315e9008528"
+    },
+    {
+      "bytes": 3525,
+      "path": "Dagmay.RimWorld/Dagmay.RimWorld.csproj",
+      "sha256": "478fd55c19fa69405096c9ca1567eb5b1fcbf92ea31754304c2daf532c5a85ad"
+    },
+    {
+      "bytes": 10935,
+      "path": "Dagmay.RimWorld/Diagnostics/SocialPathCertificationReport.cs",
+      "sha256": "5365c512321dc101d914f9605bc23cc5ccd8d31153d406542a3ef2df4b69a347"
+    },
+    {
+      "bytes": 7316,
+      "path": "Dagmay.RimWorld/Identity/PawnSeedExtractor.cs",
+      "sha256": "ee575ff8905f6cd5c2ce5a5151f093472b2535f79065f269c2d7c79fb9d9a3e2"
+    },
+    {
+      "bytes": 30217,
+      "path": "Dagmay.RimWorld/Observer/DagmayObserverSettingsUi.cs",
+      "sha256": "8e7f9799bd9f429b590ec907a7fca28de7096a0753f94cf129a391836171eb33"
+    },
+    {
+      "bytes": 915,
+      "path": "Dagmay.RimWorld/Package/About/About.xml",
+      "sha256": "c3e7f7b2724ad0f1b40d6c2a7cf9cbab5e0917eeaa7b4954df67b0f61a2419f3"
+    },
+    {
+      "bytes": 934,
+      "path": "Dagmay.RimWorld/Package/README.txt",
+      "sha256": "5d756c4964ab074b930dae61e4467d497deee226d93967fa20dc32c9eb772749"
+    },
+    {
+      "bytes": 5854,
+      "path": "Dagmay.RimWorld/Perception/PawnChangeDetector.cs",
+      "sha256": "5f565e8b204411ae32890c177faa08dd06946e9de287f24c9e42e4025ca9e566"
+    },
+    {
+      "bytes": 11239,
+      "path": "Dagmay.RimWorld/Perception/PawnObservationSnapshot.cs",
+      "sha256": "aebfbd6026459c708aee1102fb120a6ad16d0581107c7923e01974afca346d8c"
+    },
+    {
+      "bytes": 93928,
+      "path": "Dagmay.RimWorld/Persistence/DagmayIdentityGameComponent.cs",
+      "sha256": "3939d815d6b5fdead1facc959d6594e46c364dddf56cc474f3e4799edbf198b5"
+    },
+    {
+      "bytes": 6301,
+      "path": "Dagmay.RimWorld/Reflection/ReflectionEventTaskPolicy.cs",
+      "sha256": "7e5d6772b5b0835b50a3e91121158416da4a2cc3c5977dde172952664a980ffd"
+    },
+    {
+      "bytes": 4215,
+      "path": "Dagmay.RimWorld/Reflection/RimWorldReflectionProviderSelection.cs",
+      "sha256": "0c7be064ae56ab861afda07b045dec55b7bfd7b66b4edc7182cd7a0a3d9df94b"
+    },
+    {
+      "bytes": 564,
+      "path": "Dagmay.RimWorld/Safety/ObserverOnlyGuard.cs",
+      "sha256": "92a128c8ac15c037d6fbb089f76978498e4fa0ebf5e59f88b75a53fce676fb1e"
+    },
+    {
+      "bytes": 5356,
+      "path": "Dagmay.RimWorld/Settings/DagmayModSettings.cs",
+      "sha256": "30adc427d337c71df3b66f1569ca9db9ce0f3f7c8c44eb24ca599cb02a609151"
+    },
+    {
+      "bytes": 14132,
+      "path": "Dagmay.Tests/CoreContractTests.cs",
+      "sha256": "aec5cc617cb96dcfdb5c9a64d491e60541270db010405602d13c2d458c8959fa"
+    },
+    {
+      "bytes": 519,
+      "path": "Dagmay.Tests/Dagmay.Tests.csproj",
+      "sha256": "7637707d3e979421773ae05dcde3fa99b8ec395b43a2159726ec0a30fe8c6a3e"
+    },
+    {
+      "bytes": 10535,
+      "path": "Dagmay.Tests/ExperienceContractTests.cs",
+      "sha256": "9d6a4f00f1b2e78a1f19e0e074b691934553b910e4b9654d5481f7abb98a4a79"
+    },
+    {
+      "bytes": 4251,
+      "path": "Dagmay.Tests/PersistenceContractTests.cs",
+      "sha256": "575f37649ebe44306cb2c9247e5091afb177f6b6a015eeb396943a4bf5e60b4d"
+    },
+    {
+      "bytes": 7542,
+      "path": "Dagmay.Tests/Program.cs",
+      "sha256": "712017db5bbdb8e139747417ab66adc12c7c15698323b36804b950bd5f218e74"
+    },
+    {
+      "bytes": 13276,
+      "path": "Dagmay.Tests/ProviderContractTests.cs",
+      "sha256": "16c0b26b7412cfceb3c9b567b014efe01302a6befdf68a194e9cccd3c78ba470"
+    },
+    {
+      "bytes": 25717,
+      "path": "Dagmay.Tests/ReflectionContractTests.cs",
+      "sha256": "9c92c062c6420db7129a536e04797df626b737db8ebc142eadf322bdf54ae5c0"
+    },
+    {
+      "bytes": 1478,
+      "path": "Dagmay.Tests/TestAssert.cs",
+      "sha256": "f6288057973d7bbba1085338ff761a78f31ea3abbfc349db99a5fcc8e19c6d31"
+    },
+    {
+      "bytes": 2979,
+      "path": "Dagmay.sln",
+      "sha256": "274d77fe7fdec56fb38592359e55f68052dcc6853e895b0c964cce6b143a7968"
+    },
+    {
+      "bytes": 421,
+      "path": "Directory.Build.props",
+      "sha256": "c658a0ddf15e3d2bcf4e3d95c635549224a7ede3cf12e4c30f280112be82a574"
+    },
+    {
+      "bytes": 9163,
+      "path": "README.md",
+      "sha256": "735d0a9b9dc5d7632722705e4c3f27b20146d169e0c47da12d32119f05a8b159"
+    },
+    {
+      "bytes": 2540,
+      "path": "RECOVERY_HANDOFF.md",
+      "sha256": "dd0b298b1c6248fd2a83f847e6a24b1d40e5233543d9702a8d6e6b0462f0d4a3"
+    },
+    {
+      "bytes": 7772,
+      "path": "START_HERE.md",
+      "sha256": "b499de11dfcb8e39995b292695b9d720ae37d0104df590cb27072c60c5f1caa2"
+    },
+    {
+      "bytes": 1173,
+      "path": "V0.1K_RELEASE_STATUS.md",
+      "sha256": "285b7bc64ec8ecad3cef3dee6ec3e7647feef644a66a86f5834d8ffa9980f5b4"
+    },
+    {
+      "bytes": 9847,
+      "path": "docs/00_Foundational_Principles.md",
+      "sha256": "501761d390fb826dcec174b532acf4217bae0df13f86e70acee6ae492466121f"
+    },
+    {
+      "bytes": 5275,
+      "path": "docs/01_Project_Vision.md",
+      "sha256": "718d5f372aeacd0ccb658fde2720eea4864b4d72a56c5ee0d4ff7a0012605748"
+    },
+    {
+      "bytes": 14191,
+      "path": "docs/02_System_Architecture.md",
+      "sha256": "729c1e02c1b9af2505f7800b7a0f5a0037b1683c5462dea944273f0d724d211a"
+    },
+    {
+      "bytes": 22951,
+      "path": "docs/03_Roadmap.md",
+      "sha256": "818ccd55b1d3fc5bef3952d0f9f8fe1c7fbe690ee3ea12ac7b8cec127b7e731a"
+    },
+    {
+      "bytes": 8549,
+      "path": "docs/04_Ethics_and_Observer_Mode.md",
+      "sha256": "e39abc33f09be72331e0767b632b871abb5d7e54d56c2b0ee30dc46b545bed48"
+    },
+    {
+      "bytes": 8707,
+      "path": "docs/05_Memory_Model.md",
+      "sha256": "616f23dd5744e2685afe0dd5109750a2a2df054712897b3d172b4177e0032f50"
+    },
+    {
+      "bytes": 11396,
+      "path": "docs/06_RimWorld_Adapter.md",
+      "sha256": "22a462b3895e3750392f5319fea889597678281be37305d972d54b69890801b5"
+    },
+    {
+      "bytes": 9509,
+      "path": "docs/07_Model_Provider_Interface.md",
+      "sha256": "99e22ebd45115bd7d0b3b7ef93e91b178388de55606259222c18d5dcd8fdd3ce"
+    },
+    {
+      "bytes": 7944,
+      "path": "docs/08_Testing_Strategy.md",
+      "sha256": "b907ed7d4a5cc59dc37bd49af737099709dbfc55209475c21bf1da09e8b83684"
+    },
+    {
+      "bytes": 9234,
+      "path": "docs/09_Open_Questions.md",
+      "sha256": "cf0cfa52592c16570cd41ee53298600db0dc9b9a8b8650254bb8bfd07044a0c9"
+    },
+    {
+      "bytes": 24458,
+      "path": "docs/10_Decision_Log.md",
+      "sha256": "df7598c64c5cd6ab19c20f249aa6ce18217feec38595134c7923ed93de2be1e5"
+    },
+    {
+      "bytes": 9683,
+      "path": "docs/11_Development_Guide.md",
+      "sha256": "b711b71c41ecfeb409bc641f9af0f628b73a194e8f654aa19e7ee3bffbd3c5f5"
+    },
+    {
+      "bytes": 7096,
+      "path": "docs/12_Runtime_Budgeting.md",
+      "sha256": "d399f9c0828a5054e98179b02e4ad31e3f93cbcdb2c212f57c5ec627ad111f6e"
+    },
+    {
+      "bytes": 7923,
+      "path": "docs/13_Data_Contracts.md",
+      "sha256": "d78a6c3c0aa9a975ebb19c89410aad65bb55e04b37b57a36d3292953e914b269"
+    },
+    {
+      "bytes": 5124,
+      "path": "docs/14_AI_Collaboration_Guide.md",
+      "sha256": "4602769023a094197c4d3197f0ff30fb778afae5d5ed990e08c52bee1327f014"
+    },
+    {
+      "bytes": 37873,
+      "path": "docs/15_Verification_Record.md",
+      "sha256": "2de63d8ca4d70425179a35e1fe244ad69692f1b71b8bf58697a914eb6c8e9cab"
+    },
+    {
+      "bytes": 5296,
+      "path": "docs/16_V0.1B_Test_Guide.md",
+      "sha256": "a0766f225b1a161f4f343aa3d3fe82dd1e402261c1e25d21322b84546eeeb596"
+    },
+    {
+      "bytes": 5843,
+      "path": "docs/17_V0.1C_Test_Guide.md",
+      "sha256": "408cb88f321968c88ec8cef46ef5b0a2b68a2a383c44141f3c5917b81162c1c7"
+    },
+    {
+      "bytes": 12787,
+      "path": "docs/18_External_Mod_Reference_Review.md",
+      "sha256": "7cadf0282b181ad3e898496c9d4d1744d4f37100900e9165c088b5bbeb45f8e6"
+    },
+    {
+      "bytes": 9796,
+      "path": "docs/19_V0.1D_Test_Guide.md",
+      "sha256": "2a420045a7f45e36b9b6568f71d69f261a34c2c559ad037f7b38f795bdfa9bab"
+    },
+    {
+      "bytes": 6222,
+      "path": "docs/20_V0.1D.1_Hotfix_Test_Guide.md",
+      "sha256": "23b8a565acc5f5ce0eeaa7813099299ac2453c1e190b11989b50a45e9410e5ec"
+    },
+    {
+      "bytes": 10870,
+      "path": "docs/21_V0.1E_Test_Guide.md",
+      "sha256": "751373f0bb30cf754b33a8b5966b4bb222bf4948afecf0b76390e87589bfa155"
+    },
+    {
+      "bytes": 5583,
+      "path": "docs/22_V0.1F_Development_Automation.md",
+      "sha256": "11b55dbe00b7d89bdc1936b679adc4bb8d17fdb6b9c4cc421773e9ef739793ea"
+    },
+    {
+      "bytes": 3381,
+      "path": "docs/23_V0.1G_Ordinary_Mind_View.md",
+      "sha256": "2dff00c01ad248fa6f741b493a0a085e77d186157bc35f05272a01ca4290bac1"
+    },
+    {
+      "bytes": 2703,
+      "path": "docs/24_V0.1H_Experience_Consolidation.md",
+      "sha256": "c3581643eca72d0a0a302cecd0acee6f899c69c4b008395c2299bbe7d1e73ec3"
+    },
+    {
+      "bytes": 2579,
+      "path": "docs/25_V0.1I_Salience_Admission.md",
+      "sha256": "69e2d13e5c1a566d1ef2d1f760e419fe8176cfe75f977395300a2b0094e38702"
+    },
+    {
+      "bytes": 3323,
+      "path": "docs/26_V0.1J_Social_Relationships.md",
+      "sha256": "5d22876c2ac8011dedbf03f4a2c9bda9d92798a884e7045f85b7b5175d93d438"
+    },
+    {
+      "bytes": 2227,
+      "path": "docs/27_V0.1J3_Checkpoint_Recovery.md",
+      "sha256": "750ab57b50c0023140de3f3431ad391462c7cc277ff3d29211e8d268e82a52e8"
+    },
+    {
+      "bytes": 3725,
+      "path": "docs/28_Automated_Integration_Harness.md",
+      "sha256": "eed33d51f5f17a4480a89842405e50df03171947d7a977af76f60c20b62f5fc4"
+    },
+    {
+      "bytes": 2178,
+      "path": "docs/29_V0.1K_Social_Path_Certification.md",
+      "sha256": "bfa8bb70b878bd75ab4c6fc84b68cff1ef4ab9c59bd2646455b27ae7a6307a5b"
+    },
+    {
+      "bytes": 1437,
+      "path": "docs/30_V0.1_Closure_Plan.md",
+      "sha256": "17e1c13725919b7c1eed4188a9897007680de89726e6201040bf83efb6659eb9"
+    },
+    {
+      "bytes": 4907,
+      "path": "docs/Glossary.md",
+      "sha256": "ccae614e339130a7e68238708f5ea61b981360af1a4301b5a204de31807ba864"
+    },
+    {
+      "bytes": 109,
+      "path": "global.json",
+      "sha256": "4e2d26d31d74dcc88bf7348f7c12511a84114f6cce88acbecda9f02b91d295c0"
+    },
+    {
+      "bytes": 1633,
+      "path": "prompts/event-reflection-v1.md",
+      "sha256": "f68e3149373aa5e1dda62297409f227126f43def5f6265b9ebc29cf68108ad85"
+    },
+    {
+      "bytes": 2044,
+      "path": "prompts/event-reflection-v2.md",
+      "sha256": "f09cf1b548813378ff4e26389ed49d7d1c6e5068f53646cbe1f6aa6cc3326728"
+    },
+    {
+      "bytes": 1906,
+      "path": "schemas/affect-mutation.v1.schema.json",
+      "sha256": "092604bcbff7ebab0d1ac06e60556500eed8e491f0d8c001ec7726388b60a63d"
+    },
+    {
+      "bytes": 1349,
+      "path": "schemas/environment-event.v1.schema.json",
+      "sha256": "a93c195ec8be05b755adb29d28fa74d128ce8b533990866da204b75aee1d21a6"
+    },
+    {
+      "bytes": 2556,
+      "path": "schemas/reflection-proposal.v1.schema.json",
+      "sha256": "d289c0a94a810d20ea7b94b19cd20367d7a6419e73b3217b2de8c3c23b6379f5"
+    },
+    {
+      "bytes": 429,
+      "path": "tools/build-core.sh",
+      "sha256": "bd5692b734b9800ed7a5e39c0232240ada09bc099070091f0bc298b90c80f75f"
+    },
+    {
+      "bytes": 7443,
+      "path": "tools/build.ps1",
+      "sha256": "4a5690f47c6f99f56a25651bce945c35af6b5f3207bd182b1ddee7d4aa78aa9f"
+    },
+    {
+      "bytes": 1482,
+      "path": "tools/check-social-certification.ps1",
+      "sha256": "06576c0b9c0e3ca29b01282946d041cba17805e3d8e9ab098eaa49bc7d28d707"
+    },
+    {
+      "bytes": 8003,
+      "path": "tools/collect-logs.ps1",
+      "sha256": "37eb9f4326ddab0eb044f2e7e30d031a3b251335a44dc7b9405a209a457db901"
+    },
+    {
+      "bytes": 3258,
+      "path": "tools/configure-reflection.ps1",
+      "sha256": "ad7cbd98af8c5d5baee0b44f8c586342e3da3bca596ce853e02d23c011dffb25"
+    },
+    {
+      "bytes": 1457,
+      "path": "tools/dev-loop.ps1",
+      "sha256": "ea56d4e38e44a21632e40ca4d0b6245bc3d682bff259b03ae42e6324cac5f36e"
+    },
+    {
+      "bytes": 6900,
+      "path": "tools/install.ps1",
+      "sha256": "704346660351dd7d0435e01959ab05cd12796cfe41e253e4bfcc46aedd69f086"
+    },
+    {
+      "bytes": 2650,
+      "path": "tools/package-source.ps1",
+      "sha256": "e9c6409e28b8431374b795feda4809f7c004bbac28330c3c5504ba47dfd53d8d"
+    },
+    {
+      "bytes": 1038,
+      "path": "tools/run-integration-harness.ps1",
+      "sha256": "68ea4d8cc711cb35350a779be93dc007a25a41e7de75a8d9d7e7ad9b687511f1"
+    },
+    {
+      "bytes": 11222,
+      "path": "tools/static_verify.py",
+      "sha256": "7e59495841fa23b5c23256979bd578f2fae1ac0c2a6f686516f4581babec5815"
+    }
+  ],
+  "new_cognitive_features_added": false,
+  "package": "Dagmay_v0.1K_Social_Path_Certification",
+  "rimworld_tested": false,
+  "social_path_certification_added": true,
+  "static_verification_csharp_files": 71,
+  "static_verification_passed": true
+}
