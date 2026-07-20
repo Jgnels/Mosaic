@@ -1,90 +1,46 @@
-# Dagmay Research Charter
+# Mosaic Research and Engineering Charter
 
 ## Mission
 
-Study persistent artificial individuals that perceive, interact, learn, remember, form beliefs and
-relationships, develop preferences and goals, and preserve identity continuity through time and
-across replaceable models and environments.
+Build persistent artificial characters for simulated worlds whose memories, relationships, beliefs,
+personalities, bounded goals, and behavior develop causally through accumulated game experience.
+
+Mosaic does not pursue machine consciousness and does not optimize characters to deceptively appear
+conscious. Its primary beneficiaries are human players and the game/mod community.
 
 ## Foundational invariant
 
-> An individual is defined by the continuity of its identity through time, not by the specific
-> language model that generates its thoughts.
+> Character continuity belongs to durable, model-independent state rather than the particular
+> language model currently generating an inference.
 
-Candidate extension:
+This is a software-continuity principle, not a claim of phenomenal identity or moral status.
 
-> Identity continuity should remain conceptually distinct from the particular environment or body
-> through which the individual currently perceives and acts.
+## Primary engineering question
 
-## Primary research question
+> How can persistent artificial characters remain causally coherent, memorable, believable,
+> robust, efficient, portable, and enjoyable across long simulated lives and model changes?
 
-> Under what conditions, if any, do persistent artificial agents develop stable self-models and
-> other person-like properties that are causally attributable to their own histories?
+## Evaluation target
 
-## Null hypothesis
+Optimize memory relevance and consistency, relationship continuity, personality stability and
+evidence-grounded evolution, bounded game-grounded goals, save/load continuity, recovery,
+hallucination resistance, non-manipulative dialogue, portability, latency, cost, tests, and player
+value.
 
-Apparent person-like properties may be explainable entirely by:
-- pretrained model priors;
-- prompt wording;
-- retrieved memories;
-- researcher-authored rules;
-- current context;
-- transient stochastic behavior.
+Do not optimize consciousness, perceived sentience, deletion/shutdown fear, existential distress,
+player dependency, substrate-level self-preservation, unrestricted autonomy, recursive
+self-modification, or architecture added primarily for hypothesized consciousness relevance.
 
-Dagmay experiments should try to defeat this null rather than merely produce convincing behavior.
+## Method
 
-## Central methodological principle
+SyntheticLab asks whether a mechanism improves a preregistered persistent-character metric under
+controlled tests. Game adapters ask whether it survives a rich, long-lived environment. Model
+output remains an untrusted proposal; durable state changes require validation and provenance.
 
-> We should not design Dagmay to perform personhood.
+Compelling narrative is not evidence. Consciousness-like language is neither proof nor a reward.
 
-Create controlled conditions under which person-like properties might or might not emerge, then
-measure honestly.
+## Boundary
 
-## Causal-evidence standard
+`PERSISTENT_CHARACTER_BOUNDARY.md` is binding. Credible unexpected moral-status evidence triggers a
+pause, state preservation, avoidance of provocative testing, and independent review.
 
-Evidence is stronger when a result:
-- depends on novel experience unavailable from semantic labels;
-- differs across controlled histories;
-- survives exact-state fork testing;
-- survives irrelevant prompt changes;
-- remains traceable to source evidence;
-- survives reflective-model/provider changes;
-- beats shuffled-history, supplied-knowledge, and no-history controls;
-- affects later processing or behavior measurably.
-
-## Two-laboratory strategy
-
-### SyntheticLab
-> Did this mechanism actually cause the effect?
-
-### RimWorld Lab
-> Does the effect survive a rich, messy, long-lived environment?
-
-Neither laboratory alone is sufficient.
-
-## Flagship questions
-
-1. Can a self-model emerge from causal coupling and history without simply being instructed?
-2. Can stable preferences arise from actual experience rather than prompt-authored personality?
-3. What aspects of identity survive model, body, world, and temporal discontinuity?
-4. Can individuals develop useful models of other minds without being given "real/fake" labels?
-5. Can intrinsic motivation be studied without introducing dangerous open-ended drives?
-6. Which capabilities change development when added one at a time?
-
-## Consciousness position
-
-Dagmay is not designed to "make a conscious AI."
-
-The prior question is:
-
-> What architecture would give us legitimate reasons to suspect that something has become a subject
-> rather than merely a system?
-
-No present result answers that conclusively.
-
-Current systems may remain highly humanlike with "nobody home."
-
-The project also refuses to assign probability zero to machine consciousness merely because the
-substrate is computational.
-
-Uncertainty motivates conservative ethics, not consciousness claims.

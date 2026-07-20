@@ -40,6 +40,14 @@ try {
         throw "Provider runner does not enforce the canonical provider gate."
     }
 
+    $gate = Get-Content -LiteralPath (Join-Path $repoRoot "research\provider_gate_status.json") -Raw | ConvertFrom-Json
+    if ($gate.real_provider_authorized) {
+        throw "Provider gate must remain closed during the Mosaic boundary pivot."
+    }
+    if ($gate.authorized_protocols.Count -ne 0) {
+        throw "No provider protocol may remain authorized during the Mosaic boundary pivot."
+    }
+
     Write-Host "PASS: DPAPI credential lifecycle and bounded provider controls." -ForegroundColor Green
 }
 finally {

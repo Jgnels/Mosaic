@@ -1,48 +1,27 @@
-# Dagmay — Canonical Project Knowledge Base
+# Mosaic — Persistent Artificial Characters
 
-This repository layer is the durable institutional memory for Dagmay.
+**Historical name:** Dagmay. Existing repository paths, code namespaces, identifiers, hashes, and
+immutable research artifacts retain that name until a compatibility-safe migration is released.
 
-Dagmay is a research program investigating persistent artificial individuals whose identities,
-histories, memories, relationships, beliefs, preferences, goals, and developmental trajectories can
-persist independently of any one language model, body, game, or environment.
+Mosaic is a framework for persistent artificial characters whose memories, relationships, beliefs,
+personalities, goals, and behavior develop causally through simulated experience and persist across
+replaceable models and environments.
 
-The project does **not** claim that current Dagmay systems are conscious, sentient, or persons.
+The project does not pursue or claim machine consciousness and does not optimize deceptive
+appearances of consciousness. See `research/PERSISTENT_CHARACTER_BOUNDARY.md`.
 
 ## Foundational invariant
 
-> An individual is defined by the continuity of its identity through time, not by the specific
-> language model that generates its thoughts.
+> Character continuity belongs to persistent state, not to the specific model generating the
+> current inference.
 
-Working extension:
+## Canonical reading order
 
-> The model, body, and environment are replaceable interfaces. Identity continuity is carried by
-> the persistent causal lineage, canonical evidence, and evolving internal state.
-
-## Research principle
-
-> We should not design Dagmay to perform personhood. We should design controlled conditions under
-> which person-like properties might or might not emerge, then measure the results honestly.
-
-## Canonical source-of-truth order
-
-1. Repository code and immutable experiment artifacts
+1. `AGENTS.md`
 2. `research/CURRENT_STATE.md`
-3. `research/RESEARCH_CHARTER.md`
-4. `research/ACTIVE_HYPOTHESES.md`
-5. `research/CLAIM_REGISTER.md`
-6. `research/DECISION_LOG.md`
-7. `research/KNOWN_RISKS.md`
-8. `research/ETHICS_PRECOMMITMENT.md`
-9. Specific experiment/audit documents
-10. Chat history
+3. `research/PERSISTENT_CHARACTER_BOUNDARY.md`
+4. `research/RESEARCH_CHARTER.md`
+5. claims, decisions, risks, ethics, and task-specific evidence
 
-Never infer current implementation state from old chat messages when canonical repository state is
-available.
+> Chat is the workshop conversation. The repository is the durable project record.
 
-## Current stop line
-
-No new real-provider SyntheticLab experiment should be run until the provider-facing payload leakage
-audit is complete.
-
-> The chat is the laboratory conversation.  
-> The repository is the laboratory notebook.

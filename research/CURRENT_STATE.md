@@ -1,4 +1,14 @@
-# Dagmay Current State
+# Mosaic Current State
+
+**Historical name:** Dagmay. Existing paths, namespaces, hashes, and immutable artifacts retain it
+for compatibility and reproducibility.
+
+## 2026-07-20 persistent-character pivot
+
+Mosaic targets causally coherent, persistent, robust, believable, efficient, and enjoyable game
+characters. It neither pursues consciousness nor optimizes deceptive pseudo-consciousness.
+`PERSISTENT_CHARACTER_BOUNDARY.md` is binding. All real-provider protocols are suspended during
+the objective/evaluator audit; unattended work remains offline.
 
 **Date:** 2026-07-19  
 **Purpose:** first-read canonical state bridge for new ChatGPT/Codex sessions

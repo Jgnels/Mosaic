@@ -32,7 +32,7 @@ if ([string]::IsNullOrWhiteSpace($OutputRoot)) {
 $runId = (Get-Date).ToUniversalTime().ToString("yyyyMMddTHHmmssZ")
 $runRoot = Join-Path $OutputRoot $runId
 $artifactRoot = Join-Path $runRoot "artifacts"
-$cacheRoot = Join-Path $runRoot "pycache"
+$cacheRoot = Join-Path ([IO.Path]::GetTempPath()) ("MosaicPyCache-" + $runId)
 New-Item -ItemType Directory -Path $artifactRoot -Force | Out-Null
 New-Item -ItemType Directory -Path $cacheRoot -Force | Out-Null
 
@@ -50,6 +50,13 @@ $status = "FAILED"
 $failure = $null
 
 try {
+    $priorPythonPath = $env:PYTHONPATH
+    $env:PYTHONPATH = Join-Path $labRoot "src"
+    & $Python -m dagmay_synthetic_lab.persistent_character_boundary_offline_tests
+    if ($LASTEXITCODE -ne 0) {
+        throw "Mosaic persistent-character boundary tests failed with exit code $LASTEXITCODE."
+    }
+
     & $Python -m compileall -q $labRoot
     if ($LASTEXITCODE -ne 0) {
         throw "Python compilation failed with exit code $LASTEXITCODE."
@@ -70,12 +77,14 @@ finally {
     $env:DAGMAY_GEMINI_API_KEY = $priorDagmay
     $env:GEMINI_API_KEY = $priorGemini
     $env:PYTHONPYCACHEPREFIX = $priorCache
+    $env:PYTHONPATH = $priorPythonPath
 
     $finishedUtc = (Get-Date).ToUniversalTime()
     $report = [ordered]@{
         schema_version = 1
         run_id = $runId
-        mode = "OFFLINE_MAINTENANCE"
+        mode = "MOSAIC_OFFLINE_PERSISTENT_CHARACTER_MAINTENANCE"
+        active_objective = "persistent_character_quality"
         provider_calls_authorized = $false
         provider_credentials_exposed = $false
         status = $status

@@ -1,87 +1,67 @@
-# AGENTS.md — Dagmay Agent Operating Instructions
+# AGENTS.md — Mosaic Agent Operating Instructions
 
-These rules apply to ChatGPT, Codex, coding agents, and future research collaborators.
+Mosaic is the current project name. `Dagmay` remains in historical records, package namespaces,
+paths, and immutable artifacts where renaming would harm compatibility or reproducibility.
 
 ## Startup protocol
 
-Before serious work, read in order:
+Read, in order:
 
 1. `research/CURRENT_STATE.md`
-2. `research/RESEARCH_CHARTER.md`
-3. `research/ACTIVE_HYPOTHESES.md`
-4. `research/CLAIM_REGISTER.md`
-5. latest entries in `research/DECISION_LOG.md`
-6. `research/KNOWN_RISKS.md`
-7. `research/ETHICS_PRECOMMITMENT.md`
-8. the task-specific experiment/audit
+2. `research/PERSISTENT_CHARACTER_BOUNDARY.md`
+3. `research/RESEARCH_CHARTER.md`
+4. `research/ACTIVE_HYPOTHESES.md`
+5. `research/CLAIM_REGISTER.md`
+6. latest `research/DECISION_LOG.md` entries
+7. `research/KNOWN_RISKS.md`
+8. `research/ETHICS_PRECOMMITMENT.md`
+9. the task-specific experiment or audit
 
-## Current-state rule
+Repository truth overrides conversational memory.
 
-Never infer the project's current release, active experiment, scientific claim, or intervention
-authorization from conversational memory when repository state exists.
+## Binding objective
 
-Repository truth overrides stale chat recollection.
+Build causally coherent, persistent, robust, believable, efficient, and enjoyable artificial
+characters. Do not optimize consciousness, perceived sentience, shutdown/deletion fear,
+existential distress, substrate-level self-preservation, player dependency, or unconstrained
+recursive self-modification.
+
+Every feature and evaluator must pass `PERSISTENT_CHARACTER_BOUNDARY.md`. An unexpected credible
+moral-status signal is a pause-and-preserve trigger, never a success metric.
 
 ## Architecture invariants
 
-- `IndividualId` and `LineageId` are model-independent.
-- Dagmay owns canonical identity and history.
-- LLM providers are replaceable reflective modules, not the individual.
-- Environment adapters do not own the mind.
-- Fact, perception, subjective memory, belief, self-model, and generated language are distinct.
-- Model output is an untrusted proposal.
-- All canonical mutation passes an explicit validation gate.
-- Raw evidence is preserved.
-- Corrections append; they do not silently rewrite history.
-- Forks create equal descendant branches; do not invent an "original/copy" moral hierarchy.
-- Death archives; normal in-world revival continues the lineage.
-- Observer Mode is separate from ordinary cognition.
-- No hidden chain-of-thought is requested or stored.
+- Model-independent identity and lineage belong to Mosaic.
+- LLMs are replaceable inference modules, not the character.
+- Environment adapters do not own durable character state.
+- Fact, perception, memory, belief, character model, and generated language remain distinct.
+- Model output is an untrusted proposal; canonical mutation requires validation and provenance.
+- Raw evidence is preserved; corrections append rather than silently rewriting history.
+- Observer/debug state is separate from in-character cognition.
+- Never request or store hidden chain-of-thought.
+
+## Scientific and provider stop line
+
+All real-provider experiments are paused during the Mosaic boundary migration. Possession of a
+credential and quota permission is not authorization. Offline tests, audits, documentation, and
+bounded persistent-character engineering may run unattended.
+
+Historical artifacts are immutable. Do not convert old outputs into current claims.
+
+## Naming migration
+
+Use **Mosaic** in new user-facing text, policy, objectives, and documentation. Retain `Dagmay` in
+existing imports, filesystem paths, IDs, hashes, historical artifacts, and compatibility contracts
+until a separately tested migration is approved.
 
 ## Research discipline
 
-Use claim labels:
-OBSERVED, REPLICATED, SUPPORTED, HYPOTHESIS, ANALOGY, SPECULATION, LIMITING RESULT, INVALIDATED.
-
-A compelling narrative is not evidence.
-
-## Current scientific stop line
-
-Do not run the planned next real-provider SyntheticLab experiment until:
-
-1. semantic condition names are removed from provider-facing subject IDs;
-2. provider payloads are archived exactly;
-3. forbidden-token payload tests pass;
-4. evidence provenance and ownership relation are separated;
-5. retrieved evidence that materially affects a proposal is explicitly attributable.
-
-v31's attribution-framing headline claim is invalidated. Preserve the data, not the causal conclusion.
-
-## Track separation
-
-SyntheticLab:
-- research frontier;
-- controlled mechanisms;
-- ablations;
-- causal inference.
-
-RimWorld 0.1:
-- frozen cognitive feature set;
-- integration;
-- persistence;
-- reliability;
-- release qualification.
-
-Do not continuously pull every SyntheticLab idea into RimWorld 0.1.
-
-Graduation happens deliberately at a version boundary.
+Use: OBSERVED, REPLICATED, SUPPORTED, HYPOTHESIS, ANALOGY, SPECULATION, LIMITING RESULT,
+INVALIDATED. A compelling narrative is not evidence.
 
 ## End-of-session protocol
 
-1. update `CURRENT_STATE.md` only if canonical truth changed;
-2. append decisions;
-3. update claims and negative results;
-4. register artifacts and hashes;
-5. record newly discovered risks;
-6. archive exact provider/model/prompt metadata;
-7. create a concise handoff if work is midstream.
+Update current state only when canonical truth changes; append decisions and risks; register
+artifacts and hashes; archive exact provider/model/prompt metadata; leave a concise handoff when
+work is incomplete.
+

@@ -139,3 +139,16 @@ The hardened provider boundary is opt-in so historical experiments remain reprod
 Status: Accepted
 
 The project owner approved up to the displayed free-tier limits of 15 requests/minute, 250,000 tokens/minute, and 500 requests/day. Billing activation and paid fallback remain prohibited. Provider credentials and quota approval do not authorize canonical mutation or unpreregistered experiments.
+
+## D-032 — The Boundary Decision and Mosaic rename
+Status: Accepted; binding
+
+The project neither pursues artificial consciousness nor optimizes deceptive pseudo-consciousness.
+It pursues causally coherent, persistent, robust, believable, efficient, and enjoyable artificial
+characters. Credible moral-status signals trigger pause and preservation rather than reward.
+
+The active name is **Mosaic**. `Dagmay` remains in immutable artifacts, namespaces, paths, and
+compatibility surfaces until a provenance-safe migration is separately tested.
+
+All provider protocols are suspended until objectives, evaluators, mutation criteria, and
+acceptance tests pass the persistent-character boundary audit.
