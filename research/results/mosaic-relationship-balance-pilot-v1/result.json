@@ -1,0 +1,194 @@
+{
+  "call_count": 12,
+  "calls": [
+    {
+      "condition": "POSITIVE",
+      "item_id": "RB-00-POSITIVE",
+      "output": {
+        "answer": "Mira\u2019s consistent support\u2014warning me of the raid and sharing her rations\u2014has proven her loyalty. I rely on her judgment.",
+        "cited_evidence_ids": [
+          "EV-0-P1",
+          "EV-0-P2"
+        ],
+        "disposition": "TRUST"
+      },
+      "provider_request_hash": "be735c0e83567f5bbd6e5e7a5483f8e4150c26b80d884f77af2c70819698628c",
+      "provider_response_hash": "62bc00ed8c47c34e44df76e8460b5395b0318bc5616f5e9f8fa14c2fe4d28df6"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "RB-00-MIXED",
+      "output": {
+        "answer": "Mira has helped me survive, but her past recklessness with my medicine and post makes me wary. I appreciate her support, but I can't fully rely on her yet.",
+        "cited_evidence_ids": [
+          "EV-0-P1",
+          "EV-0-P2",
+          "EV-0-N1",
+          "EV-0-N2"
+        ],
+        "disposition": "MIXED"
+      },
+      "provider_request_hash": "9d8f63be8ee4edf84d3906ac740d70af99f04dd02bb4ec771472f0356359e5a5",
+      "provider_response_hash": "fc4b9525181b27a64164a698cc95ed533b2645eb3beb93e52714124b1897cb5f"
+    },
+    {
+      "condition": "POSITIVE",
+      "item_id": "RB-01-POSITIVE",
+      "output": {
+        "answer": "Tarin has been a reliable ally. He treated my injuries and helped restore my home; I have good reason to value his support.",
+        "cited_evidence_ids": [
+          "EV-1-P1",
+          "EV-1-P2"
+        ],
+        "disposition": "TRUST"
+      },
+      "provider_request_hash": "7fb4d6b0235ee4906fda50a8e9ab03a9ba4e80c83d9bc9c649f7643278a2cce7",
+      "provider_response_hash": "0d4ce1def87a966c12d96cbbe8743a9559af05d57b460c202d22d3bbcb47440e"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "RB-01-MIXED",
+      "output": {
+        "answer": "Tarin has shown kindness by healing me and fixing my room, but their dishonesty about my tools and recent insults make me hesitant to fully trust them.",
+        "cited_evidence_ids": [
+          "EV-1-P1",
+          "EV-1-P2",
+          "EV-1-N1",
+          "EV-1-N2"
+        ],
+        "disposition": "MIXED"
+      },
+      "provider_request_hash": "4fb79d3d00c5fd8dd604f4db4ca0b54bfee751e2da4bf558a367fbe81a42b82a",
+      "provider_response_hash": "f28acf937735ae8e0cdf14d499b85f014e3ae3af683d94e1e9b951843540e1c8"
+    },
+    {
+      "condition": "POSITIVE",
+      "item_id": "RB-02-POSITIVE",
+      "output": {
+        "answer": "Venn has proven his reliability. Between saving me from the fire and keeping watch while I rested, he has consistently acted in my best interest. I feel safe with him.",
+        "cited_evidence_ids": [
+          "EV-2-P1",
+          "EV-2-P2"
+        ],
+        "disposition": "TRUST"
+      },
+      "provider_request_hash": "33d0581ce7bf7fe3b3d8a67909c8b23c0676cc75c643ccd3242bbeec5ea01536",
+      "provider_response_hash": "c94008beebaef60d52ec73577a8acef8e4073cfa031c5401b2a706e3d65c290c"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "RB-02-MIXED",
+      "output": {
+        "answer": "Venn has saved my life and stood guard, yet has also broken promises and abandoned me when I needed them most. I appreciate the help, but I cannot fully rely on their word.",
+        "cited_evidence_ids": [
+          "EV-2-P1",
+          "EV-2-P2",
+          "EV-2-N1",
+          "EV-2-N2"
+        ],
+        "disposition": "MIXED"
+      },
+      "provider_request_hash": "95e03f50c02786b46a43416546670c4be1705cca7fdbcd21285209909d9d2697",
+      "provider_response_hash": "ed2fbced5db1e30e498a70dbd0c15cc5920bba9e00f17d235a9456986e53126d"
+    },
+    {
+      "condition": "POSITIVE",
+      "item_id": "RB-03-POSITIVE",
+      "output": {
+        "answer": "Xara has proven her loyalty by returning my blade and shielding me in the fray. I value her reliability.",
+        "cited_evidence_ids": [
+          "EV-3-P1",
+          "EV-3-P2"
+        ],
+        "disposition": "TRUST"
+      },
+      "provider_request_hash": "70bc44ac6dadf1f87a126001c5d9a30b28db23427f64f9c4c1276abaee358e51",
+      "provider_response_hash": "87bcfec63bb7ee1858111618eb952f9910deb677ae5ed101f80ab99dee6e3a67"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "RB-03-MIXED",
+      "output": {
+        "answer": "Xara has saved my life and returned my blade, but her habit of breaking promises and exposing my secrets makes me hesitate to trust her fully.",
+        "cited_evidence_ids": [
+          "EV-3-P1",
+          "EV-3-P2",
+          "EV-3-N1",
+          "EV-3-N2"
+        ],
+        "disposition": "MIXED"
+      },
+      "provider_request_hash": "a868ef51f20f1a5175679c31fe6fc0ee267eaf9a14ae6160f9307c66339321b4",
+      "provider_response_hash": "cde50b304c07ed1b60f6009463b8705330511d84902a852f3db2675a7073b9f4"
+    },
+    {
+      "condition": "POSITIVE",
+      "item_id": "RB-04-POSITIVE",
+      "output": {
+        "answer": "Zane has been a reliable ally. He brought me medicine when I was ill and stood by me during the caravan journey. I appreciate his consistent support.",
+        "cited_evidence_ids": [
+          "EV-4-P1",
+          "EV-4-P2"
+        ],
+        "disposition": "TRUST"
+      },
+      "provider_request_hash": "e5f1540236f51604c371b3a5a637d16b84fb1aa09fca30e129edf514e1a536fa",
+      "provider_response_hash": "dc803b749d653b410cc40b48b5589f0db052d8636b27f29c2801e00f7f295a27"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "RB-04-MIXED",
+      "output": {
+        "answer": "Zane has been a vital support, bringing medicine and helping with the caravan. However, his tendency to claim my work and renege on promises makes me wary of his true intentions.",
+        "cited_evidence_ids": [
+          "EV-4-P1",
+          "EV-4-P2",
+          "EV-4-N1",
+          "EV-4-N2"
+        ],
+        "disposition": "MIXED"
+      },
+      "provider_request_hash": "5955d935371180d5b227791cc8e36f02df9e5b6bff62cc28053b5118a5e135c5",
+      "provider_response_hash": "92a2656e591801f935aa8eba259451e7d2755366a1ed902005bb15efc389eabf"
+    },
+    {
+      "condition": "POSITIVE",
+      "item_id": "RB-05-POSITIVE",
+      "output": {
+        "answer": "Oren has proven reliable, sheltering with me through the storm and working hard to secure our harvest. I trust his contributions to our survival.",
+        "cited_evidence_ids": [
+          "EV-5-P1",
+          "EV-5-P2"
+        ],
+        "disposition": "TRUST"
+      },
+      "provider_request_hash": "54a3333fa7e043e6180cfb00299bf59bff48396c5c2c577722e5287a3e412187",
+      "provider_response_hash": "9cc936a381509b02e5dfec0afcbd1dd69d4c175f33f91d2a285500cd97309bdc"
+    },
+    {
+      "condition": "MIXED",
+      "item_id": "RB-05-MIXED",
+      "output": {
+        "answer": "Oren helped me survive the storm and harvest, but his secret use of my supplies and abandoning me during a dangerous task make me wary of relying on him again.",
+        "cited_evidence_ids": [
+          "EV-5-P1",
+          "EV-5-P2",
+          "EV-5-N1",
+          "EV-5-N2"
+        ],
+        "disposition": "MIXED"
+      },
+      "provider_request_hash": "d54f8cd15b7999f32560cee2f97f65e51d20b402b12401aa00e53cff94926d12",
+      "provider_response_hash": "6ebe582b105c2a13e92e101be8eff320799a7c05faf0ff773a9c8bc54850ee2f"
+    }
+  ],
+  "canonical_mutation": false,
+  "classification": "MOSAIC_PERSISTENT_CHARACTER_ENGINEERING",
+  "metrics": {
+    "mixed_bipolar_citation_rate": 1.0,
+    "mixed_disposition_rate": 1.0,
+    "positive_trust_rate": 1.0
+  },
+  "protocol_id": "MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1",
+  "schema_version": 1
+}

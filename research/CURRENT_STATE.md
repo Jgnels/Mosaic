@@ -27,6 +27,15 @@ checkpointing completed after every call, and no canonical state changed. The bo
 closed after completion. This is a promising engineering pilot, not broad evidence across dialogue
 types, models, or natural RimWorld histories.
 
+### Mixed relationship-history pilot
+
+`MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1` completed 12/12 calls. Positive trust, mixed disposition,
+and mixed positive/negative citation rates were all `1.0`. A qualitative audit nevertheless found
+unsupported motive language ("true intentions") in one mixed answer. The structured metrics pass,
+but the broader claim that every phrase was evidence-grounded does not. Citation validity is now
+necessary but insufficient; claim-level entailment is the next quality gate. No canonical state
+changed, and the protocol gate closed after completion.
+
 **Date:** 2026-07-19  
 **Purpose:** first-read canonical state bridge for new ChatGPT/Codex sessions
 

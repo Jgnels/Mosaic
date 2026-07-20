@@ -19,3 +19,15 @@ IDs; exact request archives; checkpoint per call; deterministic citation validat
 No canonical mutation is authorized. This evaluates relationship continuity and balanced evidence
 use, not emotion, consciousness, sentience, or moral status.
 
+## Result
+
+Completed 12/12 calls. Positive-only `TRUST`, mixed-history `MIXED`, and mixed positive-and-negative
+citation rates were all `1.000`; canonical mutations were `0`.
+
+## Limiting result
+
+One mixed answer added "true intentions," a motive not established by the supplied events. The
+structured metrics passed, but citation correctness did not guarantee claim-level entailment. This
+pilot supports balanced disposition and citation behavior only. The next protocol must measure and
+reject unsupported clauses before claiming fully grounded dialogue.
+

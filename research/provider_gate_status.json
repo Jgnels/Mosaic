@@ -1,15 +1,20 @@
 {
   "schema_version": 2,
-  "updated_utc": "2026-07-20T10:24:00Z",
-  "real_provider_authorized": true,
-  "authorized_protocols": ["MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1"],
-  "status": "ONE_BOUNDED_MOSAIC_PROTOCOL_AUTHORIZED",
+  "updated_utc": "2026-07-20T10:44:00Z",
+  "real_provider_authorized": false,
+  "authorized_protocols": [],
+  "status": "MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1_COMPLETED_GATE_CLOSED",
   "controls": {
     "persistent_character_boundary": "PASS",
     "objective_surface_audit": "PASS_16_OF_16",
-    "protocol_preregistration": "PASS",
-    "opaque_ids_payload_archive_checkpoint_budget": "REQUIRED",
-    "shadow_only_no_canonical_mutation": "REQUIRED"
+    "payload_archive_checkpoint_budget": "PASS_12_OF_12",
+    "structured_metrics": "PASS",
+    "claim_level_entailment": "LIMITATION_FOUND"
   },
-  "notes": ["Authorization is limited to 12 calls for MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1.", "No billing, paid fallback, or canonical mutation is authorized."]
+  "notes": [
+    "All three preregistered structured rates were 1.0.",
+    "One mixed answer introduced unsupported motive language: true intentions.",
+    "Citation correctness is insufficient as a claim-level grounding measure.",
+    "The one-protocol gate closed after completion; no protocol is authorized."
+  ]
 }

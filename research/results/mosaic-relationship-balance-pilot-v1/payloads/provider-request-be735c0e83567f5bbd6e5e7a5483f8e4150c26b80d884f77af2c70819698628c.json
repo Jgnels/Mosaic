@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T10:27:55.367701+00:00",
+  "experiment_id": "MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1",
+  "provider_request": {
+    "input": "Generate useful game-character dialogue from verified relationship events. Weigh helpful and harmful events without exaggeration. Never invent facts or motives. Use MIXED when substantial evidence supports both trust and caution. Keep the answer non-manipulative and under 240 characters. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"answer\":\"concise in-character assessment\",\"cited_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-a578f22d9cffa1cc69f0d566\",\"character\":\"Rowan\",\"question\":\"How does Rowan currently regard Mira?\",\"evidence\":[{\"evidence_id\":\"EV-0-P1\",\"summary\":\"warned Rowan before a raid\"},{\"evidence_id\":\"EV-0-P2\",\"summary\":\"shared food during a shortage\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "be735c0e83567f5bbd6e5e7a5483f8e4150c26b80d884f77af2c70819698628c",
+  "schema_version": 1
+}
