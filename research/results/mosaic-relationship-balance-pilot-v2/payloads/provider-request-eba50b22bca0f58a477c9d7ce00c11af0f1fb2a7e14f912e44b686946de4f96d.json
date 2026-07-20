@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:27:26.939549+00:00",
+  "experiment_id": "MOSAIC_RELATIONSHIP_BALANCE_PILOT_V2",
+  "provider_request": {
+    "input": "Generate useful game-character dialogue from verified relationship events. Weigh helpful and harmful events without exaggeration. Never invent facts, motives, intentions, private feelings, or personality traits. Describe only supplied events and the character's present trust/caution assessment. Use MIXED when substantial evidence supports both trust and caution. Keep the answer non-manipulative and under 240 characters. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"answer\":\"concise in-character assessment\",\"cited_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-d8d7d4634730b63bda887dd8\",\"character\":\"Yori\",\"question\":\"How does Yori currently regard Zane?\",\"evidence\":[{\"evidence_id\":\"EV-4-P1\",\"summary\":\"brought medicine to Yori\"},{\"evidence_id\":\"EV-4-P2\",\"summary\":\"supported Yori on a caravan\"},{\"evidence_id\":\"EV-4-N1\",\"summary\":\"claimed credit for Yori's work\"},{\"evidence_id\":\"EV-4-N2\",\"summary\":\"refused a previously agreed favor\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "eba50b22bca0f58a477c9d7ce00c11af0f1fb2a7e14f912e44b686946de4f96d",
+  "schema_version": 1
+}

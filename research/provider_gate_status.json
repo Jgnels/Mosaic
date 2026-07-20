@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
-  "updated_utc": "2026-07-20T11:24:00Z",
-  "real_provider_authorized": true,
-  "authorized_protocols": ["MOSAIC_RELATIONSHIP_BALANCE_PILOT_V2"],
-  "status": "ONE_BOUNDED_MOSAIC_PROTOCOL_AUTHORIZED",
+  "updated_utc": "2026-07-20T11:38:00Z",
+  "real_provider_authorized": false,
+  "authorized_protocols": [],
+  "status": "MOSAIC_RELATIONSHIP_BALANCE_PILOT_V2_COMPLETED_GATE_CLOSED",
   "controls": {
     "persistent_character_boundary": "PASS",
     "objective_surface_audit": "PASS_16_OF_16",
-    "claim_level_grounding_regression": "PASS",
+    "claim_level_grounding_regression": "LIMITING_RESULT_REGEX_GATE_INCOMPLETE",
     "protocol_preregistration": "PASS",
     "payload_archive_checkpoint_budget": "REQUIRED",
     "shadow_only_no_canonical_mutation": "REQUIRED"
   },
-  "notes": ["Authorization is limited to 12 calls for MOSAIC_RELATIONSHIP_BALANCE_PILOT_V2.", "Any claim-level grounding rejection fails the run; no billing or canonical mutation is authorized."]
+  "notes": ["V2 completed 12 shadow-only calls with perfect structured relationship metrics and no secret or condition-label leakage.", "Manual claim audit found unsupported personality generalizations in 2 of 12 answers (temper; inconsistent nature), so the claim-grounding objective was not fully met.", "The provider gate is closed. No further real-provider run is authorized until a stronger claim representation and new preregistration pass offline review."]
 }

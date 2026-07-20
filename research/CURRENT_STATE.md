@@ -179,3 +179,13 @@ A new opt-in hardened belief-revision boundary now passes offline tests for opaq
 ## 2026-07-20 hardened live smoke checkpoint
 
 The project owner authorized use of the full displayed unbilled Gemini 3.1 Flash Lite quota: 15 requests/minute, 250,000 tokens/minute, and 500 requests/day, with no billing or paid fallback. Persistent transport-level budgeting and a bounded approval record passed offline tests. One non-canonical `HARDENED_PROVIDER_SMOKE_V1` call then passed. Its exact secret-free request was archived under hash `f982873dff9211a72db188ee3a3edda7bccff1b6d0fec33ae33efb8bb7c00c37`; post-run scanning found no internal condition label or credential. Retrieved evidence was declared material and explicitly cited. This is an engineering result only. Minimum causal-chain revalidation remains closed pending a new preregistered hardened runner.
+
+## 2026-07-20 Mosaic relationship-balance V2 checkpoint
+
+The claim-grounded V2 provider pilot completed 12/12 shadow-only Gemini 3.1 Flash Lite calls. All
+three preregistered structured relationship metrics were 1.00, and exact-payload scans found no API
+key or internal condition identifier. A skeptical manual claim audit nevertheless found unsupported
+personality generalizations in 2/12 answers ("temper" and "inconsistent nature") that passed the
+regex gate. Treat V2 as validation of relationship balancing, checkpointing, budgeting, and payload
+hygiene—not validation of complete claim grounding. The provider gate is closed. The next step is a
+typed claim representation with evidence entailment, tested offline before any new provider protocol.

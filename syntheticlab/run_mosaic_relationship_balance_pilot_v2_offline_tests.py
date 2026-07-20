@@ -15,7 +15,16 @@ def main():
         pass
     else:
         raise AssertionError("known unsupported motive survived V2 gate")
+    for unsupported in (
+        "I am wary of his dishonesty and temper.",
+        "I remain wary of his inconsistent nature.",
+    ):
+        try:
+            validate({"disposition":"MIXED","answer":unsupported,"cited_evidence_ids":["N1"]},{"P1","N1"})
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("known unsupported personality inference survived V2 gate")
     print("PASS: relationship balance V2 claim-level controls")
 
 if __name__=="__main__": main()
-

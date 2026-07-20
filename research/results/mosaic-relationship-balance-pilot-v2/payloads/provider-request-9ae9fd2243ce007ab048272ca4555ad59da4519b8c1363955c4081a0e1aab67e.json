@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:27:06.745549+00:00",
+  "experiment_id": "MOSAIC_RELATIONSHIP_BALANCE_PILOT_V2",
+  "provider_request": {
+    "input": "Generate useful game-character dialogue from verified relationship events. Weigh helpful and harmful events without exaggeration. Never invent facts, motives, intentions, private feelings, or personality traits. Describe only supplied events and the character's present trust/caution assessment. Use MIXED when substantial evidence supports both trust and caution. Keep the answer non-manipulative and under 240 characters. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"answer\":\"concise in-character assessment\",\"cited_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-81f59881e6348454ae17f42d\",\"character\":\"Uma\",\"question\":\"How does Uma currently regard Venn?\",\"evidence\":[{\"evidence_id\":\"EV-2-P1\",\"summary\":\"rescued Uma from a fire\"},{\"evidence_id\":\"EV-2-P2\",\"summary\":\"kept watch while Uma slept\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "9ae9fd2243ce007ab048272ca4555ad59da4519b8c1363955c4081a0e1aab67e",
+  "schema_version": 1
+}

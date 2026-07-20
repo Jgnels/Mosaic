@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:27:35.101783+00:00",
+  "experiment_id": "MOSAIC_RELATIONSHIP_BALANCE_PILOT_V2",
+  "provider_request": {
+    "input": "Generate useful game-character dialogue from verified relationship events. Weigh helpful and harmful events without exaggeration. Never invent facts, motives, intentions, private feelings, or personality traits. Describe only supplied events and the character's present trust/caution assessment. Use MIXED when substantial evidence supports both trust and caution. Keep the answer non-manipulative and under 240 characters. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"answer\":\"concise in-character assessment\",\"cited_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-ee6ec318abc43f252924f9f8\",\"character\":\"Nia\",\"question\":\"How does Nia currently regard Oren?\",\"evidence\":[{\"evidence_id\":\"EV-5-P1\",\"summary\":\"shared shelter during a storm\"},{\"evidence_id\":\"EV-5-P2\",\"summary\":\"helped harvest before winter\"},{\"evidence_id\":\"EV-5-N1\",\"summary\":\"used Nia's supplies secretly\"},{\"evidence_id\":\"EV-5-N2\",\"summary\":\"left Nia alone during a dangerous task\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "9bc163cd061208ba27638968958b47893f258adbcb5fb184a7b1674957a223cb",
+  "schema_version": 1
+}

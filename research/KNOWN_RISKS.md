@@ -71,3 +71,10 @@ Known hashes:
   `3bc2a47ce5ab11123e5413843e9787783ca28ab6be03396b1201403f94302ec9`
 - 30-resource audit ZIP:
   `61fcd5e812c023d730783d4f6e0759f42092a119f18a9c82486dfee11798e2e9`
+
+## KR-014 — Regex claim gates miss semantic overgeneralization
+Severity: HIGH before canonical dialogue or state mutation
+
+V2 allowed sparse events to become unsupported personality descriptions ("temper" and
+"inconsistent nature"). Future provider dialogue needs typed claims, explicit supporting evidence,
+and entailment checks; regex remains only a defense-in-depth layer.

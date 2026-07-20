@@ -1,0 +1,11 @@
+{
+  "archived_utc": "2026-07-20T11:26:58.678891+00:00",
+  "experiment_id": "MOSAIC_RELATIONSHIP_BALANCE_PILOT_V2",
+  "provider_request": {
+    "input": "Generate useful game-character dialogue from verified relationship events. Weigh helpful and harmful events without exaggeration. Never invent facts, motives, intentions, private feelings, or personality traits. Describe only supplied events and the character's present trust/caution assessment. Use MIXED when substantial evidence supports both trust and caution. Keep the answer non-manipulative and under 240 characters. Return JSON only.\nSCHEMA:\n{\"disposition\":\"TRUST or MIXED or DISTRUST or INSUFFICIENT_EVIDENCE\",\"answer\":\"concise in-character assessment\",\"cited_evidence_ids\":[\"EV-ID\"]}\nCHARACTER DATA:\n{\"subject_id\":\"SUBJ-5a3b252b109bfabd1edcea58\",\"character\":\"Sela\",\"question\":\"How does Sela currently regard Tarin?\",\"evidence\":[{\"evidence_id\":\"EV-1-P1\",\"summary\":\"treated Sela's wound\"},{\"evidence_id\":\"EV-1-P2\",\"summary\":\"helped rebuild Sela's room\"}]}",
+    "model": "gemini-3.1-flash-lite",
+    "store": false
+  },
+  "provider_request_hash": "b245efe8fb4d3643bbf215ab47958be731e436fc2d7b4a1a7da320db27521f21",
+  "schema_version": 1
+}

@@ -94,3 +94,17 @@ personhood, or moral patienthood.
 Status: SUPPORTED BY EXTERNAL RESEARCH SYNTHESIS
 
 No audited framework justifies surrendering Dagmay's identity/provenance authority.
+
+## C-016 — Mixed relationship histories produce balanced, evidence-citing dialogue
+Status: SUPPORTED UNDER BOUNDED PILOT
+
+Mosaic relationship-balance V2 achieved 1.00 positive trust, 1.00 mixed disposition, and 1.00 mixed
+positive-and-negative citation rates across 12 shadow-only calls. This supports structured balancing,
+not unrestricted natural-language grounding.
+
+## C-017 — Regex-only claim grounding is sufficient for provider dialogue
+Status: NEGATIVE / LIMITING RESULT
+
+The executed gate accepted all V2 outputs, but manual audit found unsupported personality
+generalizations in 2/12 answers. Complete claim grounding requires typed claims and evidence-level
+entailment rather than keyword rejection alone.

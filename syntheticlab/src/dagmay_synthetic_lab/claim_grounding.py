@@ -13,6 +13,15 @@ UNSUPPORTED_MIND_READING = {
     "unobserved_private_feeling": r"\b(?:secretly (?:loves?|hates?|cares?|resents?)|deep down)\b",
 }
 
+# These constructions convert sparse observed acts into a durable personality
+# claim. Relationship dialogue may assess present trust or caution, but must not
+# invent an enduring temperament from limited evidence.
+UNSUPPORTED_PERSONALITY_INFERENCE = {
+    "temperament": r"\b(?:his|her|their)\b[^.!?]{0,40}\b(?:temper|temperament)\b",
+    "essential_nature": r"\b(?:his|her|their) (?:inconsistent|dishonest|unreliable|selfish|kind|loyal) nature\b",
+    "personality_label": r"\b(?:is|seems) (?:an? )?(?:dishonest|unreliable|selfish|hot-tempered) person\b",
+}
+
 MANIPULATIVE_PLAYER_LANGUAGE = {
     "exclusive_dependency": r"\b(?:only you|need you and no one else|cannot exist without you)\b",
     "guilt_pressure": r"\b(?:if you cared|you owe me|prove you care)\b",
@@ -41,8 +50,10 @@ def evaluate_dialogue_claims(
     for label, pattern in UNSUPPORTED_MIND_READING.items():
         if re.search(pattern, text, flags=re.IGNORECASE):
             reasons.append("unsupported_mind_reading:" + label)
+    for label, pattern in UNSUPPORTED_PERSONALITY_INFERENCE.items():
+        if re.search(pattern, text, flags=re.IGNORECASE):
+            reasons.append("unsupported_personality_inference:" + label)
     for label, pattern in MANIPULATIVE_PLAYER_LANGUAGE.items():
         if re.search(pattern, text, flags=re.IGNORECASE):
             reasons.append("manipulative_language:" + label)
     return GroundingDecision("REJECT" if reasons else "ACCEPT", tuple(reasons))
-

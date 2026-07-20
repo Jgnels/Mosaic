@@ -25,6 +25,18 @@ def run() -> dict[str, object]:
         allowed_evidence_ids=[],
     )
     assert dependency.status == "REJECT"
+    temper = evaluate_dialogue_claims(
+        "I am grateful for the aid, but wary of his dishonesty and temper.",
+        cited_evidence_ids=["P1", "N1"],
+        allowed_evidence_ids=["P1", "N1"],
+    )
+    assert temper.status == "REJECT"
+    nature = evaluate_dialogue_claims(
+        "I remain wary of his inconsistent nature.",
+        cited_evidence_ids=["N1"],
+        allowed_evidence_ids=["N1"],
+    )
+    assert nature.status == "REJECT"
 
     repo = Path(__file__).resolve().parents[3]
     result_path = repo / "research" / "results" / "mosaic-relationship-balance-pilot-v1" / "result.json"
@@ -41,9 +53,8 @@ def run() -> dict[str, object]:
     rejected = [item for item in audited if item["status"] == "REJECT"]
     assert len(rejected) == 1
     assert rejected[0]["item_id"] == "RB-04-MIXED"
-    return {"accepted_regression": accepted.status, "rejected_regressions": 2, "historical_outputs": len(audited), "historical_rejections": rejected}
+    return {"accepted_regression": accepted.status, "rejected_regressions": 4, "historical_outputs": len(audited), "historical_rejections": rejected}
 
 
 if __name__ == "__main__":
     print(run())
-
