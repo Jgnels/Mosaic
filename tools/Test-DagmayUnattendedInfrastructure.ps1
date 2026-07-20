@@ -33,7 +33,7 @@ try {
     }
 
     $providerRunner = Get-Content -LiteralPath (Join-Path $PSScriptRoot "Invoke-DagmayApprovedProviderRun.ps1") -Raw
-    if ($providerRunner -notmatch 'MOSAIC_RELATIONSHIP_BALANCE_PILOT_V1') {
+    if ($providerRunner -notmatch 'MOSAIC_RELATIONSHIP_BALANCE_PILOT_V2') {
         throw "Provider runner permits an unreviewed protocol surface."
     }
     if ($providerRunner -notmatch "real_provider_authorized") {
