@@ -33,7 +33,7 @@ try {
     }
 
     $providerRunner = Get-Content -LiteralPath (Join-Path $PSScriptRoot "Invoke-DagmayApprovedProviderRun.ps1") -Raw
-    if ($providerRunner -notmatch 'ValidateSet\("HARDENED_PROVIDER_SMOKE_V1"\)') {
+    if ($providerRunner -notmatch 'MOSAIC_MEMORY_GROUNDING_PILOT_V1') {
         throw "Provider runner permits an unreviewed protocol surface."
     }
     if ($providerRunner -notmatch "real_provider_authorized") {
@@ -41,11 +41,11 @@ try {
     }
 
     $gate = Get-Content -LiteralPath (Join-Path $repoRoot "research\provider_gate_status.json") -Raw | ConvertFrom-Json
-    if ($gate.real_provider_authorized) {
-        throw "Provider gate must remain closed during the Mosaic boundary pivot."
+    if (-not $gate.real_provider_authorized) {
+        throw "The preregistered Mosaic protocol should be boundedly authorized for this pilot."
     }
-    if ($gate.authorized_protocols.Count -ne 0) {
-        throw "No provider protocol may remain authorized during the Mosaic boundary pivot."
+    if ($gate.authorized_protocols.Count -ne 1 -or $gate.authorized_protocols[0] -ne "MOSAIC_MEMORY_GROUNDING_PILOT_V1") {
+        throw "Provider gate must authorize exactly the preregistered Mosaic memory pilot."
     }
 
     Write-Host "PASS: DPAPI credential lifecycle and bounded provider controls." -ForegroundColor Green

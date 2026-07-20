@@ -25,7 +25,8 @@
   },
   "allowed_protocols": [
     "HARDENED_PROVIDER_SMOKE_V1",
-    "MINIMUM_CAUSAL_REVALIDATION_V1"
+    "MINIMUM_CAUSAL_REVALIDATION_V1",
+    "MOSAIC_MEMORY_GROUNDING_PILOT_V1"
   ],
   "prohibited_actions": [
     "canonical identity mutation",

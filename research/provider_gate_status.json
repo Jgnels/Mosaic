@@ -1,24 +1,24 @@
 {
   "schema_version": 2,
-  "updated_utc": "2026-07-20T09:24:00Z",
-  "real_provider_authorized": false,
-  "authorized_protocols": [],
-  "status": "MOSAIC_OBJECTIVE_AUDIT_PASSED_PROTOCOLS_CLOSED",
+  "updated_utc": "2026-07-20T09:44:00Z",
+  "real_provider_authorized": true,
+  "authorized_protocols": ["MOSAIC_MEMORY_GROUNDING_PILOT_V1"],
+  "status": "ONE_BOUNDED_MOSAIC_PROTOCOL_AUTHORIZED",
   "controls": {
-    "opaque_subject_ids": "PASS_IN_HARDENED_BOUNDARY",
-    "exact_secret_free_payload_archive": "PASS_IN_HARDENED_BOUNDARY",
-    "final_serialized_payload_forbidden_token_scan": "PASS_IN_HARDENED_BOUNDARY",
-    "typed_evidence_provenance_ownership_temporal_role": "PASS_IN_HARDENED_BOUNDARY",
-    "retrieved_evidence_materiality_and_citation_gate": "PASS_IN_HARDENED_BOUNDARY",
-    "legacy_provider_entry_points_blocked_from_unattended_runner": "PASS",
-    "enforceable_provider_call_budget": "PASS_OFFLINE",
     "persistent_character_boundary": "PASS",
-    "objective_evaluator_mutation_acceptance_surface_audit": "PASS_16_OF_16"
+    "objective_evaluator_mutation_acceptance_surface_audit": "PASS_16_OF_16",
+    "protocol_preregistration": "PASS",
+    "opaque_subject_ids": "REQUIRED",
+    "exact_secret_free_payload_archive": "REQUIRED",
+    "forbidden_token_scan": "REQUIRED",
+    "checkpoint_each_call": "REQUIRED",
+    "shadow_only_no_canonical_mutation": "REQUIRED",
+    "persistent_free_tier_budget": "REQUIRED"
   },
   "notes": [
-    "Historical v31 source and artifacts remain unchanged.",
-    "The general Mosaic boundary migration audit passed.",
-    "No provider protocol is currently authorized.",
-    "A new protocol requires Mosaic value justification, preregistration, executable boundary acceptance, hardened payload controls, shadow-only operation, checkpointing, and bounded quota registration."
+    "Authorization is limited to MOSAIC_MEMORY_GROUNDING_PILOT_V1.",
+    "Maximum planned calls: 12.",
+    "No billing, paid fallback, or canonical mutation is authorized.",
+    "Authorization expires after completion or failure of this protocol and must then close."
   ]
 }
