@@ -1,16 +1,17 @@
 {
   "schema_version": 2,
-  "updated_utc": "2026-07-20T11:38:00Z",
-  "real_provider_authorized": false,
-  "authorized_protocols": [],
-  "status": "MOSAIC_RELATIONSHIP_BALANCE_PILOT_V2_COMPLETED_GATE_CLOSED",
+  "updated_utc": "2026-07-20T11:53:00Z",
+  "real_provider_authorized": true,
+  "authorized_protocols": ["MOSAIC_TYPED_RELATIONSHIP_PILOT_V3"],
+  "status": "ONE_BOUNDED_TYPED_RELATIONSHIP_PROTOCOL_AUTHORIZED",
   "controls": {
     "persistent_character_boundary": "PASS",
     "objective_surface_audit": "PASS_16_OF_16",
-    "claim_level_grounding_regression": "LIMITING_RESULT_REGEX_GATE_INCOMPLETE",
+    "typed_claim_contract": "PASS_OFFLINE",
+    "deterministic_dialogue_renderer": "PASS_OFFLINE",
     "protocol_preregistration": "PASS",
     "payload_archive_checkpoint_budget": "REQUIRED",
     "shadow_only_no_canonical_mutation": "REQUIRED"
   },
-  "notes": ["V2 completed 12 shadow-only calls with perfect structured relationship metrics and no secret or condition-label leakage.", "Manual claim audit found unsupported personality generalizations in 2 of 12 answers (temper; inconsistent nature), so the claim-grounding objective was not fully met.", "The provider gate is closed. No further real-provider run is authorized until a stronger claim representation and new preregistration pass offline review."]
+  "notes": ["Authorization is limited to 12 shadow-only calls for MOSAIC_TYPED_RELATIONSHIP_PILOT_V3.", "The provider may return only a disposition and typed evidence IDs; Mosaic renders all dialogue deterministically.", "Any schema, citation, valence, budget, payload, or boundary failure closes the run; billing and canonical mutation remain prohibited."]
 }
