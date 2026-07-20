@@ -10,6 +10,14 @@ characters. It neither pursues consciousness nor optimizes deceptive pseudo-cons
 `PERSISTENT_CHARACTER_BOUNDARY.md` is binding. All real-provider protocols are suspended during
 the objective/evaluator audit; unattended work remains offline.
 
+### Boundary migration audit result
+
+`MOSAIC-OBJECTIVE-SURFACE-AUDIT-001` passed all 16 checks. The active unattended path is boundary
+gated, offline, shadow-only, and cannot load the saved credential or invoke the provider runner.
+Historical Dagmay modules remain preserved but dormant. The general audit prerequisite is closed;
+real-provider access remains false until a specific Mosaic-aligned protocol is preregistered and
+added to the bounded authorization list.
+
 **Date:** 2026-07-19  
 **Purpose:** first-read canonical state bridge for new ChatGPT/Codex sessions
 

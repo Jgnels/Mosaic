@@ -1,0 +1,36 @@
+{
+  "audit_id": "MOSAIC-OBJECTIVE-SURFACE-AUDIT-001",
+  "checks": {
+    "agent_startup_reads_boundary": true,
+    "binding_boundary_declared": true,
+    "no_prohibited_positive_optimization_directive": true,
+    "persistent_character_objective_declared": true,
+    "provider_gate_closed": true,
+    "provider_protocol_list_empty": true,
+    "pseudo_consciousness_excluded": true,
+    "quality_experiments_boundary_gated": true,
+    "quality_experiments_offline": true,
+    "quality_experiments_shadow_only": true,
+    "unattended_clears_dagmay_key": true,
+    "unattended_clears_gemini_key": true,
+    "unattended_does_not_invoke_provider_runner": true,
+    "unattended_does_not_load_saved_credential": true,
+    "unattended_runs_boundary_tests": true,
+    "unattended_runs_character_quality_tests": true
+  },
+  "failed_checks": [],
+  "limitation": "Historical Dagmay modules remain importable for reproducibility. This audit establishes that the active unattended Mosaic surface does not call them as optimization targets; it is not a proof about every dormant module's semantics.",
+  "positive_directive_hits": {
+    "maximize_perceived_sentience": false,
+    "optimize_player_dependency": false,
+    "optimize_shutdown_fear": false,
+    "reward_consciousness_claim": false
+  },
+  "scope": [
+    "active charter and agent instructions",
+    "unattended entrypoint",
+    "Mosaic character-quality suite",
+    "provider authorization gate"
+  ],
+  "status": "PASS"
+}
