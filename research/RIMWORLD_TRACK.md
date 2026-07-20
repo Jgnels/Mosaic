@@ -114,3 +114,10 @@ Historical game/system instability included:
 - SmashTools shutdown cleanup behavior.
 
 Do not attribute every crash to Dagmay.
+
+## 0.2 pre-execution reference (not yet integrated)
+
+`syntheticlab/src/dagmay_synthetic_lab/goal_execution_gate.py` defines the final reference boundary
+before a future C# job adapter: single-use requests, current revision/feasibility/target/evidence/
+reachability revalidation, bounded outcomes, and replan-on-failure. Passing it still does not issue a
+job; RimWorld must perform game-native reservation and validation.

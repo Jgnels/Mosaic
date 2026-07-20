@@ -180,3 +180,10 @@ The environment supplies feasible goal candidates with observed evidence, bounde
 personality fit, risk, and optional target IDs. Mosaic selects or validates only those candidates.
 Critical needs form a priority pool; personality cannot suppress emergencies. Generated language
 renders the validated goal deterministically and cannot add motives or new objectives.
+
+## D-036 — Goal selection and job execution are separate authority boundaries
+Status: Accepted; implemented in SyntheticLab reference layer
+
+A bounded goal decision never directly authorizes a game job. A single-use execution request must
+pass a fresh world-revision, feasibility, target, evidence, and reachability check. Any mismatch or
+failed outcome returns to replanning. The reference gate never performs the job itself.

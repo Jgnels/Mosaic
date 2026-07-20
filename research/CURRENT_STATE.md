@@ -251,3 +251,11 @@ goal scoring. The committed work goal adapted at the first tick of a permanent u
 expired critical signal was rejected, a fresh critical signal was selected, and the new ordinary
 commitment resumed afterward (all rates 1.00; switch latency 0). Future-tick and revision-mismatched
 candidates also failed closed. Trustworthy adapter clocks/revisions remain an external dependency.
+
+## 2026-07-20 pre-execution goal gate checkpoint
+
+A reference execution gate now treats a selected goal as an untrusted proposal until the current
+world revision, feasibility, exact target, evidence contract, evidence freshness, and reachability
+are revalidated. Six time-of-check failure cases routed to replan; replayed request IDs and duplicate
+outcomes were rejected; failed jobs routed to replan. The gate records audit state but deliberately
+issues no game job. Final RimWorld-native reservation and validation remain future C# responsibilities.
