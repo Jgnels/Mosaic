@@ -1,0 +1,31 @@
+# Build output
+**/bin/
+**/obj/
+artifacts/
+TestResults/
+
+# Packaged RimWorld assemblies are build products
+Dagmay.RimWorld/Package/Assemblies/*.dll
+Dagmay.RimWorld/Package/Assemblies/*.pdb
+
+# Local configuration and credentials
+*.user
+*.suo
+*.userprefs
+.env
+.env.*
+secrets.json
+appsettings.local.json
+
+# IDE and operating-system files
+.vs/
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
+
+# Dagmay runtime data must never enter source control
+DagmayData/
+Diagnostics/
+Exports/
