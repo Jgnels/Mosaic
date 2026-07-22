@@ -1,24 +1,30 @@
-Dagmay 0.1K — Social Path Certification & 0.1 Release Closure
+Dagmay compatibility package — Mosaic RimWorld 0.2 Pre-Alpha
 
-0.1K freezes the RimWorld 0.1 cognitive feature set at the tested 0.1J.3 baseline.
+This package retains the historical Dagmay assembly, namespace, and package ID for compatibility.
+The user-facing project name is Mosaic.
 
-New in 0.1K:
-- automatic diagnostic-only social-path certification;
-- stable counterpart-link verification;
-- relationship-sensitive memory verification;
-- reflection-eligibility verification;
-- save/reload persistence certification;
-- log collection that embeds the latest certification sidecar.
+Included in the 0.2 pre-alpha architecture checkpoint:
+- recovered Observer-only 0.1 closure foundation;
+- temporal facts with provenance and supersession;
+- durable identity separated from environment binding;
+- pure appraisal contracts;
+- portable external-mod event proposals and deterministic admission;
+- action-origin and behavior-influence provenance;
+- lifecycle-bearing story threads;
+- milestone-based project progress and contribution attribution;
+- immutable, evidence-grounded presentation context;
+- observer, debug, prompt, and UI purity contracts.
 
-The certification report is stored outside canonical individual state under the RimWorld
-config Dagmay diagnostics directory.
+Verification completed before packaging:
+- static verification across 93 C# files;
+- 60 contract tests, 0 failed;
+- 6 integration scenarios, 0 failed;
+- release compilation against installed RimWorld 1.6 assemblies.
 
-0.1K remains Observer-only. It adds no pawn control, no autonomous action, no canonical
-SelfModel promotion, and no post-0.1J.3 SyntheticLab cognitive mechanism.
+Not yet verified:
+- in-game RimWorld launch;
+- save/load behavior with the packaged 0.2 DLLs;
+- compatibility against the owner's complete mod list;
+- long-session runtime performance.
 
-RimWorld test gate:
-1. generate a real bounded social event between enrolled colonists;
-2. save;
-3. reload;
-4. run tools\check-social-certification.ps1;
-5. collect tools\collect-logs.ps1 evidence.
+This checkpoint adds no pawn control and no direct LLM job issuance.

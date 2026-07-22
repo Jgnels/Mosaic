@@ -30,8 +30,9 @@ Milestone progress, contribution attribution, memory-spam prevention, 3 tests.
 
 ## Cumulative result
 
-- static verification: PASS;
-- C# files checked: 93;
-- registered contract tests: 60;
-- compilation/test execution for 0.2: pending;
-- RimWorld runtime verification for 0.2: pending.
+- static verification: PASS across 93 C# files;
+- Core and Providers compilation: PASS;
+- contract tests: PASS, 60 executed and 0 failed;
+- integration harness: PASS, 6 scenarios and 0 failed;
+- RimWorld adapter Release compilation: PASS, 0 warnings and 0 errors;
+- RimWorld in-game runtime and save compatibility: pending.

@@ -8,7 +8,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$DagmayVersion = "0.1K"
+$DagmayVersion = "0.2-prealpha"
 $Root = Split-Path -Parent $PSScriptRoot
 $Artifacts = Join-Path $Root "artifacts"
 $RunStamp = Get-Date -Format "yyyyMMdd-HHmmss"

@@ -44,7 +44,8 @@ rimworld/0.2-prealpha/
 ```
 
 A separate derived development tree containing the cumulative architecture work through Slice 06.
-It is statically verified but not yet compiled, test-executed, or runtime-certified.
+Static verification, compilation, all 60 contract tests, all six integration scenarios, and the
+Release RimWorld adapter build pass. It is not yet in-game runtime- or save-compatibility-certified.
 
 ## Core 0.2 architecture
 
@@ -63,13 +64,12 @@ It is statically verified but not yet compiled, test-executed, or runtime-certif
 
 ## Immediate next actions
 
-1. Push the existing local recovery commit on an import branch.
-2. Add the 0.2 pre-alpha tree and checkpoint documents on that same branch.
-3. Confirm the frozen 0.1 tree is unchanged.
-4. Run static verification.
-5. Compile all 0.2 projects.
-6. Execute the complete 60-test runner.
-7. Fix failures before continuing feature development.
-8. Only after those gates, test RimWorld and begin the bounded RimTalk bridge.
+1. Preserve the frozen 0.1 closure candidate unchanged.
+2. Complete the full non-installing 0.2 release build and record its package hash.
+3. Review and merge the import pull request after verification documentation is committed.
+4. Test the packaged 0.2 build in RimWorld using a copied save and minimal dependency set.
+5. Validate save/load, observer purity, identity continuity, and failure isolation in-game.
+6. Add the owner's real mod stack in controlled compatibility groups.
+7. Begin the bounded, read-only RimTalk bridge only after the runtime foundation passes.
 
 Repository truth overrides chat summaries.

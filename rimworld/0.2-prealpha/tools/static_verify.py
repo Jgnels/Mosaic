@@ -218,7 +218,7 @@ def verify_rimworld_references(errors: list[str]) -> None:
 
 
 def verify_release_version(errors: list[str]) -> None:
-    expected = "0.1K"
+    expected = "0.2-prealpha"
     required_markers = {
         "Dagmay.RimWorld/Bootstrap/DagmayBuildInfo.cs": f'Version = "{expected}"',
         "Dagmay.RimWorld/Package/About/About.xml": f"Version {expected}",
