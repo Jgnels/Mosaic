@@ -23,9 +23,9 @@ namespace Dagmay.Core.Story
             Significance = significance;
             ObservedAtTick = observedAtTick;
             ParticipantIds = ContractGuard.List(participantIds, nameof(participantIds));
-            SourceModId = Optional(sourceModId, nameof(sourceModId), 256);
-            FactionKey = Optional(factionKey, nameof(factionKey), 256);
-            LocationKey = Optional(locationKey, nameof(locationKey), 256);
+            SourceModId = ContractGuard.OptionalText(sourceModId, nameof(sourceModId), 256);
+            FactionKey = ContractGuard.OptionalText(factionKey, nameof(factionKey), 256);
+            LocationKey = ContractGuard.OptionalText(locationKey, nameof(locationKey), 256);
         }
         public string StoryEventId { get; }
         public string EventKind { get; }
@@ -39,7 +39,6 @@ namespace Dagmay.Core.Story
         public string? LocationKey { get; }
         public bool IsTerminal => Phase==StoryEventPhase.Completed || Phase==StoryEventPhase.Failed ||
             Phase==StoryEventPhase.Cancelled || Phase==StoryEventPhase.Expired;
-        private static string? Optional(string? value, string name, int max) =>
-            string.IsNullOrWhiteSpace(value) ? null : ContractGuard.Text(value, name, max);
+
     }
 }

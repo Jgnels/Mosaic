@@ -19,8 +19,8 @@ namespace Dagmay.Core.Integration
             SourceModId = ContractGuard.Text(sourceModId, nameof(sourceModId), 256);
             CapabilityId = ContractGuard.Text(capabilityId, nameof(capabilityId), 256);
             Available = available;
-            SourceVersion = Normalize(sourceVersion, 128, nameof(sourceVersion));
-            ApiVersion = Normalize(apiVersion, 128, nameof(apiVersion));
+            SourceVersion = ContractGuard.OptionalText(sourceVersion, nameof(sourceVersion), 128);
+            ApiVersion = ContractGuard.OptionalText(apiVersion, nameof(apiVersion), 128);
         }
 
         public string SourceModId { get; }
@@ -29,10 +29,5 @@ namespace Dagmay.Core.Integration
         public string? SourceVersion { get; }
         public string? ApiVersion { get; }
 
-        private static string? Normalize(string? value, int maxLength, string parameterName)
-        {
-            if (string.IsNullOrWhiteSpace(value)) return null;
-            return ContractGuard.Text(value, parameterName, maxLength);
-        }
     }
 }

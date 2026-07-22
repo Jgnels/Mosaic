@@ -20,7 +20,10 @@ namespace Dagmay.Core.Contracts
             if (observedAtTick < 0) throw new ArgumentOutOfRangeException(nameof(observedAtTick));
             IndividualId = individualId;
             State = state;
-            EnvironmentObjectKey = NormalizeOptional(environmentObjectKey);
+            EnvironmentObjectKey = ContractGuard.OptionalText(
+                environmentObjectKey,
+                nameof(environmentObjectKey),
+                512);
             ObservedAtTick = observedAtTick;
         }
 
@@ -41,12 +44,5 @@ namespace Dagmay.Core.Contracts
             return new EnvironmentBinding(IndividualId, nextState, environmentObjectKey, observedAtTick);
         }
 
-        private static string? NormalizeOptional(string? value)
-        {
-            if (string.IsNullOrWhiteSpace(value)) return null;
-            var normalized = value.Trim();
-            if (normalized.Length > 512) throw new ArgumentOutOfRangeException(nameof(value));
-            return normalized;
-        }
     }
 }

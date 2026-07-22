@@ -21,7 +21,7 @@ namespace Dagmay.Core.Appraisal
             EvidenceId = evidenceId;
             PerspectiveOwnerId = perspectiveOwnerId;
             ActorKey = ContractGuard.Text(actorKey, nameof(actorKey), 256);
-            TargetKey = string.IsNullOrWhiteSpace(targetKey) ? null : ContractGuard.Text(targetKey, nameof(targetKey), 256);
+            TargetKey = ContractGuard.OptionalText(targetKey, nameof(targetKey), 256);
             EventKind = ContractGuard.Text(eventKind, nameof(eventKind), 128);
             Desirability = SignedUnit(desirability, nameof(desirability));
             Praiseworthiness = SignedUnit(praiseworthiness, nameof(praiseworthiness));

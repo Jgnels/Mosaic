@@ -27,9 +27,7 @@ namespace Dagmay.Core.Story
             Kind = kind;
             ContributorKey = ContractGuard.Text(contributorKey, nameof(contributorKey), 256);
             Amount = amount;
-            SourceModId = string.IsNullOrWhiteSpace(sourceModId)
-                ? null
-                : ContractGuard.Text(sourceModId, nameof(sourceModId), 256);
+            SourceModId = ContractGuard.OptionalText(sourceModId, nameof(sourceModId), 256);
         }
 
         public StoryContributionKind Kind { get; }

@@ -13,6 +13,13 @@ namespace Dagmay.Core.Contracts
             return value.Trim();
         }
 
+        public static string? OptionalText(string? value, string parameterName, int maximumLength)
+        {
+            return string.IsNullOrWhiteSpace(value)
+                ? null
+                : Text(value!, parameterName, maximumLength);
+        }
+
         public static double UnitInterval(double value, string parameterName)
         {
             if (double.IsNaN(value) || double.IsInfinity(value) || value < 0 || value > 1)

@@ -19,8 +19,8 @@ namespace Dagmay.Core.Personality
             Kind = kind;
             Key = ContractGuard.Text(key, nameof(key), 256);
             Weight = weight;
-            SourceModId = string.IsNullOrWhiteSpace(sourceModId) ? null : ContractGuard.Text(sourceModId, nameof(sourceModId), 256);
-            Explanation = string.IsNullOrWhiteSpace(explanation) ? null : ContractGuard.Text(explanation, nameof(explanation), 1024);
+            SourceModId = ContractGuard.OptionalText(sourceModId, nameof(sourceModId), 256);
+            Explanation = ContractGuard.OptionalText(explanation, nameof(explanation), 1024);
             if (kind == BehaviorInfluenceKind.ExternalModTrait && SourceModId is null)
                 throw new ArgumentException("External-mod trait influences require source mod provenance.", nameof(sourceModId));
         }

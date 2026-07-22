@@ -21,12 +21,8 @@ namespace Dagmay.Core.Actions
         {
             Origin = origin;
             ActionKind = ContractGuard.Text(actionKind, nameof(actionKind), 256);
-            SourceModId = string.IsNullOrWhiteSpace(sourceModId)
-                ? null
-                : ContractGuard.Text(sourceModId, nameof(sourceModId), 256);
-            MosaicDecisionId = string.IsNullOrWhiteSpace(mosaicDecisionId)
-                ? null
-                : ContractGuard.Text(mosaicDecisionId, nameof(mosaicDecisionId), 256);
+            SourceModId = ContractGuard.OptionalText(sourceModId, nameof(sourceModId), 256);
+            MosaicDecisionId = ContractGuard.OptionalText(mosaicDecisionId, nameof(mosaicDecisionId), 256);
 
             if (origin == ActionOriginKind.ExternalModExecution && SourceModId is null)
                 throw new ArgumentException("External-mod actions require source mod provenance.", nameof(sourceModId));
