@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework Condition="'$(DagmayLocalVerification)' != 'true'">netstandard2.0</TargetFramework>
+    <TargetFramework Condition="'$(DagmayLocalVerification)' == 'true'">net8.0</TargetFramework>
+    <AssemblyName>Dagmay.Providers</AssemblyName>
+    <RootNamespace>Dagmay.Providers</RootNamespace>
+    <Description>Replaceable model-provider adapters for Dagmay.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dagmay.Core\Dagmay.Core.csproj" />
+  </ItemGroup>
+</Project>

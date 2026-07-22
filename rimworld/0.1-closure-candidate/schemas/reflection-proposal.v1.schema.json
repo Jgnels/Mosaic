@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dagmay.local/schemas/reflection-proposal.v1.schema.json",
+  "title": "Dagmay Reflection Proposal v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "requestId",
+    "individualId",
+    "baseStateVersion",
+    "evidenceEventIds",
+    "confidence",
+    "interpretation",
+    "autobiographicalReflection",
+    "decisionSummary",
+    "targetAffect"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "requestId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "individualId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "baseStateVersion": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "evidenceEventIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{32}$"
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "interpretation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "autobiographicalReflection": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "decisionSummary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "targetAffect": {
+      "$ref": "#/$defs/affectVector"
+    }
+  },
+  "$defs": {
+    "affectVector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "valence",
+        "arousal",
+        "threat",
+        "agency",
+        "attachment",
+        "certainty",
+        "socialStanding"
+      ],
+      "properties": {
+        "valence": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "arousal": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "threat": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "agency": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "attachment": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "certainty": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "socialStanding": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}

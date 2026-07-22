@@ -48,11 +48,11 @@ Dagmay has two intentionally separate tracks.
 Purpose: prove the already-designed foundational cognitive architecture works reliably in a
 persistent, messy world.
 
-The project owner reports the working codebase has advanced to **0.1RC**.
-
-The newest independently preserved diagnostic evidence in this knowledge export is 0.1J.3 plus
-later 0.1K social-certification engineering context. After migration, the actual repository
-commit/build output is authoritative for exact 0.1RC status.
+The laptop rescue recovered the newest known source tree and imported it at
+`rimworld/0.1-closure-candidate/`. The code self-identifies as **0.1K**, contains the 0.1L
+persistence-torture and 0.1M failure-isolation harnesses, and includes the later read-only scheduler
+safety correction. A separately versioned 0.1RC artifact or commit was not found, so the earlier
+owner-reported 0.1RC label is now **unconfirmed rather than canonical**.
 
 Do **not** fall back to obsolete 0.1F assumptions.
 
@@ -83,7 +83,8 @@ Known closure sequence:
 0.1K Social-path certification → 0.1L Persistence torture → 0.1M Failure isolation →
 0.1N Long-session soak → 0.1 Release Candidate.
 
-Reconcile this with the actual 0.1RC repository tomorrow.
+The recovered source and its recorded build/test artifacts now supersede the earlier missing-source
+status. Do not silently rename it 0.1RC.
 
 ### SyntheticLab track
 
@@ -277,3 +278,21 @@ restore and preserved replay blocking. Outer tampering, recomputed cross-compone
 generation rollback, and interrupted temporary writes failed closed or preserved the last good
 checkpoint. This closes the reference-layer two-store recovery gap; the missing RimWorld C# adapter
 still requires an equivalent save/load boundary before any job-control graduation.
+
+## 2026-07-20 laptop recovery and RimWorld source reconciliation
+
+The emergency rescue archives were audited without restoring or mutating live saves. The newest
+RimWorld source was selected from the later 0.1K audit-work tree rather than the archive's obsolete
+root 0.1F copy. Its original 0.1K manifest predates the final storage-safety patch and is preserved
+as historical, not authoritative, metadata.
+
+The recovered tree completed a fresh desktop development loop: static verification over 75 C#
+files, 42/42 contract tests, 6/6 integration scenarios with 603 assertions, Core/Providers/RimWorld
+compilation with zero warnings/errors, and package construction. The new package SHA-256 is
+`F32E33D7432E2A564433C7B881874BBAD3982B45DD3C3704C6414D9850CEECB2`.
+The mod was not installed or launched, so live RimWorld behavior and long-session soak remain open.
+
+Private saves, identity/reflection stores, journals, configuration, installed binaries, and the full
+380 MB emergency archive remain outside Git under ignored local recovery storage. The Nelson
+continuation must not be paired with the older HourTest save's checkpoint. See
+`research/recovery/laptop-2026-07-20/README.md`.

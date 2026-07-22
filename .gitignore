@@ -20,10 +20,12 @@ Assemblies/
 # Generated/local experiment output
 artifacts/
 
+# Private recovery archives and runtime state
+local-recovery/
+
 # Editor and OS noise
 .vs/
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
-

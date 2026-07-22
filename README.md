@@ -25,3 +25,12 @@ appearances of consciousness. See `research/PERSISTENT_CHARACTER_BOUNDARY.md`.
 
 > Chat is the workshop conversation. The repository is the durable project record.
 
+## Active source tracks
+
+- `syntheticlab/` — controlled Mosaic mechanism research and offline reference implementations.
+- `rimworld/0.1-closure-candidate/` — newest recovered Observer-only RimWorld source. It
+  self-identifies as Dagmay 0.1K and includes later closure harnesses and the final recovered
+  read-only scheduler patch. See its `RECOVERY_PROVENANCE.md`; exact 0.1RC labeling remains
+  unconfirmed.
+- `research/recovery/laptop-2026-07-20/` — recovery decision record, hashes, and selected
+  secret-safe verification evidence. Private saves and runtime identity stores are excluded.

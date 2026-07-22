@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dagmay.local/schemas/affect-mutation.v1.schema.json",
+  "title": "Dagmay Proposed Affect Mutation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "requestId",
+    "individualId",
+    "baseStateVersion",
+    "evidenceEventIds",
+    "confidence",
+    "decisionSummary",
+    "targetAffect"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "requestId": { "$ref": "#/$defs/strongId" },
+    "individualId": { "$ref": "#/$defs/strongId" },
+    "baseStateVersion": { "type": "integer", "minimum": 0 },
+    "evidenceEventIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/strongId" }
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "decisionSummary": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "targetAffect": { "$ref": "#/$defs/affectVector" }
+  },
+  "$defs": {
+    "strongId": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{32}$"
+    },
+    "affectDimension": {
+      "type": "number",
+      "minimum": -1,
+      "maximum": 1
+    },
+    "affectVector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "valence",
+        "arousal",
+        "threat",
+        "agency",
+        "attachment",
+        "certainty",
+        "socialStanding"
+      ],
+      "properties": {
+        "valence": { "$ref": "#/$defs/affectDimension" },
+        "arousal": { "$ref": "#/$defs/affectDimension" },
+        "threat": { "$ref": "#/$defs/affectDimension" },
+        "agency": { "$ref": "#/$defs/affectDimension" },
+        "attachment": { "$ref": "#/$defs/affectDimension" },
+        "certainty": { "$ref": "#/$defs/affectDimension" },
+        "socialStanding": { "$ref": "#/$defs/affectDimension" }
+      }
+    }
+  }
+}
+
