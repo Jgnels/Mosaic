@@ -19,9 +19,9 @@ touched. The frozen `rimworld/0.1-closure-candidate/` tree was not modified.
 The established non-installing Release build passed against the installed RimWorld 1.6 reference
 assemblies:
 
-- static verification: 95 C# files;
+- static verification: 96 C# files;
 - Core and Providers: zero warnings and zero errors;
-- contract runner: 65 executed, 0 failed;
+- contract runner: 67 executed, 0 failed;
 - default integration harness: six scenarios, 0 failed;
 - RimWorld adapter: zero warnings and zero errors;
 - non-installing package: constructed and hashed.
@@ -40,8 +40,8 @@ credential file.
 | Stable identity on repeated observation | Existing external-ID map reuses the same `IndividualState` | Repeated lookup, archive reload, and bounded soak preserve IDs | No adapter-level fixture for real `ThingID` stability | Repeated UI reads/scans show identical IndividualId and LineageId | Silent replacement after observation |
 | Identity/environment-binding separation | Core `EnvironmentBinding` cannot own or replace IndividualId | Containment, unresolved, destruction, and soak transitions preserve identity | Durable changed-key reattachment policy is not implemented; repository evidence does not justify guessing a new serialized matcher | Temporary absence with the same stable RimWorld key; changed-key cases must remain unresolved | Wrong-pawn attachment or replacement identity |
 | Pawn disappearance without deletion | Synchronization keeps archive mappings when a pawn is absent from current maps | Identity archive and soak retain all enrolled individuals through simulated binding loss | World-pawn/container enumeration remains game-dependent | Pawn temporarily leaves current map and later returns | Treating absence as destruction |
-| Save/load continuity | Save manifest links store ID, generation, external IDs, and individual IDs to atomic archives | Exact store/generation load, round trip, persistence torture, and failure isolation pass | RimWorld `Scribe` callbacks cannot be exercised offline | Save, exit, reload, then compare IDs, lineage, generation, and storage health | Save/sidecar checkpoint split |
-| Checkpoint mismatch behavior | Archive load now requires exact store ID and exact save generation | Older and ahead-of-save archives fail closed; stale backup rollback is rejected | Explicit identity forward-recovery workflow is intentionally not invented | Mismatch produces READ-ONLY state and no replacement identities | Silent rollback or uncheckpointed forward adoption |
+| Save/load continuity | Save manifest links store ID, identity/reflection generations, experience head, external IDs, individual IDs, and paused IDs to sidecars | Manifest state-machine matrix, exact store/generation load, round trip, persistence torture, and failure isolation pass | RimWorld `Scribe` callbacks cannot be exercised offline | Save, exit, reload, then compare IDs, lineage, generations, and storage health | Save/sidecar checkpoint split |
+| Checkpoint mismatch behavior | Manifest preflight and identity/reflection loads require structurally valid fields, exact store ID, and exact save generation | Missing/invalid/traversal-shaped IDs, malformed mappings, older/ahead stores, and stale backup rollback fail closed | Explicit identity forward-recovery workflow is intentionally not invented | Mismatch produces READ-ONLY state and no replacement identities | Silent rollback or uncheckpointed forward adoption |
 | Observer and presentation purity | Restricted Observer, ordinary Mind, and presentation packet builders are read paths | Reusable canonical fingerprint covers identity, binding, event, memory, and queue state; static guard rejects scheduler/persistence calls from `CreateObserverSnapshot` | RimWorld UI calls and exception paths remain live-only | Repeated Observer/Mind reads leave generation, queue, counts, and IDs unchanged | Read causes scheduling, timestamps, or persistence mutation |
 | Corruption failure | Checksummed codec, atomic primary/backup replacement, strict schema, duplicate rejection | Truncation, unsupported version, checksum failure, store mismatch, generation mismatch, stale backup, and interrupted temporary write fail closed | Deliberate live corruption must use a unique disposable store | Corrupt disposable sidecar yields READ-ONLY diagnostics; unrelated test store remains healthy | Ambiguous repair or unrelated identity loss |
 | Failure isolation | Identity, experience, and reflection stores have separate safety modes | FailureIsolation: 103 assertions; corrupt identity test paths do not expose canonical state | Real file permissions and RimWorld lifecycle timing remain untested | One disposable store fails without damaging another unique store | Global failure or false success after partial persistence |
@@ -67,6 +67,21 @@ credential file.
 - Archives ahead of the save checkpoint are not silently adopted.
 - Added truncation, unsupported-version, interrupted-temporary-write, identity mismatch, generation
   mismatch, and stale-backup tests.
+
+### Adversarial persistence state-machine audit
+
+- Added a deterministic preflight over every serialized save-manifest field.
+- Only a completely pristine save may initialize a new identity store.
+- Invalid store IDs cannot become sidecar path segments, and the invalid-manifest path opens no
+  sidecar.
+- Identity synchronization, per-pawn mutation, and Observer enrollment stop while identity storage
+  is read-only.
+- Manifest mappings are validated before identities enter in-memory state and are preserved on a
+  subsequent read-only save.
+- Reflection restore now requires the exact save generation; it rejects rollback, uncheckpointed
+  forward state, wrong-store state, and stale backups.
+- Full matrix and remaining live limits are recorded in
+  `MOSAIC_GATE3_PERSISTENCE_STATE_MACHINE_AUDIT.md`.
 
 ### Package D — Deterministic offline soak
 

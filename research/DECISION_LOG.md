@@ -218,3 +218,13 @@ Retain the complete rescue archives under ignored `local-recovery/` storage. Com
 secret-safe source, hashes, contextual records, and verification artifacts. Never commit saves,
 identity/reflection stores, experience journals, API credentials, installed assemblies, or raw
 diagnostics containing personal runtime state.
+
+## D-041 — Contradictory RimWorld persistence state fails closed
+Status: Accepted; implemented offline in RimWorld 0.2 pre-alpha
+
+Only a save manifest with no store ID and no checkpoint evidence may initialize a new Mosaic store.
+Any malformed identifier, impossible mapping, or identity/reflection checkpoint mismatch enters the
+appropriate read-only safety mode. Identity read-only mode blocks synchronization and enrollment;
+it may not manufacture replacement individuals. Sidecar filenames derive only from validated store
+GUIDs. Verified experience extensions still require explicit administrative adoption. Live
+RimWorld behavior remains unconfirmed until Gate 3 owner testing.

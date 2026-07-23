@@ -4,6 +4,7 @@ using System.Text;
 using Dagmay.Core.Identity;
 using Dagmay.Core.Lifecycle;
 using Dagmay.Core.Persistence;
+using Dagmay.RimWorld.Persistence;
 
 namespace Dagmay.Tests
 {
@@ -181,6 +182,100 @@ namespace Dagmay.Tests
             TestAssert.Throws<InvalidDataException>(
                 () => codec.Decode(unsupported),
                 "An unsupported identity archive envelope version must fail closed.");
+        }
+
+        public static void SaveManifestStateMachineFailsClosedOnContradictoryEvidence()
+        {
+            var pristine = EvaluateManifest();
+            TestAssert.Equal(
+                SaveManifestDisposition.InitializeNewStore,
+                pristine.Disposition,
+                "Only a completely pristine save without a Mosaic store ID may initialize a new store.");
+
+            var storeId = Guid.Parse("40cfbd1c-8ae2-479b-bce3-b48164fea73d");
+            var individualId = Guid.Parse("6532c587-2fec-4849-b0d3-bc3d554c2824").ToString("N");
+            var healthy = EvaluateManifest(
+                storeId.ToString("D"),
+                identityGeneration: 3,
+                reflectionGeneration: 4,
+                experiencePosition: 2,
+                experienceLastHash: new string('a', 64),
+                externalIds: new[] { "Pawn_42" },
+                individualIds: new[] { individualId });
+            TestAssert.Equal(
+                SaveManifestDisposition.LoadExistingStore,
+                healthy.Disposition,
+                "A structurally valid existing manifest must load its exact checkpoint.");
+            TestAssert.Equal(storeId, healthy.StoreId!.Value, "The validated store ID must be returned to the loader.");
+
+            var contradictoryCases = new[]
+            {
+                EvaluateManifest(identityGeneration: 1),
+                EvaluateManifest(reflectionGeneration: 1),
+                EvaluateManifest(experiencePosition: 1, experienceLastHash: new string('b', 64)),
+                EvaluateManifest(externalIds: new[] { "Pawn_42" }, individualIds: new[] { individualId }),
+                EvaluateManifest(pausedExternalIds: new[] { "Pawn_42" }),
+                EvaluateManifest("not-a-guid"),
+                EvaluateManifest("   "),
+                EvaluateManifest("..\\..\\outside"),
+                EvaluateManifest(storeId.ToString("N"), identityGeneration: -1),
+                EvaluateManifest(storeId.ToString("N"), experiencePosition: 1, experienceLastHash: "short"),
+                EvaluateManifest(
+                    storeId.ToString("N"),
+                    externalIds: new[] { "Pawn_42" },
+                    individualIds: Array.Empty<string>()),
+                EvaluateManifest(
+                    storeId.ToString("N"),
+                    externalIds: new[] { "Pawn_42", "Pawn_42" },
+                    individualIds: new[] { individualId, Guid.NewGuid().ToString("N") }),
+                EvaluateManifest(
+                    storeId.ToString("N"),
+                    externalIds: new[] { "Pawn_42" },
+                    individualIds: new[] { "invalid-individual" }),
+                EvaluateManifest(
+                    storeId.ToString("N"),
+                    pausedExternalIds: new[] { "Pawn_without_identity" })
+            };
+            foreach (var decision in contradictoryCases)
+            {
+                TestAssert.Equal(
+                    SaveManifestDisposition.FailClosed,
+                    decision.Disposition,
+                    "Contradictory or malformed manifest evidence must never initialize replacement identity state.");
+                TestAssert.True(
+                    !string.IsNullOrWhiteSpace(decision.Diagnostic),
+                    "Every fail-closed manifest decision must expose an operator diagnostic.");
+            }
+
+            TestAssert.Equal(
+                storeId.ToString("N"),
+                SaveManifestSafetyPolicy.SafeStoreFileStem(storeId.ToString("D")),
+                "Valid store IDs must produce a normalized sidecar filename.");
+            TestAssert.Equal(
+                SaveManifestSafetyPolicy.InvalidStoreFileStem,
+                SaveManifestSafetyPolicy.SafeStoreFileStem("..\\..\\outside"),
+                "Untrusted store IDs must never become sidecar path segments.");
+        }
+
+        private static SaveManifestDecision EvaluateManifest(
+            string storeId = "",
+            long identityGeneration = 0,
+            long reflectionGeneration = 0,
+            long experiencePosition = 0,
+            string experienceLastHash = "",
+            string[]? externalIds = null,
+            string[]? individualIds = null,
+            string[]? pausedExternalIds = null)
+        {
+            return SaveManifestSafetyPolicy.Evaluate(
+                storeId,
+                identityGeneration,
+                reflectionGeneration,
+                experiencePosition,
+                experienceLastHash,
+                externalIds,
+                individualIds,
+                pausedExternalIds);
         }
 
         private static IdentityArchiveSnapshot CreateSnapshot(long generation, string name)

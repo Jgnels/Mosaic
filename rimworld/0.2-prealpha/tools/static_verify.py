@@ -291,6 +291,26 @@ def verify_boundaries(errors: list[str]) -> None:
             if token in observer_method.group("body"):
                 fail(errors, f"Observer snapshot read-purity violation: {token}")
 
+    synchronize_method = re.search(
+        r"private\s+bool\s+SynchronizeColonists\s*\(\s*\)\s*\{(?P<body>.*?)\n\s*\}",
+        component,
+        re.DOTALL,
+    )
+    if synchronize_method is None:
+        fail(errors, "SynchronizeColonists could not be inspected for fail-closed identity safety.")
+    elif "if (!_writesEnabled) return false;" not in synchronize_method.group("body"):
+        fail(errors, "Read-only identity storage does not block colonist synchronization.")
+
+    synchronize_pawn_method = re.search(
+        r"private\s+bool\s+SynchronizePawn\s*\(\s*Pawn\s+pawn\s*,\s*bool\s+forceEnrollment\s*\)\s*\{(?P<body>.*?)\n\s*\}",
+        component,
+        re.DOTALL,
+    )
+    if synchronize_pawn_method is None:
+        fail(errors, "SynchronizePawn could not be inspected for fail-closed identity safety.")
+    elif "if (!_writesEnabled) return false;" not in synchronize_pawn_method.group("body"):
+        fail(errors, "Read-only identity storage does not block individual creation or mutation.")
+
 
 def verify_readme_links(errors: list[str]) -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")

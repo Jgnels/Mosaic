@@ -69,6 +69,23 @@ namespace Dagmay.Core.Persistence
 
         public ReflectionStoreLoadResult Load(string path)
         {
+            return LoadInternal(path, null, null);
+        }
+
+        public ReflectionStoreLoadResult Load(string path, Guid expectedStoreId, long expectedGeneration)
+        {
+            if (expectedStoreId == Guid.Empty)
+                throw new ArgumentException("Expected store ID cannot be empty.", nameof(expectedStoreId));
+            if (expectedGeneration < 0)
+                throw new ArgumentOutOfRangeException(nameof(expectedGeneration));
+            return LoadInternal(path, expectedStoreId, expectedGeneration);
+        }
+
+        private ReflectionStoreLoadResult LoadInternal(
+            string path,
+            Guid? expectedStoreId,
+            long? expectedGeneration)
+        {
             if (string.IsNullOrWhiteSpace(path)) throw new ArgumentException("Reflection store path is required.", nameof(path));
             var fullPath = Path.GetFullPath(path);
             var backupPath = fullPath + ".bak";
@@ -79,7 +96,7 @@ namespace Dagmay.Core.Persistence
                 {
                     return new ReflectionStoreLoadResult(
                         ReflectionStoreLoadStatus.LoadedPrimary,
-                        _codec.Decode(File.ReadAllBytes(fullPath)),
+                        DecodeAndValidate(File.ReadAllBytes(fullPath), expectedStoreId, expectedGeneration),
                         "Primary reflection store loaded and checksum verified.");
                 }
                 catch (Exception exception) when (IsRecoverable(exception))
@@ -94,7 +111,7 @@ namespace Dagmay.Core.Persistence
                 {
                     return new ReflectionStoreLoadResult(
                         ReflectionStoreLoadStatus.RecoveredFromBackup,
-                        _codec.Decode(File.ReadAllBytes(backupPath)),
+                        DecodeAndValidate(File.ReadAllBytes(backupPath), expectedStoreId, expectedGeneration),
                         "Primary reflection store was invalid; verified backup loaded read-only.");
                 }
                 catch (Exception exception) when (IsRecoverable(exception))
@@ -115,6 +132,26 @@ namespace Dagmay.Core.Persistence
             }
 
             return new ReflectionStoreLoadResult(ReflectionStoreLoadStatus.NotFound, null, "No reflection store exists yet.");
+        }
+
+        private ReflectionStoreSnapshot DecodeAndValidate(
+            byte[] encoded,
+            Guid? expectedStoreId,
+            long? expectedGeneration)
+        {
+            var snapshot = _codec.Decode(encoded);
+            if (expectedStoreId.HasValue && snapshot.StoreId != expectedStoreId.Value)
+            {
+                throw new InvalidDataException("Reflection store ID does not match the save checkpoint.");
+            }
+
+            if (expectedGeneration.HasValue && snapshot.Generation != expectedGeneration.Value)
+            {
+                throw new InvalidDataException(
+                    $"Reflection generation {snapshot.Generation} does not match save checkpoint generation {expectedGeneration.Value}.");
+            }
+
+            return snapshot;
         }
 
         private static bool IsRecoverable(Exception exception)

@@ -144,7 +144,7 @@ namespace Dagmay.RimWorld.Persistence
                 SynchronizeColonists();
                 PersistIfAllowed("RimWorld save checkpoint");
                 PersistReflectionIfDirty("RimWorld save checkpoint");
-                BuildManifest();
+                if (_writesEnabled) BuildManifest();
                 WriteSocialPathCertificationReport(postLoadAudit: false);
             }
 
@@ -195,17 +195,33 @@ namespace Dagmay.RimWorld.Persistence
         private void InitializeFromSave()
         {
             if (_initialized) return;
-            if (!Guid.TryParse(_storeId, out var parsedStoreId) || parsedStoreId == Guid.Empty)
+            var decision = SaveManifestSafetyPolicy.Evaluate(
+                _storeId,
+                _generation,
+                _reflectionGeneration,
+                _experiencePosition,
+                _experienceLastHash,
+                _manifestExternalIds,
+                _manifestIndividualIds,
+                _pausedExternalIds);
+            if (decision.Disposition == SaveManifestDisposition.InitializeNewStore)
             {
                 InitializeNewStore();
                 Log.Message($"[Dagmay] No existing identity manifest was present; created a new {DagmayBuildInfo.Version} identity store for this save.");
                 return;
             }
+            if (decision.Disposition == SaveManifestDisposition.FailClosed || !decision.StoreId.HasValue)
+            {
+                DisableWrites(decision.Diagnostic + " No sidecar was opened and no replacement identity will be created.");
+                _initialized = true;
+                return;
+            }
 
+            var parsedStoreId = decision.StoreId.Value;
             var result = _archive.Load(GetArchivePath(), parsedStoreId, _generation);
             if (result.Status == ArchiveLoadStatus.NotFound)
             {
-                if (_manifestExternalIds.Count > 0)
+                if (_generation != 0 || _manifestExternalIds.Count > 0)
                 {
                     DisableWrites("The RimWorld save references Dagmay identities, but the external identity archive is missing.");
                 }
@@ -386,7 +402,16 @@ namespace Dagmay.RimWorld.Persistence
 
         private void LoadReflectionStore()
         {
-            var result = _reflectionStore.Load(GetReflectionStorePath());
+            if (!Guid.TryParse(_storeId, out var expectedStoreId) || expectedStoreId == Guid.Empty)
+            {
+                _reflectionQueue = new PersistentReflectionQueue(_runtimeBudgetPolicy.MaximumQueueSize);
+                _reflectionAudit = new List<ReflectionAuditRecord>();
+                _reflectionStoreWasNew = false;
+                DisableReflectionWrites("The reflection sidecar was not opened because the RimWorld save store ID is invalid.");
+                return;
+            }
+
+            var result = _reflectionStore.Load(GetReflectionStorePath(), expectedStoreId, _reflectionGeneration);
             if (result.Status == ReflectionStoreLoadStatus.NotFound)
             {
                 _reflectionQueue = new PersistentReflectionQueue(_runtimeBudgetPolicy.MaximumQueueSize);
@@ -407,18 +432,11 @@ namespace Dagmay.RimWorld.Persistence
                 return;
             }
 
-            if (!Guid.TryParse(_storeId, out var expectedStoreId)
-                || result.Snapshot.StoreId != expectedStoreId)
-            {
-                DisableReflectionWrites("The reflection sidecar store ID does not match this RimWorld save.");
-                return;
-            }
-
             _reflectionQueue = new PersistentReflectionQueue(
                 _runtimeBudgetPolicy.MaximumQueueSize,
                 result.Snapshot.PendingTasks);
             _reflectionAudit = new List<ReflectionAuditRecord>(result.Snapshot.AuditRecords);
-            _reflectionGeneration = Math.Max(_reflectionGeneration, result.Snapshot.Generation);
+            _reflectionGeneration = result.Snapshot.Generation;
             _reflectionStoreWasNew = false;
             if (result.Status == ReflectionStoreLoadStatus.RecoveredFromBackup)
             {
@@ -440,13 +458,13 @@ namespace Dagmay.RimWorld.Persistence
                 return;
             }
 
-            foreach (var record in snapshot.Records) _identities.Add(record.ExternalEntityId, record.State);
-
-            if (!ManifestMatchesLoadedIdentities())
+            if (!ManifestMatchesSnapshot(snapshot))
             {
                 DisableWrites("The external identity archive does not match the identity mapping stored in the RimWorld save.");
                 return;
             }
+
+            foreach (var record in snapshot.Records) _identities.Add(record.ExternalEntityId, record.State);
 
             if (result.Status == ArchiveLoadStatus.RecoveredFromBackup)
             {
@@ -454,14 +472,15 @@ namespace Dagmay.RimWorld.Persistence
             }
         }
 
-        private bool ManifestMatchesLoadedIdentities()
+        private bool ManifestMatchesSnapshot(IdentityArchiveSnapshot snapshot)
         {
             if (_manifestExternalIds.Count != _manifestIndividualIds.Count) return false;
-            if (_manifestExternalIds.Count != _identities.Count) return false;
+            if (_manifestExternalIds.Count != snapshot.Records.Count) return false;
+            var records = snapshot.Records.ToDictionary(record => record.ExternalEntityId, StringComparer.Ordinal);
             for (var index = 0; index < _manifestExternalIds.Count; index++)
             {
-                if (!_identities.TryGetValue(_manifestExternalIds[index], out var state)) return false;
-                if (!string.Equals(state.Id.ToString(), _manifestIndividualIds[index], StringComparison.Ordinal)) return false;
+                if (!records.TryGetValue(_manifestExternalIds[index], out var record)) return false;
+                if (!string.Equals(record.State.Id.ToString(), _manifestIndividualIds[index], StringComparison.Ordinal)) return false;
             }
 
             return true;
@@ -469,6 +488,7 @@ namespace Dagmay.RimWorld.Persistence
 
         private bool SynchronizeColonists()
         {
+            if (!_writesEnabled) return false;
             var changed = false;
             foreach (var map in Find.Maps.ToList())
             {
@@ -506,6 +526,7 @@ namespace Dagmay.RimWorld.Persistence
 
         private bool SynchronizePawn(Pawn pawn, bool forceEnrollment)
         {
+            if (!_writesEnabled) return false;
             if (pawn is null || string.IsNullOrWhiteSpace(pawn.ThingID)) return false;
             var externalId = pawn.ThingID;
             var displayName = PawnDisplayName(pawn);
@@ -1478,6 +1499,12 @@ namespace Dagmay.RimWorld.Persistence
                 return false;
             }
 
+            if (!_writesEnabled)
+            {
+                diagnostic = "Mosaic identity storage is read-only; enrollment changes are blocked to preserve continuity.";
+                return false;
+            }
+
             if (string.IsNullOrWhiteSpace(externalId))
             {
                 diagnostic = "The selected colonist has no stable RimWorld identifier.";
@@ -1988,25 +2015,25 @@ namespace Dagmay.RimWorld.Persistence
         private string GetSocialCertificationPath()
         {
             var directory = Path.Combine(GenFilePaths.ConfigFolderPath, "Dagmay", "Diagnostics");
-            return Path.Combine(directory, _storeId + "-social-certification.txt");
+            return Path.Combine(directory, SaveManifestSafetyPolicy.SafeStoreFileStem(_storeId) + "-social-certification.txt");
         }
 
         private string GetArchivePath()
         {
             var directory = Path.Combine(GenFilePaths.ConfigFolderPath, "Dagmay", "Identities");
-            return Path.Combine(directory, _storeId + ".dagmay");
+            return Path.Combine(directory, SaveManifestSafetyPolicy.SafeStoreFileStem(_storeId) + ".dagmay");
         }
 
         private string GetExperienceJournalPath()
         {
             var directory = Path.Combine(GenFilePaths.ConfigFolderPath, "Dagmay", "Experiences");
-            return Path.Combine(directory, _storeId + ".journal");
+            return Path.Combine(directory, SaveManifestSafetyPolicy.SafeStoreFileStem(_storeId) + ".journal");
         }
 
         private string GetReflectionStorePath()
         {
             var directory = Path.Combine(GenFilePaths.ConfigFolderPath, "Dagmay", "Reflections");
-            return Path.Combine(directory, _storeId + ".reflection");
+            return Path.Combine(directory, SaveManifestSafetyPolicy.SafeStoreFileStem(_storeId) + ".reflection");
         }
 
         private static string PawnDisplayName(Pawn pawn)

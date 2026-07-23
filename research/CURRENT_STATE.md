@@ -296,3 +296,16 @@ Private saves, identity/reflection stores, journals, configuration, installed bi
 380 MB emergency archive remain outside Git under ignored local recovery storage. The Nelson
 continuation must not be paired with the older HourTest save's checkpoint. See
 `research/recovery/laptop-2026-07-20/README.md`.
+
+## 2026-07-22 Gate 3 persistence state-machine audit
+
+OBSERVED offline: the RimWorld 0.2 pre-alpha load boundary now distinguishes a genuinely pristine
+save from a damaged or contradictory Mosaic manifest. Missing/invalid store IDs with checkpoint
+evidence, malformed mappings, exact-generation mismatches, uncheckpointed reflection state, and
+stale backups fail closed. Read-only identity state blocks synchronization and enrollment, invalid
+store IDs cannot become sidecar path segments, and a read-only save preserves its original mapping.
+
+Static verification passed over 96 C# files; 67/67 contract tests, the six-scenario integration
+harness, and the Release RimWorld 1.6 adapter build passed with zero compilation warnings/errors.
+This is offline evidence only. RimWorld `Scribe` callback behavior, visible diagnostics, and actual
+save/load continuity remain open until the controlled owner test.

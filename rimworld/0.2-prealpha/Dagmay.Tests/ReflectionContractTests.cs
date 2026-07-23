@@ -292,6 +292,56 @@ namespace Dagmay.Tests
             }
         }
 
+        public static void ReflectionCheckpointExpectationRejectsIdentityGenerationAndStaleBackup()
+        {
+            var directory = Path.Combine(Path.GetTempPath(), "dagmay-reflection-" + Guid.NewGuid().ToString("N"));
+            var path = Path.Combine(directory, "store.reflection");
+            try
+            {
+                var storeId = Guid.Parse("31db6c20-0f32-4da0-ab6f-54ec297af644");
+                var store = new AtomicReflectionStore();
+                store.Save(path, EmptyStore(storeId, 7));
+
+                var exact = store.Load(path, storeId, 7);
+                TestAssert.Equal(
+                    ReflectionStoreLoadStatus.LoadedPrimary,
+                    exact.Status,
+                    "A reflection sidecar matching the save checkpoint must load.");
+
+                var wrongStore = store.Load(path, Guid.Parse("d6f3c9f5-aacb-4e15-a359-bb602714bb23"), 7);
+                TestAssert.Equal(
+                    ReflectionStoreLoadStatus.Unrecoverable,
+                    wrongStore.Status,
+                    "A reflection sidecar from another store must fail closed.");
+                TestAssert.True(wrongStore.Snapshot is null, "A rejected store mismatch must expose no reflection state.");
+
+                var rollback = store.Load(path, storeId, 8);
+                TestAssert.Equal(
+                    ReflectionStoreLoadStatus.Unrecoverable,
+                    rollback.Status,
+                    "A reflection sidecar behind the save checkpoint must fail closed.");
+
+                var ahead = store.Load(path, storeId, 6);
+                TestAssert.Equal(
+                    ReflectionStoreLoadStatus.Unrecoverable,
+                    ahead.Status,
+                    "Uncheckpointed reflection state ahead of the save must not be silently adopted.");
+
+                store.Save(path, EmptyStore(storeId, 8));
+                File.WriteAllText(path, "partially replaced reflection primary", Encoding.UTF8);
+                var staleBackup = store.Load(path, storeId, 8);
+                TestAssert.Equal(
+                    ReflectionStoreLoadStatus.Unrecoverable,
+                    staleBackup.Status,
+                    "A checksum-valid but stale reflection backup must not replace the save checkpoint.");
+                TestAssert.True(staleBackup.Snapshot is null, "Rejected stale backup state must not enter the runtime.");
+            }
+            finally
+            {
+                if (Directory.Exists(directory)) Directory.Delete(directory, true);
+            }
+        }
+
         public static void ReflectionBudgetEnforcesHourlyDailyAndCircuitLimits()
         {
             var now = DateTimeOffset.UtcNow;

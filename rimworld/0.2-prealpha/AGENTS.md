@@ -9,10 +9,10 @@ Mosaic is the user-facing project name.
 ## Status
 
 - Architecture and contract implementation: Implemented.
-- Static verification: Passed (95 C# files on the Gate 3 offline-readiness branch).
+- Static verification: Passed (96 C# files on the Gate 3 offline-readiness branch).
 - Full C# compilation: Passed for Core, Providers, Tests, IntegrationHarness, and the Release
   RimWorld adapter against installed RimWorld 1.6 assemblies.
-- Contract tests: Passed (65 executed; 0 failed).
+- Contract tests: Passed (67 executed; 0 failed).
 - Integration harness: Passed (six default scenarios; 0 failed).
 - Gate 3 offline soak: Short and long deterministic presets passed; this is not a live RimWorld soak.
 - RimWorld runtime: Not tested.
