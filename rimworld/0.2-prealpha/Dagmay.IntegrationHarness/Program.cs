@@ -15,8 +15,10 @@ namespace Dagmay.IntegrationHarness
             var options = HarnessOptions.Parse(args);
             var started = DateTimeOffset.UtcNow;
             var report = new HarnessReport { StartedUtc = started };
-            var scenarios = IntegrationScenarios.All()
-                .Where(value => options.ScenarioNames.Count == 0 || options.ScenarioNames.Contains(value.Name, StringComparer.OrdinalIgnoreCase))
+            var scenarios = IntegrationScenarios.All(options.Cycles, options.Seed)
+                .Where(value => options.ScenarioNames.Count == 0
+                    ? value.IncludeByDefault
+                    : options.ScenarioNames.Contains(value.Name, StringComparer.OrdinalIgnoreCase))
                 .ToList();
 
             if (scenarios.Count == 0)
@@ -35,6 +37,7 @@ namespace Dagmay.IntegrationHarness
                     result.Passed = true;
                     result.Assertions.AddRange(execution.Assertions);
                     foreach (var pair in execution.Metrics) result.Metrics[pair.Key] = pair.Value;
+                    foreach (var pair in execution.Details) result.Details[pair.Key] = pair.Value;
                     Console.WriteLine($"PASS {scenario.Name} ({result.Assertions.Count} assertions)");
                 }
                 catch (Exception exception)
@@ -74,6 +77,8 @@ namespace Dagmay.IntegrationHarness
     {
         public string OutputPath { get; private set; } = Path.Combine("artifacts", "Dagmay-integration-latest.json");
         public bool FailFast { get; private set; }
+        public int Cycles { get; private set; } = 250;
+        public int Seed { get; private set; } = 2031;
         public List<string> ScenarioNames { get; } = new List<string>();
 
         public static HarnessOptions Parse(string[] args)
@@ -95,6 +100,25 @@ namespace Dagmay.IntegrationHarness
                 else if (string.Equals(value, "--fail-fast", StringComparison.OrdinalIgnoreCase))
                 {
                     options.FailFast = true;
+                }
+                else if (string.Equals(value, "--cycles", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (index + 1 >= args.Length
+                        || !int.TryParse(args[++index], out var cycles)
+                        || cycles < 1
+                        || cycles > 100_000)
+                    {
+                        throw new ArgumentException("--cycles requires an integer from 1 through 100000.");
+                    }
+                    options.Cycles = cycles;
+                }
+                else if (string.Equals(value, "--seed", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (index + 1 >= args.Length || !int.TryParse(args[++index], out var seed))
+                    {
+                        throw new ArgumentException("--seed requires a 32-bit integer.");
+                    }
+                    options.Seed = seed;
                 }
                 else
                 {

@@ -10,6 +10,7 @@ namespace Dagmay.IntegrationHarness
         public long DurationMilliseconds { get; set; }
         public List<string> Assertions { get; set; } = new List<string>();
         public Dictionary<string, long> Metrics { get; set; } = new Dictionary<string, long>(StringComparer.Ordinal);
+        public Dictionary<string, string> Details { get; set; } = new Dictionary<string, string>(StringComparer.Ordinal);
         public string Failure { get; set; } = string.Empty;
     }
 

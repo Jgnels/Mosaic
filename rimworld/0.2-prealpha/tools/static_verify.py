@@ -48,6 +48,7 @@ REQUIRED_FILES = [
     "tools/run-integration-harness.ps1",
     "tools/run-persistence-torture.ps1",
     "tools/run-failure-isolation.ps1",
+    "tools/run-gate3-offline-soak.ps1",
     "tools/package-source.ps1",
 ]
 

@@ -17,33 +17,40 @@ namespace Dagmay.IntegrationHarness
 {
     internal sealed class ScenarioExecution
     {
-        public ScenarioExecution(IReadOnlyList<string> assertions, Dictionary<string, long> metrics)
+        public ScenarioExecution(
+            IReadOnlyList<string> assertions,
+            Dictionary<string, long> metrics,
+            Dictionary<string, string>? details = null)
         {
             Assertions = assertions;
             Metrics = metrics;
+            Details = details ?? new Dictionary<string, string>(StringComparer.Ordinal);
         }
 
         public IReadOnlyList<string> Assertions { get; }
         public Dictionary<string, long> Metrics { get; }
+        public Dictionary<string, string> Details { get; }
     }
 
     internal sealed class ScenarioDefinition
     {
-        public ScenarioDefinition(string name, Func<Task<ScenarioExecution>> run)
+        public ScenarioDefinition(string name, Func<Task<ScenarioExecution>> run, bool includeByDefault = true)
         {
             Name = name;
             Run = run;
+            IncludeByDefault = includeByDefault;
         }
 
         public string Name { get; }
         public Func<Task<ScenarioExecution>> Run { get; }
+        public bool IncludeByDefault { get; }
     }
 
     internal static partial class IntegrationScenarios
     {
         private static readonly DateTimeOffset BaseTime = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
-        public static IReadOnlyList<ScenarioDefinition> All()
+        public static IReadOnlyList<ScenarioDefinition> All(int gate3SoakCycles = 250, int deterministicSeed = 2031)
         {
             return new[]
             {
@@ -52,7 +59,11 @@ namespace Dagmay.IntegrationHarness
                 new ScenarioDefinition("CheckpointRollbackForwardRecovery", CheckpointRollbackForwardRecoveryAsync),
                 new ScenarioDefinition("SocialPerspectiveAndPrivacy", SocialPerspectiveAndPrivacyAsync),
                 new ScenarioDefinition("PersistenceTorture", PersistenceTortureAsync),
-                new ScenarioDefinition("FailureIsolation", FailureIsolationAsync)
+                new ScenarioDefinition("FailureIsolation", FailureIsolationAsync),
+                new ScenarioDefinition(
+                    "Gate3OfflineSoak",
+                    () => Gate3OfflineSoakAsync(gate3SoakCycles, deterministicSeed),
+                    includeByDefault: false)
             };
         }
 
