@@ -57,15 +57,25 @@ try {
     $PythonCommand = $null
     $PythonPrefix = @()
     if (Get-Command python -ErrorAction SilentlyContinue) {
-        & python --version *> $null
-        if ($LASTEXITCODE -eq 0) { $PythonCommand = "python" }
+        try {
+            & python --version *> $null
+            if ($LASTEXITCODE -eq 0) { $PythonCommand = "python" }
+        }
+        catch {
+            Write-Verbose "The discovered python command could not be invoked: $($_.Exception.Message)"
+        }
     }
 
     if ($null -eq $PythonCommand -and (Get-Command py -ErrorAction SilentlyContinue)) {
-        & py -3 --version *> $null
-        if ($LASTEXITCODE -eq 0) {
-            $PythonCommand = "py"
-            $PythonPrefix = @("-3")
+        try {
+            & py -3 --version *> $null
+            if ($LASTEXITCODE -eq 0) {
+                $PythonCommand = "py"
+                $PythonPrefix = @("-3")
+            }
+        }
+        catch {
+            Write-Verbose "The discovered py launcher could not be invoked: $($_.Exception.Message)"
         }
     }
 

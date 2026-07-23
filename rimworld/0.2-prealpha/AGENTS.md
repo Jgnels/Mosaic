@@ -9,11 +9,14 @@ Mosaic is the user-facing project name.
 ## Status
 
 - Architecture and contract implementation: Implemented.
-- Static verification: Passed in the packaging environment.
-- Full C# compilation: Not yet performed for this 0.2 tree.
-- Contract tests: Registered but not yet executed for this 0.2 tree.
+- Static verification: Passed (95 C# files on the Gate 3 offline-readiness branch).
+- Full C# compilation: Passed for Core, Providers, Tests, IntegrationHarness, and the Release
+  RimWorld adapter against installed RimWorld 1.6 assemblies.
+- Contract tests: Passed (65 executed; 0 failed).
+- Integration harness: Passed (six default scenarios; 0 failed).
+- Gate 3 offline soak: Short and long deterministic presets passed; this is not a live RimWorld soak.
 - RimWorld runtime: Not tested.
-- Merge into main/runtime installation: Not authorized until compilation and tests pass.
+- Runtime installation: Not performed by offline readiness work.
 
 ## Binding boundaries
 
@@ -28,8 +31,7 @@ Mosaic is the user-facing project name.
 
 ## Required next work
 
-1. Run `python tools/static_verify.py`.
-2. Compile Core, Providers, Tests, IntegrationHarness, and the RimWorld adapter.
-3. Execute the complete contract-test runner.
-4. Resolve all failures before adding another feature slice.
-5. Preserve exact logs and update repository state only after verified results exist.
+1. Keep the complete offline verification chain green.
+2. Run the controlled owner test in `../../docs/MOSAIC_GATE3_RUNTIME_TEST_PLAN.md`.
+3. Preserve exact logs and evidence manifests without private saves or credentials.
+4. Do not begin Gate 4 work until the live Gate 3 criteria are supported by actual RimWorld evidence.

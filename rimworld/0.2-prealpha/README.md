@@ -25,10 +25,11 @@ overwritten by this work.
 ## Verification status
 
 ```text
-Static verification:      PASS (93 C# files checked)
+Static verification:      PASS (95 C# files checked)
 Core/Providers compile:   PASS
-Contract tests:           PASS (60 executed; 0 failed)
+Contract tests:           PASS (65 executed; 0 failed)
 Integration harness:      PASS (6 scenarios; 0 failed)
+Gate 3 offline soak:      PASS (short + long deterministic presets)
 RimWorld adapter compile: PASS (Release; 0 warnings; 0 errors)
 RimWorld runtime:         NOT YET TESTED
 ```

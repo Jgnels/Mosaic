@@ -43,6 +43,7 @@ REQUIRED_FILES = [
     "docs/32_V0.1M_Failure_Isolation.md",
     "tools/check-social-certification.ps1",
     "tools/collect-logs.ps1",
+    "tools/gate3-preflight.ps1",
     "tools/dev-loop.ps1",
     "tools/install.ps1",
     "tools/run-integration-harness.ps1",

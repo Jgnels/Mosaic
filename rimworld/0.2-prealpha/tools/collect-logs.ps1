@@ -2,6 +2,8 @@
 param(
     [string]$PlayerLogPath = "",
 
+    [string]$TestRunId = "",
+
     [ValidateRange(0, 20)]
     [int]$ContextLines = 4,
 
@@ -23,6 +25,7 @@ function Protect-PrivateText {
 
     $Protected = $Value
     $Protected = $Protected -replace '\bAIza[A-Za-z0-9_-]{20,}\b', '[REDACTED_GOOGLE_API_KEY]'
+    $Protected = $Protected -replace '\bsk-[A-Za-z0-9_-]{20,}\b', '[REDACTED_API_KEY]'
     $Protected = $Protected -replace '(?i)(DAGMAY_GOOGLE_API_KEY\s*[=:]\s*)\S+', '$1[REDACTED]'
 
     $UserProfile = [Environment]::GetFolderPath("UserProfile")
@@ -33,6 +36,13 @@ function Protect-PrivateText {
         $Protected = $Protected.Replace($env:COMPUTERNAME, "%COMPUTERNAME%")
     }
     return $Protected
+}
+
+if ([string]::IsNullOrWhiteSpace($TestRunId)) {
+    $TestRunId = "gate3-" + (Get-Date).ToUniversalTime().ToString("yyyyMMdd-HHmmss")
+}
+if ($TestRunId -notmatch '^[A-Za-z0-9._-]{1,64}$') {
+    throw "TestRunId may contain only letters, numbers, period, underscore, and hyphen (maximum 64 characters)."
 }
 
 function Get-ContextIndices {
@@ -95,8 +105,9 @@ if (-not $CurrentOnly) {
 
 New-Item -ItemType Directory -Path $Diagnostics -Force | Out-Null
 $Report = New-Object System.Collections.Generic.List[string]
-$SourceVersion = "0.1K"
+$SourceVersion = "0.2-prealpha"
 $Report.Add("Dagmay $SourceVersion diagnostic evidence") | Out-Null
+$Report.Add("Mosaic Gate 3 test run ID: $TestRunId") | Out-Null
 $Report.Add("Diagnostic source version: $SourceVersion") | Out-Null
 $Report.Add("Created UTC: $([DateTimeOffset]::UtcNow.ToString('o'))") | Out-Null
 $Report.Add("This report redacts Google-style API keys, the Windows user profile path, and the computer name.") | Out-Null
@@ -210,8 +221,24 @@ foreach ($SourceLog in $SourceLogs) {
 
 $Report | Set-Content -LiteralPath $ReportPath -Encoding UTF8
 Copy-Item -LiteralPath $ReportPath -Destination $LatestReportPath -Force
+$LatestHash = (Get-FileHash -LiteralPath $LatestReportPath -Algorithm SHA256).Hash.ToLowerInvariant()
+$EvidenceManifestPath = Join-Path $Artifacts "Dagmay-gate3-evidence-$TestRunId.json"
+$EvidenceManifest = [ordered]@{
+    schema = "mosaic.gate3-runtime-evidence.v1"
+    testRunId = $TestRunId
+    createdUtc = [DateTimeOffset]::UtcNow.ToString("o")
+    mosaicVersion = $SourceVersion
+    diagnosticReportFile = Split-Path -Leaf $LatestReportPath
+    diagnosticReportSha256 = $LatestHash
+    includedLogFileNames = @($SourceLogs | ForEach-Object { Split-Path -Leaf $_ })
+    includesFullLog = [bool]$IncludeFullLog
+    includesSave = $false
+    includesCredential = $false
+}
+$EvidenceManifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $EvidenceManifestPath -Encoding UTF8
 
 Write-Host "Dagmay diagnostic evidence created: $LatestReportPath"
+Write-Host "Evidence manifest created: $EvidenceManifestPath"
 Write-Host "Attach that one file when asking Codex or ChatGPT to diagnose a RimWorld run."
 if (-not $CurrentOnly -and $SourceLogs.Count -eq 1) {
     Write-Warning "Player-prev.log was not present, so only the current RimWorld process was included."
