@@ -71,9 +71,14 @@ sidecar hashes.
 
 The same run reproduced a separate identity checkpoint divergence: two unchanged Save As callbacks
 advanced the identity sidecar solely because every save rewrote it, making the first copy appear
-stale. The callback now writes identity state only after an actual synchronization change, and the
-new Save As/Save As/load-first-copy regression plus the complete offline chain pass. Keep KR-010 and
-Gate 3 open until that corrected package passes the corresponding live sequence.
+stale. The callback now writes identity state only after an actual synchronization change. The new
+Save As/Save As/load-first-copy regression and complete offline chain passed, followed by a live
+`New Arrivals11` → `12` → `13` → reload `12` sequence. All manifests retained identity generation 3
+and reflection generation 1, the same identity reloaded with healthy stores, and sidecar bytes did
+not change.
+
+Both reproduced checkpoint defects now have live-passing mitigations. Keep KR-010 administratively
+open until the owner reviews the evidence and the broader Gate 3 remainder is dispositioned.
 
 ## KR-011 — Laptop hardware instability
 Severity: OPERATIONAL

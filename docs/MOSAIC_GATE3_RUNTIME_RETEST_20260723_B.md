@@ -1,7 +1,7 @@
 # Mosaic Gate 3 Runtime Retest - 2026-07-23 B
 
 - **Test run ID:** `gate3-fix-20260723-b`
-- **Status:** PARTIAL PASS - reflection two-load fix passed live; identity Save As fix awaits live retest
+- **Status:** PARTIAL PASS - both checkpoint regressions passed live; broader Gate 3 scope remains open
 - **Tested fix commit:** `9a5b58856cd87af85ef94ef0121ef762898b7d3a`
 - **Mosaic version:** `0.2-prealpha`
 - **RimWorld version:** `1.6.4871 rev591`
@@ -55,8 +55,26 @@ Offline verification of the identity correction:
 - corrected package SHA-256:
   `273416828b2847ea6e1cef3735caeaca42e2ed9602a9de27a2d3247b7eef5e71`.
 
-The corrected package was not installed or run. A fresh live Save As/Save As/load-first-copy check
-is required before this identity result can be promoted from offline to live.
+## Corrected package live retest
+
+The corrected package from commit `e4eb4895cf636acb229e0c9701976cee1c99dea5` was installed
+reversibly for test run `gate3-identity-fix-20260723-c`. Its exact package hash was
+`273416828b2847ea6e1cef3735caeaca42e2ed9602a9de27a2d3247b7eef5e71`.
+
+The owner loaded the disposable `New Arrivals11`, saved unchanged copies as `New Arrivals12` and
+`New Arrivals13`, returned to the main menu, and loaded the first new copy. Direct save-manifest
+inspection showed all three saves retained:
+
+- identity generation 3;
+- reflection generation 1; and
+- the same store ID.
+
+The `New Arrivals12` reload reported the same identity and healthy identity, experience, and
+reflection storage. Identity primary, identity backup, and reflection sidecar bytes, hashes, sizes,
+and timestamps exactly matched their pre-test state; the experience journal remained absent.
+No mismatch, read-only, corruption, invalid-state, exception, or Mosaic error line appeared.
+
+This is a live PASS for the unchanged Save As idempotence correction.
 
 ## Evidence matrix
 
@@ -73,7 +91,7 @@ is required before this identity result can be promoted from offline to live.
 | `New Arrivals11` second unchanged load | PASS | Healthy generation-3 runtime log plus owner confirmation |
 | Reflection reload continuity | PASS | Exact generation and unchanged sidecar hash across both loads |
 | Earlier copied-save identity continuity | FAIL | `New Arrivals10` reproducibly entered read-only mode |
-| Identity idempotence correction | OFFLINE PASS | New contract plus complete offline verification chain |
+| Identity idempotence correction | LIVE PASS | `11` → Save As `12` → Save As `13` → load `12`, exact generation 3 |
 
 ## Provider and resource boundary
 
@@ -96,6 +114,12 @@ is required before this identity result can be promoted from offline to live.
   `E0E2A9B58A3C9E1581070463762AF0B4105F54ACBD6CACE629921A537752EE98`
 - Reflection sidecar:
   `CDF3003DE7EFFF56E387A68160A28CA8AB9FAB6BD50536B036A19B0E6236BD42`
+- Corrected Save As retest `Player.log`:
+  `984BF6632F91E3EE6BA24A4F1EF7B34CF5E141EE54FD43E533466AF4BFDA0DDB`
+- `New Arrivals12` save:
+  `A5761FFF0BEC57A8F4498C6AEB4F535AE779282F7008E4DE20A8213240124560`
+- `New Arrivals13` save:
+  `03D04D53AF200A62C1FA094D99C118C825390B4DF5730CC6281D6C2091D75B53`
 
 Raw logs and runtime state remain ignored local evidence because they contain private pawn and
 identity details.
@@ -108,5 +132,11 @@ byte-for-byte. The temporary tested installation was removed from the active Mod
 moved to ignored recoverable quarantine. The disposable saves and their sidecars were left
 untouched.
 
-Gate 3 remains open. This run closes the live reflection regression but not the newly corrected
-identity Save As regression, Observer visual inspection, or the remaining planned live-soak scope.
+The corrected-package retest was likewise stopped without another save after the decisive reload.
+Its preserved evidence copy exactly matched the closed `Player.log`. The original mod list and
+preferences were again restored byte-for-byte, the temporary corrected installation was moved to a
+separate ignored recoverable quarantine, and the disposable saves and sidecars were left untouched.
+
+Gate 3 remains open pending owner review, Observer visual inspection, and the remaining planned
+live-soak scope. Both checkpoint regressions found during this test are now corrected and verified
+live.

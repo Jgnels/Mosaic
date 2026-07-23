@@ -230,7 +230,7 @@ GUIDs. Verified experience extensions still require explicit administrative adop
 RimWorld behavior remains unconfirmed until Gate 3 owner testing.
 
 ## D-042 - Post-load reflection writes wait for a matching RimWorld save
-Status: Accepted; implemented offline in RimWorld 0.2 pre-alpha
+Status: Accepted; implemented and live-verified in RimWorld 0.2 pre-alpha
 
 Loading a save may prepare deterministic reflection-queue maintenance in memory, but it may not
 advance the external reflection generation before RimWorld records the same checkpoint. Reflection
@@ -239,7 +239,7 @@ callback after load. A successful matching save releases the gate. This bounded 
 to poisoning an unchanged save with uncheckpointed forward reflection state.
 
 ## D-043 - Unchanged RimWorld saves do not rewrite identity checkpoints
-Status: Accepted; implemented offline in RimWorld 0.2 pre-alpha
+Status: Accepted; implemented and live-verified in RimWorld 0.2 pre-alpha
 
 The identity archive generation represents a durable canonical identity change, not the number of
 times RimWorld's save callback ran. During a save, Mosaic writes the identity archive only when

@@ -670,4 +670,10 @@ tests, all six integration scenarios, both Gate 3 offline soak presets, a warnin
 Release build, and six-entry package preflight. Corrected package SHA-256:
 `273416828b2847ea6e1cef3735caeaca42e2ed9602a9de27a2d3247b7eef5e71`.
 
-The corrected identity package has not yet run in RimWorld, so Gate 3 remains open.
+The corrected package then ran with Core and Mosaic only in forced offline mode. The owner loaded
+`New Arrivals11`, saved unchanged copies as `New Arrivals12` and `New Arrivals13`, and loaded the
+first new copy. All three save manifests retained identity generation 3 and reflection generation
+1. The reload reported the same identity and all stores healthy; identity and reflection sidecar
+hashes, sizes, and timestamps remained unchanged, and no experience journal appeared. This passes
+the live unchanged Save As regression. Gate 3 remains open pending owner review and the broader
+planned runtime scope.

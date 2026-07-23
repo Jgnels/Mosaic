@@ -358,5 +358,12 @@ callbacks preserve both archive bytes and generation and leave the first copy lo
 verification covered 98 C# files; 69/69 contracts, all six integration scenarios, the warning-free
 Release build, both offline soak presets, and non-installing package preflight passed. The corrected
 package hash is `273416828b2847ea6e1cef3735caeaca42e2ed9602a9de27a2d3247b7eef5e71`.
-The corrected package has not been installed or tested live. Gate 3 remains open. See
-`docs/MOSAIC_GATE3_RUNTIME_RETEST_20260723_B.md`.
+OBSERVED live for the corrected package: the owner loaded `New Arrivals11`, saved unchanged copies
+as `New Arrivals12` and `New Arrivals13`, then loaded the first new copy. All three manifests
+retained identity generation 3 and reflection generation 1. The reload reported the same identity
+and all stores healthy; all sidecar bytes, hashes, sizes, and timestamps matched their pre-test
+state. No local model or provider ran. This passes the live identity Save As regression.
+
+Gate 3 remains open pending owner review, Observer visual inspection, and remaining planned
+live-soak scope. Both checkpoint regressions discovered in this run are fixed and live-verified.
+See `docs/MOSAIC_GATE3_RUNTIME_RETEST_20260723_B.md`.
