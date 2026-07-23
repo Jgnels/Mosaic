@@ -28,6 +28,7 @@ namespace Dagmay.Tests
                 (nameof(PersistenceContractTests.AtomicArchiveRecoversVerifiedBackup), Sync(PersistenceContractTests.AtomicArchiveRecoversVerifiedBackup)),
                 (nameof(PersistenceContractTests.ArchiveCheckpointExpectationRejectsIdentityAndGenerationMismatch), Sync(PersistenceContractTests.ArchiveCheckpointExpectationRejectsIdentityAndGenerationMismatch)),
                 (nameof(PersistenceContractTests.BackupRecoveryCannotRollBackPastSaveCheckpoint), Sync(PersistenceContractTests.BackupRecoveryCannotRollBackPastSaveCheckpoint)),
+                (nameof(PersistenceContractTests.UnchangedSaveAsDoesNotAdvanceIdentityGeneration), Sync(PersistenceContractTests.UnchangedSaveAsDoesNotAdvanceIdentityGeneration)),
                 (nameof(PersistenceContractTests.InterruptedTemporaryWritePreservesLastKnownGoodArchive), Sync(PersistenceContractTests.InterruptedTemporaryWritePreservesLastKnownGoodArchive)),
                 (nameof(PersistenceContractTests.TruncatedAndUnsupportedArchivesFailClosed), Sync(PersistenceContractTests.TruncatedAndUnsupportedArchivesFailClosed)),
                 (nameof(PersistenceContractTests.SaveManifestStateMachineFailsClosedOnContradictoryEvidence), Sync(PersistenceContractTests.SaveManifestStateMachineFailsClosedOnContradictoryEvidence)),

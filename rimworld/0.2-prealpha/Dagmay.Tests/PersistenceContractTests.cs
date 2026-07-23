@@ -140,6 +140,51 @@ namespace Dagmay.Tests
             }
         }
 
+        public static void UnchangedSaveAsDoesNotAdvanceIdentityGeneration()
+        {
+            var directory = Path.Combine(Path.GetTempPath(), "dagmay-tests-" + Guid.NewGuid().ToString("N"));
+            var path = Path.Combine(directory, "identity-store.dagmay");
+            try
+            {
+                var archive = new AtomicIdentityArchive();
+                var checkpoint = CreateSnapshot(3, "Save As");
+                archive.Save(path, checkpoint);
+                var originalHash = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(path)));
+
+                for (var saveNumber = 0; saveNumber < 2; saveNumber++)
+                {
+                    var identityStateChanged = false;
+                    if (IdentitySaveCheckpointPolicy.RequiresArchiveWrite(identityStateChanged))
+                    {
+                        archive.Save(path, CreateSnapshot(checkpoint.Generation + 1, "Save As"));
+                    }
+                }
+
+                var unchangedHash = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(path)));
+                TestAssert.Equal(
+                    originalHash,
+                    unchangedHash,
+                    "Two unchanged Save As callbacks must not rewrite or advance the identity archive.");
+
+                var firstCopyReload = archive.Load(path, checkpoint.StoreId, checkpoint.Generation);
+                TestAssert.Equal(
+                    ArchiveLoadStatus.LoadedPrimary,
+                    firstCopyReload.Status,
+                    "The first unchanged Save As copy must remain compatible after a second unchanged Save As.");
+                TestAssert.Equal(
+                    3L,
+                    firstCopyReload.Snapshot!.Generation,
+                    "Unchanged Save As callbacks must preserve the identity generation.");
+                TestAssert.True(
+                    IdentitySaveCheckpointPolicy.RequiresArchiveWrite(identityStateChanged: true),
+                    "A real synchronization change must still require an identity archive write.");
+            }
+            finally
+            {
+                if (Directory.Exists(directory)) Directory.Delete(directory, true);
+            }
+        }
+
         public static void InterruptedTemporaryWritePreservesLastKnownGoodArchive()
         {
             var directory = Path.Combine(Path.GetTempPath(), "dagmay-tests-" + Guid.NewGuid().ToString("N"));

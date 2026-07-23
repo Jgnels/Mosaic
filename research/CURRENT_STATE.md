@@ -337,3 +337,26 @@ Observer-only/no-pawn-control runtime without an observed Mosaic error, and used
 model. Windows graphics capture remained unavailable, so the run stopped before claiming main-menu
 visibility and did not open or modify any save. Gate 3 and KR-010 remain open until the owner-assisted
 two-load sequence passes. See `docs/MOSAIC_GATE3_RUNTIME_RETEST_20260723_A.md`.
+
+## 2026-07-23 Gate 3 owner-assisted two-load result
+
+OBSERVED live: the owner loaded the correct disposable `New Arrivals11` checkpoint in two separate
+RimWorld processes without an intervening save. Both logs reported the same generation-3 identity
+and healthy identity, experience, and reflection storage in offline mode. The identity and
+reflection hashes and timestamps remained unchanged. This passes the live post-load reflection
+checkpoint regression from commit `9a5b588`.
+
+LIMITING RESULT: the preceding Save As sequence exposed a separate identity defect. Saving unchanged
+state as `New Arrivals10` and then `New Arrivals11` advanced the external identity generation from 2
+to 3 solely because the save callback always rewrote the archive. Loading the first copy therefore
+failed closed as an older checkpoint. The safety behavior was correct, but unchanged Save As was not
+idempotent.
+
+IMPLEMENTED OFFLINE: a RimWorld save callback now writes the identity archive only when
+synchronization reports an actual identity change. A regression proves two unchanged Save As
+callbacks preserve both archive bytes and generation and leave the first copy loadable. Static
+verification covered 98 C# files; 69/69 contracts, all six integration scenarios, the warning-free
+Release build, both offline soak presets, and non-installing package preflight passed. The corrected
+package hash is `273416828b2847ea6e1cef3735caeaca42e2ed9602a9de27a2d3247b7eef5e71`.
+The corrected package has not been installed or tested live. Gate 3 remains open. See
+`docs/MOSAIC_GATE3_RUNTIME_RETEST_20260723_B.md`.

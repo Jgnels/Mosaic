@@ -63,12 +63,17 @@ ahead primary and entered reflection read-only mode using the exact-generation b
 experience isolation and the separate controlled-corruption fail-closed path passed, but Gate 3
 failed.
 
-Mitigation update (2026-07-23): IMPLEMENTED OFFLINE, LIVE RETEST OPEN. Reflection sidecar writes and
-provider dispatch now wait for the first matching RimWorld save after load; pending-commit recovery
-also moved into that checkpoint. The new two-load regression and the complete offline chain pass.
-A minimal live retest verified startup only because the graphics surface could not be inspected;
-no save workaround was used. Complete the owner-assisted two-load sequence before closing this
-risk.
+Mitigation update (2026-07-23): REFLECTION FIX PASSED LIVE; IDENTITY SAVE-AS FIX PASSED OFFLINE.
+Reflection sidecar writes and provider dispatch now wait for the first matching RimWorld save after
+load; pending-commit recovery also moved into that checkpoint. The owner-assisted two-process load
+of the correct disposable checkpoint retained exact generation 3 and healthy stores with unchanged
+sidecar hashes.
+
+The same run reproduced a separate identity checkpoint divergence: two unchanged Save As callbacks
+advanced the identity sidecar solely because every save rewrote it, making the first copy appear
+stale. The callback now writes identity state only after an actual synchronization change, and the
+new Save As/Save As/load-first-copy regression plus the complete offline chain pass. Keep KR-010 and
+Gate 3 open until that corrected package passes the corresponding live sequence.
 
 ## KR-011 — Laptop hardware instability
 Severity: OPERATIONAL

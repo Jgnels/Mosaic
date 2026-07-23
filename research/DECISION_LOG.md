@@ -237,3 +237,13 @@ advance the external reflection generation before RimWorld records the same chec
 sidecar persistence, provider dispatch, and pending-commit recovery wait for the first RimWorld save
 callback after load. A successful matching save releases the gate. This bounded delay is preferred
 to poisoning an unchanged save with uncheckpointed forward reflection state.
+
+## D-043 - Unchanged RimWorld saves do not rewrite identity checkpoints
+Status: Accepted; implemented offline in RimWorld 0.2 pre-alpha
+
+The identity archive generation represents a durable canonical identity change, not the number of
+times RimWorld's save callback ran. During a save, Mosaic writes the identity archive only when
+colonist synchronization reports a real identity change. Rename, lifecycle, enrollment, and
+validated mutation paths retain their immediate persistence behavior. This keeps successive
+unchanged Save As copies compatible with one external identity checkpoint while preserving exact
+generation mismatch rejection for genuinely divergent state.

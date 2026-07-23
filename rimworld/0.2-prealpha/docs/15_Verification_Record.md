@@ -650,3 +650,24 @@ Added the `FailureIsolation` integration scenario and `tools\run-failure-isolati
 The focused runner passed 103 assertions. Only one fully revalidated absent pending commit may mutate canonical state; already-applied recovery performs no second write, conflicting recovery preserves the independently persisted state and quarantines the pending work, mismatched history adopts nothing automatically, and every other provider/validation failure preserves canonical archive bytes, version, identity, lineage, and affect.
 
 The complete Windows development loop passed static verification across 74 C# files, 41 contract tests, all six integration scenarios (603 assertions), and the RimWorld adapter build against local 1.6.4871 assemblies with zero warnings and zero errors. All 10 PowerShell scripts parse. 0.1L supplies live normal-shutdown evidence with a durable pending queue and zero dispatch; 0.1J.3 supplies live explicit mismatch-recovery evidence. No additional destructive owner-side test is required for 0.1M.
+
+## 2026-07-23 - Mosaic 0.2 Gate 3 checkpoint retest
+
+**Status:** Reflection two-load correction passed live; identity Save As correction passed offline.
+
+With Core and Mosaic only, offline reflection mode, and no local model, the owner loaded the same
+disposable `New Arrivals11` checkpoint in two separate RimWorld processes without an intervening
+save. Both runtime logs reported one identical generation-3 identity and healthy identity,
+experience, and reflection stores. Sidecar hashes and timestamps remained unchanged. This verifies
+the post-load reflection checkpoint correction in live RimWorld 1.6 for the tested sequence.
+
+The setup also reproduced a distinct defect: two unchanged Save As operations advanced identity
+generation from 2 to 3, so loading the first copy failed closed as an older checkpoint. Identity
+archive persistence in the save callback is now conditional on a real synchronization change. A new
+contract proves two unchanged saves preserve exact archive bytes/generation and the first copy
+remains loadable. The corrected build passed static verification over 98 C# files, 69 contract
+tests, all six integration scenarios, both Gate 3 offline soak presets, a warning-free RimWorld
+Release build, and six-entry package preflight. Corrected package SHA-256:
+`273416828b2847ea6e1cef3735caeaca42e2ed9602a9de27a2d3247b7eef5e71`.
+
+The corrected identity package has not yet run in RimWorld, so Gate 3 remains open.

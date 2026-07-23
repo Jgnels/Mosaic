@@ -150,9 +150,12 @@ namespace Dagmay.RimWorld.Persistence
             if (Scribe.mode == LoadSaveMode.Saving && _initialized)
             {
                 DrainCompletedReflectionCalls();
-                SynchronizeColonists();
+                var identityStateChanged = SynchronizeColonists();
                 RecoverPendingCommits();
-                PersistIfAllowed("RimWorld save checkpoint");
+                if (IdentitySaveCheckpointPolicy.RequiresArchiveWrite(identityStateChanged))
+                {
+                    PersistIfAllowed("RimWorld save checkpoint");
+                }
                 var reflectionCheckpointPersisted = PersistReflectionIfDirty("RimWorld save checkpoint");
                 if (reflectionCheckpointPersisted && _reflectionWritesEnabled && !_reflectionDirty)
                 {
