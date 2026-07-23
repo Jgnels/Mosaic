@@ -272,6 +272,18 @@ def verify_boundaries(errors: list[str]) -> None:
 
     component_path = ROOT / "Dagmay.RimWorld/Persistence/DagmayIdentityGameComponent.cs"
     component = strip_csharp_literals_and_comments(component_path.read_text(encoding="utf-8"))
+    checkpoint_guard_requirements = {
+        "_reflectionCheckpointGate.BeginLoadedSession();":
+            "LoadedGame does not begin the post-load reflection checkpoint guard.",
+        "_reflectionCheckpointGate.AllowsSidecarPersistence(":
+            "Reflection persistence does not consult the post-load checkpoint guard.",
+        "_reflectionCheckpointGate.CompleteRimWorldSaveCheckpoint();":
+            "A successful RimWorld save does not release the post-load reflection checkpoint guard.",
+    }
+    for token, diagnostic in checkpoint_guard_requirements.items():
+        if token not in component:
+            fail(errors, diagnostic)
+
     observer_method = re.search(
         r"public\s+ObserverSystemSnapshot\s+CreateObserverSnapshot\s*\(\s*\)\s*\{(?P<body>.*?)\n\s*\}",
         component,
@@ -337,8 +349,7 @@ def verify_no_binaries(errors: list[str]) -> None:
     unexpected = [
         path
         for path in ROOT.rglob("*.dll")
-        if "bin" not in path.parts
-        and "obj" not in path.parts
+        if not is_build_output(path)
         and "Package/Assemblies" not in path.as_posix()
     ]
     for path in unexpected:

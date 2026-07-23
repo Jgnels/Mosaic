@@ -47,6 +47,7 @@ namespace Dagmay.Tests
                 (nameof(ReflectionContractTests.ReflectionStoreRoundTripPreservesPendingCommit), Sync(ReflectionContractTests.ReflectionStoreRoundTripPreservesPendingCommit)),
                 (nameof(ReflectionContractTests.ReflectionStoreRejectsTamperingAndRecoversBackup), Sync(ReflectionContractTests.ReflectionStoreRejectsTamperingAndRecoversBackup)),
                 (nameof(ReflectionContractTests.ReflectionCheckpointExpectationRejectsIdentityGenerationAndStaleBackup), Sync(ReflectionContractTests.ReflectionCheckpointExpectationRejectsIdentityGenerationAndStaleBackup)),
+                (nameof(ReflectionContractTests.PostLoadReflectionWritesWaitForRimWorldSaveCheckpoint), Sync(ReflectionContractTests.PostLoadReflectionWritesWaitForRimWorldSaveCheckpoint)),
                 (nameof(ReflectionContractTests.ReflectionBudgetEnforcesHourlyDailyAndCircuitLimits), Sync(ReflectionContractTests.ReflectionBudgetEnforcesHourlyDailyAndCircuitLimits)),
                 (nameof(ReflectionContractTests.PausedEnrollmentRemovesOnlyTargetedQueuedWork), Sync(ReflectionContractTests.PausedEnrollmentRemovesOnlyTargetedQueuedWork)),
                 (nameof(ReflectionContractTests.ObserverUsageDeduplicatesAuditStages), Sync(ReflectionContractTests.ObserverUsageDeduplicatesAuditStages)),

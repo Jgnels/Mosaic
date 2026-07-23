@@ -342,6 +342,55 @@ namespace Dagmay.Tests
             }
         }
 
+        public static void PostLoadReflectionWritesWaitForRimWorldSaveCheckpoint()
+        {
+            var directory = Path.Combine(Path.GetTempPath(), "dagmay-reflection-checkpoint-" + Guid.NewGuid().ToString("N"));
+            var path = Path.Combine(directory, "store.reflection");
+            try
+            {
+                var storeId = Guid.Parse("8576fa58-2a3a-4dca-bcdf-40b602b31825");
+                var store = new AtomicReflectionStore();
+                store.Save(path, EmptyStore(storeId, 2));
+
+                var firstLoadGate = new PostLoadReflectionCheckpointGate();
+                firstLoadGate.BeginLoadedSession();
+                TestAssert.False(
+                    firstLoadGate.AllowsSidecarPersistence(rimWorldSaveInProgress: false),
+                    "Load-time reflection synchronization must not advance the sidecar before a RimWorld save.");
+
+                var unchangedSecondLoad = store.Load(path, storeId, 2);
+                TestAssert.Equal(
+                    ReflectionStoreLoadStatus.LoadedPrimary,
+                    unchangedSecondLoad.Status,
+                    "A second load without an intervening save must still find the exact healthy checkpoint.");
+                TestAssert.Equal(
+                    2L,
+                    unchangedSecondLoad.Snapshot!.Generation,
+                    "A load-only session must leave the external reflection generation unchanged.");
+
+                var secondLoadGate = new PostLoadReflectionCheckpointGate();
+                secondLoadGate.BeginLoadedSession();
+                TestAssert.True(
+                    secondLoadGate.AllowsSidecarPersistence(rimWorldSaveInProgress: true),
+                    "The RimWorld save callback must be allowed to advance the reflection checkpoint.");
+                store.Save(path, EmptyStore(storeId, 3));
+                secondLoadGate.CompleteRimWorldSaveCheckpoint();
+                TestAssert.True(
+                    secondLoadGate.AllowsSidecarPersistence(rimWorldSaveInProgress: false),
+                    "Normal durable reflection writes may resume after a matching RimWorld save checkpoint.");
+
+                var checkpointedReload = store.Load(path, storeId, 3);
+                TestAssert.Equal(
+                    ReflectionStoreLoadStatus.LoadedPrimary,
+                    checkpointedReload.Status,
+                    "The reflection sidecar advanced during a RimWorld save must reload at the new exact generation.");
+            }
+            finally
+            {
+                if (Directory.Exists(directory)) Directory.Delete(directory, true);
+            }
+        }
+
         public static void ReflectionBudgetEnforcesHourlyDailyAndCircuitLimits()
         {
             var now = DateTimeOffset.UtcNow;

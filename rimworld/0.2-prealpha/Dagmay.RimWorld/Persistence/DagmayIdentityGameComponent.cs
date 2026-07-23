@@ -46,6 +46,8 @@ namespace Dagmay.RimWorld.Persistence
         private readonly DeterministicExperienceEncoder _experienceEncoder = new DeterministicExperienceEncoder();
         private readonly ReflectionContextBuilder _reflectionContextBuilder = new ReflectionContextBuilder();
         private readonly ReflectionProposalValidator _reflectionValidator = new ReflectionProposalValidator();
+        private readonly PostLoadReflectionCheckpointGate _reflectionCheckpointGate =
+            new PostLoadReflectionCheckpointGate();
         private ReflectionBudgetPolicy _runtimeBudgetPolicy = ReflectionBudgetPolicy.ConservativePersonalDefault;
         private ReflectionBudgetGate _reflectionBudget =
             new ReflectionBudgetGate(ReflectionBudgetPolicy.ConservativePersonalDefault);
@@ -87,6 +89,7 @@ namespace Dagmay.RimWorld.Persistence
         private bool _sessionBudgetNoticeLogged;
         private bool _providerPauseNoticeLogged;
         private bool _storageSafetyPauseNoticeLogged;
+        private bool _postLoadCheckpointPauseNoticeLogged;
 
         public DagmayIdentityGameComponent(Game game)
         {
@@ -108,11 +111,17 @@ namespace Dagmay.RimWorld.Persistence
 
         public override void LoadedGame()
         {
+            _reflectionCheckpointGate.BeginLoadedSession();
             InitializeFromSave();
             InitializeReflectionRuntime(loadExisting: true);
             if (SynchronizeColonists()) PersistIfAllowed("post-load synchronization");
             SeedInitialReflectionTasks();
-            PersistReflectionIfDirty("post-load reflection synchronization");
+            if (_reflectionDirty)
+            {
+                Log.Message(
+                    $"[Dagmay] {DagmayBuildInfo.Version} deferred post-load reflection synchronization "
+                    + "until the next RimWorld save checkpoint.");
+            }
             LogStatus("loaded game");
             WriteSocialPathCertificationReport(postLoadAudit: true);
         }
@@ -142,8 +151,14 @@ namespace Dagmay.RimWorld.Persistence
             {
                 DrainCompletedReflectionCalls();
                 SynchronizeColonists();
+                RecoverPendingCommits();
                 PersistIfAllowed("RimWorld save checkpoint");
-                PersistReflectionIfDirty("RimWorld save checkpoint");
+                var reflectionCheckpointPersisted = PersistReflectionIfDirty("RimWorld save checkpoint");
+                if (reflectionCheckpointPersisted && _reflectionWritesEnabled && !_reflectionDirty)
+                {
+                    _reflectionCheckpointGate.CompleteRimWorldSaveCheckpoint();
+                    _postLoadCheckpointPauseNoticeLogged = false;
+                }
                 if (_writesEnabled) BuildManifest();
                 WriteSocialPathCertificationReport(postLoadAudit: false);
             }
@@ -267,9 +282,9 @@ namespace Dagmay.RimWorld.Persistence
             _sessionBudgetNoticeLogged = false;
             _providerPauseNoticeLogged = false;
             _storageSafetyPauseNoticeLogged = false;
+            _postLoadCheckpointPauseNoticeLogged = false;
             _nextReflectionHeartbeatUtc = DateTimeOffset.UtcNow.Add(_runtimeBudgetPolicy.SchedulerHeartbeat);
             _nextDispatchAtUtc = DateTimeOffset.UtcNow;
-            RecoverPendingCommits();
         }
 
         private void LoadExperienceJournal()
@@ -814,6 +829,19 @@ namespace Dagmay.RimWorld.Persistence
                     _reflectionWritesEnabled))
             {
                 LogStorageSafetyPauseOnce();
+                return;
+            }
+
+            if (!_reflectionCheckpointGate.AllowsSidecarPersistence(rimWorldSaveInProgress: false))
+            {
+                if (!_postLoadCheckpointPauseNoticeLogged && _reflectionQueue.Count > 0)
+                {
+                    Log.Message(
+                        $"[Dagmay] {DagmayBuildInfo.Version} reflection processing is waiting for the first "
+                        + "RimWorld save checkpoint after load; queued work remains in memory and no provider call will start.");
+                    _postLoadCheckpointPauseNoticeLogged = true;
+                }
+
                 return;
             }
 
@@ -1923,6 +1951,10 @@ namespace Dagmay.RimWorld.Persistence
         {
             if (!_reflectionDirty) return true;
             if (!_reflectionWritesEnabled || !_initialized) return false;
+            if (!_reflectionCheckpointGate.AllowsSidecarPersistence(Scribe.mode == LoadSaveMode.Saving))
+            {
+                return false;
+            }
             try
             {
                 var snapshot = new ReflectionStoreSnapshot(
