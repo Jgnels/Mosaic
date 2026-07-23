@@ -72,6 +72,23 @@ namespace Dagmay.Core.Persistence
 
         public ArchiveLoadResult Load(string path)
         {
+            return LoadInternal(path, null, null);
+        }
+
+        public ArchiveLoadResult Load(string path, Guid expectedStoreId, long expectedGeneration)
+        {
+            if (expectedStoreId == Guid.Empty)
+                throw new ArgumentException("Expected store ID cannot be empty.", nameof(expectedStoreId));
+            if (expectedGeneration < 0)
+                throw new ArgumentOutOfRangeException(nameof(expectedGeneration));
+            return LoadInternal(path, expectedStoreId, expectedGeneration);
+        }
+
+        private ArchiveLoadResult LoadInternal(
+            string path,
+            Guid? expectedStoreId,
+            long? expectedGeneration)
+        {
             if (string.IsNullOrWhiteSpace(path)) throw new ArgumentException("Archive path is required.", nameof(path));
             var fullPath = Path.GetFullPath(path);
             var backupPath = fullPath + ".bak";
@@ -81,9 +98,13 @@ namespace Dagmay.Core.Persistence
             {
                 try
                 {
+                    var snapshot = DecodeAndValidate(
+                        File.ReadAllBytes(fullPath),
+                        expectedStoreId,
+                        expectedGeneration);
                     return new ArchiveLoadResult(
                         ArchiveLoadStatus.LoadedPrimary,
-                        _codec.Decode(File.ReadAllBytes(fullPath)),
+                        snapshot,
                         "Primary identity archive loaded and checksum verified.");
                 }
                 catch (Exception exception) when (IsRecoverableReadFailure(exception))
@@ -96,9 +117,13 @@ namespace Dagmay.Core.Persistence
             {
                 try
                 {
+                    var snapshot = DecodeAndValidate(
+                        File.ReadAllBytes(backupPath),
+                        expectedStoreId,
+                        expectedGeneration);
                     return new ArchiveLoadResult(
                         ArchiveLoadStatus.RecoveredFromBackup,
-                        _codec.Decode(File.ReadAllBytes(backupPath)),
+                        snapshot,
                         "Primary identity archive was unavailable or invalid; verified backup loaded read-only for recovery.");
                 }
                 catch (Exception exception) when (IsRecoverableReadFailure(exception))
@@ -119,6 +144,26 @@ namespace Dagmay.Core.Persistence
             }
 
             return new ArchiveLoadResult(ArchiveLoadStatus.NotFound, null, "No identity archive exists yet.");
+        }
+
+        private IdentityArchiveSnapshot DecodeAndValidate(
+            byte[] encoded,
+            Guid? expectedStoreId,
+            long? expectedGeneration)
+        {
+            var snapshot = _codec.Decode(encoded);
+            if (expectedStoreId.HasValue && snapshot.StoreId != expectedStoreId.Value)
+            {
+                throw new InvalidDataException("Identity archive store ID does not match the save checkpoint.");
+            }
+
+            if (expectedGeneration.HasValue && snapshot.Generation != expectedGeneration.Value)
+            {
+                throw new InvalidDataException(
+                    $"Identity archive generation {snapshot.Generation} does not match save checkpoint generation {expectedGeneration.Value}.");
+            }
+
+            return snapshot;
         }
 
         private static bool IsRecoverableReadFailure(Exception exception)

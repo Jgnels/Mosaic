@@ -71,6 +71,118 @@ namespace Dagmay.Tests
             }
         }
 
+        public static void ArchiveCheckpointExpectationRejectsIdentityAndGenerationMismatch()
+        {
+            var directory = Path.Combine(Path.GetTempPath(), "dagmay-tests-" + Guid.NewGuid().ToString("N"));
+            var path = Path.Combine(directory, "identity-store.dagmay");
+            try
+            {
+                var archive = new AtomicIdentityArchive();
+                var snapshot = CreateSnapshot(4, "Checkpoint");
+                archive.Save(path, snapshot);
+
+                var exact = archive.Load(path, snapshot.StoreId, snapshot.Generation);
+                TestAssert.Equal(
+                    ArchiveLoadStatus.LoadedPrimary,
+                    exact.Status,
+                    "A checksum-valid archive matching the save checkpoint must load.");
+
+                var wrongStore = archive.Load(path, Guid.Parse("817824dc-6e50-45e6-9135-29ec21b70e23"), 4);
+                TestAssert.Equal(
+                    ArchiveLoadStatus.Unrecoverable,
+                    wrongStore.Status,
+                    "An archive for another store must fail closed.");
+                TestAssert.True(wrongStore.Snapshot is null, "Store mismatch must not expose canonical state.");
+
+                var rollback = archive.Load(path, snapshot.StoreId, 5);
+                TestAssert.Equal(
+                    ArchiveLoadStatus.Unrecoverable,
+                    rollback.Status,
+                    "An older archive generation must not replace the save checkpoint.");
+                TestAssert.True(rollback.Snapshot is null, "Generation rollback must not expose canonical state.");
+
+                var uncheckpointedForwardState = archive.Load(path, snapshot.StoreId, 3);
+                TestAssert.Equal(
+                    ArchiveLoadStatus.Unrecoverable,
+                    uncheckpointedForwardState.Status,
+                    "An archive ahead of the save checkpoint must require explicit recovery rather than silent adoption.");
+            }
+            finally
+            {
+                if (Directory.Exists(directory)) Directory.Delete(directory, true);
+            }
+        }
+
+        public static void BackupRecoveryCannotRollBackPastSaveCheckpoint()
+        {
+            var directory = Path.Combine(Path.GetTempPath(), "dagmay-tests-" + Guid.NewGuid().ToString("N"));
+            var path = Path.Combine(directory, "identity-store.dagmay");
+            try
+            {
+                var archive = new AtomicIdentityArchive();
+                var older = CreateSnapshot(7, "Older");
+                var current = CreateSnapshot(8, "Current");
+                archive.Save(path, older);
+                archive.Save(path, current);
+                File.WriteAllText(path, "partially replaced primary", Encoding.UTF8);
+
+                var result = archive.Load(path, current.StoreId, current.Generation);
+                TestAssert.Equal(
+                    ArchiveLoadStatus.Unrecoverable,
+                    result.Status,
+                    "A verified but stale backup must not be substituted for the save checkpoint.");
+                TestAssert.True(result.Snapshot is null, "Rejected rollback recovery must not expose stale identity state.");
+            }
+            finally
+            {
+                if (Directory.Exists(directory)) Directory.Delete(directory, true);
+            }
+        }
+
+        public static void InterruptedTemporaryWritePreservesLastKnownGoodArchive()
+        {
+            var directory = Path.Combine(Path.GetTempPath(), "dagmay-tests-" + Guid.NewGuid().ToString("N"));
+            var path = Path.Combine(directory, "identity-store.dagmay");
+            try
+            {
+                var archive = new AtomicIdentityArchive();
+                var checkpoint = CreateSnapshot(9, "Stable");
+                archive.Save(path, checkpoint);
+                File.WriteAllText(path + ".tmp", "interrupted write", Encoding.UTF8);
+
+                var result = archive.Load(path, checkpoint.StoreId, checkpoint.Generation);
+                TestAssert.Equal(
+                    ArchiveLoadStatus.LoadedPrimary,
+                    result.Status,
+                    "An abandoned temporary file must not displace the last known good primary.");
+                TestAssert.Equal(
+                    "Stable",
+                    result.Snapshot!.Records[0].State.DisplayName,
+                    "Interrupted writes must preserve the checkpointed individual.");
+            }
+            finally
+            {
+                if (Directory.Exists(directory)) Directory.Delete(directory, true);
+            }
+        }
+
+        public static void TruncatedAndUnsupportedArchivesFailClosed()
+        {
+            var codec = new IdentityArchiveCodec();
+            var encoded = codec.Encode(CreateSnapshot(1, "Schema"));
+            var truncated = new byte[encoded.Length / 2];
+            Array.Copy(encoded, truncated, truncated.Length);
+            TestAssert.Throws<InvalidDataException>(
+                () => codec.Decode(truncated),
+                "A truncated identity archive must fail closed.");
+
+            var text = Encoding.UTF8.GetString(encoded);
+            var unsupported = Encoding.UTF8.GetBytes(text.Replace("format=\"1\"", "format=\"2\""));
+            TestAssert.Throws<InvalidDataException>(
+                () => codec.Decode(unsupported),
+                "An unsupported identity archive envelope version must fail closed.");
+        }
+
         private static IdentityArchiveSnapshot CreateSnapshot(long generation, string name)
         {
             return new IdentityArchiveSnapshot(

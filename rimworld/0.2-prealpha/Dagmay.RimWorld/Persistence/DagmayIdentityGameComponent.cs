@@ -202,7 +202,7 @@ namespace Dagmay.RimWorld.Persistence
                 return;
             }
 
-            var result = _archive.Load(GetArchivePath());
+            var result = _archive.Load(GetArchivePath(), parsedStoreId, _generation);
             if (result.Status == ArchiveLoadStatus.NotFound)
             {
                 if (_manifestExternalIds.Count > 0)
@@ -434,9 +434,13 @@ namespace Dagmay.RimWorld.Persistence
                 DisableWrites("The external archive store ID does not match the RimWorld save manifest.");
                 return;
             }
+            if (snapshot.Generation != _generation)
+            {
+                DisableWrites("The external archive generation does not match the RimWorld save checkpoint.");
+                return;
+            }
 
             foreach (var record in snapshot.Records) _identities.Add(record.ExternalEntityId, record.State);
-            _generation = Math.Max(_generation, snapshot.Generation);
 
             if (!ManifestMatchesLoadedIdentities())
             {
