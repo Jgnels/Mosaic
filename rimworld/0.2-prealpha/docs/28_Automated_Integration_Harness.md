@@ -10,7 +10,7 @@ It does **not** replace live RimWorld adapter testing or the owner's judgment ab
 
 ## Current scenarios
 
-`Dagmay.IntegrationHarness` runs six end-to-end scenarios:
+`Dagmay.IntegrationHarness` runs six default end-to-end scenarios:
 
 1. **LongHistoryContinuityAndPersistence** — simulates 64 individuals and 1,280 persisted experiences, then verifies journal hash-chain integrity, identity archive reload, memory/event counts, and stable IndividualId/LineageId continuity.
 2. **ProviderOutageDurableQueueRecovery** — simulates retryable provider failure for 12 individuals, persists the reflection queue, reloads it, recovers with the deterministic fake provider, validates proposals, commits bounded state replacements, and verifies the queue drains without identity replacement.
@@ -18,6 +18,11 @@ It does **not** replace live RimWorld adapter testing or the owner's judgment ab
 4. **SocialPerspectiveAndPrivacy** — persists asymmetric social memories, verifies counterpart IndividualId provenance and RelationshipSensitive privacy, and confirms two people can hold different relationship dimensions toward one another.
 5. **PersistenceTorture** — runs six save/reload cycles with a non-empty queue, provider outage, new skill/social experiences during outage, one-record-ahead journal recovery, and uniqueness/no-loss assertions for identity, experience, memory, task, source-link, audit, and request records.
 6. **FailureIsolation** — exercises unavailable, invalid, timeout, rate-limit, provider-error, cancellation, malformed-output, interrupted-commit, mismatch, and pending-shutdown paths; it proves failures cannot mutate canonical identity/history and persists retry/quarantine evidence across reload.
+
+An opt-in seventh scenario, **Gate3OfflineSoak**, runs bounded deterministic cycles of observation,
+identity lookup, event admission, persistence, reload, read-only presentation, binding loss/recovery,
+and isolated corruption injection. It reports operation counts, sampled managed memory, and a
+final-state SHA-256. It is excluded from the normal gate so routine verification remains fast.
 
 ## Normal execution
 
@@ -60,6 +65,13 @@ To run one scenario:
 
 ```powershell
 dotnet run --project Dagmay.IntegrationHarness\Dagmay.IntegrationHarness.csproj --configuration Release -- --scenario CheckpointRollbackForwardRecovery
+```
+
+Gate 3 soak presets:
+
+```powershell
+.\tools\run-gate3-offline-soak.ps1 -Preset Short -Seed 2031
+.\tools\run-gate3-offline-soak.ps1 -Preset Long -Seed 2031
 ```
 
 ## Agent workflow
