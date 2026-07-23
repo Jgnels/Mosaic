@@ -268,6 +268,27 @@ def verify_boundaries(errors: list[str]) -> None:
     if not any("AllowsPawnControl = false" in path.read_text(encoding="utf-8") for path in rimworld_files):
         fail(errors, "Observer-only guard is missing or does not explicitly deny pawn control.")
 
+    component_path = ROOT / "Dagmay.RimWorld/Persistence/DagmayIdentityGameComponent.cs"
+    component = strip_csharp_literals_and_comments(component_path.read_text(encoding="utf-8"))
+    observer_method = re.search(
+        r"public\s+ObserverSystemSnapshot\s+CreateObserverSnapshot\s*\(\s*\)\s*\{(?P<body>.*?)\n\s*\}",
+        component,
+        re.DOTALL,
+    )
+    if observer_method is None:
+        fail(errors, "CreateObserverSnapshot could not be inspected for read purity.")
+    else:
+        observer_forbidden = (
+            "RefreshRuntimeSettings(",
+            "SynchronizeColonists(",
+            "PersistIfAllowed(",
+            "PersistReflectionIfDirty(",
+            "TryDispatchReflection(",
+        )
+        for token in observer_forbidden:
+            if token in observer_method.group("body"):
+                fail(errors, f"Observer snapshot read-purity violation: {token}")
+
 
 def verify_readme_links(errors: list[str]) -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")

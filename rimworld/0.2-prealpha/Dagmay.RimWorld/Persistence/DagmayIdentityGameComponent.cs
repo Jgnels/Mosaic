@@ -1603,7 +1603,6 @@ namespace Dagmay.RimWorld.Persistence
 
         public ObserverSystemSnapshot CreateObserverSnapshot()
         {
-            RefreshRuntimeSettings();
             var nowUtc = DateTimeOffset.UtcNow;
             var pawns = new Dictionary<string, Pawn>(StringComparer.Ordinal);
             foreach (var map in Find.Maps.ToList())

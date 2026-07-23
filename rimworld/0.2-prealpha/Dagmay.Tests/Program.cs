@@ -55,6 +55,7 @@ namespace Dagmay.Tests
                 (nameof(ExecutionAndPresentationContractTests.ExternalModExecutionIsNotMosaicAuthorship), Sync(ExecutionAndPresentationContractTests.ExternalModExecutionIsNotMosaicAuthorship)),
                 (nameof(ExecutionAndPresentationContractTests.MosaicCommitmentRequiresDecisionProvenance), Sync(ExecutionAndPresentationContractTests.MosaicCommitmentRequiresDecisionProvenance)),
                 (nameof(ExecutionAndPresentationContractTests.PresentationContextRequiresEvidenceGrounding), Sync(ExecutionAndPresentationContractTests.PresentationContextRequiresEvidenceGrounding)),
+                (nameof(ExecutionAndPresentationContractTests.ObserverAndPresentationReadsPreserveCanonicalFingerprint), Sync(ExecutionAndPresentationContractTests.ObserverAndPresentationReadsPreserveCanonicalFingerprint)),
                 (nameof(ExternalIntegrationContractTests.OptionalCapabilityDoesNotRequireHardDependency), Sync(ExternalIntegrationContractTests.OptionalCapabilityDoesNotRequireHardDependency)),
                 (nameof(ExternalIntegrationContractTests.ExternalEventAdmissionRejectsUnknownSourceAndUnsupportedKind), Sync(ExternalIntegrationContractTests.ExternalEventAdmissionRejectsUnknownSourceAndUnsupportedKind)),
                 (nameof(ExternalIntegrationContractTests.ExternalEventAdmissionAcceptsPortableStoryEvent), Sync(ExternalIntegrationContractTests.ExternalEventAdmissionAcceptsPortableStoryEvent)),
