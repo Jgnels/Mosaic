@@ -309,3 +309,16 @@ Static verification passed over 96 C# files; 67/67 contract tests, the six-scena
 harness, and the Release RimWorld 1.6 adapter build passed with zero compilation warnings/errors.
 This is offline evidence only. RimWorld `Scribe` callback behavior, visible diagnostics, and actual
 save/load continuity remain open until the controlled owner test.
+
+## 2026-07-23 Gate 3 live runtime limiting result
+
+OBSERVED live in RimWorld 1.6: package preflight, minimal startup, disposable identity creation,
+first save/load continuity, and controlled corruption fail-closed behavior passed. The corruption
+case exposed no replacement identities and did not cross-reference the separate continuity store.
+
+Gate 3 failed on a second load of the unchanged healthy continuity save. Identity and experience
+storage remained healthy, but reflection entered read-only mode because post-load synchronization
+had advanced the external reflection store from generation 2 to generation 3 without a matching
+RimWorld save. Exact-generation validation correctly rejected the ahead primary and loaded the
+generation-2 backup read-only. Manual Observer/Mind purity, caravan absence/return, and live soak
+were not run after the failure. See `docs/MOSAIC_GATE3_RUNTIME_TEST_RESULT_20260723_A.md`.

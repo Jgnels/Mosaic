@@ -15,8 +15,9 @@ Mosaic is the user-facing project name.
 - Contract tests: Passed (67 executed; 0 failed).
 - Integration harness: Passed (six default scenarios; 0 failed).
 - Gate 3 offline soak: Short and long deterministic presets passed; this is not a live RimWorld soak.
-- RimWorld runtime: Not tested.
-- Runtime installation: Not performed by offline readiness work.
+- RimWorld runtime: Gate 3 attempted 2026-07-23; failed when a load-time reflection write advanced
+  the external generation beyond an unchanged RimWorld save.
+- Runtime installation: Temporary test installation removed; original configuration restored.
 
 ## Binding boundaries
 
@@ -32,6 +33,9 @@ Mosaic is the user-facing project name.
 ## Required next work
 
 1. Keep the complete offline verification chain green.
-2. Run the controlled owner test in `../../docs/MOSAIC_GATE3_RUNTIME_TEST_PLAN.md`.
-3. Preserve exact logs and evidence manifests without private saves or credentials.
-4. Do not begin Gate 4 work until the live Gate 3 criteria are supported by actual RimWorld evidence.
+2. Fix or defer post-load reflection mutation so external persistence cannot advance outside the
+   RimWorld save checkpoint.
+3. Re-run the two-consecutive-load sequence, then complete the remaining controlled owner test in
+   `../../docs/MOSAIC_GATE3_RUNTIME_TEST_PLAN.md`.
+4. Preserve exact logs and evidence manifests without private saves or credentials.
+5. Do not begin Gate 4 work until the live Gate 3 criteria are supported by actual RimWorld evidence.

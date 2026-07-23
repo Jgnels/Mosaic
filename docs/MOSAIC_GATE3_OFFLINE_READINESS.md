@@ -1,6 +1,6 @@
 # Mosaic Gate 3 Offline Readiness
 
-**Status:** OBSERVED offline readiness; live RimWorld Gate 3 remains open  
+**Status:** OBSERVED offline readiness; live Gate 3 attempted 2026-07-23 and failed on reflection checkpoint divergence
 **Base:** `2aadbfd419784065d676131153bf2c1a82f0e09c`  
 **Scope:** `rimworld/0.2-prealpha/` only  
 **Date:** 2026-07-22
@@ -13,6 +13,14 @@ reattached safely, or that a live session can soak without degradation.
 
 No provider was invoked, no credential was inspected, no mod was installed, and no save was
 touched. The frozen `rimworld/0.1-closure-candidate/` tree was not modified.
+
+## Later live result
+
+The controlled live attempt `gate3-20260723-a` passed package startup, disposable identity
+creation, a first save/load, and corruption fail-closed checks. It then reproduced KR-010: a
+post-load reflection write advanced the external store beyond the unchanged RimWorld save, so the
+next load entered reflection read-only mode. Gate 3 failed, and the remaining live soak and UI
+steps were stopped. See `MOSAIC_GATE3_RUNTIME_TEST_RESULT_20260723_A.md`.
 
 ## Baseline
 
@@ -127,7 +135,8 @@ The scenario is opt-in so the normal six-scenario gate remains quick.
 
 ## Owner handoff
 
-The next authorized action is the controlled run in
+The next engineering action is to prevent post-load reflection persistence from advancing the
+external generation outside the RimWorld save checkpoint, then rerun the controlled procedure in
 `docs/MOSAIC_GATE3_RUNTIME_TEST_PLAN.md`. Gate 4 must not begin until actual RimWorld evidence
 supports identity creation, repeated observer purity, save/load continuity, same-key absence and
 return, corruption failure isolation, and a bounded live soak.

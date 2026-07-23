@@ -54,8 +54,15 @@ External identity/history and RimWorld save checkpoints can diverge.
 Mitigation status: the SyntheticLab 0.2 reference supplies an atomic composite character checkpoint.
 The RimWorld 0.2 pre-alpha C# path now performs deterministic manifest preflight, exact identity and
 reflection store/generation matching, verified-prefix experience recovery, read-only mutation
-blocking, and safe sidecar path construction. Adversarial offline tests pass. The risk remains open
-until live RimWorld `Scribe` callbacks and save/sidecar behavior pass the controlled owner test.
+blocking, and safe sidecar path construction. Adversarial offline tests pass.
+
+Live status (2026-07-23): REPRODUCED. A first healthy load performed post-load reflection
+synchronization that advanced the external reflection store from generation 2 to generation 3
+without advancing the RimWorld save. A second load of the unchanged save correctly rejected the
+ahead primary and entered reflection read-only mode using the exact-generation backup. Identity and
+experience isolation and the separate controlled-corruption fail-closed path passed, but Gate 3
+failed. Prevent load-time sidecar advancement outside the save checkpoint and rerun the two-load
+sequence before closing this risk.
 
 ## KR-011 — Laptop hardware instability
 Severity: OPERATIONAL
