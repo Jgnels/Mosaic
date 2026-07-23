@@ -1,7 +1,7 @@
 # Mosaic Gate 3 Controlled Runtime Test Plan
 
 **Audience:** project owner  
-**Status:** attempted 2026-07-23; Gate 3 failed; see `MOSAIC_GATE3_RUNTIME_TEST_RESULT_20260723_A.md`
+**Status:** initial run failed; offline fix implemented; minimal startup retest passed; owner-assisted continuity rerun required
 **Target:** Mosaic `0.2-prealpha` on RimWorld 1.6
 
 ## Safety rules

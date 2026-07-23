@@ -228,3 +228,12 @@ appropriate read-only safety mode. Identity read-only mode blocks synchronizatio
 it may not manufacture replacement individuals. Sidecar filenames derive only from validated store
 GUIDs. Verified experience extensions still require explicit administrative adoption. Live
 RimWorld behavior remains unconfirmed until Gate 3 owner testing.
+
+## D-042 - Post-load reflection writes wait for a matching RimWorld save
+Status: Accepted; implemented offline in RimWorld 0.2 pre-alpha
+
+Loading a save may prepare deterministic reflection-queue maintenance in memory, but it may not
+advance the external reflection generation before RimWorld records the same checkpoint. Reflection
+sidecar persistence, provider dispatch, and pending-commit recovery wait for the first RimWorld save
+callback after load. A successful matching save releases the gate. This bounded delay is preferred
+to poisoning an unchanged save with uncheckpointed forward reflection state.

@@ -88,3 +88,12 @@ Fix or defer post-load reflection mutation so an unchanged save cannot acquire a
 reflection generation. Re-run this test from a fresh disposable store, including two consecutive
 loads without an intervening save, before resuming the remaining UI, absence/return, and live-soak
 steps.
+
+## Follow-up
+
+The checkpoint gate was implemented offline in commit `9a5b588`. Static verification, 68/68
+contracts, all six default integration scenarios, the Release RimWorld build, and both deterministic
+offline soak presets passed. A minimal live retest then verified clean Mosaic startup, but graphical
+capture remained unavailable and the owner prohibited save-level workarounds. No game or save was
+opened, so the two-load fix remains live-unverified. See
+`MOSAIC_GATE3_RUNTIME_RETEST_20260723_A.md`.

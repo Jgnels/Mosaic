@@ -1,6 +1,6 @@
 # Mosaic Gate 3 Offline Readiness
 
-**Status:** OBSERVED offline readiness; live Gate 3 attempted 2026-07-23 and failed on reflection checkpoint divergence
+**Status:** Offline fix verified; minimal live startup retest passed; two-load continuity rerun remains open
 **Base:** `2aadbfd419784065d676131153bf2c1a82f0e09c`  
 **Scope:** `rimworld/0.2-prealpha/` only  
 **Date:** 2026-07-22
@@ -21,6 +21,12 @@ creation, a first save/load, and corruption fail-closed checks. It then reproduc
 post-load reflection write advanced the external store beyond the unchanged RimWorld save, so the
 next load entered reflection read-only mode. Gate 3 failed, and the remaining live soak and UI
 steps were stopped. See `MOSAIC_GATE3_RUNTIME_TEST_RESULT_20260723_A.md`.
+
+Commit `9a5b588` added a post-load reflection checkpoint gate and a two-load regression. The complete
+offline chain passed. Retest `gate3-fix-20260723-a` verified minimal Core-plus-Mosaic startup without
+a local or remote model, but graphics capture remained unavailable. No game or save was opened, so
+the fixed continuity sequence remains live-unverified. See
+`MOSAIC_GATE3_RUNTIME_RETEST_20260723_A.md`.
 
 ## Baseline
 

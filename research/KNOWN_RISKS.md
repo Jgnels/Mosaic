@@ -61,8 +61,14 @@ synchronization that advanced the external reflection store from generation 2 to
 without advancing the RimWorld save. A second load of the unchanged save correctly rejected the
 ahead primary and entered reflection read-only mode using the exact-generation backup. Identity and
 experience isolation and the separate controlled-corruption fail-closed path passed, but Gate 3
-failed. Prevent load-time sidecar advancement outside the save checkpoint and rerun the two-load
-sequence before closing this risk.
+failed.
+
+Mitigation update (2026-07-23): IMPLEMENTED OFFLINE, LIVE RETEST OPEN. Reflection sidecar writes and
+provider dispatch now wait for the first matching RimWorld save after load; pending-commit recovery
+also moved into that checkpoint. The new two-load regression and the complete offline chain pass.
+A minimal live retest verified startup only because the graphics surface could not be inspected;
+no save workaround was used. Complete the owner-assisted two-load sequence before closing this
+risk.
 
 ## KR-011 — Laptop hardware instability
 Severity: OPERATIONAL

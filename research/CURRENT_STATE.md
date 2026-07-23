@@ -148,7 +148,7 @@ Before another real-provider run:
 
 Tomorrow:
 - move canonical development to the unused basement desktop;
-- RTX 3090 / Ryzen 5 5600G / 16 GB RAM;
+- owner-confirmed RTX 3080 Ti with 12 GB VRAM / Ryzen 5 5600G / 16 GB RAM;
 - use it as dedicated Dagmay lab host;
 - use remote phone/Codex workflow where supported;
 - upgrade RAM later to 32 GB minimum, 64 GB preferred for heavier local-model work;
@@ -322,3 +322,18 @@ had advanced the external reflection store from generation 2 to generation 3 wit
 RimWorld save. Exact-generation validation correctly rejected the ahead primary and loaded the
 generation-2 backup read-only. Manual Observer/Mind purity, caravan absence/return, and live soak
 were not run after the failure. See `docs/MOSAIC_GATE3_RUNTIME_TEST_RESULT_20260723_A.md`.
+
+## 2026-07-23 Gate 3 reflection checkpoint fix and partial retest
+
+OBSERVED offline: post-load reflection persistence now waits for a matching RimWorld save callback,
+and provider dispatch waits behind the same gate. Pending-commit recovery runs inside that save
+checkpoint. A new regression reproduces two consecutive exact loads: a load-only session leaves
+generation 2 unchanged, while a save callback may advance and reload generation 3. Static
+verification covered 97 C# files; 68/68 contracts, all six integration scenarios, the Release
+RimWorld build, and both deterministic soak presets passed.
+
+OBSERVED live: the exact fixed package launched with only Core and Mosaic, loaded the
+Observer-only/no-pawn-control runtime without an observed Mosaic error, and used no local or remote
+model. Windows graphics capture remained unavailable, so the run stopped before claiming main-menu
+visibility and did not open or modify any save. Gate 3 and KR-010 remain open until the owner-assisted
+two-load sequence passes. See `docs/MOSAIC_GATE3_RUNTIME_RETEST_20260723_A.md`.
