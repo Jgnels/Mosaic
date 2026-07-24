@@ -254,6 +254,57 @@ namespace Dagmay.Tests
                 "Reflection context must reject source evidence that does not name the target individual as a subject.");
         }
 
+        public static void ReflectionContextOrdersEqualTimeEvidenceDeterministically()
+        {
+            var person = CreateIndividual("Mira");
+            var occurredAt = new DateTimeOffset(2026, 7, 24, 12, 0, 0, TimeSpan.Zero);
+            var firstId = new EventId(Guid.Parse("00000000-0000-0000-0000-000000000001"));
+            var secondId = new EventId(Guid.Parse("00000000-0000-0000-0000-000000000002"));
+            var first = new EnvironmentEvent(
+                firstId,
+                "equal-time:first",
+                "rimworld.test",
+                "rimworld",
+                occurredAt,
+                occurredAt,
+                42,
+                "Dagmay.Tests",
+                new Dictionary<string, string> { ["detail"] = "first" },
+                new[] { person.Id });
+            var second = new EnvironmentEvent(
+                secondId,
+                "equal-time:second",
+                "rimworld.test",
+                "rimworld",
+                occurredAt,
+                occurredAt,
+                42,
+                "Dagmay.Tests",
+                new Dictionary<string, string> { ["detail"] = "second" },
+                new[] { person.Id });
+
+            var request = new ReflectionContextBuilder().BuildRequest(
+                new ReflectionTask(
+                    ReflectionTaskId.New(),
+                    person.Id,
+                    ModelTaskKind.InterpretMeaningfulEvent,
+                    ReflectionPriority.MeaningfulEvent,
+                    occurredAt,
+                    "equal-time-order",
+                    new[] { secondId, firstId },
+                    500),
+                person,
+                new[] { second, first },
+                Array.Empty<SubjectiveMemory>(),
+                occurredAt,
+                TimeSpan.FromMinutes(1));
+
+            TestAssert.True(
+                request.Context.IndexOf("eventId=" + firstId, StringComparison.Ordinal)
+                    < request.Context.IndexOf("eventId=" + secondId, StringComparison.Ordinal),
+                "Equal-time source evidence must use a stable EventId tie-breaker instead of caller enumeration order.");
+        }
+
         public static void PersistentReflectionQueueMergesDefersAndRetries()
         {
             var person = IndividualId.New();

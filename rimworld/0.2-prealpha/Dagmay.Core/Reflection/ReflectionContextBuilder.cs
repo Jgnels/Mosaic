@@ -45,6 +45,7 @@ namespace Dagmay.Core.Reflection
             var events = sourceEvents
                 .Where(value => requestedIds.Contains(value.Id))
                 .OrderBy(value => value.OccurredAtUtc)
+                .ThenBy(value => value.Id.Value)
                 .ToList();
             if (events.Count != requestedIds.Count)
             {
