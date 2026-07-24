@@ -79,7 +79,7 @@ A shared event should create one factual event and multiple bounded perspectives
 
 ## Local-model path on the owner's PC
 
-The RTX 3090's 24 GB of VRAM makes local inference a credible later option. A quantized model in roughly the 8B–14B range should be the comfortable first experiment; a roughly 20B–30B model at 4-bit may fit but requires measurement of model format, context cache, RimWorld load, and inference software. The current 16 GB of system RAM is tighter than the GPU memory and may constrain loading or CPU offload, but no hardware purchase is needed for Version 0.1A.
+The owner-confirmed machine has an RTX 3080 Ti with 12 GB VRAM and 16 GB system RAM. Local inference remains a possible later experiment, but model size, quantization, context cache, RimWorld load, and inference software must be measured together. No local model should run during Gate 3 runtime testing, and no comfortable model-size range is assumed from the hardware specification alone.
 
 Local inference removes per-token charges but not performance costs. Dagmay must keep the same queue, timeout, schema validation, and graceful-degradation boundaries for local providers.
 
