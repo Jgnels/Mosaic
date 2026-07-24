@@ -74,13 +74,48 @@ PASS. The prepared local harness is resumable and keeps providers/local models o
 - Testability: deterministic offline contract.
 - Risk: low.
 
+### P0 — Cross-individual reflection evidence and queue isolation
+
+- Problem: persistent queue coalescing trusted caller-generated keys to include the owner, the
+  in-memory queue treated matching keys across owners as duplicates, and context assembly did not
+  verify that source events named the target individual.
+- Invariants: individual isolation, evidence provenance, bounded authority, and fail-closed model
+  input.
+- Resolution: scope both queue key paths by `IndividualId`; reject foreign source events before a
+  model request can be built; retain shared events when the target is one of their subjects.
+- Compatibility: no schema or persistence-format change; existing same-owner cross-task-kind
+  coalescing remains intact.
+- Testability: three deterministic offline contracts.
+- Risk: low.
+
+### P1 — Deterministic rebuild and context ordering
+
+- Problem: equal-score memories and equal-time source events inherited caller/insertion order,
+  allowing reload/rebuild order to change bounded selection or context ordering.
+- Invariants: deterministic replay, provider-independent continuity, and reproducible context.
+- Resolution: use stable `MemoryId` and `EventId` tie-breakers after the existing semantic sort
+  fields.
+- Compatibility: no stored data or scoring change; only exact ties are affected.
+- Testability: two deterministic offline contracts.
+- Risk: low.
+
+### P1 — Source-tracking verifier guard
+
+- Problem: the populated checkout could mask source excluded by Git, while explicit project source
+  links were not checked by static verification.
+- Resolution: validate explicit `<Compile Include>` paths in every project and, when Git metadata is
+  available, compare local C# source with the tracked inventory. Source archives without Git
+  metadata remain supported.
+- Testability: direct clean pass plus temporary negative fixtures for both failure modes.
+- Risk: low; tooling only.
+
 ## Candidate v0.2 work
 
 | Order | Candidate | Dependency | Risk | Testability | Compatibility / provenance |
 | --- | --- | --- | --- | --- | --- |
 | 1 | Finish the owner-operated Gate 3 long soak | Human GUI operation and prepared harness | Medium runtime risk | Direct logs, samples, hashes, save/sidecar verification | No code reuse; blocks declaring Gate 3 complete |
-| 2 | Add a clean-clone/source-tracking verification guard | Decide whether verifier may depend on Git metadata | Low | Synthetic ignored-source/project-reference fixture | Tooling only; no runtime change |
-| 3 | Deterministic tie-breaking for equal-score memory retrieval | Confirm canonical ordering policy | Low | Rebuild same index in different insertion orders | Core behavior only; no format change |
+| 2 | Add a clean-clone/source-tracking verification guard | Completed | Low | Both negative paths and clean tree passed | Tooling only; no runtime change |
+| 3 | Deterministic tie-breaking for equal-score memory retrieval | Completed | Low | Rebuild in opposite insertion orders passed | Core behavior only; no format change |
 | 4 | Bounded presentation/context assembly tests across privacy classes | Ordinary-view disclosure policy | Low | Pure contract tests | Original code; no external dependency |
 | 5 | Gate 4 compatibility fixtures and adapter seams | Gate 3 runtime completion and selected mod versions | Medium | Extracted plain-data fixtures plus manual matrix | External APIs are optional and version-gated |
 | 6 | RimTalk bridge design/ADR | Gate 4, owner product decision, license compatibility review | Medium/high | Absent-mod, timeout, exception, duplicate-call tests | API interoperability preferred; no copied source |
@@ -107,10 +142,10 @@ runtime foundation and explicit license/product decisions.
 ## Verification
 
 - Static verification: PASS, 98 C# files.
-- Contract tests: PASS, 71 executed, 0 failed.
+- Contract tests: PASS, 76 executed, 0 failed.
 - Integration harness: PASS, 6 scenarios and 603 assertions.
 - Core, Providers, and RimWorld adapter Release builds: PASS, 0 warnings and 0 errors.
 - Non-installing package preflight: PASS, 6 entries and no prohibited runtime artifacts.
 - Package SHA-256:
-  `71f93332fde456ea78374280d32ddf09fb1b21fc7aeced5b0dadea16adafd402`.
+  `32166f4aa0eca900652bb80d71b6861ad5c4c7f7815146178ca90d0e08a94c98`.
 - No provider, local model, install, save mutation, or RimWorld launch occurred.

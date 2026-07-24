@@ -1,7 +1,7 @@
 # Mosaic Overnight Handoff
 
 **Started:** 2026-07-24 shortly before 00:07 PDT
-**Last updated:** 2026-07-24 00:30 PDT
+**Last updated:** 2026-07-24 00:57 PDT
 **Certified starting branch:** `codex/gate3-offline-readiness`
 **Certified starting commit:** `457f1815d625f7a121f444d972d4880e70c805cb`
 **Certified package SHA-256:** `d845e5165a4977b3bdc4af98f55fd6c5485970d127411c023b575409b3db676a`
@@ -42,27 +42,31 @@ As checkpoints, log samples, continuity comparisons, and final save/sidecar veri
 2. `4c17651e91d0842685b12fea7bf8b9235e8b582e` — Bound reflection memories to their owner.
 3. `057f616df874c078c429479b25bfef3a844a872d` — Record v0.2 overnight audit and provenance.
 4. `6497126adf16859f92efb254ddc1b882ded6628f` — Normalize overnight documentation whitespace.
+5. `6dc12aa282c0c59b968bb0a45366e8b3d4bc52c7` — Detect untracked v0.2 source files.
+6. `91d76e1029b5e81cbd53ef3101749587f5b966b3` — Stabilize bounded memory retrieval order.
+7. `717c991f052c3b87b4e2f8d9a266e0b7fd8e2a44` — Isolate reflection queue coalescing by owner.
+8. `ad694c7a4d64b6a7238dc183793d0f75b1062b8e` — Scope queue duplicate keys by owner.
+9. `719c4ab126d1922a012603ed8b1c053bc7d511e1` — Reject foreign reflection source events.
+10. `40dcd78c35b0f9f0c6335cd4ea514756396fa60f` — Stabilize reflection evidence ordering.
 
 ## Publication
 
-- Remote push: not completed.
-- Reason: the push approval was rejected because earlier instructions were interpreted as requiring
-  fresh explicit owner approval before exporting the branch.
-- Remote state changed: no.
+- Remote push: completed after explicit owner approval.
+- Published branch: `origin/codex/v0.2-overnight-prep-20260724`.
 - Pull request created: no.
-- Safe continuation: after explicit owner approval, push only
-  `codex/v0.2-overnight-prep-20260724`; do not create a pull request.
+- Publication policy: push only this overnight branch after verified coherent batches; do not
+  create a pull request automatically.
 
 ## Tests
 
-- Contract suite after both code changes: 71 executed, 0 failed.
+- Contract suite: 76 executed, 0 failed.
 - Static verification: PASS, 98 C# files.
 - Core and Providers Release builds: PASS, 0 warnings and 0 errors.
 - Integration harness: PASS, 6 scenarios, 603 assertions, 0 failed.
 - RimWorld adapter Release build against installed 1.6 assemblies: PASS, 0 warnings and 0 errors.
 - Non-installing package preflight: PASS, 6 entries, no prohibited runtime artifacts.
 - Package SHA-256:
-  `71f93332fde456ea78374280d32ddf09fb1b21fc7aeced5b0dadea16adafd402`
+  `32166f4aa0eca900652bb80d71b6861ad5c4c7f7815146178ca90d0e08a94c98`
 - No provider or local-model call was made.
 
 ## Files changed
@@ -71,6 +75,12 @@ As checkpoints, log samples, continuity comparisons, and final save/sidecar veri
 - Tracked two required diagnostic C# files that were previously present only in the populated local
   checkout.
 - Reflection context owner filter and one contract test.
+- Static verification now detects untracked C# source and missing explicit compile inputs; both
+  negative paths were exercised with temporary fixtures and the fixtures were removed.
+- Equal-score memory retrieval and equal-time reflection evidence now use stable identifier
+  tie-breakers.
+- Both reflection queue implementations scope coalescing/duplicate keys to the owning individual.
+- Reflection context rejects source events that do not name the target individual.
 - Hardware corrections, v0.2 audit, external provenance, and this handoff.
 
 ## External review
