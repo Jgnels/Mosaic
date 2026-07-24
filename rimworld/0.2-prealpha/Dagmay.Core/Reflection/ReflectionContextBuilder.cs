@@ -50,6 +50,10 @@ namespace Dagmay.Core.Reflection
             {
                 throw new InvalidOperationException("Reflection task evidence is not completely available.");
             }
+            if (events.Any(value => !value.Subjects.Contains(individual.Id)))
+            {
+                throw new InvalidOperationException("Reflection task evidence does not belong to the target individual.");
+            }
 
             var requestId = RequestId.New();
             var memories = relevantMemories

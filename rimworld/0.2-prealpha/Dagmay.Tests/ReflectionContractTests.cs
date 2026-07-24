@@ -233,6 +233,27 @@ namespace Dagmay.Tests
                 "Memories beyond the private-context cap must be excluded.");
         }
 
+        public static void ReflectionContextRejectsForeignSourceEvents()
+        {
+            var person = CreateIndividual("Mira");
+            var foreignPerson = CreateIndividual("Jo");
+            var foreignEvent = CreateEvent(
+                foreignPerson.Id,
+                "rimworld.test",
+                "detail",
+                "foreign private event");
+
+            TestAssert.Throws<InvalidOperationException>(
+                () => new ReflectionContextBuilder().BuildRequest(
+                    CreateTask(person.Id, foreignEvent.Id, "foreign-event-boundary"),
+                    person,
+                    new[] { foreignEvent },
+                    Array.Empty<SubjectiveMemory>(),
+                    DateTimeOffset.UtcNow,
+                    TimeSpan.FromMinutes(1)),
+                "Reflection context must reject source evidence that does not name the target individual as a subject.");
+        }
+
         public static void PersistentReflectionQueueMergesDefersAndRetries()
         {
             var person = IndividualId.New();

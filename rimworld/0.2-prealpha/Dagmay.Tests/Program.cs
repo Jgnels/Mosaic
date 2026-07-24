@@ -46,6 +46,7 @@ namespace Dagmay.Tests
                 (nameof(ReflectionContractTests.ReflectionValidationIsAtomicGroundedAndBounded), Sync(ReflectionContractTests.ReflectionValidationIsAtomicGroundedAndBounded)),
                 (nameof(ReflectionContractTests.ReflectionContextTreatsWorldTextAsUntrustedData), Sync(ReflectionContractTests.ReflectionContextTreatsWorldTextAsUntrustedData)),
                 (nameof(ReflectionContractTests.ReflectionContextExcludesForeignMemoriesAndCapsPrivateContext), Sync(ReflectionContractTests.ReflectionContextExcludesForeignMemoriesAndCapsPrivateContext)),
+                (nameof(ReflectionContractTests.ReflectionContextRejectsForeignSourceEvents), Sync(ReflectionContractTests.ReflectionContextRejectsForeignSourceEvents)),
                 (nameof(ReflectionContractTests.PersistentReflectionQueueMergesDefersAndRetries), Sync(ReflectionContractTests.PersistentReflectionQueueMergesDefersAndRetries)),
                 (nameof(ReflectionContractTests.PersistentReflectionQueueNeverMergesAcrossIndividuals), Sync(ReflectionContractTests.PersistentReflectionQueueNeverMergesAcrossIndividuals)),
                 (nameof(ReflectionContractTests.PersistentReflectionQueueFairTieBreakRotatesIndividuals), Sync(ReflectionContractTests.PersistentReflectionQueueFairTieBreakRotatesIndividuals)),
