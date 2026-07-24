@@ -29,3 +29,9 @@ Thumbs.db
 DagmayData/
 Diagnostics/
 Exports/
+
+# Source diagnostics are compiled and contract-tested; only runtime diagnostics are ignored.
+!Dagmay.Core/Diagnostics/
+!Dagmay.Core/Diagnostics/*.cs
+!Dagmay.RimWorld/Diagnostics/
+!Dagmay.RimWorld/Diagnostics/*.cs
