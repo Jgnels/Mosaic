@@ -229,6 +229,84 @@ namespace Dagmay.Tests
             TestAssert.Equal(2, queue.Count, "Owner-scoped coalescing keys must preserve both individuals' work.");
         }
 
+        public static void ReflectionTasksRejectInvalidIdentityAndEvidence()
+        {
+            var person = IndividualId.New();
+            var source = EventId.New();
+            var now = new DateTimeOffset(2026, 7, 24, 15, 30, 0, TimeSpan.Zero);
+
+            TestAssert.Throws<ArgumentOutOfRangeException>(
+                () => new ReflectionTask(
+                    ReflectionTaskId.New(),
+                    person,
+                    ModelTaskKind.InterpretMeaningfulEvent,
+                    ReflectionPriority.MeaningfulEvent,
+                    now,
+                    "empty-evidence",
+                    Array.Empty<EventId>(),
+                    500),
+                "A reflection task must not enter a queue without source evidence.");
+
+            var excessiveEvidence = new List<EventId>();
+            for (var index = 0; index < 101; index++) excessiveEvidence.Add(EventId.New());
+            TestAssert.Throws<ArgumentOutOfRangeException>(
+                () => new ReflectionTask(
+                    ReflectionTaskId.New(),
+                    person,
+                    ModelTaskKind.InterpretMeaningfulEvent,
+                    ReflectionPriority.MeaningfulEvent,
+                    now,
+                    "excessive-evidence",
+                    excessiveEvidence,
+                    500),
+                "A reflection task must enforce the same 100-event context boundary as dispatch.");
+
+            TestAssert.Throws<ArgumentException>(
+                () => new ReflectionTask(
+                    ReflectionTaskId.New(),
+                    person,
+                    ModelTaskKind.InterpretMeaningfulEvent,
+                    ReflectionPriority.MeaningfulEvent,
+                    now,
+                    "duplicate-evidence",
+                    new[] { source, source },
+                    500),
+                "Duplicate source IDs must not masquerade as distinct task evidence.");
+            TestAssert.Throws<ArgumentException>(
+                () => new ReflectionTask(
+                    ReflectionTaskId.New(),
+                    person,
+                    ModelTaskKind.InterpretMeaningfulEvent,
+                    ReflectionPriority.MeaningfulEvent,
+                    now,
+                    "default-evidence",
+                    new[] { default(EventId) },
+                    500),
+                "A default EventId must not satisfy reflection evidence grounding.");
+            TestAssert.Throws<ArgumentException>(
+                () => new ReflectionTask(
+                    default(ReflectionTaskId),
+                    person,
+                    ModelTaskKind.InterpretMeaningfulEvent,
+                    ReflectionPriority.MeaningfulEvent,
+                    now,
+                    "default-task",
+                    new[] { source },
+                    500),
+                "A default ReflectionTaskId must not enter durable scheduling.");
+            TestAssert.Throws<ArgumentException>(
+                () => new ReflectionTask(
+                    ReflectionTaskId.New(),
+                    default(IndividualId),
+                    ModelTaskKind.InterpretMeaningfulEvent,
+                    ReflectionPriority.MeaningfulEvent,
+                    now,
+                    "default-owner",
+                    new[] { source },
+                    500),
+                "A reflection task must always have a nonempty owner.");
+        }
+
         public static void SelectiveEnrollmentCannotCreateHalfIndividuals()
         {
             var entity = new EnvironmentEntityReference("rimworld", "pawn:world-1:42", "Mira");
@@ -330,7 +408,7 @@ namespace Dagmay.Tests
                 priority,
                 created,
                 coalescingKey,
-                Array.Empty<EventId>(),
+                new[] { EventId.New() },
                 500);
         }
     }

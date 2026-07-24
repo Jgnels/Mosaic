@@ -67,6 +67,8 @@ namespace Dagmay.Core.Scheduling
             int estimatedTokens)
         {
             if (estimatedTokens <= 0) throw new ArgumentOutOfRangeException(nameof(estimatedTokens));
+            if (id.Value == Guid.Empty) throw new ArgumentException("Reflection task ID cannot be empty.", nameof(id));
+            if (individualId.Value == Guid.Empty) throw new ArgumentException("Individual ID cannot be empty.", nameof(individualId));
 
             Id = id;
             IndividualId = individualId;
@@ -75,6 +77,18 @@ namespace Dagmay.Core.Scheduling
             CreatedAtUtc = createdAtUtc;
             CoalescingKey = ContractGuard.Text(coalescingKey, nameof(coalescingKey), 256);
             SourceEventIds = ContractGuard.List(sourceEventIds, nameof(sourceEventIds));
+            if (SourceEventIds.Count == 0 || SourceEventIds.Count > 100)
+                throw new ArgumentOutOfRangeException(
+                    nameof(sourceEventIds),
+                    "Reflection tasks require between 1 and 100 source event IDs.");
+            var uniqueSources = new HashSet<EventId>();
+            foreach (var sourceEventId in SourceEventIds)
+            {
+                if (sourceEventId.Value == Guid.Empty)
+                    throw new ArgumentException("Source event IDs cannot be empty.", nameof(sourceEventIds));
+                if (!uniqueSources.Add(sourceEventId))
+                    throw new ArgumentException("Source event IDs cannot contain duplicates.", nameof(sourceEventIds));
+            }
             EstimatedTokens = estimatedTokens;
         }
 
