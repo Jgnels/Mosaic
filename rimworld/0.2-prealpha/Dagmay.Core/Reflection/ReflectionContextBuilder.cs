@@ -52,7 +52,10 @@ namespace Dagmay.Core.Reflection
             }
 
             var requestId = RequestId.New();
-            var context = BuildContext(requestId, individual, events, relevantMemories.Take(20));
+            var memories = relevantMemories
+                .Where(memory => memory.OwnerId == individual.Id)
+                .Take(20);
+            var context = BuildContext(requestId, individual, events, memories);
             return new ModelRequest(
                 requestId,
                 individual.Id,

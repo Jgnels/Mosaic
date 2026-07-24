@@ -43,6 +43,7 @@ namespace Dagmay.Tests
                 (nameof(ReflectionContractTests.ReflectionProposalRoundTripIsStrict), Sync(ReflectionContractTests.ReflectionProposalRoundTripIsStrict)),
                 (nameof(ReflectionContractTests.ReflectionValidationIsAtomicGroundedAndBounded), Sync(ReflectionContractTests.ReflectionValidationIsAtomicGroundedAndBounded)),
                 (nameof(ReflectionContractTests.ReflectionContextTreatsWorldTextAsUntrustedData), Sync(ReflectionContractTests.ReflectionContextTreatsWorldTextAsUntrustedData)),
+                (nameof(ReflectionContractTests.ReflectionContextExcludesForeignMemoriesAndCapsPrivateContext), Sync(ReflectionContractTests.ReflectionContextExcludesForeignMemoriesAndCapsPrivateContext)),
                 (nameof(ReflectionContractTests.PersistentReflectionQueueMergesDefersAndRetries), Sync(ReflectionContractTests.PersistentReflectionQueueMergesDefersAndRetries)),
                 (nameof(ReflectionContractTests.PersistentReflectionQueueFairTieBreakRotatesIndividuals), Sync(ReflectionContractTests.PersistentReflectionQueueFairTieBreakRotatesIndividuals)),
                 (nameof(ReflectionContractTests.ReflectionStoreRoundTripPreservesPendingCommit), Sync(ReflectionContractTests.ReflectionStoreRoundTripPreservesPendingCommit)),

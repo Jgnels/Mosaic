@@ -194,6 +194,45 @@ namespace Dagmay.Tests
                 "World text must never enter the system instruction.");
         }
 
+        public static void ReflectionContextExcludesForeignMemoriesAndCapsPrivateContext()
+        {
+            var person = CreateIndividual("Mira");
+            var foreignPerson = CreateIndividual("Jo");
+            var source = CreateEvent(person.Id, "rimworld.test", "detail", "bounded context");
+            var now = new DateTimeOffset(2026, 7, 24, 8, 0, 0, TimeSpan.Zero);
+            var memories = new List<SubjectiveMemory>
+            {
+                CreateMemory(foreignPerson.Id, now, "FOREIGN_PRIVATE_SENTINEL")
+            };
+
+            for (var index = 0; index < 21; index++)
+            {
+                memories.Add(CreateMemory(person.Id, now.AddMinutes(index), "owner-memory-" + index));
+            }
+
+            var request = new ReflectionContextBuilder().BuildRequest(
+                CreateTask(person.Id, source.Id, "private-context-boundary"),
+                person,
+                new[] { source },
+                memories,
+                now,
+                TimeSpan.FromMinutes(1));
+
+            TestAssert.False(
+                request.Context.Contains("FOREIGN_PRIVATE_SENTINEL", StringComparison.Ordinal),
+                "Reflection context must never include another individual's private memory.");
+            TestAssert.Equal(
+                20,
+                request.Context.Split(new[] { "diary=owner-memory-" }, StringSplitOptions.None).Length - 1,
+                "Reflection context must retain its fixed private-memory cap after ownership filtering.");
+            TestAssert.True(
+                request.Context.Contains("diary=owner-memory-19", StringComparison.Ordinal),
+                "The first twenty relevant owner memories should remain available.");
+            TestAssert.False(
+                request.Context.Contains("diary=owner-memory-20", StringComparison.Ordinal),
+                "Memories beyond the private-context cap must be excluded.");
+        }
+
         public static void PersistentReflectionQueueMergesDefersAndRetries()
         {
             var person = IndividualId.New();
@@ -617,6 +656,29 @@ namespace Dagmay.Tests
                 "Dagmay.Tests",
                 new Dictionary<string, string> { [key] = value },
                 new[] { person });
+        }
+
+        private static SubjectiveMemory CreateMemory(
+            IndividualId ownerId,
+            DateTimeOffset encodedAtUtc,
+            string diaryEntry)
+        {
+            return new SubjectiveMemory(
+                MemoryId.New(),
+                ownerId,
+                new[] { PerceptionId.New() },
+                encodedAtUtc.AddMinutes(-1),
+                encodedAtUtc,
+                diaryEntry,
+                "Fixture appraisal.",
+                AffectVector.Neutral,
+                0.5,
+                0.5,
+                1.0,
+                1.0,
+                MemoryTier.Recent,
+                PrivacyClassification.Private,
+                Array.Empty<IndividualId>());
         }
 
         private static ReflectionTask CreateTask(
