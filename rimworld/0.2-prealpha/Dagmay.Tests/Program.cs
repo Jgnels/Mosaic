@@ -51,6 +51,7 @@ namespace Dagmay.Tests
                 (nameof(ReflectionContractTests.ReflectionContextOrdersEqualTimeEvidenceDeterministically), Sync(ReflectionContractTests.ReflectionContextOrdersEqualTimeEvidenceDeterministically)),
                 (nameof(ReflectionContractTests.PersistentReflectionQueueMergesDefersAndRetries), Sync(ReflectionContractTests.PersistentReflectionQueueMergesDefersAndRetries)),
                 (nameof(ReflectionContractTests.PersistentReflectionQueueNeverMergesAcrossIndividuals), Sync(ReflectionContractTests.PersistentReflectionQueueNeverMergesAcrossIndividuals)),
+                (nameof(ReflectionContractTests.HigherPriorityMergeRetainsWinningEvidenceAtCapacity), Sync(ReflectionContractTests.HigherPriorityMergeRetainsWinningEvidenceAtCapacity)),
                 (nameof(ReflectionContractTests.PersistentReflectionQueueFairTieBreakRotatesIndividuals), Sync(ReflectionContractTests.PersistentReflectionQueueFairTieBreakRotatesIndividuals)),
                 (nameof(ReflectionContractTests.ReflectionStoreRoundTripPreservesPendingCommit), Sync(ReflectionContractTests.ReflectionStoreRoundTripPreservesPendingCommit)),
                 (nameof(ReflectionContractTests.ReflectionStoreRejectsTamperingAndRecoversBackup), Sync(ReflectionContractTests.ReflectionStoreRejectsTamperingAndRecoversBackup)),

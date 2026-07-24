@@ -244,8 +244,14 @@ namespace Dagmay.Core.Scheduling
                     continue;
                 }
                 var existing = _tasks[index];
-                var eventIds = existing.Task.SourceEventIds.Concat(task.SourceEventIds).Distinct().Take(100).ToList();
-                var replacementKind = (int)task.Priority > (int)existing.Task.Priority
+                var newTaskWins = (int)task.Priority > (int)existing.Task.Priority;
+                var eventIds = (newTaskWins
+                        ? task.SourceEventIds.Concat(existing.Task.SourceEventIds)
+                        : existing.Task.SourceEventIds.Concat(task.SourceEventIds))
+                    .Distinct()
+                    .Take(100)
+                    .ToList();
+                var replacementKind = newTaskWins
                     ? task.TaskKind
                     : existing.Task.TaskKind;
                 var replacement = new ReflectionTask(

@@ -402,6 +402,57 @@ namespace Dagmay.Tests
                 "The second task must retain only its own evidence.");
         }
 
+        public static void HigherPriorityMergeRetainsWinningEvidenceAtCapacity()
+        {
+            var person = IndividualId.New();
+            var now = new DateTimeOffset(2026, 7, 24, 15, 0, 0, TimeSpan.Zero);
+            var existingEvidence = new List<EventId>();
+            for (var index = 0; index < 100; index++) existingEvidence.Add(EventId.New());
+            var winningEvent = EventId.New();
+            var queue = new PersistentReflectionQueue(4);
+            var existing = new ReflectionTask(
+                ReflectionTaskId.New(),
+                person,
+                ModelTaskKind.BackgroundReflection,
+                ReflectionPriority.Background,
+                now,
+                "saturated-upgrade",
+                existingEvidence,
+                500);
+            var upgrade = new ReflectionTask(
+                ReflectionTaskId.New(),
+                person,
+                ModelTaskKind.InterpretMeaningfulEvent,
+                ReflectionPriority.CriticalLifecycle,
+                now.AddSeconds(1),
+                "saturated-upgrade",
+                new[] { winningEvent },
+                500);
+
+            TestAssert.Equal(
+                PersistentQueueEnqueueStatus.Enqueued,
+                queue.EnqueueOrMerge(existing),
+                "The saturated lower-priority task must enqueue.");
+            TestAssert.Equal(
+                PersistentQueueEnqueueStatus.Merged,
+                queue.EnqueueOrMerge(upgrade),
+                "Higher-priority work with the same owner and key must merge.");
+
+            var merged = queue.Find(existing.Id)!.Task;
+            TestAssert.Equal(100, merged.SourceEventIds.Count, "Merged evidence must remain bounded.");
+            TestAssert.True(
+                merged.SourceEventIds.Contains(winningEvent),
+                "The event that caused a higher-priority semantic upgrade must survive bounded merging.");
+            TestAssert.Equal(
+                ModelTaskKind.InterpretMeaningfulEvent,
+                merged.TaskKind,
+                "The saturated task must retain the winning semantic kind.");
+            TestAssert.Equal(
+                ReflectionPriority.CriticalLifecycle,
+                merged.Priority,
+                "The saturated task must retain the winning priority.");
+        }
+
         public static void PersistentReflectionQueueFairTieBreakRotatesIndividuals()
         {
             var firstPerson = IndividualId.New();
