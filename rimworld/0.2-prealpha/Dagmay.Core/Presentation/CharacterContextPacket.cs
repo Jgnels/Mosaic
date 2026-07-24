@@ -17,8 +17,10 @@ namespace Dagmay.Core.Presentation
             EvidenceIds = ContractGuard.List(evidenceIds, nameof(evidenceIds));
             Relevance = ContractGuard.UnitInterval(relevance, nameof(relevance));
 
-            if (EvidenceIds.Count == 0)
-                throw new ArgumentException("Grounded context items require at least one supporting EvidenceId.", nameof(evidenceIds));
+            if (EvidenceIds.Count == 0 || EvidenceIds.Count > 100)
+                throw new ArgumentOutOfRangeException(
+                    nameof(evidenceIds),
+                    "Grounded context items require between 1 and 100 supporting EvidenceIds.");
         }
 
         public string Kind { get; }
@@ -39,6 +41,12 @@ namespace Dagmay.Core.Presentation
             IndividualId = individualId;
             BuiltAtTick = builtAtTick;
             Items = ContractGuard.List(items, nameof(items));
+            if (Items.Count > 100) throw new ArgumentOutOfRangeException(nameof(items));
+            for (var index = 0; index < Items.Count; index++)
+            {
+                if (Items[index] is null)
+                    throw new ArgumentException("Context packets cannot contain null items.", nameof(items));
+            }
         }
 
         public IndividualId IndividualId { get; }
