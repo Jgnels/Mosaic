@@ -48,6 +48,13 @@ $RequiredEntries = @(
 $ProhibitedExtensions = @(".rws", ".dagmay", ".journal", ".reflection", ".key", ".pfx", ".pem")
 $Inventory = New-Object System.Collections.Generic.List[object]
 $EntryNames = New-Object System.Collections.Generic.List[string]
+$MachinePathLeaks = New-Object System.Collections.Generic.List[string]
+$UserProfilePath = [Environment]::GetFolderPath([Environment+SpecialFolder]::UserProfile)
+$UserProfileLeaf = if ([string]::IsNullOrWhiteSpace($UserProfilePath)) {
+    ""
+} else {
+    Split-Path -Leaf $UserProfilePath
+}
 $Archive = [IO.Compression.ZipFile]::OpenRead($PackagePath)
 try {
     foreach ($Entry in $Archive.Entries) {
@@ -60,12 +67,52 @@ try {
 
         $Stream = $Entry.Open()
         try {
+            $Memory = New-Object IO.MemoryStream
+            try {
+                $Stream.CopyTo($Memory)
+                $EntryBytes = $Memory.ToArray()
+            }
+            finally {
+                $Memory.Dispose()
+            }
+
             $Algorithm = [Security.Cryptography.SHA256]::Create()
             try {
-                $EntryHash = ([BitConverter]::ToString($Algorithm.ComputeHash($Stream))).Replace("-", "").ToLowerInvariant()
+                $EntryHash = ([BitConverter]::ToString($Algorithm.ComputeHash($EntryBytes))).Replace("-", "").ToLowerInvariant()
             }
             finally {
                 $Algorithm.Dispose()
+            }
+
+            if ([IO.Path]::GetExtension($NormalizedName).ToLowerInvariant() -in @(".dll", ".pdb")) {
+                $BinaryText = [Text.Encoding]::UTF8.GetString($EntryBytes)
+                $ContainsFullProfile = $false
+                if (-not [string]::IsNullOrWhiteSpace($UserProfilePath)) {
+                    $ContainsFullProfile =
+                        $BinaryText.IndexOf($UserProfilePath, [StringComparison]::OrdinalIgnoreCase) -ge 0
+                    if (-not $ContainsFullProfile) {
+                        $ContainsFullProfile =
+                            $BinaryText.IndexOf(
+                                $UserProfilePath.Replace('\', '/'),
+                                [StringComparison]::OrdinalIgnoreCase) -ge 0
+                    }
+                }
+
+                $ContainsSegmentedProfile = $false
+                if (-not [string]::IsNullOrWhiteSpace($UserProfileLeaf)) {
+                    $ContainsProfileLeaf =
+                        $BinaryText.IndexOf($UserProfileLeaf, [StringComparison]::OrdinalIgnoreCase) -ge 0
+                    $ContainsProfileContainer =
+                        $BinaryText.IndexOf("Users", [StringComparison]::OrdinalIgnoreCase) -ge 0
+                    $ContainsProfileContainer = $ContainsProfileContainer -or
+                        $BinaryText.IndexOf("AppData", [StringComparison]::OrdinalIgnoreCase) -ge 0
+                    $ContainsProfileContainer = $ContainsProfileContainer -or
+                        $BinaryText.IndexOf("/home", [StringComparison]::OrdinalIgnoreCase) -ge 0
+                    $ContainsSegmentedProfile = $ContainsProfileLeaf -and $ContainsProfileContainer
+                }
+                if ($ContainsFullProfile -or $ContainsSegmentedProfile) {
+                    $MachinePathLeaks.Add($NormalizedName) | Out-Null
+                }
             }
         }
         finally {
@@ -86,6 +133,9 @@ finally {
 $MissingEntries = @($RequiredEntries | Where-Object { -not $EntryNames.Contains($_) })
 if ($MissingEntries.Count -gt 0) {
     throw "Package is missing required entries: $($MissingEntries -join ', ')."
+}
+if ($MachinePathLeaks.Count -gt 0) {
+    throw "Package contains machine-specific build paths in: $($MachinePathLeaks -join ', ')."
 }
 
 $ManagedPath = Join-Path $RimWorldPath "RimWorldWin64_Data\Managed"
@@ -123,6 +173,7 @@ $Report = [ordered]@{
         sha256 = $PackageHash
         entries = [object[]]$Inventory
         prohibitedRuntimeArtifactsPresent = $false
+        machineSpecificBuildPathsPresent = $false
     }
     assemblies = [object[]]$AssemblyInventory
     rimWorldReferences = [ordered]@{
