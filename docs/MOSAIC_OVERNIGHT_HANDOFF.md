@@ -1,9 +1,9 @@
 # Mosaic Overnight Handoff
 
-**Started:** 2026-07-24 shortly before 00:07 PDT  
-**Last updated:** 2026-07-24 00:26 PDT  
-**Certified starting branch:** `codex/gate3-offline-readiness`  
-**Certified starting commit:** `457f1815d625f7a121f444d972d4880e70c805cb`  
+**Started:** 2026-07-24 shortly before 00:07 PDT
+**Last updated:** 2026-07-24 00:26 PDT
+**Certified starting branch:** `codex/gate3-offline-readiness`
+**Certified starting commit:** `457f1815d625f7a121f444d972d4880e70c805cb`
 **Certified package SHA-256:** `d845e5165a4977b3bdc4af98f55fd6c5485970d127411c023b575409b3db676a`
 
 ## Gate 3 runtime

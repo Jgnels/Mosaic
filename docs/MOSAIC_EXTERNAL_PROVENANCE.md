@@ -1,7 +1,7 @@
 # Mosaic External Provenance
 
-**Audit date:** 2026-07-24  
-**Scope:** Read-only architecture and license review for v0.2 planning  
+**Audit date:** 2026-07-24
+**Scope:** Read-only architecture and license review for v0.2 planning
 **Code incorporated:** None
 
 This record supplements, rather than rewrites, the artifact-specific review in

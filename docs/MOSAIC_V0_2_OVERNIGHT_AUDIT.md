@@ -1,8 +1,8 @@
 # Mosaic v0.2 Overnight Audit
 
-**Audit date:** 2026-07-24  
-**Branch:** `codex/v0.2-overnight-prep-20260724`  
-**Base:** `457f1815d625f7a121f444d972d4880e70c805cb`  
+**Audit date:** 2026-07-24
+**Branch:** `codex/v0.2-overnight-prep-20260724`
+**Base:** `457f1815d625f7a121f444d972d4880e70c805cb`
 **Status:** v0.2 pre-alpha; not released or Gate-certified
 
 ## Current architecture
