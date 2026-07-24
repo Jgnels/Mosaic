@@ -88,6 +88,17 @@ PASS. The prepared local harness is resumable and keeps providers/local models o
 - Testability: three deterministic offline contracts.
 - Risk: low.
 
+### P1 — Coalesced reflection task consistency
+
+- Problem: persistent queue coalescing upgraded the priority and evidence of higher-priority work
+  but retained the lower-priority task kind, producing a semantically inconsistent queued task.
+- Invariants: deterministic scheduling, auditable work classification, and bounded coalescing.
+- Resolution: when new work wins the priority comparison, upgrade its task kind together with its
+  priority; otherwise preserve the existing kind.
+- Compatibility: no persistence schema change; existing queue records remain readable.
+- Testability: the persistent queue merge contract now checks the upgraded task kind explicitly.
+- Risk: low.
+
 ### P1 — Deterministic rebuild and context ordering
 
 - Problem: equal-score memories and equal-time source events inherited caller/insertion order,
@@ -147,5 +158,5 @@ runtime foundation and explicit license/product decisions.
 - Core, Providers, and RimWorld adapter Release builds: PASS, 0 warnings and 0 errors.
 - Non-installing package preflight: PASS, 6 entries and no prohibited runtime artifacts.
 - Package SHA-256:
-  `32166f4aa0eca900652bb80d71b6861ad5c4c7f7815146178ca90d0e08a94c98`.
+  `d9834b45182f904dc359cbf2fc47aa4b270243a8a6b8ea8015ffc289b14f8ffc`.
 - No provider, local model, install, save mutation, or RimWorld launch occurred.
