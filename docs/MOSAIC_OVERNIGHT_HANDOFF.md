@@ -1,7 +1,7 @@
 # Mosaic Overnight Handoff
 
 **Started:** 2026-07-24 shortly before 00:07 PDT
-**Last updated:** 2026-07-24 01:02 PDT
+**Last updated:** 2026-07-24 01:07 PDT
 **Certified starting branch:** `codex/gate3-offline-readiness`
 **Certified starting commit:** `457f1815d625f7a121f444d972d4880e70c805cb`
 **Certified package SHA-256:** `d845e5165a4977b3bdc4af98f55fd6c5485970d127411c023b575409b3db676a`
@@ -51,6 +51,7 @@ As checkpoints, log samples, continuity comparisons, and final save/sidecar veri
 11. `40dcd78c35b0f9f0c6335cd4ea514756396fa60f` — Stabilize reflection evidence ordering.
 12. `1ed4f8d79f371093c8a8ffb69cb748324ece7b2a` — Record v0.2 isolation hardening.
 13. `3895b1302db291a0aa5b7fdeaa7f63559bb55aec` — Upgrade coalesced reflection task kind.
+14. `e9d8942ca00a682dedf930f71de57b5e3f6fe0e8` — Cover ordinary disclosure privacy boundary.
 
 ## Publication
 
@@ -62,14 +63,14 @@ As checkpoints, log samples, continuity comparisons, and final save/sidecar veri
 
 ## Tests
 
-- Contract suite: 76 executed, 0 failed.
+- Contract suite: 77 executed, 0 failed.
 - Static verification: PASS, 98 C# files.
 - Core and Providers Release builds: PASS, 0 warnings and 0 errors.
 - Integration harness: PASS, 6 scenarios, 603 assertions, 0 failed.
 - RimWorld adapter Release build against installed 1.6 assemblies: PASS, 0 warnings and 0 errors.
 - Non-installing package preflight: PASS, 6 entries, no prohibited runtime artifacts.
 - Package SHA-256:
-  `d9834b45182f904dc359cbf2fc47aa4b270243a8a6b8ea8015ffc289b14f8ffc`
+  `368a859fa5b2389d9fb5f300f76264c2a2617e8d47b45e11d45a6463f6d85df9`
 - No provider or local-model call was made.
 
 ## Files changed
@@ -85,6 +86,8 @@ As checkpoints, log samples, continuity comparisons, and final save/sidecar veri
 - Both reflection queue implementations scope coalescing/duplicate keys to the owning individual.
 - Persistent coalescing now upgrades the queued task kind when higher-priority work supersedes the
   existing task, preserving the selected work's priority, kind, and evidence consistently.
+- Ordinary disclosure now has explicit contract coverage for every privacy class and both sides of
+  its accessibility threshold.
 - Reflection context rejects source events that do not name the target individual.
 - Hardware corrections, v0.2 audit, external provenance, and this handoff.
 

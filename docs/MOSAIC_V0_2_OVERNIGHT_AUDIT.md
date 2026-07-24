@@ -99,6 +99,18 @@ PASS. The prepared local harness is resumable and keeps providers/local models o
 - Testability: the persistent queue merge contract now checks the upgraded task kind explicitly.
 - Risk: low.
 
+### P1 — Ordinary disclosure privacy boundary
+
+- Problem: disclosure behavior existed, but executable coverage did not prove the
+  relationship-sensitive class or the exact accessibility boundary.
+- Invariants: ordinary presentation must not leak private or relationship-sensitive memories;
+  disclosure remains deterministic and model-independent.
+- Resolution: add a contract covering all privacy classes, a shareable memory immediately below
+  the threshold, and a shareable memory exactly at the threshold.
+- Compatibility: test-only; no runtime, schema, or persistence change.
+- Testability: deterministic offline contract with fixed timestamps and no provider.
+- Risk: none to runtime behavior.
+
 ### P1 — Deterministic rebuild and context ordering
 
 - Problem: equal-score memories and equal-time source events inherited caller/insertion order,
@@ -127,7 +139,7 @@ PASS. The prepared local harness is resumable and keeps providers/local models o
 | 1 | Finish the owner-operated Gate 3 long soak | Human GUI operation and prepared harness | Medium runtime risk | Direct logs, samples, hashes, save/sidecar verification | No code reuse; blocks declaring Gate 3 complete |
 | 2 | Add a clean-clone/source-tracking verification guard | Completed | Low | Both negative paths and clean tree passed | Tooling only; no runtime change |
 | 3 | Deterministic tie-breaking for equal-score memory retrieval | Completed | Low | Rebuild in opposite insertion orders passed | Core behavior only; no format change |
-| 4 | Bounded presentation/context assembly tests across privacy classes | Ordinary-view disclosure policy | Low | Pure contract tests | Original code; no external dependency |
+| 4 | Bounded presentation/context assembly tests across privacy classes | Completed | Low | All privacy classes and accessibility boundary passed | Original code; no external dependency |
 | 5 | Gate 4 compatibility fixtures and adapter seams | Gate 3 runtime completion and selected mod versions | Medium | Extracted plain-data fixtures plus manual matrix | External APIs are optional and version-gated |
 | 6 | RimTalk bridge design/ADR | Gate 4, owner product decision, license compatibility review | Medium/high | Absent-mod, timeout, exception, duplicate-call tests | API interoperability preferred; no copied source |
 | 7 | Semantic retrieval experiment | Explicit provider-neutral index/rebuild policy | Medium | Offline lexical baseline and deterministic rebuild tests | No provider or dependency chosen |
@@ -153,10 +165,10 @@ runtime foundation and explicit license/product decisions.
 ## Verification
 
 - Static verification: PASS, 98 C# files.
-- Contract tests: PASS, 76 executed, 0 failed.
+- Contract tests: PASS, 77 executed, 0 failed.
 - Integration harness: PASS, 6 scenarios and 603 assertions.
 - Core, Providers, and RimWorld adapter Release builds: PASS, 0 warnings and 0 errors.
 - Non-installing package preflight: PASS, 6 entries and no prohibited runtime artifacts.
 - Package SHA-256:
-  `d9834b45182f904dc359cbf2fc47aa4b270243a8a6b8ea8015ffc289b14f8ffc`.
+  `368a859fa5b2389d9fb5f300f76264c2a2617e8d47b45e11d45a6463f6d85df9`.
 - No provider, local model, install, save mutation, or RimWorld launch occurred.
