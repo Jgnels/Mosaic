@@ -48,6 +48,42 @@ namespace Dagmay.Tests
                 ReflectionStorageSafetyPolicy.AllowsQueueMutation(experienceWritesEnabled: true, reflectionWritesEnabled: false),
                 "A read-only reflection store must block reflection queue mutation.");
         }
+        public static void EmptyReflectionAuditDoesNotImplyReadOnlyStorage()
+        {
+            var healthyAndEmpty = ReflectionStorageSafetyPolicy.ClassifyPendingCommitRecovery(
+                identityWritesEnabled: true,
+                experienceWritesEnabled: true,
+                reflectionWritesEnabled: true,
+                auditRecordCount: 0);
+
+            TestAssert.Equal(
+                PendingCommitRecoveryDisposition.NothingToRecover,
+                healthyAndEmpty,
+                "Healthy canonical storage with no audit records must be treated as an idle recovery pass, not as read-only storage.");
+
+            var healthyWithPendingAudit = ReflectionStorageSafetyPolicy.ClassifyPendingCommitRecovery(
+                identityWritesEnabled: true,
+                experienceWritesEnabled: true,
+                reflectionWritesEnabled: true,
+                auditRecordCount: 1);
+
+            TestAssert.Equal(
+                PendingCommitRecoveryDisposition.Recover,
+                healthyWithPendingAudit,
+                "Healthy canonical storage with an audit record should permit pending-commit recovery.");
+
+            var unavailableStorage = ReflectionStorageSafetyPolicy.ClassifyPendingCommitRecovery(
+                identityWritesEnabled: true,
+                experienceWritesEnabled: false,
+                reflectionWritesEnabled: true,
+                auditRecordCount: 0);
+
+            TestAssert.Equal(
+                PendingCommitRecoveryDisposition.StorageUnavailable,
+                unavailableStorage,
+                "An unavailable canonical store must still produce the fail-closed storage classification.");
+        }
+
         public static void ReflectionProposalRoundTripIsStrict()
         {
             var request = ProviderContractTests.CreateRequest();

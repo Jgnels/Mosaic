@@ -140,3 +140,41 @@ separate ignored recoverable quarantine, and the disposable saves and sidecars w
 Gate 3 remains open pending owner review, Observer visual inspection, and the remaining planned
 live-soak scope. Both checkpoint regressions found during this test are now corrected and verified
 live.
+
+## Gate 3 false read-only diagnostic resolution (2026-07-24)
+
+The apparent canonical-storage failure observed during the 41-minute offline gameplay soak was traced to a diagnostic-control-flow defect rather than an actual storage transition.
+
+RecoverPendingCommits() previously combined two independent conditions:
+
+- canonical storage was unavailable; or
+- the reflection audit contained no records.
+
+Both conditions called LogStorageSafetyPauseOnce(). Once a reflection task entered the queue, a healthy empty audit could therefore emit the warning that canonical storage was read-only. The preserved runtime log contained no corresponding identity, experience, or reflection storage-disable transition, while startup and Restricted Observer both reported all three stores healthy.
+
+The correction introduces an explicit pending-commit recovery classification:
+
+- StorageUnavailable
+- NothingToRecover
+- Recover
+
+Only StorageUnavailable now produces the storage-safety pause warning. An empty audit with healthy stores exits normally without claiming that storage is read-only. Existing fail-closed behavior remains unchanged.
+
+Verification completed:
+
+- Static verification: 98 C# files passed.
+- Contract suite: 70 tests executed; 0 failed.
+- Integration suite: 6 scenarios executed; 0 failed.
+- RimWorld adapter: Release build completed with 0 warnings and 0 errors.
+- Verified package SHA-256: d845e5165a4977b3bdc4af98f55fd6c5485970d127411c023b575409b3db676a.
+- Targeted live run: gate3-false-readonly-retest-20260724-a.
+- Active mods: RimWorld Core and Mosaic only.
+- Reflection mode: offline.
+- Owner inspection: enrolled individual present; identity, experience, and reflection storage all healthy; no red RimWorld error dialog.
+- Targeted runtime result: 0 false read-only warnings and 0 genuine storage transitions.
+- Disposable Save As completed successfully.
+- Final evidence and a SHA-256 manifest were preserved locally before cleanup.
+- Original RimWorld configuration and all 7 pre-test StoreId files were restored.
+- The test package and disposable working saves were removed.
+
+The earlier soak's read-only finding is therefore closed as a false diagnostic. Its gameplay and experience-recording evidence remains valid; the targeted retest specifically certifies the corrected save-path behavior. Gate 3 remains subject to any other live-test requirements not addressed by this defect.

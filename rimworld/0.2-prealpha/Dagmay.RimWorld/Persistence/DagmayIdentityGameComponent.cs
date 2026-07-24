@@ -1284,13 +1284,20 @@ namespace Dagmay.RimWorld.Persistence
 
         private void RecoverPendingCommits()
         {
-            if (!ReflectionStorageSafetyPolicy.AllowsProcessing(
-                    _writesEnabled,
-                    _experienceWritesEnabled,
-                    _reflectionWritesEnabled)
-                || _reflectionAudit.Count == 0)
+            var recoveryDisposition = ReflectionStorageSafetyPolicy.ClassifyPendingCommitRecovery(
+                _writesEnabled,
+                _experienceWritesEnabled,
+                _reflectionWritesEnabled,
+                _reflectionAudit.Count);
+
+            if (recoveryDisposition == PendingCommitRecoveryDisposition.StorageUnavailable)
             {
                 LogStorageSafetyPauseOnce();
+                return;
+            }
+
+            if (recoveryDisposition == PendingCommitRecoveryDisposition.NothingToRecover)
+            {
                 return;
             }
             var pendingRecords = new List<ReflectionAuditRecord>();

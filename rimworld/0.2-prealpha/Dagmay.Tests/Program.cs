@@ -54,6 +54,7 @@ namespace Dagmay.Tests
                 (nameof(ReflectionContractTests.ObserverUsageDeduplicatesAuditStages), Sync(ReflectionContractTests.ObserverUsageDeduplicatesAuditStages)),
                 (nameof(ReflectionContractTests.ObserverMemoryProjectionPreservesProvenance), Sync(ReflectionContractTests.ObserverMemoryProjectionPreservesProvenance)),
                 (nameof(ReflectionContractTests.ReadOnlyExperienceStoragePausesReflectionProcessingWithoutQueueMutation), Sync(ReflectionContractTests.ReadOnlyExperienceStoragePausesReflectionProcessingWithoutQueueMutation)),
+            (nameof(ReflectionContractTests.EmptyReflectionAuditDoesNotImplyReadOnlyStorage), Sync(ReflectionContractTests.EmptyReflectionAuditDoesNotImplyReadOnlyStorage)),
                 (nameof(StorytellingFoundationContractTests.TemporalFactPreservesEvidenceAndSupersedesWithoutErasure), Sync(StorytellingFoundationContractTests.TemporalFactPreservesEvidenceAndSupersedesWithoutErasure)),
                 (nameof(StorytellingFoundationContractTests.AppraisalContractsAreBoundedAndSideEffectFreeByConstruction), Sync(StorytellingFoundationContractTests.AppraisalContractsAreBoundedAndSideEffectFreeByConstruction)),
                 (nameof(StorytellingFoundationContractTests.DecisionTraceCarriesEvidenceWithoutOwningCanonicalState), Sync(StorytellingFoundationContractTests.DecisionTraceCarriesEvidenceWithoutOwningCanonicalState)),
