@@ -245,10 +245,13 @@ namespace Dagmay.Core.Scheduling
                 }
                 var existing = _tasks[index];
                 var eventIds = existing.Task.SourceEventIds.Concat(task.SourceEventIds).Distinct().Take(100).ToList();
+                var replacementKind = (int)task.Priority > (int)existing.Task.Priority
+                    ? task.TaskKind
+                    : existing.Task.TaskKind;
                 var replacement = new ReflectionTask(
                     existing.Task.Id,
                     existing.Task.IndividualId,
-                    existing.Task.TaskKind,
+                    replacementKind,
                     (ReflectionPriority)Math.Max((int)existing.Task.Priority, (int)task.Priority),
                     existing.Task.CreatedAtUtc <= task.CreatedAtUtc ? existing.Task.CreatedAtUtc : task.CreatedAtUtc,
                     existing.Task.CoalescingKey,

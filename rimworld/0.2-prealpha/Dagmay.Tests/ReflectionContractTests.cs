@@ -337,6 +337,10 @@ namespace Dagmay.Tests
             var pending = queue.Find(first.Id)!;
             TestAssert.Equal(2, pending.Task.SourceEventIds.Count, "Merged work must retain both evidence events.");
             TestAssert.Equal(ReflectionPriority.MeaningfulEvent, pending.Task.Priority, "Merged work must retain the higher priority.");
+            TestAssert.Equal(
+                ModelTaskKind.InterpretMeaningfulEvent,
+                pending.Task.TaskKind,
+                "When higher-priority work upgrades a coalesced task, its semantic task kind must upgrade with it.");
 
             queue.Defer(first.Id, now.AddMinutes(5), "BUDGET");
             TestAssert.Equal(0, queue.Find(first.Id)!.AttemptCount, "Budget deferral must not consume a provider attempt.");
