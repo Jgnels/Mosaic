@@ -1,7 +1,7 @@
 # Mosaic Overnight Handoff
 
 **Started:** 2026-07-24 shortly before 00:07 PDT
-**Last updated:** 2026-07-24 01:07 PDT
+**Last updated:** 2026-07-24 01:11 PDT
 **Certified starting branch:** `codex/gate3-offline-readiness`
 **Certified starting commit:** `457f1815d625f7a121f444d972d4880e70c805cb`
 **Certified package SHA-256:** `d845e5165a4977b3bdc4af98f55fd6c5485970d127411c023b575409b3db676a`
@@ -52,6 +52,7 @@ As checkpoints, log samples, continuity comparisons, and final save/sidecar veri
 12. `1ed4f8d79f371093c8a8ffb69cb748324ece7b2a` — Record v0.2 isolation hardening.
 13. `3895b1302db291a0aa5b7fdeaa7f63559bb55aec` — Upgrade coalesced reflection task kind.
 14. `e9d8942ca00a682dedf930f71de57b5e3f6fe0e8` — Cover ordinary disclosure privacy boundary.
+15. `abd46c58ad4dde505d18575ad0c4e338d62dd76b` — Bound presentation context collections.
 
 ## Publication
 
@@ -63,14 +64,14 @@ As checkpoints, log samples, continuity comparisons, and final save/sidecar veri
 
 ## Tests
 
-- Contract suite: 77 executed, 0 failed.
+- Contract suite: 78 executed, 0 failed.
 - Static verification: PASS, 98 C# files.
 - Core and Providers Release builds: PASS, 0 warnings and 0 errors.
 - Integration harness: PASS, 6 scenarios, 603 assertions, 0 failed.
 - RimWorld adapter Release build against installed 1.6 assemblies: PASS, 0 warnings and 0 errors.
 - Non-installing package preflight: PASS, 6 entries, no prohibited runtime artifacts.
 - Package SHA-256:
-  `368a859fa5b2389d9fb5f300f76264c2a2617e8d47b45e11d45a6463f6d85df9`
+  `2d5b423ff4b70ca392dd2c7f45826afd7751e5f14919221d529777a2ae817685`
 - No provider or local-model call was made.
 
 ## Files changed
@@ -88,6 +89,8 @@ As checkpoints, log samples, continuity comparisons, and final save/sidecar veri
   existing task, preserving the selected work's priority, kind, and evidence consistently.
 - Ordinary disclosure now has explicit contract coverage for every privacy class and both sides of
   its accessibility threshold.
+- Presentation context packets now reject null items and cap both packet items and per-item
+  evidence IDs at 100.
 - Reflection context rejects source events that do not name the target individual.
 - Hardware corrections, v0.2 audit, external provenance, and this handoff.
 
