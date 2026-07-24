@@ -1,7 +1,7 @@
 # Mosaic Overnight Handoff
 
 **Started:** 2026-07-24 shortly before 00:07 PDT
-**Last updated:** 2026-07-24 00:26 PDT
+**Last updated:** 2026-07-24 00:30 PDT
 **Certified starting branch:** `codex/gate3-offline-readiness`
 **Certified starting commit:** `457f1815d625f7a121f444d972d4880e70c805cb`
 **Certified package SHA-256:** `d845e5165a4977b3bdc4af98f55fd6c5485970d127411c023b575409b3db676a`
@@ -40,6 +40,18 @@ As checkpoints, log samples, continuity comparisons, and final save/sidecar veri
 
 1. `bc504971c1bf30b34d0efd8ba07435cec42f931c` — Track v0.2 diagnostic source files.
 2. `4c17651e91d0842685b12fea7bf8b9235e8b582e` — Bound reflection memories to their owner.
+3. `057f616df874c078c429479b25bfef3a844a872d` — Record v0.2 overnight audit and provenance.
+4. `6497126adf16859f92efb254ddc1b882ded6628f` — Normalize overnight documentation whitespace.
+
+## Publication
+
+- Remote push: not completed.
+- Reason: the push approval was rejected because earlier instructions were interpreted as requiring
+  fresh explicit owner approval before exporting the branch.
+- Remote state changed: no.
+- Pull request created: no.
+- Safe continuation: after explicit owner approval, push only
+  `codex/v0.2-overnight-prep-20260724`; do not create a pull request.
 
 ## Tests
 
