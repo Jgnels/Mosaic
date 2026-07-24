@@ -272,6 +272,60 @@ namespace Dagmay.Tests
             TestAssert.Equal(1, queue.Find(first.Id)!.AttemptCount, "A completed transient failure must consume one attempt.");
         }
 
+        public static void PersistentReflectionQueueNeverMergesAcrossIndividuals()
+        {
+            var firstPerson = IndividualId.New();
+            var secondPerson = IndividualId.New();
+            var firstEvent = EventId.New();
+            var secondEvent = EventId.New();
+            var now = new DateTimeOffset(2026, 7, 24, 10, 0, 0, TimeSpan.Zero);
+            var queue = new PersistentReflectionQueue(4);
+            var first = new ReflectionTask(
+                ReflectionTaskId.New(),
+                firstPerson,
+                ModelTaskKind.InterpretMeaningfulEvent,
+                ReflectionPriority.MeaningfulEvent,
+                now,
+                "shared-caller-key",
+                new[] { firstEvent },
+                500);
+            var second = new ReflectionTask(
+                ReflectionTaskId.New(),
+                secondPerson,
+                ModelTaskKind.InterpretMeaningfulEvent,
+                ReflectionPriority.MeaningfulEvent,
+                now,
+                "shared-caller-key",
+                new[] { secondEvent },
+                500);
+
+            TestAssert.Equal(
+                PersistentQueueEnqueueStatus.Enqueued,
+                queue.EnqueueOrMerge(first),
+                "The first individual's task must enqueue.");
+            TestAssert.Equal(
+                PersistentQueueEnqueueStatus.Enqueued,
+                queue.EnqueueOrMerge(second),
+                "A matching caller key must not merge work owned by another individual.");
+            TestAssert.Equal(2, queue.Count, "Cross-individual work must remain two isolated tasks.");
+            TestAssert.Equal(
+                firstPerson,
+                queue.Find(first.Id)!.Task.IndividualId,
+                "The original task must retain its owner.");
+            TestAssert.Equal(
+                firstEvent,
+                queue.Find(first.Id)!.Task.SourceEventIds[0],
+                "The original task must retain only its own evidence.");
+            TestAssert.Equal(
+                secondPerson,
+                queue.Find(second.Id)!.Task.IndividualId,
+                "The second task must retain its owner.");
+            TestAssert.Equal(
+                secondEvent,
+                queue.Find(second.Id)!.Task.SourceEventIds[0],
+                "The second task must retain only its own evidence.");
+        }
+
         public static void PersistentReflectionQueueFairTieBreakRotatesIndividuals()
         {
             var firstPerson = IndividualId.New();
