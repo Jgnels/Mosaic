@@ -203,6 +203,32 @@ namespace Dagmay.Tests
             TestAssert.Equal(ReflectionPriority.CriticalLifecycle, dequeued!.Priority, "Critical work must be selected first.");
         }
 
+        public static void QueueCoalescingKeysAreScopedToIndividual()
+        {
+            var now = new DateTimeOffset(2026, 7, 24, 11, 0, 0, TimeSpan.Zero);
+            var queue = new ReflectionQueue(2);
+            var first = CreateTask(
+                IndividualId.New(),
+                ReflectionPriority.Background,
+                now,
+                "shared-caller-key");
+            var second = CreateTask(
+                IndividualId.New(),
+                ReflectionPriority.Background,
+                now,
+                "shared-caller-key");
+
+            TestAssert.Equal(
+                QueueEnqueueStatus.Enqueued,
+                queue.Enqueue(first).Status,
+                "The first individual's task must enqueue.");
+            TestAssert.Equal(
+                QueueEnqueueStatus.Enqueued,
+                queue.Enqueue(second).Status,
+                "Another individual's task must not be dropped as a duplicate solely because its caller key matches.");
+            TestAssert.Equal(2, queue.Count, "Owner-scoped coalescing keys must preserve both individuals' work.");
+        }
+
         public static void SelectiveEnrollmentCannotCreateHalfIndividuals()
         {
             var entity = new EnvironmentEntityReference("rimworld", "pawn:world-1:42", "Mira");

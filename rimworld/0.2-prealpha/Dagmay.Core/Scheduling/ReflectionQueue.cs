@@ -136,7 +136,7 @@ namespace Dagmay.Core.Scheduling
 
             lock (_gate)
             {
-                if (_ids.Contains(task.Id) || _coalescingKeys.Contains(task.CoalescingKey))
+                if (_ids.Contains(task.Id) || _coalescingKeys.Contains(CoalescingIdentity(task)))
                 {
                     return new QueueEnqueueResult(QueueEnqueueStatus.Duplicate, null);
                 }
@@ -216,7 +216,7 @@ namespace Dagmay.Core.Scheduling
         {
             _tasks.Add(task);
             _ids.Add(task.Id);
-            _coalescingKeys.Add(task.CoalescingKey);
+            _coalescingKeys.Add(CoalescingIdentity(task));
         }
 
         private void RemoveAt(int index)
@@ -224,7 +224,12 @@ namespace Dagmay.Core.Scheduling
             var task = _tasks[index];
             _tasks.RemoveAt(index);
             _ids.Remove(task.Id);
-            _coalescingKeys.Remove(task.CoalescingKey);
+            _coalescingKeys.Remove(CoalescingIdentity(task));
+        }
+
+        private static string CoalescingIdentity(ReflectionTask task)
+        {
+            return task.IndividualId + "|" + task.CoalescingKey;
         }
     }
 }

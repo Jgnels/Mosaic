@@ -20,6 +20,7 @@ namespace Dagmay.Tests
                 (nameof(CoreContractTests.ValidatedMutationIsAtomicAndReplaySafe), Sync(CoreContractTests.ValidatedMutationIsAtomicAndReplaySafe)),
                 (nameof(CoreContractTests.ExcessiveOrUngroundedMutationDoesNotChangeState), Sync(CoreContractTests.ExcessiveOrUngroundedMutationDoesNotChangeState)),
                 (nameof(CoreContractTests.QueueIsBoundedAndProtectsCriticalWork), Sync(CoreContractTests.QueueIsBoundedAndProtectsCriticalWork)),
+                (nameof(CoreContractTests.QueueCoalescingKeysAreScopedToIndividual), Sync(CoreContractTests.QueueCoalescingKeysAreScopedToIndividual)),
                 (nameof(CoreContractTests.SelectiveEnrollmentCannotCreateHalfIndividuals), Sync(CoreContractTests.SelectiveEnrollmentCannotCreateHalfIndividuals)),
                 (nameof(CoreContractTests.InteractionOriginPreventsOperatorImpersonation), Sync(CoreContractTests.InteractionOriginPreventsOperatorImpersonation)),
                 (nameof(CoreContractTests.RelationshipsAreAsymmetricByConstruction), Sync(CoreContractTests.RelationshipsAreAsymmetricByConstruction)),
