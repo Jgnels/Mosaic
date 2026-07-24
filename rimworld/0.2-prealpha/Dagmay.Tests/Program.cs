@@ -37,6 +37,7 @@ namespace Dagmay.Tests
                 (nameof(ExperienceContractTests.ExperienceJournalRoundTripPreservesProvenance), Sync(ExperienceContractTests.ExperienceJournalRoundTripPreservesProvenance)),
                 (nameof(ExperienceContractTests.ExperienceJournalRejectsTampering), Sync(ExperienceContractTests.ExperienceJournalRejectsTampering)),
                 (nameof(ExperienceContractTests.OrdinaryDisclosureExcludesPrivateMemoriesAndDescribesStateCoarsely), Sync(ExperienceContractTests.OrdinaryDisclosureExcludesPrivateMemoriesAndDescribesStateCoarsely)),
+                (nameof(ExperienceContractTests.OrdinaryDisclosureEnforcesPrivacyAndAccessibilityBoundary), Sync(ExperienceContractTests.OrdinaryDisclosureEnforcesPrivacyAndAccessibilityBoundary)),
                 (nameof(ExperienceContractTests.SocialExperienceLinksOtherIndividualAndRemainsRelationshipSensitive), Sync(ExperienceContractTests.SocialExperienceLinksOtherIndividualAndRemainsRelationshipSensitive)),
                 (nameof(ExperienceContractTests.MemoryIndexRetrievesRecentAndSignificantWithoutTranscriptSemantics), Sync(ExperienceContractTests.MemoryIndexRetrievesRecentAndSignificantWithoutTranscriptSemantics)),
                 (nameof(ExperienceContractTests.MemoryIndexTieBreaksAreStableAcrossRebuildOrder), Sync(ExperienceContractTests.MemoryIndexTieBreaksAreStableAcrossRebuildOrder)),

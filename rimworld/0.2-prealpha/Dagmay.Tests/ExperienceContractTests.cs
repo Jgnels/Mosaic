@@ -118,6 +118,49 @@ namespace Dagmay.Tests
             TestAssert.False(summary.Contains("0.6"), "Ordinary state must not expose raw diagnostic affect values.");
         }
 
+        public static void OrdinaryDisclosureEnforcesPrivacyAndAccessibilityBoundary()
+        {
+            var owner = CreateIndividual("Vale");
+            var encodedAt = new DateTimeOffset(2026, 7, 24, 9, 30, 0, TimeSpan.Zero);
+            var privateMemory = CreateMemory(
+                MemoryId.New(),
+                owner.Id,
+                encodedAt,
+                PrivacyClassification.Private,
+                1.0);
+            var relationshipSensitiveMemory = CreateMemory(
+                MemoryId.New(),
+                owner.Id,
+                encodedAt,
+                PrivacyClassification.RelationshipSensitive,
+                1.0);
+            var inaccessibleShareableMemory = CreateMemory(
+                MemoryId.New(),
+                owner.Id,
+                encodedAt,
+                PrivacyClassification.Shareable,
+                0.349);
+            var thresholdShareableMemory = CreateMemory(
+                MemoryId.New(),
+                owner.Id,
+                encodedAt,
+                PrivacyClassification.Shareable,
+                0.35);
+
+            TestAssert.False(
+                Dagmay.Core.Views.OrdinaryDisclosurePolicy.CanShowMemory(privateMemory),
+                "Private memories must remain hidden even when fully accessible.");
+            TestAssert.False(
+                Dagmay.Core.Views.OrdinaryDisclosurePolicy.CanShowMemory(relationshipSensitiveMemory),
+                "Relationship-sensitive memories must remain hidden from the ordinary view.");
+            TestAssert.False(
+                Dagmay.Core.Views.OrdinaryDisclosurePolicy.CanShowMemory(inaccessibleShareableMemory),
+                "Shareable memories below the accessibility boundary must remain hidden.");
+            TestAssert.True(
+                Dagmay.Core.Views.OrdinaryDisclosurePolicy.CanShowMemory(thresholdShareableMemory),
+                "A shareable memory at the documented accessibility boundary may be disclosed.");
+        }
+
         public static void SocialExperienceLinksOtherIndividualAndRemainsRelationshipSensitive()
         {
             var owner = CreateIndividual("Mira");
@@ -225,7 +268,9 @@ namespace Dagmay.Tests
         private static SubjectiveMemory CreateMemory(
             MemoryId id,
             IndividualId ownerId,
-            DateTimeOffset encodedAtUtc)
+            DateTimeOffset encodedAtUtc,
+            PrivacyClassification privacy = PrivacyClassification.Private,
+            double accessibility = 1.0)
         {
             return new SubjectiveMemory(
                 id,
@@ -239,9 +284,9 @@ namespace Dagmay.Tests
                 0.5,
                 0.5,
                 1.0,
-                1.0,
+                accessibility,
                 MemoryTier.Recent,
-                PrivacyClassification.Private,
+                privacy,
                 Array.Empty<IndividualId>());
         }
 
