@@ -38,6 +38,7 @@ namespace Dagmay.Tests
                 (nameof(ExperienceContractTests.OrdinaryDisclosureExcludesPrivateMemoriesAndDescribesStateCoarsely), Sync(ExperienceContractTests.OrdinaryDisclosureExcludesPrivateMemoriesAndDescribesStateCoarsely)),
                 (nameof(ExperienceContractTests.SocialExperienceLinksOtherIndividualAndRemainsRelationshipSensitive), Sync(ExperienceContractTests.SocialExperienceLinksOtherIndividualAndRemainsRelationshipSensitive)),
                 (nameof(ExperienceContractTests.MemoryIndexRetrievesRecentAndSignificantWithoutTranscriptSemantics), Sync(ExperienceContractTests.MemoryIndexRetrievesRecentAndSignificantWithoutTranscriptSemantics)),
+                (nameof(ExperienceContractTests.MemoryIndexTieBreaksAreStableAcrossRebuildOrder), Sync(ExperienceContractTests.MemoryIndexTieBreaksAreStableAcrossRebuildOrder)),
                 (nameof(SocialPathCertificationContractTests.CertificationRequiresExactCounterpartProvenanceAndOneOwnerMemory), Sync(SocialPathCertificationContractTests.CertificationRequiresExactCounterpartProvenanceAndOneOwnerMemory)),
                 (nameof(SocialPathCertificationContractTests.CertificationRequiresOwnerEvidencePostLoadAndHealthyStores), Sync(SocialPathCertificationContractTests.CertificationRequiresOwnerEvidencePostLoadAndHealthyStores)),
                 (nameof(ReflectionContractTests.ReflectionProposalRoundTripIsStrict), Sync(ReflectionContractTests.ReflectionProposalRoundTripIsStrict)),

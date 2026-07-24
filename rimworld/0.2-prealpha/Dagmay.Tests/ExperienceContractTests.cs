@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Dagmay.Core.Affect;
 using Dagmay.Core.Contracts;
 using Dagmay.Core.Identity;
 using Dagmay.Core.Memory;
@@ -169,6 +170,79 @@ namespace Dagmay.Tests
             TestAssert.Equal(injury.Memory.Id, index.Recent(individual.Id, 1)[0].Id, "Recent retrieval must use encoding time.");
             TestAssert.Equal(injury.Memory.Id, index.MostSignificant(individual.Id, 1)[0].Id, "Significance retrieval must use bounded importance.");
             TestAssert.Equal(2, index.Count, "Index stores selected memories, not a complete activity transcript.");
+        }
+
+        public static void MemoryIndexTieBreaksAreStableAcrossRebuildOrder()
+        {
+            var individual = CreateIndividual("Niko");
+            var encodedAt = new DateTimeOffset(2026, 7, 24, 9, 0, 0, TimeSpan.Zero);
+            var first = CreateMemory(
+                new MemoryId(Guid.Parse("00000000-0000-0000-0000-000000000001")),
+                individual.Id,
+                encodedAt);
+            var second = CreateMemory(
+                new MemoryId(Guid.Parse("00000000-0000-0000-0000-000000000002")),
+                individual.Id,
+                encodedAt);
+            var third = CreateMemory(
+                new MemoryId(Guid.Parse("00000000-0000-0000-0000-000000000003")),
+                individual.Id,
+                encodedAt);
+
+            var forward = new MemoryIndex();
+            forward.Add(first);
+            forward.Add(second);
+            forward.Add(third);
+
+            var reverse = new MemoryIndex();
+            reverse.Add(third);
+            reverse.Add(second);
+            reverse.Add(first);
+
+            var forwardRecent = forward.Recent(individual.Id, 2);
+            var reverseRecent = reverse.Recent(individual.Id, 2);
+            TestAssert.Equal(
+                forwardRecent[0].Id,
+                reverseRecent[0].Id,
+                "Equal-time recent retrieval must not depend on index rebuild order.");
+            TestAssert.Equal(
+                forwardRecent[1].Id,
+                reverseRecent[1].Id,
+                "The bounded recent selection must be stable across rebuild order.");
+
+            var forwardSignificant = forward.MostSignificant(individual.Id, 2);
+            var reverseSignificant = reverse.MostSignificant(individual.Id, 2);
+            TestAssert.Equal(
+                forwardSignificant[0].Id,
+                reverseSignificant[0].Id,
+                "Equal-score significant retrieval must not depend on index rebuild order.");
+            TestAssert.Equal(
+                forwardSignificant[1].Id,
+                reverseSignificant[1].Id,
+                "The bounded significant selection must be stable across rebuild order.");
+        }
+
+        private static SubjectiveMemory CreateMemory(
+            MemoryId id,
+            IndividualId ownerId,
+            DateTimeOffset encodedAtUtc)
+        {
+            return new SubjectiveMemory(
+                id,
+                ownerId,
+                new[] { PerceptionId.New() },
+                encodedAtUtc.AddMinutes(-1),
+                encodedAtUtc,
+                "A stable retrieval fixture.",
+                "The fixture has equal retrieval scores.",
+                AffectVector.Neutral,
+                0.5,
+                0.5,
+                1.0,
+                1.0,
+                MemoryTier.Recent,
+                PrivacyClassification.Private,
+                Array.Empty<IndividualId>());
         }
 
         private static IndividualState CreateIndividual(string name)

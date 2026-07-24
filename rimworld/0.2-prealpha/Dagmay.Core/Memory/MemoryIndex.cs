@@ -26,6 +26,7 @@ namespace Dagmay.Core.Memory
             return ReadOnly(_memories
                 .Where(memory => memory.OwnerId == ownerId)
                 .OrderByDescending(memory => memory.EncodedAtUtc)
+                .ThenBy(memory => memory.Id.Value)
                 .Take(maximum));
         }
 
@@ -37,6 +38,7 @@ namespace Dagmay.Core.Memory
                 .OrderByDescending(memory => memory.Importance)
                 .ThenByDescending(memory => memory.EmotionalWeight)
                 .ThenByDescending(memory => memory.EncodedAtUtc)
+                .ThenBy(memory => memory.Id.Value)
                 .Take(maximum));
         }
 
