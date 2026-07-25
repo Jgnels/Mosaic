@@ -146,15 +146,15 @@ mutations.
 
 ## Final clean-source verification
 
-Commit `6342ebb5273c39d21d3d4fd70b1c1c84080d41f8` was exported with
-`git archive` into a fresh temporary directory. The archive contained all 113
+Commit `f68aae713b12b82a7044c2c49cb0865584187f08` was exported with
+`git archive` into a fresh temporary directory. The archive contained all 114
 tracked C# files and no populated-checkout extras. From that source-only
-representation, static verification, 107 contract tests, seven integration
+representation, static verification, 109 contract tests, seven integration
 scenarios with 631 assertions, all Release builds, package generation, and
 non-installing package preflight passed. The source archive SHA-256 was
-`1e524825552020fbf94cc281468849dd1ebeb9f84c52feeb8d12601d4a23dc82`;
+`1d3693805464ecee1c5725406629353941b3b55df507816d3f7300069d033849`;
 the clean-source runtime package SHA-256 was
-`a8be834dda89352c96801b18554831f0718f520e04b74c19558d0544ceecae0f`.
+`361dd46f7b01cb49d2e8df34551267f5c64acfac46c1ec5c9e7d3c9da0a3e3ef`.
 
 No provider ran, RimWorld was not launched, no package was installed, and no
 live or Gate 3 evidence state was touched.

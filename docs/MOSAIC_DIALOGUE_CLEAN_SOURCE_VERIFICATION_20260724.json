@@ -3,18 +3,18 @@
   "verifiedDate": "2026-07-24",
   "branch": "codex/v0.2-dialogue-cleanroom-overnight-20260724",
   "baseCommit": "a8fa3ae9634afa98cb1c56870475e5874767e757",
-  "implementationCommit": "6342ebb5273c39d21d3d4fd70b1c1c84080d41f8",
+  "implementationCommit": "f68aae713b12b82a7044c2c49cb0865584187f08",
   "sourceRepresentation": "git archive of implementationCommit; no untracked or ignored files copied",
-  "sourceArchiveSha256": "1e524825552020fbf94cc281468849dd1ebeb9f84c52feeb8d12601d4a23dc82",
-  "trackedCSharpFiles": 113,
-  "archivedCSharpFiles": 113,
+  "sourceArchiveSha256": "1d3693805464ecee1c5725406629353941b3b55df507816d3f7300069d033849",
+  "trackedCSharpFiles": 114,
+  "archivedCSharpFiles": 114,
   "staticVerification": {
     "status": "PASS",
-    "checkedCSharpFiles": 113
+    "checkedCSharpFiles": 114
   },
   "contractTests": {
     "status": "PASS",
-    "passed": 107,
+    "passed": 109,
     "failed": 0
   },
   "integrationHarness": {
@@ -32,7 +32,7 @@
   },
   "nonInstallingPackage": {
     "status": "PASS",
-    "sha256": "a8be834dda89352c96801b18554831f0718f520e04b74c19558d0544ceecae0f",
+    "sha256": "361dd46f7b01cb49d2e8df34551267f5c64acfac46c1ec5c9e7d3c9da0a3e3ef",
     "entries": 6,
     "privacyAndPathLeakPreflight": "PASS",
     "rimWorld16ReferencesPresent": true
