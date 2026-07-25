@@ -543,6 +543,193 @@ namespace Dagmay.Tests
                 "Invalid UTF-8 input must be rejected before parsing.");
         }
 
+        public static void ConversationStateMachineCompletesBoundedTurns()
+        {
+            var speaker = IndividualId.New();
+            var recipient = IndividualId.New();
+            var conversation = ConversationId.New();
+            var machine = new ConversationStateMachine(
+                conversation,
+                new[] { speaker, recipient },
+                2,
+                0);
+
+            for (var turn = 0; turn < 2; turn++)
+            {
+                var start = 1 + (turn * 10);
+                var request = CreateRequest(
+                    speaker,
+                    recipient,
+                    EventId.New(),
+                    conversation,
+                    DialogueRequestId.New(),
+                    "turn-" + turn,
+                    DialoguePriority.Normal,
+                    start,
+                    start + 100);
+                machine.QueueTurn(request, start);
+                machine.Apply(ConversationTransition.Dispatch, start + 1);
+                machine.Apply(ConversationTransition.ReceiveProposal, start + 2);
+                machine.Apply(ConversationTransition.AcceptValidation, start + 3);
+                machine.Apply(ConversationTransition.RecordDisplay, start + 4);
+                machine.Apply(ConversationTransition.PrepareAdmission, start + 5);
+                machine.Apply(ConversationTransition.ConfirmAdmission, start + 6);
+            }
+
+            TestAssert.Equal(2, machine.AdmittedTurnCount, "Each admitted turn must be counted exactly once.");
+            TestAssert.Equal(ConversationState.Admitted, machine.State, "The final bounded turn should be admitted.");
+            TestAssert.True(machine.IsTerminal, "Reaching the hard turn cap must close the conversation.");
+            TestAssert.Throws<InvalidOperationException>(
+                () => machine.Apply(ConversationTransition.Cancel, machine.LastTransitionTick),
+                "A terminal capped conversation must never reopen.");
+        }
+
+        public static void ConversationStateMachineRejectsInvalidTransitionsAndReplay()
+        {
+            var speaker = IndividualId.New();
+            var recipient = IndividualId.New();
+            var conversation = ConversationId.New();
+            var request = CreateRequest(
+                speaker,
+                recipient,
+                EventId.New(),
+                conversation,
+                DialogueRequestId.New(),
+                "state-machine",
+                DialoguePriority.Normal,
+                1,
+                100);
+            var machine = new ConversationStateMachine(
+                conversation,
+                new[] { speaker, recipient },
+                2,
+                0);
+
+            TestAssert.Throws<InvalidOperationException>(
+                () => machine.Apply(ConversationTransition.Dispatch, 1),
+                "A transition may not skip the queue state.");
+            machine.QueueTurn(request, 1);
+            machine.Apply(ConversationTransition.Dispatch, 2);
+            TestAssert.Throws<ArgumentOutOfRangeException>(
+                () => machine.Apply(ConversationTransition.ReceiveProposal, 1),
+                "Conversation ticks must never move backwards.");
+            machine.Apply(ConversationTransition.ReceiveProposal, 3);
+            machine.Apply(ConversationTransition.AcceptValidation, 4);
+            machine.Apply(ConversationTransition.RecordDisplay, 5);
+            machine.Apply(ConversationTransition.PrepareAdmission, 6);
+            machine.Apply(ConversationTransition.ConfirmAdmission, 7);
+
+            TestAssert.Throws<ArgumentException>(
+                () => machine.QueueTurn(request, 8),
+                "A request ID must identify only one expected turn.");
+
+            var outsider = IndividualId.New();
+            var foreignRequest = CreateRequest(
+                speaker,
+                outsider,
+                EventId.New(),
+                conversation,
+                DialogueRequestId.New(),
+                "foreign-participant",
+                DialoguePriority.Normal,
+                8,
+                100);
+            TestAssert.Throws<ArgumentException>(
+                () => machine.QueueTurn(foreignRequest, 8),
+                "Conversation participants must remain stable across turns.");
+        }
+
+        public static void ConversationStateMachineRepresentsFailureTerminals()
+        {
+            var speaker = IndividualId.New();
+            var recipient = IndividualId.New();
+
+            var provider = CreateMachineAt(
+                ConversationState.Dispatched,
+                speaker,
+                recipient,
+                out _);
+            provider.Apply(ConversationTransition.ProviderFailure, 10);
+            TestAssert.Equal(ConversationTerminationReason.ProviderFailure, provider.TerminationReason,
+                "Provider failures require a distinct terminal reason.");
+
+            var validation = CreateMachineAt(
+                ConversationState.ProposalReceived,
+                speaker,
+                recipient,
+                out _);
+            validation.Apply(ConversationTransition.ValidationRejection, 10);
+            TestAssert.Equal(ConversationTerminationReason.ValidationRejection, validation.TerminationReason,
+                "Validation rejection requires a distinct terminal reason.");
+
+            var display = CreateMachineAt(
+                ConversationState.Validated,
+                speaker,
+                recipient,
+                out _);
+            display.Apply(ConversationTransition.DisplayFailure, 10);
+            TestAssert.Equal(ConversationTerminationReason.DisplayFailure, display.TerminationReason,
+                "Display failure requires a distinct terminal reason.");
+
+            var cancelled = CreateMachineAt(
+                ConversationState.Queued,
+                speaker,
+                recipient,
+                out _);
+            cancelled.Apply(ConversationTransition.Cancel, 10);
+            TestAssert.Equal(ConversationState.Cancelled, cancelled.State,
+                "Cancellation must have an explicit terminal state.");
+
+            var expired = CreateMachineAt(
+                ConversationState.Queued,
+                speaker,
+                recipient,
+                out _);
+            expired.Apply(ConversationTransition.Timeout, 10);
+            TestAssert.Equal(ConversationState.Expired, expired.State,
+                "Timeout must have an explicit terminal state.");
+
+            foreach (var terminal in new[] { provider, validation, display, cancelled, expired })
+            {
+                TestAssert.True(terminal.IsTerminal, "Failure, cancellation, and timeout states must be terminal.");
+                TestAssert.Throws<InvalidOperationException>(
+                    () => terminal.Apply(ConversationTransition.Cancel, 11),
+                    "Terminal states must never reopen.");
+            }
+        }
+
+        private static ConversationStateMachine CreateMachineAt(
+            ConversationState target,
+            IndividualId speaker,
+            IndividualId recipient,
+            out DialogueRequest request)
+        {
+            var conversation = ConversationId.New();
+            request = CreateRequest(
+                speaker,
+                recipient,
+                EventId.New(),
+                conversation,
+                DialogueRequestId.New(),
+                "failure-state",
+                DialoguePriority.Normal,
+                1,
+                100);
+            var machine = new ConversationStateMachine(
+                conversation,
+                new[] { speaker, recipient },
+                2,
+                0);
+            machine.QueueTurn(request, 1);
+            if (target >= ConversationState.Dispatched)
+                machine.Apply(ConversationTransition.Dispatch, 2);
+            if (target >= ConversationState.ProposalReceived)
+                machine.Apply(ConversationTransition.ReceiveProposal, 3);
+            if (target >= ConversationState.Validated)
+                machine.Apply(ConversationTransition.AcceptValidation, 4);
+            return machine;
+        }
+
         private static DialogueRequest CreateRequest(
             IndividualId speaker,
             IndividualId recipient,

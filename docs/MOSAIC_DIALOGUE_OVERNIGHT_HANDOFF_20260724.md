@@ -89,4 +89,23 @@ output. Focused round-trip and negative fixtures pass.
 - Package SHA-256:
   `6d2911fa74424680a02d75deaba3b9b3433a78b0a75fa7fc4148e0cf0170781d`.
 
-Backlog priority 2 is next.
+### Backlog priority 2 — deterministic conversation state machine
+
+Added a Core-only bounded lifecycle with explicit transitions for queue,
+dispatch, proposal receipt, validation, display, admission preparation, and
+admission. It enforces monotonic ticks, stable participants and conversation
+identity, one request ID per expected turn, and a configurable 1–32 hard turn
+cap. Cancellation, timeout, provider failure, validation rejection, and
+display failure are distinct terminal outcomes, and terminal states cannot
+reopen. Persistence is deliberately deferred until the checkpoint-safe
+admission audit; this state machine is not live-wired and owns no canonical
+character or gameplay state.
+
+- Static verification: PASS, 112 C# files.
+- Contract tests: PASS, 107/107.
+- Integration harness: PASS, 6/6 scenarios.
+- Core, Providers, and RimWorld adapter Release builds: PASS, zero warnings.
+- Package SHA-256:
+  `6029b4c67c69043c1468ec77e17de1bc579bf23528047d44cf37fda568a7359d`.
+
+Backlog priority 3 is next.
