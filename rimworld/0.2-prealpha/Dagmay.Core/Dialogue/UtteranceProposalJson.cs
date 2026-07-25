@@ -14,6 +14,17 @@ namespace Dagmay.Core.Dialogue
     /// </summary>
     public static class UtteranceProposalJson
     {
+        public const string ProviderCompatibleSchema =
+            "{\"type\":\"object\",\"additionalProperties\":false,"
+            + "\"required\":[\"request_id\",\"conversation_id\",\"speaker_id\",\"recipient_id\",\"text\",\"evidence_ids\"],"
+            + "\"properties\":{"
+            + "\"request_id\":{\"type\":\"string\"},"
+            + "\"conversation_id\":{\"type\":\"string\"},"
+            + "\"speaker_id\":{\"type\":\"string\"},"
+            + "\"recipient_id\":{\"type\":\"string\"},"
+            + "\"text\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":4000},"
+            + "\"evidence_ids\":{\"type\":\"array\",\"minItems\":1,\"maxItems\":32,\"uniqueItems\":true,\"items\":{\"type\":\"string\"}}}}";
+
         public const int MaximumInputCharacters = 16_000;
         public const int MaximumInputBytes = 32_000;
         private const int MaximumTextCharacters = 4_000;

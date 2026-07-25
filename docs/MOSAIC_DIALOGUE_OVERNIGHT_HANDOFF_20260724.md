@@ -108,4 +108,24 @@ character or gameplay state.
 - Package SHA-256:
   `6029b4c67c69043c1468ec77e17de1bc579bf23528047d44cf37fda568a7359d`.
 
-Backlog priority 3 is next.
+### Backlog priority 3 — fake-provider end-to-end offline scenario
+
+Added a seventh default integration scenario covering request creation, context
+privacy filtering, prompt planning, deterministic fake-provider response,
+strict decoding, validation, display receipt, factual admission, ledger replay
+blocking, and witness-scoped history. It runs twice over fixed inputs and
+produces the same factual-event fingerprint. Foreign speaker, ungrounded
+evidence, duplicate utterance, expired request, and unwitnessed-history paths
+fail closed. No perception, subjective memory, relationship/mood change,
+provider network call, or gameplay action occurs.
+
+- Static verification: PASS, 113 C# files.
+- Contract tests: PASS, 107/107.
+- Integration harness: PASS, 7/7 scenarios; the dialogue scenario has 28
+  assertions.
+- Core, Providers, and RimWorld adapter Release builds: PASS, zero warnings.
+- Package SHA-256:
+  `fd397a700c979cbd32757983c4df68808a93fa7cb390579076b56637207e57e2`.
+
+Backlog priority 4 requires the checkpoint-safe admission audit. No live
+coordinator has been added.
