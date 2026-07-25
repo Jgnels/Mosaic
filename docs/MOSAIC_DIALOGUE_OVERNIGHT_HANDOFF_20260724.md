@@ -150,8 +150,9 @@ Added a machine-readable direct-adaptation manifest, a reviewed package notice,
 an exact seven-entry package allowlist, and a reusable package firewall.
 The standard build now rejects restricted research, undeclared DLLs/assets,
 runtime logs, private saves, path traversal, mismatched notices, duplicate
-entries, and machine-specific build paths. Its generated fixture suite accepts
-one declared package and rejects seven adversarial packages. The current
+entries, and machine-specific build paths from either Windows or Unix build
+hosts. Its generated fixture suite accepts one declared package and rejects
+nine adversarial packages. The current
 manifest contains zero direct adaptations and the package contains no
 third-party source, binary, or asset.
 
@@ -171,18 +172,18 @@ owner product decisions and were not guessed before Gate 3.
 
 ## Final clean-source verification
 
-Commit `cdaa240aad007a6363b8b56391151baed26527c6` was exported with
+Commit `525966c51ad39dc4a10997ccbe3141729d506c49` was exported with
 `git archive` into a fresh temporary directory. The archive contained all 114
 v0.2 project C# files (188 C# files repository-wide) and no
 populated-checkout extras. From that source-only
 representation, static verification, 109 contract tests, seven integration
 scenarios with 631 assertions, all Release builds, package generation, and
 non-installing package preflight passed. The build also accepted one valid
-package fixture and rejected all seven adversarial fixtures. The source archive
+package fixture and rejected all nine adversarial fixtures. The source archive
 SHA-256 was
-`594f43955744b2d4ae6d812956900789bc7e6bb24a19f1e168fa0e3e01e4f6d8`;
+`332f80877ff31591fdeafcb86c86a3f3a86bd248e602b578e1120e1e52c9b9f5`;
 the clean-source runtime package SHA-256 was
-`cf6ff11048645c8348d9ebec7ee8c99761642b80823150f981d1ac8aebc4e5cf`.
+`e33e89d8a0f93827856afb173df0137a8eacbc80743b1a2ca4fa1acc576c22bf`.
 
 No provider ran, RimWorld was not launched, no package was installed, and no
 live or Gate 3 evidence state was touched.
