@@ -130,6 +130,20 @@ provider network call, or gameplay action occurs.
 Backlog priority 4 requires the checkpoint-safe admission audit. No live
 coordinator has been added.
 
+### Backlog priority 4 — checkpoint-aligned admission decision
+
+The owner selected checkpoint-aligned durable admission. Failure tests prove
+that the current event ledger and durable journal cannot be safely
+best-effort dual-written: either ordering can leave one-sided state, and
+restart replay can duplicate a journal record even though the event ledger
+rejects the deterministic EventId. A pure readiness policy now rejects stale
+checkpoints, read-only storage, invalid journals, and already-admitted events.
+
+No coordinator is live-wired. Immediate provisional in-session appraisal is
+reserved as a future bounded design for believable reactions; lasting
+relationship or mood effects remain separately validated checkpoint-aligned
+mutations.
+
 ## Final clean-source verification
 
 Commit `6342ebb5273c39d21d3d4fd70b1c1c84080d41f8` was exported with

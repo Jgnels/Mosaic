@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Dagmay.Core.Abstractions;
 using Dagmay.Core.Contracts;
@@ -415,6 +416,106 @@ namespace Dagmay.Tests
                 "A bounded projection should mark that a long canonical line was truncated for context.");
         }
 
+        public static void CheckpointAdmissionPolicyFailsClosedBeforeCommit()
+        {
+            var fixture = CreateFixture(10, "checkpoint aligned");
+            var plan = fixture.CreatePlan(
+                new DialogueEventAdmissionService("rimworld"),
+                12);
+            var policy = new CheckpointAlignedDialogueAdmissionPolicy();
+            var admitted = new HashSet<EventId>();
+
+            TestAssert.Equal(
+                CheckpointAdmissionDisposition.StaleCheckpoint,
+                policy.Evaluate(plan, 4, 3, true, ExperienceJournalLoadStatus.Loaded, admitted),
+                "A stale save checkpoint must block dialogue admission.");
+            TestAssert.Equal(
+                CheckpointAdmissionDisposition.ReadOnlyStorage,
+                policy.Evaluate(plan, 4, 4, false, ExperienceJournalLoadStatus.Loaded, admitted),
+                "Read-only storage must block dialogue admission.");
+            TestAssert.Equal(
+                CheckpointAdmissionDisposition.InvalidJournal,
+                policy.Evaluate(plan, 4, 4, true, ExperienceJournalLoadStatus.Invalid, admitted),
+                "A malformed existing journal must block dialogue admission.");
+
+            admitted.Add(plan.FactualEvent.Id);
+            TestAssert.Equal(
+                CheckpointAdmissionDisposition.AlreadyAdmitted,
+                policy.Evaluate(plan, 4, 4, true, ExperienceJournalLoadStatus.Loaded, admitted),
+                "Recovery must recognize an already admitted deterministic EventId.");
+            admitted.Clear();
+            TestAssert.Equal(
+                CheckpointAdmissionDisposition.Ready,
+                policy.Evaluate(plan, 4, 4, true, ExperienceJournalLoadStatus.Loaded, admitted),
+                "Only an exact writable healthy checkpoint may proceed to a future atomic coordinator.");
+        }
+
+        public static void CurrentAdmissionSurfacesCannotProvideAtomicDualWrite()
+        {
+            var fixture = CreateFixture(10, "dual write limiting result");
+            var plan = fixture.CreatePlan(
+                new DialogueEventAdmissionService("rimworld"),
+                12);
+            var directory = Path.Combine(
+                Path.GetTempPath(),
+                "mosaic-dialogue-atomicity-" + Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(directory);
+            try
+            {
+                var journal = new DurableExperienceJournal();
+                var journalFirstPath = Path.Combine(directory, "journal-first.journal");
+                journal.Append(journalFirstPath, plan.JournalRecord, 0, string.Empty);
+
+                var failingLedger = new ThrowingEventLedger();
+                TestAssert.Throws<IOException>(
+                    () => failingLedger.Append(plan.FactualEvent),
+                    "A ledger failure can occur after the journal has already flushed.");
+                var journalFirst = journal.Load(journalFirstPath);
+                TestAssert.Equal(1, journalFirst.Records.Count,
+                    "Journal-first failure leaves a durable one-sided admission.");
+
+                var ledgerFirst = new InMemoryEventLedger();
+                TestAssert.Equal(
+                    EventAppendStatus.Appended,
+                    ledgerFirst.Append(plan.FactualEvent).Status,
+                    "Ledger-first ordering can commit the factual event.");
+                TestAssert.Throws<ArgumentOutOfRangeException>(
+                    () => journal.Append(
+                        Path.Combine(directory, "ledger-first.journal"),
+                        plan.JournalRecord,
+                        DurableExperienceJournal.MaximumRecordCount,
+                        string.Empty),
+                    "A journal failure can occur after the event ledger has changed.");
+                TestAssert.Equal(1, ledgerFirst.Snapshot().Count,
+                    "Ledger-first failure also leaves a one-sided admission.");
+
+                var restarted = journal.Load(journalFirstPath);
+                journal.Append(
+                    journalFirstPath,
+                    plan.JournalRecord,
+                    restarted.Records.Count,
+                    restarted.LastHash);
+                var replayedJournal = journal.Load(journalFirstPath);
+                TestAssert.Equal(2, replayedJournal.Records.Count,
+                    "Restart replay can duplicate the same factual event in the append-only journal.");
+                TestAssert.Equal(
+                    replayedJournal.Records[0].FactualEvent.Id,
+                    replayedJournal.Records[1].FactualEvent.Id,
+                    "The journal has no admission-level EventId deduplication.");
+
+                TestAssert.Equal(
+                    EventAppendStatus.DuplicateEventId,
+                    ledgerFirst.Append(plan.FactualEvent).Status,
+                    "The event ledger independently prevents a second canonical event.");
+                TestAssert.Equal(1, ledgerFirst.Snapshot().Count,
+                    "Recovery must never create two canonical dialogue events.");
+            }
+            finally
+            {
+                Directory.Delete(directory, true);
+            }
+        }
+
         private static Fixture CreateFixture(
             long generatedAtTick,
             string text,
@@ -551,6 +652,21 @@ namespace Dagmay.Tests
                 var result = service.Prepare(Request, CreateReceipt(displayedAtTick, audience));
                 TestAssert.True(result.IsPrepared, "The test fixture should prepare for admission.");
                 return result.Plan!;
+            }
+        }
+
+        private sealed class ThrowingEventLedger : IEventLedger
+        {
+            public EventAppendResult Append(EnvironmentEvent value)
+            {
+                throw new IOException("Injected event-ledger failure.");
+            }
+
+            public bool Contains(EventId id) => false;
+
+            public IReadOnlyList<EventLedgerEntry> Snapshot()
+            {
+                return Array.Empty<EventLedgerEntry>();
             }
         }
     }

@@ -102,6 +102,8 @@ namespace Dagmay.Tests
                 (nameof(DialogueEventAndHistoryContractTests.HistoryContextUsesCanonicalEventsWithoutOwningMemory), Sync(DialogueEventAndHistoryContractTests.HistoryContextUsesCanonicalEventsWithoutOwningMemory)),
                 (nameof(DialogueEventAndHistoryContractTests.HistoryContextDoesNotLeakToUnwitnessedRecipient), Sync(DialogueEventAndHistoryContractTests.HistoryContextDoesNotLeakToUnwitnessedRecipient)),
                 (nameof(DialogueEventAndHistoryContractTests.HistoryContextBoundsLongSpeechWithoutChangingCanonicalEvent), Sync(DialogueEventAndHistoryContractTests.HistoryContextBoundsLongSpeechWithoutChangingCanonicalEvent)),
+                (nameof(DialogueEventAndHistoryContractTests.CheckpointAdmissionPolicyFailsClosedBeforeCommit), Sync(DialogueEventAndHistoryContractTests.CheckpointAdmissionPolicyFailsClosedBeforeCommit)),
+                (nameof(DialogueEventAndHistoryContractTests.CurrentAdmissionSurfacesCannotProvideAtomicDualWrite), Sync(DialogueEventAndHistoryContractTests.CurrentAdmissionSurfacesCannotProvideAtomicDualWrite)),
                 (nameof(ExternalIntegrationContractTests.OptionalCapabilityDoesNotRequireHardDependency), Sync(ExternalIntegrationContractTests.OptionalCapabilityDoesNotRequireHardDependency)),
                 (nameof(ExternalIntegrationContractTests.ExternalEventAdmissionRejectsUnknownSourceAndUnsupportedKind), Sync(ExternalIntegrationContractTests.ExternalEventAdmissionRejectsUnknownSourceAndUnsupportedKind)),
                 (nameof(ExternalIntegrationContractTests.ExternalEventAdmissionAcceptsPortableStoryEvent), Sync(ExternalIntegrationContractTests.ExternalEventAdmissionAcceptsPortableStoryEvent)),

@@ -158,3 +158,17 @@ Severity: DATA INTEGRITY / PRIVACY
 The emergency archive contains saves, identity and reflection stores, journals, logs, and config.
 These remain outside Git. Do not restore HourTest with the later Nelson journal; preserve each save
 and external store as a matched recovery set and validate hashes/checkpoints before any live use.
+
+## KR-022 - Dialogue admission spans two non-transactional durable surfaces
+Severity: ENGINEERING
+
+The canonical event ledger and durable experience journal do not expose a
+shared transaction, rollback, or recoverable pending-commit protocol.
+Journal-first and ledger-first failure tests both leave one-sided state, and
+journal replay after restart can duplicate an EventId that the event ledger
+independently rejects.
+
+Mitigation status: durable dialogue admission is checkpoint-aligned and the
+pure readiness policy fails closed on stale checkpoints, read-only storage,
+invalid journals, and already-admitted EventIds. Live coordination remains
+blocked until a save-atomic record or durable idempotent outbox is proven.

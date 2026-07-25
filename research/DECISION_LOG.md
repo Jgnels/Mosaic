@@ -247,3 +247,20 @@ colonist synchronization reports a real identity change. Rename, lifecycle, enro
 validated mutation paths retain their immediate persistence behavior. This keeps successive
 unchanged Save As copies compatible with one external identity checkpoint while preserving exact
 generation mismatch rejection for genuinely divergent state.
+
+## D-044 - Durable dialogue admission is checkpoint-aligned
+Status: Accepted; offline policy and limiting-result tests implemented
+
+An actually displayed, validated utterance may prepare a factual admission,
+but it may not immediately dual-write the event ledger and durable experience
+journal. Those surfaces expose no shared transaction, rollback, or recoverable
+outbox. Executable tests reproduce both one-sided failure orders and show that
+restart replay can duplicate the same factual event in the journal even while
+the event ledger rejects the duplicate EventId.
+
+A future coordinator must wait for an exact matching save checkpoint, writable
+healthy storage, and an idempotent atomic/outbox design. Provisional
+in-session appraisal may be designed separately for immediate believability,
+but lasting relationship, mood, memory, belief, goal, or identity changes
+remain validated checkpoint-aligned mutations. No live coordinator or
+automatic dialogue-to-gameplay effect is approved by this decision.
