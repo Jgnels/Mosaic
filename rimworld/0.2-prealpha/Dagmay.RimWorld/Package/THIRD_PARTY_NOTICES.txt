@@ -1,0 +1,12 @@
+Mosaic 0.2-prealpha Third-Party Notices
+=========================================
+
+This package contains no third-party source code, binaries, textures, translations,
+prompt text, definitions, or other assets.
+
+RimWorld and Unity assemblies are compile-time references only and are not distributed
+in this package.
+
+RimTalk was studied for behavioral requirements under an exact-snapshot provenance
+process. No RimTalk source code or packaged asset is incorporated in this package.
+

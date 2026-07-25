@@ -35,6 +35,9 @@ if (-not (Test-Path -LiteralPath $PackagePath -PathType Leaf)) {
 }
 $PackagePath = (Resolve-Path -LiteralPath $PackagePath).Path
 $PackageHash = (Get-FileHash -LiteralPath $PackagePath -Algorithm SHA256).Hash.ToLowerInvariant()
+$FirewallResult = & (Join-Path $PSScriptRoot "package-firewall.ps1") `
+    -PackagePath $PackagePath `
+    -SourceRoot $Root
 
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -174,6 +177,8 @@ $Report = [ordered]@{
         entries = [object[]]$Inventory
         prohibitedRuntimeArtifactsPresent = $false
         machineSpecificBuildPathsPresent = $false
+        firewallSchema = $FirewallResult.schema
+        directAdaptationEntryCount = $FirewallResult.adaptationEntryCount
     }
     assemblies = [object[]]$AssemblyInventory
     rimWorldReferences = [ordered]@{

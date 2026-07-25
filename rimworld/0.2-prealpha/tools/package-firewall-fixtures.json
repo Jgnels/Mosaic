@@ -1,0 +1,12 @@
+{
+  "schema": "mosaic.package-firewall-fixtures.v1",
+  "negativeCases": [
+    { "name": "restricted-research", "entry": "research/rimtalk/restricted.cs", "expected": "prohibited" },
+    { "name": "undeclared-dll", "entry": "Assemblies/Surprise.dll", "expected": "undeclared" },
+    { "name": "undeclared-asset", "entry": "Textures/borrowed.png", "expected": "undeclared" },
+    { "name": "runtime-log", "entry": "Player.log", "expected": "prohibited" },
+    { "name": "private-save", "entry": "Saves/Colony.rws", "expected": "prohibited" },
+    { "name": "path-traversal", "entry": "../escape.txt", "expected": "unsafe path" },
+    { "name": "machine-path", "replace": "Assemblies/Dagmay.Core.dll", "content": "C:\\Users\\Jeff\\private\\source.cs", "expected": "machine-specific" }
+  ]
+}

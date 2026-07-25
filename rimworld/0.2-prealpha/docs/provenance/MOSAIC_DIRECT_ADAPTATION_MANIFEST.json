@@ -1,0 +1,22 @@
+{
+  "schema": "mosaic.direct-adaptation-manifest.v1",
+  "policy": "Every directly adapted third-party file requires an exact repository, commit, path, Git blob SHA-1, source SHA-256, license, destination, modification plan, dependency review, and approval record.",
+  "generatedUtc": "2026-07-24T00:00:00Z",
+  "entries": [],
+  "cleanRoomImplementations": [
+    {
+      "component": "Mosaic dialogue core batches 01-04",
+      "sourceCodeCopied": false,
+      "thirdPartyRuntimeDependencyAdded": false,
+      "notes": "Implemented from Mosaic-owned contracts and behavioral requirements. No RimTalk source, prompt text, translations, definitions, binaries, or assets were incorporated."
+    }
+  ],
+  "excludedSnapshots": [
+    {
+      "repository": "https://github.com/craftingmod/RimTalk.git",
+      "commit": "9338c63df05ec8adb287a367e73a3583dd009a14",
+      "license": "CC-BY-NC-SA-4.0",
+      "policy": "No direct source, text, translation, definition, binary, or asset reuse."
+    }
+  ]
+}

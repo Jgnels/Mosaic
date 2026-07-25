@@ -88,6 +88,9 @@ try {
         Write-Warning "A working Python 3 interpreter was not found; static_verify.py was skipped."
     }
 
+    & (Join-Path $PSScriptRoot "test-package-firewall.ps1")
+    $CompletedStages.Add("package-firewall-tests") | Out-Null
+
     dotnet build Dagmay.Core/Dagmay.Core.csproj --configuration $Configuration
     if ($LASTEXITCODE -ne 0) { throw "Dagmay.Core build failed." }
     $CompletedStages.Add("core-build") | Out-Null
@@ -138,6 +141,11 @@ try {
         $TemporaryPackagePath = Join-Path $Artifacts ".Dagmay-RimWorld-$DagmayVersion-$RunStamp.tmp.zip"
         if (Test-Path $TemporaryPackagePath) { Remove-Item -LiteralPath $TemporaryPackagePath -Force }
         Compress-Archive -Path "Dagmay.RimWorld\Package\*" -DestinationPath $TemporaryPackagePath -CompressionLevel Optimal
+        & (Join-Path $PSScriptRoot "package-firewall.ps1") `
+            -PackagePath $TemporaryPackagePath `
+            -SourceRoot $Root | Out-Null
+        if ($LASTEXITCODE -ne 0) { throw "Package firewall failed." }
+        $CompletedStages.Add("package-firewall") | Out-Null
         if (Test-Path $PackagePath) { Remove-Item -LiteralPath $PackagePath -Force }
         Move-Item -LiteralPath $TemporaryPackagePath -Destination $PackagePath
 
