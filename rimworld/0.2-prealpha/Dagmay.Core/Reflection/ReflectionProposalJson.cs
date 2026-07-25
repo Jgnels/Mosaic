@@ -356,7 +356,7 @@ namespace Dagmay.Core.Reflection
             return new EventId(id);
         }
 
-        private sealed class StrictJsonParser
+        internal sealed class StrictJsonParser
         {
             private const int MaximumDepth = 32;
             private readonly string _source;

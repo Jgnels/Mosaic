@@ -85,6 +85,8 @@ namespace Dagmay.Tests
                 (nameof(DialogueContractTests.DialoguePromptKeepsWorldTextOutOfSystemInstruction), Sync(DialogueContractTests.DialoguePromptKeepsWorldTextOutOfSystemInstruction)),
                 (nameof(DialogueContractTests.UtteranceValidationRejectsForeignUngroundedAndActionOutput), Sync(DialogueContractTests.UtteranceValidationRejectsForeignUngroundedAndActionOutput)),
                 (nameof(DialogueContractTests.UtteranceValidationAcceptsGroundedBoundedSpeechAndDetectsReplay), Sync(DialogueContractTests.UtteranceValidationAcceptsGroundedBoundedSpeechAndDetectsReplay)),
+                (nameof(DialogueContractTests.UtteranceProposalCodecRoundTripsDeterministically), Sync(DialogueContractTests.UtteranceProposalCodecRoundTripsDeterministically)),
+                (nameof(DialogueContractTests.UtteranceProposalCodecRejectsStructuralAndAuthorityViolations), Sync(DialogueContractTests.UtteranceProposalCodecRejectsStructuralAndAuthorityViolations)),
                 (nameof(DialogueEventAndHistoryContractTests.DisplayReceiptRequiresActualChronologyAndAudience), Sync(DialogueEventAndHistoryContractTests.DisplayReceiptRequiresActualChronologyAndAudience)),
                 (nameof(DialogueEventAndHistoryContractTests.DialogueHistoryBoundariesRejectUndefinedEnumsAndIncompletePayloads), Sync(DialogueEventAndHistoryContractTests.DialogueHistoryBoundariesRejectUndefinedEnumsAndIncompletePayloads)),
                 (nameof(DialogueEventAndHistoryContractTests.AdmissionCreatesFactualOnlyReplayStableEvent), Sync(DialogueEventAndHistoryContractTests.AdmissionCreatesFactualOnlyReplayStableEvent)),

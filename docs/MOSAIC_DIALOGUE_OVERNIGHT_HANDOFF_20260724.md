@@ -73,4 +73,20 @@ fail closed with focused regressions.
 - Package SHA-256:
   `a86996faccaca65ec045bc970b90273456bfcba7a83d62e39f9cf2e18741f78a`.
 
-The priority backlog is next.
+### Backlog priority 1 — strict utterance proposal codec
+
+Added a provider-neutral strict JSON boundary tied to the dispatched request.
+It bounds UTF-8 bytes and decoded characters before parsing; rejects duplicate,
+missing, unknown, action-bearing, malformed, oversized, control-bearing, or
+foreign data; and deterministically encodes the six-field proposal schema.
+Runtime-owned utterance identity and generation time remain outside model
+output. Focused round-trip and negative fixtures pass.
+
+- Static verification: PASS, 111 C# files.
+- Contract tests: PASS, 104/104.
+- Integration harness: PASS, 6/6 scenarios.
+- Core, Providers, and RimWorld adapter Release builds: PASS, zero warnings.
+- Package SHA-256:
+  `6d2911fa74424680a02d75deaba3b9b3433a78b0a75fa7fc4148e0cf0170781d`.
+
+Backlog priority 2 is next.

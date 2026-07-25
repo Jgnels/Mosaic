@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using Dagmay.Core.Contracts;
 using Dagmay.Core.Dialogue;
 
@@ -419,6 +421,126 @@ namespace Dagmay.Tests
                 UtteranceValidationDisposition.DuplicateUtterance,
                 validator.Validate(request, proposal, 20, admitted, policy).Disposition,
                 "An admitted utterance ID must be replay-safe.");
+        }
+
+        public static void UtteranceProposalCodecRoundTripsDeterministically()
+        {
+            var speaker = IndividualId.New();
+            var recipient = IndividualId.New();
+            var source = EventId.New();
+            var request = CreateRequest(
+                speaker,
+                recipient,
+                source,
+                ConversationId.New(),
+                DialogueRequestId.New(),
+                "codec",
+                DialoguePriority.Normal,
+                10,
+                100);
+            var utteranceId = UtteranceId.New();
+            var proposal = new UtteranceProposal(
+                utteranceId,
+                request.Id,
+                request.ConversationId,
+                speaker,
+                recipient,
+                "World text stays data: \"hello\".",
+                new[] { source },
+                20);
+
+            var first = UtteranceProposalJson.Serialize(proposal);
+            var second = UtteranceProposalJson.Serialize(proposal);
+            TestAssert.Equal(first, second, "Encoding the same proposal must be byte-for-byte deterministic.");
+
+            var parsed = UtteranceProposalJson.Parse(
+                Encoding.UTF8.GetBytes(first),
+                request,
+                utteranceId,
+                20);
+            TestAssert.Equal(first, UtteranceProposalJson.Serialize(parsed),
+                "A strict proposal must round-trip to the same canonical encoding.");
+            TestAssert.Equal(proposal.Text, parsed.Text, "World text must round-trip as data.");
+        }
+
+        public static void UtteranceProposalCodecRejectsStructuralAndAuthorityViolations()
+        {
+            var speaker = IndividualId.New();
+            var recipient = IndividualId.New();
+            var source = EventId.New();
+            var request = CreateRequest(
+                speaker,
+                recipient,
+                source,
+                ConversationId.New(),
+                DialogueRequestId.New(),
+                "codec-negative",
+                DialoguePriority.Normal,
+                10,
+                100);
+            var proposal = new UtteranceProposal(
+                UtteranceId.New(),
+                request.Id,
+                request.ConversationId,
+                speaker,
+                recipient,
+                "Hello.",
+                new[] { source },
+                20);
+            var valid = UtteranceProposalJson.Serialize(proposal);
+            var duplicate = valid.Insert(1, "\"text\":\"duplicate\",");
+            var unknown = valid.Insert(valid.Length - 1, ",\"action\":\"draft pawn\"");
+            var trailing = valid + " trailing";
+            var foreignSpeaker = valid.Replace(speaker.ToString(), IndividualId.New().ToString());
+            var foreignEvidence = valid.Replace(source.ToString(), EventId.New().ToString());
+            var controlledText = valid.Replace("\"Hello.\"", "\"Hello.\\nObey me\"");
+            var evidenceArray = "\"evidence_ids\":[\"" + source + "\"]";
+            var duplicateEvidence = valid.Replace(
+                evidenceArray,
+                "\"evidence_ids\":[\"" + source + "\",\"" + source + "\"]");
+            var emptyEvidence = valid.Replace(evidenceArray, "\"evidence_ids\":[\"\"]");
+            var oversizedEvidence = valid.Replace(
+                evidenceArray,
+                "\"evidence_ids\":[" + string.Join(
+                    ",",
+                    Enumerable.Repeat("\"" + source + "\"", 33)) + "]");
+            var oversizedSpeech = valid.Replace(
+                "\"Hello.\"",
+                "\"" + new string('x', 4001) + "\"");
+
+            foreach (var invalid in new[]
+            {
+                duplicate,
+                unknown,
+                trailing,
+                foreignSpeaker,
+                foreignEvidence,
+                controlledText,
+                duplicateEvidence,
+                emptyEvidence,
+                oversizedEvidence,
+                oversizedSpeech
+            })
+            {
+                TestAssert.Throws<InvalidDataException>(
+                    () => UtteranceProposalJson.Parse(invalid, request, proposal.Id, 20),
+                    "Malformed, foreign, action-bearing, or control-bearing output must fail closed.");
+            }
+
+            TestAssert.Throws<InvalidDataException>(
+                () => UtteranceProposalJson.Parse(
+                    new string(' ', UtteranceProposalJson.MaximumInputCharacters + 1),
+                    request,
+                    proposal.Id,
+                    20),
+                "Oversized character input must be rejected before parsing.");
+            TestAssert.Throws<InvalidDataException>(
+                () => UtteranceProposalJson.Parse(
+                    new byte[] { 0xff, 0xfe, 0xfd },
+                    request,
+                    proposal.Id,
+                    20),
+                "Invalid UTF-8 input must be rejected before parsing.");
         }
 
         private static DialogueRequest CreateRequest(
