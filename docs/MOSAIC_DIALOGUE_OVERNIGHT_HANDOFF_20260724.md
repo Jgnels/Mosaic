@@ -55,4 +55,22 @@ constructors; those inputs now fail closed and have a focused regression test.
 - Package SHA-256:
   `0551309ee9c0c18f3dc191905c5a32e2fbbe828ebdd3423f32aa1edeaac9c35a`.
 
-Batch 02 review and integration is next.
+### Batch 02
+
+Integrated deterministic displayed-utterance admission and witness-scoped
+history projection over the existing canonical event ledger. No second memory
+store or live game wiring was added. The supplied candidate initially failed
+nullable compilation. Review also found that an undefined history view could
+fall through to Observer access, and that a missing required recipient payload
+field could be interpreted as a recipientless utterance. All three paths now
+fail closed with focused regressions.
+
+- Static verification: PASS, 110 C# files.
+- Contract tests: PASS, 102/102.
+- Integration harness: PASS, 6/6 scenarios.
+- Core, Providers, and RimWorld adapter Release builds: PASS, zero warnings.
+- Non-installing package preflight: PASS.
+- Package SHA-256:
+  `a86996faccaca65ec045bc970b90273456bfcba7a83d62e39f9cf2e18741f78a`.
+
+The priority backlog is next.
