@@ -144,17 +144,45 @@ reserved as a future bounded design for believable reactions; lasting
 relationship or mood effects remain separately validated checkpoint-aligned
 mutations.
 
+### Backlog priority 5 — provenance and package enforcement
+
+Added a machine-readable direct-adaptation manifest, a reviewed package notice,
+an exact seven-entry package allowlist, and a reusable package firewall.
+The standard build now rejects restricted research, undeclared DLLs/assets,
+runtime logs, private saves, path traversal, mismatched notices, duplicate
+entries, and machine-specific build paths. Its generated fixture suite accepts
+one declared package and rejects seven adversarial packages. The current
+manifest contains zero direct adaptations and the package contains no
+third-party source, binary, or asset.
+
+### Backlog priority 6 — presentation candidate review
+
+Reviewed seven exact MIT-snapshot RimTalk UI/diagnostic candidates and recorded
+their source commit, path, Git blob SHA-1, SHA-256, license, dependency
+findings, destination decision, and modification plan. Direct adaptation was
+not justified: the candidates depend on RimTalk caches/settings/provider logs,
+live pawns/global game lookup, or gameplay jobs, and several are already
+superseded by Mosaic Core.
+
+No third-party code or asset was imported. A reviewed specification defines a
+future original, read-only Mosaic presentation boundary and offline acceptance
+tests. Window type, default visibility, placement, timing, and styling remain
+owner product decisions and were not guessed before Gate 3.
+
 ## Final clean-source verification
 
-Commit `f68aae713b12b82a7044c2c49cb0865584187f08` was exported with
+Commit `cdaa240aad007a6363b8b56391151baed26527c6` was exported with
 `git archive` into a fresh temporary directory. The archive contained all 114
-tracked C# files and no populated-checkout extras. From that source-only
+v0.2 project C# files (188 C# files repository-wide) and no
+populated-checkout extras. From that source-only
 representation, static verification, 109 contract tests, seven integration
 scenarios with 631 assertions, all Release builds, package generation, and
-non-installing package preflight passed. The source archive SHA-256 was
-`1d3693805464ecee1c5725406629353941b3b55df507816d3f7300069d033849`;
+non-installing package preflight passed. The build also accepted one valid
+package fixture and rejected all seven adversarial fixtures. The source archive
+SHA-256 was
+`594f43955744b2d4ae6d812956900789bc7e6bb24a19f1e168fa0e3e01e4f6d8`;
 the clean-source runtime package SHA-256 was
-`361dd46f7b01cb49d2e8df34551267f5c64acfac46c1ec5c9e7d3c9da0a3e3ef`.
+`cf6ff11048645c8348d9ebec7ee8c99761642b80823150f981d1ac8aebc4e5cf`.
 
 No provider ran, RimWorld was not launched, no package was installed, and no
 live or Gate 3 evidence state was touched.
