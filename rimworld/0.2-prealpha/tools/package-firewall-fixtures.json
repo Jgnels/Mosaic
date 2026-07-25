@@ -7,6 +7,8 @@
     { "name": "runtime-log", "entry": "Player.log", "expected": "prohibited" },
     { "name": "private-save", "entry": "Saves/Colony.rws", "expected": "prohibited" },
     { "name": "path-traversal", "entry": "../escape.txt", "expected": "unsafe path" },
-    { "name": "machine-path", "replace": "Assemblies/Dagmay.Core.dll", "content": "C:\\Users\\Jeff\\private\\source.cs", "expected": "machine-specific" }
+    { "name": "machine-path-current-user", "replace": "Assemblies/Dagmay.Core.dll", "content": "C:\\Users\\Jeff\\private\\source.cs", "expected": "machine-specific" },
+    { "name": "machine-path-other-user", "replace": "Assemblies/Dagmay.Core.dll", "content": "C:\\Users\\Alice\\private\\source.cs", "expected": "machine-specific" },
+    { "name": "machine-path-unix", "replace": "Assemblies/Dagmay.Core.dll", "content": "/home/alice/private/source.cs", "expected": "machine-specific" }
   ]
 }

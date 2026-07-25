@@ -146,6 +146,22 @@ try {
 
         if ([IO.Path]::GetExtension($Name).ToLowerInvariant() -in @(".dll", ".pdb")) {
             $BinaryText = [Text.Encoding]::UTF8.GetString($Bytes)
+            $ContainsGenericMachinePath = $false
+            foreach ($Marker in @(
+                'C:\Users\',
+                'C:/Users/',
+                '/Users/',
+                '/home/',
+                '\AppData\',
+                '/AppData/',
+                '\agent\_work\',
+                '/agent/_work/'
+            )) {
+                if ($BinaryText.IndexOf($Marker, [StringComparison]::OrdinalIgnoreCase) -ge 0) {
+                    $ContainsGenericMachinePath = $true
+                    break
+                }
+            }
             $ContainsFullProfile = $false
             if (-not [string]::IsNullOrWhiteSpace($UserProfilePath)) {
                 $ContainsFullProfile =
@@ -161,7 +177,7 @@ try {
                     $BinaryText.IndexOf("/home", [StringComparison]::OrdinalIgnoreCase) -ge 0
                 $ContainsSegmentedProfile = $ContainsProfileLeaf -and $ContainsProfileContainer
             }
-            if ($ContainsFullProfile -or $ContainsSegmentedProfile) {
+            if ($ContainsGenericMachinePath -or $ContainsFullProfile -or $ContainsSegmentedProfile) {
                 $MachinePathLeaks.Add($Name) | Out-Null
             }
         }
