@@ -145,3 +145,22 @@ reference. A future C# save adapter must bind relationship history, goal commitm
 authority, identity/lineage, world revision, and checkpoint generation into one atomic unit rather
 than saving independently restorable stores. This remains reference code and has not been
 integrated into the recovered Observer-only 0.1 C# source.
+
+## 2026-07-26 controlled 0.1 closure result
+
+The Gate 3 long-session soak passed at commit 457f1815d625f7a121f444d972d4880e70c805cb and package SHA-256
+d845e5165a4977b3bdc4af98f55fd6c5485970d127411c023b575409b3db676a. Two 60-minute Core + Mosaic, forced-offline blocks completed with a full process
+restart. All six samples retained healthy identity, experience, and reflection storage; individual
+and lineage continuity matched; provider and local-model counts remained zero; and both final saves
+agreed exactly with their external checkpoints. No further owner gameplay is required for the
+controlled frozen-0.1 closure.
+
+Release packaging was then hardened and independently certified at commit 21d6bf28138513d06e950cd9604592b2410ff7ec. Static
+verification covered 98 C# files; 70/70 contracts and all six integration scenarios with 603
+assertions passed; Core, Providers, and the RimWorld adapter built with zero warnings/errors; ten
+adversarial firewall packages were rejected; two independent standard Windows checkouts produced
+the byte-identical deterministic package SHA-256 5a79db4f3fc2b3306f8ff2fc66f8e4653de1b9b1f68436b9fe5882c4d6ae4ad7.
+
+Full mod-stack, DLC-group, large-colony, and RimTalk compatibility are post-closure work. The
+recovered source continues to identify as 0.1K, and no separately versioned historical 0.1RC artifact
+is inferred.

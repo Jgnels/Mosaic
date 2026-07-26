@@ -158,3 +158,34 @@ Severity: DATA INTEGRITY / PRIVACY
 The emergency archive contains saves, identity and reflection stores, journals, logs, and config.
 These remain outside Git. Do not restore HourTest with the later Nelson journal; preserve each save
 and external store as a matched recovery set and validate hashes/checkpoints before any live use.
+
+## 2026-07-26 closure disposition
+
+### KR-010 disposition
+
+**CLOSED for the controlled Gate 3 configuration; retained as an architectural regression watch.**
+
+The two-hour, two-process soak maintained healthy identity, experience, and reflection stores and
+complete checkpoint agreement while persistence advanced normally. Future adapter or compatibility
+changes must continue to test this boundary, but no unresolved KR-010 condition blocks controlled
+0.1 closure.
+
+### KR-020 disposition
+
+**Historical designation remains UNCONFIRMED; no longer a closure blocker.**
+
+The controlled frozen-0.1 reliability campaign is complete, but the exact historical 0.1RC
+designation remains unconfirmed. Closure is a new verified project decision, not evidence that a
+separately versioned RC artifact existed.
+
+## KR-022 - Full mod-stack and RimTalk compatibility remain unverified after controlled closure
+Severity: INTEGRATION / RELEASE
+
+Gate 3 passed with RimWorld Core + Mosaic only in forced-offline mode. The result does not establish
+compatibility with the owner's full normal mod stack, RimTalk, every DLC combination, large-colony
+performance, or future dialogue/presentation features.
+
+Action: test compatibility in controlled groups after closure. Do not fold later 0.2 dialogue or
+third-party integration work into the closure record, and do not reinterpret a compatibility failure
+as invalidating the certified controlled Gate 3 baseline unless it reveals a contradiction in that
+baseline.
