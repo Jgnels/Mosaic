@@ -367,3 +367,37 @@ state. No local model or provider ran. This passes the live identity Save As reg
 Gate 3 remains open pending owner review, Observer visual inspection, and remaining planned
 live-soak scope. Both checkpoint regressions discovered in this run are fixed and live-verified.
 See `docs/MOSAIC_GATE3_RUNTIME_RETEST_20260723_B.md`.
+
+## 2026-07-26 controlled Mosaic 0.1 closure
+
+**Status: CLOSED for the controlled frozen-0.1 reliability scope.**
+
+OBSERVED LIVE: Gate 3 passed at commit 457f1815d625f7a121f444d972d4880e70c805cb using package SHA-256
+d845e5165a4977b3bdc4af98f55fd6c5485970d127411c023b575409b3db676a. Two independent 60-minute RimWorld blocks completed with a full process restart
+between them. All six T+0/T+30/T+60 samples reported the intended save, a responding process,
+healthy identity, experience, and reflection storage, stable individual/lineage continuity, zero
+provider dispatches, zero local-model processes, zero parsed error/exception lines, and no Mosaic
+read-only warning. Both closed-save checkpoint verifiers reported complete save/sidecar agreement.
+Identity generation advanced 2 -> 8 -> 12, experience position 1 -> 7 -> 11, and reflection
+generation 1 -> 2 -> 3.
+
+The live-log monitor required a shared-read correction because Windows denied ordinary hash/copy
+access while RimWorld held Player.log open. The original and corrected harnesses were preserved and
+hash-recorded. The correction changed only evidence-file access; it changed no Mosaic source,
+installed package, save, sidecar, provider behavior, or runtime state.
+
+REPRODUCED OFFLINE: release-packaging hardening at commit 21d6bf28138513d06e950cd9604592b2410ff7ec passed static verification
+over 98 C# files, 70/70 contract tests, all six integration scenarios with 603 assertions, Core,
+Providers, and the RimWorld adapter with zero warnings/errors, one accepted firewall fixture, ten
+rejected adversarial packages, non-installing preflight, and two independent standard Windows
+checkouts producing byte-identical packages. The final deterministic package SHA-256 is
+5a79db4f3fc2b3306f8ff2fc66f8e4653de1b9b1f68436b9fe5882c4d6ae4ad7. The package firewall rejects undeclared/private artifacts and machine-specific
+build paths.
+
+DECISION: no additional owner gameplay or build verification is required to close this controlled
+campaign. Full normal-mod-stack, RimTalk, DLC-group, and broader compatibility work remains
+post-0.1. Closure does not claim that a separately versioned historical 0.1RC artifact was recovered:
+the recovered source remains provenance-labeled 0.1K, and the certified package retains its existing
+0.2-prealpha compatibility identifier.
+
+See docs/MOSAIC_0.1_CLOSURE_20260726.md.

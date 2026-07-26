@@ -1,18 +1,37 @@
 {
-  "project": "Mosaic",
-  "historical_name": "Dagmay",
-  "generated_date": "2026-07-20",
-  "foundational_invariant": "Character continuity is independent of the specific inference model.",
-  "active_objective": "Causally coherent, persistent, robust, believable, efficient, portable, enjoyable game characters.",
-  "provider_gate": {"authorized": false, "status": "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3_COMPLETED_GATE_CLOSED"},
-  "tracks": {
-    "rimworld": {
-      "recovered_source_version": "0.1K",
-      "closure_content": ["0.1L persistence torture", "0.1M failure isolation", "read-only scheduler safety patch"],
-      "source_path": "rimworld/0.1-closure-candidate",
-      "source_recovery_status": "RECOVERED_AND_RECONCILED",
-      "exact_0.1RC_status": "UNCONFIRMED"
-    },
-    "syntheticlab": {"latest_imported_version": "v31", "active_work": "offline boundary and evaluator audit"}
-  }
+    "project":  "Mosaic",
+    "historical_name":  "Dagmay",
+    "generated_date":  "2026-07-26",
+    "foundational_invariant":  "Character continuity is independent of the specific inference model.",
+    "active_objective":  "Causally coherent, persistent, robust, believable, efficient, portable, enjoyable game characters.",
+    "provider_gate":  {
+                          "authorized":  false,
+                          "status":  "MOSAIC_TYPED_RELATIONSHIP_PILOT_V3_COMPLETED_GATE_CLOSED; NEW_PROTOCOL_REQUIRES_SEPARATE_BOUNDED_APPROVAL"
+                      },
+    "tracks":  {
+                   "rimworld":  {
+                                    "recovered_source_version":  "0.1K",
+                                    "closure_content":  [
+                                                            "0.1K social-path certification",
+                                                            "0.1L persistence torture",
+                                                            "0.1M failure isolation",
+                                                            "read-only scheduler safety patch",
+                                                            "controlled Gate 3 long soak",
+                                                            "deterministic privacy-hardened release packaging"
+                                                        ],
+                                    "source_path":  "rimworld/0.1-closure-candidate",
+                                    "source_recovery_status":  "RECOVERED_AND_RECONCILED",
+                                    "controlled_0.1_closure_status":  "CLOSED",
+                                    "gate3_live_commit":  "457f1815d625f7a121f444d972d4880e70c805cb",
+                                    "gate3_live_package_sha256":  "d845e5165a4977b3bdc4af98f55fd6c5485970d127411c023b575409b3db676a",
+                                    "final_release_packaging_commit":  "21d6bf28138513d06e950cd9604592b2410ff7ec",
+                                    "final_release_package_sha256":  "5a79db4f3fc2b3306f8ff2fc66f8e4653de1b9b1f68436b9fe5882c4d6ae4ad7",
+                                    "exact_0.1RC_status":  "UNCONFIRMED",
+                                    "post_closure_compatibility_status":  "PENDING"
+                                },
+                   "syntheticlab":  {
+                                        "latest_imported_version":  "v31",
+                                        "active_work":  "offline boundary and evaluator audit"
+                                    }
+               }
 }

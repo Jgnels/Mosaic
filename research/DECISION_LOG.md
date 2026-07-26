@@ -247,3 +247,25 @@ colonist synchronization reports a real identity change. Rename, lifecycle, enro
 validated mutation paths retain their immediate persistence behavior. This keeps successive
 unchanged Save As copies compatible with one external identity checkpoint while preserving exact
 generation mismatch rejection for genuinely divergent state.
+
+## D-044 - Controlled Gate 3 pass closes the frozen-0.1 reliability campaign
+Status: Accepted
+
+The two-block live Gate 3 soak at commit 457f1815d625f7a121f444d972d4880e70c805cb is accepted as the controlled closure
+evidence for the frozen 0.1 reliability scope. The run used Core + Mosaic only in forced-offline
+mode, preserved continuity across a full process restart, maintained healthy identity, experience,
+and reflection storage in all six samples, produced complete checkpoint agreement after both
+blocks, and invoked no provider or local model.
+
+The shared-read Player.log harness correction is accepted as evidence-tool maintenance because it
+changed only log hash/copy access and did not change Mosaic source, package, saves, sidecars, or
+runtime behavior.
+
+The deterministic packaging commit 21d6bf28138513d06e950cd9604592b2410ff7ec is the final distributable baseline. It removes
+machine-specific build-path disclosure, normalizes package ordering and metadata, enforces a strict
+package allowlist, and passes adversarial firewall fixtures and two-checkout reproducibility. Its
+certified package SHA-256 is 5a79db4f3fc2b3306f8ff2fc66f8e4653de1b9b1f68436b9fe5882c4d6ae4ad7.
+
+Full-stack, DLC-group, and RimTalk compatibility are post-0.1 integration work. Closing this
+campaign does not rename the recovered 0.1K source or the 0.2-prealpha package as an unlocated
+historical 0.1RC artifact.

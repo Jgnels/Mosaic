@@ -677,3 +677,48 @@ first new copy. All three save manifests retained identity generation 3 and refl
 hashes, sizes, and timestamps remained unchanged, and no experience journal appeared. This passes
 the live unchanged Save As regression. Gate 3 remains open pending owner review and the broader
 planned runtime scope.
+
+## 2026-07-26 - Controlled Gate 3 long soak and formal 0.1 reliability closure
+
+**Status:** PASS for the recorded Core + Mosaic, forced-offline configuration; formal controlled
+0.1 reliability closure complete.
+
+### Live certification
+
+Certified runtime commit: 457f1815d625f7a121f444d972d4880e70c805cb
+Certified runtime package SHA-256: d845e5165a4977b3bdc4af98f55fd6c5485970d127411c023b575409b3db676a
+
+The owner completed two independent 60-minute RimWorld blocks with a full process restart. T+0,
+T+30, and T+60 evidence in both blocks reported the intended save, healthy identity, experience, and
+reflection stores, stable individual/lineage continuity, zero provider dispatches, zero local-model
+processes, zero parsed error/exception lines, and no Mosaic read-only warning. The Block 1 and final
+Block 2 saves both passed complete checkpoint agreement. Identity generation advanced 2 -> 8 -> 12,
+experience position 1 -> 7 -> 11, and reflection generation 1 -> 2 -> 3.
+
+The live-log monitor was corrected to read a RimWorld-held Player.log through shared-read handles.
+The correction was limited to evidence-file hash/copy operations and changed no Mosaic source,
+package, save, sidecar, provider behavior, or runtime state.
+
+### Final deterministic release-packaging verification
+
+Certified final commit: 21d6bf28138513d06e950cd9604592b2410ff7ec
+Certified deterministic package SHA-256: 5a79db4f3fc2b3306f8ff2fc66f8e4653de1b9b1f68436b9fe5882c4d6ae4ad7
+
+- static verification: PASS, 98 C# files;
+- Core Release build: PASS, 0 warnings/errors;
+- Providers Release build: PASS, 0 warnings/errors;
+- contract tests: PASS, 70 executed and 0 failed;
+- integration harness: PASS, 6 scenarios and 603 assertions;
+- RimWorld adapter Release build: PASS, 0 warnings/errors;
+- package firewall fixtures: PASS, 1 accepted package and 10 adversarial packages rejected;
+- Gate 3 non-installing preflight: PASS;
+- package contents: exactly 6 declared entries;
+- machine-specific build paths: absent;
+- reproducibility: two independent standard Windows checkouts produced byte-identical packages;
+- frozen rimworld/0.1-closure-candidate tree: unchanged;
+- tracked worktree after certification: clean;
+- RimWorld launch/install/provider/model/save/configuration/evidence access: none.
+
+This closes the controlled frozen-0.1 reliability campaign. It does not certify the full normal mod
+stack, RimTalk integration, public release readiness, or the existence of a separately versioned
+historical 0.1RC artifact.
