@@ -38,13 +38,18 @@ REQUIRED_FILES = [
     "Dagmay.Core/Dialogue/DialogueAdmissionOutboxCodec.cs",
     "Dagmay.Core/Dialogue/SpeechBubblePresentation.cs",
     "Dagmay.RimWorld/Dialogue/MosaicDialogueLogEntry.cs",
+    "Dagmay.RimWorld/Dialogue/OfflineRimWorldDialoguePipeline.cs",
+    "Dagmay.RimWorld/Dialogue/RimWorldDialogueGameComponent.cs",
     "Dagmay.RimWorld/Dialogue/RimWorldDialoguePresentationPolicy.cs",
+    "Dagmay.RimWorld/Dialogue/RimWorldSocialDialogueTrigger.cs",
     "Dagmay.RimWorld/Dialogue/RimWorldSpeechBubblePresenter.cs",
     "Dagmay.RimWorld/Package/Defs/MosaicDialogueDefs.xml",
     "Dagmay.Tests/DialogueAdmissionOutboxContractTests.cs",
     "Dagmay.Tests/SpeechBubblePresentationContractTests.cs",
+    "Dagmay.Tests/OfflineRimWorldDialoguePathContractTests.cs",
     "../../docs/ADR_DIALOGUE_RECOVERABLE_OUTBOX_20260726.md",
     "../../docs/ADR_SPEECH_BUBBLE_PRESENTATION_20260726.md",
+    "../../docs/ADR_OFFLINE_RIMWORLD_DIALOGUE_PATH_20260726.md",
     "docs/22_V0.1F_Development_Automation.md",
     "docs/23_V0.1G_Ordinary_Mind_View.md",
     "docs/24_V0.1H_Experience_Consolidation.md",
@@ -296,6 +301,15 @@ def verify_boundaries(errors: list[str]) -> None:
         for token in OBSERVER_FORBIDDEN:
             if token in source:
                 fail(errors, f"Observer-only boundary violation in {path.relative_to(ROOT)}: {token}")
+
+    offline_dialogue = (
+        ROOT / "Dagmay.RimWorld/Dialogue/OfflineRimWorldDialoguePipeline.cs"
+    ).read_text(encoding="utf-8")
+    if "new DeterministicFakeProvider(" not in offline_dialogue:
+        fail(errors, "Offline RimWorld dialogue path does not construct the deterministic fake provider.")
+    for token in ("GoogleAiStudioProvider", "RimWorldReflectionProviderSelection", "FromEnvironment("):
+        if token in offline_dialogue:
+            fail(errors, f"Offline RimWorld dialogue path exposes prohibited provider selection: {token}")
 
     if not any("AllowsPawnControl = false" in path.read_text(encoding="utf-8") for path in rimworld_files):
         fail(errors, "Observer-only guard is missing or does not explicitly deny pawn control.")

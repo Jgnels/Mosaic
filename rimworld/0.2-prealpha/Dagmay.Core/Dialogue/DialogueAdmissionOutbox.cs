@@ -422,7 +422,8 @@ namespace Dagmay.Core.Dialogue
         BindingMismatch = 5,
         OutboxAheadOfSave = 6,
         StaleGeneration = 7,
-        ConflictingDestination = 8
+        ConflictingDestination = 8,
+        Queued = 9
     }
 
     public sealed class DialogueAdmissionRecoveryResult
@@ -460,6 +461,73 @@ namespace Dagmay.Core.Dialogue
             _store = store ?? new AtomicDialogueAdmissionOutboxStore(_codec);
             _journal = journal ?? new DurableExperienceJournal();
             _observer = observer;
+        }
+
+        public DialogueAdmissionRecoveryResult EnqueuePending(
+            string outboxPath,
+            DialogueAdmissionBinding binding,
+            DialogueEventAdmissionPlan plan,
+            bool storageWritable,
+            DateTimeOffset nowUtc)
+        {
+            if (binding is null) throw new ArgumentNullException(nameof(binding));
+            if (plan is null) throw new ArgumentNullException(nameof(plan));
+            lock (_gate)
+            {
+                if (!storageWritable)
+                    return Result(DialogueAdmissionRecoveryStatus.ReadOnlyStorage, "Dialogue storage is read-only.");
+
+                _observer?.Reached(DialogueAdmissionRecoveryStep.BeforeOutboxWrite, plan.FactualEvent.Id);
+                var loaded = _store.Load(outboxPath, binding);
+                var loadFailure = MapLoadFailure(loaded);
+                if (loadFailure is not null) return loadFailure;
+                var snapshot = loaded.Snapshot ??
+                    new DialogueAdmissionOutboxSnapshot(
+                        binding,
+                        nowUtc,
+                        Array.Empty<DialogueAdmissionOutboxEntry>());
+                if (snapshot.Binding.CheckpointGeneration < binding.CheckpointGeneration)
+                    snapshot = snapshot.AdvanceSuccessfulCheckpoint(binding, nowUtc);
+                var existed = snapshot.Entries.Any(entry =>
+                    entry.EventId == plan.FactualEvent.Id);
+                snapshot = snapshot.AddPending(plan, _codec, nowUtc);
+                _store.Save(outboxPath, snapshot);
+                _observer?.Reached(DialogueAdmissionRecoveryStep.AfterOutboxWrite, plan.FactualEvent.Id);
+                return new DialogueAdmissionRecoveryResult(
+                    existed
+                        ? DialogueAdmissionRecoveryStatus.NoWork
+                        : DialogueAdmissionRecoveryStatus.Queued,
+                    0,
+                    existed
+                        ? "The identical dialogue admission was already queued."
+                        : "The dialogue admission is durably queued for the matching save checkpoint.");
+            }
+        }
+
+        public DialogueAdmissionRecoveryResult InspectPending(
+            string outboxPath,
+            DialogueAdmissionBinding binding)
+        {
+            if (binding is null) throw new ArgumentNullException(nameof(binding));
+            lock (_gate)
+            {
+                var loaded = _store.Load(outboxPath, binding);
+                var loadFailure = MapLoadFailure(loaded);
+                if (loadFailure is not null) return loadFailure;
+                if (loaded.Status == DialogueOutboxStoreLoadStatus.NotFound ||
+                    loaded.Snapshot is null)
+                    return Result(DialogueAdmissionRecoveryStatus.NoWork, "No dialogue outbox exists.");
+                var pendingCount = loaded.Snapshot.Entries.Count(entry =>
+                    entry.State == DialogueOutboxEntryState.Pending);
+                return new DialogueAdmissionRecoveryResult(
+                    pendingCount == 0
+                        ? DialogueAdmissionRecoveryStatus.NoWork
+                        : DialogueAdmissionRecoveryStatus.Queued,
+                    pendingCount,
+                    pendingCount == 0
+                        ? "No dialogue admissions are pending."
+                        : "Checkpoint-bound dialogue admissions are pending.");
+            }
         }
 
         public DialogueAdmissionRecoveryResult EnqueueAndRecover(

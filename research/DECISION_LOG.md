@@ -315,3 +315,18 @@ Presentation remains observer-only and non-authoritative. It cannot call a
 provider, persist cognition, mutate canonical character state, control a pawn,
 or execute gameplay. Offline compilation and tests do not establish live
 visual layout or play-log compatibility.
+
+## D-048 - The first RimWorld dialogue path is fake-only and save-checkpoint admitted
+Status: Accepted; implemented and verified offline
+
+The first adapter path observes only material opinion or direct-relationship
+changes already captured by Mosaic. It resolves stable identity on RimWorld's
+main thread, releases all live game references, and then uses the deterministic
+fake provider, strict codec, validator, and bounded speech-bubble presenter.
+There is no real-provider selection seam in this path.
+
+Actual presentation queues a factual-only pending outbox entry. The event
+ledger and experience journal materialize and verify only inside RimWorld's
+save callback, after which the journal head and dedicated dialogue checkpoint
+are serialized. Generation, validation, or display alone never constitutes
+admission. No subjective cognition or gameplay authority is added.

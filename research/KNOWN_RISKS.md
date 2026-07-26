@@ -225,3 +225,20 @@ Mitigation: keep factual admission gated on an actual successful presentation
 receipt, contain mirror failures, dismiss absent/despawned/off-map bindings,
 and perform a later owner-controlled disposable-game runtime test. Do not treat
 the compiled adapter or fake-provider path as live evidence.
+
+## KR-025 - The offline dialogue composition root is not a RimWorld runtime pass
+Severity: INTEGRATION / DATA INTEGRITY
+
+The social-capture, deterministic fake-provider, presentation, and
+checkpoint-bound outbox path compile together and pass offline fault tests.
+This does not prove GameComponent discovery/order, GUI repaint behavior,
+material social-trigger frequency, pawn lookup under map transitions, play-log
+serialization, or the exact ordering of external outbox/journal writes versus
+RimWorld save-file replacement.
+
+Mitigation: destination writes occur only from the save callback, pending
+outbox work is rediscovered without early materialization, failures enter the
+existing experience read-only boundary, and factual admission requires an
+actual channel receipt. Use only a disposable owner-controlled game for the
+first runtime test, preserve logs/state on failure, and do not interpret an
+offline PASS as live evidence.

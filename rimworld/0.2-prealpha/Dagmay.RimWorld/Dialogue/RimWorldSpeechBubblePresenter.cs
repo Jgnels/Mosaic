@@ -75,6 +75,7 @@ namespace Dagmay.RimWorld.Dialogue
         }
 
         public event Action<RimWorldDialoguePresentationResult>? PresentationCompleted;
+        public event Action<DialoguePresentationRow>? PresentationAbandoned;
 
         public void Bind(IndividualId individualId, Pawn pawn)
         {
@@ -163,6 +164,7 @@ namespace Dagmay.RimWorld.Dialogue
             _pending.Clear();
             _presented.Clear();
             PresentationCompleted = null;
+            PresentationAbandoned = null;
         }
 
         private void DrawOne(
@@ -292,8 +294,9 @@ namespace Dagmay.RimWorld.Dialogue
         private void OnBubbleDismissed(DialoguePresentationRow row)
         {
             if (_disposed) return;
-            _pending.Remove(row.UtteranceId);
+            var wasPending = _pending.Remove(row.UtteranceId);
             _presented.Remove(row.UtteranceId);
+            if (wasPending) PresentationAbandoned?.Invoke(row);
         }
 
         private void EnsureMainThread()

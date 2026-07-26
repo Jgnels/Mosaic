@@ -781,3 +781,40 @@ Complete documented Release verification:
 No provider or local model was called. RimWorld was not launched, the package
 was not installed, and no save, configuration, credential, or runtime evidence
 was accessed or changed.
+
+## 2026-07-26 - Offline fake-provider RimWorld dialogue path
+
+**Status:** PASS offline; not executed in RimWorld.
+
+The existing main-thread social observation path now emits immutable trigger
+data only for material opinion and direct-relationship changes with two stable
+Mosaic identity bindings. Scheduling, context assembly, prompt planning,
+provider execution, strict decode, and validation retain no live RimWorld
+references and instantiate only `DeterministicFakeProvider`.
+
+Accepted output enters the main-thread speech-bubble presenter. Only an actual
+Bubble or PlayLog receipt can persist a pending factual outbox entry. The
+ledger and journal remain unchanged until RimWorld's save callback recovers the
+pending entry, verifies both destinations, refreshes the manifest journal head,
+and advances a dedicated dialogue checkpoint.
+
+Six focused tests cover absent bindings, unsupported triggers, deterministic
+reproduction, duplicates, timeout, cancellation, despawn, display failure,
+pending-only enqueue, restart discovery, exactly-once recovery, factual-only
+journal data, and stale-checkpoint rejection.
+
+Complete documented Release verification:
+
+- static verification: PASS, 126 C# files;
+- Core and Providers Release builds: PASS, zero warnings/errors;
+- contract tests: PASS, 145 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid and 17 rejected;
+- package firewall: PASS, eight declared entries and zero direct adaptations;
+- package SHA-256:
+  `fdfc37f6b1d3832194fe228d4aebaff0c10eea220dd25c07ff37df16dcfb49d8`.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, configuration, credential, or runtime evidence was
+accessed or changed.
