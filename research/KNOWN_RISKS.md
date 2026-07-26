@@ -294,3 +294,21 @@ dispatch offline; create positive and negative events for the same pair;
 inspect the exact evidence IDs and bubble text; then save, reload, and confirm
 history continuity without replay or exception flooding. Third-party mods and
 RimTalk remain outside this gate.
+
+## KR-029 - The bounded reciprocal reply is offline-verified but not live-sequenced
+Severity: INTEGRATION / PRODUCT
+
+The 0.2B composer, fake-only pipeline, receipt matching, participant reversal,
+recipient-owned evidence filtering, duplicate rejection, and one-reply runtime
+shape pass focused contracts and the complete offline chain. This does not
+establish live bubble ordering, that admission failure always suppresses the
+reply under RimWorld callbacks, that no timing edge produces a duplicate, or
+that the full official DLC set introduces no presentation or performance
+interaction.
+
+Required mitigation: run the owner-controlled disposable test with Core,
+Royalty, Ideology, Biotech, Anomaly, Odyssey, and Mosaic only; keep provider
+dispatch offline; create reciprocal A/B history; confirm A's opening completes
+before exactly one B reply; confirm both admissions are queued; confirm no
+third bubble; save/reload without replay; and verify a later social event can
+start a separate bounded exchange without errors or recurring stutter.
