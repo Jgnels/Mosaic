@@ -664,6 +664,9 @@ namespace Dagmay.RimWorld.Persistence
                 var priorRelationshipEvidence = dialogueRecipient is null
                     ? Array.Empty<GroundedRelationshipEvidence>()
                     : BuildGroundedRelationshipHistory(state.Id, dialogueRecipient.Id);
+                var recipientPriorRelationshipEvidence = dialogueRecipient is null
+                    ? Array.Empty<GroundedRelationshipEvidence>()
+                    : BuildGroundedRelationshipHistory(dialogueRecipient.Id, state.Id);
                 var appended = _experienceJournal.Append(
                     GetExperienceJournalPath(),
                     record,
@@ -697,7 +700,8 @@ namespace Dagmay.RimWorld.Persistence
                         CreateDialogueIdentitySnapshot(
                             dialogueRecipientExternalId,
                             dialogueRecipient),
-                        priorRelationshipEvidence);
+                        priorRelationshipEvidence,
+                        recipientPriorRelationshipEvidence);
                     if (trigger is not null) NotifySocialDialogueTrigger(trigger);
                 }
                 return true;
