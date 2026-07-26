@@ -833,7 +833,7 @@ Source review confirmed that the presenter field initializer captured the
 GameComponent construction thread. No other RimWorld adapter captured
 `ManagedThreadId` during construction.
 
-**Repair status:** PASS offline; live retest required.
+**Repair status:** PASS live in the isolated Core + Mosaic configuration.
 
 The default presenter now starts unbound. Only an explicit trusted tick or GUI
 lifecycle entry may establish affinity, using one-time atomic binding. The
@@ -846,6 +846,47 @@ further presentation work for that game instance.
 Four new contract tests cover loader-thread A versus runtime thread B, repeated
 calls and shared tick/GUI affinity on B, third-thread rejection, concurrent
 first-use, and disposal/lifecycle behavior.
+
+Owner-operated live retest at commit `c49da81`, package SHA-256
+`de6c8b6652297f10ac3ed2f6b53975f376b1c8b962221876923f41bae3bf32aa`,
+and RimWorld 1.6.4871:
+
+- three colonists enrolled;
+- qualifying opinion-change and direct-relationship events were detected;
+- four bounded experiences and four memories were created;
+- four deterministic dialogue admissions received actual Bubble receipts;
+- the expected sentence appeared in speech bubbles;
+- the prior main-thread exception and presentation-disable warning did not
+  recur;
+- save/reload retained all three IndividualIds and LineageIds;
+- checkpoint generation advanced to 2;
+- state restored with `Events=8; Memories=4`;
+- two meaningful-event reflection items restored;
+- identity, experience, and reflection storage remained healthy; and
+- previously displayed dialogue was not presented again.
+
+The exact post-load certification was:
+
+```text
+SOCIAL PATH CERTIFICATION PASS; events=4; memories=4; reflectionEligible=2; postLoad=True.
+```
+
+This live result does not cover full normal-mod-stack compatibility, DLC
+combinations, RimTalk coexistence, play-log fallback, long-duration soak,
+broader visual/gameplay tuning, or real-provider behavior. See
+`../../../docs/MOSAIC_V0_2_DIALOGUE_RUNTIME_RETEST_20260726.md`.
+
+Evidence-only follow-up verification confirmed zero runtime, test, harness, or
+tooling source changes relative to `c49da81`. The unchanged source state again
+passed 129-file static verification, 153/153 contracts, seven integration
+scenarios with 631 assertions, warning-free Core/Providers/RimWorld Release
+builds, one accepted and 17 rejected firewall fixtures, and the eight-entry
+zero-direct-adaptation package firewall. Two fresh Windows worktrees at the
+exact tested implementation commit reproduced the owner-tested package
+byte-for-byte at SHA-256
+`de6c8b6652297f10ac3ed2f6b53975f376b1c8b962221876923f41bae3bf32aa`;
+non-installing preflight passed on that exact package. The later documentation
+commit is not substituted into SourceLink metadata for the tested binary.
 
 Pre-commit complete Release verification:
 

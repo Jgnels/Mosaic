@@ -444,4 +444,19 @@ Only trusted `GameComponentTick` or repaint `GameComponentOnGUI` lifecycle
 entry may atomically establish the runtime thread. Ordinary operations cannot
 bind; a different thread cannot replace the established identity; and a
 validation failure latches once, disables presentation for that game instance,
-and prevents repeated exception logging. Live confirmation remains open.
+and prevents repeated exception logging.
+
+**OBSERVED LIVE (owner-operated retest):** commit `c49da81` and package
+SHA-256 `de6c8b6652297f10ac3ed2f6b53975f376b1c8b962221876923f41bae3bf32aa`
+passed with Core + Mosaic and provider dispatch offline. Three identities
+enrolled; four qualifying opinion/direct-relationship experiences and four
+memories were created; four deterministic dialogue admissions received actual
+Bubble receipts; and the main-thread exception did not recur. Save/reload
+retained identity and lineage continuity, advanced checkpoint generation to 2,
+restored `Events=8; Memories=4`, restored two meaningful reflection items,
+kept all stores healthy, and did not redisplay prior dialogue.
+
+The isolated thread-affinity and Bubble path is live-verified. Full mod-stack,
+DLC-combination, RimTalk, play-log fallback, long-soak, broader tuning, and
+real-provider behavior remain unverified. See
+`docs/MOSAIC_V0_2_DIALOGUE_RUNTIME_RETEST_20260726.md`.

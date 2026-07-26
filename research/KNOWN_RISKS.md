@@ -211,37 +211,34 @@ The two destinations remain non-transactional; the mitigation is explicit
 idempotent recovery. RimWorld adapter wiring and live behavior remain
 unverified.
 
-## KR-024 - Speech-bubble rendering is compiled but not live-verified
+## KR-024 - Speech-bubble rendering has narrow live evidence, not broad visual validation
 Severity: INTEGRATION / PRODUCT
 
 The original presentation controller and RimWorld renderer compile against the
 installed RimWorld 1.6 assemblies and pass offline queue, Unicode, bounds,
-receipt, availability, disposal, and purity tests. Offline tests cannot prove
-camera projection, scale-dependent placement, visual readability, GUI event
-behavior, pawn movement re-anchoring, or custom play-log serialization in a
-running game.
+receipt, availability, disposal, and purity tests. An owner-operated isolated
+Core + Mosaic retest at `c49da81` produced four visible deterministic speech
+bubbles with four actual Bubble receipts and no presentation exception.
 
-Mitigation: keep factual admission gated on an actual successful presentation
-receipt, contain mirror failures, dismiss absent/despawned/off-map bindings,
-and perform a later owner-controlled disposable-game runtime test. Do not treat
-the compiled adapter or fake-provider path as live evidence.
+Remaining risk: one targeted run does not establish scale-dependent placement,
+all camera/GUI states, long-session readability, pawn movement/re-anchoring
+under stress, play-log fallback, or broader visual tuning. Keep factual
+admission receipt-gated and test those cases separately.
 
 ## KR-025 - The offline dialogue composition root is not a RimWorld runtime pass
 Severity: INTEGRATION / DATA INTEGRITY
 
 The social-capture, deterministic fake-provider, presentation, and
 checkpoint-bound outbox path compile together and pass offline fault tests.
-This does not prove GameComponent discovery/order, GUI repaint behavior,
-material social-trigger frequency, pawn lookup under map transitions, play-log
-serialization, or the exact ordering of external outbox/journal writes versus
-RimWorld save-file replacement.
+The owner-operated `c49da81` retest now live-verifies enrollment, qualifying
+opinion/direct-relationship capture, bounded experience/memory creation, four
+Bubble receipts, one save checkpoint, reload persistence, healthy stores, and
+duplicate-presentation prevention in the isolated Core + Mosaic configuration.
 
-Mitigation: destination writes occur only from the save callback, pending
-outbox work is rediscovered without early materialization, failures enter the
-existing experience read-only boundary, and factual admission requires an
-actual channel receipt. Use only a disposable owner-controlled game for the
-first runtime test, preserve logs/state on failure, and do not interpret an
-offline PASS as live evidence.
+Remaining risk: full mod-stack/DLC/RimTalk compatibility, play-log fallback,
+map-transition behavior, long-duration stress, and broader save-failure
+ordering remain unverified. Destination writes remain save-checkpoint-bound
+and factual admission still requires an actual channel receipt.
 
 ## KR-026 - Relationship projection weights are bounded fixture assumptions
 Severity: SCIENTIFIC / PRODUCT
@@ -269,10 +266,14 @@ with repeated fail-closed exceptions. Enrollment, social-event capture,
 experience, memory, and deterministic fake dialogue preparation had already
 succeeded.
 
-Mitigation implemented offline: presenter construction is unbound; only
+Mitigation: presenter construction is unbound; only
 trusted GameComponent tick/repaint lifecycle entry can atomically bind once.
 Normal presenter operations cannot self-bind, conflicting first-use has one
 winner, a third thread fails closed, and component-level validation failure is
-latched before one error is logged and presentation is disabled. Keep this
-risk open until an owner retest demonstrates both tick and GUI presentation on
-the same established runtime thread.
+latched before one error is logged and presentation is disabled.
+
+Disposition (2026-07-26): **CLOSED for the isolated Core + Mosaic runtime
+configuration; retained as an architectural regression watch.** The
+owner-operated `c49da81` retest produced four Bubble receipts before save and
+continued without thread-affinity or presentation errors after reload. Broader
+compatibility and long-duration behavior remain tracked separately.
