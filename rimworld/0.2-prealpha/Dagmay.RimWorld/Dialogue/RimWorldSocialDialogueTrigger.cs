@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Dagmay.Core.Affect;
 using Dagmay.Core.Contracts;
+using Dagmay.Core.Dialogue;
 
 namespace Dagmay.RimWorld.Dialogue
 {
@@ -53,7 +54,8 @@ namespace Dagmay.RimWorld.Dialogue
             string factualSummary,
             RimWorldDialogueIdentitySnapshot speaker,
             RimWorldDialogueIdentitySnapshot recipient,
-            IDictionary<string, string> factualPayload)
+            IDictionary<string, string> factualPayload,
+            IEnumerable<GroundedRelationshipEvidence>? priorRelationshipEvidence = null)
         {
             if (sourceEventId.Value == Guid.Empty)
                 throw new ArgumentException("Source EventId cannot be empty.", nameof(sourceEventId));
@@ -75,6 +77,17 @@ namespace Dagmay.RimWorld.Dialogue
                     pair => ValidateText(pair.Key, nameof(factualPayload), 128),
                     pair => ValidateText(pair.Value, nameof(factualPayload), 512),
                     StringComparer.Ordinal);
+            var prior = (priorRelationshipEvidence ?? Array.Empty<GroundedRelationshipEvidence>())
+                .Select(value => value ?? throw new ArgumentException(
+                    "Prior relationship evidence cannot contain null values.",
+                    nameof(priorRelationshipEvidence)))
+                .Where(value => value.EventId != sourceEventId)
+                .GroupBy(value => value.EventId)
+                .Select(group => group.First())
+                .OrderByDescending(value => value.OccurredAtTick)
+                .ThenBy(value => value.EventId.ToString(), StringComparer.Ordinal)
+                .Take(16)
+                .ToList();
 
             SourceEventId = sourceEventId;
             ObservedAtTick = observedAtTick;
@@ -82,6 +95,8 @@ namespace Dagmay.RimWorld.Dialogue
             EventKind = eventKind;
             FactualSummary = factualSummary;
             FactualPayload = new ReadOnlyDictionary<string, string>(payload);
+            PriorRelationshipEvidence =
+                new ReadOnlyCollection<GroundedRelationshipEvidence>(prior);
         }
 
         public EventId SourceEventId { get; }
@@ -92,6 +107,7 @@ namespace Dagmay.RimWorld.Dialogue
         public RimWorldDialogueIdentitySnapshot Speaker { get; }
         public RimWorldDialogueIdentitySnapshot Recipient { get; }
         public IReadOnlyDictionary<string, string> FactualPayload { get; }
+        public IReadOnlyList<GroundedRelationshipEvidence> PriorRelationshipEvidence { get; }
 
         private static string ValidateText(string value, string parameter, int maximum)
         {
@@ -113,7 +129,8 @@ namespace Dagmay.RimWorld.Dialogue
             string eventKind,
             IDictionary<string, string> factualPayload,
             RimWorldDialogueIdentitySnapshot? speaker,
-            RimWorldDialogueIdentitySnapshot? recipient)
+            RimWorldDialogueIdentitySnapshot? recipient,
+            IEnumerable<GroundedRelationshipEvidence>? priorRelationshipEvidence = null)
         {
             if (speaker is null || recipient is null) return null;
             if (!string.Equals(eventKind, OpinionChanged, StringComparison.Ordinal) &&
@@ -132,7 +149,8 @@ namespace Dagmay.RimWorld.Dialogue
                 summary,
                 speaker,
                 recipient,
-                factualPayload);
+                factualPayload,
+                priorRelationshipEvidence);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Dagmay.Core.Dialogue;
+using Dagmay.Core.Memory;
 using Dagmay.Core.Reflection;
 using Dagmay.Providers.Fake;
 
@@ -60,7 +61,7 @@ namespace Dagmay.RimWorld.Dialogue
     }
 
     /// <summary>
-    /// Fake-provider-only composition root for the first RimWorld dialogue path.
+    /// Fake-provider-only composition root for the first grounded RimWorld relationship-dialogue path.
     /// It accepts plain captured data and has no access to Pawn, Map, Def, jobs,
     /// persistence paths, or canonical mutation.
     /// </summary>
@@ -90,6 +91,19 @@ namespace Dagmay.RimWorld.Dialogue
                     return Result(OfflineRimWorldDialoguePreparationStatus.Duplicate, "The social trigger was already prepared.");
             }
 
+            var currentEvidence = new GroundedRelationshipEvidence(
+                trigger.SourceEventId,
+                trigger.EventKind,
+                trigger.ObservedAtTick,
+                trigger.FactualPayload,
+                PerceptionChannel.Experienced,
+                PrivacyClassification.RelationshipSensitive,
+                1.0);
+            var grounded = new GroundedRelationshipDialogueComposer().Compose(
+                trigger.Recipient.DisplayLabel,
+                currentEvidence,
+                trigger.PriorRelationshipEvidence);
+
             var scene = new DialogueSceneSnapshot(
                 trigger.SourceEventId,
                 trigger.ObservedAtTick,
@@ -118,7 +132,7 @@ namespace Dagmay.RimWorld.Dialogue
                 trigger.Speaker.IndividualId,
                 trigger.Recipient.IndividualId,
                 scene,
-                new[] { trigger.SourceEventId },
+                grounded.EvidenceIds,
                 trigger.ObservedAtTick,
                 expiresAtTick,
                 "rimworld-social:" + trigger.SourceEventId);
@@ -128,22 +142,35 @@ namespace Dagmay.RimWorld.Dialogue
                 return Result(OfflineRimWorldDialoguePreparationStatus.Duplicate, "The request scheduler rejected the trigger.");
             request = scheduler.TryDequeue(currentTick)!;
 
+            var contextCandidates = new List<DialogueContextItem>
+            {
+                new DialogueContextItem(
+                    "observed-social-fact",
+                    GroundedRelationshipDialogueComposer.DescribeEvidence(currentEvidence),
+                    new[] { trigger.SourceEventId },
+                    DialogueContextAudience.RelationshipSensitive,
+                    1.0,
+                    trigger.Speaker.IndividualId,
+                    new[] { trigger.Recipient.IndividualId })
+            };
+            foreach (var prior in grounded.SelectedPriorEvidence)
+            {
+                contextCandidates.Add(new DialogueContextItem(
+                    "same-counterpart-relationship-history",
+                    GroundedRelationshipDialogueComposer.DescribeEvidence(prior),
+                    new[] { prior.EventId },
+                    DialogueContextAudience.RelationshipSensitive,
+                    Math.Min(0.95, 0.55 + (Math.Abs(prior.Valence) * prior.Confidence * 0.4)),
+                    trigger.Speaker.IndividualId,
+                    new[] { trigger.Recipient.IndividualId }));
+            }
+
             var context = new DialogueContextAssembler().Build(
                 trigger.Speaker.IndividualId,
                 trigger.Recipient.IndividualId,
                 currentTick,
-                new[]
-                {
-                    new DialogueContextItem(
-                        "observed-social-fact",
-                        trigger.FactualSummary,
-                        new[] { trigger.SourceEventId },
-                        DialogueContextAudience.RelationshipSensitive,
-                        1.0,
-                        trigger.Speaker.IndividualId,
-                        new[] { trigger.Recipient.IndividualId })
-                },
-                new DialogueContextBudget(4, 2048));
+                contextCandidates,
+                new DialogueContextBudget(4, 4096));
             var prompt = new DialoguePromptPlanner().Build(request, context);
             var expected = new UtteranceProposal(
                 utteranceId,
@@ -151,7 +178,7 @@ namespace Dagmay.RimWorld.Dialogue
                 request.ConversationId,
                 request.ExpectedSpeakerId,
                 request.RecipientId,
-                "Something between us has changed, and I noticed it.",
+                grounded.Text,
                 request.SourceEventIds,
                 currentTick);
             var modelRequest = new ModelRequest(
@@ -160,7 +187,7 @@ namespace Dagmay.RimWorld.Dialogue
                 trigger.Speaker.LineageId,
                 trigger.Speaker.StateVersion,
                 ModelTaskKind.GenerateDialogueUtterance,
-                "mosaic-rimworld-dialogue-v1",
+                "mosaic-rimworld-grounded-relationship-dialogue-v1",
                 prompt.Segments[0].Content,
                 prompt.Segments[1].Content,
                 UtteranceProposalJson.ProviderCompatibleSchema,
@@ -226,7 +253,9 @@ namespace Dagmay.RimWorld.Dialogue
                     validation.Utterance,
                     row,
                     new[] { trigger.Speaker.IndividualId, trigger.Recipient.IndividualId }),
-                "The deterministic fake-provider utterance passed strict offline preparation.");
+                "The deterministic grounded relationship utterance passed strict offline preparation with "
+                + request.SourceEventIds.Count
+                + " exact evidence ID(s).");
         }
 
         private static OfflineRimWorldDialoguePreparationResult Result(

@@ -277,3 +277,20 @@ configuration; retained as an architectural regression watch.** The
 owner-operated `c49da81` retest produced four Bubble receipts before save and
 continued without thread-affinity or presentation errors after reload. Broader
 compatibility and long-duration behavior remain tracked separately.
+
+## KR-028 - Grounded relationship dialogue is offline-verified but not live DLC-verified
+Severity: INTEGRATION / PRODUCT
+
+The 0.2A selector, deterministic renderer, fake-only pipeline integration,
+journal rebuild, privacy boundary, and exact EventId propagation pass focused
+contracts and the complete offline verification chain. This does not establish
+that organic RimWorld social event sequences produce natural mixed-history
+lines, that every official DLC coexists without adapter errors, or that
+save/reload preserves useful history without replay under the full DLC set.
+
+Required mitigation: run the owner-controlled disposable test with Core,
+Royalty, Ideology, Biotech, Anomaly, Odyssey, and Mosaic only; keep provider
+dispatch offline; create positive and negative events for the same pair;
+inspect the exact evidence IDs and bubble text; then save, reload, and confirm
+history continuity without replay or exception flooding. Third-party mods and
+RimTalk remain outside this gate.
