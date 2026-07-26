@@ -45,6 +45,8 @@ namespace Dagmay.RimWorld.Persistence
             new DialogueAdmissionRecoveryCoordinator();
         private readonly InMemoryEventLedger _eventLedger = new InMemoryEventLedger();
         private readonly MemoryIndex _memoryIndex = new MemoryIndex();
+        private readonly List<ExperienceJournalRecord> _experienceRecords =
+            new List<ExperienceJournalRecord>();
         private readonly Dictionary<PerceptionId, EventId> _perceptionSources =
             new Dictionary<PerceptionId, EventId>();
         private readonly DeterministicExperienceEncoder _experienceEncoder = new DeterministicExperienceEncoder();
@@ -392,6 +394,8 @@ namespace Dagmay.RimWorld.Persistence
                 {
                     _memoryIndex.Add(record.Memory);
                 }
+
+                _experienceRecords.Add(record);
             }
         }
 
@@ -657,6 +661,9 @@ namespace Dagmay.RimWorld.Persistence
                 var factualEvent = CreateEvent(externalId, state, change.Kind, change.FactualPayload, additionalSubjects);
                 var encoded = _experienceEncoder.EncodeExperiencedEvent(factualEvent, state, DateTimeOffset.UtcNow);
                 var record = new ExperienceJournalRecord(factualEvent, encoded.Perception, encoded.Memory);
+                var priorRelationshipEvidence = dialogueRecipient is null
+                    ? Array.Empty<GroundedRelationshipEvidence>()
+                    : BuildGroundedRelationshipHistory(state.Id, dialogueRecipient.Id);
                 var appended = _experienceJournal.Append(
                     GetExperienceJournalPath(),
                     record,
@@ -666,6 +673,7 @@ namespace Dagmay.RimWorld.Persistence
                 _eventLedger.Append(factualEvent);
                 _perceptionSources[encoded.Perception.Id] = encoded.Perception.SourceEventId;
                 _memoryIndex.Add(encoded.Memory);
+                _experienceRecords.Add(record);
                 _experiencePosition = appended.Position;
                 _experienceLastHash = appended.EntryHash;
                 state = encoded.UpdatedState;
@@ -688,7 +696,8 @@ namespace Dagmay.RimWorld.Persistence
                         CreateDialogueIdentitySnapshot(externalId, state),
                         CreateDialogueIdentitySnapshot(
                             dialogueRecipientExternalId,
-                            dialogueRecipient));
+                            dialogueRecipient),
+                        priorRelationshipEvidence);
                     if (trigger is not null) NotifySocialDialogueTrigger(trigger);
                 }
                 return true;
@@ -698,6 +707,24 @@ namespace Dagmay.RimWorld.Persistence
                 DisableExperienceWrites("Experience recording failed: " + exception.Message);
                 return false;
             }
+        }
+
+        private IReadOnlyList<GroundedRelationshipEvidence> BuildGroundedRelationshipHistory(
+            IndividualId ownerId,
+            IndividualId otherId)
+        {
+            var result = new List<GroundedRelationshipEvidence>();
+            foreach (var record in _experienceRecords)
+            {
+                var evidence = GroundedRelationshipEvidence.TryCreate(record, ownerId, otherId);
+                if (evidence is not null) result.Add(evidence);
+            }
+
+            return result
+                .OrderByDescending(value => value.OccurredAtTick)
+                .ThenBy(value => value.EventId.ToString(), StringComparer.Ordinal)
+                .Take(16)
+                .ToArray();
         }
 
         private void RecordFactualOnly(
