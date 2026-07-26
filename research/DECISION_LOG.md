@@ -269,3 +269,20 @@ certified package SHA-256 is 5a79db4f3fc2b3306f8ff2fc66f8e4653de1b9b1f68436b9fe5
 Full-stack, DLC-group, and RimTalk compatibility are post-0.1 integration work. Closing this
 campaign does not rename the recovered 0.1K source or the 0.2-prealpha package as an unlocated
 historical 0.1RC artifact.
+
+## D-045 - Durable dialogue admission is checkpoint-aligned
+Status: Accepted; offline policy and limiting-result tests implemented
+
+An actually displayed, validated utterance may prepare a factual admission,
+but it may not immediately dual-write the event ledger and durable experience
+journal. Those surfaces expose no shared transaction, rollback, or recoverable
+outbox. Executable tests reproduce both one-sided failure orders and show that
+restart replay can duplicate the same factual event in the journal even while
+the event ledger rejects the duplicate EventId.
+
+A future coordinator must wait for an exact matching save checkpoint, writable
+healthy storage, and an idempotent atomic/outbox design. Provisional
+in-session appraisal may be designed separately for immediate believability,
+but lasting relationship, mood, memory, belief, goal, or identity changes
+remain validated checkpoint-aligned mutations. No live coordinator or
+automatic dialogue-to-gameplay effect is approved by this decision.

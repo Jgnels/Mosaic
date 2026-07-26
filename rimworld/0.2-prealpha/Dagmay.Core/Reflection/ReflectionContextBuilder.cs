@@ -45,14 +45,22 @@ namespace Dagmay.Core.Reflection
             var events = sourceEvents
                 .Where(value => requestedIds.Contains(value.Id))
                 .OrderBy(value => value.OccurredAtUtc)
+                .ThenBy(value => value.Id.Value)
                 .ToList();
             if (events.Count != requestedIds.Count)
             {
                 throw new InvalidOperationException("Reflection task evidence is not completely available.");
             }
+            if (events.Any(value => !value.Subjects.Contains(individual.Id)))
+            {
+                throw new InvalidOperationException("Reflection task evidence does not belong to the target individual.");
+            }
 
             var requestId = RequestId.New();
-            var context = BuildContext(requestId, individual, events, relevantMemories.Take(20));
+            var memories = relevantMemories
+                .Where(memory => memory.OwnerId == individual.Id)
+                .Take(20);
+            var context = BuildContext(requestId, individual, events, memories);
             return new ModelRequest(
                 requestId,
                 individual.Id,

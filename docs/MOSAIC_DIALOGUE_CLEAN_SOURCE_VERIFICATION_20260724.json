@@ -1,0 +1,71 @@
+{
+  "schema": "mosaic.dialogue-clean-source-verification.v1",
+  "verifiedDate": "2026-07-24",
+  "branch": "codex/v0.2-dialogue-cleanroom-overnight-20260724",
+  "baseCommit": "a8fa3ae9634afa98cb1c56870475e5874767e757",
+  "implementationCommit": "525966c51ad39dc4a10997ccbe3141729d506c49",
+  "sourceRepresentation": "git archive of implementationCommit; no untracked or ignored files copied",
+  "sourceArchiveSha256": "332f80877ff31591fdeafcb86c86a3f3a86bd248e602b578e1120e1e52c9b9f5",
+  "repositoryCSharpFiles": 188,
+  "trackedCSharpFiles": 114,
+  "archivedCSharpFiles": 114,
+  "staticVerification": {
+    "status": "PASS",
+    "checkedCSharpFiles": 114
+  },
+  "contractTests": {
+    "status": "PASS",
+    "passed": 109,
+    "failed": 0
+  },
+  "integrationHarness": {
+    "status": "PASS",
+    "scenarios": 7,
+    "assertions": 631,
+    "failed": 0
+  },
+  "releaseBuilds": {
+    "core": "PASS",
+    "providers": "PASS",
+    "rimWorldAdapter": "PASS",
+    "warnings": 0,
+    "errors": 0
+  },
+  "nonInstallingPackage": {
+    "status": "PASS",
+    "sha256": "e33e89d8a0f93827856afb173df0137a8eacbc80743b1a2ca4fa1acc576c22bf",
+    "entries": 7,
+    "privacyAndPathLeakPreflight": "PASS",
+    "declaredEntryAllowlist": "PASS",
+    "thirdPartyNoticeMatch": "PASS",
+    "directAdaptationEntries": 0,
+    "packageFirewallFixtures": {
+      "validAccepted": 1,
+      "negativeRejected": 9,
+      "status": "PASS"
+    },
+    "rimWorld16ReferencesPresent": true
+  },
+  "handoffArchive": {
+    "sha256": "654a22c81fa757236ad7f5ff6519d556ba4f0fb40e5f60fc28a352cc11e72b47",
+    "substantiveFilesMatchingManifest": 43,
+    "manifestSelfHashStatus": "MISMATCH",
+    "manifestExpectedSelfSha256": "c1aabb883f8abbbe09285cf79a84eb3be2339ce688851ee4193abef9837450f1",
+    "manifestActualSelfSha256": "ab292f83f7300da4734912817657fd2dbd33accfff9cd09a7ca15e93afb9843c"
+  },
+  "provenance": {
+    "mitSnapshotCommit": "df9f4ef799a44a07b1f9d2d67814fb819b2df763",
+    "restrictedSnapshotCommit": "9338c63df05ec8adb287a367e73a3583dd009a14",
+    "upstreamSourceCopied": false,
+    "directAdaptationManifest": "rimworld/0.2-prealpha/docs/provenance/MOSAIC_DIRECT_ADAPTATION_MANIFEST.json",
+    "presentationCandidateReview": "rimworld/0.2-prealpha/docs/provenance/MOSAIC_PRESENTATION_CANDIDATE_REVIEW.json",
+    "presentationDecision": "REVIEWED_SPECIFICATION_ONLY"
+  },
+  "safety": {
+    "providerCalls": 0,
+    "rimWorldLaunched": false,
+    "packageInstalled": false,
+    "liveStateModified": false,
+    "gate3EvidenceModified": false
+  }
+}

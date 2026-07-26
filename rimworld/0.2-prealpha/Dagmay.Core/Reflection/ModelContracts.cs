@@ -10,7 +10,8 @@ namespace Dagmay.Core.Reflection
         InterpretMeaningfulEvent,
         BackgroundReflection,
         ConsolidateMemories,
-        ExpressDiaryEntry
+        ExpressDiaryEntry,
+        GenerateDialogueUtterance
     }
 
     public enum ModelResultStatus

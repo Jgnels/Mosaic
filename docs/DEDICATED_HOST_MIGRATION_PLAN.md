@@ -4,7 +4,7 @@
 
 Unused desktop:
 
-- RTX 3090
+- RTX 3080 Ti (12 GB VRAM; owner-confirmed 2026-07-24)
 - Ryzen 5 5600G
 - 16 GB system RAM
 

@@ -74,6 +74,66 @@ namespace Dagmay.Tests
                 "Factual presentation context must not contain unsupported claims.");
         }
 
+        public static void PresentationContextCollectionsAreBounded()
+        {
+            var evidence = new List<EventId>();
+            for (var index = 0; index < 101; index++) evidence.Add(EventId.New());
+
+            TestAssert.Throws<ArgumentOutOfRangeException>(
+                () => new CharacterContextItem(
+                    "history",
+                    "Too much evidence for one presentation item.",
+                    evidence,
+                    0.5),
+                "A presentation item must not accept an unbounded evidence collection.");
+
+            var item = new CharacterContextItem(
+                "history",
+                "A bounded presentation item.",
+                new[] { EventId.New() },
+                0.5);
+            var items = new List<CharacterContextItem>();
+            for (var index = 0; index < 101; index++) items.Add(item);
+
+            TestAssert.Throws<ArgumentOutOfRangeException>(
+                () => new CharacterContextPacket(IndividualId.New(), 1, items),
+                "A presentation packet must not accept an unbounded item collection.");
+            TestAssert.Throws<ArgumentException>(
+                () => new CharacterContextPacket(
+                    IndividualId.New(),
+                    1,
+                    new CharacterContextItem[] { item, null! }),
+                "A presentation packet must reject null items at its read-only boundary.");
+        }
+
+        public static void PresentationContextRejectsUngroundedIdentifiers()
+        {
+            var evidence = EventId.New();
+            var item = new CharacterContextItem(
+                "history",
+                "A grounded presentation item.",
+                new[] { evidence },
+                0.5);
+
+            TestAssert.Throws<ArgumentException>(
+                () => new CharacterContextItem(
+                    "history",
+                    "An empty identifier is not evidence.",
+                    new[] { default(EventId) },
+                    0.5),
+                "A default EventId must not satisfy presentation evidence grounding.");
+            TestAssert.Throws<ArgumentException>(
+                () => new CharacterContextItem(
+                    "history",
+                    "Duplicate identifiers do not provide distinct grounding.",
+                    new[] { evidence, evidence },
+                    0.5),
+                "Duplicate EventIds must be rejected at the presentation boundary.");
+            TestAssert.Throws<ArgumentException>(
+                () => new CharacterContextPacket(default(IndividualId), 1, new[] { item }),
+                "A presentation packet must be associated with a nonempty IndividualId.");
+        }
+
         public static void ObserverAndPresentationReadsPreserveCanonicalFingerprint()
         {
             var now = new DateTimeOffset(2026, 7, 23, 6, 0, 0, TimeSpan.Zero);

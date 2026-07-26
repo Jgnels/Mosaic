@@ -1,15 +1,20 @@
 {
   "schema": "mosaic.package-firewall-fixtures.v1",
   "negativeCases": [
-    { "name": "restricted-research", "entry": "research/private.cs", "expected": "prohibited" },
+    { "name": "restricted-research", "entry": "research/rimtalk/restricted.cs", "expected": "prohibited" },
     { "name": "undeclared-dll", "entry": "Assemblies/Surprise.dll", "expected": "undeclared" },
     { "name": "undeclared-asset", "entry": "Textures/borrowed.png", "expected": "undeclared" },
     { "name": "runtime-log", "entry": "Player.log", "expected": "prohibited" },
     { "name": "private-save", "entry": "Saves/Colony.rws", "expected": "prohibited" },
+    { "name": "private-environment", "entry": "config/.env", "expected": "prohibited" },
     { "name": "path-traversal", "entry": "../escape.txt", "expected": "unsafe path" },
+    { "name": "duplicate-entry", "duplicate": "README.txt", "expected": "duplicate" },
     { "name": "machine-path-source-root", "replace": "Assemblies/Dagmay.Core.dll", "contentKind": "sourceRoot", "expected": "machine-specific" },
     { "name": "machine-path-other-user", "replace": "Assemblies/Dagmay.Core.dll", "content": "C:\\Users\\Alice\\private\\source.cs", "expected": "machine-specific" },
-    { "name": "machine-path-unix", "replace": "Assemblies/Dagmay.Core.dll", "content": "/home/alice/private/source.cs", "expected": "machine-specific" },
+    { "name": "machine-path-macos", "replace": "Assemblies/Dagmay.Core.dll", "content": "/Users/alice/private/source.cs", "expected": "machine-specific" },
+    { "name": "machine-path-linux", "replace": "Assemblies/Dagmay.Core.dll", "content": "/home/alice/private/source.cs", "expected": "machine-specific" },
+    { "name": "machine-path-ci", "replace": "Assemblies/Dagmay.Core.dll", "content": "D:\\agent\\_work\\Mosaic\\source.cs", "expected": "machine-specific" },
+    { "name": "mismatched-notice", "replace": "THIRD_PARTY_NOTICES.txt", "content": "unreviewed notice", "expected": "does not match" },
     { "name": "missing-required", "omit": "README.txt", "expected": "missing declared" }
   ]
 }

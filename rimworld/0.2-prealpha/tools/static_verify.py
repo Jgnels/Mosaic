@@ -4,7 +4,10 @@
 from __future__ import annotations
 
 import json
+import os
 import re
+import shutil
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -170,9 +173,21 @@ def verify_required_files(errors: list[str]) -> None:
 def verify_structured_files(errors: list[str]) -> None:
     for path in ROOT.rglob("*.csproj"):
         try:
-            ET.parse(path)
+            project = ET.parse(path)
         except ET.ParseError as exc:
             fail(errors, f"Invalid project XML {path.relative_to(ROOT)}: {exc}")
+            continue
+
+        for compile_item in project.findall(".//Compile"):
+            include = compile_item.get("Include", "")
+            if not include or any(marker in include for marker in ("*", "?", "$(")):
+                continue
+            included_path = (path.parent / include.replace("\\", os.sep)).resolve()
+            if not included_path.is_file():
+                fail(
+                    errors,
+                    f"Project compile source is missing: {path.relative_to(ROOT)} -> {include}",
+                )
 
     try:
         ET.parse(ROOT / "Dagmay.RimWorld/Package/About/About.xml")
@@ -360,6 +375,65 @@ def verify_no_binaries(errors: list[str]) -> None:
         fail(errors, f"Unexpected checked-in binary: {path.relative_to(ROOT)}")
 
 
+def find_git() -> str | None:
+    discovered = shutil.which("git")
+    if discovered:
+        return discovered
+
+    candidates = [
+        Path(os.environ.get("ProgramFiles", "")) / "Git/cmd/git.exe",
+        Path(os.environ.get("LOCALAPPDATA", "")) / "Programs/Git/cmd/git.exe",
+    ]
+    for candidate in candidates:
+        if candidate.is_file():
+            return str(candidate)
+    return None
+
+
+def verify_git_source_tracking(errors: list[str]) -> None:
+    git = find_git()
+    if git is None:
+        return
+
+    repository = subprocess.run(
+        [git, "-C", str(ROOT), "rev-parse", "--is-inside-work-tree"],
+        capture_output=True,
+        check=False,
+        text=True,
+    )
+    if repository.returncode != 0 or repository.stdout.strip() != "true":
+        return
+
+    inventory = subprocess.run(
+        [git, "-C", str(ROOT), "ls-files", "-z", "--", "."],
+        capture_output=True,
+        check=False,
+    )
+    if inventory.returncode != 0:
+        fail(errors, "Git source inventory could not be read.")
+        return
+
+    tracked = {
+        value.decode("utf-8", errors="surrogateescape").replace("\\", "/")
+        for value in inventory.stdout.split(b"\0")
+        if value
+    }
+    local_sources = {
+        path.relative_to(ROOT).as_posix()
+        for path in ROOT.rglob("*.cs")
+        if not is_build_output(path)
+    }
+
+    for relative in sorted(local_sources - tracked):
+        fail(errors, f"C# source exists locally but is not tracked by Git: {relative}")
+
+    for relative in sorted(
+        value for value in tracked if value.lower().endswith(".cs")
+    ):
+        if not (ROOT / relative).is_file():
+            fail(errors, f"Tracked C# source is missing from the working tree: {relative}")
+
+
 def main() -> int:
     errors: list[str] = []
     verify_required_files(errors)
@@ -371,6 +445,7 @@ def main() -> int:
     verify_readme_links(errors)
     verify_no_secrets(errors)
     verify_no_binaries(errors)
+    verify_git_source_tracking(errors)
 
     if errors:
         for error in errors:

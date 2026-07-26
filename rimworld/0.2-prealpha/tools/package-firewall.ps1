@@ -3,7 +3,9 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$PackagePath,
 
-    [string]$SourceRoot = ""
+    [string]$SourceRoot = "",
+
+    [string]$OutputPath = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -16,13 +18,62 @@ if (-not (Test-Path -LiteralPath $PackagePath -PathType Leaf)) {
     throw "Package firewall input does not exist: $PackagePath"
 }
 
+$ManifestPath = Join-Path $SourceRoot "docs\provenance\MOSAIC_DIRECT_ADAPTATION_MANIFEST.json"
+$NoticePath = Join-Path $SourceRoot "Dagmay.RimWorld\Package\THIRD_PARTY_NOTICES.txt"
+if (-not (Test-Path -LiteralPath $ManifestPath -PathType Leaf)) {
+    throw "Direct-adaptation manifest is missing."
+}
+if (-not (Test-Path -LiteralPath $NoticePath -PathType Leaf)) {
+    throw "Third-party notice source is missing."
+}
+
+$Manifest = Get-Content -LiteralPath $ManifestPath -Raw | ConvertFrom-Json
+if ($Manifest.schema -ne "mosaic.direct-adaptation-manifest.v1") {
+    throw "Direct-adaptation manifest has an unsupported schema."
+}
+if ($null -eq $Manifest.entries) {
+    throw "Direct-adaptation manifest must contain an entries array."
+}
+
+$RequiredAdaptationFields = @(
+    "component",
+    "sourceRepository",
+    "sourceCommit",
+    "sourcePath",
+    "sourceGitBlobSha1",
+    "sourceSha256",
+    "sourceLicense",
+    "destinationPath",
+    "modifications",
+    "dependenciesReviewed",
+    "noticeLocation",
+    "approval"
+)
+foreach ($Entry in @($Manifest.entries)) {
+    foreach ($Field in $RequiredAdaptationFields) {
+        $Property = $Entry.PSObject.Properties[$Field]
+        if ($null -eq $Property -or [string]::IsNullOrWhiteSpace([string]$Property.Value)) {
+            throw "Direct-adaptation manifest entry is missing required field '$Field'."
+        }
+    }
+    if ([string]$Entry.sourceCommit -notmatch '^[0-9a-f]{40}$' -or
+        [string]$Entry.sourceGitBlobSha1 -notmatch '^[0-9a-f]{40}$' -or
+        [string]$Entry.sourceSha256 -notmatch '^[0-9a-f]{64}$') {
+        throw "Direct-adaptation manifest entry has an invalid commit or content hash."
+    }
+    if ([string]$Entry.approval -ne "approved") {
+        throw "Direct-adaptation manifest contains an unapproved entry."
+    }
+}
+
 $AllowedEntries = @(
     "About/About.xml",
     "Assemblies/Dagmay.Core.dll",
     "Assemblies/Dagmay.Providers.dll",
     "Assemblies/Dagmay.RimWorld.dll",
     "Assemblies/Dagmay.RimWorld.pdb",
-    "README.txt"
+    "README.txt",
+    "THIRD_PARTY_NOTICES.txt"
 )
 $Allowed = New-Object 'System.Collections.Generic.HashSet[string]' (
     [StringComparer]::OrdinalIgnoreCase)
@@ -53,6 +104,7 @@ $MachineMarkers = @(
     '\agent\_work\',
     '/agent/_work/'
 ) | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+$NoticeHash = (Get-FileHash -LiteralPath $NoticePath -Algorithm SHA256).Hash.ToLowerInvariant()
 
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -102,6 +154,10 @@ try {
             $Hasher.Dispose()
         }
 
+        if ($Name -eq "THIRD_PARTY_NOTICES.txt" -and $Hash -ne $NoticeHash) {
+            throw "Packaged third-party notice does not match the reviewed source notice."
+        }
+
         if ([IO.Path]::GetExtension($Name).ToLowerInvariant() -in @(".dll", ".pdb")) {
             $Utf8Text = [Text.Encoding]::UTF8.GetString($Bytes)
             $Utf16Text = [Text.Encoding]::Unicode.GetString($Bytes)
@@ -145,8 +201,17 @@ $Result = [ordered]@{
     schema = "mosaic.package-firewall.v1"
     status = "PASS"
     packageSha256 = (Get-FileHash -LiteralPath $PackagePath -Algorithm SHA256).Hash.ToLowerInvariant()
+    manifestSha256 = (Get-FileHash -LiteralPath $ManifestPath -Algorithm SHA256).Hash.ToLowerInvariant()
+    noticeSha256 = $NoticeHash
     declaredEntryCount = $AllowedEntries.Count
+    adaptationEntryCount = @($Manifest.entries).Count
     entries = [object[]]$Inventory
 }
-Write-Host "Mosaic package firewall: PASS ($($Inventory.Count) declared entries)."
+if (-not [string]::IsNullOrWhiteSpace($OutputPath)) {
+    $OutputDirectory = Split-Path -Parent ([IO.Path]::GetFullPath($OutputPath))
+    New-Item -ItemType Directory -Path $OutputDirectory -Force | Out-Null
+    $Result | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $OutputPath -Encoding UTF8
+}
+
+Write-Host "Mosaic package firewall: PASS ($($Inventory.Count) declared entries; $(@($Manifest.entries).Count) direct adaptations)."
 $Result

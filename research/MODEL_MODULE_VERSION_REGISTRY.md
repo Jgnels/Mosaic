@@ -18,7 +18,8 @@ They do not define an individual's identity.
 
 ## Future local-model path
 
-RTX 3090 desktop is suitable for experiments with local LLM inference, embeddings, small vision
-models, and developmental learners.
+The owner-confirmed desktop has an RTX 3080 Ti with 12 GB VRAM and 16 GB system RAM. It may be
+suitable for bounded local-model experiments after measurement, but local inference must not run
+during Gate 3 runtime testing.
 
 Local model adoption must preserve provider-neutral interfaces and version metadata.

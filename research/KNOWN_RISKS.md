@@ -189,3 +189,17 @@ Action: test compatibility in controlled groups after closure. Do not fold later
 third-party integration work into the closure record, and do not reinterpret a compatibility failure
 as invalidating the certified controlled Gate 3 baseline unless it reveals a contradiction in that
 baseline.
+
+## KR-023 - Dialogue admission spans two non-transactional durable surfaces
+Severity: ENGINEERING
+
+The canonical event ledger and durable experience journal do not expose a
+shared transaction, rollback, or recoverable pending-commit protocol.
+Journal-first and ledger-first failure tests both leave one-sided state, and
+journal replay after restart can duplicate an EventId that the event ledger
+independently rejects.
+
+Mitigation status: durable dialogue admission is checkpoint-aligned and the
+pure readiness policy fails closed on stale checkpoints, read-only storage,
+invalid journals, and already-admitted EventIds. Live coordination remains
+blocked until a save-atomic record or durable idempotent outbox is proven.
