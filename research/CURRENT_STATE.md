@@ -460,3 +460,27 @@ The isolated thread-affinity and Bubble path is live-verified. Full mod-stack,
 DLC-combination, RimTalk, play-log fallback, long-soak, broader tuning, and
 real-provider behavior remain unverified. See
 `docs/MOSAIC_V0_2_DIALOGUE_RUNTIME_RETEST_20260726.md`.
+
+## 2026-07-26 Mosaic 0.2A grounded relationship dialogue
+
+**SUPPORTED OFFLINE:** implementation commit `5edebba` adds deterministic
+same-counterpart relationship dialogue grounded in the current EventId and at
+most two prior experienced events. Mixed positive/negative evidence is
+retained, meaningful direct-relationship transitions outrank ordinary opinion
+noise, and private/hearsay/cross-owner/cross-counterpart evidence fails
+closed. The path remains fake-provider-only, observer-only, and
+checkpoint-admitted; it adds no canonical relationship, cognition, identity,
+or gameplay mutation.
+
+Clean-source verification passed over 131 C# files, 158/158 contracts, seven
+integration scenarios with 631 assertions, warning-free Core, Providers, and
+RimWorld 1.6 Release builds, one accepted and 17 rejected firewall fixtures,
+an eight-entry zero-direct-adaptation package firewall, and non-installing
+preflight. Two fresh worktrees reproduced the package byte-for-byte at
+SHA-256
+`1f15b34a994e63e7076ae1a5922653af60533f782e2471bef29ce1a655673295`.
+
+Live behavior with Core plus Royalty, Ideology, Biotech, Anomaly, and Odyssey
+remains unverified and requires the documented owner-operated disposable
+colony/save test. Third-party mod and RimTalk compatibility remain outside
+this gate.

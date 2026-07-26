@@ -1,6 +1,6 @@
 # Mosaic 0.2A — Grounded Relationship Dialogue
 
-**Status:** prepared implementation candidate; requires Windows/RimWorld compilation and offline verification
+**Status:** implemented and verified offline at `5edebba`; owner-operated RimWorld/DLC gate pending
 **Base:** PR #3 tested implementation commit `c49da815bd9271d132f557cec40745f50a3b9962`
 
 ## Objective
