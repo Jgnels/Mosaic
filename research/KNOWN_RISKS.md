@@ -257,3 +257,22 @@ rebuildable, prevent private/observer evidence from entering dialogue context,
 and treat current weights as testable assumptions. Future organic RimWorld
 traces and distribution-shift fixtures must evaluate them before any canonical
 relationship mutation is considered.
+
+## KR-027 - RimWorld GameComponent construction thread is not runtime-thread evidence
+Severity: INTEGRATION / RUNTIME
+
+OBSERVED LIVE on PR #3 commit `20a16ab`: RimWorld constructed the dialogue
+GameComponent on a different thread from later tick/GUI presentation calls.
+Capturing `Thread.CurrentThread.ManagedThreadId` in the presenter constructor
+therefore permanently rejected the real runtime thread and flooded the log
+with repeated fail-closed exceptions. Enrollment, social-event capture,
+experience, memory, and deterministic fake dialogue preparation had already
+succeeded.
+
+Mitigation implemented offline: presenter construction is unbound; only
+trusted GameComponent tick/repaint lifecycle entry can atomically bind once.
+Normal presenter operations cannot self-bind, conflicting first-use has one
+winner, a third thread fails closed, and component-level validation failure is
+latched before one error is logged and presentation is disabled. Keep this
+risk open until an owner retest demonstrates both tick and GUI presentation on
+the same established runtime thread.

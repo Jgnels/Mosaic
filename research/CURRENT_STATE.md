@@ -428,3 +428,20 @@ direct adaptations. Live speech-bubble layout, play-log behavior, adapter
 lifecycle, save-callback ordering, mod-stack compatibility, and gameplay
 tuning remain unverified and require a later disposable owner-controlled
 RimWorld test.
+
+## 2026-07-26 first Mosaic 0.2 dialogue runtime limiting result
+
+**OBSERVED LIVE (owner-operated):** PR #3 at commit `20a16ab` loaded,
+enrolled colonists, recorded a qualifying social opinion event for Pi, created
+experience and memory, and reached the deterministic fake-dialogue path.
+Presentation then failed safely because the presenter had captured its
+GameComponent construction thread rather than the later RimWorld tick/GUI
+thread. The resulting main-thread exception repeated from both tick and GUI
+callbacks.
+
+**IMPLEMENTED OFFLINE:** presenter construction is now deliberately unbound.
+Only trusted `GameComponentTick` or repaint `GameComponentOnGUI` lifecycle
+entry may atomically establish the runtime thread. Ordinary operations cannot
+bind; a different thread cannot replace the established identity; and a
+validation failure latches once, disables presentation for that game instance,
+and prevents repeated exception logging. Live confirmation remains open.

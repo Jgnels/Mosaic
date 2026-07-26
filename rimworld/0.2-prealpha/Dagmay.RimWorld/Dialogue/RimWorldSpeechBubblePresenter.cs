@@ -49,7 +49,7 @@ namespace Dagmay.RimWorld.Dialogue
             public IReadOnlyList<IndividualId> AudienceIds { get; }
         }
 
-        private readonly int _mainThreadId;
+        private readonly RimWorldRuntimeThreadBinding _runtimeThread;
         private readonly DialogueSpeechBubbleController _controller;
         private readonly Dictionary<IndividualId, Pawn> _pawnBindings =
             new Dictionary<IndividualId, Pawn>();
@@ -59,23 +59,48 @@ namespace Dagmay.RimWorld.Dialogue
         private bool _disposed;
 
         public RimWorldSpeechBubblePresenter()
-            : this(new DialogueSpeechBubbleController(), Thread.CurrentThread.ManagedThreadId)
+            : this(
+                new DialogueSpeechBubbleController(),
+                new RimWorldRuntimeThreadBinding())
+        {
+        }
+
+        internal RimWorldSpeechBubblePresenter(DialogueSpeechBubbleController controller)
+            : this(controller, new RimWorldRuntimeThreadBinding())
         {
         }
 
         internal RimWorldSpeechBubblePresenter(
             DialogueSpeechBubbleController controller,
             int mainThreadId)
+            : this(controller, new RimWorldRuntimeThreadBinding(mainThreadId))
+        {
+        }
+
+        private RimWorldSpeechBubblePresenter(
+            DialogueSpeechBubbleController controller,
+            RimWorldRuntimeThreadBinding runtimeThread)
         {
             _controller = controller ?? throw new ArgumentNullException(nameof(controller));
-            if (mainThreadId < 1) throw new ArgumentOutOfRangeException(nameof(mainThreadId));
-            _mainThreadId = mainThreadId;
+            _runtimeThread = runtimeThread ?? throw new ArgumentNullException(nameof(runtimeThread));
             _controller.BubbleDismissed += OnBubbleDismissed;
             _controller.Activate();
         }
 
         public event Action<RimWorldDialoguePresentationResult>? PresentationCompleted;
         public event Action<DialoguePresentationRow>? PresentationAbandoned;
+
+        /// <summary>
+        /// Establishes thread affinity only from a trusted RimWorld GameComponent
+        /// tick/GUI lifecycle entry. Ordinary presenter operations never bind.
+        /// </summary>
+        internal void BindFromTrustedGameComponentLifecycle(int runtimeThreadId)
+            => _runtimeThread.BindFromTrustedGameComponentLifecycle(runtimeThreadId);
+
+        internal bool IsRuntimeThreadBound => _runtimeThread.IsBound;
+
+        internal void ValidateRuntimeThread(int runtimeThreadId) =>
+            _runtimeThread.EnsureCurrentThread(runtimeThreadId);
 
         public void Bind(IndividualId individualId, Pawn pawn)
         {
@@ -160,6 +185,7 @@ namespace Dagmay.RimWorld.Dialogue
             _disposed = true;
             _controller.BubbleDismissed -= OnBubbleDismissed;
             _controller.Dispose();
+            _runtimeThread.Dispose();
             _pawnBindings.Clear();
             _pending.Clear();
             _presented.Clear();
@@ -176,7 +202,7 @@ namespace Dagmay.RimWorld.Dialogue
             _pawnBindings.TryGetValue(bubble.Row.SpeakerId, out var pawn);
             var availability = RimWorldDialoguePresentationPolicy.Evaluate(
                 _disposed,
-                _mainThreadId,
+                _runtimeThread.EstablishedThreadId,
                 Thread.CurrentThread.ManagedThreadId,
                 pawn is not null,
                 pawn?.Spawned == true,
@@ -301,8 +327,7 @@ namespace Dagmay.RimWorld.Dialogue
 
         private void EnsureMainThread()
         {
-            if (Thread.CurrentThread.ManagedThreadId != _mainThreadId)
-                throw new InvalidOperationException("RimWorld dialogue presentation is main-thread-only.");
+            _runtimeThread.EnsureCurrentThread(Thread.CurrentThread.ManagedThreadId);
         }
     }
 }

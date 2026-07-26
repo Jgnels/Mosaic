@@ -17,6 +17,7 @@
     <Compile Include="..\Dagmay.RimWorld\Reflection\ReflectionEventTaskPolicy.cs" Link="RimWorldPure\ReflectionEventTaskPolicy.cs" />
     <Compile Include="..\Dagmay.RimWorld\Reflection\ReflectionStorageSafetyPolicy.cs" Link="RimWorldPure\ReflectionStorageSafetyPolicy.cs" />
     <Compile Include="..\Dagmay.RimWorld\Dialogue\RimWorldDialoguePresentationPolicy.cs" Link="RimWorldPure\RimWorldDialoguePresentationPolicy.cs" />
+    <Compile Include="..\Dagmay.RimWorld\Dialogue\RimWorldRuntimeThreadBinding.cs" Link="RimWorldPure\RimWorldRuntimeThreadBinding.cs" />
     <Compile Include="..\Dagmay.RimWorld\Dialogue\RimWorldSocialDialogueTrigger.cs" Link="RimWorldPure\RimWorldSocialDialogueTrigger.cs" />
     <Compile Include="..\Dagmay.RimWorld\Dialogue\OfflineRimWorldDialoguePipeline.cs" Link="RimWorldPure\OfflineRimWorldDialoguePipeline.cs" />
   </ItemGroup>

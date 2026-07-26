@@ -28,6 +28,7 @@ namespace Dagmay.RimWorld.Dialogue
             new Dictionary<UtteranceId, OfflineRimWorldPreparedDialogue>();
         private DagmayIdentityGameComponent? _identity;
         private bool _disposed;
+        private int _presentationThreadFailed;
 
         public RimWorldDialogueGameComponent(Game game)
         {
@@ -49,6 +50,7 @@ namespace Dagmay.RimWorld.Dialogue
                 return;
             }
             EnsureAttached();
+            if (!TryEnterPresentationLifecycle()) return;
             _presenter.Update(_clock.ElapsedMilliseconds);
         }
 
@@ -56,8 +58,37 @@ namespace Dagmay.RimWorld.Dialogue
         {
             if (_disposed || !ReferenceEquals(Verse.Current.Game, _game)) return;
             if (Event.current is null || Event.current.type != EventType.Repaint) return;
+            if (!TryEnterPresentationLifecycle()) return;
             var tick = Find.TickManager?.TicksGame ?? 0;
             _presenter.Draw(tick, DateTimeOffset.UtcNow, _clock.ElapsedMilliseconds);
+        }
+
+        private bool TryEnterPresentationLifecycle()
+        {
+            if (_disposed || Volatile.Read(ref _presentationThreadFailed) != 0) return false;
+            try
+            {
+                _presenter.BindFromTrustedGameComponentLifecycle(
+                    Thread.CurrentThread.ManagedThreadId);
+                return true;
+            }
+            catch (InvalidOperationException exception)
+            {
+                FailPresentationThreadOnce(exception);
+                return false;
+            }
+        }
+
+        private void FailPresentationThreadOnce(InvalidOperationException exception)
+        {
+            if (Interlocked.Exchange(ref _presentationThreadFailed, 1) != 0) return;
+            _pending.Clear();
+            _presenter.PresentationCompleted -= OnPresentationCompleted;
+            _presenter.PresentationAbandoned -= OnPresentationAbandoned;
+            _presenter.Dispose();
+            Log.Error(
+                $"[Dagmay] {DagmayBuildInfo.Version} dialogue presentation disabled for this game "
+                + $"after a runtime-thread validation failure: {exception.Message}");
         }
 
         private void EnsureAttached()
@@ -74,7 +105,22 @@ namespace Dagmay.RimWorld.Dialogue
 
         private void OnSocialDialogueTriggerCaptured(RimWorldSocialDialogueTrigger trigger)
         {
-            if (_disposed || !ReferenceEquals(Verse.Current.Game, _game)) return;
+            if (_disposed ||
+                Volatile.Read(ref _presentationThreadFailed) != 0 ||
+                !ReferenceEquals(Verse.Current.Game, _game))
+            {
+                return;
+            }
+            if (!_presenter.IsRuntimeThreadBound) return;
+            try
+            {
+                _presenter.ValidateRuntimeThread(Thread.CurrentThread.ManagedThreadId);
+            }
+            catch (InvalidOperationException exception)
+            {
+                FailPresentationThreadOnce(exception);
+                return;
+            }
             try
             {
                 var tick = Find.TickManager?.TicksGame ?? trigger.ObservedAtTick;

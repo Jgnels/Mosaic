@@ -819,6 +819,47 @@ No provider or local model was called; RimWorld was not launched; no package
 was installed; and no save, configuration, credential, or runtime evidence was
 accessed or changed.
 
+## 2026-07-26 - Runtime presentation thread-binding repair
+
+**Live result:** LIMITING RESULT at PR #3 commit `20a16ab`.
+
+Owner-operated RimWorld evidence demonstrated successful mod load, enrollment,
+qualifying social-event capture for Pi, experience/memory creation, and entry
+into the deterministic fake-dialogue path. Presentation then repeatedly failed
+closed with `RimWorld dialogue presentation is main-thread-only.` from
+`GameComponentTick` and `GameComponentOnGUI`.
+
+Source review confirmed that the presenter field initializer captured the
+GameComponent construction thread. No other RimWorld adapter captured
+`ManagedThreadId` during construction.
+
+**Repair status:** PASS offline; live retest required.
+
+The default presenter now starts unbound. Only an explicit trusted tick or GUI
+lifecycle entry may establish affinity, using one-time atomic binding. The
+internal explicit-thread constructor remains available for deterministic
+tests. Ordinary operations cannot self-bind, later calls require the same
+thread, concurrent first-use cannot bind two threads, and disposal remains
+idempotent. A component-level mismatch is latched, logged once, and disables
+further presentation work for that game instance.
+
+Four new contract tests cover loader-thread A versus runtime thread B, repeated
+calls and shared tick/GUI affinity on B, third-thread rejection, concurrent
+first-use, and disposal/lifecycle behavior.
+
+Pre-commit complete Release verification:
+
+- static verification: PASS, 129 C# files;
+- contract tests: PASS, 153 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- Core, Providers, and RimWorld 1.6 Release builds: zero warnings/errors;
+- firewall fixtures: one valid accepted and 17 adversarial rejected;
+- package firewall: eight declared entries and zero direct adaptations.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+prepared evidence was accessed or changed during the repair.
+
 ## 2026-07-26 - Storytelling evidence spine fixtures
 
 **Status:** PASS offline; no runtime or canonical relationship mutation.

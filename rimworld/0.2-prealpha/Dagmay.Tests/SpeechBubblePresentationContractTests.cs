@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using Dagmay.Core.Abstractions;
 using Dagmay.Core.Contracts;
 using Dagmay.Core.Dialogue;
@@ -195,6 +196,127 @@ namespace Dagmay.Tests
             TestAssert.Equal(RimWorldDialoguePresentationAvailability.Disposed,
                 RimWorldDialoguePresentationPolicy.Evaluate(true, 1, 2, false, false, false, false),
                 "Disposal must dominate all other availability states.");
+        }
+
+        public static void PresenterBindsAtTrustedRuntimeLifecycleNotConstruction()
+        {
+            RimWorldRuntimeThreadBinding? binding = null;
+            var constructionThreadId = 0;
+            var constructionThread = new Thread(() =>
+            {
+                constructionThreadId = Thread.CurrentThread.ManagedThreadId;
+                binding = new RimWorldRuntimeThreadBinding();
+            });
+            constructionThread.Start();
+            constructionThread.Join();
+
+            TestAssert.True(binding is not null,
+                "The presenter thread binding fixture must be constructed on loader thread A.");
+            TestAssert.False(binding!.IsBound,
+                "Construction on loader thread A must not establish presentation affinity.");
+            TestAssert.Throws<InvalidOperationException>(
+                () => binding.EnsureCurrentThread(constructionThreadId),
+                "An ordinary call from the construction thread cannot bind the presenter accidentally.");
+
+            var runtimeThreadId = Thread.CurrentThread.ManagedThreadId;
+            TestAssert.True(runtimeThreadId != constructionThreadId,
+                "The fixture must use a distinct trusted runtime thread B.");
+            binding.BindFromTrustedGameComponentLifecycle(runtimeThreadId);
+            binding.EnsureCurrentThread(runtimeThreadId);
+            binding.EnsureCurrentThread(runtimeThreadId);
+            TestAssert.Equal(runtimeThreadId, binding.EstablishedThreadId,
+                "Later presenter calls on trusted runtime thread B must retain the same affinity.");
+
+            Exception? thirdThreadFailure = null;
+            var thirdThread = new Thread(() =>
+            {
+                try
+                {
+                    binding.EnsureCurrentThread(Thread.CurrentThread.ManagedThreadId);
+                }
+                catch (Exception exception)
+                {
+                    thirdThreadFailure = exception;
+                }
+            });
+            thirdThread.Start();
+            thirdThread.Join();
+            TestAssert.True(thirdThreadFailure is InvalidOperationException,
+                "Any third thread must fail the established main-thread boundary.");
+        }
+
+        public static void TickAndGuiShareOneEstablishedRuntimeThread()
+        {
+            var binding = new RimWorldRuntimeThreadBinding();
+            var runtimeThreadId = Thread.CurrentThread.ManagedThreadId;
+
+            binding.BindFromTrustedGameComponentLifecycle(runtimeThreadId);
+            binding.EnsureCurrentThread(runtimeThreadId);
+            binding.BindFromTrustedGameComponentLifecycle(runtimeThreadId);
+            binding.EnsureCurrentThread(runtimeThreadId);
+
+            TestAssert.Equal(runtimeThreadId, binding.EstablishedThreadId,
+                "Trusted tick and GUI lifecycle entries must share one established runtime thread.");
+            TestAssert.Throws<InvalidOperationException>(
+                () => binding.BindFromTrustedGameComponentLifecycle(runtimeThreadId + 1000),
+                "A GUI or tick callback on another thread must not replace established affinity.");
+        }
+
+        public static void ConcurrentFirstUseCannotBindTwoRuntimeThreads()
+        {
+            var binding = new RimWorldRuntimeThreadBinding();
+            using var ready = new CountdownEvent(2);
+            using var start = new ManualResetEventSlim(false);
+            var successes = 0;
+            var failures = 0;
+
+            ThreadStart contender = () =>
+            {
+                ready.Signal();
+                start.Wait();
+                var threadId = Thread.CurrentThread.ManagedThreadId;
+                try
+                {
+                    binding.BindFromTrustedGameComponentLifecycle(threadId);
+                    binding.EnsureCurrentThread(threadId);
+                    Interlocked.Increment(ref successes);
+                }
+                catch (InvalidOperationException)
+                {
+                    Interlocked.Increment(ref failures);
+                }
+            };
+            var first = new Thread(contender);
+            var second = new Thread(contender);
+            first.Start();
+            second.Start();
+            ready.Wait();
+            start.Set();
+            first.Join();
+            second.Join();
+
+            TestAssert.Equal(1, successes,
+                "Atomic first-use binding must admit exactly one runtime thread.");
+            TestAssert.Equal(1, failures,
+                "The concurrent losing thread must fail rather than replace affinity.");
+            TestAssert.True(binding.EstablishedThreadId > 0,
+                "Concurrent binding must leave one stable trusted runtime thread.");
+        }
+
+        public static void RuntimeThreadBindingDisposalIsIdempotentAndSilent()
+        {
+            var runtimeThreadId = Thread.CurrentThread.ManagedThreadId;
+            var binding = new RimWorldRuntimeThreadBinding(runtimeThreadId);
+            binding.EnsureCurrentThread(runtimeThreadId);
+            binding.Dispose();
+            binding.Dispose();
+
+            binding.BindFromTrustedGameComponentLifecycle(runtimeThreadId + 1000);
+            binding.EnsureCurrentThread(runtimeThreadId + 1000);
+            TestAssert.True(binding.IsDisposed,
+                "Disposed presentation affinity must remain disposed through later lifecycle callbacks.");
+            TestAssert.Equal(runtimeThreadId, binding.EstablishedThreadId,
+                "Disposal must not rewrite the formerly established runtime identity.");
         }
 
         public static void ReceiptsReportOnlyTheActualSuccessfulChannel()

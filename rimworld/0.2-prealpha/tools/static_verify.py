@@ -42,6 +42,7 @@ REQUIRED_FILES = [
     "Dagmay.RimWorld/Dialogue/OfflineRimWorldDialoguePipeline.cs",
     "Dagmay.RimWorld/Dialogue/RimWorldDialogueGameComponent.cs",
     "Dagmay.RimWorld/Dialogue/RimWorldDialoguePresentationPolicy.cs",
+    "Dagmay.RimWorld/Dialogue/RimWorldRuntimeThreadBinding.cs",
     "Dagmay.RimWorld/Dialogue/RimWorldSocialDialogueTrigger.cs",
     "Dagmay.RimWorld/Dialogue/RimWorldSpeechBubblePresenter.cs",
     "Dagmay.RimWorld/Package/Defs/MosaicDialogueDefs.xml",
@@ -312,6 +313,31 @@ def verify_boundaries(errors: list[str]) -> None:
     for token in ("GoogleAiStudioProvider", "RimWorldReflectionProviderSelection", "FromEnvironment("):
         if token in offline_dialogue:
             fail(errors, f"Offline RimWorld dialogue path exposes prohibited provider selection: {token}")
+
+    presenter = (
+        ROOT / "Dagmay.RimWorld/Dialogue/RimWorldSpeechBubblePresenter.cs"
+    ).read_text(encoding="utf-8")
+    component_dialogue = (
+        ROOT / "Dagmay.RimWorld/Dialogue/RimWorldDialogueGameComponent.cs"
+    ).read_text(encoding="utf-8")
+    thread_binding = (
+        ROOT / "Dagmay.RimWorld/Dialogue/RimWorldRuntimeThreadBinding.cs"
+    ).read_text(encoding="utf-8")
+    if "Thread.CurrentThread.ManagedThreadId)" in presenter.split(
+            "public RimWorldSpeechBubblePresenter()", 1)[1].split("{", 1)[0]:
+        fail(errors, "Dialogue presenter constructor captures the construction thread.")
+    for token in (
+            "BindFromTrustedGameComponentLifecycle(",
+            "Interlocked.CompareExchange(",
+            "has not been bound by a trusted GameComponent lifecycle call"):
+        if token not in thread_binding:
+            fail(errors, f"Dialogue runtime-thread binding invariant is missing: {token}")
+    if "BindFromTrustedGameComponentLifecycle(" not in presenter:
+        fail(errors, "Dialogue presenter does not expose the trusted lifecycle binding seam.")
+    if component_dialogue.count("TryEnterPresentationLifecycle()") < 3:
+        fail(errors, "Dialogue tick and GUI paths do not share trusted runtime-thread entry.")
+    if "Interlocked.Exchange(ref _presentationThreadFailed, 1)" not in component_dialogue:
+        fail(errors, "Dialogue thread validation failure is not latched against log flooding.")
 
     if not any("AllowsPawnControl = false" in path.read_text(encoding="utf-8") for path in rimworld_files):
         fail(errors, "Observer-only guard is missing or does not explicitly deny pawn control.")
