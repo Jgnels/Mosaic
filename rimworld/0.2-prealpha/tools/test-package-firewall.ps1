@@ -48,12 +48,15 @@ function New-FixturePackage {
 
     $Notice = Get-Content -LiteralPath (
         Join-Path $Root "Dagmay.RimWorld\Package\THIRD_PARTY_NOTICES.txt") -Raw
+    $DialogueDef = Get-Content -LiteralPath (
+        Join-Path $Root "Dagmay.RimWorld\Package\Defs\MosaicDialogueDefs.xml") -Raw
     $Entries = [ordered]@{
         "About/About.xml" = "<ModMetaData><name>Mosaic</name></ModMetaData>"
         "Assemblies/Dagmay.Core.dll" = "fixture-core /_/"
         "Assemblies/Dagmay.Providers.dll" = "fixture-providers /_/"
         "Assemblies/Dagmay.RimWorld.dll" = "fixture-adapter /_/"
         "Assemblies/Dagmay.RimWorld.pdb" = "fixture-symbols"
+        "Defs/MosaicDialogueDefs.xml" = $DialogueDef
         "README.txt" = "fixture-readme"
         "THIRD_PARTY_NOTICES.txt" = $Notice
     }

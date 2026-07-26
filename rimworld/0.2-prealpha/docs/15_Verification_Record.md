@@ -748,3 +748,36 @@ Twenty new contract tests passed for:
 The protocol admits factual dialogue evidence only. It does not create
 perception, memory, relationship, mood, belief, goal, identity, pawn-control,
 or gameplay mutations.
+
+## 2026-07-26 - Speech-bubble-first dialogue presentation
+
+**Status:** PASS offline; visual and play-log runtime behavior unverified.
+
+Mosaic now has an original main-thread-only RimWorld speech-bubble renderer
+over a dependency-free Core controller. Presentation rows are keyed by stable
+identity and dialogue IDs; no Pawn, Map, Def, Unity, provider, prompt, cache,
+or persistence object crosses into Core. The renderer re-anchors from pawn
+position on each draw and safely contains missing bindings, despawn/map loss,
+GUI failures, and play-log failures.
+
+Receipt behavior is evidence-based:
+
+- bubble success reports Bubble, including when play-log mirroring succeeds;
+- bubble failure plus play-log success reports PlayLog; and
+- failure of both channels produces no display receipt.
+
+Complete documented Release verification:
+
+- static verification: PASS, 122 C# files;
+- Core and Providers Release builds: PASS, zero warnings/errors;
+- contract tests: PASS, 139 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid and 17 rejected;
+- package firewall: PASS, eight declared entries and zero direct adaptations;
+- package SHA-256:
+  `3a6709de7e79d616316b4b3231ffc1eb17e4ec23c4b5fac68665e55521b4642c`.
+
+No provider or local model was called. RimWorld was not launched, the package
+was not installed, and no save, configuration, credential, or runtime evidence
+was accessed or changed.

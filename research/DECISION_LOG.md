@@ -300,3 +300,18 @@ This is an idempotent recovery protocol, not a claim of filesystem-level
 atomicity. It admits factual dialogue evidence only and has no authority to
 change memory, relationships, mood, beliefs, goals, identity, pawn behavior,
 or gameplay.
+
+## D-047 - Dialogue presentation is speech-bubble-first and receipt-gated
+Status: Accepted; implemented and verified offline
+
+Mosaic presents validated dialogue through a bounded, main-thread RimWorld
+speech bubble anchored to the stable speaker `IndividualId` binding. The
+RimWorld play log is a narrow mirror and fallback. If the bubble succeeds, the
+receipt identifies Bubble even when mirroring also succeeds. If only the play
+log succeeds, the receipt identifies PlayLog. If neither succeeds, Mosaic has
+no factual display receipt and may not admit the utterance.
+
+Presentation remains observer-only and non-authoritative. It cannot call a
+provider, persist cognition, mutate canonical character state, control a pawn,
+or execute gameplay. Offline compilation and tests do not establish live
+visual layout or play-log compatibility.

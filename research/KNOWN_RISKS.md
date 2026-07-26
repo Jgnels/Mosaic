@@ -210,3 +210,18 @@ binding, rollback, journal-integrity, backup-recovery, and compaction matrix.
 The two destinations remain non-transactional; the mitigation is explicit
 idempotent recovery. RimWorld adapter wiring and live behavior remain
 unverified.
+
+## KR-024 - Speech-bubble rendering is compiled but not live-verified
+Severity: INTEGRATION / PRODUCT
+
+The original presentation controller and RimWorld renderer compile against the
+installed RimWorld 1.6 assemblies and pass offline queue, Unicode, bounds,
+receipt, availability, disposal, and purity tests. Offline tests cannot prove
+camera projection, scale-dependent placement, visual readability, GUI event
+behavior, pawn movement re-anchoring, or custom play-log serialization in a
+running game.
+
+Mitigation: keep factual admission gated on an actual successful presentation
+receipt, contain mirror failures, dismiss absent/despawned/off-map bindings,
+and perform a later owner-controlled disposable-game runtime test. Do not treat
+the compiled adapter or fake-provider path as live evidence.

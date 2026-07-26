@@ -20,11 +20,15 @@ if (-not (Test-Path -LiteralPath $PackagePath -PathType Leaf)) {
 
 $ManifestPath = Join-Path $SourceRoot "docs\provenance\MOSAIC_DIRECT_ADAPTATION_MANIFEST.json"
 $NoticePath = Join-Path $SourceRoot "Dagmay.RimWorld\Package\THIRD_PARTY_NOTICES.txt"
+$DialogueDefPath = Join-Path $SourceRoot "Dagmay.RimWorld\Package\Defs\MosaicDialogueDefs.xml"
 if (-not (Test-Path -LiteralPath $ManifestPath -PathType Leaf)) {
     throw "Direct-adaptation manifest is missing."
 }
 if (-not (Test-Path -LiteralPath $NoticePath -PathType Leaf)) {
     throw "Third-party notice source is missing."
+}
+if (-not (Test-Path -LiteralPath $DialogueDefPath -PathType Leaf)) {
+    throw "Mosaic dialogue definition source is missing."
 }
 
 $Manifest = Get-Content -LiteralPath $ManifestPath -Raw | ConvertFrom-Json
@@ -72,6 +76,7 @@ $AllowedEntries = @(
     "Assemblies/Dagmay.Providers.dll",
     "Assemblies/Dagmay.RimWorld.dll",
     "Assemblies/Dagmay.RimWorld.pdb",
+    "Defs/MosaicDialogueDefs.xml",
     "README.txt",
     "THIRD_PARTY_NOTICES.txt"
 )
@@ -105,6 +110,7 @@ $MachineMarkers = @(
     '/agent/_work/'
 ) | Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
 $NoticeHash = (Get-FileHash -LiteralPath $NoticePath -Algorithm SHA256).Hash.ToLowerInvariant()
+$DialogueDefHash = (Get-FileHash -LiteralPath $DialogueDefPath -Algorithm SHA256).Hash.ToLowerInvariant()
 
 Add-Type -AssemblyName System.IO.Compression
 Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -157,6 +163,9 @@ try {
         if ($Name -eq "THIRD_PARTY_NOTICES.txt" -and $Hash -ne $NoticeHash) {
             throw "Packaged third-party notice does not match the reviewed source notice."
         }
+        if ($Name -eq "Defs/MosaicDialogueDefs.xml" -and $Hash -ne $DialogueDefHash) {
+            throw "Packaged dialogue definition does not match the reviewed source definition."
+        }
 
         if ([IO.Path]::GetExtension($Name).ToLowerInvariant() -in @(".dll", ".pdb")) {
             $Utf8Text = [Text.Encoding]::UTF8.GetString($Bytes)
@@ -203,6 +212,7 @@ $Result = [ordered]@{
     packageSha256 = (Get-FileHash -LiteralPath $PackagePath -Algorithm SHA256).Hash.ToLowerInvariant()
     manifestSha256 = (Get-FileHash -LiteralPath $ManifestPath -Algorithm SHA256).Hash.ToLowerInvariant()
     noticeSha256 = $NoticeHash
+    dialogueDefinitionSha256 = $DialogueDefHash
     declaredEntryCount = $AllowedEntries.Count
     adaptationEntryCount = @($Manifest.entries).Count
     entries = [object[]]$Inventory
