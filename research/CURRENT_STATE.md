@@ -401,3 +401,30 @@ the recovered source remains provenance-labeled 0.1K, and the certified package 
 0.2-prealpha compatibility identifier.
 
 See docs/MOSAIC_0.1_CLOSURE_20260726.md.
+
+## 2026-07-26 Mosaic 0.2 dialogue foundation integration
+
+**Status: PASS offline; draft integration candidate, not live-verified.**
+
+The preserved clean-room dialogue foundation has been graduated onto the
+post-0.1-closure main line without changing the frozen 0.1 tree. New work adds
+an integrity-checked checkpoint-bound factual dialogue outbox, an original
+speech-bubble-first presentation controller with play-log fallback, a
+deterministic-fake-only RimWorld composition seam, and a bounded directed
+storytelling evidence fixture spine.
+
+The adapter remains observer-only. It cannot select a real provider, control a
+pawn, or treat generated language as canonical mutation. An actual
+presentation receipt may queue factual evidence, but durable destinations are
+recovered only at a matching RimWorld save checkpoint. Relationship
+projection remains rebuildable context with exact evidence IDs rather than
+canonical relationship truth.
+
+Offline verification at the storytelling-spine implementation commit covered
+128 C# files, 149/149 contract tests, seven integration scenarios with 631
+assertions, warning-free Core, Providers, and RimWorld 1.6 Release builds, one
+accepted and 17 rejected firewall fixtures, and an eight-entry package with no
+direct adaptations. Live speech-bubble layout, play-log behavior, adapter
+lifecycle, save-callback ordering, mod-stack compatibility, and gameplay
+tuning remain unverified and require a later disposable owner-controlled
+RimWorld test.

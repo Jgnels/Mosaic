@@ -837,3 +837,20 @@ cannot enter dialogue context. Duplicate EventIds fail closed.
 The projection is bounded context only. It does not mutate canonical
 relationships, memory, beliefs, affect, goals, plans, identity, pawn behavior,
 or gameplay.
+
+Complete documented Release verification at implementation commit
+`f4683c2`:
+
+- static verification: PASS, 128 C# files;
+- Core and Providers Release builds: PASS, zero warnings/errors;
+- contract tests: PASS, 149 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid and 17 rejected;
+- package firewall: PASS, eight declared entries and zero direct adaptations;
+- package SHA-256:
+  `ea945a120f24cb43277c7d77efd339084bfdb82da6ef8d3cab94b067a3835560`.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, configuration, credential, or runtime evidence was
+accessed or changed.
