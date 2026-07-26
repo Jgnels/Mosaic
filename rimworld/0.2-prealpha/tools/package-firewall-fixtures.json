@@ -1,0 +1,15 @@
+{
+  "schema": "mosaic.package-firewall-fixtures.v1",
+  "negativeCases": [
+    { "name": "restricted-research", "entry": "research/private.cs", "expected": "prohibited" },
+    { "name": "undeclared-dll", "entry": "Assemblies/Surprise.dll", "expected": "undeclared" },
+    { "name": "undeclared-asset", "entry": "Textures/borrowed.png", "expected": "undeclared" },
+    { "name": "runtime-log", "entry": "Player.log", "expected": "prohibited" },
+    { "name": "private-save", "entry": "Saves/Colony.rws", "expected": "prohibited" },
+    { "name": "path-traversal", "entry": "../escape.txt", "expected": "unsafe path" },
+    { "name": "machine-path-source-root", "replace": "Assemblies/Dagmay.Core.dll", "contentKind": "sourceRoot", "expected": "machine-specific" },
+    { "name": "machine-path-other-user", "replace": "Assemblies/Dagmay.Core.dll", "content": "C:\\Users\\Alice\\private\\source.cs", "expected": "machine-specific" },
+    { "name": "machine-path-unix", "replace": "Assemblies/Dagmay.Core.dll", "content": "/home/alice/private/source.cs", "expected": "machine-specific" },
+    { "name": "missing-required", "omit": "README.txt", "expected": "missing declared" }
+  ]
+}
