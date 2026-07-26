@@ -286,3 +286,17 @@ in-session appraisal may be designed separately for immediate believability,
 but lasting relationship, mood, memory, belief, goal, or identity changes
 remain validated checkpoint-aligned mutations. No live coordinator or
 automatic dialogue-to-gameplay effect is approved by this decision.
+
+## D-046 - Dialogue admission uses a recoverable factual outbox
+Status: Accepted; implemented and verified offline
+
+Before either non-transactional destination changes, Mosaic persists an
+integrity-checked outbox entry bound to the exact store, stable save lineage,
+world, and checkpoint generation. Recovery inspects the event ledger and
+experience journal, materializes only a missing side, rereads both, and retains
+a completed tombstone through a later successful checkpoint.
+
+This is an idempotent recovery protocol, not a claim of filesystem-level
+atomicity. It admits factual dialogue evidence only and has no authority to
+change memory, relationships, mood, beliefs, goals, identity, pawn behavior,
+or gameplay.

@@ -203,3 +203,10 @@ Mitigation status: durable dialogue admission is checkpoint-aligned and the
 pure readiness policy fails closed on stale checkpoints, read-only storage,
 invalid journals, and already-admitted EventIds. Live coordination remains
 blocked until a save-atomic record or durable idempotent outbox is proven.
+
+Mitigation update (2026-07-26): an original durable outbox and recovery
+coordinator now pass the complete offline interruption, replay, duplicate,
+binding, rollback, journal-integrity, backup-recovery, and compaction matrix.
+The two destinations remain non-transactional; the mitigation is explicit
+idempotent recovery. RimWorld adapter wiring and live behavior remain
+unverified.

@@ -722,3 +722,29 @@ Certified deterministic package SHA-256: 5a79db4f3fc2b3306f8ff2fc66f8e4653de1b9b
 This closes the controlled frozen-0.1 reliability campaign. It does not certify the full normal mod
 stack, RimTalk integration, public release readiness, or the existence of a separately versioned
 historical 0.1RC artifact.
+
+## 2026-07-26 - Recoverable dialogue admission outbox
+
+**Status:** PASS offline; not wired into live RimWorld.
+
+Mosaic now persists a deterministic, integrity-checked, checkpoint-bound
+factual admission entry before changing the independent event-ledger and
+experience-journal destinations. Recovery is lock-serialized, inspects both
+destinations, materializes only missing state, rereads both sides, and retains
+completion tombstones until a later successful checkpoint permits compaction.
+
+Twenty new contract tests passed for:
+
+- crash before and after the outbox write;
+- ledger-only, journal-only, and both-destinations-before-completion states;
+- completion-before-compaction and restart replay;
+- identical and conflicting duplicate EventIds;
+- stale, ahead, unchanged, rolled-back, and cross-bound checkpoints;
+- read-only storage and invalid/truncated journals;
+- invalid primary with valid backup and invalid primary plus backup;
+- deterministic codec reproduction; and
+- interrupted temporary replacement preserving the last good state.
+
+The protocol admits factual dialogue evidence only. It does not create
+perception, memory, relationship, mood, belief, goal, identity, pawn-control,
+or gameplay mutations.
