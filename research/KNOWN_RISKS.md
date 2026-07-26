@@ -242,3 +242,18 @@ existing experience read-only boundary, and factual admission requires an
 actual channel receipt. Use only a disposable owner-controlled game for the
 first runtime test, preserve logs/state on failure, and do not interpret an
 offline PASS as live evidence.
+
+## KR-026 - Relationship projection weights are bounded fixture assumptions
+Severity: SCIENTIFIC / PRODUCT
+
+The first storytelling evidence spine deterministically distinguishes direct,
+witnessed, told, inferred, private, observer-only, and superseded evidence.
+Its channel weights and mapping from aggregate valence to trust, affection,
+fear, resentment, familiarity, and confidence are explicit bounded heuristics,
+not validated psychological measurements or tuned gameplay values.
+
+Mitigation: preserve every exact evidence ID, keep the projection directed and
+rebuildable, prevent private/observer evidence from entering dialogue context,
+and treat current weights as testable assumptions. Future organic RimWorld
+traces and distribution-shift fixtures must evaluate them before any canonical
+relationship mutation is considered.

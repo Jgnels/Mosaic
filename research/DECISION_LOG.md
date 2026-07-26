@@ -330,3 +330,18 @@ ledger and experience journal materialize and verify only inside RimWorld's
 save callback, after which the journal head and dedicated dialogue checkpoint
 are serialized. Generation, validation, or display alone never constitutes
 admission. No subjective cognition or gameplay authority is added.
+
+## D-049 - Storytelling retrieval uses directed bounded evidence, not global relationship truth
+Status: Accepted; offline fixtures implemented
+
+Relationship projection belongs to a specific owner looking toward a specific
+other individual. It rebuilds deterministically from exact factual EventIds,
+perception IDs, memory IDs, perception channel, privacy, confidence, and
+supersession state. Direct and witnessed evidence weigh more than told or
+inferred evidence; superseded evidence remains preserved but does not drive the
+current score.
+
+Dialogue retrieval exposes only a bounded relationship-sensitive summary with
+exact EventIds and rejects private or observer-only evidence. The projection is
+context and appraisal input, not canonical fact, automatic belief, relationship
+mutation, goal, plan, or gameplay authority.

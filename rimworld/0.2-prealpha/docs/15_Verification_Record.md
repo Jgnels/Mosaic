@@ -818,3 +818,22 @@ Complete documented Release verification:
 No provider or local model was called; RimWorld was not launched; no package
 was installed; and no save, configuration, credential, or runtime evidence was
 accessed or changed.
+
+## 2026-07-26 - Storytelling evidence spine fixtures
+
+**Status:** PASS offline; no runtime or canonical relationship mutation.
+
+The smallest deterministic evidence spine now covers canonical social facts,
+explicit experienced/witnessed/told perception, episodic memory, directed
+relationship evidence, bounded projection, exact-EventId dialogue retrieval,
+and grounded fake-provider/appraisal inputs.
+
+Four fixtures cover kindness, insult, betrayal, rescue, rumor/hearsay,
+asymmetric A-to-B versus B-to-A histories, mixed positive/negative evidence,
+superseded evidence without erasure, private and unwitnessed boundaries, and
+deterministic journal save/reload rebuild. Private and observer-only evidence
+cannot enter dialogue context. Duplicate EventIds fail closed.
+
+The projection is bounded context only. It does not mutate canonical
+relationships, memory, beliefs, affect, goals, plans, identity, pawn behavior,
+or gameplay.
