@@ -882,6 +882,64 @@ Live status remains unverified. The owner gate must use RimWorld Core,
 Royalty, Ideology, Biotech, Anomaly, Odyssey, and Mosaic only, with provider
 dispatch offline and a new disposable colony/save.
 
+## 2026-07-26 - Mosaic 0.2B bounded two-turn exchange
+
+**Status:** PASS offline at implementation commit
+`db030c5`; owner-operated live DLC gate pending.
+
+After a qualifying grounded opening is actually displayed and its factual
+admission is successfully queued, the original recipient may produce exactly
+one deterministic grounded reply. The reply keeps the same conversation ID,
+swaps the participant roles, requires the current social EventId, and may add
+at most two eligible recipient-owned prior events. Private, observer-only,
+told, inferred, unrelated, mismatched, undisplayed, or unadmitted context
+fails closed. The runtime has no path from the reply to a third turn.
+
+The supplied uncompiled candidate required one API compatibility correction:
+`OfflineRimWorldDialoguePipeline.cs` now imports
+`Dagmay.Core.Contracts` for the existing `EventId` type. No behavioral
+redesign or milestone expansion was required.
+
+Complete clean-source Release verification:
+
+- static verification: PASS, 133 C# files;
+- Core and Providers Release builds: PASS, zero warnings/errors;
+- contract tests: PASS, 164 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid accepted and 17 adversarial
+  packages rejected;
+- package firewall: PASS, eight declared entries and zero direct adaptations;
+- non-installing Gate 3 preflight: PASS against the installed RimWorld 1.6
+  assemblies;
+- frozen `rimworld/0.1-closure-candidate/`: unchanged; and
+- two fresh detached Git worktrees at the exact implementation commit:
+  byte-identical packages.
+
+Certified clean-source package SHA-256:
+`22d6235ff3664283f03882c1ef50cb94680296822a43ce0769b7c8c5b634929f`.
+
+The package contains exactly:
+
+- `About/About.xml`;
+- `Assemblies/Dagmay.Core.dll`;
+- `Assemblies/Dagmay.Providers.dll`;
+- `Assemblies/Dagmay.RimWorld.dll`;
+- `Assemblies/Dagmay.RimWorld.pdb`;
+- `Defs/MosaicDialogueDefs.xml`;
+- `README.txt`; and
+- `THIRD_PARTY_NOTICES.txt`.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+prepared live evidence was accessed or changed.
+
+Live status remains unverified. The owner gate must use RimWorld Core,
+Royalty, Ideology, Biotech, Anomaly, Odyssey, and Mosaic only, with provider
+dispatch offline and a new disposable colony/save. Third-party mods, RimTalk,
+real providers, free-running conversation, and learned conversational policy
+remain outside this gate.
+
 ## 2026-07-26 - Runtime presentation thread-binding repair
 
 **Live result:** LIMITING RESULT at PR #3 commit `20a16ab`.

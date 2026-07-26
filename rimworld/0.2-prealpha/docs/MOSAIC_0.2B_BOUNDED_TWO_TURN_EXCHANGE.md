@@ -1,6 +1,6 @@
 # Mosaic 0.2B — Bounded Two-Turn Exchange
 
-**Status:** prepared implementation candidate; Windows/RimWorld compilation and full offline verification required
+**Status:** implemented and verified offline at `db030c5`; owner-operated RimWorld/DLC gate pending
 **Stacked base:** PR #4 branch `codex/mosaic-0.2a-grounded-relationship-dialogue-20260726`
 **Required base head:** `409a92bfba037159efa5b6a6314aa4fe7251b088`
 

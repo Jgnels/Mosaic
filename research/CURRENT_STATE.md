@@ -484,3 +484,25 @@ Live behavior with Core plus Royalty, Ideology, Biotech, Anomaly, and Odyssey
 remains unverified and requires the documented owner-operated disposable
 colony/save test. Third-party mod and RimTalk compatibility remain outside
 this gate.
+
+## 2026-07-26 Mosaic 0.2B bounded two-turn exchange
+
+**SUPPORTED OFFLINE:** implementation commit `db030c5` adds one
+receipt-gated reciprocal reply after a qualifying grounded opening. The reply
+is released only after a matching actual display receipt and successful
+opening-admission queue, swaps the original participants, cites the mandatory
+current EventId plus at most two recipient-owned eligible prior events, and
+terminates the exchange. No third-turn, real-provider, canonical cognitive
+mutation, or pawn-action path was added.
+
+Clean-source verification passed over 133 C# files, 164/164 contracts, seven
+integration scenarios with 631 assertions, warning-free Core, Providers, and
+RimWorld 1.6 Release builds, one accepted and 17 rejected firewall fixtures,
+an eight-entry zero-direct-adaptation package firewall, and non-installing
+preflight. Two fresh detached worktrees reproduced the package byte-for-byte
+at SHA-256
+`22d6235ff3664283f03882c1ef50cb94680296822a43ce0769b7c8c5b634929f`.
+
+Live sequencing, bubble timing, both receipt-gated admissions, save/reload
+non-replay, recurring performance, and all-official-DLC coexistence remain
+unverified and require the documented owner-operated disposable test.
