@@ -349,3 +349,20 @@ newest-first for A and B but absent for unrelated C, verify current rename
 labels without duplication, confirm Bubble channel and bounded evidence
 counts, and close/reopen the window without replay, mutation, exception
 flooding, storage warnings, or recurring stutter.
+
+## KR-032 - Offline determinism closure does not substitute for live lifecycle evidence
+Severity: INTEGRATION / DATA INTEGRITY
+
+The 0.2E contracts and 128-cycle integration replay prove stable tie-breaking,
+observer-read purity, viewer duplicate resistance, identity/lifecycle
+invariants, RNG exclusion, and cross-process digest reproduction under
+authored offline fixtures. They do not observe RimWorld save callbacks,
+transient object reconstruction, MainTabWindow lifecycle, DLC interactions,
+or organic runtime event ordering.
+
+Required mitigation: combine the PR #7 viewer test with a two-save/two-reload
+identity check. Record the enrolled IndividualId and LineageId before UI
+activity, repeatedly open/switch/close the read-only viewer, trigger a later
+exchange, save and reload again, and confirm stable IDs, correct continuity,
+no duplicated history or bubble replay, no pawn behavior change, and no
+storage, affinity, exception-flood, or recurring-stutter signal.

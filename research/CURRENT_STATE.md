@@ -550,3 +550,29 @@ Live MainButtonDef loading, window layout, colonist selection, post-reload
 history visibility, rename display, all-official-DLC coexistence, and
 participant isolation remain unverified and require the documented
 owner-operated disposable test.
+
+## 2026-07-27 Mosaic 0.2E determinism and lifecycle closure
+
+**SUPPORTED OFFLINE:** implementation commit `512936a` adds only contracts,
+integration replay, source firewalls, verification tooling, and documentation.
+No shipped Core, Providers, RimWorld, or package-source file differs from the
+certified PR #7 head.
+
+The executable closure gate passed its RNG firewall, read-only-viewer
+mutation/provider/pawn-control firewall, two-process normalized contract
+comparison, and two-process integration replay. The deterministic replay
+digest was
+`9cdee2b44153d67bf1ec95f8627932936faca4827a3616deb0e0ffe4d256fb36`.
+
+Clean-source verification passed over 141 C# files, 182/182 contracts, eight
+integration scenarios with 760 assertions, warning-free Core, Providers, and
+RimWorld 1.6 Release builds, one accepted and 19 rejected firewall fixtures,
+a nine-entry zero-direct-adaptation package firewall, and non-installing
+preflight. Two fresh detached worktrees reproduced the package byte-for-byte
+at SHA-256
+`056a35c81d2fd4f49382a4cf732f8cca7b790269861a93779c981cc16ab801e1`.
+
+This closes the prepared offline determinism, observer-purity, and identity
+lifecycle milestone. Live Def/UI behavior, actual save/reload identity
+continuity under the PR #7 viewer workflow, non-replay, DLC coexistence, and
+runtime performance remain owner-test questions rather than offline claims.
