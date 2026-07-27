@@ -56,7 +56,8 @@ namespace Dagmay.RimWorld.Dialogue
             RimWorldDialogueIdentitySnapshot recipient,
             IDictionary<string, string> factualPayload,
             IEnumerable<GroundedRelationshipEvidence>? priorRelationshipEvidence = null,
-            IEnumerable<GroundedRelationshipEvidence>? recipientPriorRelationshipEvidence = null)
+            IEnumerable<GroundedRelationshipEvidence>? recipientPriorRelationshipEvidence = null,
+            PriorConversationContext? priorConversationContext = null)
         {
             if (sourceEventId.Value == Guid.Empty)
                 throw new ArgumentException("Source EventId cannot be empty.", nameof(sourceEventId));
@@ -93,6 +94,16 @@ namespace Dagmay.RimWorld.Dialogue
                 recipientPriorRelationshipEvidence,
                 sourceEventId,
                 nameof(recipientPriorRelationshipEvidence));
+            if (priorConversationContext is not null &&
+                !priorConversationContext.ContainsParticipants(
+                    Speaker.IndividualId,
+                    Recipient.IndividualId))
+            {
+                throw new ArgumentException(
+                    "Prior conversation participants do not match the social trigger.",
+                    nameof(priorConversationContext));
+            }
+            PriorConversationContext = priorConversationContext;
         }
 
         public EventId SourceEventId { get; }
@@ -105,6 +116,7 @@ namespace Dagmay.RimWorld.Dialogue
         public IReadOnlyDictionary<string, string> FactualPayload { get; }
         public IReadOnlyList<GroundedRelationshipEvidence> PriorRelationshipEvidence { get; }
         public IReadOnlyList<GroundedRelationshipEvidence> RecipientPriorRelationshipEvidence { get; }
+        public PriorConversationContext? PriorConversationContext { get; }
 
         private static IReadOnlyList<GroundedRelationshipEvidence> NormalizeEvidence(
             IEnumerable<GroundedRelationshipEvidence>? evidence,
@@ -147,7 +159,8 @@ namespace Dagmay.RimWorld.Dialogue
             RimWorldDialogueIdentitySnapshot? speaker,
             RimWorldDialogueIdentitySnapshot? recipient,
             IEnumerable<GroundedRelationshipEvidence>? priorRelationshipEvidence = null,
-            IEnumerable<GroundedRelationshipEvidence>? recipientPriorRelationshipEvidence = null)
+            IEnumerable<GroundedRelationshipEvidence>? recipientPriorRelationshipEvidence = null,
+            PriorConversationContext? priorConversationContext = null)
         {
             if (speaker is null || recipient is null) return null;
             if (!string.Equals(eventKind, OpinionChanged, StringComparison.Ordinal) &&
@@ -168,7 +181,8 @@ namespace Dagmay.RimWorld.Dialogue
                 recipient,
                 factualPayload,
                 priorRelationshipEvidence,
-                recipientPriorRelationshipEvidence);
+                recipientPriorRelationshipEvidence,
+                priorConversationContext);
         }
     }
 }
