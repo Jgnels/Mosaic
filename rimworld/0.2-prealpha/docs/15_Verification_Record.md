@@ -819,6 +819,58 @@ No provider or local model was called; RimWorld was not launched; no package
 was installed; and no save, configuration, credential, or runtime evidence was
 accessed or changed.
 
+## 2026-07-26 - Mosaic 0.2D read-only conversation history
+
+**Status:** PASS offline at implementation commit `83a7b7c`; live owner UI
+verification remains required.
+
+The implementation adds an immutable participant-scoped viewer, a read-only
+RimWorld MainTabWindow, a packaged MainButtonDef, and six focused contracts.
+It rebuilds only from canonical actually presented dialogue events and
+requires recorded audience membership plus direct speaker/recipient
+participation. It adds no persistence store, dialogue generation, additional
+turn, provider/model path, canonical mutation, history editing, or pawn
+authority.
+
+Minimal compatibility corrections:
+
+- replaced the candidate's nonexistent `TestAssert.SequenceEqual` call with
+  the repository's established LINQ predicate assertion;
+- imported the actual RimWorld 1.6 namespace containing `MainTabWindow`; and
+- moved the MainButtonDef into the deterministic package source, then extended
+  the allowlist, source-hash check, preflight requirement, static required-file
+  list, and missing/mismatched adversarial fixtures.
+
+Complete clean-source verification:
+
+- static verification: PASS, 139 C# files;
+- Core Release build: PASS, zero warnings/errors;
+- Providers Release build: PASS, zero warnings/errors;
+- contract tests: PASS, 176 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid and 19 rejected;
+- package firewall: PASS, nine declared entries and zero direct adaptations;
+- non-installing preflight: PASS, all RimWorld 1.6 references present;
+- frozen 0.1 diff: empty;
+- fresh detached worktree 1: PASS;
+- fresh detached worktree 2: PASS; and
+- byte-for-byte package reproduction: PASS.
+
+Certified implementation commit:
+`83a7b7cedb2655579cd5e3a563f6aca98ffbe722`.
+
+Certified package SHA-256:
+`e8d5d15d44682a2e9258ec866b482a99c4b359232605209ad81cc1f5620289ff`.
+
+The package contains nine firewall-declared entries: About metadata, Core,
+Providers, and RimWorld assemblies, RimWorld symbols, the dialogue Def, the
+conversation-history MainButtonDef, README, and third-party notices.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+prepared runtime evidence was accessed or changed.
+
 ## 2026-07-26 - Mosaic 0.2A grounded relationship dialogue
 
 **Status:** PASS offline at implementation commit

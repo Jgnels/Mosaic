@@ -329,3 +329,23 @@ provider dispatch offline, complete one A/B exchange, save/reload, verify no
 replay, trigger a later A/B event, confirm `When we last spoke` with correct
 `I said`/`you said` attribution and exact prior EventIds, verify one reply and
 no third turn, then trigger a C-involving event and confirm no A/B leakage.
+
+## KR-031 - Read-only conversation history is offline-verified but not live UI-verified
+Severity: INTEGRATION / PRIVACY / PRODUCT
+
+The participant-scoped viewer, deterministic ordering/deduplication/trimming,
+current-label resolution, canonical-event rebuild, MainTabWindow compilation,
+MainButtonDef packaging, package firewall, and focused privacy contracts pass
+the complete offline chain. This does not establish live RimWorld Def loading,
+layout at supported resolutions, scroll behavior, UI-state lifecycle,
+post-reload visibility, or all-official-DLC coexistence. Offline fixtures also
+cannot prove that an organic live sequence records the expected actual
+audience for every displayed line.
+
+Required mitigation: use Core, Royalty, Ideology, Biotech, Anomaly, Odyssey,
+and Mosaic only with provider dispatch offline and a disposable colony/save.
+Create and checkpoint an A/B two-turn exchange, reload, verify both lines are
+newest-first for A and B but absent for unrelated C, verify current rename
+labels without duplication, confirm Bubble channel and bounded evidence
+counts, and close/reopen the window without replay, mutation, exception
+flooding, storage warnings, or recurring stutter.

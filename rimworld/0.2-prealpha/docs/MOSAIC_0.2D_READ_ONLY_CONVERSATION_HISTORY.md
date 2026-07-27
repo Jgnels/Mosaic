@@ -1,6 +1,6 @@
 # Mosaic 0.2D — Read-Only Conversation History
 
-**Status:** prepared implementation candidate; Windows/RimWorld compilation and live UI verification required
+**Status:** SUPPORTED OFFLINE; owner-operated RimWorld UI verification required
 **Stacked base:** PR #6 branch `codex/mosaic-0.2c-cross-encounter-continuity-20260726`
 
 ## Objective
