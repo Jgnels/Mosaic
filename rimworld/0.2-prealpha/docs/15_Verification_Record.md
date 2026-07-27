@@ -940,6 +940,54 @@ dispatch offline and a new disposable colony/save. Third-party mods, RimTalk,
 real providers, free-running conversation, and learned conversational policy
 remain outside this gate.
 
+## 2026-07-26 - Mosaic 0.2C cross-encounter conversation continuity
+
+**Status:** PASS offline at implementation commit `f96a1d6`; owner-operated
+live DLC gate pending.
+
+A later qualifying exchange may now acknowledge the latest completed,
+canonical two-turn exchange for the same participant pair. Selection requires
+both admitted dialogue events, opposite speakers/recipients, shared witnessed
+audience, chronological display receipts, and no future turn. Prior text
+remains explicitly attributed as `I said` or `you said`; it is not promoted
+to independent truth, belief, memory, personality, or action authority.
+Each new event remains capped at one opening and one reply.
+
+The supplied v2 transformer stopped safely because its first trigger
+constructor anchor occurred twice, and later pipeline anchors described an
+older `PrepareTurnAsync` call shape than the exact certified PR #5 source.
+The already-authored replacements were applied with unambiguous current-source
+context, including the intended shared context-budget increase. No behavior
+was redesigned or broadened.
+
+Complete clean-source Release verification:
+
+- static verification: PASS, 135 C# files;
+- Core and Providers Release builds: PASS, zero warnings/errors;
+- contract tests: PASS, 170 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid accepted and 17 adversarial
+  packages rejected;
+- package firewall: PASS, eight declared entries and zero direct adaptations;
+- non-installing Gate 3 preflight: PASS against installed RimWorld 1.6
+  assemblies;
+- frozen `rimworld/0.1-closure-candidate/`: unchanged; and
+- two fresh detached Git worktrees at the exact implementation commit:
+  byte-identical packages.
+
+Certified clean-source package SHA-256:
+`5013ce5fb9e18763bdd400a8a7e8902fd75cd2c1f31c9ae0563f7f0cecdfd8de`.
+
+The package contains the eight declared entries: `About/About.xml`, the three
+Mosaic assemblies, `Assemblies/Dagmay.RimWorld.pdb`,
+`Defs/MosaicDialogueDefs.xml`, `README.txt`, and
+`THIRD_PARTY_NOTICES.txt`.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+prepared live evidence was accessed or changed.
+
 ## 2026-07-26 - Runtime presentation thread-binding repair
 
 **Live result:** LIMITING RESULT at PR #3 commit `20a16ab`.

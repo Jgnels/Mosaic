@@ -1,6 +1,6 @@
 # Mosaic 0.2C — Cross-Encounter Conversation Continuity
 
-**Status:** prepared implementation candidate; Windows/RimWorld compilation and full offline verification required
+**Status:** implemented and verified offline at `f96a1d6`; owner-operated RimWorld/DLC gate pending
 **Stacked base:** PR #5 branch `codex/mosaic-0.2b-bounded-two-turn-exchange-20260726`
 
 ## Objective
