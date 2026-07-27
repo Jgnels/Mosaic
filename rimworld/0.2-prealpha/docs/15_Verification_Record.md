@@ -871,6 +871,60 @@ No provider or local model was called; RimWorld was not launched; no package
 was installed; and no save, sidecar, configuration, credential, log, or
 prepared runtime evidence was accessed or changed.
 
+## 2026-07-27 - Mosaic 0.2E determinism and lifecycle closure
+
+**Status:** PASS offline at implementation commit `512936a`; combined PR
+#7/0.2E owner runtime verification remains required.
+
+The milestone adds six contracts, one 128-cycle integration replay scenario,
+an executable cross-process closure verifier, source firewalls, and
+documentation. It changes no shipped Core, Providers, RimWorld, or package
+source relative to exact PR #7 head
+`7a469b1eea200bbd1d71eeb48572c74ab8d9f826`.
+
+The supplied candidate compiled without an API correction. The only content
+correction before execution removed one trailing Markdown whitespace marker.
+
+Determinism closure verifier:
+
+- source RNG firewall: PASS;
+- read-only viewer mutation/provider/pawn-control firewall: PASS;
+- two independent contract processes produced identical normalized output;
+- two independent integration processes produced the same replay digest; and
+- deterministic digest:
+  `9cdee2b44153d67bf1ec95f8627932936faca4827a3616deb0e0ffe4d256fb36`.
+
+Complete clean-source verification:
+
+- static verification: PASS, 141 C# files;
+- Core Release build: PASS, zero warnings/errors;
+- Providers Release build: PASS, zero warnings/errors;
+- contract tests: PASS, 182 executed and zero failed;
+- integration harness: PASS, eight scenarios and 760 assertions;
+- determinism scenario: PASS, 128 cycles and 129 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid and 19 rejected;
+- package firewall: PASS, nine declared entries and zero direct adaptations;
+- non-installing preflight: PASS, all RimWorld 1.6 references present;
+- frozen 0.1 diff: empty;
+- fresh detached worktree 1: PASS;
+- fresh detached worktree 2: PASS; and
+- byte-for-byte package reproduction: PASS.
+
+Certified implementation commit:
+`512936a7a2db2fc4ff3f673d4f208a3b621baca0`.
+
+Certified package SHA-256:
+`056a35c81d2fd4f49382a4cf732f8cca7b790269861a93779c981cc16ab801e1`.
+
+The package retains the PR #7 nine-entry allowlisted shape. Its commit-bound
+binary hash changes because the assembly build records the new source
+revision, but no shipped runtime source or intended package behavior changed.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+runtime evidence was accessed or changed.
+
 ## 2026-07-26 - Mosaic 0.2A grounded relationship dialogue
 
 **Status:** PASS offline at implementation commit

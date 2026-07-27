@@ -1,6 +1,6 @@
 # Mosaic 0.2E — Determinism, Observer Purity, and Lifecycle Closure
 
-**Status:** prepared verification milestone; compile and full offline certification required
+**Status:** SUPPORTED OFFLINE; combined PR #7/0.2E owner runtime verification required
 **Stacked base:** PR #7 branch `codex/mosaic-0.2d-read-only-conversation-history-20260726`
 
 ## Purpose
