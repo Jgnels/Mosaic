@@ -62,6 +62,8 @@ namespace Dagmay.IntegrationHarness
                 new ScenarioDefinition("PersistenceTorture", PersistenceTortureAsync),
                 new ScenarioDefinition("FailureIsolation", FailureIsolationAsync),
                 new ScenarioDefinition("DeterminismObserverLifecycleClosure", DeterminismObserverLifecycleClosureAsync),
+                new ScenarioDefinition("ReadOnlyDecisionTraceFoundation", ReadOnlyDecisionTraceFoundationAsync),
+                new ScenarioDefinition("LongHistoryRetrievalBenchmark", LongHistoryRetrievalBenchmarkAsync),
                 new ScenarioDefinition(
                     "Gate3OfflineSoak",
                     () => Gate3OfflineSoakAsync(gate3SoakCycles, deterministicSeed),
