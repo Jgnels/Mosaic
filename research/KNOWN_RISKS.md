@@ -312,3 +312,20 @@ dispatch offline; create reciprocal A/B history; confirm A's opening completes
 before exactly one B reply; confirm both admissions are queued; confirm no
 third bubble; save/reload without replay; and verify a later social event can
 start a separate bounded exchange without errors or recurring stutter.
+
+## KR-030 - Cross-encounter continuity is offline-verified but not live-rebuilt
+Severity: INTEGRATION / PRODUCT
+
+The canonical dialogue-history projection, completed-exchange selector,
+attributed renderer, exact prior EventId grounding, pair isolation, future
+rejection, and opening-only pipeline integration pass focused contracts and
+the complete offline chain. This does not establish that save/reload exposes
+both admissions to the live ledger at the expected time, that organic dialogue
+text remains readable when quoted, or that DLC/runtime timing cannot select,
+omit, or repeat the wrong exchange.
+
+Required mitigation: with Core and all official DLC plus Mosaic only and
+provider dispatch offline, complete one A/B exchange, save/reload, verify no
+replay, trigger a later A/B event, confirm `When we last spoke` with correct
+`I said`/`you said` attribution and exact prior EventIds, verify one reply and
+no third turn, then trigger a C-involving event and confirm no A/B leakage.

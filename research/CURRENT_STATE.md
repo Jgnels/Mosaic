@@ -506,3 +506,24 @@ at SHA-256
 Live sequencing, bubble timing, both receipt-gated admissions, save/reload
 non-replay, recurring performance, and all-official-DLC coexistence remain
 unverified and require the documented owner-operated disposable test.
+
+## 2026-07-26 Mosaic 0.2C cross-encounter conversation continuity
+
+**SUPPORTED OFFLINE:** implementation commit `f96a1d6` rebuilds the latest
+completed same-pair two-turn exchange from existing canonical admitted
+dialogue events and may use those exact EventIds in a later opening. Incomplete,
+unwitnessed, unrelated, malformed, or future exchanges fail closed. Earlier
+generated text remains explicitly attributed speech rather than independent
+truth. No new store, third turn, provider path, cognitive mutation, or pawn
+authority was added.
+
+Clean-source verification passed over 135 C# files, 170/170 contracts, seven
+integration scenarios with 631 assertions, warning-free Core, Providers, and
+RimWorld 1.6 Release builds, one accepted and 17 rejected firewall fixtures,
+an eight-entry zero-direct-adaptation package firewall, and non-installing
+preflight. Two fresh detached worktrees reproduced the package byte-for-byte
+at SHA-256
+`5013ce5fb9e18763bdd400a8a7e8902fd75cd2c1f31c9ae0563f7f0cecdfd8de`.
+
+Live canonical-history rebuild after save/reload, attributed bubble text,
+pair isolation, non-replay, and all-official-DLC coexistence remain unverified.

@@ -47,6 +47,10 @@ namespace Dagmay.RimWorld.Persistence
         private readonly MemoryIndex _memoryIndex = new MemoryIndex();
         private readonly List<ExperienceJournalRecord> _experienceRecords =
             new List<ExperienceJournalRecord>();
+        private readonly DialogueHistoryProjection _dialogueHistoryProjection =
+            new DialogueHistoryProjection();
+        private readonly CrossEncounterConversationSelector _conversationContinuitySelector =
+            new CrossEncounterConversationSelector();
         private readonly Dictionary<PerceptionId, EventId> _perceptionSources =
             new Dictionary<PerceptionId, EventId>();
         private readonly DeterministicExperienceEncoder _experienceEncoder = new DeterministicExperienceEncoder();
@@ -667,6 +671,12 @@ namespace Dagmay.RimWorld.Persistence
                 var recipientPriorRelationshipEvidence = dialogueRecipient is null
                     ? Array.Empty<GroundedRelationshipEvidence>()
                     : BuildGroundedRelationshipHistory(dialogueRecipient.Id, state.Id);
+                var priorConversationContext = dialogueRecipient is null
+                    ? null
+                    : BuildPriorConversationContext(
+                        state.Id,
+                        dialogueRecipient.Id,
+                        factualEvent.GameTick ?? 0);
                 var appended = _experienceJournal.Append(
                     GetExperienceJournalPath(),
                     record,
@@ -701,7 +711,8 @@ namespace Dagmay.RimWorld.Persistence
                             dialogueRecipientExternalId,
                             dialogueRecipient),
                         priorRelationshipEvidence,
-                        recipientPriorRelationshipEvidence);
+                        recipientPriorRelationshipEvidence,
+                        priorConversationContext);
                     if (trigger is not null) NotifySocialDialogueTrigger(trigger);
                 }
                 return true;
@@ -729,6 +740,78 @@ namespace Dagmay.RimWorld.Persistence
                 .ThenBy(value => value.EventId.ToString(), StringComparer.Ordinal)
                 .Take(16)
                 .ToArray();
+        }
+
+        private PriorConversationContext? BuildPriorConversationContext(
+            IndividualId firstParticipantId,
+            IndividualId secondParticipantId,
+            long throughTick)
+        {
+            var ledgerEntries = _eventLedger.Snapshot();
+            var conversationIds = new HashSet<ConversationId>();
+            foreach (var ledgerEntry in ledgerEntries)
+            {
+                var factualEvent = ledgerEntry.Value;
+                if (!string.Equals(
+                        factualEvent.Kind,
+                        DialogueEventAdmissionService.EventKind,
+                        StringComparison.Ordinal) ||
+                    !string.Equals(
+                        factualEvent.Source,
+                        DialogueEventAdmissionService.DefaultSource,
+                        StringComparison.Ordinal) ||
+                    !factualEvent.Subjects.Contains(firstParticipantId) ||
+                    !factualEvent.Subjects.Contains(secondParticipantId) ||
+                    !factualEvent.FactualPayload.TryGetValue(
+                        DialogueEventAdmissionService.ConversationIdKey,
+                        out var conversationText) ||
+                    !Guid.TryParseExact(conversationText, "N", out var conversationGuid) ||
+                    conversationGuid == Guid.Empty)
+                {
+                    continue;
+                }
+
+                conversationIds.Add(new ConversationId(conversationGuid));
+            }
+
+            var turns = new List<PriorConversationTurn>();
+            foreach (var conversationId in conversationIds)
+            {
+                var packet = _dialogueHistoryProjection.Build(
+                    ledgerEntries,
+                    new DialogueHistoryQuery(
+                        conversationId,
+                        throughTick,
+                        4,
+                        DialogueHistoryView.Participant,
+                        firstParticipantId));
+                foreach (var entry in packet.Entries)
+                {
+                    if (!entry.RecipientId.HasValue ||
+                        !entry.AudienceIds.Contains(firstParticipantId) ||
+                        !entry.AudienceIds.Contains(secondParticipantId))
+                    {
+                        continue;
+                    }
+
+                    turns.Add(new PriorConversationTurn(
+                        entry.EventId,
+                        entry.ConversationId,
+                        entry.SpeakerId,
+                        entry.RecipientId.Value,
+                        entry.Text,
+                        entry.DisplayedAtTick,
+                        entry.DisplayedAtUtc,
+                        entry.Channel,
+                        entry.AudienceIds));
+                }
+            }
+
+            return _conversationContinuitySelector.SelectLatestCompletedExchange(
+                turns,
+                firstParticipantId,
+                secondParticipantId,
+                throughTick);
         }
 
         private void RecordFactualOnly(

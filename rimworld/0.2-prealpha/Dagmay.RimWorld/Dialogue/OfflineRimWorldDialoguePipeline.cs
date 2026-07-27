@@ -108,6 +108,11 @@ namespace Dagmay.RimWorld.Dialogue
                 trigger.Recipient.DisplayLabel,
                 currentEvidence,
                 trigger.PriorRelationshipEvidence);
+            var continuity = new GroundedCrossEncounterDialogueComposer().Compose(
+                trigger.Speaker.IndividualId,
+                trigger.Recipient.IndividualId,
+                grounded,
+                trigger.PriorConversationContext);
             var scene = Scene(trigger);
             var request = new DialogueRequest(
                 requestId,
@@ -118,7 +123,7 @@ namespace Dagmay.RimWorld.Dialogue
                 trigger.Speaker.IndividualId,
                 trigger.Recipient.IndividualId,
                 scene,
-                grounded.EvidenceIds,
+                continuity.EvidenceIds,
                 trigger.ObservedAtTick,
                 expiresAtTick,
                 "rimworld-social:" + trigger.SourceEventId);
@@ -147,16 +152,37 @@ namespace Dagmay.RimWorld.Dialogue
                     trigger.Speaker.IndividualId,
                     new[] { trigger.Recipient.IndividualId }));
             }
+            if (continuity.PriorConversation is not null)
+            {
+                foreach (var turn in new[]
+                {
+                    continuity.PriorConversation.FirstTurn,
+                    continuity.PriorConversation.SecondTurn
+                })
+                {
+                    var role = turn.SpeakerId == trigger.Speaker.IndividualId
+                        ? "The current speaker previously displayed: "
+                        : "The current recipient previously displayed: ";
+                    contextCandidates.Add(new DialogueContextItem(
+                        "actually-displayed-prior-conversation",
+                        role + turn.Text,
+                        new[] { turn.EventId },
+                        DialogueContextAudience.RelationshipSensitive,
+                        0.95,
+                        trigger.Speaker.IndividualId,
+                        new[] { trigger.Recipient.IndividualId }));
+                }
+            }
 
             var prepared = await PrepareTurnAsync(
                     request,
                     utteranceId,
-                    grounded.Text,
+                    continuity.Text,
                     trigger.Speaker,
                     trigger.Recipient,
                     contextCandidates,
                     currentTick,
-                    "mosaic-rimworld-grounded-relationship-dialogue-v1",
+                    "mosaic-rimworld-cross-encounter-continuity-v1",
                     trigger.ObservedAtUtc.AddSeconds(10),
                     cancellationToken)
                 .ConfigureAwait(false);
@@ -300,7 +326,7 @@ namespace Dagmay.RimWorld.Dialogue
                 recipient.IndividualId,
                 currentTick,
                 contextCandidates,
-                new DialogueContextBudget(4, 4096));
+                new DialogueContextBudget(6, 6144));
             var prompt = new DialoguePromptPlanner().Build(request, context);
             var expected = new UtteranceProposal(
                 utteranceId,
