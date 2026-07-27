@@ -576,3 +576,36 @@ This closes the prepared offline determinism, observer-purity, and identity
 lifecycle milestone. Live Def/UI behavior, actual save/reload identity
 continuity under the PR #7 viewer workflow, non-replay, DLC coexistence, and
 runtime performance remain owner-test questions rather than offline claims.
+
+## 2026-07-27 Mosaic 0.2FG decision-trace and retrieval closeout
+
+**SUPPORTED OFFLINE:** implementation commit
+`dedf5f6fd2c8c1ca78c79ae6048363bfec5e949c` adds an unused public Core
+contract for deterministic, bounded, read-only evidence-selection traces plus
+offline contract and integration coverage. It adds no persistence write,
+provider call, RimWorld wiring, dialogue turn, UI, canonical mutation, or pawn
+authority. Providers, RimWorld, Def, package-source, and frozen 0.1 files are
+unchanged from PR #8 head
+`5165a9ee9aac8c2616f5c3da911648ba3780be90`.
+
+Clean committed-source verification passed over 145 C# files, 188/188
+contracts, and ten integration scenarios with 1,551 assertions. Core,
+Providers, and RimWorld 1.6 Release builds completed with zero warnings and
+zero errors. The authority, RNG, observer-mutation, package, and adversarial
+fixture firewalls passed; non-installing preflight passed. Two clean detached
+worktrees reproduced the same nine-entry, zero-direct-adaptation package at
+SHA-256
+`b92bc448b4fe896c091edc92960fd182fbc7b5126798d6967c6649d5b8380890`.
+
+The 0.2F trace digest is
+`b3aceedbab04a521de0499bb4a205892426172ccc551368762d5b87eff13f5b9`.
+The 0.2G fixed-corpus digest is
+`b76a9489645294ddc2e0836d1580ff41d35c8c97279fc9c131208700a0dedc1e`;
+Mosaic matched 10/10 fixed oracles over 500 candidates and 64 permutations
+per case, versus 5/10 for the most-recent selector and 8/10 for the
+generative-style selector, with zero privacy leaks.
+
+This closes only the prepared offline 0.2F/0.2G gates. The trace contract is
+not wired into shipped RimWorld behavior, and the authored benchmark is not
+evidence of organic runtime quality, latency, DLC coexistence, or owner-test
+success.
