@@ -46,6 +46,7 @@ $RequiredEntries = @(
     "Assemblies/Dagmay.Core.dll",
     "Assemblies/Dagmay.Providers.dll",
     "Assemblies/Dagmay.RimWorld.dll",
+    "Defs/MainButtonDefs/Mosaic_ConversationHistory.xml",
     "README.txt"
 )
 $ProhibitedExtensions = @(".rws", ".dagmay", ".journal", ".reflection", ".key", ".pfx", ".pem")
