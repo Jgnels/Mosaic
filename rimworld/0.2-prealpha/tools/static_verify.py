@@ -46,6 +46,7 @@ REQUIRED_FILES = [
     "Dagmay.RimWorld/Dialogue/RimWorldSocialDialogueTrigger.cs",
     "Dagmay.RimWorld/Dialogue/RimWorldSpeechBubblePresenter.cs",
     "Dagmay.RimWorld/Package/Defs/MosaicDialogueDefs.xml",
+    "Dagmay.RimWorld/Package/Defs/MainButtonDefs/Mosaic_ConversationHistory.xml",
     "Dagmay.Tests/DialogueAdmissionOutboxContractTests.cs",
     "Dagmay.Tests/SpeechBubblePresentationContractTests.cs",
     "Dagmay.Tests/OfflineRimWorldDialoguePathContractTests.cs",

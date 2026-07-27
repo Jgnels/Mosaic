@@ -113,6 +113,137 @@ namespace Dagmay.RimWorld.Persistence
 
         public event Action<RimWorldSocialDialogueTrigger>? SocialDialogueTriggerCaptured;
 
+        public RimWorldConversationHistoryData BuildConversationHistoryData(
+            IndividualId? selectedIndividualId,
+            int maximumRows)
+        {
+            if (maximumRows < 1 ||
+                maximumRows > ConversationHistoryViewerBuilder.MaximumRows)
+            {
+                throw new ArgumentOutOfRangeException(nameof(maximumRows));
+            }
+
+            var participants = _identities
+                .Select(pair => new RimWorldConversationParticipantSnapshot(
+                    pair.Value.Id,
+                    pair.Value.DisplayName,
+                    pair.Key))
+                .OrderBy(value => value.DisplayLabel, StringComparer.OrdinalIgnoreCase)
+                .ThenBy(value => value.IndividualId.ToString(), StringComparer.Ordinal)
+                .ToArray();
+            if (!selectedIndividualId.HasValue)
+            {
+                return new RimWorldConversationHistoryData(
+                    participants,
+                    null,
+                    participants.Length == 0
+                        ? "No enrolled colonists are available."
+                        : "Select a colonist to review verified displayed dialogue.");
+            }
+
+            var selected = participants.FirstOrDefault(value =>
+                value.IndividualId == selectedIndividualId.Value);
+            if (selected is null)
+            {
+                return new RimWorldConversationHistoryData(
+                    participants,
+                    null,
+                    "The selected colonist is no longer enrolled in this game.");
+            }
+
+            var ledgerEntries = _eventLedger.Snapshot();
+            var conversationIds = new HashSet<ConversationId>();
+            foreach (var ledgerEntry in ledgerEntries)
+            {
+                var factualEvent = ledgerEntry.Value;
+                if (!string.Equals(
+                        factualEvent.Kind,
+                        DialogueEventAdmissionService.EventKind,
+                        StringComparison.Ordinal) ||
+                    !string.Equals(
+                        factualEvent.Source,
+                        DialogueEventAdmissionService.DefaultSource,
+                        StringComparison.Ordinal) ||
+                    !factualEvent.Subjects.Contains(selected.IndividualId) ||
+                    !factualEvent.FactualPayload.TryGetValue(
+                        DialogueEventAdmissionService.ConversationIdKey,
+                        out var conversationText) ||
+                    !Guid.TryParseExact(conversationText, "N", out var conversationGuid) ||
+                    conversationGuid == Guid.Empty)
+                {
+                    continue;
+                }
+
+                conversationIds.Add(new ConversationId(conversationGuid));
+            }
+
+            var currentTick = Find.TickManager?.TicksGame ?? long.MaxValue;
+            var turns = new List<PriorConversationTurn>();
+            var malformed = 0;
+            var privacyFiltered = 0;
+            foreach (var conversationId in conversationIds)
+            {
+                var packet = _dialogueHistoryProjection.Build(
+                    ledgerEntries,
+                    new DialogueHistoryQuery(
+                        conversationId,
+                        currentTick,
+                        100,
+                        DialogueHistoryView.Participant,
+                        selected.IndividualId));
+                malformed += packet.MalformedEventCount;
+                privacyFiltered += packet.PrivacyFilteredCount;
+                foreach (var entry in packet.Entries)
+                {
+                    if (!entry.RecipientId.HasValue) continue;
+                    turns.Add(new PriorConversationTurn(
+                        entry.EventId,
+                        entry.ConversationId,
+                        entry.SpeakerId,
+                        entry.RecipientId.Value,
+                        entry.Text,
+                        entry.DisplayedAtTick,
+                        entry.DisplayedAtUtc,
+                        entry.Channel,
+                        entry.AudienceIds));
+                }
+            }
+
+            ConversationHistoryViewerSnapshot snapshot;
+            try
+            {
+                snapshot = new ConversationHistoryViewerBuilder().Build(
+                    selected.IndividualId,
+                    participants.Select(value =>
+                        new ConversationHistoryParticipant(
+                            value.IndividualId,
+                            value.DisplayLabel)),
+                    turns,
+                    maximumRows);
+            }
+            catch (Exception exception)
+            {
+                return new RimWorldConversationHistoryData(
+                    participants,
+                    null,
+                    "Conversation history failed closed: " + exception.Message);
+            }
+
+            var combined = new ConversationHistoryViewerSnapshot(
+                snapshot.ViewerId,
+                snapshot.ViewerLabel,
+                snapshot.Rows,
+                checked(snapshot.PrivacyFilteredCount + privacyFiltered),
+                checked(snapshot.MalformedCount + malformed),
+                snapshot.TrimmedCount);
+            return new RimWorldConversationHistoryData(
+                participants,
+                combined,
+                "Read-only view of verified displayed dialogue; "
+                + $"rows={combined.Rows.Count}; privacyFiltered={combined.PrivacyFilteredCount}; "
+                + $"malformed={combined.MalformedCount}; trimmed={combined.TrimmedCount}.");
+        }
+
         public override void StartedNewGame()
         {
             InitializeNewStore();

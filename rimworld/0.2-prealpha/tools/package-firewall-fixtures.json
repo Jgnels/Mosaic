@@ -17,6 +17,8 @@
     { "name": "mismatched-notice", "replace": "THIRD_PARTY_NOTICES.txt", "content": "unreviewed notice", "expected": "does not match" },
     { "name": "mismatched-dialogue-def", "replace": "Defs/MosaicDialogueDefs.xml", "content": "<Defs />", "expected": "does not match" },
     { "name": "missing-dialogue-def", "omit": "Defs/MosaicDialogueDefs.xml", "expected": "missing declared" },
+    { "name": "mismatched-conversation-history-def", "replace": "Defs/MainButtonDefs/Mosaic_ConversationHistory.xml", "content": "<Defs />", "expected": "does not match" },
+    { "name": "missing-conversation-history-def", "omit": "Defs/MainButtonDefs/Mosaic_ConversationHistory.xml", "expected": "missing declared" },
     { "name": "missing-required", "omit": "README.txt", "expected": "missing declared" }
   ]
 }

@@ -527,3 +527,26 @@ at SHA-256
 
 Live canonical-history rebuild after save/reload, attributed bubble text,
 pair isolation, non-replay, and all-official-DLC coexistence remain unverified.
+
+## 2026-07-26 Mosaic 0.2D read-only conversation history
+
+**SUPPORTED OFFLINE:** implementation commit `83a7b7c` adds a participant-scoped
+read-only MainTabWindow rebuilt from existing canonical admitted dialogue
+events. A selected enrolled colonist must be in the recorded audience and be
+the speaker or direct recipient. Unrelated, unwitnessed, malformed, pending,
+undisplayed, inferred, and private content fails closed. The viewer adds no
+store, dialogue turn, provider path, canonical mutation, history editing, or
+pawn authority.
+
+Clean-source verification passed over 139 C# files, 176/176 contracts, seven
+integration scenarios with 631 assertions, warning-free Core, Providers, and
+RimWorld 1.6 Release builds, one accepted and 19 rejected firewall fixtures,
+a nine-entry zero-direct-adaptation package firewall, and non-installing
+preflight. Two fresh detached worktrees reproduced the package byte-for-byte
+at SHA-256
+`e8d5d15d44682a2e9258ec866b482a99c4b359232605209ad81cc1f5620289ff`.
+
+Live MainButtonDef loading, window layout, colonist selection, post-reload
+history visibility, rename display, all-official-DLC coexistence, and
+participant isolation remain unverified and require the documented
+owner-operated disposable test.
