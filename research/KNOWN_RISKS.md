@@ -366,3 +366,21 @@ activity, repeatedly open/switch/close the read-only viewer, trigger a later
 exchange, save and reload again, and confirm stable IDs, correct continuity,
 no duplicated history or bubble replay, no pawn behavior change, and no
 storage, affinity, exception-flood, or recurring-stutter signal.
+
+## KR-033 - Offline trace and retrieval closure does not establish live explanatory quality
+Severity: PRODUCT / INTEGRATION
+
+The deterministic read-only decision-trace contract passes construction,
+ordering, provenance, bounds, immutability, and authority firewalls, but it is
+deliberately not wired into RimWorld runtime behavior. The 500-candidate
+retrieval benchmark is a fixed authored corpus: Mosaic matched 10/10 oracles,
+the most-recent selector matched 5/10, the generative-style selector matched
+8/10, and no privacy leak was observed. These results do not establish
+naturalness, explanatory usefulness, latency, or retrieval quality over
+organic long-running colonies.
+
+Required mitigation: keep the trace observer-only if it is later integrated,
+add a separately reviewed presentation boundary, and evaluate retrieval
+against owner-approved, privacy-sanitized runtime-derived cases without
+turning generated explanations into canonical cognition. Do not claim live
+quality or performance from the authored offline corpus.

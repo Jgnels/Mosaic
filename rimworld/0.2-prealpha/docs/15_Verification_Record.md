@@ -819,6 +819,70 @@ No provider or local model was called; RimWorld was not launched; no package
 was installed; and no save, configuration, credential, or runtime evidence was
 accessed or changed.
 
+## 2026-07-27 - Mosaic 0.2FG closeout verification
+
+**Status:** PASS offline at implementation commit
+`dedf5f6fd2c8c1ca78c79ae6048363bfec5e949c`, based exactly on PR #8 head
+`5165a9ee9aac8c2616f5c3da911648ba3780be90`.
+
+Candidate scope was nine files: one new Core read-only decision-trace
+contract, six focused contract registrations/tests, two offline integration
+scenarios and their registrations, two milestone documents, and one closeout
+verifier. Providers, RimWorld, Def, package-source, and frozen 0.1 files have
+no diff from the base.
+
+Measured committed-source results:
+
+- static verification: PASS, 145 C# files;
+- contract tests: PASS, 188 executed and zero failed;
+- integration harness: PASS, ten scenarios and 1,551 assertions;
+- ReadOnlyDecisionTraceFoundation: PASS, 129 assertions;
+- LongHistoryRetrievalBenchmark: PASS, 662 assertions;
+- Core, Providers, and RimWorld 1.6 Release builds: zero warnings/errors;
+- package-firewall fixtures: PASS, one valid accepted and 19 adversarial
+  rejected;
+- package firewall: PASS, nine declared entries and zero direct adaptations;
+- RNG and read-only-viewer mutation firewalls: PASS;
+- repeated contract processes: byte-identical normalized output;
+- deterministic integration replay digest:
+  `9cdee2b44153d67bf1ec95f8627932936faca4827a3616deb0e0ffe4d256fb36`;
+- 0.2F decision-trace digest:
+  `b3aceedbab04a521de0499bb4a205892426172ccc551368762d5b87eff13f5b9`;
+- 0.2G benchmark digest:
+  `b76a9489645294ddc2e0836d1580ff41d35c8c97279fc9c131208700a0dedc1e`;
+- fixed benchmark: ten cases, 500 candidates, 64 permutations per case,
+  Mosaic 10/10 exact, most-recent 5/10 exact, generative-style 8/10 exact,
+  and zero privacy leaks;
+- non-installing Gate 3 preflight: PASS; and
+- two fresh detached worktrees reproduced the package byte-for-byte.
+
+Certified package:
+`Dagmay-RimWorld-0.2-prealpha.zip`, SHA-256
+`b92bc448b4fe896c091edc92960fd182fbc7b5126798d6967c6649d5b8380890`.
+It contains the same nine declared entries as PR #8 and no prohibited runtime
+artifact, machine-specific path, or direct adaptation.
+
+The supplied implementation compiled without source correction. Five minimal
+verifier compatibility corrections were required and did not weaken a gate:
+
+1. resolve `Root` and `Artifacts` defaults in the script body because Windows
+   PowerShell 5.1 exposed an empty `$PSScriptRoot` during parameter-default
+   evaluation;
+2. exclude deterministic `StringBuilder.Append` from the generic canonical
+   mutation `.Append(` authority pattern;
+3. run the established build in a fresh PowerShell process so the closeout
+   verifier's strict mode does not leak into it;
+4. run determinism, firewall-fixture, package-firewall, and preflight scripts
+   in fresh PowerShell processes for the same isolation; and
+5. pass the existing package firewall and preflight their actual mandatory
+   package-path arguments, removing the nonexistent preflight
+   `-NonInstalling` switch.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+runtime evidence was accessed or changed. This record does not substitute for
+owner-operated runtime testing.
+
 ## 2026-07-26 - Mosaic 0.2D read-only conversation history
 
 **Status:** PASS offline at implementation commit `83a7b7c`; live owner UI
