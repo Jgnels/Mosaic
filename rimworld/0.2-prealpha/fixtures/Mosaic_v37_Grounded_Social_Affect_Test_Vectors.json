@@ -1,0 +1,223 @@
+{
+  "schema": "mosaic.fixtures.0.3-grounded-social-affect.v4",
+  "source_runtime_evidence_sha256": "16884b8ba1046290b4fa4b0cbccc850af249be78a9e513b4f7d8ee8ea8fcd996",
+  "note": "Event IDs, actor/target bindings, external pawn IDs, and lineages come from the PR #10 owner runtime smoke. Ticks, admission positions, display labels, opinion values, and relation transitions are deterministic schema-aligned fixtures because the diagnostic log intentionally omitted private payload text. The raw payload shape mirrors PR #10 contract tests, including display labels and pawn_external_id; display labels are excluded from the canonical deduplication key and all semantic output. observation_batch_id is a deterministic synthetic capture-batch boundary required to prevent same-tick events from different save/load sessions from being coalesced.",
+  "lineages": {
+    "ff89eedd5df94d6196b29fcead4c4de8": "42626d46b1574a76b639794c75bc809b",
+    "6da1e96301734be68c3b2885cf956908": "eb207862f3eb48328ed7501463d9655a"
+  },
+  "events": [
+    {
+      "event_id": "b2fd7bf5db01426cb260ea2dd70901df",
+      "event_kind": "rimworld.social.opinion_changed",
+      "tick": 600,
+      "actor_id": "ff89eedd5df94d6196b29fcead4c4de8",
+      "target_id": "6da1e96301734be68c3b2885cf956908",
+      "payload": {
+        "target_external_id": "Human447",
+        "opinion_before": "8",
+        "opinion_after": "28",
+        "opinion_delta": "20",
+        "pawn_external_id": "Human450",
+        "display_name_at_event": "Fixture Owner B",
+        "target_name": "Fixture Owner A"
+      },
+      "phase": "before_reload",
+      "deduplication_key": "60c01c0bdde9ed6e39341a5cfb082402666b645478de520e5955c9a52c720d8c",
+      "participant_ids": [
+        "6da1e96301734be68c3b2885cf956908",
+        "ff89eedd5df94d6196b29fcead4c4de8"
+      ],
+      "outcome": "OBSERVED",
+      "privacy": "RELATIONSHIP_PRIVATE",
+      "source_adapter": "Mosaic.RimWorld.ReadOnlySocialEventAdapter.v1",
+      "admission_position": 1,
+      "observation_batch_id": "ae7713b931b3e772a6cb4732fda144443ac6efa829ed06cbd1d2e2dcc6b85940"
+    },
+    {
+      "event_id": "1c33b118d5d54569bd579caa29ca189a",
+      "event_kind": "rimworld.relationship.direct_changed",
+      "tick": 600,
+      "actor_id": "ff89eedd5df94d6196b29fcead4c4de8",
+      "target_id": "6da1e96301734be68c3b2885cf956908",
+      "payload": {
+        "target_external_id": "Human447",
+        "relations_before": "none",
+        "relations_after": "Friend",
+        "pawn_external_id": "Human450",
+        "display_name_at_event": "Fixture Owner B",
+        "target_name": "Fixture Owner A"
+      },
+      "phase": "before_reload",
+      "deduplication_key": "ada9186382a5d832d8d86adcb1deea8d20d08f8ed50cec12ba225d1feb4a2cf8",
+      "participant_ids": [
+        "6da1e96301734be68c3b2885cf956908",
+        "ff89eedd5df94d6196b29fcead4c4de8"
+      ],
+      "outcome": "OBSERVED",
+      "privacy": "RELATIONSHIP_PRIVATE",
+      "source_adapter": "Mosaic.RimWorld.ReadOnlySocialEventAdapter.v1",
+      "admission_position": 2,
+      "observation_batch_id": "ae7713b931b3e772a6cb4732fda144443ac6efa829ed06cbd1d2e2dcc6b85940"
+    },
+    {
+      "event_id": "fba10821acf94a53b75c8e709dd27c04",
+      "event_kind": "rimworld.social.opinion_changed",
+      "tick": 600,
+      "actor_id": "6da1e96301734be68c3b2885cf956908",
+      "target_id": "ff89eedd5df94d6196b29fcead4c4de8",
+      "payload": {
+        "target_external_id": "Human450",
+        "opinion_before": "12",
+        "opinion_after": "-18",
+        "opinion_delta": "-30",
+        "pawn_external_id": "Human447",
+        "display_name_at_event": "Fixture Owner A",
+        "target_name": "Fixture Owner B"
+      },
+      "phase": "before_reload",
+      "deduplication_key": "128b2e2c6875a21a2eef477df627deed6a4dea2e3af593322a9ebcf6959d1504",
+      "participant_ids": [
+        "6da1e96301734be68c3b2885cf956908",
+        "ff89eedd5df94d6196b29fcead4c4de8"
+      ],
+      "outcome": "OBSERVED",
+      "privacy": "RELATIONSHIP_PRIVATE",
+      "source_adapter": "Mosaic.RimWorld.ReadOnlySocialEventAdapter.v1",
+      "admission_position": 3,
+      "observation_batch_id": "7f15e0c822d5ddf61594cad85d4a5710cbec1930132636e0acba4b042b0f1f56"
+    },
+    {
+      "event_id": "d60b3a09909f4da4aba40f04eb0b6309",
+      "event_kind": "rimworld.relationship.direct_changed",
+      "tick": 600,
+      "actor_id": "6da1e96301734be68c3b2885cf956908",
+      "target_id": "ff89eedd5df94d6196b29fcead4c4de8",
+      "payload": {
+        "target_external_id": "Human450",
+        "relations_before": "none",
+        "relations_after": "ExLover",
+        "pawn_external_id": "Human447",
+        "display_name_at_event": "Fixture Owner A",
+        "target_name": "Fixture Owner B"
+      },
+      "phase": "before_reload",
+      "deduplication_key": "f75ff6e71e498b4cb8a686ea237ae9ee64aa94859d569fc83b055758527beca5",
+      "participant_ids": [
+        "6da1e96301734be68c3b2885cf956908",
+        "ff89eedd5df94d6196b29fcead4c4de8"
+      ],
+      "outcome": "OBSERVED",
+      "privacy": "RELATIONSHIP_PRIVATE",
+      "source_adapter": "Mosaic.RimWorld.ReadOnlySocialEventAdapter.v1",
+      "admission_position": 4,
+      "observation_batch_id": "7f15e0c822d5ddf61594cad85d4a5710cbec1930132636e0acba4b042b0f1f56"
+    },
+    {
+      "event_id": "67a0363127a24b93bfc3f3310691dd17",
+      "event_kind": "rimworld.social.opinion_changed",
+      "tick": 1200,
+      "actor_id": "ff89eedd5df94d6196b29fcead4c4de8",
+      "target_id": "6da1e96301734be68c3b2885cf956908",
+      "payload": {
+        "target_external_id": "Human447",
+        "opinion_before": "28",
+        "opinion_after": "10",
+        "opinion_delta": "-18",
+        "pawn_external_id": "Human450",
+        "display_name_at_event": "Fixture Owner B",
+        "target_name": "Fixture Owner A"
+      },
+      "phase": "after_reload",
+      "deduplication_key": "6ed269e907d082b49a86a4f1c7ed9bd80363b007917cd01512b44faa6ef88685",
+      "participant_ids": [
+        "6da1e96301734be68c3b2885cf956908",
+        "ff89eedd5df94d6196b29fcead4c4de8"
+      ],
+      "outcome": "OBSERVED",
+      "privacy": "RELATIONSHIP_PRIVATE",
+      "source_adapter": "Mosaic.RimWorld.ReadOnlySocialEventAdapter.v1",
+      "admission_position": 5,
+      "observation_batch_id": "77745ad0180dbd4f3a7d6450e54368008385082179cc049705bb99bac7a91b2c"
+    },
+    {
+      "event_id": "413d62ba813d45cdb05b8c6fcef7b53d",
+      "event_kind": "rimworld.relationship.direct_changed",
+      "tick": 1200,
+      "actor_id": "ff89eedd5df94d6196b29fcead4c4de8",
+      "target_id": "6da1e96301734be68c3b2885cf956908",
+      "payload": {
+        "target_external_id": "Human447",
+        "relations_before": "Friend",
+        "relations_after": "none",
+        "pawn_external_id": "Human450",
+        "display_name_at_event": "Fixture Owner B",
+        "target_name": "Fixture Owner A"
+      },
+      "phase": "after_reload",
+      "deduplication_key": "a63202637e33d9c24b14e59f4037ed10f336ff1386805df2e36a1d987c731cc6",
+      "participant_ids": [
+        "6da1e96301734be68c3b2885cf956908",
+        "ff89eedd5df94d6196b29fcead4c4de8"
+      ],
+      "outcome": "OBSERVED",
+      "privacy": "RELATIONSHIP_PRIVATE",
+      "source_adapter": "Mosaic.RimWorld.ReadOnlySocialEventAdapter.v1",
+      "admission_position": 6,
+      "observation_batch_id": "77745ad0180dbd4f3a7d6450e54368008385082179cc049705bb99bac7a91b2c"
+    },
+    {
+      "event_id": "a0937baf6ea1414abf6c735b61830b9a",
+      "event_kind": "rimworld.social.opinion_changed",
+      "tick": 1200,
+      "actor_id": "6da1e96301734be68c3b2885cf956908",
+      "target_id": "ff89eedd5df94d6196b29fcead4c4de8",
+      "payload": {
+        "target_external_id": "Human450",
+        "opinion_before": "-18",
+        "opinion_after": "4",
+        "opinion_delta": "22",
+        "pawn_external_id": "Human447",
+        "display_name_at_event": "Fixture Owner A",
+        "target_name": "Fixture Owner B"
+      },
+      "phase": "after_reload",
+      "deduplication_key": "69aeae39c8060e2f9ac353587f0042bc344374f6c6bcdc32b9c0d86a905f4018",
+      "participant_ids": [
+        "6da1e96301734be68c3b2885cf956908",
+        "ff89eedd5df94d6196b29fcead4c4de8"
+      ],
+      "outcome": "OBSERVED",
+      "privacy": "RELATIONSHIP_PRIVATE",
+      "source_adapter": "Mosaic.RimWorld.ReadOnlySocialEventAdapter.v1",
+      "admission_position": 7,
+      "observation_batch_id": "aa45dc054186f0f86a613816a3e0c30710067c4c199eca644306c1e7f07efbac"
+    },
+    {
+      "event_id": "72bdada4c4b2459987dfacf643d0d1cf",
+      "event_kind": "rimworld.relationship.direct_changed",
+      "tick": 1200,
+      "actor_id": "6da1e96301734be68c3b2885cf956908",
+      "target_id": "ff89eedd5df94d6196b29fcead4c4de8",
+      "payload": {
+        "target_external_id": "Human450",
+        "relations_before": "ExLover",
+        "relations_after": "none",
+        "pawn_external_id": "Human447",
+        "display_name_at_event": "Fixture Owner A",
+        "target_name": "Fixture Owner B"
+      },
+      "phase": "after_reload",
+      "deduplication_key": "641e6e499199daa67abc916658a3b0e7dd4dfa89bcf5fc59987c91e64fc0b663",
+      "participant_ids": [
+        "6da1e96301734be68c3b2885cf956908",
+        "ff89eedd5df94d6196b29fcead4c4de8"
+      ],
+      "outcome": "OBSERVED",
+      "privacy": "RELATIONSHIP_PRIVATE",
+      "source_adapter": "Mosaic.RimWorld.ReadOnlySocialEventAdapter.v1",
+      "admission_position": 8,
+      "observation_batch_id": "aa45dc054186f0f86a613816a3e0c30710067c4c199eca644306c1e7f07efbac"
+    }
+  ]
+}
