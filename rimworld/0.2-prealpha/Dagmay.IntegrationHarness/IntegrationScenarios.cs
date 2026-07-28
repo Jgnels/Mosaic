@@ -63,6 +63,7 @@ namespace Dagmay.IntegrationHarness
                 new ScenarioDefinition("FailureIsolation", FailureIsolationAsync),
                 new ScenarioDefinition("DeterminismObserverLifecycleClosure", DeterminismObserverLifecycleClosureAsync),
                 new ScenarioDefinition("ReadOnlyDecisionTraceFoundation", ReadOnlyDecisionTraceFoundationAsync),
+                new ScenarioDefinition("ReadOnlySocialEventEnvelope", ReadOnlySocialEventEnvelopeAsync),
                 new ScenarioDefinition("LongHistoryRetrievalBenchmark", LongHistoryRetrievalBenchmarkAsync),
                 new ScenarioDefinition(
                     "Gate3OfflineSoak",
