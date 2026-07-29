@@ -314,6 +314,20 @@ namespace Dagmay.Core.Appraisal
             return packet;
         }
 
+        internal ProvisionalDialogueAppraisal RequirePromotionPendingPacket(
+            DurableApplicationPacket packet)
+        {
+            if (packet is null) throw new ArgumentNullException(nameof(packet));
+            if (!_packets.TryGetValue(packet.PacketId, out var registered) ||
+                !ReferenceEquals(registered, packet))
+                throw new ArgumentException("Packet is not registered by this v39 appraisal store.", nameof(packet));
+            var item = Require(packet.AppraisalId);
+            if (item.State != ProvisionalAppraisalState.PromotionPending ||
+                !string.Equals(item.PromotionPacketId, packet.PacketId, StringComparison.Ordinal))
+                throw new ArgumentException("The v39 appraisal is not promotion-pending.", nameof(packet));
+            return item;
+        }
+
         public ProvisionalDialogueAppraisal ObserveApplicationReceipt(CanonicalApplicationReceipt receipt)
         {
             if (receipt is null) throw new ArgumentNullException(nameof(receipt));

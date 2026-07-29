@@ -328,6 +328,7 @@ namespace Dagmay.Tests
                 (nameof(ProviderContractTests.GoogleTransportUsesHeaderAndStructuredSchemaAsync), ProviderContractTests.GoogleTransportUsesHeaderAndStructuredSchemaAsync),
                 (nameof(ProviderContractTests.GoogleRateLimitIsRetryableAsync), ProviderContractTests.GoogleRateLimitIsRetryableAsync)
             };
+            Mosaic03EDurableAppraisalAdmissionContractTests.AddTo(tests);
 
             var failures = 0;
             foreach (var test in tests)

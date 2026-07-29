@@ -1,0 +1,1099 @@
+{
+  "dependency_gate_digest": "c8557ab218dc0a6136a960cfb495dd4853e5dd3ad81d8eadd7b36082b1b47819",
+  "notes": [
+    "All identifiers and content hashes are synthetic.",
+    "Expected application evidence is emitted only after post-write reread verification.",
+    "Snapshot hashes cover the separated outbox snapshot, not independently owned canonical stores."
+  ],
+  "schema": "mosaic.0.3e.shared-deterministic-fixtures.v1",
+  "vectors": [
+    {
+      "case": "affect_and_relationship",
+      "checkpoint_receipt": {
+        "checkpoint_generation": 7,
+        "checkpoint_hash": "571248af7592c3666d343e24253ed8907f8adbab6b6082c5464d21d95035c30d",
+        "completed": true,
+        "fingerprint": "4ca9819d35c490fa8b3dd95029ecb49456caf1ab1d397f26d8199da2aeff6f6c",
+        "receipt_id": "checkpoint-7",
+        "save_id": "save-v40",
+        "source_contract": "Mosaic.Core.CheckpointCommitReceipt.v1",
+        "store_set_id": "stores-v40",
+        "stores_healthy": true,
+        "world_id": "world-v40",
+        "writable": true
+      },
+      "empty_outbox_snapshot_sha256": "aebf950bd375dd5b117f5289bcd63dd73d47f33b16ec468ea1d1faf5e8dbe8df",
+      "event_receipt": {
+        "audience_ids": [
+          "individual-owner-a",
+          "individual-speaker-b"
+        ],
+        "checkpoint_generation": 7,
+        "event_hash": "02bbf75312639e4da4ece4e8dcbeda6e711f2a64be30b9789a48668a54803974",
+        "event_id": "dialogue-event-00700",
+        "event_tick": 1699,
+        "fingerprint": "aeca8bbe317516f4b6b498be86bf120d8c3a67d1baa7bec9022803c9979cc469",
+        "owner_id": "individual-owner-a",
+        "privacy": "OWNER_PRIVATE",
+        "receipt_id": "dialogue-admission-00700",
+        "save_id": "save-v40",
+        "source_contract": "Mosaic.Core.CheckpointAlignedDialogueAdmission.v1",
+        "speaker_id": "individual-speaker-b",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "expected_attempt": {
+        "checkpoint_generation": 7,
+        "entry_id": "b039ea4241cf2a97eea2aaa8ccb4e11c9051619c8c89b496f8f09d94260db98f",
+        "fingerprint": "8c6f81286936aa736b25f698ddd1186c942ca97d18441cdc88162088b4a9369b",
+        "outcome": "PREPARED",
+        "packet_id": "0c1d2005caee40e04ea3a6adfccf569c80612722a5b5b583373b1a1d2dcaee6b"
+      },
+      "expected_evidence": {
+        "actual_affect_delta": {
+          "agency": "0.000000",
+          "arousal": "0.000000",
+          "attachment": "0.000000",
+          "certainty": "0.000000",
+          "social_standing": "0.000000",
+          "threat": "0.010000",
+          "valence": "-0.020000"
+        },
+        "actual_relationship_delta": {
+          "affection": "0.000000",
+          "fear": "0.000000",
+          "resentment": "0.020000",
+          "trust": "-0.010000"
+        },
+        "application_receipt": {
+          "admitted_dialogue_event_id": "dialogue-event-00700",
+          "checkpoint_generation": 7,
+          "packet_id": "0c1d2005caee40e04ea3a6adfccf569c80612722a5b5b583373b1a1d2dcaee6b",
+          "perspective_owner_id": "individual-owner-a",
+          "receipt_fingerprint": "ab937b6a3de94dc0d4c9744efba125776fd60ac2deb34fe11af698b6ec17451a",
+          "resulting_affect_fingerprint": "83e74a8b92c0581c25f0330abd0c2a7c9c590cc0a5b99169f4cbbd2005cd34ad",
+          "resulting_affect_version": 4,
+          "resulting_relationship_fingerprint": "a3a90f94cabb872d1d4a77910a9bc130371f62ad4abc5639b12570636feaf212",
+          "resulting_relationship_version": 6,
+          "source_contract": "Mosaic.Core.CanonicalMutationReceipt.v1",
+          "success": true
+        },
+        "completion_fingerprint": "458a7760fe56d896519bbba9e135c9e902034ebc1786af6025f4c83a47967301",
+        "developmental_record_id": "44998030801becb2e13bde9c9399db0063ba9eba224e26a70d9e982eaef23f57",
+        "entry_id": "b039ea4241cf2a97eea2aaa8ccb4e11c9051619c8c89b496f8f09d94260db98f",
+        "source_contract": "mosaic.0.3e.checkpoint-aligned-durable-appraisal-admission.v1"
+      },
+      "expected_outbox_entry": {
+        "affect_after": {
+          "fingerprint": "83e74a8b92c0581c25f0330abd0c2a7c9c590cc0a5b99169f4cbbd2005cd34ad",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.010000",
+            "valence": "0.080000"
+          },
+          "version": 4
+        },
+        "affect_before": {
+          "fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.100000"
+          },
+          "version": 3
+        },
+        "checkpoint_generation": 7,
+        "checkpoint_receipt_fingerprint": "4ca9819d35c490fa8b3dd95029ecb49456caf1ab1d397f26d8199da2aeff6f6c",
+        "completed_at_generation": null,
+        "counterpart_id": "individual-speaker-b",
+        "developmental_record": {
+          "actual_affect_delta": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.010000",
+            "valence": "-0.020000"
+          },
+          "actual_relationship_delta": {
+            "affection": "0.000000",
+            "fear": "0.000000",
+            "resentment": "0.020000",
+            "trust": "-0.010000"
+          },
+          "affect_after_fingerprint": "83e74a8b92c0581c25f0330abd0c2a7c9c590cc0a5b99169f4cbbd2005cd34ad",
+          "affect_before_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "appraisal_id": "2151a59e318cb62eb7f6448706e0e082587164f1330bd0cbdf3881fa5d3f5dba",
+          "authority": "CANONICAL_RECORD_ONLY_NO_PAWN_AUTHORITY",
+          "checkpoint_generation": 7,
+          "counterpart_id": "individual-speaker-b",
+          "lineage_id": "lineage-owner-a",
+          "owner_id": "individual-owner-a",
+          "packet_id": "0c1d2005caee40e04ea3a6adfccf569c80612722a5b5b583373b1a1d2dcaee6b",
+          "privacy": "OWNER_PRIVATE",
+          "record_id": "44998030801becb2e13bde9c9399db0063ba9eba224e26a70d9e982eaef23f57",
+          "relationship_after_fingerprint": "a3a90f94cabb872d1d4a77910a9bc130371f62ad4abc5639b12570636feaf212",
+          "relationship_before_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "requested_affect_delta": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.010000",
+            "valence": "-0.020000"
+          },
+          "requested_relationship_delta": {
+            "affection": "0.000000",
+            "fear": "0.000000",
+            "resentment": "0.020000",
+            "trust": "-0.010000"
+          },
+          "source_event_hash": "02bbf75312639e4da4ece4e8dcbeda6e711f2a64be30b9789a48668a54803974",
+          "source_event_id": "dialogue-event-00700"
+        },
+        "entry_id": "b039ea4241cf2a97eea2aaa8ccb4e11c9051619c8c89b496f8f09d94260db98f",
+        "failure_receipt_issued": false,
+        "lineage_id": "lineage-owner-a",
+        "owner_id": "individual-owner-a",
+        "packet_id": "0c1d2005caee40e04ea3a6adfccf569c80612722a5b5b583373b1a1d2dcaee6b",
+        "proposal_order": [
+          1700,
+          "0c1d2005caee40e04ea3a6adfccf569c80612722a5b5b583373b1a1d2dcaee6b"
+        ],
+        "quarantine_reason": null,
+        "relationship_after": {
+          "counterpart_id": "individual-speaker-b",
+          "fingerprint": "a3a90f94cabb872d1d4a77910a9bc130371f62ad4abc5639b12570636feaf212",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "affection": "0.100000",
+            "fear": "0.000000",
+            "resentment": "0.020000",
+            "trust": "0.190000"
+          },
+          "version": 6
+        },
+        "relationship_before": {
+          "counterpart_id": "individual-speaker-b",
+          "fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "affection": "0.100000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.200000"
+          },
+          "version": 5
+        },
+        "request_fingerprint": "a91b8eb2998b4662eca9bb0a983f09ab396d08c39dd39cc8695e22ad53af1df5",
+        "save_id": "save-v40",
+        "state": "PENDING",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "expected_v39_state": "PROMOTED",
+      "final_affect": {
+        "fingerprint": "83e74a8b92c0581c25f0330abd0c2a7c9c590cc0a5b99169f4cbbd2005cd34ad",
+        "owner_id": "individual-owner-a",
+        "values": {
+          "agency": "0.000000",
+          "arousal": "0.000000",
+          "attachment": "0.000000",
+          "certainty": "0.000000",
+          "social_standing": "0.000000",
+          "threat": "0.010000",
+          "valence": "0.080000"
+        },
+        "version": 4
+      },
+      "final_relationship": {
+        "counterpart_id": "individual-speaker-b",
+        "fingerprint": "a3a90f94cabb872d1d4a77910a9bc130371f62ad4abc5639b12570636feaf212",
+        "owner_id": "individual-owner-a",
+        "values": {
+          "affection": "0.100000",
+          "fear": "0.000000",
+          "resentment": "0.020000",
+          "trust": "0.190000"
+        },
+        "version": 6
+      },
+      "identity_binding": {
+        "archive_generation": 11,
+        "fingerprint": "250d92a7f82e03f56538aa233e985fe85122c8d1cabb5e22b9410129a6494a39",
+        "individual_id": "individual-owner-a",
+        "lineage_id": "lineage-owner-a",
+        "save_id": "save-v40",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "pending_outbox_snapshot_sha256": "c8a06cf1e4f31a5af606f748767718c7e5164a601f698a30444479d32b5f8d8b",
+      "proposal_envelope": {
+        "conversation_id": "conversation-v40",
+        "created_tick": 1700,
+        "fingerprint": "63fd286d91b109c9bc2a7bb7948b7682b242c49cfe58865523b93b37d2c15521",
+        "packet": {
+          "admitted_dialogue_event_id": "dialogue-event-00700",
+          "appraisal_id": "2151a59e318cb62eb7f6448706e0e082587164f1330bd0cbdf3881fa5d3f5dba",
+          "authority": "PROPOSAL_ONLY_NO_MUTATION_AUTHORITY",
+          "expected_affect_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "expected_affect_version": 3,
+          "expected_checkpoint_generation": 7,
+          "expected_relationship_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "expected_relationship_version": 5,
+          "packet_id": "0c1d2005caee40e04ea3a6adfccf569c80612722a5b5b583373b1a1d2dcaee6b",
+          "perspective_owner_id": "individual-owner-a",
+          "proposed_affect_delta": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.010000",
+            "valence": "-0.020000"
+          },
+          "proposed_relationship_delta": {
+            "affection": "0.000000",
+            "fear": "0.000000",
+            "resentment": "0.020000",
+            "trust": "-0.010000"
+          },
+          "source_receipt_id": "dialogue-admission-00700"
+        },
+        "packet_fingerprint": "b99b020e1cd9fb67400cd3bdfb3171aa5975743db349d7a80eb2180b452abc14",
+        "registry_attestation": "d8d69a75b26768f5b6f22f69969b9c54979c4243188f30634541f90a52f09826",
+        "source_contract": "Mosaic.Core.ProvisionalDialogueAppraisal.v1",
+        "source_gate_digest": "c8557ab218dc0a6136a960cfb495dd4853e5dd3ad81d8eadd7b36082b1b47819",
+        "speaker_id": "individual-speaker-b"
+      }
+    },
+    {
+      "case": "affect_only",
+      "checkpoint_receipt": {
+        "checkpoint_generation": 7,
+        "checkpoint_hash": "571248af7592c3666d343e24253ed8907f8adbab6b6082c5464d21d95035c30d",
+        "completed": true,
+        "fingerprint": "4ca9819d35c490fa8b3dd95029ecb49456caf1ab1d397f26d8199da2aeff6f6c",
+        "receipt_id": "checkpoint-7",
+        "save_id": "save-v40",
+        "source_contract": "Mosaic.Core.CheckpointCommitReceipt.v1",
+        "store_set_id": "stores-v40",
+        "stores_healthy": true,
+        "world_id": "world-v40",
+        "writable": true
+      },
+      "empty_outbox_snapshot_sha256": "aebf950bd375dd5b117f5289bcd63dd73d47f33b16ec468ea1d1faf5e8dbe8df",
+      "event_receipt": {
+        "audience_ids": [
+          "individual-owner-a",
+          "individual-speaker-b"
+        ],
+        "checkpoint_generation": 7,
+        "event_hash": "06fdd370c71d010f04d990e0fa15f6c8fabd992b8a14bd33aee01bc7b9bc82c9",
+        "event_id": "dialogue-event-00701",
+        "event_tick": 1700,
+        "fingerprint": "b4b00dcd154afaa7e139649a9bd3f3bf51e5e78f6416a818f3743b09320e347c",
+        "owner_id": "individual-owner-a",
+        "privacy": "OWNER_PRIVATE",
+        "receipt_id": "dialogue-admission-00701",
+        "save_id": "save-v40",
+        "source_contract": "Mosaic.Core.CheckpointAlignedDialogueAdmission.v1",
+        "speaker_id": "individual-speaker-b",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "expected_attempt": {
+        "checkpoint_generation": 7,
+        "entry_id": "e2c537542c132e6f33cc73bbc279e7817337fe2734864c765478eeb6d438e2e5",
+        "fingerprint": "4284c52d53d91faa8966d75f1e9d737705a1c5b56d827d450e4c63ad3628f5fb",
+        "outcome": "PREPARED",
+        "packet_id": "186c06843282171a6624370b7a36fcdd7032f0d286cfcd56730fa8c0674967c7"
+      },
+      "expected_evidence": {
+        "actual_affect_delta": {
+          "agency": "0.005000",
+          "arousal": "0.000000",
+          "attachment": "0.000000",
+          "certainty": "0.000000",
+          "social_standing": "0.000000",
+          "threat": "0.000000",
+          "valence": "0.015000"
+        },
+        "actual_relationship_delta": {
+          "affection": "0.000000",
+          "fear": "0.000000",
+          "resentment": "0.000000",
+          "trust": "0.000000"
+        },
+        "application_receipt": {
+          "admitted_dialogue_event_id": "dialogue-event-00701",
+          "checkpoint_generation": 7,
+          "packet_id": "186c06843282171a6624370b7a36fcdd7032f0d286cfcd56730fa8c0674967c7",
+          "perspective_owner_id": "individual-owner-a",
+          "receipt_fingerprint": "bfd53c3c30cc2a029ca80b69603fa70229be322667344a35d6a932ffcc7c77e0",
+          "resulting_affect_fingerprint": "35c35a8ee702785ea6ac3d28de76ed7fc5c61ea9c9cc3cb1f709a6c789347142",
+          "resulting_affect_version": 4,
+          "resulting_relationship_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "resulting_relationship_version": 5,
+          "source_contract": "Mosaic.Core.CanonicalMutationReceipt.v1",
+          "success": true
+        },
+        "completion_fingerprint": "0ba4dbac38ab2f993faed83e503392ee24f168bb9ad922cf4add7e002333002e",
+        "developmental_record_id": "c8bff8d0deb673c53938a74ce9f452f8e1a636105140a152c227b4af316e83c8",
+        "entry_id": "e2c537542c132e6f33cc73bbc279e7817337fe2734864c765478eeb6d438e2e5",
+        "source_contract": "mosaic.0.3e.checkpoint-aligned-durable-appraisal-admission.v1"
+      },
+      "expected_outbox_entry": {
+        "affect_after": {
+          "fingerprint": "35c35a8ee702785ea6ac3d28de76ed7fc5c61ea9c9cc3cb1f709a6c789347142",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "agency": "0.005000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.115000"
+          },
+          "version": 4
+        },
+        "affect_before": {
+          "fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.100000"
+          },
+          "version": 3
+        },
+        "checkpoint_generation": 7,
+        "checkpoint_receipt_fingerprint": "4ca9819d35c490fa8b3dd95029ecb49456caf1ab1d397f26d8199da2aeff6f6c",
+        "completed_at_generation": null,
+        "counterpart_id": "individual-speaker-b",
+        "developmental_record": {
+          "actual_affect_delta": {
+            "agency": "0.005000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.015000"
+          },
+          "actual_relationship_delta": {
+            "affection": "0.000000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.000000"
+          },
+          "affect_after_fingerprint": "35c35a8ee702785ea6ac3d28de76ed7fc5c61ea9c9cc3cb1f709a6c789347142",
+          "affect_before_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "appraisal_id": "24355db039b19e13e0972fb849006ab94ad94fe1a3da23a918d1d91a6974b8e2",
+          "authority": "CANONICAL_RECORD_ONLY_NO_PAWN_AUTHORITY",
+          "checkpoint_generation": 7,
+          "counterpart_id": "individual-speaker-b",
+          "lineage_id": "lineage-owner-a",
+          "owner_id": "individual-owner-a",
+          "packet_id": "186c06843282171a6624370b7a36fcdd7032f0d286cfcd56730fa8c0674967c7",
+          "privacy": "OWNER_PRIVATE",
+          "record_id": "c8bff8d0deb673c53938a74ce9f452f8e1a636105140a152c227b4af316e83c8",
+          "relationship_after_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "relationship_before_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "requested_affect_delta": {
+            "agency": "0.005000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.015000"
+          },
+          "requested_relationship_delta": {
+            "affection": "0.000000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.000000"
+          },
+          "source_event_hash": "06fdd370c71d010f04d990e0fa15f6c8fabd992b8a14bd33aee01bc7b9bc82c9",
+          "source_event_id": "dialogue-event-00701"
+        },
+        "entry_id": "e2c537542c132e6f33cc73bbc279e7817337fe2734864c765478eeb6d438e2e5",
+        "failure_receipt_issued": false,
+        "lineage_id": "lineage-owner-a",
+        "owner_id": "individual-owner-a",
+        "packet_id": "186c06843282171a6624370b7a36fcdd7032f0d286cfcd56730fa8c0674967c7",
+        "proposal_order": [
+          1701,
+          "186c06843282171a6624370b7a36fcdd7032f0d286cfcd56730fa8c0674967c7"
+        ],
+        "quarantine_reason": null,
+        "relationship_after": {
+          "counterpart_id": "individual-speaker-b",
+          "fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "affection": "0.100000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.200000"
+          },
+          "version": 5
+        },
+        "relationship_before": {
+          "counterpart_id": "individual-speaker-b",
+          "fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "affection": "0.100000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.200000"
+          },
+          "version": 5
+        },
+        "request_fingerprint": "658280f357c50fbd09ee8d64d185ec316ca91664646aecceba21dae4548fe8d5",
+        "save_id": "save-v40",
+        "state": "PENDING",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "expected_v39_state": "PROMOTED",
+      "final_affect": {
+        "fingerprint": "35c35a8ee702785ea6ac3d28de76ed7fc5c61ea9c9cc3cb1f709a6c789347142",
+        "owner_id": "individual-owner-a",
+        "values": {
+          "agency": "0.005000",
+          "arousal": "0.000000",
+          "attachment": "0.000000",
+          "certainty": "0.000000",
+          "social_standing": "0.000000",
+          "threat": "0.000000",
+          "valence": "0.115000"
+        },
+        "version": 4
+      },
+      "final_relationship": {
+        "counterpart_id": "individual-speaker-b",
+        "fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+        "owner_id": "individual-owner-a",
+        "values": {
+          "affection": "0.100000",
+          "fear": "0.000000",
+          "resentment": "0.000000",
+          "trust": "0.200000"
+        },
+        "version": 5
+      },
+      "identity_binding": {
+        "archive_generation": 11,
+        "fingerprint": "250d92a7f82e03f56538aa233e985fe85122c8d1cabb5e22b9410129a6494a39",
+        "individual_id": "individual-owner-a",
+        "lineage_id": "lineage-owner-a",
+        "save_id": "save-v40",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "pending_outbox_snapshot_sha256": "15d871aa170f6ec88a5c638d9efa799c049d67694ea96e007444bde5edbabbc9",
+      "proposal_envelope": {
+        "conversation_id": "conversation-v40",
+        "created_tick": 1701,
+        "fingerprint": "777dba67cbd23c15792239d76b374cdc61c0394f5bf87033a2e0b64850610eb3",
+        "packet": {
+          "admitted_dialogue_event_id": "dialogue-event-00701",
+          "appraisal_id": "24355db039b19e13e0972fb849006ab94ad94fe1a3da23a918d1d91a6974b8e2",
+          "authority": "PROPOSAL_ONLY_NO_MUTATION_AUTHORITY",
+          "expected_affect_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "expected_affect_version": 3,
+          "expected_checkpoint_generation": 7,
+          "expected_relationship_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "expected_relationship_version": 5,
+          "packet_id": "186c06843282171a6624370b7a36fcdd7032f0d286cfcd56730fa8c0674967c7",
+          "perspective_owner_id": "individual-owner-a",
+          "proposed_affect_delta": {
+            "agency": "0.005000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.015000"
+          },
+          "proposed_relationship_delta": {
+            "affection": "0.000000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.000000"
+          },
+          "source_receipt_id": "dialogue-admission-00701"
+        },
+        "packet_fingerprint": "432b39f93dcbb9e0fc72e35c7e344e83821e36a10c02d7af2bdfb3103deed190",
+        "registry_attestation": "5a76408078b377d4a4f0204030010bc26de0f0813c3dff7689ed68ac9a51b6ee",
+        "source_contract": "Mosaic.Core.ProvisionalDialogueAppraisal.v1",
+        "source_gate_digest": "c8557ab218dc0a6136a960cfb495dd4853e5dd3ad81d8eadd7b36082b1b47819",
+        "speaker_id": "individual-speaker-b"
+      }
+    },
+    {
+      "case": "relationship_only",
+      "checkpoint_receipt": {
+        "checkpoint_generation": 7,
+        "checkpoint_hash": "571248af7592c3666d343e24253ed8907f8adbab6b6082c5464d21d95035c30d",
+        "completed": true,
+        "fingerprint": "4ca9819d35c490fa8b3dd95029ecb49456caf1ab1d397f26d8199da2aeff6f6c",
+        "receipt_id": "checkpoint-7",
+        "save_id": "save-v40",
+        "source_contract": "Mosaic.Core.CheckpointCommitReceipt.v1",
+        "store_set_id": "stores-v40",
+        "stores_healthy": true,
+        "world_id": "world-v40",
+        "writable": true
+      },
+      "empty_outbox_snapshot_sha256": "aebf950bd375dd5b117f5289bcd63dd73d47f33b16ec468ea1d1faf5e8dbe8df",
+      "event_receipt": {
+        "audience_ids": [
+          "individual-owner-a",
+          "individual-speaker-b"
+        ],
+        "checkpoint_generation": 7,
+        "event_hash": "bb3789603f3bf270b8476536e1fb77f680e35ac53bd571e819539244e80221a5",
+        "event_id": "dialogue-event-00702",
+        "event_tick": 1701,
+        "fingerprint": "6372e56eb1b61e6a044ed6c6eb43d61d71a1f00da3e4a86c17f30e90ef9ee365",
+        "owner_id": "individual-owner-a",
+        "privacy": "OWNER_PRIVATE",
+        "receipt_id": "dialogue-admission-00702",
+        "save_id": "save-v40",
+        "source_contract": "Mosaic.Core.CheckpointAlignedDialogueAdmission.v1",
+        "speaker_id": "individual-speaker-b",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "expected_attempt": {
+        "checkpoint_generation": 7,
+        "entry_id": "7981ad81e7e86a7dbe17eb9f0faca3f4adfa363b16e93286848daaba647f0e18",
+        "fingerprint": "eb74dfb70ab1e3a2d8ddc0b788acee38389e16848a4f660367dcf0de03659b01",
+        "outcome": "PREPARED",
+        "packet_id": "cf60926657eb8a95ad1e1fee37e074e0124e5d543133edfdae428d582ca950d4"
+      },
+      "expected_evidence": {
+        "actual_affect_delta": {
+          "agency": "0.000000",
+          "arousal": "0.000000",
+          "attachment": "0.000000",
+          "certainty": "0.000000",
+          "social_standing": "0.000000",
+          "threat": "0.000000",
+          "valence": "0.000000"
+        },
+        "actual_relationship_delta": {
+          "affection": "0.005000",
+          "fear": "0.000000",
+          "resentment": "0.000000",
+          "trust": "0.010000"
+        },
+        "application_receipt": {
+          "admitted_dialogue_event_id": "dialogue-event-00702",
+          "checkpoint_generation": 7,
+          "packet_id": "cf60926657eb8a95ad1e1fee37e074e0124e5d543133edfdae428d582ca950d4",
+          "perspective_owner_id": "individual-owner-a",
+          "receipt_fingerprint": "e9880e09cad9d4457fb5c2e1f637c512ce1a9ae34e9cd406b3f00ad83c7a2f78",
+          "resulting_affect_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "resulting_affect_version": 3,
+          "resulting_relationship_fingerprint": "5eed0fa4f6d4728d18cc16719446dd40185c3857b4c4b56841db1860c1445445",
+          "resulting_relationship_version": 6,
+          "source_contract": "Mosaic.Core.CanonicalMutationReceipt.v1",
+          "success": true
+        },
+        "completion_fingerprint": "cfa45a5b7fa68d4263e3e6d29740f82e9d7a2ab5e500ef64c54de05d498fd501",
+        "developmental_record_id": "f013c76e6385af264a0523b6841f3aabb087d5b5db6242848e7b6cd08ab9d2d4",
+        "entry_id": "7981ad81e7e86a7dbe17eb9f0faca3f4adfa363b16e93286848daaba647f0e18",
+        "source_contract": "mosaic.0.3e.checkpoint-aligned-durable-appraisal-admission.v1"
+      },
+      "expected_outbox_entry": {
+        "affect_after": {
+          "fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.100000"
+          },
+          "version": 3
+        },
+        "affect_before": {
+          "fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.100000"
+          },
+          "version": 3
+        },
+        "checkpoint_generation": 7,
+        "checkpoint_receipt_fingerprint": "4ca9819d35c490fa8b3dd95029ecb49456caf1ab1d397f26d8199da2aeff6f6c",
+        "completed_at_generation": null,
+        "counterpart_id": "individual-speaker-b",
+        "developmental_record": {
+          "actual_affect_delta": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.000000"
+          },
+          "actual_relationship_delta": {
+            "affection": "0.005000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.010000"
+          },
+          "affect_after_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "affect_before_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "appraisal_id": "c44cb926cd20a4d71b9d254ed751e85132376d8e7af4de96238b61e02e405dbc",
+          "authority": "CANONICAL_RECORD_ONLY_NO_PAWN_AUTHORITY",
+          "checkpoint_generation": 7,
+          "counterpart_id": "individual-speaker-b",
+          "lineage_id": "lineage-owner-a",
+          "owner_id": "individual-owner-a",
+          "packet_id": "cf60926657eb8a95ad1e1fee37e074e0124e5d543133edfdae428d582ca950d4",
+          "privacy": "OWNER_PRIVATE",
+          "record_id": "f013c76e6385af264a0523b6841f3aabb087d5b5db6242848e7b6cd08ab9d2d4",
+          "relationship_after_fingerprint": "5eed0fa4f6d4728d18cc16719446dd40185c3857b4c4b56841db1860c1445445",
+          "relationship_before_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "requested_affect_delta": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.000000"
+          },
+          "requested_relationship_delta": {
+            "affection": "0.005000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.010000"
+          },
+          "source_event_hash": "bb3789603f3bf270b8476536e1fb77f680e35ac53bd571e819539244e80221a5",
+          "source_event_id": "dialogue-event-00702"
+        },
+        "entry_id": "7981ad81e7e86a7dbe17eb9f0faca3f4adfa363b16e93286848daaba647f0e18",
+        "failure_receipt_issued": false,
+        "lineage_id": "lineage-owner-a",
+        "owner_id": "individual-owner-a",
+        "packet_id": "cf60926657eb8a95ad1e1fee37e074e0124e5d543133edfdae428d582ca950d4",
+        "proposal_order": [
+          1702,
+          "cf60926657eb8a95ad1e1fee37e074e0124e5d543133edfdae428d582ca950d4"
+        ],
+        "quarantine_reason": null,
+        "relationship_after": {
+          "counterpart_id": "individual-speaker-b",
+          "fingerprint": "5eed0fa4f6d4728d18cc16719446dd40185c3857b4c4b56841db1860c1445445",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "affection": "0.105000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.210000"
+          },
+          "version": 6
+        },
+        "relationship_before": {
+          "counterpart_id": "individual-speaker-b",
+          "fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "affection": "0.100000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.200000"
+          },
+          "version": 5
+        },
+        "request_fingerprint": "aa0fc2e52d6ae86e32c3c51b60b61111d4aaf621f40a8551605bd7ac80269188",
+        "save_id": "save-v40",
+        "state": "PENDING",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "expected_v39_state": "PROMOTED",
+      "final_affect": {
+        "fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+        "owner_id": "individual-owner-a",
+        "values": {
+          "agency": "0.000000",
+          "arousal": "0.000000",
+          "attachment": "0.000000",
+          "certainty": "0.000000",
+          "social_standing": "0.000000",
+          "threat": "0.000000",
+          "valence": "0.100000"
+        },
+        "version": 3
+      },
+      "final_relationship": {
+        "counterpart_id": "individual-speaker-b",
+        "fingerprint": "5eed0fa4f6d4728d18cc16719446dd40185c3857b4c4b56841db1860c1445445",
+        "owner_id": "individual-owner-a",
+        "values": {
+          "affection": "0.105000",
+          "fear": "0.000000",
+          "resentment": "0.000000",
+          "trust": "0.210000"
+        },
+        "version": 6
+      },
+      "identity_binding": {
+        "archive_generation": 11,
+        "fingerprint": "250d92a7f82e03f56538aa233e985fe85122c8d1cabb5e22b9410129a6494a39",
+        "individual_id": "individual-owner-a",
+        "lineage_id": "lineage-owner-a",
+        "save_id": "save-v40",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "pending_outbox_snapshot_sha256": "52306ecbb1e3b5c7ea2148aaa378eaee7ab86abdf3e6d75b892f418d4826a6e3",
+      "proposal_envelope": {
+        "conversation_id": "conversation-v40",
+        "created_tick": 1702,
+        "fingerprint": "952e6ac10e2a0a9d8f0a311e878a257fc460ea4ab0d1bd1ef90f207ec76387c0",
+        "packet": {
+          "admitted_dialogue_event_id": "dialogue-event-00702",
+          "appraisal_id": "c44cb926cd20a4d71b9d254ed751e85132376d8e7af4de96238b61e02e405dbc",
+          "authority": "PROPOSAL_ONLY_NO_MUTATION_AUTHORITY",
+          "expected_affect_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "expected_affect_version": 3,
+          "expected_checkpoint_generation": 7,
+          "expected_relationship_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "expected_relationship_version": 5,
+          "packet_id": "cf60926657eb8a95ad1e1fee37e074e0124e5d543133edfdae428d582ca950d4",
+          "perspective_owner_id": "individual-owner-a",
+          "proposed_affect_delta": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.000000"
+          },
+          "proposed_relationship_delta": {
+            "affection": "0.005000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.010000"
+          },
+          "source_receipt_id": "dialogue-admission-00702"
+        },
+        "packet_fingerprint": "42731a9bea8573f992ad47e9483b660c70b4e13691ebb2439cc5e8ee1dfbedc6",
+        "registry_attestation": "d37dab26dad9edea3fafd62bb232c05d5cd5c305a31e13a5bd51aa458ced9545",
+        "source_contract": "Mosaic.Core.ProvisionalDialogueAppraisal.v1",
+        "source_gate_digest": "c8557ab218dc0a6136a960cfb495dd4853e5dd3ad81d8eadd7b36082b1b47819",
+        "speaker_id": "individual-speaker-b"
+      }
+    },
+    {
+      "case": "no_op",
+      "checkpoint_receipt": {
+        "checkpoint_generation": 7,
+        "checkpoint_hash": "571248af7592c3666d343e24253ed8907f8adbab6b6082c5464d21d95035c30d",
+        "completed": true,
+        "fingerprint": "4ca9819d35c490fa8b3dd95029ecb49456caf1ab1d397f26d8199da2aeff6f6c",
+        "receipt_id": "checkpoint-7",
+        "save_id": "save-v40",
+        "source_contract": "Mosaic.Core.CheckpointCommitReceipt.v1",
+        "store_set_id": "stores-v40",
+        "stores_healthy": true,
+        "world_id": "world-v40",
+        "writable": true
+      },
+      "empty_outbox_snapshot_sha256": "aebf950bd375dd5b117f5289bcd63dd73d47f33b16ec468ea1d1faf5e8dbe8df",
+      "event_receipt": {
+        "audience_ids": [
+          "individual-owner-a",
+          "individual-speaker-b"
+        ],
+        "checkpoint_generation": 7,
+        "event_hash": "34bef0e5658c9a5ca70425845203f93ba054449b5ec28b843643f9212c5e373b",
+        "event_id": "dialogue-event-00703",
+        "event_tick": 1702,
+        "fingerprint": "464bf1bc8c2c2ace1774e53cb8673d217b54351f5860adb463cb4e71d8efbc7d",
+        "owner_id": "individual-owner-a",
+        "privacy": "OWNER_PRIVATE",
+        "receipt_id": "dialogue-admission-00703",
+        "save_id": "save-v40",
+        "source_contract": "Mosaic.Core.CheckpointAlignedDialogueAdmission.v1",
+        "speaker_id": "individual-speaker-b",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "expected_attempt": {
+        "checkpoint_generation": 7,
+        "entry_id": "9038b852b0dad92e8e06d83794e4d65a05dc0d336206b6c6d5257b45fe7bb59b",
+        "fingerprint": "b114f1c3b74b9609b8c88bf43aeb051472ba23d6b8d73db4f3aa6a551e810db2",
+        "outcome": "PREPARED",
+        "packet_id": "6bf3a887735caf3b475fa1ffcbfed27bf89b0147e350b4405d8dd2277c3243d5"
+      },
+      "expected_evidence": {
+        "actual_affect_delta": {
+          "agency": "0.000000",
+          "arousal": "0.000000",
+          "attachment": "0.000000",
+          "certainty": "0.000000",
+          "social_standing": "0.000000",
+          "threat": "0.000000",
+          "valence": "0.000000"
+        },
+        "actual_relationship_delta": {
+          "affection": "0.000000",
+          "fear": "0.000000",
+          "resentment": "0.000000",
+          "trust": "0.000000"
+        },
+        "application_receipt": {
+          "admitted_dialogue_event_id": "dialogue-event-00703",
+          "checkpoint_generation": 7,
+          "packet_id": "6bf3a887735caf3b475fa1ffcbfed27bf89b0147e350b4405d8dd2277c3243d5",
+          "perspective_owner_id": "individual-owner-a",
+          "receipt_fingerprint": "84cc134831b243f4d7e2304b2cd3217904deecd53f5c95eec973fb3003c4ce7c",
+          "resulting_affect_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "resulting_affect_version": 3,
+          "resulting_relationship_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "resulting_relationship_version": 5,
+          "source_contract": "Mosaic.Core.CanonicalMutationReceipt.v1",
+          "success": true
+        },
+        "completion_fingerprint": "3b599eb10981be689b32359c149a6a3bd987992d7fdc0b1de58ac30f3b741ee7",
+        "developmental_record_id": "39c6422e4a3d263d7aaeaf25512c1de3af6fe9668f3aecb44f49a147c0636123",
+        "entry_id": "9038b852b0dad92e8e06d83794e4d65a05dc0d336206b6c6d5257b45fe7bb59b",
+        "source_contract": "mosaic.0.3e.checkpoint-aligned-durable-appraisal-admission.v1"
+      },
+      "expected_outbox_entry": {
+        "affect_after": {
+          "fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.100000"
+          },
+          "version": 3
+        },
+        "affect_before": {
+          "fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.100000"
+          },
+          "version": 3
+        },
+        "checkpoint_generation": 7,
+        "checkpoint_receipt_fingerprint": "4ca9819d35c490fa8b3dd95029ecb49456caf1ab1d397f26d8199da2aeff6f6c",
+        "completed_at_generation": null,
+        "counterpart_id": "individual-speaker-b",
+        "developmental_record": {
+          "actual_affect_delta": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.000000"
+          },
+          "actual_relationship_delta": {
+            "affection": "0.000000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.000000"
+          },
+          "affect_after_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "affect_before_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "appraisal_id": "55a1c89c5535bfb995c4994f49c7a8258a021a1d6d1d30470a4a0b571c29e65d",
+          "authority": "CANONICAL_RECORD_ONLY_NO_PAWN_AUTHORITY",
+          "checkpoint_generation": 7,
+          "counterpart_id": "individual-speaker-b",
+          "lineage_id": "lineage-owner-a",
+          "owner_id": "individual-owner-a",
+          "packet_id": "6bf3a887735caf3b475fa1ffcbfed27bf89b0147e350b4405d8dd2277c3243d5",
+          "privacy": "OWNER_PRIVATE",
+          "record_id": "39c6422e4a3d263d7aaeaf25512c1de3af6fe9668f3aecb44f49a147c0636123",
+          "relationship_after_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "relationship_before_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "requested_affect_delta": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.000000"
+          },
+          "requested_relationship_delta": {
+            "affection": "0.000000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.000000"
+          },
+          "source_event_hash": "34bef0e5658c9a5ca70425845203f93ba054449b5ec28b843643f9212c5e373b",
+          "source_event_id": "dialogue-event-00703"
+        },
+        "entry_id": "9038b852b0dad92e8e06d83794e4d65a05dc0d336206b6c6d5257b45fe7bb59b",
+        "failure_receipt_issued": false,
+        "lineage_id": "lineage-owner-a",
+        "owner_id": "individual-owner-a",
+        "packet_id": "6bf3a887735caf3b475fa1ffcbfed27bf89b0147e350b4405d8dd2277c3243d5",
+        "proposal_order": [
+          1703,
+          "6bf3a887735caf3b475fa1ffcbfed27bf89b0147e350b4405d8dd2277c3243d5"
+        ],
+        "quarantine_reason": null,
+        "relationship_after": {
+          "counterpart_id": "individual-speaker-b",
+          "fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "affection": "0.100000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.200000"
+          },
+          "version": 5
+        },
+        "relationship_before": {
+          "counterpart_id": "individual-speaker-b",
+          "fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "owner_id": "individual-owner-a",
+          "values": {
+            "affection": "0.100000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.200000"
+          },
+          "version": 5
+        },
+        "request_fingerprint": "54823c2bf449ae3f821511f8d835c36f8c3f7a7ab8c37b89094428fd9589106d",
+        "save_id": "save-v40",
+        "state": "PENDING",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "expected_v39_state": "PROMOTED",
+      "final_affect": {
+        "fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+        "owner_id": "individual-owner-a",
+        "values": {
+          "agency": "0.000000",
+          "arousal": "0.000000",
+          "attachment": "0.000000",
+          "certainty": "0.000000",
+          "social_standing": "0.000000",
+          "threat": "0.000000",
+          "valence": "0.100000"
+        },
+        "version": 3
+      },
+      "final_relationship": {
+        "counterpart_id": "individual-speaker-b",
+        "fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+        "owner_id": "individual-owner-a",
+        "values": {
+          "affection": "0.100000",
+          "fear": "0.000000",
+          "resentment": "0.000000",
+          "trust": "0.200000"
+        },
+        "version": 5
+      },
+      "identity_binding": {
+        "archive_generation": 11,
+        "fingerprint": "250d92a7f82e03f56538aa233e985fe85122c8d1cabb5e22b9410129a6494a39",
+        "individual_id": "individual-owner-a",
+        "lineage_id": "lineage-owner-a",
+        "save_id": "save-v40",
+        "store_set_id": "stores-v40",
+        "world_id": "world-v40"
+      },
+      "pending_outbox_snapshot_sha256": "69ffab27f1686327ad941d3c2afcc88692f2cb1895108374ec882e6a9ed9354b",
+      "proposal_envelope": {
+        "conversation_id": "conversation-v40",
+        "created_tick": 1703,
+        "fingerprint": "a6b52a82af191ce6dd702e11e91dc0ddc1d2a7e93b8035ad6328db0690b52909",
+        "packet": {
+          "admitted_dialogue_event_id": "dialogue-event-00703",
+          "appraisal_id": "55a1c89c5535bfb995c4994f49c7a8258a021a1d6d1d30470a4a0b571c29e65d",
+          "authority": "PROPOSAL_ONLY_NO_MUTATION_AUTHORITY",
+          "expected_affect_fingerprint": "39ea288379fb53d4cfcb490f15525de39cf456607187b1e78472dbb9156b37a8",
+          "expected_affect_version": 3,
+          "expected_checkpoint_generation": 7,
+          "expected_relationship_fingerprint": "fbd7677fd24b554e949e9f4c5810335952e347ccf8f77011ef59a346e3ec5568",
+          "expected_relationship_version": 5,
+          "packet_id": "6bf3a887735caf3b475fa1ffcbfed27bf89b0147e350b4405d8dd2277c3243d5",
+          "perspective_owner_id": "individual-owner-a",
+          "proposed_affect_delta": {
+            "agency": "0.000000",
+            "arousal": "0.000000",
+            "attachment": "0.000000",
+            "certainty": "0.000000",
+            "social_standing": "0.000000",
+            "threat": "0.000000",
+            "valence": "0.000000"
+          },
+          "proposed_relationship_delta": {
+            "affection": "0.000000",
+            "fear": "0.000000",
+            "resentment": "0.000000",
+            "trust": "0.000000"
+          },
+          "source_receipt_id": "dialogue-admission-00703"
+        },
+        "packet_fingerprint": "a8fc6b6d3132c497d02721a869b32dfe273ef7cf82b8fe5f18089631ac2c87f5",
+        "registry_attestation": "5366fe51f2fb72f0c01f84ec99ff5639cc0370c10fce00a1785b46c01fb2e25b",
+        "source_contract": "Mosaic.Core.ProvisionalDialogueAppraisal.v1",
+        "source_gate_digest": "c8557ab218dc0a6136a960cfb495dd4853e5dd3ad81d8eadd7b36082b1b47819",
+        "speaker_id": "individual-speaker-b"
+      }
+    }
+  ]
+}

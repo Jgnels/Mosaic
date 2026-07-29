@@ -22,6 +22,7 @@
     <Compile Include="..\Dagmay.RimWorld\Dialogue\OfflineRimWorldDialoguePipeline.cs" Link="RimWorldPure\OfflineRimWorldDialoguePipeline.cs" />
     <Compile Include="..\Dagmay.RimWorld\Perception\ReadOnlySocialEventEnvelopeAdapter.cs" Link="RimWorldPure\ReadOnlySocialEventEnvelopeAdapter.cs" />
     <Compile Include="..\Dagmay.RimWorld\Perception\GroundedSocialSemanticProjectionAdapter.cs" Link="RimWorldPure\GroundedSocialSemanticProjectionAdapter.cs" />
+    <None Include="Fixtures\V40_SHARED_DETERMINISTIC_FIXTURES.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
 

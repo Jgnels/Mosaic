@@ -69,7 +69,12 @@ namespace Dagmay.IntegrationHarness
                 new ScenarioDefinition("ReadOnlySocialEventEnvelope", ReadOnlySocialEventEnvelopeAsync),
                 new ScenarioDefinition("BoundedReactionLifecycle", BoundedReactionLifecycleAsync),
                 new ScenarioDefinition("ProvisionalDialogueAppraisal", ProvisionalDialogueAppraisalAsync),
+                new ScenarioDefinition("DurableAppraisalAdmission", DurableAppraisalAdmissionAsync),
                 new ScenarioDefinition("LongHistoryRetrievalBenchmark", LongHistoryRetrievalBenchmarkAsync),
+                new ScenarioDefinition(
+                    "DurableAppraisalAdmissionStress",
+                    () => DurableAppraisalAdmissionStressAsync(50_000),
+                    includeByDefault: false),
                 new ScenarioDefinition(
                     "Gate3OfflineSoak",
                     () => Gate3OfflineSoakAsync(gate3SoakCycles, deterministicSeed),
