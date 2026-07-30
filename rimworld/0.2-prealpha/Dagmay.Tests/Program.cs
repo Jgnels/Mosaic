@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Dagmay.Tests
@@ -329,6 +330,13 @@ namespace Dagmay.Tests
                 (nameof(ProviderContractTests.GoogleRateLimitIsRetryableAsync), ProviderContractTests.GoogleRateLimitIsRetryableAsync)
             };
             Mosaic03EDurableAppraisalAdmissionContractTests.AddTo(tests);
+            Mosaic03FContextualDevelopmentalRetrievalContractTests.AddTo(tests);
+            var testSet = Environment.GetEnvironmentVariable("MOSAIC_TEST_SET");
+            var testPrefix = Environment.GetEnvironmentVariable("MOSAIC_TEST_PREFIX");
+            if (string.Equals(testSet, "V41", StringComparison.Ordinal))
+                tests = tests.Skip(tests.Count - 46).ToList();
+            else if (!string.IsNullOrWhiteSpace(testPrefix))
+                tests = tests.Where(value => value.Name.StartsWith(testPrefix, StringComparison.Ordinal)).ToList();
 
             var failures = 0;
             foreach (var test in tests)

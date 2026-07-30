@@ -70,6 +70,7 @@ namespace Dagmay.IntegrationHarness
                 new ScenarioDefinition("BoundedReactionLifecycle", BoundedReactionLifecycleAsync),
                 new ScenarioDefinition("ProvisionalDialogueAppraisal", ProvisionalDialogueAppraisalAsync),
                 new ScenarioDefinition("DurableAppraisalAdmission", DurableAppraisalAdmissionAsync),
+                new ScenarioDefinition("ContextualDevelopmentalRetrieval", () => ContextualDevelopmentalRetrievalAsync(gate3SoakCycles)),
                 new ScenarioDefinition("LongHistoryRetrievalBenchmark", LongHistoryRetrievalBenchmarkAsync),
                 new ScenarioDefinition(
                     "DurableAppraisalAdmissionStress",
