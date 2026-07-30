@@ -331,10 +331,13 @@ namespace Dagmay.Tests
             };
             Mosaic03EDurableAppraisalAdmissionContractTests.AddTo(tests);
             Mosaic03FContextualDevelopmentalRetrievalContractTests.AddTo(tests);
+            Mosaic03GGroundedDevelopmentalContextMaterializationContractTests.AddTo(tests);
             var testSet = Environment.GetEnvironmentVariable("MOSAIC_TEST_SET");
             var testPrefix = Environment.GetEnvironmentVariable("MOSAIC_TEST_PREFIX");
             if (string.Equals(testSet, "V41", StringComparison.Ordinal))
-                tests = tests.Skip(tests.Count - 46).ToList();
+                tests = tests.Skip(tests.Count - 104).Take(46).ToList();
+            else if (string.Equals(testSet, "V42", StringComparison.Ordinal))
+                tests = tests.Skip(tests.Count - 58).ToList();
             else if (!string.IsNullOrWhiteSpace(testPrefix))
                 tests = tests.Where(value => value.Name.StartsWith(testPrefix, StringComparison.Ordinal)).ToList();
 

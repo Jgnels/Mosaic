@@ -71,6 +71,7 @@ namespace Dagmay.IntegrationHarness
                 new ScenarioDefinition("ProvisionalDialogueAppraisal", ProvisionalDialogueAppraisalAsync),
                 new ScenarioDefinition("DurableAppraisalAdmission", DurableAppraisalAdmissionAsync),
                 new ScenarioDefinition("ContextualDevelopmentalRetrieval", () => ContextualDevelopmentalRetrievalAsync(gate3SoakCycles)),
+                new ScenarioDefinition("GroundedDevelopmentalContextMaterialization", () => GroundedDevelopmentalContextMaterializationAsync(gate3SoakCycles)),
                 new ScenarioDefinition("LongHistoryRetrievalBenchmark", LongHistoryRetrievalBenchmarkAsync),
                 new ScenarioDefinition(
                     "DurableAppraisalAdmissionStress",
