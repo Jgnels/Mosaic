@@ -269,3 +269,79 @@ certified package SHA-256 is 5a79db4f3fc2b3306f8ff2fc66f8e4653de1b9b1f68436b9fe5
 Full-stack, DLC-group, and RimTalk compatibility are post-0.1 integration work. Closing this
 campaign does not rename the recovered 0.1K source or the 0.2-prealpha package as an unlocated
 historical 0.1RC artifact.
+
+## D-045 - Durable dialogue admission is checkpoint-aligned
+Status: Accepted; offline policy and limiting-result tests implemented
+
+An actually displayed, validated utterance may prepare a factual admission,
+but it may not immediately dual-write the event ledger and durable experience
+journal. Those surfaces expose no shared transaction, rollback, or recoverable
+outbox. Executable tests reproduce both one-sided failure orders and show that
+restart replay can duplicate the same factual event in the journal even while
+the event ledger rejects the duplicate EventId.
+
+A future coordinator must wait for an exact matching save checkpoint, writable
+healthy storage, and an idempotent atomic/outbox design. Provisional
+in-session appraisal may be designed separately for immediate believability,
+but lasting relationship, mood, memory, belief, goal, or identity changes
+remain validated checkpoint-aligned mutations. No live coordinator or
+automatic dialogue-to-gameplay effect is approved by this decision.
+
+## D-046 - Dialogue admission uses a recoverable factual outbox
+Status: Accepted; implemented and verified offline
+
+Before either non-transactional destination changes, Mosaic persists an
+integrity-checked outbox entry bound to the exact store, stable save lineage,
+world, and checkpoint generation. Recovery inspects the event ledger and
+experience journal, materializes only a missing side, rereads both, and retains
+a completed tombstone through a later successful checkpoint.
+
+This is an idempotent recovery protocol, not a claim of filesystem-level
+atomicity. It admits factual dialogue evidence only and has no authority to
+change memory, relationships, mood, beliefs, goals, identity, pawn behavior,
+or gameplay.
+
+## D-047 - Dialogue presentation is speech-bubble-first and receipt-gated
+Status: Accepted; implemented and verified offline
+
+Mosaic presents validated dialogue through a bounded, main-thread RimWorld
+speech bubble anchored to the stable speaker `IndividualId` binding. The
+RimWorld play log is a narrow mirror and fallback. If the bubble succeeds, the
+receipt identifies Bubble even when mirroring also succeeds. If only the play
+log succeeds, the receipt identifies PlayLog. If neither succeeds, Mosaic has
+no factual display receipt and may not admit the utterance.
+
+Presentation remains observer-only and non-authoritative. It cannot call a
+provider, persist cognition, mutate canonical character state, control a pawn,
+or execute gameplay. Offline compilation and tests do not establish live
+visual layout or play-log compatibility.
+
+## D-048 - The first RimWorld dialogue path is fake-only and save-checkpoint admitted
+Status: Accepted; implemented and verified offline
+
+The first adapter path observes only material opinion or direct-relationship
+changes already captured by Mosaic. It resolves stable identity on RimWorld's
+main thread, releases all live game references, and then uses the deterministic
+fake provider, strict codec, validator, and bounded speech-bubble presenter.
+There is no real-provider selection seam in this path.
+
+Actual presentation queues a factual-only pending outbox entry. The event
+ledger and experience journal materialize and verify only inside RimWorld's
+save callback, after which the journal head and dedicated dialogue checkpoint
+are serialized. Generation, validation, or display alone never constitutes
+admission. No subjective cognition or gameplay authority is added.
+
+## D-049 - Storytelling retrieval uses directed bounded evidence, not global relationship truth
+Status: Accepted; offline fixtures implemented
+
+Relationship projection belongs to a specific owner looking toward a specific
+other individual. It rebuilds deterministically from exact factual EventIds,
+perception IDs, memory IDs, perception channel, privacy, confidence, and
+supersession state. Direct and witnessed evidence weigh more than told or
+inferred evidence; superseded evidence remains preserved but does not drive the
+current score.
+
+Dialogue retrieval exposes only a bounded relationship-sensitive summary with
+exact EventIds and rejects private or observer-only evidence. The projection is
+context and appraisal input, not canonical fact, automatic belief, relationship
+mutation, goal, plan, or gameplay authority.

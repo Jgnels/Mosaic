@@ -16,9 +16,11 @@ using Dagmay.Core.Persistence;
 using Dagmay.Core.Reflection;
 using Dagmay.Core.Scheduling;
 using Dagmay.Core.Views;
+using Dagmay.Core.Dialogue;
 using Dagmay.RimWorld.Identity;
 using Dagmay.RimWorld.Diagnostics;
 using Dagmay.RimWorld.Bootstrap;
+using Dagmay.RimWorld.Dialogue;
 using Dagmay.RimWorld.Perception;
 using Dagmay.RimWorld.Reflection;
 using Verse;
@@ -39,8 +41,16 @@ namespace Dagmay.RimWorld.Persistence
         private readonly AtomicIdentityArchive _archive = new AtomicIdentityArchive();
         private readonly DurableExperienceJournal _experienceJournal = new DurableExperienceJournal();
         private readonly AtomicReflectionStore _reflectionStore = new AtomicReflectionStore();
+        private readonly DialogueAdmissionRecoveryCoordinator _dialogueAdmissionCoordinator =
+            new DialogueAdmissionRecoveryCoordinator();
         private readonly InMemoryEventLedger _eventLedger = new InMemoryEventLedger();
         private readonly MemoryIndex _memoryIndex = new MemoryIndex();
+        private readonly List<ExperienceJournalRecord> _experienceRecords =
+            new List<ExperienceJournalRecord>();
+        private readonly DialogueHistoryProjection _dialogueHistoryProjection =
+            new DialogueHistoryProjection();
+        private readonly CrossEncounterConversationSelector _conversationContinuitySelector =
+            new CrossEncounterConversationSelector();
         private readonly Dictionary<PerceptionId, EventId> _perceptionSources =
             new Dictionary<PerceptionId, EventId>();
         private readonly DeterministicExperienceEncoder _experienceEncoder = new DeterministicExperienceEncoder();
@@ -65,6 +75,7 @@ namespace Dagmay.RimWorld.Persistence
         private string _storeId = string.Empty;
         private long _generation;
         private long _reflectionGeneration;
+        private long _dialogueCheckpointGeneration;
         private List<string> _manifestExternalIds = new List<string>();
         private List<string> _manifestIndividualIds = new List<string>();
         private List<string> _pausedExternalIds = new List<string>();
@@ -77,6 +88,8 @@ namespace Dagmay.RimWorld.Persistence
         private bool _experienceWritesEnabled = true;
         private bool _reflectionWritesEnabled = true;
         private bool _reflectionDirty;
+        private bool _dialogueCheckpointDirty;
+        private bool _dialogueCheckpointManifestInvalid;
         private bool _reflectionStoreWasNew;
         private bool _requestInFlight;
         private ReflectionTaskId? _inFlightTaskId;
@@ -98,6 +111,139 @@ namespace Dagmay.RimWorld.Persistence
 
         public static DagmayIdentityGameComponent? Current { get; private set; }
 
+        public event Action<RimWorldSocialDialogueTrigger>? SocialDialogueTriggerCaptured;
+
+        public RimWorldConversationHistoryData BuildConversationHistoryData(
+            IndividualId? selectedIndividualId,
+            int maximumRows)
+        {
+            if (maximumRows < 1 ||
+                maximumRows > ConversationHistoryViewerBuilder.MaximumRows)
+            {
+                throw new ArgumentOutOfRangeException(nameof(maximumRows));
+            }
+
+            var participants = _identities
+                .Select(pair => new RimWorldConversationParticipantSnapshot(
+                    pair.Value.Id,
+                    pair.Value.DisplayName,
+                    pair.Key))
+                .OrderBy(value => value.DisplayLabel, StringComparer.OrdinalIgnoreCase)
+                .ThenBy(value => value.IndividualId.ToString(), StringComparer.Ordinal)
+                .ToArray();
+            if (!selectedIndividualId.HasValue)
+            {
+                return new RimWorldConversationHistoryData(
+                    participants,
+                    null,
+                    participants.Length == 0
+                        ? "No enrolled colonists are available."
+                        : "Select a colonist to review verified displayed dialogue.");
+            }
+
+            var selected = participants.FirstOrDefault(value =>
+                value.IndividualId == selectedIndividualId.Value);
+            if (selected is null)
+            {
+                return new RimWorldConversationHistoryData(
+                    participants,
+                    null,
+                    "The selected colonist is no longer enrolled in this game.");
+            }
+
+            var ledgerEntries = _eventLedger.Snapshot();
+            var conversationIds = new HashSet<ConversationId>();
+            foreach (var ledgerEntry in ledgerEntries)
+            {
+                var factualEvent = ledgerEntry.Value;
+                if (!string.Equals(
+                        factualEvent.Kind,
+                        DialogueEventAdmissionService.EventKind,
+                        StringComparison.Ordinal) ||
+                    !string.Equals(
+                        factualEvent.Source,
+                        DialogueEventAdmissionService.DefaultSource,
+                        StringComparison.Ordinal) ||
+                    !factualEvent.Subjects.Contains(selected.IndividualId) ||
+                    !factualEvent.FactualPayload.TryGetValue(
+                        DialogueEventAdmissionService.ConversationIdKey,
+                        out var conversationText) ||
+                    !Guid.TryParseExact(conversationText, "N", out var conversationGuid) ||
+                    conversationGuid == Guid.Empty)
+                {
+                    continue;
+                }
+
+                conversationIds.Add(new ConversationId(conversationGuid));
+            }
+
+            var currentTick = Find.TickManager?.TicksGame ?? long.MaxValue;
+            var turns = new List<PriorConversationTurn>();
+            var malformed = 0;
+            var privacyFiltered = 0;
+            foreach (var conversationId in conversationIds)
+            {
+                var packet = _dialogueHistoryProjection.Build(
+                    ledgerEntries,
+                    new DialogueHistoryQuery(
+                        conversationId,
+                        currentTick,
+                        100,
+                        DialogueHistoryView.Participant,
+                        selected.IndividualId));
+                malformed += packet.MalformedEventCount;
+                privacyFiltered += packet.PrivacyFilteredCount;
+                foreach (var entry in packet.Entries)
+                {
+                    if (!entry.RecipientId.HasValue) continue;
+                    turns.Add(new PriorConversationTurn(
+                        entry.EventId,
+                        entry.ConversationId,
+                        entry.SpeakerId,
+                        entry.RecipientId.Value,
+                        entry.Text,
+                        entry.DisplayedAtTick,
+                        entry.DisplayedAtUtc,
+                        entry.Channel,
+                        entry.AudienceIds));
+                }
+            }
+
+            ConversationHistoryViewerSnapshot snapshot;
+            try
+            {
+                snapshot = new ConversationHistoryViewerBuilder().Build(
+                    selected.IndividualId,
+                    participants.Select(value =>
+                        new ConversationHistoryParticipant(
+                            value.IndividualId,
+                            value.DisplayLabel)),
+                    turns,
+                    maximumRows);
+            }
+            catch (Exception exception)
+            {
+                return new RimWorldConversationHistoryData(
+                    participants,
+                    null,
+                    "Conversation history failed closed: " + exception.Message);
+            }
+
+            var combined = new ConversationHistoryViewerSnapshot(
+                snapshot.ViewerId,
+                snapshot.ViewerLabel,
+                snapshot.Rows,
+                checked(snapshot.PrivacyFilteredCount + privacyFiltered),
+                checked(snapshot.MalformedCount + malformed),
+                snapshot.TrimmedCount);
+            return new RimWorldConversationHistoryData(
+                participants,
+                combined,
+                "Read-only view of verified displayed dialogue; "
+                + $"rows={combined.Rows.Count}; privacyFiltered={combined.PrivacyFilteredCount}; "
+                + $"malformed={combined.MalformedCount}; trimmed={combined.TrimmedCount}.");
+        }
+
         public override void StartedNewGame()
         {
             InitializeNewStore();
@@ -113,6 +259,7 @@ namespace Dagmay.RimWorld.Persistence
         {
             _reflectionCheckpointGate.BeginLoadedSession();
             InitializeFromSave();
+            ResumePendingDialogueAdmissions();
             InitializeReflectionRuntime(loadExisting: true);
             if (SynchronizeColonists()) PersistIfAllowed("post-load synchronization");
             SeedInitialReflectionTasks();
@@ -152,6 +299,7 @@ namespace Dagmay.RimWorld.Persistence
                 DrainCompletedReflectionCalls();
                 var identityStateChanged = SynchronizeColonists();
                 RecoverPendingCommits();
+                CheckpointDialogueAdmissions();
                 if (IdentitySaveCheckpointPolicy.RequiresArchiveWrite(identityStateChanged))
                 {
                     PersistIfAllowed("RimWorld save checkpoint");
@@ -169,6 +317,7 @@ namespace Dagmay.RimWorld.Persistence
             Scribe_Values.Look(ref _storeId, "dagmayStoreId", string.Empty);
             Scribe_Values.Look(ref _generation, "dagmayGeneration", 0L);
             Scribe_Values.Look(ref _reflectionGeneration, "dagmayReflectionGeneration", 0L);
+            Scribe_Values.Look(ref _dialogueCheckpointGeneration, "mosaicDialogueCheckpointGeneration", 0L);
             Scribe_Values.Look(ref _experiencePosition, "dagmayExperiencePosition", 0L);
             Scribe_Values.Look(ref _experienceLastHash, "dagmayExperienceLastHash", string.Empty);
             Scribe_Collections.Look(ref _manifestExternalIds, "dagmayExternalIds", LookMode.Value);
@@ -185,6 +334,11 @@ namespace Dagmay.RimWorld.Persistence
                     .Take(500)
                     .ToList();
                 _experienceLastHash = _experienceLastHash ?? string.Empty;
+                if (_dialogueCheckpointGeneration < 0)
+                {
+                    _dialogueCheckpointGeneration = 0;
+                    _dialogueCheckpointManifestInvalid = true;
+                }
             }
         }
 
@@ -194,6 +348,7 @@ namespace Dagmay.RimWorld.Persistence
             _storeId = Guid.NewGuid().ToString("N");
             _generation = 0;
             _reflectionGeneration = 0;
+            _dialogueCheckpointGeneration = 0;
             _experiencePosition = 0;
             _experienceLastHash = string.Empty;
             _pendingExperienceRecovery = null;
@@ -202,6 +357,8 @@ namespace Dagmay.RimWorld.Persistence
             _experienceWritesEnabled = true;
             _reflectionWritesEnabled = true;
             _reflectionStoreWasNew = true;
+            _dialogueCheckpointDirty = false;
+            _dialogueCheckpointManifestInvalid = false;
             _pausedExternalIds = new List<string>();
             _sessionAttemptCount = 0;
             _lastDispatchedIndividualId = null;
@@ -213,6 +370,12 @@ namespace Dagmay.RimWorld.Persistence
         private void InitializeFromSave()
         {
             if (_initialized) return;
+            if (_dialogueCheckpointManifestInvalid)
+            {
+                DisableWrites("The save contains an invalid Mosaic dialogue checkpoint generation.");
+                _initialized = true;
+                return;
+            }
             var decision = SaveManifestSafetyPolicy.Evaluate(
                 _storeId,
                 _generation,
@@ -366,6 +529,8 @@ namespace Dagmay.RimWorld.Persistence
                 {
                     _memoryIndex.Add(record.Memory);
                 }
+
+                _experienceRecords.Add(record);
             }
         }
 
@@ -617,16 +782,32 @@ namespace Dagmay.RimWorld.Persistence
             try
             {
                 var additionalSubjects = new List<IndividualId>();
+                IndividualState? dialogueRecipient = null;
+                var dialogueRecipientExternalId = string.Empty;
                 if (change.FactualPayload.TryGetValue("target_external_id", out var targetExternalId)
                     && _identities.TryGetValue(targetExternalId, out var targetState)
                     && targetState.Id != state.Id)
                 {
                     additionalSubjects.Add(targetState.Id);
+                    dialogueRecipient = targetState;
+                    dialogueRecipientExternalId = targetExternalId;
                 }
 
                 var factualEvent = CreateEvent(externalId, state, change.Kind, change.FactualPayload, additionalSubjects);
                 var encoded = _experienceEncoder.EncodeExperiencedEvent(factualEvent, state, DateTimeOffset.UtcNow);
                 var record = new ExperienceJournalRecord(factualEvent, encoded.Perception, encoded.Memory);
+                var priorRelationshipEvidence = dialogueRecipient is null
+                    ? Array.Empty<GroundedRelationshipEvidence>()
+                    : BuildGroundedRelationshipHistory(state.Id, dialogueRecipient.Id);
+                var recipientPriorRelationshipEvidence = dialogueRecipient is null
+                    ? Array.Empty<GroundedRelationshipEvidence>()
+                    : BuildGroundedRelationshipHistory(dialogueRecipient.Id, state.Id);
+                var priorConversationContext = dialogueRecipient is null
+                    ? null
+                    : BuildPriorConversationContext(
+                        state.Id,
+                        dialogueRecipient.Id,
+                        factualEvent.GameTick ?? 0);
                 var appended = _experienceJournal.Append(
                     GetExperienceJournalPath(),
                     record,
@@ -636,6 +817,7 @@ namespace Dagmay.RimWorld.Persistence
                 _eventLedger.Append(factualEvent);
                 _perceptionSources[encoded.Perception.Id] = encoded.Perception.SourceEventId;
                 _memoryIndex.Add(encoded.Memory);
+                _experienceRecords.Add(record);
                 _experiencePosition = appended.Position;
                 _experienceLastHash = appended.EntryHash;
                 state = encoded.UpdatedState;
@@ -647,6 +829,23 @@ namespace Dagmay.RimWorld.Persistence
                 Log.Message(
                     $"[Dagmay] {DagmayBuildInfo.Version} recorded bounded experience; name={state.DisplayName}; "
                     + $"kind={change.Kind}; EventId={factualEvent.Id}; MemoryId={encoded.Memory.Id}.");
+                if (dialogueRecipient is not null)
+                {
+                    var trigger = RimWorldSocialDialogueCapture.TryCreate(
+                        factualEvent.Id,
+                        factualEvent.GameTick ?? Find.TickManager?.TicksGame ?? 0,
+                        factualEvent.ObservedAtUtc,
+                        change.Kind,
+                        change.FactualPayload,
+                        CreateDialogueIdentitySnapshot(externalId, state),
+                        CreateDialogueIdentitySnapshot(
+                            dialogueRecipientExternalId,
+                            dialogueRecipient),
+                        priorRelationshipEvidence,
+                        recipientPriorRelationshipEvidence,
+                        priorConversationContext);
+                    if (trigger is not null) NotifySocialDialogueTrigger(trigger);
+                }
                 return true;
             }
             catch (Exception exception)
@@ -654,6 +853,96 @@ namespace Dagmay.RimWorld.Persistence
                 DisableExperienceWrites("Experience recording failed: " + exception.Message);
                 return false;
             }
+        }
+
+        private IReadOnlyList<GroundedRelationshipEvidence> BuildGroundedRelationshipHistory(
+            IndividualId ownerId,
+            IndividualId otherId)
+        {
+            var result = new List<GroundedRelationshipEvidence>();
+            foreach (var record in _experienceRecords)
+            {
+                var evidence = GroundedRelationshipEvidence.TryCreate(record, ownerId, otherId);
+                if (evidence is not null) result.Add(evidence);
+            }
+
+            return result
+                .OrderByDescending(value => value.OccurredAtTick)
+                .ThenBy(value => value.EventId.ToString(), StringComparer.Ordinal)
+                .Take(16)
+                .ToArray();
+        }
+
+        private PriorConversationContext? BuildPriorConversationContext(
+            IndividualId firstParticipantId,
+            IndividualId secondParticipantId,
+            long throughTick)
+        {
+            var ledgerEntries = _eventLedger.Snapshot();
+            var conversationIds = new HashSet<ConversationId>();
+            foreach (var ledgerEntry in ledgerEntries)
+            {
+                var factualEvent = ledgerEntry.Value;
+                if (!string.Equals(
+                        factualEvent.Kind,
+                        DialogueEventAdmissionService.EventKind,
+                        StringComparison.Ordinal) ||
+                    !string.Equals(
+                        factualEvent.Source,
+                        DialogueEventAdmissionService.DefaultSource,
+                        StringComparison.Ordinal) ||
+                    !factualEvent.Subjects.Contains(firstParticipantId) ||
+                    !factualEvent.Subjects.Contains(secondParticipantId) ||
+                    !factualEvent.FactualPayload.TryGetValue(
+                        DialogueEventAdmissionService.ConversationIdKey,
+                        out var conversationText) ||
+                    !Guid.TryParseExact(conversationText, "N", out var conversationGuid) ||
+                    conversationGuid == Guid.Empty)
+                {
+                    continue;
+                }
+
+                conversationIds.Add(new ConversationId(conversationGuid));
+            }
+
+            var turns = new List<PriorConversationTurn>();
+            foreach (var conversationId in conversationIds)
+            {
+                var packet = _dialogueHistoryProjection.Build(
+                    ledgerEntries,
+                    new DialogueHistoryQuery(
+                        conversationId,
+                        throughTick,
+                        4,
+                        DialogueHistoryView.Participant,
+                        firstParticipantId));
+                foreach (var entry in packet.Entries)
+                {
+                    if (!entry.RecipientId.HasValue ||
+                        !entry.AudienceIds.Contains(firstParticipantId) ||
+                        !entry.AudienceIds.Contains(secondParticipantId))
+                    {
+                        continue;
+                    }
+
+                    turns.Add(new PriorConversationTurn(
+                        entry.EventId,
+                        entry.ConversationId,
+                        entry.SpeakerId,
+                        entry.RecipientId.Value,
+                        entry.Text,
+                        entry.DisplayedAtTick,
+                        entry.DisplayedAtUtc,
+                        entry.Channel,
+                        entry.AudienceIds));
+                }
+            }
+
+            return _conversationContinuitySelector.SelectLatestCompletedExchange(
+                turns,
+                firstParticipantId,
+                secondParticipantId,
+                throughTick);
         }
 
         private void RecordFactualOnly(
@@ -1528,6 +1817,195 @@ namespace Dagmay.RimWorld.Persistence
             return false;
         }
 
+        public bool TryQueueDialogueAdmission(
+            DialogueRequest request,
+            DisplayedUtteranceReceipt receipt,
+            out string diagnostic)
+        {
+            diagnostic = string.Empty;
+            if (!_initialized || !_writesEnabled || !_experienceWritesEnabled)
+            {
+                diagnostic = "Mosaic dialogue storage is not initialized and writable.";
+                return false;
+            }
+
+            var admission = new DialogueEventAdmissionService("rimworld").Prepare(request, receipt);
+            if (!admission.IsPrepared || admission.Plan is null)
+            {
+                diagnostic = admission.Diagnostic;
+                return false;
+            }
+
+            try
+            {
+                var result = _dialogueAdmissionCoordinator.EnqueuePending(
+                    GetDialogueOutboxPath(),
+                    CreateDialogueAdmissionBinding(_dialogueCheckpointGeneration),
+                    admission.Plan,
+                    storageWritable: true,
+                    DateTimeOffset.UtcNow);
+                if (result.Status != DialogueAdmissionRecoveryStatus.Queued &&
+                    result.Status != DialogueAdmissionRecoveryStatus.NoWork)
+                {
+                    DisableExperienceWrites(
+                        "Dialogue admission recovery failed closed: " + result.Diagnostic);
+                    diagnostic = result.Diagnostic;
+                    return false;
+                }
+
+                _dialogueCheckpointDirty = true;
+                diagnostic = result.Diagnostic;
+                return true;
+            }
+            catch (Exception exception)
+            {
+                DisableExperienceWrites(
+                    "Dialogue admission failed after preserving its outbox evidence: " + exception.Message);
+                diagnostic = exception.Message;
+                return false;
+            }
+        }
+
+        private void CheckpointDialogueAdmissions()
+        {
+            if (!_dialogueCheckpointDirty || !_writesEnabled || !_experienceWritesEnabled) return;
+            var nextGeneration = checked(_dialogueCheckpointGeneration + 1);
+            try
+            {
+                var recovery = _dialogueAdmissionCoordinator.Recover(
+                    GetDialogueOutboxPath(),
+                    GetExperienceJournalPath(),
+                    CreateDialogueAdmissionBinding(_dialogueCheckpointGeneration),
+                    _eventLedger,
+                    storageWritable: true,
+                    DateTimeOffset.UtcNow);
+                if (recovery.Status != DialogueAdmissionRecoveryStatus.Completed ||
+                    recovery.CompletedCount < 1)
+                {
+                    DisableExperienceWrites(
+                        "Dialogue checkpoint recovery found no verified pending admission: "
+                        + recovery.Diagnostic);
+                    return;
+                }
+                if (!RefreshDialogueJournalHead())
+                {
+                    DisableExperienceWrites(
+                        "Dialogue checkpoint recovery did not produce a verified journal head.");
+                    return;
+                }
+
+                var advancement = _dialogueAdmissionCoordinator.Recover(
+                    GetDialogueOutboxPath(),
+                    GetExperienceJournalPath(),
+                    CreateDialogueAdmissionBinding(nextGeneration),
+                    _eventLedger,
+                    storageWritable: true,
+                    DateTimeOffset.UtcNow);
+                if (advancement.Status != DialogueAdmissionRecoveryStatus.Completed &&
+                    advancement.Status != DialogueAdmissionRecoveryStatus.NoWork)
+                {
+                    DisableExperienceWrites(
+                        "Dialogue checkpoint advancement failed closed: " + advancement.Diagnostic);
+                    return;
+                }
+
+                _dialogueCheckpointGeneration = nextGeneration;
+                _dialogueCheckpointDirty = false;
+            }
+            catch (Exception exception)
+            {
+                DisableExperienceWrites(
+                    "Dialogue checkpoint advancement failed safely: " + exception.Message);
+            }
+        }
+
+        private void ResumePendingDialogueAdmissions()
+        {
+            if (!_initialized || !_writesEnabled || !_experienceWritesEnabled) return;
+            try
+            {
+                var inspection = _dialogueAdmissionCoordinator.InspectPending(
+                    GetDialogueOutboxPath(),
+                    CreateDialogueAdmissionBinding(_dialogueCheckpointGeneration));
+                if (inspection.Status == DialogueAdmissionRecoveryStatus.Queued)
+                {
+                    _dialogueCheckpointDirty = true;
+                    Log.Message(
+                        $"[Dagmay] {DagmayBuildInfo.Version} retained pending dialogue "
+                        + "admission evidence for the next save checkpoint.");
+                }
+                else if (inspection.Status != DialogueAdmissionRecoveryStatus.NoWork)
+                {
+                    DisableExperienceWrites(
+                        "Dialogue outbox inspection failed closed: " + inspection.Diagnostic);
+                }
+            }
+            catch (Exception exception)
+            {
+                DisableExperienceWrites(
+                    "Dialogue outbox inspection failed safely: " + exception.Message);
+            }
+        }
+
+        private bool RefreshDialogueJournalHead(EventId? requiredEventId = null)
+        {
+            var journal = _experienceJournal.Load(GetExperienceJournalPath());
+            if (journal.Status == ExperienceJournalLoadStatus.Invalid) return false;
+            if (requiredEventId.HasValue &&
+                journal.Records.Count(record => record.FactualEvent.Id == requiredEventId.Value) != 1)
+            {
+                return false;
+            }
+
+            _experiencePosition = journal.Records.Count;
+            _experienceLastHash = journal.LastHash;
+            return true;
+        }
+
+        private DialogueAdmissionBinding CreateDialogueAdmissionBinding(long generation)
+        {
+            if (!Guid.TryParseExact(_storeId, "N", out var storeId))
+                throw new InvalidOperationException("The Mosaic StoreId is invalid.");
+            var worldId = Verse.Current.Game?.World?.GetUniqueLoadID();
+            if (string.IsNullOrWhiteSpace(worldId))
+                throw new InvalidOperationException("The RimWorld world identity is unavailable.");
+            return new DialogueAdmissionBinding(
+                storeId,
+                _storeId,
+                worldId!,
+                generation);
+        }
+
+        private static RimWorldDialogueIdentitySnapshot CreateDialogueIdentitySnapshot(
+            string externalId,
+            IndividualState state) =>
+            new RimWorldDialogueIdentitySnapshot(
+                externalId,
+                state.Id,
+                state.LineageId,
+                state.Version,
+                state.DisplayName,
+                state.Affect);
+
+        private void NotifySocialDialogueTrigger(RimWorldSocialDialogueTrigger trigger)
+        {
+            var handlers = SocialDialogueTriggerCaptured;
+            if (handlers is null) return;
+            foreach (Action<RimWorldSocialDialogueTrigger> handler in handlers.GetInvocationList())
+            {
+                try
+                {
+                    handler(trigger);
+                }
+                catch (Exception exception)
+                {
+                    Log.Warning(
+                        $"[Dagmay] {DagmayBuildInfo.Version} dialogue trigger subscriber failed safely: "
+                        + exception.Message);
+                }
+            }
+        }
+
         public bool SetEnrollment(string externalId, bool enabled, out string diagnostic)
         {
             diagnostic = string.Empty;
@@ -2076,6 +2554,14 @@ namespace Dagmay.RimWorld.Persistence
         {
             var directory = Path.Combine(GenFilePaths.ConfigFolderPath, "Dagmay", "Reflections");
             return Path.Combine(directory, SaveManifestSafetyPolicy.SafeStoreFileStem(_storeId) + ".reflection");
+        }
+
+        private string GetDialogueOutboxPath()
+        {
+            var directory = Path.Combine(GenFilePaths.ConfigFolderPath, "Dagmay", "Dialogue");
+            return Path.Combine(
+                directory,
+                SaveManifestSafetyPolicy.SafeStoreFileStem(_storeId) + ".dialogue-outbox");
         }
 
         private static string PawnDisplayName(Pawn pawn)

@@ -58,8 +58,12 @@ namespace Dagmay.IntegrationHarness
                 new ScenarioDefinition("ProviderOutageDurableQueueRecovery", ProviderOutageDurableQueueRecoveryAsync),
                 new ScenarioDefinition("CheckpointRollbackForwardRecovery", CheckpointRollbackForwardRecoveryAsync),
                 new ScenarioDefinition("SocialPerspectiveAndPrivacy", SocialPerspectiveAndPrivacyAsync),
+                new ScenarioDefinition("DialogueOfflineEndToEnd", DialogueOfflineEndToEndAsync),
                 new ScenarioDefinition("PersistenceTorture", PersistenceTortureAsync),
                 new ScenarioDefinition("FailureIsolation", FailureIsolationAsync),
+                new ScenarioDefinition("DeterminismObserverLifecycleClosure", DeterminismObserverLifecycleClosureAsync),
+                new ScenarioDefinition("ReadOnlyDecisionTraceFoundation", ReadOnlyDecisionTraceFoundationAsync),
+                new ScenarioDefinition("LongHistoryRetrievalBenchmark", LongHistoryRetrievalBenchmarkAsync),
                 new ScenarioDefinition(
                     "Gate3OfflineSoak",
                     () => Gate3OfflineSoakAsync(gate3SoakCycles, deterministicSeed),

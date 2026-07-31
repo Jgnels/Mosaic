@@ -194,6 +194,117 @@ namespace Dagmay.Tests
                 "World text must never enter the system instruction.");
         }
 
+        public static void ReflectionContextExcludesForeignMemoriesAndCapsPrivateContext()
+        {
+            var person = CreateIndividual("Mira");
+            var foreignPerson = CreateIndividual("Jo");
+            var source = CreateEvent(person.Id, "rimworld.test", "detail", "bounded context");
+            var now = new DateTimeOffset(2026, 7, 24, 8, 0, 0, TimeSpan.Zero);
+            var memories = new List<SubjectiveMemory>
+            {
+                CreateMemory(foreignPerson.Id, now, "FOREIGN_PRIVATE_SENTINEL")
+            };
+
+            for (var index = 0; index < 21; index++)
+            {
+                memories.Add(CreateMemory(person.Id, now.AddMinutes(index), "owner-memory-" + index));
+            }
+
+            var request = new ReflectionContextBuilder().BuildRequest(
+                CreateTask(person.Id, source.Id, "private-context-boundary"),
+                person,
+                new[] { source },
+                memories,
+                now,
+                TimeSpan.FromMinutes(1));
+
+            TestAssert.False(
+                request.Context.Contains("FOREIGN_PRIVATE_SENTINEL", StringComparison.Ordinal),
+                "Reflection context must never include another individual's private memory.");
+            TestAssert.Equal(
+                20,
+                request.Context.Split(new[] { "diary=owner-memory-" }, StringSplitOptions.None).Length - 1,
+                "Reflection context must retain its fixed private-memory cap after ownership filtering.");
+            TestAssert.True(
+                request.Context.Contains("diary=owner-memory-19", StringComparison.Ordinal),
+                "The first twenty relevant owner memories should remain available.");
+            TestAssert.False(
+                request.Context.Contains("diary=owner-memory-20", StringComparison.Ordinal),
+                "Memories beyond the private-context cap must be excluded.");
+        }
+
+        public static void ReflectionContextRejectsForeignSourceEvents()
+        {
+            var person = CreateIndividual("Mira");
+            var foreignPerson = CreateIndividual("Jo");
+            var foreignEvent = CreateEvent(
+                foreignPerson.Id,
+                "rimworld.test",
+                "detail",
+                "foreign private event");
+
+            TestAssert.Throws<InvalidOperationException>(
+                () => new ReflectionContextBuilder().BuildRequest(
+                    CreateTask(person.Id, foreignEvent.Id, "foreign-event-boundary"),
+                    person,
+                    new[] { foreignEvent },
+                    Array.Empty<SubjectiveMemory>(),
+                    DateTimeOffset.UtcNow,
+                    TimeSpan.FromMinutes(1)),
+                "Reflection context must reject source evidence that does not name the target individual as a subject.");
+        }
+
+        public static void ReflectionContextOrdersEqualTimeEvidenceDeterministically()
+        {
+            var person = CreateIndividual("Mira");
+            var occurredAt = new DateTimeOffset(2026, 7, 24, 12, 0, 0, TimeSpan.Zero);
+            var firstId = new EventId(Guid.Parse("00000000-0000-0000-0000-000000000001"));
+            var secondId = new EventId(Guid.Parse("00000000-0000-0000-0000-000000000002"));
+            var first = new EnvironmentEvent(
+                firstId,
+                "equal-time:first",
+                "rimworld.test",
+                "rimworld",
+                occurredAt,
+                occurredAt,
+                42,
+                "Dagmay.Tests",
+                new Dictionary<string, string> { ["detail"] = "first" },
+                new[] { person.Id });
+            var second = new EnvironmentEvent(
+                secondId,
+                "equal-time:second",
+                "rimworld.test",
+                "rimworld",
+                occurredAt,
+                occurredAt,
+                42,
+                "Dagmay.Tests",
+                new Dictionary<string, string> { ["detail"] = "second" },
+                new[] { person.Id });
+
+            var request = new ReflectionContextBuilder().BuildRequest(
+                new ReflectionTask(
+                    ReflectionTaskId.New(),
+                    person.Id,
+                    ModelTaskKind.InterpretMeaningfulEvent,
+                    ReflectionPriority.MeaningfulEvent,
+                    occurredAt,
+                    "equal-time-order",
+                    new[] { secondId, firstId },
+                    500),
+                person,
+                new[] { second, first },
+                Array.Empty<SubjectiveMemory>(),
+                occurredAt,
+                TimeSpan.FromMinutes(1));
+
+            TestAssert.True(
+                request.Context.IndexOf("eventId=" + firstId, StringComparison.Ordinal)
+                    < request.Context.IndexOf("eventId=" + secondId, StringComparison.Ordinal),
+                "Equal-time source evidence must use a stable EventId tie-breaker instead of caller enumeration order.");
+        }
+
         public static void PersistentReflectionQueueMergesDefersAndRetries()
         {
             var person = IndividualId.New();
@@ -226,11 +337,120 @@ namespace Dagmay.Tests
             var pending = queue.Find(first.Id)!;
             TestAssert.Equal(2, pending.Task.SourceEventIds.Count, "Merged work must retain both evidence events.");
             TestAssert.Equal(ReflectionPriority.MeaningfulEvent, pending.Task.Priority, "Merged work must retain the higher priority.");
+            TestAssert.Equal(
+                ModelTaskKind.InterpretMeaningfulEvent,
+                pending.Task.TaskKind,
+                "When higher-priority work upgrades a coalesced task, its semantic task kind must upgrade with it.");
 
             queue.Defer(first.Id, now.AddMinutes(5), "BUDGET");
             TestAssert.Equal(0, queue.Find(first.Id)!.AttemptCount, "Budget deferral must not consume a provider attempt.");
             queue.MarkRetry(first.Id, now.AddMinutes(6), "HTTP_429");
             TestAssert.Equal(1, queue.Find(first.Id)!.AttemptCount, "A completed transient failure must consume one attempt.");
+        }
+
+        public static void PersistentReflectionQueueNeverMergesAcrossIndividuals()
+        {
+            var firstPerson = IndividualId.New();
+            var secondPerson = IndividualId.New();
+            var firstEvent = EventId.New();
+            var secondEvent = EventId.New();
+            var now = new DateTimeOffset(2026, 7, 24, 10, 0, 0, TimeSpan.Zero);
+            var queue = new PersistentReflectionQueue(4);
+            var first = new ReflectionTask(
+                ReflectionTaskId.New(),
+                firstPerson,
+                ModelTaskKind.InterpretMeaningfulEvent,
+                ReflectionPriority.MeaningfulEvent,
+                now,
+                "shared-caller-key",
+                new[] { firstEvent },
+                500);
+            var second = new ReflectionTask(
+                ReflectionTaskId.New(),
+                secondPerson,
+                ModelTaskKind.InterpretMeaningfulEvent,
+                ReflectionPriority.MeaningfulEvent,
+                now,
+                "shared-caller-key",
+                new[] { secondEvent },
+                500);
+
+            TestAssert.Equal(
+                PersistentQueueEnqueueStatus.Enqueued,
+                queue.EnqueueOrMerge(first),
+                "The first individual's task must enqueue.");
+            TestAssert.Equal(
+                PersistentQueueEnqueueStatus.Enqueued,
+                queue.EnqueueOrMerge(second),
+                "A matching caller key must not merge work owned by another individual.");
+            TestAssert.Equal(2, queue.Count, "Cross-individual work must remain two isolated tasks.");
+            TestAssert.Equal(
+                firstPerson,
+                queue.Find(first.Id)!.Task.IndividualId,
+                "The original task must retain its owner.");
+            TestAssert.Equal(
+                firstEvent,
+                queue.Find(first.Id)!.Task.SourceEventIds[0],
+                "The original task must retain only its own evidence.");
+            TestAssert.Equal(
+                secondPerson,
+                queue.Find(second.Id)!.Task.IndividualId,
+                "The second task must retain its owner.");
+            TestAssert.Equal(
+                secondEvent,
+                queue.Find(second.Id)!.Task.SourceEventIds[0],
+                "The second task must retain only its own evidence.");
+        }
+
+        public static void HigherPriorityMergeRetainsWinningEvidenceAtCapacity()
+        {
+            var person = IndividualId.New();
+            var now = new DateTimeOffset(2026, 7, 24, 15, 0, 0, TimeSpan.Zero);
+            var existingEvidence = new List<EventId>();
+            for (var index = 0; index < 100; index++) existingEvidence.Add(EventId.New());
+            var winningEvent = EventId.New();
+            var queue = new PersistentReflectionQueue(4);
+            var existing = new ReflectionTask(
+                ReflectionTaskId.New(),
+                person,
+                ModelTaskKind.BackgroundReflection,
+                ReflectionPriority.Background,
+                now,
+                "saturated-upgrade",
+                existingEvidence,
+                500);
+            var upgrade = new ReflectionTask(
+                ReflectionTaskId.New(),
+                person,
+                ModelTaskKind.InterpretMeaningfulEvent,
+                ReflectionPriority.CriticalLifecycle,
+                now.AddSeconds(1),
+                "saturated-upgrade",
+                new[] { winningEvent },
+                500);
+
+            TestAssert.Equal(
+                PersistentQueueEnqueueStatus.Enqueued,
+                queue.EnqueueOrMerge(existing),
+                "The saturated lower-priority task must enqueue.");
+            TestAssert.Equal(
+                PersistentQueueEnqueueStatus.Merged,
+                queue.EnqueueOrMerge(upgrade),
+                "Higher-priority work with the same owner and key must merge.");
+
+            var merged = queue.Find(existing.Id)!.Task;
+            TestAssert.Equal(100, merged.SourceEventIds.Count, "Merged evidence must remain bounded.");
+            TestAssert.True(
+                merged.SourceEventIds.Contains(winningEvent),
+                "The event that caused a higher-priority semantic upgrade must survive bounded merging.");
+            TestAssert.Equal(
+                ModelTaskKind.InterpretMeaningfulEvent,
+                merged.TaskKind,
+                "The saturated task must retain the winning semantic kind.");
+            TestAssert.Equal(
+                ReflectionPriority.CriticalLifecycle,
+                merged.Priority,
+                "The saturated task must retain the winning priority.");
         }
 
         public static void PersistentReflectionQueueFairTieBreakRotatesIndividuals()
@@ -617,6 +837,29 @@ namespace Dagmay.Tests
                 "Dagmay.Tests",
                 new Dictionary<string, string> { [key] = value },
                 new[] { person });
+        }
+
+        private static SubjectiveMemory CreateMemory(
+            IndividualId ownerId,
+            DateTimeOffset encodedAtUtc,
+            string diaryEntry)
+        {
+            return new SubjectiveMemory(
+                MemoryId.New(),
+                ownerId,
+                new[] { PerceptionId.New() },
+                encodedAtUtc.AddMinutes(-1),
+                encodedAtUtc,
+                diaryEntry,
+                "Fixture appraisal.",
+                AffectVector.Neutral,
+                0.5,
+                0.5,
+                1.0,
+                1.0,
+                MemoryTier.Recent,
+                PrivacyClassification.Private,
+                Array.Empty<IndividualId>());
         }
 
         private static ReflectionTask CreateTask(

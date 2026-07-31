@@ -1,0 +1,189 @@
+# Mosaic dialogue overnight handoff — 2026-07-24
+
+## Session identity
+
+- Base commit: `a8fa3ae9634afa98cb1c56870475e5874767e757`
+- Branch: `codex/v0.2-dialogue-cleanroom-overnight-20260724`
+- Worktree: `C:\Users\Jeff\Dagmay-worktrees\mosaic-v02-dialogue-cleanroom-overnight-20260724`
+- Source ZIP SHA-256: `654a22c81fa757236ad7f5ff6519d556ba4f0fb40e5f60fc28a352cc11e72b47`
+
+## Intake verification
+
+All 43 substantive handoff files match `CONTENTS_SHA256.txt`. The manifest's
+recorded hash for itself is inconsistent: expected
+`c1aabb883f8abbbe09285cf79a84eb3be2339ce688851ee4193abef9837450f1`, actual
+`ab292f83f7300da4734912817657fd2dbd33accfff9cd09a7ca15e93afb9843c`.
+This self-referential packaging defect did not affect any candidate or dossier
+file.
+
+## Baseline
+
+- Static verification: PASS, 98 C# files.
+- Contract tests: PASS, 81/81.
+- Integration harness: PASS, 6/6 scenarios.
+- Core, Providers, and RimWorld adapter Release builds: PASS, zero warnings.
+- Non-installing package preflight: PASS.
+- Baseline package SHA-256:
+  `c09a1db447f8c21e5139dd464a6cf1403568a21ca2c9bf9fa4aebe1960cf6e08`.
+
+## Provenance boundary
+
+- Exact upstream commit `df9f4ef799a44a07b1f9d2d67814fb819b2df763`
+  was fetched from `https://github.com/craftingmod/RimTalk.git`; its committed
+  `LICENSE` is MIT, copyright 2025 Juicy.
+- Exact upstream commit `9338c63df05ec8adb287a367e73a3583dd009a14`
+  was fetched from the same repository; its committed `LICENSE` is
+  CC BY-NC-SA 4.0.
+- No upstream source was copied. Both supplied batches remain uncompiled
+  clean-room candidates pending adversarial review.
+
+## Progress
+
+### Batch 01
+
+Integrated the provider- and environment-independent dialogue contracts,
+bounded context assembler, deterministic prompt planner, owner-scoped
+scheduler, and utterance validation boundary. Adversarial review found that
+default value-type IDs and undefined enum values could bypass their public
+constructors; those inputs now fail closed and have a focused regression test.
+
+- Static verification: PASS, 105 C# files.
+- Contract tests: PASS, 90/90.
+- Integration harness: PASS, 6/6 scenarios.
+- Core, Providers, and RimWorld adapter Release builds: PASS, zero warnings.
+- Non-installing package preflight: PASS.
+- Package SHA-256:
+  `0551309ee9c0c18f3dc191905c5a32e2fbbe828ebdd3423f32aa1edeaac9c35a`.
+
+### Batch 02
+
+Integrated deterministic displayed-utterance admission and witness-scoped
+history projection over the existing canonical event ledger. No second memory
+store or live game wiring was added. The supplied candidate initially failed
+nullable compilation. Review also found that an undefined history view could
+fall through to Observer access, and that a missing required recipient payload
+field could be interpreted as a recipientless utterance. All three paths now
+fail closed with focused regressions.
+
+- Static verification: PASS, 110 C# files.
+- Contract tests: PASS, 102/102.
+- Integration harness: PASS, 6/6 scenarios.
+- Core, Providers, and RimWorld adapter Release builds: PASS, zero warnings.
+- Non-installing package preflight: PASS.
+- Package SHA-256:
+  `a86996faccaca65ec045bc970b90273456bfcba7a83d62e39f9cf2e18741f78a`.
+
+### Backlog priority 1 — strict utterance proposal codec
+
+Added a provider-neutral strict JSON boundary tied to the dispatched request.
+It bounds UTF-8 bytes and decoded characters before parsing; rejects duplicate,
+missing, unknown, action-bearing, malformed, oversized, control-bearing, or
+foreign data; and deterministically encodes the six-field proposal schema.
+Runtime-owned utterance identity and generation time remain outside model
+output. Focused round-trip and negative fixtures pass.
+
+- Static verification: PASS, 111 C# files.
+- Contract tests: PASS, 104/104.
+- Integration harness: PASS, 6/6 scenarios.
+- Core, Providers, and RimWorld adapter Release builds: PASS, zero warnings.
+- Package SHA-256:
+  `6d2911fa74424680a02d75deaba3b9b3433a78b0a75fa7fc4148e0cf0170781d`.
+
+### Backlog priority 2 — deterministic conversation state machine
+
+Added a Core-only bounded lifecycle with explicit transitions for queue,
+dispatch, proposal receipt, validation, display, admission preparation, and
+admission. It enforces monotonic ticks, stable participants and conversation
+identity, one request ID per expected turn, and a configurable 1–32 hard turn
+cap. Cancellation, timeout, provider failure, validation rejection, and
+display failure are distinct terminal outcomes, and terminal states cannot
+reopen. Persistence is deliberately deferred until the checkpoint-safe
+admission audit; this state machine is not live-wired and owns no canonical
+character or gameplay state.
+
+- Static verification: PASS, 112 C# files.
+- Contract tests: PASS, 107/107.
+- Integration harness: PASS, 6/6 scenarios.
+- Core, Providers, and RimWorld adapter Release builds: PASS, zero warnings.
+- Package SHA-256:
+  `6029b4c67c69043c1468ec77e17de1bc579bf23528047d44cf37fda568a7359d`.
+
+### Backlog priority 3 — fake-provider end-to-end offline scenario
+
+Added a seventh default integration scenario covering request creation, context
+privacy filtering, prompt planning, deterministic fake-provider response,
+strict decoding, validation, display receipt, factual admission, ledger replay
+blocking, and witness-scoped history. It runs twice over fixed inputs and
+produces the same factual-event fingerprint. Foreign speaker, ungrounded
+evidence, duplicate utterance, expired request, and unwitnessed-history paths
+fail closed. No perception, subjective memory, relationship/mood change,
+provider network call, or gameplay action occurs.
+
+- Static verification: PASS, 113 C# files.
+- Contract tests: PASS, 107/107.
+- Integration harness: PASS, 7/7 scenarios; the dialogue scenario has 28
+  assertions.
+- Core, Providers, and RimWorld adapter Release builds: PASS, zero warnings.
+- Package SHA-256:
+  `fd397a700c979cbd32757983c4df68808a93fa7cb390579076b56637207e57e2`.
+
+Backlog priority 4 requires the checkpoint-safe admission audit. No live
+coordinator has been added.
+
+### Backlog priority 4 — checkpoint-aligned admission decision
+
+The owner selected checkpoint-aligned durable admission. Failure tests prove
+that the current event ledger and durable journal cannot be safely
+best-effort dual-written: either ordering can leave one-sided state, and
+restart replay can duplicate a journal record even though the event ledger
+rejects the deterministic EventId. A pure readiness policy now rejects stale
+checkpoints, read-only storage, invalid journals, and already-admitted events.
+
+No coordinator is live-wired. Immediate provisional in-session appraisal is
+reserved as a future bounded design for believable reactions; lasting
+relationship or mood effects remain separately validated checkpoint-aligned
+mutations.
+
+### Backlog priority 5 — provenance and package enforcement
+
+Added a machine-readable direct-adaptation manifest, a reviewed package notice,
+an exact seven-entry package allowlist, and a reusable package firewall.
+The standard build now rejects restricted research, undeclared DLLs/assets,
+runtime logs, private saves, path traversal, mismatched notices, duplicate
+entries, and machine-specific build paths from either Windows or Unix build
+hosts. Its generated fixture suite accepts one declared package and rejects
+nine adversarial packages. The current
+manifest contains zero direct adaptations and the package contains no
+third-party source, binary, or asset.
+
+### Backlog priority 6 — presentation candidate review
+
+Reviewed seven exact MIT-snapshot RimTalk UI/diagnostic candidates and recorded
+their source commit, path, Git blob SHA-1, SHA-256, license, dependency
+findings, destination decision, and modification plan. Direct adaptation was
+not justified: the candidates depend on RimTalk caches/settings/provider logs,
+live pawns/global game lookup, or gameplay jobs, and several are already
+superseded by Mosaic Core.
+
+No third-party code or asset was imported. A reviewed specification defines a
+future original, read-only Mosaic presentation boundary and offline acceptance
+tests. Window type, default visibility, placement, timing, and styling remain
+owner product decisions and were not guessed before Gate 3.
+
+## Final clean-source verification
+
+Commit `525966c51ad39dc4a10997ccbe3141729d506c49` was exported with
+`git archive` into a fresh temporary directory. The archive contained all 114
+v0.2 project C# files (188 C# files repository-wide) and no
+populated-checkout extras. From that source-only
+representation, static verification, 109 contract tests, seven integration
+scenarios with 631 assertions, all Release builds, package generation, and
+non-installing package preflight passed. The build also accepted one valid
+package fixture and rejected all nine adversarial fixtures. The source archive
+SHA-256 was
+`332f80877ff31591fdeafcb86c86a3f3a86bd248e602b578e1120e1e52c9b9f5`;
+the clean-source runtime package SHA-256 was
+`e33e89d8a0f93827856afb173df0137a8eacbc80743b1a2ca4fa1acc576c22bf`.
+
+No provider ran, RimWorld was not launched, no package was installed, and no
+live or Gate 3 evidence state was touched.

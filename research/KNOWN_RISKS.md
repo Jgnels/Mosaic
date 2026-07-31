@@ -189,3 +189,198 @@ Action: test compatibility in controlled groups after closure. Do not fold later
 third-party integration work into the closure record, and do not reinterpret a compatibility failure
 as invalidating the certified controlled Gate 3 baseline unless it reveals a contradiction in that
 baseline.
+
+## KR-023 - Dialogue admission spans two non-transactional durable surfaces
+Severity: ENGINEERING
+
+The canonical event ledger and durable experience journal do not expose a
+shared transaction, rollback, or recoverable pending-commit protocol.
+Journal-first and ledger-first failure tests both leave one-sided state, and
+journal replay after restart can duplicate an EventId that the event ledger
+independently rejects.
+
+Mitigation status: durable dialogue admission is checkpoint-aligned and the
+pure readiness policy fails closed on stale checkpoints, read-only storage,
+invalid journals, and already-admitted EventIds. Live coordination remains
+blocked until a save-atomic record or durable idempotent outbox is proven.
+
+Mitigation update (2026-07-26): an original durable outbox and recovery
+coordinator now pass the complete offline interruption, replay, duplicate,
+binding, rollback, journal-integrity, backup-recovery, and compaction matrix.
+The two destinations remain non-transactional; the mitigation is explicit
+idempotent recovery. RimWorld adapter wiring and live behavior remain
+unverified.
+
+## KR-024 - Speech-bubble rendering has narrow live evidence, not broad visual validation
+Severity: INTEGRATION / PRODUCT
+
+The original presentation controller and RimWorld renderer compile against the
+installed RimWorld 1.6 assemblies and pass offline queue, Unicode, bounds,
+receipt, availability, disposal, and purity tests. An owner-operated isolated
+Core + Mosaic retest at `c49da81` produced four visible deterministic speech
+bubbles with four actual Bubble receipts and no presentation exception.
+
+Remaining risk: one targeted run does not establish scale-dependent placement,
+all camera/GUI states, long-session readability, pawn movement/re-anchoring
+under stress, play-log fallback, or broader visual tuning. Keep factual
+admission receipt-gated and test those cases separately.
+
+## KR-025 - The offline dialogue composition root is not a RimWorld runtime pass
+Severity: INTEGRATION / DATA INTEGRITY
+
+The social-capture, deterministic fake-provider, presentation, and
+checkpoint-bound outbox path compile together and pass offline fault tests.
+The owner-operated `c49da81` retest now live-verifies enrollment, qualifying
+opinion/direct-relationship capture, bounded experience/memory creation, four
+Bubble receipts, one save checkpoint, reload persistence, healthy stores, and
+duplicate-presentation prevention in the isolated Core + Mosaic configuration.
+
+Remaining risk: full mod-stack/DLC/RimTalk compatibility, play-log fallback,
+map-transition behavior, long-duration stress, and broader save-failure
+ordering remain unverified. Destination writes remain save-checkpoint-bound
+and factual admission still requires an actual channel receipt.
+
+## KR-026 - Relationship projection weights are bounded fixture assumptions
+Severity: SCIENTIFIC / PRODUCT
+
+The first storytelling evidence spine deterministically distinguishes direct,
+witnessed, told, inferred, private, observer-only, and superseded evidence.
+Its channel weights and mapping from aggregate valence to trust, affection,
+fear, resentment, familiarity, and confidence are explicit bounded heuristics,
+not validated psychological measurements or tuned gameplay values.
+
+Mitigation: preserve every exact evidence ID, keep the projection directed and
+rebuildable, prevent private/observer evidence from entering dialogue context,
+and treat current weights as testable assumptions. Future organic RimWorld
+traces and distribution-shift fixtures must evaluate them before any canonical
+relationship mutation is considered.
+
+## KR-027 - RimWorld GameComponent construction thread is not runtime-thread evidence
+Severity: INTEGRATION / RUNTIME
+
+OBSERVED LIVE on PR #3 commit `20a16ab`: RimWorld constructed the dialogue
+GameComponent on a different thread from later tick/GUI presentation calls.
+Capturing `Thread.CurrentThread.ManagedThreadId` in the presenter constructor
+therefore permanently rejected the real runtime thread and flooded the log
+with repeated fail-closed exceptions. Enrollment, social-event capture,
+experience, memory, and deterministic fake dialogue preparation had already
+succeeded.
+
+Mitigation: presenter construction is unbound; only
+trusted GameComponent tick/repaint lifecycle entry can atomically bind once.
+Normal presenter operations cannot self-bind, conflicting first-use has one
+winner, a third thread fails closed, and component-level validation failure is
+latched before one error is logged and presentation is disabled.
+
+Disposition (2026-07-26): **CLOSED for the isolated Core + Mosaic runtime
+configuration; retained as an architectural regression watch.** The
+owner-operated `c49da81` retest produced four Bubble receipts before save and
+continued without thread-affinity or presentation errors after reload. Broader
+compatibility and long-duration behavior remain tracked separately.
+
+## KR-028 - Grounded relationship dialogue is offline-verified but not live DLC-verified
+Severity: INTEGRATION / PRODUCT
+
+The 0.2A selector, deterministic renderer, fake-only pipeline integration,
+journal rebuild, privacy boundary, and exact EventId propagation pass focused
+contracts and the complete offline verification chain. This does not establish
+that organic RimWorld social event sequences produce natural mixed-history
+lines, that every official DLC coexists without adapter errors, or that
+save/reload preserves useful history without replay under the full DLC set.
+
+Required mitigation: run the owner-controlled disposable test with Core,
+Royalty, Ideology, Biotech, Anomaly, Odyssey, and Mosaic only; keep provider
+dispatch offline; create positive and negative events for the same pair;
+inspect the exact evidence IDs and bubble text; then save, reload, and confirm
+history continuity without replay or exception flooding. Third-party mods and
+RimTalk remain outside this gate.
+
+## KR-029 - The bounded reciprocal reply is offline-verified but not live-sequenced
+Severity: INTEGRATION / PRODUCT
+
+The 0.2B composer, fake-only pipeline, receipt matching, participant reversal,
+recipient-owned evidence filtering, duplicate rejection, and one-reply runtime
+shape pass focused contracts and the complete offline chain. This does not
+establish live bubble ordering, that admission failure always suppresses the
+reply under RimWorld callbacks, that no timing edge produces a duplicate, or
+that the full official DLC set introduces no presentation or performance
+interaction.
+
+Required mitigation: run the owner-controlled disposable test with Core,
+Royalty, Ideology, Biotech, Anomaly, Odyssey, and Mosaic only; keep provider
+dispatch offline; create reciprocal A/B history; confirm A's opening completes
+before exactly one B reply; confirm both admissions are queued; confirm no
+third bubble; save/reload without replay; and verify a later social event can
+start a separate bounded exchange without errors or recurring stutter.
+
+## KR-030 - Cross-encounter continuity is offline-verified but not live-rebuilt
+Severity: INTEGRATION / PRODUCT
+
+The canonical dialogue-history projection, completed-exchange selector,
+attributed renderer, exact prior EventId grounding, pair isolation, future
+rejection, and opening-only pipeline integration pass focused contracts and
+the complete offline chain. This does not establish that save/reload exposes
+both admissions to the live ledger at the expected time, that organic dialogue
+text remains readable when quoted, or that DLC/runtime timing cannot select,
+omit, or repeat the wrong exchange.
+
+Required mitigation: with Core and all official DLC plus Mosaic only and
+provider dispatch offline, complete one A/B exchange, save/reload, verify no
+replay, trigger a later A/B event, confirm `When we last spoke` with correct
+`I said`/`you said` attribution and exact prior EventIds, verify one reply and
+no third turn, then trigger a C-involving event and confirm no A/B leakage.
+
+## KR-031 - Read-only conversation history is offline-verified but not live UI-verified
+Severity: INTEGRATION / PRIVACY / PRODUCT
+
+The participant-scoped viewer, deterministic ordering/deduplication/trimming,
+current-label resolution, canonical-event rebuild, MainTabWindow compilation,
+MainButtonDef packaging, package firewall, and focused privacy contracts pass
+the complete offline chain. This does not establish live RimWorld Def loading,
+layout at supported resolutions, scroll behavior, UI-state lifecycle,
+post-reload visibility, or all-official-DLC coexistence. Offline fixtures also
+cannot prove that an organic live sequence records the expected actual
+audience for every displayed line.
+
+Required mitigation: use Core, Royalty, Ideology, Biotech, Anomaly, Odyssey,
+and Mosaic only with provider dispatch offline and a disposable colony/save.
+Create and checkpoint an A/B two-turn exchange, reload, verify both lines are
+newest-first for A and B but absent for unrelated C, verify current rename
+labels without duplication, confirm Bubble channel and bounded evidence
+counts, and close/reopen the window without replay, mutation, exception
+flooding, storage warnings, or recurring stutter.
+
+## KR-032 - Offline determinism closure does not substitute for live lifecycle evidence
+Severity: INTEGRATION / DATA INTEGRITY
+
+The 0.2E contracts and 128-cycle integration replay prove stable tie-breaking,
+observer-read purity, viewer duplicate resistance, identity/lifecycle
+invariants, RNG exclusion, and cross-process digest reproduction under
+authored offline fixtures. They do not observe RimWorld save callbacks,
+transient object reconstruction, MainTabWindow lifecycle, DLC interactions,
+or organic runtime event ordering.
+
+Required mitigation: combine the PR #7 viewer test with a two-save/two-reload
+identity check. Record the enrolled IndividualId and LineageId before UI
+activity, repeatedly open/switch/close the read-only viewer, trigger a later
+exchange, save and reload again, and confirm stable IDs, correct continuity,
+no duplicated history or bubble replay, no pawn behavior change, and no
+storage, affinity, exception-flood, or recurring-stutter signal.
+
+## KR-033 - Offline trace and retrieval closure does not establish live explanatory quality
+Severity: PRODUCT / INTEGRATION
+
+The deterministic read-only decision-trace contract passes construction,
+ordering, provenance, bounds, immutability, and authority firewalls, but it is
+deliberately not wired into RimWorld runtime behavior. The 500-candidate
+retrieval benchmark is a fixed authored corpus: Mosaic matched 10/10 oracles,
+the most-recent selector matched 5/10, the generative-style selector matched
+8/10, and no privacy leak was observed. These results do not establish
+naturalness, explanatory usefulness, latency, or retrieval quality over
+organic long-running colonies.
+
+Required mitigation: keep the trace observer-only if it is later integrated,
+add a separately reviewed presentation boundary, and evaluate retrieval
+against owner-approved, privacy-sanitized runtime-derived cases without
+turning generated explanations into canonical cognition. Do not claim live
+quality or performance from the authored offline corpus.

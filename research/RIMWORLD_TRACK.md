@@ -164,3 +164,32 @@ the byte-identical deterministic package SHA-256 5a79db4f3fc2b3306f8ff2fc66f8e46
 Full mod-stack, DLC-group, large-colony, and RimTalk compatibility are post-closure work. The
 recovered source continues to identify as 0.1K, and no separately versioned historical 0.1RC artifact
 is inferred.
+
+## 0.2 dialogue foundation integration candidate
+
+Offline implementation now includes:
+
+- the preserved owner/privacy-isolated dialogue foundation;
+- recoverable checkpoint-bound factual dialogue admission;
+- an original bounded speech-bubble presenter with play-log fallback;
+- a deterministic-fake-only observer adapter seam; and
+- directed, bounded storytelling evidence fixtures with exact provenance.
+
+The next gate is a deliberately disposable owner-controlled runtime test of
+visual placement, play-log fallback, GameComponent lifecycle, actual social
+trigger capture, and save/reload outbox recovery. No real provider, local
+model, pawn-control feature, or normal save belongs in that test. Full
+mod-stack, RimTalk, DLC-group, performance, and tuning work remains later.
+
+### Owner-operated dialogue retest
+
+The isolated Core + Mosaic retest at commit `c49da81` passed the
+GameComponent/runtime-thread correction and primary Bubble path. It live-
+verified three enrollments, qualifying opinion/direct-relationship capture,
+four bounded experiences/memories, four deterministic Bubble receipts, save
+checkpoint generation 2, stable identity/lineage reload, healthy storage,
+two restored meaningful reflection items, and no duplicate presentation.
+
+Play-log fallback, full normal mod stack, DLC combinations, RimTalk
+coexistence, long-duration soak, broader visual/gameplay tuning, and real
+provider behavior remain later test phases.

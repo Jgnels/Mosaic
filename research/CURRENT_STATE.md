@@ -401,3 +401,211 @@ the recovered source remains provenance-labeled 0.1K, and the certified package 
 0.2-prealpha compatibility identifier.
 
 See docs/MOSAIC_0.1_CLOSURE_20260726.md.
+
+## 2026-07-26 Mosaic 0.2 dialogue foundation integration
+
+**Status: PASS offline; draft integration candidate, not live-verified.**
+
+The preserved clean-room dialogue foundation has been graduated onto the
+post-0.1-closure main line without changing the frozen 0.1 tree. New work adds
+an integrity-checked checkpoint-bound factual dialogue outbox, an original
+speech-bubble-first presentation controller with play-log fallback, a
+deterministic-fake-only RimWorld composition seam, and a bounded directed
+storytelling evidence fixture spine.
+
+The adapter remains observer-only. It cannot select a real provider, control a
+pawn, or treat generated language as canonical mutation. An actual
+presentation receipt may queue factual evidence, but durable destinations are
+recovered only at a matching RimWorld save checkpoint. Relationship
+projection remains rebuildable context with exact evidence IDs rather than
+canonical relationship truth.
+
+Offline verification at the storytelling-spine implementation commit covered
+128 C# files, 149/149 contract tests, seven integration scenarios with 631
+assertions, warning-free Core, Providers, and RimWorld 1.6 Release builds, one
+accepted and 17 rejected firewall fixtures, and an eight-entry package with no
+direct adaptations. Live speech-bubble layout, play-log behavior, adapter
+lifecycle, save-callback ordering, mod-stack compatibility, and gameplay
+tuning remain unverified and require a later disposable owner-controlled
+RimWorld test.
+
+## 2026-07-26 first Mosaic 0.2 dialogue runtime limiting result
+
+**OBSERVED LIVE (owner-operated):** PR #3 at commit `20a16ab` loaded,
+enrolled colonists, recorded a qualifying social opinion event for Pi, created
+experience and memory, and reached the deterministic fake-dialogue path.
+Presentation then failed safely because the presenter had captured its
+GameComponent construction thread rather than the later RimWorld tick/GUI
+thread. The resulting main-thread exception repeated from both tick and GUI
+callbacks.
+
+**IMPLEMENTED OFFLINE:** presenter construction is now deliberately unbound.
+Only trusted `GameComponentTick` or repaint `GameComponentOnGUI` lifecycle
+entry may atomically establish the runtime thread. Ordinary operations cannot
+bind; a different thread cannot replace the established identity; and a
+validation failure latches once, disables presentation for that game instance,
+and prevents repeated exception logging.
+
+**OBSERVED LIVE (owner-operated retest):** commit `c49da81` and package
+SHA-256 `de6c8b6652297f10ac3ed2f6b53975f376b1c8b962221876923f41bae3bf32aa`
+passed with Core + Mosaic and provider dispatch offline. Three identities
+enrolled; four qualifying opinion/direct-relationship experiences and four
+memories were created; four deterministic dialogue admissions received actual
+Bubble receipts; and the main-thread exception did not recur. Save/reload
+retained identity and lineage continuity, advanced checkpoint generation to 2,
+restored `Events=8; Memories=4`, restored two meaningful reflection items,
+kept all stores healthy, and did not redisplay prior dialogue.
+
+The isolated thread-affinity and Bubble path is live-verified. Full mod-stack,
+DLC-combination, RimTalk, play-log fallback, long-soak, broader tuning, and
+real-provider behavior remain unverified. See
+`docs/MOSAIC_V0_2_DIALOGUE_RUNTIME_RETEST_20260726.md`.
+
+## 2026-07-26 Mosaic 0.2A grounded relationship dialogue
+
+**SUPPORTED OFFLINE:** implementation commit `5edebba` adds deterministic
+same-counterpart relationship dialogue grounded in the current EventId and at
+most two prior experienced events. Mixed positive/negative evidence is
+retained, meaningful direct-relationship transitions outrank ordinary opinion
+noise, and private/hearsay/cross-owner/cross-counterpart evidence fails
+closed. The path remains fake-provider-only, observer-only, and
+checkpoint-admitted; it adds no canonical relationship, cognition, identity,
+or gameplay mutation.
+
+Clean-source verification passed over 131 C# files, 158/158 contracts, seven
+integration scenarios with 631 assertions, warning-free Core, Providers, and
+RimWorld 1.6 Release builds, one accepted and 17 rejected firewall fixtures,
+an eight-entry zero-direct-adaptation package firewall, and non-installing
+preflight. Two fresh worktrees reproduced the package byte-for-byte at
+SHA-256
+`1f15b34a994e63e7076ae1a5922653af60533f782e2471bef29ce1a655673295`.
+
+Live behavior with Core plus Royalty, Ideology, Biotech, Anomaly, and Odyssey
+remains unverified and requires the documented owner-operated disposable
+colony/save test. Third-party mod and RimTalk compatibility remain outside
+this gate.
+
+## 2026-07-26 Mosaic 0.2B bounded two-turn exchange
+
+**SUPPORTED OFFLINE:** implementation commit `db030c5` adds one
+receipt-gated reciprocal reply after a qualifying grounded opening. The reply
+is released only after a matching actual display receipt and successful
+opening-admission queue, swaps the original participants, cites the mandatory
+current EventId plus at most two recipient-owned eligible prior events, and
+terminates the exchange. No third-turn, real-provider, canonical cognitive
+mutation, or pawn-action path was added.
+
+Clean-source verification passed over 133 C# files, 164/164 contracts, seven
+integration scenarios with 631 assertions, warning-free Core, Providers, and
+RimWorld 1.6 Release builds, one accepted and 17 rejected firewall fixtures,
+an eight-entry zero-direct-adaptation package firewall, and non-installing
+preflight. Two fresh detached worktrees reproduced the package byte-for-byte
+at SHA-256
+`22d6235ff3664283f03882c1ef50cb94680296822a43ce0769b7c8c5b634929f`.
+
+Live sequencing, bubble timing, both receipt-gated admissions, save/reload
+non-replay, recurring performance, and all-official-DLC coexistence remain
+unverified and require the documented owner-operated disposable test.
+
+## 2026-07-26 Mosaic 0.2C cross-encounter conversation continuity
+
+**SUPPORTED OFFLINE:** implementation commit `f96a1d6` rebuilds the latest
+completed same-pair two-turn exchange from existing canonical admitted
+dialogue events and may use those exact EventIds in a later opening. Incomplete,
+unwitnessed, unrelated, malformed, or future exchanges fail closed. Earlier
+generated text remains explicitly attributed speech rather than independent
+truth. No new store, third turn, provider path, cognitive mutation, or pawn
+authority was added.
+
+Clean-source verification passed over 135 C# files, 170/170 contracts, seven
+integration scenarios with 631 assertions, warning-free Core, Providers, and
+RimWorld 1.6 Release builds, one accepted and 17 rejected firewall fixtures,
+an eight-entry zero-direct-adaptation package firewall, and non-installing
+preflight. Two fresh detached worktrees reproduced the package byte-for-byte
+at SHA-256
+`5013ce5fb9e18763bdd400a8a7e8902fd75cd2c1f31c9ae0563f7f0cecdfd8de`.
+
+Live canonical-history rebuild after save/reload, attributed bubble text,
+pair isolation, non-replay, and all-official-DLC coexistence remain unverified.
+
+## 2026-07-26 Mosaic 0.2D read-only conversation history
+
+**SUPPORTED OFFLINE:** implementation commit `83a7b7c` adds a participant-scoped
+read-only MainTabWindow rebuilt from existing canonical admitted dialogue
+events. A selected enrolled colonist must be in the recorded audience and be
+the speaker or direct recipient. Unrelated, unwitnessed, malformed, pending,
+undisplayed, inferred, and private content fails closed. The viewer adds no
+store, dialogue turn, provider path, canonical mutation, history editing, or
+pawn authority.
+
+Clean-source verification passed over 139 C# files, 176/176 contracts, seven
+integration scenarios with 631 assertions, warning-free Core, Providers, and
+RimWorld 1.6 Release builds, one accepted and 19 rejected firewall fixtures,
+a nine-entry zero-direct-adaptation package firewall, and non-installing
+preflight. Two fresh detached worktrees reproduced the package byte-for-byte
+at SHA-256
+`e8d5d15d44682a2e9258ec866b482a99c4b359232605209ad81cc1f5620289ff`.
+
+Live MainButtonDef loading, window layout, colonist selection, post-reload
+history visibility, rename display, all-official-DLC coexistence, and
+participant isolation remain unverified and require the documented
+owner-operated disposable test.
+
+## 2026-07-27 Mosaic 0.2E determinism and lifecycle closure
+
+**SUPPORTED OFFLINE:** implementation commit `512936a` adds only contracts,
+integration replay, source firewalls, verification tooling, and documentation.
+No shipped Core, Providers, RimWorld, or package-source file differs from the
+certified PR #7 head.
+
+The executable closure gate passed its RNG firewall, read-only-viewer
+mutation/provider/pawn-control firewall, two-process normalized contract
+comparison, and two-process integration replay. The deterministic replay
+digest was
+`9cdee2b44153d67bf1ec95f8627932936faca4827a3616deb0e0ffe4d256fb36`.
+
+Clean-source verification passed over 141 C# files, 182/182 contracts, eight
+integration scenarios with 760 assertions, warning-free Core, Providers, and
+RimWorld 1.6 Release builds, one accepted and 19 rejected firewall fixtures,
+a nine-entry zero-direct-adaptation package firewall, and non-installing
+preflight. Two fresh detached worktrees reproduced the package byte-for-byte
+at SHA-256
+`056a35c81d2fd4f49382a4cf732f8cca7b790269861a93779c981cc16ab801e1`.
+
+This closes the prepared offline determinism, observer-purity, and identity
+lifecycle milestone. Live Def/UI behavior, actual save/reload identity
+continuity under the PR #7 viewer workflow, non-replay, DLC coexistence, and
+runtime performance remain owner-test questions rather than offline claims.
+
+## 2026-07-27 Mosaic 0.2FG decision-trace and retrieval closeout
+
+**SUPPORTED OFFLINE:** implementation commit
+`dedf5f6fd2c8c1ca78c79ae6048363bfec5e949c` adds an unused public Core
+contract for deterministic, bounded, read-only evidence-selection traces plus
+offline contract and integration coverage. It adds no persistence write,
+provider call, RimWorld wiring, dialogue turn, UI, canonical mutation, or pawn
+authority. Providers, RimWorld, Def, package-source, and frozen 0.1 files are
+unchanged from PR #8 head
+`5165a9ee9aac8c2616f5c3da911648ba3780be90`.
+
+Clean committed-source verification passed over 145 C# files, 188/188
+contracts, and ten integration scenarios with 1,551 assertions. Core,
+Providers, and RimWorld 1.6 Release builds completed with zero warnings and
+zero errors. The authority, RNG, observer-mutation, package, and adversarial
+fixture firewalls passed; non-installing preflight passed. Two clean detached
+worktrees reproduced the same nine-entry, zero-direct-adaptation package at
+SHA-256
+`b92bc448b4fe896c091edc92960fd182fbc7b5126798d6967c6649d5b8380890`.
+
+The 0.2F trace digest is
+`b3aceedbab04a521de0499bb4a205892426172ccc551368762d5b87eff13f5b9`.
+The 0.2G fixed-corpus digest is
+`b76a9489645294ddc2e0836d1580ff41d35c8c97279fc9c131208700a0dedc1e`;
+Mosaic matched 10/10 fixed oracles over 500 candidates and 64 permutations
+per case, versus 5/10 for the most-recent selector and 8/10 for the
+generative-style selector, with zero privacy leaks.
+
+This closes only the prepared offline 0.2F/0.2G gates. The trace contract is
+not wired into shipped RimWorld behavior, and the authored benchmark is not
+evidence of organic runtime quality, latency, DLC coexistence, or owner-test
+success.

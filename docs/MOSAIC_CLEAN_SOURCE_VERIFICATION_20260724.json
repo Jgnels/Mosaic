@@ -1,0 +1,77 @@
+{
+  "schema": "mosaic.clean-source-verification.v2",
+  "createdUtc": "2026-07-24T21:48:31.5645015+00:00",
+  "publishedHeadCheck": {
+    "expectedByTask": "abd46c58ad4dde505d18575ad0c4e338d62dd76b",
+    "observedRemoteHead": "c200634914d180f9040491c8c3bae4f65a7f3dbe",
+    "matched": false
+  },
+  "baseline": {
+    "sourceMethod": "git-archive",
+    "commit": "abd46c58ad4dde505d18575ad0c4e338d62dd76b",
+    "archiveSha256": "91a535ddd69eb96a3475cfc013683a7741c1290ab0b69e47d27cc8e26ec00c6c",
+    "includedUntrackedFiles": false,
+    "trackedCSharpFiles": 98,
+    "archivedCSharpFiles": 98,
+    "explicitCompileIncludes": 6,
+    "missingExplicitCompileIncludes": 0,
+    "staticVerification": "PASS",
+    "contracts": {
+      "executed": 78,
+      "failed": 0
+    },
+    "integration": {
+      "scenarios": 6,
+      "assertions": 603,
+      "failed": 0
+    },
+    "releaseBuilds": "PASS",
+    "packageSha256": "f7ad25551d7cf7519061d8ee37668863a8f26fe344f282f83ccc0ae09f329549",
+    "packageEntries": 6,
+    "packagePrivacy": "FAIL",
+    "packagePrivacyFinding": "Managed DLLs and the packaged PDB embedded the local build profile path."
+  },
+  "final": {
+    "sourceMethod": "git-archive",
+    "commit": "8bd2096de29caca6591a4302ecac375bbb5ab076",
+    "archiveSha256": "464c249438c6eec16cfd55e0b8052496bd71613b052abeac1c6ee1be34d22437",
+    "includedUntrackedFiles": false,
+    "trackedCSharpFiles": 98,
+    "archivedCSharpFiles": 98,
+    "explicitCompileIncludes": 6,
+    "missingExplicitCompileIncludes": 0,
+    "staticVerification": "PASS",
+    "contracts": {
+      "executed": 81,
+      "failed": 0
+    },
+    "integration": {
+      "scenarios": 6,
+      "assertions": 603,
+      "failed": 0
+    },
+    "releaseBuilds": {
+      "core": "PASS",
+      "providers": "PASS",
+      "rimWorldAdapterAgainstInstalled16References": "PASS",
+      "warnings": 0,
+      "errors": 0
+    },
+    "package": {
+      "status": "PASS",
+      "sha256": "1387154f4dfee7f9a1de10a8d8e9708b7ec49e6fd5c3c55c590524227951d7e9",
+      "entries": 6,
+      "prohibitedRuntimeArtifactsPresent": false,
+      "machineSpecificBuildPathsPresent": false,
+      "installed": false
+    }
+  },
+  "safety": {
+    "rimWorldLaunched": false,
+    "liveModModified": false,
+    "saveOrConfigurationModified": false,
+    "providerInvoked": false,
+    "localModelInvoked": false,
+    "longSoakEvidenceAccessed": false
+  }
+}

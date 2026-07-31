@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <MainButtonDef>
+    <defName>Mosaic_ConversationHistory</defName>
+    <label>Mosaic</label>
+    <description>Review verified conversations witnessed by each enrolled colonist.</description>
+    <tabWindowClass>Dagmay.RimWorld.Dialogue.MosaicConversationHistoryWindow</tabWindowClass>
+    <order>970</order>
+  </MainButtonDef>
+</Defs>

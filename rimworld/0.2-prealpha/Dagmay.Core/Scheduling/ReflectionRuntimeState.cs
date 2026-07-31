@@ -238,13 +238,26 @@ namespace Dagmay.Core.Scheduling
             if (task is null) throw new ArgumentNullException(nameof(task));
             for (var index = 0; index < _tasks.Count; index++)
             {
-                if (!string.Equals(_tasks[index].Task.CoalescingKey, task.CoalescingKey, StringComparison.Ordinal)) continue;
+                if (_tasks[index].Task.IndividualId != task.IndividualId
+                    || !string.Equals(_tasks[index].Task.CoalescingKey, task.CoalescingKey, StringComparison.Ordinal))
+                {
+                    continue;
+                }
                 var existing = _tasks[index];
-                var eventIds = existing.Task.SourceEventIds.Concat(task.SourceEventIds).Distinct().Take(100).ToList();
+                var newTaskWins = (int)task.Priority > (int)existing.Task.Priority;
+                var eventIds = (newTaskWins
+                        ? task.SourceEventIds.Concat(existing.Task.SourceEventIds)
+                        : existing.Task.SourceEventIds.Concat(task.SourceEventIds))
+                    .Distinct()
+                    .Take(100)
+                    .ToList();
+                var replacementKind = newTaskWins
+                    ? task.TaskKind
+                    : existing.Task.TaskKind;
                 var replacement = new ReflectionTask(
                     existing.Task.Id,
                     existing.Task.IndividualId,
-                    existing.Task.TaskKind,
+                    replacementKind,
                     (ReflectionPriority)Math.Max((int)existing.Task.Priority, (int)task.Priority),
                     existing.Task.CreatedAtUtc <= task.CreatedAtUtc ? existing.Task.CreatedAtUtc : task.CreatedAtUtc,
                     existing.Task.CoalescingKey,

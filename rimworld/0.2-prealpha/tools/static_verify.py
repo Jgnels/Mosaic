@@ -4,7 +4,10 @@
 from __future__ import annotations
 
 import json
+import os
 import re
+import shutil
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -31,6 +34,26 @@ REQUIRED_FILES = [
     "Dagmay.RimWorld/Package/About/About.xml",
     "Dagmay.Tests/Dagmay.Tests.csproj",
     "Dagmay.IntegrationHarness/Dagmay.IntegrationHarness.csproj",
+    "Dagmay.Core/Dialogue/DialogueAdmissionOutbox.cs",
+    "Dagmay.Core/Dialogue/DialogueAdmissionOutboxCodec.cs",
+    "Dagmay.Core/Dialogue/SpeechBubblePresentation.cs",
+    "Dagmay.Core/Relationships/RelationshipEvidenceProjection.cs",
+    "Dagmay.RimWorld/Dialogue/MosaicDialogueLogEntry.cs",
+    "Dagmay.RimWorld/Dialogue/OfflineRimWorldDialoguePipeline.cs",
+    "Dagmay.RimWorld/Dialogue/RimWorldDialogueGameComponent.cs",
+    "Dagmay.RimWorld/Dialogue/RimWorldDialoguePresentationPolicy.cs",
+    "Dagmay.RimWorld/Dialogue/RimWorldRuntimeThreadBinding.cs",
+    "Dagmay.RimWorld/Dialogue/RimWorldSocialDialogueTrigger.cs",
+    "Dagmay.RimWorld/Dialogue/RimWorldSpeechBubblePresenter.cs",
+    "Dagmay.RimWorld/Package/Defs/MosaicDialogueDefs.xml",
+    "Dagmay.RimWorld/Package/Defs/MainButtonDefs/Mosaic_ConversationHistory.xml",
+    "Dagmay.Tests/DialogueAdmissionOutboxContractTests.cs",
+    "Dagmay.Tests/SpeechBubblePresentationContractTests.cs",
+    "Dagmay.Tests/OfflineRimWorldDialoguePathContractTests.cs",
+    "Dagmay.Tests/StorytellingEvidenceSpineFixtureTests.cs",
+    "../../docs/ADR_DIALOGUE_RECOVERABLE_OUTBOX_20260726.md",
+    "../../docs/ADR_SPEECH_BUBBLE_PRESENTATION_20260726.md",
+    "../../docs/ADR_OFFLINE_RIMWORLD_DIALOGUE_PATH_20260726.md",
     "docs/22_V0.1F_Development_Automation.md",
     "docs/23_V0.1G_Ordinary_Mind_View.md",
     "docs/24_V0.1H_Experience_Consolidation.md",
@@ -170,9 +193,21 @@ def verify_required_files(errors: list[str]) -> None:
 def verify_structured_files(errors: list[str]) -> None:
     for path in ROOT.rglob("*.csproj"):
         try:
-            ET.parse(path)
+            project = ET.parse(path)
         except ET.ParseError as exc:
             fail(errors, f"Invalid project XML {path.relative_to(ROOT)}: {exc}")
+            continue
+
+        for compile_item in project.findall(".//Compile"):
+            include = compile_item.get("Include", "")
+            if not include or any(marker in include for marker in ("*", "?", "$(")):
+                continue
+            included_path = (path.parent / include.replace("\\", os.sep)).resolve()
+            if not included_path.is_file():
+                fail(
+                    errors,
+                    f"Project compile source is missing: {path.relative_to(ROOT)} -> {include}",
+                )
 
     try:
         ET.parse(ROOT / "Dagmay.RimWorld/Package/About/About.xml")
@@ -271,6 +306,40 @@ def verify_boundaries(errors: list[str]) -> None:
             if token in source:
                 fail(errors, f"Observer-only boundary violation in {path.relative_to(ROOT)}: {token}")
 
+    offline_dialogue = (
+        ROOT / "Dagmay.RimWorld/Dialogue/OfflineRimWorldDialoguePipeline.cs"
+    ).read_text(encoding="utf-8")
+    if "new DeterministicFakeProvider(" not in offline_dialogue:
+        fail(errors, "Offline RimWorld dialogue path does not construct the deterministic fake provider.")
+    for token in ("GoogleAiStudioProvider", "RimWorldReflectionProviderSelection", "FromEnvironment("):
+        if token in offline_dialogue:
+            fail(errors, f"Offline RimWorld dialogue path exposes prohibited provider selection: {token}")
+
+    presenter = (
+        ROOT / "Dagmay.RimWorld/Dialogue/RimWorldSpeechBubblePresenter.cs"
+    ).read_text(encoding="utf-8")
+    component_dialogue = (
+        ROOT / "Dagmay.RimWorld/Dialogue/RimWorldDialogueGameComponent.cs"
+    ).read_text(encoding="utf-8")
+    thread_binding = (
+        ROOT / "Dagmay.RimWorld/Dialogue/RimWorldRuntimeThreadBinding.cs"
+    ).read_text(encoding="utf-8")
+    if "Thread.CurrentThread.ManagedThreadId)" in presenter.split(
+            "public RimWorldSpeechBubblePresenter()", 1)[1].split("{", 1)[0]:
+        fail(errors, "Dialogue presenter constructor captures the construction thread.")
+    for token in (
+            "BindFromTrustedGameComponentLifecycle(",
+            "Interlocked.CompareExchange(",
+            "has not been bound by a trusted GameComponent lifecycle call"):
+        if token not in thread_binding:
+            fail(errors, f"Dialogue runtime-thread binding invariant is missing: {token}")
+    if "BindFromTrustedGameComponentLifecycle(" not in presenter:
+        fail(errors, "Dialogue presenter does not expose the trusted lifecycle binding seam.")
+    if component_dialogue.count("TryEnterPresentationLifecycle()") < 3:
+        fail(errors, "Dialogue tick and GUI paths do not share trusted runtime-thread entry.")
+    if "Interlocked.Exchange(ref _presentationThreadFailed, 1)" not in component_dialogue:
+        fail(errors, "Dialogue thread validation failure is not latched against log flooding.")
+
     if not any("AllowsPawnControl = false" in path.read_text(encoding="utf-8") for path in rimworld_files):
         fail(errors, "Observer-only guard is missing or does not explicitly deny pawn control.")
 
@@ -360,6 +429,65 @@ def verify_no_binaries(errors: list[str]) -> None:
         fail(errors, f"Unexpected checked-in binary: {path.relative_to(ROOT)}")
 
 
+def find_git() -> str | None:
+    discovered = shutil.which("git")
+    if discovered:
+        return discovered
+
+    candidates = [
+        Path(os.environ.get("ProgramFiles", "")) / "Git/cmd/git.exe",
+        Path(os.environ.get("LOCALAPPDATA", "")) / "Programs/Git/cmd/git.exe",
+    ]
+    for candidate in candidates:
+        if candidate.is_file():
+            return str(candidate)
+    return None
+
+
+def verify_git_source_tracking(errors: list[str]) -> None:
+    git = find_git()
+    if git is None:
+        return
+
+    repository = subprocess.run(
+        [git, "-C", str(ROOT), "rev-parse", "--is-inside-work-tree"],
+        capture_output=True,
+        check=False,
+        text=True,
+    )
+    if repository.returncode != 0 or repository.stdout.strip() != "true":
+        return
+
+    inventory = subprocess.run(
+        [git, "-C", str(ROOT), "ls-files", "-z", "--", "."],
+        capture_output=True,
+        check=False,
+    )
+    if inventory.returncode != 0:
+        fail(errors, "Git source inventory could not be read.")
+        return
+
+    tracked = {
+        value.decode("utf-8", errors="surrogateescape").replace("\\", "/")
+        for value in inventory.stdout.split(b"\0")
+        if value
+    }
+    local_sources = {
+        path.relative_to(ROOT).as_posix()
+        for path in ROOT.rglob("*.cs")
+        if not is_build_output(path)
+    }
+
+    for relative in sorted(local_sources - tracked):
+        fail(errors, f"C# source exists locally but is not tracked by Git: {relative}")
+
+    for relative in sorted(
+        value for value in tracked if value.lower().endswith(".cs")
+    ):
+        if not (ROOT / relative).is_file():
+            fail(errors, f"Tracked C# source is missing from the working tree: {relative}")
+
+
 def main() -> int:
     errors: list[str] = []
     verify_required_files(errors)
@@ -371,6 +499,7 @@ def main() -> int:
     verify_readme_links(errors)
     verify_no_secrets(errors)
     verify_no_binaries(errors)
+    verify_git_source_tracking(errors)
 
     if errors:
         for error in errors:

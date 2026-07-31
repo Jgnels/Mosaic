@@ -1,0 +1,94 @@
+{
+  "schema": "mosaic.presentation-candidate-review.v1",
+  "reviewedUtc": "2026-07-24T00:00:00Z",
+  "source": {
+    "repository": "https://github.com/craftingmod/RimTalk.git",
+    "commit": "df9f4ef799a44a07b1f9d2d67814fb819b2df763",
+    "license": "MIT",
+    "licensePath": "LICENSE",
+    "licenseGitBlobSha1": "588f1635ae34231ae3f68d8ec87fe899d929c9aa",
+    "licenseSha256": "745f4ea947286e1cbf6a7119a5d5f12dc168cb05220fef1488193170996ae724"
+  },
+  "decision": "REVIEWED_SPECIFICATION_ONLY",
+  "directAdaptationApproved": false,
+  "reason": "The candidates are tightly coupled to RimTalk caches, settings, provider diagnostics, pawn/live game objects, or gameplay jobs. A minimal safe slice would be predominantly rewritten and has no proven advantage over an original Mosaic renderer.",
+  "candidates": [
+    {
+      "path": "Source/UI/Overlay.cs",
+      "gitBlobSha1": "766b1eaffdad369396b60f0e9bd8d197f79aa372",
+      "sha256": "06a707d71f7562f697f0cca8e46b5da730751f0c9db5c77dbed5917890d9f444",
+      "license": "MIT",
+      "destinationPath": null,
+      "proposedOriginalDestination": "Dagmay.RimWorld/Presentation/MosaicDialogueOverlay.cs",
+      "modificationPlan": "Do not adapt. Implement an original renderer over immutable Mosaic presentation rows keyed by IndividualId and ConversationId.",
+      "dependencyFindings": ["RimTalk.Data.Cache", "RimTalkSettings", "Pawn", "Find.CurrentMap", "Find.WorldPawns", "Unity GUI", "DebugWindow"],
+      "decision": "REJECT_DIRECT_ADAPTATION"
+    },
+    {
+      "path": "Source/UI/DebugWindow.cs",
+      "gitBlobSha1": "c87a5d4b7442091d8e7848ae61010eb3b7f5f5e8",
+      "sha256": "6e616a0cc4882efe0040d54e777f319037f72918f9ed5e974e8350651f261ce3",
+      "license": "MIT",
+      "destinationPath": null,
+      "proposedOriginalDestination": "Dagmay.RimWorld/Presentation/MosaicDialogueDiagnosticsWindow.cs",
+      "modificationPlan": "Do not adapt. Specify a read-only observer window that consumes Mosaic audit projections and never provider-owned logs.",
+      "dependencyFindings": ["RimTalk.Data.Cache", "ApiHistory", "ApiLog", "PawnState", "RimTalkSettings", "live Pawn references", "provider metrics"],
+      "decision": "REJECT_DIRECT_ADAPTATION"
+    },
+    {
+      "path": "Source/UI/UIUtil.cs",
+      "gitBlobSha1": "f1c18d781752a16c5bea4dbd3518faa66cddcc09",
+      "sha256": "bb72e192d00b9d4b90e178b04ed82c76f34259e361ffcba3c8a607d1133ad1fe",
+      "license": "MIT",
+      "destinationPath": null,
+      "proposedOriginalDestination": "Dagmay.RimWorld/Presentation/MosaicPresentationDrawing.cs",
+      "modificationPlan": "Do not adapt. Original helpers must accept plain display rows; any optional game-object lookup stays main-thread-local and is not durable identity.",
+      "dependencyFindings": ["Pawn", "CameraJumper", "RimTalk API log export", "machine-time file export"],
+      "decision": "REJECT_DIRECT_ADAPTATION"
+    },
+    {
+      "path": "Source/UI/OverlayTabLauncher.cs",
+      "gitBlobSha1": "dd9813cea5fd8bab385147d070a4ab32d5bd0186",
+      "sha256": "75dbf4e6541fbf313e0c09f8ab70b1352850c11fa6498aaf82391ab9884b2e6c",
+      "license": "MIT",
+      "destinationPath": null,
+      "proposedOriginalDestination": "Dagmay.RimWorld/Presentation/MosaicDialogueTab.cs",
+      "modificationPlan": "Do not adapt until an owner-approved presentation surface exists. Use original assets and Mosaic settings.",
+      "dependencyFindings": ["RimTalkSettings", "RimWorld MainTabWindow", "Verse"],
+      "decision": "DEFER_NO_PROVEN_NEED"
+    },
+    {
+      "path": "Source/UI/CustomDialogueWindow.cs",
+      "gitBlobSha1": "3dd2175333b6e813862a6c137210156fb18e71ab",
+      "sha256": "2e7b7c182fe1e89182bd9618ce4fb845ba0aa23899d8e421bd25d65ebe56c41d",
+      "license": "MIT",
+      "destinationPath": null,
+      "proposedOriginalDestination": null,
+      "modificationPlan": "Do not adapt. It issues a pawn job and therefore violates Mosaic's observer-only and no dialogue-to-gameplay-effects boundaries.",
+      "dependencyFindings": ["Pawn", "Verse.AI Job", "CustomDialogueService", "pawn movement"],
+      "decision": "PROHIBITED_BY_ARCHITECTURE"
+    },
+    {
+      "path": "Source/Data/PlayLogEntry_RimTalkInteraction.cs",
+      "gitBlobSha1": "fc89f97680ea340891936d94b2dfc596e7a32999",
+      "sha256": "64ce61d1bca92f6849686157ad480926787548b6c6123a39dd2175b4bd0d9d71",
+      "license": "MIT",
+      "destinationPath": null,
+      "proposedOriginalDestination": null,
+      "modificationPlan": "Do not adapt. Mosaic already has factual dialogue admission and history projections without live Pawn ownership.",
+      "dependencyFindings": ["PlayLogEntry_Interaction", "Pawn", "RimTalk interaction service"],
+      "decision": "SUPERSEDED_BY_MOSAIC_CORE"
+    },
+    {
+      "path": "Source/Util/Logger.cs",
+      "gitBlobSha1": "c3a761c0bcfbc06d48801108ec7d79618ba6c98a",
+      "sha256": "0db87cc05c00b6b032b8d4d98e4a9dca6d8ce81371ab12323017897bee2aa284",
+      "license": "MIT",
+      "destinationPath": null,
+      "proposedOriginalDestination": null,
+      "modificationPlan": "Do not adapt. Existing Mosaic diagnostics already provide project-tagged logging.",
+      "dependencyFindings": ["Verse.Log"],
+      "decision": "NO_ACTUAL_NEED"
+    }
+  ]
+}

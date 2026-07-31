@@ -4,9 +4,8 @@ param()
 $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent $PSScriptRoot
 $Verifier = Join-Path $PSScriptRoot "package-firewall.ps1"
-$FixtureSpec = Get-Content -LiteralPath (
-    Join-Path $PSScriptRoot "package-firewall-fixtures.json") -Raw |
-    ConvertFrom-Json
+$FixturePath = Join-Path $PSScriptRoot "package-firewall-fixtures.json"
+$FixtureSpec = Get-Content -LiteralPath $FixturePath -Raw | ConvertFrom-Json
 if ($FixtureSpec.schema -ne "mosaic.package-firewall-fixtures.v1") {
     throw "Package-firewall fixture schema is unsupported."
 }
@@ -18,22 +17,51 @@ $TempRoot = Join-Path (
     "mosaic-package-firewall-" + [Guid]::NewGuid().ToString("N"))
 New-Item -ItemType Directory -Path $TempRoot -Force | Out-Null
 
+function Add-FixtureEntry {
+    param(
+        [IO.Compression.ZipArchive]$Archive,
+        [string]$Name,
+        [string]$Content
+    )
+
+    $ZipEntry = $Archive.CreateEntry($Name)
+    $Writer = [IO.StreamWriter]::new(
+        $ZipEntry.Open(),
+        [Text.UTF8Encoding]::new($false))
+    try {
+        $Writer.Write($Content)
+    }
+    finally {
+        $Writer.Dispose()
+    }
+}
+
 function New-FixturePackage {
     param(
         [string]$Path,
         [string]$ExtraEntry = "",
         [string]$ReplaceEntry = "",
         [string]$ReplacementContent = "",
-        [string]$OmitEntry = ""
+        [string]$OmitEntry = "",
+        [string]$DuplicateEntry = ""
     )
 
+    $Notice = Get-Content -LiteralPath (
+        Join-Path $Root "Dagmay.RimWorld\Package\THIRD_PARTY_NOTICES.txt") -Raw
+    $DialogueDef = Get-Content -LiteralPath (
+        Join-Path $Root "Dagmay.RimWorld\Package\Defs\MosaicDialogueDefs.xml") -Raw
+    $ConversationHistoryDef = Get-Content -LiteralPath (
+        Join-Path $Root "Dagmay.RimWorld\Package\Defs\MainButtonDefs\Mosaic_ConversationHistory.xml") -Raw
     $Entries = [ordered]@{
         "About/About.xml" = "<ModMetaData><name>Mosaic</name></ModMetaData>"
         "Assemblies/Dagmay.Core.dll" = "fixture-core /_/"
         "Assemblies/Dagmay.Providers.dll" = "fixture-providers /_/"
         "Assemblies/Dagmay.RimWorld.dll" = "fixture-adapter /_/"
         "Assemblies/Dagmay.RimWorld.pdb" = "fixture-symbols"
+        "Defs/MainButtonDefs/Mosaic_ConversationHistory.xml" = $ConversationHistoryDef
+        "Defs/MosaicDialogueDefs.xml" = $DialogueDef
         "README.txt" = "fixture-readme"
+        "THIRD_PARTY_NOTICES.txt" = $Notice
     }
     if (-not [string]::IsNullOrWhiteSpace($ReplaceEntry)) {
         $Entries[$ReplaceEntry] = $ReplacementContent
@@ -53,16 +81,16 @@ function New-FixturePackage {
             $false)
         try {
             foreach ($Pair in $Entries.GetEnumerator()) {
-                $ZipEntry = $Archive.CreateEntry($Pair.Key)
-                $Writer = [IO.StreamWriter]::new(
-                    $ZipEntry.Open(),
-                    [Text.UTF8Encoding]::new($false))
-                try {
-                    $Writer.Write([string]$Pair.Value)
-                }
-                finally {
-                    $Writer.Dispose()
-                }
+                Add-FixtureEntry `
+                    -Archive $Archive `
+                    -Name $Pair.Key `
+                    -Content ([string]$Pair.Value)
+            }
+            if (-not [string]::IsNullOrWhiteSpace($DuplicateEntry)) {
+                Add-FixtureEntry `
+                    -Archive $Archive `
+                    -Name $DuplicateEntry `
+                    -Content "duplicate adversarial fixture"
             }
         }
         finally {
@@ -91,7 +119,8 @@ try {
             -ExtraEntry ([string]$Case.entry) `
             -ReplaceEntry ([string]$Case.replace) `
             -ReplacementContent $Content `
-            -OmitEntry ([string]$Case.omit)
+            -OmitEntry ([string]$Case.omit) `
+            -DuplicateEntry ([string]$Case.duplicate)
         $Rejected = $false
         try {
             $null = & $Verifier -PackagePath $CasePath -SourceRoot $Root

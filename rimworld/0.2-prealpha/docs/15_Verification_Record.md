@@ -722,3 +722,556 @@ Certified deterministic package SHA-256: 5a79db4f3fc2b3306f8ff2fc66f8e4653de1b9b
 This closes the controlled frozen-0.1 reliability campaign. It does not certify the full normal mod
 stack, RimTalk integration, public release readiness, or the existence of a separately versioned
 historical 0.1RC artifact.
+
+## 2026-07-26 - Recoverable dialogue admission outbox
+
+**Status:** PASS offline; not wired into live RimWorld.
+
+Mosaic now persists a deterministic, integrity-checked, checkpoint-bound
+factual admission entry before changing the independent event-ledger and
+experience-journal destinations. Recovery is lock-serialized, inspects both
+destinations, materializes only missing state, rereads both sides, and retains
+completion tombstones until a later successful checkpoint permits compaction.
+
+Twenty new contract tests passed for:
+
+- crash before and after the outbox write;
+- ledger-only, journal-only, and both-destinations-before-completion states;
+- completion-before-compaction and restart replay;
+- identical and conflicting duplicate EventIds;
+- stale, ahead, unchanged, rolled-back, and cross-bound checkpoints;
+- read-only storage and invalid/truncated journals;
+- invalid primary with valid backup and invalid primary plus backup;
+- deterministic codec reproduction; and
+- interrupted temporary replacement preserving the last good state.
+
+The protocol admits factual dialogue evidence only. It does not create
+perception, memory, relationship, mood, belief, goal, identity, pawn-control,
+or gameplay mutations.
+
+## 2026-07-26 - Speech-bubble-first dialogue presentation
+
+**Status:** PASS offline; visual and play-log runtime behavior unverified.
+
+Mosaic now has an original main-thread-only RimWorld speech-bubble renderer
+over a dependency-free Core controller. Presentation rows are keyed by stable
+identity and dialogue IDs; no Pawn, Map, Def, Unity, provider, prompt, cache,
+or persistence object crosses into Core. The renderer re-anchors from pawn
+position on each draw and safely contains missing bindings, despawn/map loss,
+GUI failures, and play-log failures.
+
+Receipt behavior is evidence-based:
+
+- bubble success reports Bubble, including when play-log mirroring succeeds;
+- bubble failure plus play-log success reports PlayLog; and
+- failure of both channels produces no display receipt.
+
+Complete documented Release verification:
+
+- static verification: PASS, 122 C# files;
+- Core and Providers Release builds: PASS, zero warnings/errors;
+- contract tests: PASS, 139 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid and 17 rejected;
+- package firewall: PASS, eight declared entries and zero direct adaptations;
+- package SHA-256:
+  `3a6709de7e79d616316b4b3231ffc1eb17e4ec23c4b5fac68665e55521b4642c`.
+
+No provider or local model was called. RimWorld was not launched, the package
+was not installed, and no save, configuration, credential, or runtime evidence
+was accessed or changed.
+
+## 2026-07-26 - Offline fake-provider RimWorld dialogue path
+
+**Status:** PASS offline; not executed in RimWorld.
+
+The existing main-thread social observation path now emits immutable trigger
+data only for material opinion and direct-relationship changes with two stable
+Mosaic identity bindings. Scheduling, context assembly, prompt planning,
+provider execution, strict decode, and validation retain no live RimWorld
+references and instantiate only `DeterministicFakeProvider`.
+
+Accepted output enters the main-thread speech-bubble presenter. Only an actual
+Bubble or PlayLog receipt can persist a pending factual outbox entry. The
+ledger and journal remain unchanged until RimWorld's save callback recovers the
+pending entry, verifies both destinations, refreshes the manifest journal head,
+and advances a dedicated dialogue checkpoint.
+
+Six focused tests cover absent bindings, unsupported triggers, deterministic
+reproduction, duplicates, timeout, cancellation, despawn, display failure,
+pending-only enqueue, restart discovery, exactly-once recovery, factual-only
+journal data, and stale-checkpoint rejection.
+
+Complete documented Release verification:
+
+- static verification: PASS, 126 C# files;
+- Core and Providers Release builds: PASS, zero warnings/errors;
+- contract tests: PASS, 145 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid and 17 rejected;
+- package firewall: PASS, eight declared entries and zero direct adaptations;
+- package SHA-256:
+  `fdfc37f6b1d3832194fe228d4aebaff0c10eea220dd25c07ff37df16dcfb49d8`.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, configuration, credential, or runtime evidence was
+accessed or changed.
+
+## 2026-07-27 - Mosaic 0.2FG closeout verification
+
+**Status:** PASS offline at implementation commit
+`dedf5f6fd2c8c1ca78c79ae6048363bfec5e949c`, based exactly on PR #8 head
+`5165a9ee9aac8c2616f5c3da911648ba3780be90`.
+
+Candidate scope was nine files: one new Core read-only decision-trace
+contract, six focused contract registrations/tests, two offline integration
+scenarios and their registrations, two milestone documents, and one closeout
+verifier. Providers, RimWorld, Def, package-source, and frozen 0.1 files have
+no diff from the base.
+
+Measured committed-source results:
+
+- static verification: PASS, 145 C# files;
+- contract tests: PASS, 188 executed and zero failed;
+- integration harness: PASS, ten scenarios and 1,551 assertions;
+- ReadOnlyDecisionTraceFoundation: PASS, 129 assertions;
+- LongHistoryRetrievalBenchmark: PASS, 662 assertions;
+- Core, Providers, and RimWorld 1.6 Release builds: zero warnings/errors;
+- package-firewall fixtures: PASS, one valid accepted and 19 adversarial
+  rejected;
+- package firewall: PASS, nine declared entries and zero direct adaptations;
+- RNG and read-only-viewer mutation firewalls: PASS;
+- repeated contract processes: byte-identical normalized output;
+- deterministic integration replay digest:
+  `9cdee2b44153d67bf1ec95f8627932936faca4827a3616deb0e0ffe4d256fb36`;
+- 0.2F decision-trace digest:
+  `b3aceedbab04a521de0499bb4a205892426172ccc551368762d5b87eff13f5b9`;
+- 0.2G benchmark digest:
+  `b76a9489645294ddc2e0836d1580ff41d35c8c97279fc9c131208700a0dedc1e`;
+- fixed benchmark: ten cases, 500 candidates, 64 permutations per case,
+  Mosaic 10/10 exact, most-recent 5/10 exact, generative-style 8/10 exact,
+  and zero privacy leaks;
+- non-installing Gate 3 preflight: PASS; and
+- two fresh detached worktrees reproduced the package byte-for-byte.
+
+Certified package:
+`Dagmay-RimWorld-0.2-prealpha.zip`, SHA-256
+`b92bc448b4fe896c091edc92960fd182fbc7b5126798d6967c6649d5b8380890`.
+It contains the same nine declared entries as PR #8 and no prohibited runtime
+artifact, machine-specific path, or direct adaptation.
+
+The supplied implementation compiled without source correction. Five minimal
+verifier compatibility corrections were required and did not weaken a gate:
+
+1. resolve `Root` and `Artifacts` defaults in the script body because Windows
+   PowerShell 5.1 exposed an empty `$PSScriptRoot` during parameter-default
+   evaluation;
+2. exclude deterministic `StringBuilder.Append` from the generic canonical
+   mutation `.Append(` authority pattern;
+3. run the established build in a fresh PowerShell process so the closeout
+   verifier's strict mode does not leak into it;
+4. run determinism, firewall-fixture, package-firewall, and preflight scripts
+   in fresh PowerShell processes for the same isolation; and
+5. pass the existing package firewall and preflight their actual mandatory
+   package-path arguments, removing the nonexistent preflight
+   `-NonInstalling` switch.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+runtime evidence was accessed or changed. This record does not substitute for
+owner-operated runtime testing.
+
+## 2026-07-26 - Mosaic 0.2D read-only conversation history
+
+**Status:** PASS offline at implementation commit `83a7b7c`; live owner UI
+verification remains required.
+
+The implementation adds an immutable participant-scoped viewer, a read-only
+RimWorld MainTabWindow, a packaged MainButtonDef, and six focused contracts.
+It rebuilds only from canonical actually presented dialogue events and
+requires recorded audience membership plus direct speaker/recipient
+participation. It adds no persistence store, dialogue generation, additional
+turn, provider/model path, canonical mutation, history editing, or pawn
+authority.
+
+Minimal compatibility corrections:
+
+- replaced the candidate's nonexistent `TestAssert.SequenceEqual` call with
+  the repository's established LINQ predicate assertion;
+- imported the actual RimWorld 1.6 namespace containing `MainTabWindow`; and
+- moved the MainButtonDef into the deterministic package source, then extended
+  the allowlist, source-hash check, preflight requirement, static required-file
+  list, and missing/mismatched adversarial fixtures.
+
+Complete clean-source verification:
+
+- static verification: PASS, 139 C# files;
+- Core Release build: PASS, zero warnings/errors;
+- Providers Release build: PASS, zero warnings/errors;
+- contract tests: PASS, 176 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid and 19 rejected;
+- package firewall: PASS, nine declared entries and zero direct adaptations;
+- non-installing preflight: PASS, all RimWorld 1.6 references present;
+- frozen 0.1 diff: empty;
+- fresh detached worktree 1: PASS;
+- fresh detached worktree 2: PASS; and
+- byte-for-byte package reproduction: PASS.
+
+Certified implementation commit:
+`83a7b7cedb2655579cd5e3a563f6aca98ffbe722`.
+
+Certified package SHA-256:
+`e8d5d15d44682a2e9258ec866b482a99c4b359232605209ad81cc1f5620289ff`.
+
+The package contains nine firewall-declared entries: About metadata, Core,
+Providers, and RimWorld assemblies, RimWorld symbols, the dialogue Def, the
+conversation-history MainButtonDef, README, and third-party notices.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+prepared runtime evidence was accessed or changed.
+
+## 2026-07-27 - Mosaic 0.2E determinism and lifecycle closure
+
+**Status:** PASS offline at implementation commit `512936a`; combined PR
+#7/0.2E owner runtime verification remains required.
+
+The milestone adds six contracts, one 128-cycle integration replay scenario,
+an executable cross-process closure verifier, source firewalls, and
+documentation. It changes no shipped Core, Providers, RimWorld, or package
+source relative to exact PR #7 head
+`7a469b1eea200bbd1d71eeb48572c74ab8d9f826`.
+
+The supplied candidate compiled without an API correction. The only content
+correction before execution removed one trailing Markdown whitespace marker.
+
+Determinism closure verifier:
+
+- source RNG firewall: PASS;
+- read-only viewer mutation/provider/pawn-control firewall: PASS;
+- two independent contract processes produced identical normalized output;
+- two independent integration processes produced the same replay digest; and
+- deterministic digest:
+  `9cdee2b44153d67bf1ec95f8627932936faca4827a3616deb0e0ffe4d256fb36`.
+
+Complete clean-source verification:
+
+- static verification: PASS, 141 C# files;
+- Core Release build: PASS, zero warnings/errors;
+- Providers Release build: PASS, zero warnings/errors;
+- contract tests: PASS, 182 executed and zero failed;
+- integration harness: PASS, eight scenarios and 760 assertions;
+- determinism scenario: PASS, 128 cycles and 129 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid and 19 rejected;
+- package firewall: PASS, nine declared entries and zero direct adaptations;
+- non-installing preflight: PASS, all RimWorld 1.6 references present;
+- frozen 0.1 diff: empty;
+- fresh detached worktree 1: PASS;
+- fresh detached worktree 2: PASS; and
+- byte-for-byte package reproduction: PASS.
+
+Certified implementation commit:
+`512936a7a2db2fc4ff3f673d4f208a3b621baca0`.
+
+Certified package SHA-256:
+`056a35c81d2fd4f49382a4cf732f8cca7b790269861a93779c981cc16ab801e1`.
+
+The package retains the PR #7 nine-entry allowlisted shape. Its commit-bound
+binary hash changes because the assembly build records the new source
+revision, but no shipped runtime source or intended package behavior changed.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+runtime evidence was accessed or changed.
+
+## 2026-07-26 - Mosaic 0.2A grounded relationship dialogue
+
+**Status:** PASS offline at implementation commit
+`5edebba36ccead3b3d2b6c7fe55fce50f62a2959`; owner-operated live DLC gate
+pending.
+
+The fake-only RimWorld dialogue path now composes bounded first-person text
+from the mandatory current social EventId and at most two prior experienced
+events for the same owner and counterpart. Selection preserves mixed
+positive/negative history, prefers meaningful direct-relationship transitions,
+and fails closed for private, observer-only, told, inferred, malformed,
+cross-owner, and cross-counterpart evidence. Prior evidence is rebuilt from
+the existing verified experience journal; no new durable store or mutation
+authority was added.
+
+The supplied uncompiled candidate required one compatibility correction:
+`GroundedRelationshipDialogue.cs` now imports
+`Dagmay.Core.Persistence` for the existing `ExperienceJournalRecord` type.
+No design or milestone expansion was required.
+
+Complete clean-source Release verification:
+
+- static verification: PASS, 131 C# files;
+- Core and Providers Release builds: PASS, zero warnings/errors;
+- contract tests: PASS, 158 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid accepted and 17 adversarial
+  packages rejected;
+- package firewall: PASS, eight declared entries and zero direct adaptations;
+- non-installing Gate 3 preflight: PASS against the installed RimWorld 1.6
+  assemblies;
+- frozen `rimworld/0.1-closure-candidate/`: unchanged; and
+- two fresh detached Git worktrees at the exact implementation commit:
+  byte-identical packages.
+
+Certified clean-source package SHA-256:
+`1f15b34a994e63e7076ae1a5922653af60533f782e2471bef29ce1a655673295`.
+
+The package contains exactly:
+
+- `About/About.xml`;
+- `Assemblies/Dagmay.Core.dll`;
+- `Assemblies/Dagmay.Providers.dll`;
+- `Assemblies/Dagmay.RimWorld.dll`;
+- `Assemblies/Dagmay.RimWorld.pdb`;
+- `Defs/MosaicDialogueDefs.xml`;
+- `README.txt`; and
+- `THIRD_PARTY_NOTICES.txt`.
+
+A populated branch worktree produced different compiled-entry bytes while the
+two fresh detached worktrees matched each other exactly. That populated
+package was not certified or selected for owner testing. The certified package
+is the clean-source artifact above.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+prepared live evidence was accessed or changed.
+
+Live status remains unverified. The owner gate must use RimWorld Core,
+Royalty, Ideology, Biotech, Anomaly, Odyssey, and Mosaic only, with provider
+dispatch offline and a new disposable colony/save.
+
+## 2026-07-26 - Mosaic 0.2B bounded two-turn exchange
+
+**Status:** PASS offline at implementation commit
+`db030c5`; owner-operated live DLC gate pending.
+
+After a qualifying grounded opening is actually displayed and its factual
+admission is successfully queued, the original recipient may produce exactly
+one deterministic grounded reply. The reply keeps the same conversation ID,
+swaps the participant roles, requires the current social EventId, and may add
+at most two eligible recipient-owned prior events. Private, observer-only,
+told, inferred, unrelated, mismatched, undisplayed, or unadmitted context
+fails closed. The runtime has no path from the reply to a third turn.
+
+The supplied uncompiled candidate required one API compatibility correction:
+`OfflineRimWorldDialoguePipeline.cs` now imports
+`Dagmay.Core.Contracts` for the existing `EventId` type. No behavioral
+redesign or milestone expansion was required.
+
+Complete clean-source Release verification:
+
+- static verification: PASS, 133 C# files;
+- Core and Providers Release builds: PASS, zero warnings/errors;
+- contract tests: PASS, 164 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid accepted and 17 adversarial
+  packages rejected;
+- package firewall: PASS, eight declared entries and zero direct adaptations;
+- non-installing Gate 3 preflight: PASS against the installed RimWorld 1.6
+  assemblies;
+- frozen `rimworld/0.1-closure-candidate/`: unchanged; and
+- two fresh detached Git worktrees at the exact implementation commit:
+  byte-identical packages.
+
+Certified clean-source package SHA-256:
+`22d6235ff3664283f03882c1ef50cb94680296822a43ce0769b7c8c5b634929f`.
+
+The package contains exactly:
+
+- `About/About.xml`;
+- `Assemblies/Dagmay.Core.dll`;
+- `Assemblies/Dagmay.Providers.dll`;
+- `Assemblies/Dagmay.RimWorld.dll`;
+- `Assemblies/Dagmay.RimWorld.pdb`;
+- `Defs/MosaicDialogueDefs.xml`;
+- `README.txt`; and
+- `THIRD_PARTY_NOTICES.txt`.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+prepared live evidence was accessed or changed.
+
+Live status remains unverified. The owner gate must use RimWorld Core,
+Royalty, Ideology, Biotech, Anomaly, Odyssey, and Mosaic only, with provider
+dispatch offline and a new disposable colony/save. Third-party mods, RimTalk,
+real providers, free-running conversation, and learned conversational policy
+remain outside this gate.
+
+## 2026-07-26 - Mosaic 0.2C cross-encounter conversation continuity
+
+**Status:** PASS offline at implementation commit `f96a1d6`; owner-operated
+live DLC gate pending.
+
+A later qualifying exchange may now acknowledge the latest completed,
+canonical two-turn exchange for the same participant pair. Selection requires
+both admitted dialogue events, opposite speakers/recipients, shared witnessed
+audience, chronological display receipts, and no future turn. Prior text
+remains explicitly attributed as `I said` or `you said`; it is not promoted
+to independent truth, belief, memory, personality, or action authority.
+Each new event remains capped at one opening and one reply.
+
+The supplied v2 transformer stopped safely because its first trigger
+constructor anchor occurred twice, and later pipeline anchors described an
+older `PrepareTurnAsync` call shape than the exact certified PR #5 source.
+The already-authored replacements were applied with unambiguous current-source
+context, including the intended shared context-budget increase. No behavior
+was redesigned or broadened.
+
+Complete clean-source Release verification:
+
+- static verification: PASS, 135 C# files;
+- Core and Providers Release builds: PASS, zero warnings/errors;
+- contract tests: PASS, 170 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid accepted and 17 adversarial
+  packages rejected;
+- package firewall: PASS, eight declared entries and zero direct adaptations;
+- non-installing Gate 3 preflight: PASS against installed RimWorld 1.6
+  assemblies;
+- frozen `rimworld/0.1-closure-candidate/`: unchanged; and
+- two fresh detached Git worktrees at the exact implementation commit:
+  byte-identical packages.
+
+Certified clean-source package SHA-256:
+`5013ce5fb9e18763bdd400a8a7e8902fd75cd2c1f31c9ae0563f7f0cecdfd8de`.
+
+The package contains the eight declared entries: `About/About.xml`, the three
+Mosaic assemblies, `Assemblies/Dagmay.RimWorld.pdb`,
+`Defs/MosaicDialogueDefs.xml`, `README.txt`, and
+`THIRD_PARTY_NOTICES.txt`.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+prepared live evidence was accessed or changed.
+
+## 2026-07-26 - Runtime presentation thread-binding repair
+
+**Live result:** LIMITING RESULT at PR #3 commit `20a16ab`.
+
+Owner-operated RimWorld evidence demonstrated successful mod load, enrollment,
+qualifying social-event capture for Pi, experience/memory creation, and entry
+into the deterministic fake-dialogue path. Presentation then repeatedly failed
+closed with `RimWorld dialogue presentation is main-thread-only.` from
+`GameComponentTick` and `GameComponentOnGUI`.
+
+Source review confirmed that the presenter field initializer captured the
+GameComponent construction thread. No other RimWorld adapter captured
+`ManagedThreadId` during construction.
+
+**Repair status:** PASS live in the isolated Core + Mosaic configuration.
+
+The default presenter now starts unbound. Only an explicit trusted tick or GUI
+lifecycle entry may establish affinity, using one-time atomic binding. The
+internal explicit-thread constructor remains available for deterministic
+tests. Ordinary operations cannot self-bind, later calls require the same
+thread, concurrent first-use cannot bind two threads, and disposal remains
+idempotent. A component-level mismatch is latched, logged once, and disables
+further presentation work for that game instance.
+
+Four new contract tests cover loader-thread A versus runtime thread B, repeated
+calls and shared tick/GUI affinity on B, third-thread rejection, concurrent
+first-use, and disposal/lifecycle behavior.
+
+Owner-operated live retest at commit `c49da81`, package SHA-256
+`de6c8b6652297f10ac3ed2f6b53975f376b1c8b962221876923f41bae3bf32aa`,
+and RimWorld 1.6.4871:
+
+- three colonists enrolled;
+- qualifying opinion-change and direct-relationship events were detected;
+- four bounded experiences and four memories were created;
+- four deterministic dialogue admissions received actual Bubble receipts;
+- the expected sentence appeared in speech bubbles;
+- the prior main-thread exception and presentation-disable warning did not
+  recur;
+- save/reload retained all three IndividualIds and LineageIds;
+- checkpoint generation advanced to 2;
+- state restored with `Events=8; Memories=4`;
+- two meaningful-event reflection items restored;
+- identity, experience, and reflection storage remained healthy; and
+- previously displayed dialogue was not presented again.
+
+The exact post-load certification was:
+
+```text
+SOCIAL PATH CERTIFICATION PASS; events=4; memories=4; reflectionEligible=2; postLoad=True.
+```
+
+This live result does not cover full normal-mod-stack compatibility, DLC
+combinations, RimTalk coexistence, play-log fallback, long-duration soak,
+broader visual/gameplay tuning, or real-provider behavior. See
+`../../../docs/MOSAIC_V0_2_DIALOGUE_RUNTIME_RETEST_20260726.md`.
+
+Evidence-only follow-up verification confirmed zero runtime, test, harness, or
+tooling source changes relative to `c49da81`. The unchanged source state again
+passed 129-file static verification, 153/153 contracts, seven integration
+scenarios with 631 assertions, warning-free Core/Providers/RimWorld Release
+builds, one accepted and 17 rejected firewall fixtures, and the eight-entry
+zero-direct-adaptation package firewall. Two fresh Windows worktrees at the
+exact tested implementation commit reproduced the owner-tested package
+byte-for-byte at SHA-256
+`de6c8b6652297f10ac3ed2f6b53975f376b1c8b962221876923f41bae3bf32aa`;
+non-installing preflight passed on that exact package. The later documentation
+commit is not substituted into SourceLink metadata for the tested binary.
+
+Pre-commit complete Release verification:
+
+- static verification: PASS, 129 C# files;
+- contract tests: PASS, 153 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- Core, Providers, and RimWorld 1.6 Release builds: zero warnings/errors;
+- firewall fixtures: one valid accepted and 17 adversarial rejected;
+- package firewall: eight declared entries and zero direct adaptations.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, sidecar, configuration, credential, log, or
+prepared evidence was accessed or changed during the repair.
+
+## 2026-07-26 - Storytelling evidence spine fixtures
+
+**Status:** PASS offline; no runtime or canonical relationship mutation.
+
+The smallest deterministic evidence spine now covers canonical social facts,
+explicit experienced/witnessed/told perception, episodic memory, directed
+relationship evidence, bounded projection, exact-EventId dialogue retrieval,
+and grounded fake-provider/appraisal inputs.
+
+Four fixtures cover kindness, insult, betrayal, rescue, rumor/hearsay,
+asymmetric A-to-B versus B-to-A histories, mixed positive/negative evidence,
+superseded evidence without erasure, private and unwitnessed boundaries, and
+deterministic journal save/reload rebuild. Private and observer-only evidence
+cannot enter dialogue context. Duplicate EventIds fail closed.
+
+The projection is bounded context only. It does not mutate canonical
+relationships, memory, beliefs, affect, goals, plans, identity, pawn behavior,
+or gameplay.
+
+Complete documented Release verification at implementation commit
+`f4683c2`:
+
+- static verification: PASS, 128 C# files;
+- Core and Providers Release builds: PASS, zero warnings/errors;
+- contract tests: PASS, 149 executed and zero failed;
+- integration harness: PASS, seven scenarios and 631 assertions;
+- RimWorld 1.6 adapter Release build: PASS, zero warnings/errors;
+- package firewall fixtures: PASS, one valid and 17 rejected;
+- package firewall: PASS, eight declared entries and zero direct adaptations;
+- package SHA-256:
+  `ea945a120f24cb43277c7d77efd339084bfdb82da6ef8d3cab94b067a3835560`.
+
+No provider or local model was called; RimWorld was not launched; no package
+was installed; and no save, configuration, credential, or runtime evidence was
+accessed or changed.
