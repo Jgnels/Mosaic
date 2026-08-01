@@ -609,3 +609,13 @@ This closes only the prepared offline 0.2F/0.2G gates. The trace contract is
 not wired into shipped RimWorld behavior, and the authored benchmark is not
 evidence of organic runtime quality, latency, DLC coexistence, or owner-test
 success.
+
+## 2026-08-01 Mosaic v44R / 0.3I semantic-correction acceptance
+
+**ACCEPTED RESEARCH CHECKPOINT:** commit `89be3f89fdd3802abd92f0b2821dd7ec28cfc0a1`, tree `4b634c0b33b5ee96be04e6242e930ae8ba4f86f2`, is the accepted v44R descendant repair of preserved defective candidate `a52fad6fe06efa778fa733075610d7a7e1db1d44`.
+
+The repair replaced the prior misleading 104-name generic C# gate with substantive named semantic cases and added a real 18th integration scenario. Reported final certification passed 104/104 v44 semantic cases, 18/18 integrations, 669 logical contracts, 190 static C# files, zero warnings/errors across Core/Providers/Tests/IntegrationHarness/RimWorld 1.6 builds, full portable stress (5,000 exact chains and 50,000 lifecycle cycles), authority/package/adversarial firewalls, and GateKit A/B reproduction. Independent source review confirmed that the repaired suite exercises distinct semantic behaviors rather than aliasing names to one generic assertion and that integration #18 is substantive.
+
+v44 remains session-local provisional only: no durable/canonical promotion, persistence/restore, provider, planner/job/pawn, or player-knowledge authority.
+
+**Trajectory correction:** v45 and later cognition are frozen. The next authorized work is repository consolidation, external source-level red-team review, then a live RimWorld 0.3 shadow vertical slice through v41 → v42 → v43 → v44 and explicit player-value evaluation. Test count and architecture volume are no longer treated as project-success metrics.

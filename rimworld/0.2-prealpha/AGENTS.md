@@ -1,41 +1,39 @@
-# Mosaic RimWorld 0.2 Pre-Alpha Guidance
+# Mosaic RimWorld Active-Tree Guidance
 
-This tree is derived from `rimworld/0.1-closure-candidate/` but is a separate development track.
-The frozen 0.1 closure tree must remain unchanged.
+This is the active RimWorld research/development tree.
 
-`Dagmay` namespaces, project names, serialized identifiers, and compatibility paths remain in place.
-Mosaic is the user-facing project name.
+The repository-root `research/CANONICAL_CHECKPOINT.md`, root `AGENTS.md`, and `research/PERSISTENT_CHARACTER_BOUNDARY.md` are authoritative.
 
-## Status
+## Current base
 
-- Architecture and contract implementation: Implemented.
-- Static verification: Passed (97 C# files on the Gate 3 offline-readiness branch).
-- Full C# compilation: Passed for Core, Providers, Tests, IntegrationHarness, and the Release
-  RimWorld adapter against installed RimWorld 1.6 assemblies.
-- Contract tests: Passed (68 executed; 0 failed).
-- Integration harness: Passed (six default scenarios; 0 failed).
-- Gate 3 offline soak: Short and long deterministic presets passed; this is not a live RimWorld soak.
-- RimWorld runtime: Initial Gate 3 failed when a load-time reflection write advanced the external
-  generation. The offline fix is verified and a minimal live startup retest passed, but graphical
-  capture prevented the required two-load continuity rerun.
-- Runtime installation: Temporary test installation removed; original configuration restored.
+Accepted v44R / 0.3I commit:
+
+`89be3f89fdd3802abd92f0b2821dd7ec28cfc0a1`
+
+The frozen `rimworld/0.1-closure-candidate/` tree is historical/recovery source and must not receive new feature development.
 
 ## Binding boundaries
 
-- The repository-root `AGENTS.md` and persistent-character boundary are authoritative.
-- Model output and external-mod output are untrusted proposals.
-- No hidden chain-of-thought is requested or stored.
-- Observer/debug/prompt/UI operations must not mutate cognition.
-- External integrations fail soft and must not own durable identity.
-- Third-party CLR objects must not be stored in durable Mosaic state.
-- No pawn-control, job-issuance, or autonomous action code may be added without a separate
-  owner-approved design gate and execution-safety review.
+- Model and external-mod output are untrusted proposals.
+- Observer/debug/prompt/UI operations must not silently mutate cognition.
+- External integrations fail soft and do not own durable identity.
+- Third-party CLR objects must not be stored as durable Mosaic identity/cognitive state.
+- Generated language is not automatically canonical truth.
+- No pawn-control, job-issuance, planner authority, or autonomous action path may be added without a separate owner-approved design/safety gate.
+- v44 is session-local provisional only and must retain its no-durable/no-canonical/no-provider/no-planner/no-UI/no-pawn authority boundary.
 
-## Required next work
+## Current authorized work
 
-1. Keep the complete offline verification chain green.
-2. Complete the owner-assisted two-consecutive-load sequence without save-file workarounds.
-3. If continuity passes, complete the remaining controlled owner test in
-   `../../docs/MOSAIC_GATE3_RUNTIME_TEST_PLAN.md`.
-4. Preserve exact logs and evidence manifests without private saves or credentials.
-5. Do not begin Gate 4 work until the live Gate 3 criteria are supported by actual RimWorld evidence.
+**No new cognition milestone is authorized. v45 is frozen.**
+
+Allowed current work:
+
+- repository consolidation/hygiene;
+- test-quality audit;
+- runtime automation feasibility work that does not expand cognition;
+- design/implementation of the controlled live 0.3 shadow vertical-slice harness after consolidation review;
+- player-value measurement design.
+
+Before creating a new source file, abstraction, schema, harness, or document, identify the demonstrated risk it removes or observable character capability it enables and prefer reuse/simplification where possible.
+
+Offline gates remain necessary but are not sufficient evidence for live gameplay quality.
