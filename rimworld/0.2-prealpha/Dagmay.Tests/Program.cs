@@ -333,6 +333,7 @@ namespace Dagmay.Tests
             Mosaic03FContextualDevelopmentalRetrievalContractTests.AddTo(tests);
             Mosaic03GGroundedDevelopmentalContextMaterializationContractTests.AddTo(tests);
             Mosaic03HGroundedCompoundAppraisalContractTests.AddTo(tests);
+            Mosaic03IContextualProvisionalAdmissionContractTests.AddTo(tests);
             var testSet = Environment.GetEnvironmentVariable("MOSAIC_TEST_SET");
             var testPrefix = Environment.GetEnvironmentVariable("MOSAIC_TEST_PREFIX");
             if (string.Equals(testSet, "V41", StringComparison.Ordinal))
@@ -341,6 +342,8 @@ namespace Dagmay.Tests
                 tests = tests.Skip(tests.Count - 145).Take(58).ToList();
             else if (string.Equals(testSet, "V43", StringComparison.Ordinal))
                 tests = tests.Skip(tests.Count - 87).ToList();
+            else if (string.Equals(testSet, "V44", StringComparison.Ordinal))
+                tests = tests.Skip(tests.Count - Mosaic03IContextualProvisionalAdmissionContractTests.Names.Length).ToList();
             else if (!string.IsNullOrWhiteSpace(testPrefix))
                 tests = tests.Where(value => value.Name.StartsWith(testPrefix, StringComparison.Ordinal)).ToList();
 

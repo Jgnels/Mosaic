@@ -1,0 +1,408 @@
+{
+  "bounds": {
+    "active_per_owner": 32,
+    "affect_overlay_cap_bps": 1500,
+    "event_filter_bytes": 1048576,
+    "global_active": 1024,
+    "lifetime_ticks": 15000,
+    "relationship_overlay_cap_bps": 800,
+    "utterance_filter_bytes": 1048576
+  },
+  "mandatory_rejections": [
+    "display attempt or failure",
+    "canonical dialogue attempt or failure",
+    "untrusted or consumed factory object",
+    "foreign session save world store lineage owner or checkpoint",
+    "same-generation substituted checkpoint",
+    "unwitnessed owner",
+    "display dialogue text audience chronology or event mismatch",
+    "relationship without direct counterpart",
+    "active or terminal utterance replay",
+    "active or terminal canonical-event replay",
+    "out-of-order admission",
+    "admission before canonical event or after display-anchored lifetime",
+    "activation before admission or at/after expiry",
+    "legacy-v39 versus contextual-v44 path conflict",
+    "global owner pending or claim bound overflow"
+  ],
+  "scenarios": [
+    {
+      "dialogue_receipt_fingerprint": "a2921d12b86ca230102dc294658cc02ee82d5406bb724ac51f9a486bf8938409",
+      "display_receipt_fingerprint": "e37e5e75451b956bca6eab119c9920f21e48d3f41fa6175072f5df26e5ba9252",
+      "expected": {
+        "active_reaction_fingerprint": "e34544fa7ace67818b6ccd1b94333c571802b4055734f355606de0cd17c7e194",
+        "admission_receipt_fingerprint": "14e5c7a2bbe4b55a4564d6b9363d068a15c87f7cd98daee2de857d124c1adc9e",
+        "admitted_tick": 6001,
+        "affect_overlay": [
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": 3133,
+            "dimension": "valence",
+            "overlay_bps": 469,
+            "source_bps": 3133
+          },
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": 1733,
+            "dimension": "certainty",
+            "overlay_bps": 259,
+            "source_bps": 1733
+          }
+        ],
+        "attempt_fingerprint": "1ec7c25ef8ebcb508e9603529fb3498f72dea02f0add81f8c8b610d5e1ae26ea",
+        "attempt_id": "contextual-admission-attempt:9ceccfe46cd9aa9f375bafc6ab99f7e5",
+        "authority": "SESSION_LOCAL_PROVISIONAL_ONLY_NO_DURABLE_NO_CANONICAL_NO_PERSISTENCE_NO_PROVIDER_NO_PLANNER_NO_UI_NO_PAWN_AUTHORITY",
+        "biases": [
+          "ATTENTION",
+          "WARMTH"
+        ],
+        "created_tick": 6000,
+        "expires_tick": 21000,
+        "families": [
+          [
+            "TRUST",
+            4009
+          ],
+          [
+            "GRATITUDE",
+            2625
+          ],
+          [
+            "WELLBEING",
+            1333
+          ]
+        ],
+        "presentation_mode": "ICON",
+        "reaction_id": "contextual-reaction:a9b33fac7c15e598b3b26f4175085ddc",
+        "relationship_overlay": [
+          {
+            "cap_bps": 800,
+            "confidence_adjusted_bps": 3634,
+            "dimension": "trust",
+            "overlay_bps": 290,
+            "source_bps": 3634
+          }
+        ]
+      },
+      "name": "default_direct_relationship",
+      "proposal_fingerprint": "de7e8341e10e57cfc45e68ea12f68004bdaf2d7cfb35df19e55024166feb2b21",
+      "request_fingerprint": "51c3dfd2febf9586b8d143ba5df5845ae4f70e49726abe6abd3f4619fcb4c4a1"
+    },
+    {
+      "dialogue_receipt_fingerprint": "a2921d12b86ca230102dc294658cc02ee82d5406bb724ac51f9a486bf8938409",
+      "display_receipt_fingerprint": "e37e5e75451b956bca6eab119c9920f21e48d3f41fa6175072f5df26e5ba9252",
+      "expected": {
+        "active_reaction_fingerprint": "da70a119689a1135ec6129af10502aebdeecf7d5be16f1ce6c041f2b2e8eb7ee",
+        "admission_receipt_fingerprint": "3227bcfe27b3fd93ec70c9b3ddbf0d0ba14c94d3234dbd59d559cc713226e1d3",
+        "admitted_tick": 6001,
+        "affect_overlay": [
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": 4033,
+            "dimension": "valence",
+            "overlay_bps": 604,
+            "source_bps": 4033
+          },
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": 2333,
+            "dimension": "certainty",
+            "overlay_bps": 349,
+            "source_bps": 2333
+          }
+        ],
+        "attempt_fingerprint": "ce1fdd904ee6ef944f79d6baaee6e383623ba4e89d0b0e402714fc98201bc8d4",
+        "attempt_id": "contextual-admission-attempt:7ed2515d7069a60836c2bed0ab096016",
+        "authority": "SESSION_LOCAL_PROVISIONAL_ONLY_NO_DURABLE_NO_CANONICAL_NO_PERSISTENCE_NO_PROVIDER_NO_PLANNER_NO_UI_NO_PAWN_AUTHORITY",
+        "biases": [
+          "ATTENTION",
+          "WARMTH"
+        ],
+        "created_tick": 6000,
+        "expires_tick": 21000,
+        "families": [
+          [
+            "TRUST",
+            4009
+          ],
+          [
+            "GRATITUDE",
+            2625
+          ],
+          [
+            "WELLBEING",
+            1333
+          ]
+        ],
+        "presentation_mode": "ICON",
+        "reaction_id": "contextual-reaction:0a757315871da85a23b5c487caf99da3",
+        "relationship_overlay": []
+      },
+      "name": "affect_only_witness",
+      "proposal_fingerprint": "ae4d5facbf9beca342fc3266ded3ae0f32e8d1bc5b3d12cac41292b4925ab6f6",
+      "request_fingerprint": "c65e6e25762628bd170ba3d599da0ae995497924dacb8f449c3b357f44e36bfb"
+    },
+    {
+      "dialogue_receipt_fingerprint": "a2921d12b86ca230102dc294658cc02ee82d5406bb724ac51f9a486bf8938409",
+      "display_receipt_fingerprint": "e37e5e75451b956bca6eab119c9920f21e48d3f41fa6175072f5df26e5ba9252",
+      "expected": {
+        "active_reaction_fingerprint": "854fe7657763c42c0ed15e73ffa3639a652a7741e71dafdcfb84882b418234a6",
+        "admission_receipt_fingerprint": "7e56be80bd6ad35459167bc2168ae61c022cb8efb44c52617b16355bf08c30e5",
+        "admitted_tick": 6001,
+        "affect_overlay": [
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": 2224,
+            "dimension": "valence",
+            "overlay_bps": 333,
+            "source_bps": 3591
+          },
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": -1513,
+            "dimension": "certainty",
+            "overlay_bps": -226,
+            "source_bps": -2444
+          }
+        ],
+        "attempt_fingerprint": "3759b2cf7063021b5c287c1803dd3069872c0ac451f1e4a2d29c6db8f4d4e42d",
+        "attempt_id": "contextual-admission-attempt:656a5071ed2c2a9e82679f6ba0c3c78d",
+        "authority": "SESSION_LOCAL_PROVISIONAL_ONLY_NO_DURABLE_NO_CANONICAL_NO_PERSISTENCE_NO_PROVIDER_NO_PLANNER_NO_UI_NO_PAWN_AUTHORITY",
+        "biases": [
+          "ATTENTION",
+          "GUARDEDNESS",
+          "WARMTH"
+        ],
+        "created_tick": 6000,
+        "expires_tick": 21000,
+        "families": [
+          [
+            "GRATITUDE",
+            2236
+          ],
+          [
+            "SUSPICION",
+            1789
+          ],
+          [
+            "TRUST",
+            1156
+          ]
+        ],
+        "presentation_mode": "ICON",
+        "reaction_id": "contextual-reaction:7d9cb70fd0121d785e768237b02b16e0",
+        "relationship_overlay": [
+          {
+            "cap_bps": 800,
+            "confidence_adjusted_bps": 435,
+            "dimension": "trust",
+            "overlay_bps": 34,
+            "source_bps": 703
+          }
+        ]
+      },
+      "name": "gratitude_and_suspicion",
+      "proposal_fingerprint": "864e83f32e3ba5e607c90db706b00f29d8ad1edc0c522803f07633399c4e18d6",
+      "request_fingerprint": "29cf3a016a1f06e998ea49a268f175d6c0520120ca39167b4ecc413890cdb7cf"
+    },
+    {
+      "dialogue_receipt_fingerprint": "a2921d12b86ca230102dc294658cc02ee82d5406bb724ac51f9a486bf8938409",
+      "display_receipt_fingerprint": "e37e5e75451b956bca6eab119c9920f21e48d3f41fa6175072f5df26e5ba9252",
+      "expected": {
+        "active_reaction_fingerprint": "6f00935efd061bd91a6d244822a23042ca512a31b18081195b35ed1e011800af",
+        "admission_receipt_fingerprint": "0a6a7a462fe037517e342c2b14b24e172b82218c22f41bad6059cd3d8b232a43",
+        "admitted_tick": 6001,
+        "affect_overlay": [
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": 1014,
+            "dimension": "certainty",
+            "overlay_bps": 152,
+            "source_bps": 1493
+          },
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": -835,
+            "dimension": "valence",
+            "overlay_bps": -125,
+            "source_bps": -1229
+          }
+        ],
+        "attempt_fingerprint": "b8988378f98f1aaaba6b7282a0ad45f389fa9aa1a040b976d7d7a15742f7c8e6",
+        "attempt_id": "contextual-admission-attempt:183fc3cff686a32d73730771c4a8be51",
+        "authority": "SESSION_LOCAL_PROVISIONAL_ONLY_NO_DURABLE_NO_CANONICAL_NO_PERSISTENCE_NO_PROVIDER_NO_PLANNER_NO_UI_NO_PAWN_AUTHORITY",
+        "biases": [
+          "DEFENSIVENESS",
+          "GUARDEDNESS",
+          "WARMTH",
+          "WITHDRAWAL"
+        ],
+        "created_tick": 6000,
+        "expires_tick": 21000,
+        "families": [
+          [
+            "HEARTBREAK",
+            2766
+          ],
+          [
+            "RESENTMENT",
+            1651
+          ],
+          [
+            "TRUST",
+            1269
+          ]
+        ],
+        "presentation_mode": "ICON",
+        "reaction_id": "contextual-reaction:d8d0a5ce8ff6ae81146ec8873a52be26",
+        "relationship_overlay": [
+          {
+            "cap_bps": 800,
+            "confidence_adjusted_bps": -1279,
+            "dimension": "affection",
+            "overlay_bps": -102,
+            "source_bps": -1882
+          },
+          {
+            "cap_bps": 800,
+            "confidence_adjusted_bps": 813,
+            "dimension": "resentment",
+            "overlay_bps": 65,
+            "source_bps": 1197
+          }
+        ]
+      },
+      "name": "heartbreak_and_resentment",
+      "proposal_fingerprint": "08721cffa1e6c6db1f6013ec6b3679913db0c2a0a903e7588e60d38170dd46ce",
+      "request_fingerprint": "587387885286f3f0fb30127163a9f335863fada14ee576cc0a62229e833a1307"
+    },
+    {
+      "dialogue_receipt_fingerprint": "a2921d12b86ca230102dc294658cc02ee82d5406bb724ac51f9a486bf8938409",
+      "display_receipt_fingerprint": "e37e5e75451b956bca6eab119c9920f21e48d3f41fa6175072f5df26e5ba9252",
+      "expected": {
+        "active_reaction_fingerprint": "6f0610ae426993b96e75135f6ccfe75f88a3680f8b30721cef73c98ed0117066",
+        "admission_receipt_fingerprint": "a7ac3a3bf3b6c7efd0fb03768825dc0fbe62600a1b109f49d59ed6b275ce05c5",
+        "admitted_tick": 6001,
+        "affect_overlay": [
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": 3300,
+            "dimension": "custom_cognitive_dissonance",
+            "overlay_bps": 495,
+            "source_bps": 3300
+          },
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": 1333,
+            "dimension": "valence",
+            "overlay_bps": 199,
+            "source_bps": 1333
+          },
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": 533,
+            "dimension": "certainty",
+            "overlay_bps": 79,
+            "source_bps": 533
+          }
+        ],
+        "attempt_fingerprint": "2d0ff8aa3d4011b5a587ad3924cd1c1dac41813e93f14de12af76d92f5042068",
+        "attempt_id": "contextual-admission-attempt:04dd7834063803908bcb2e63f4075edd",
+        "authority": "SESSION_LOCAL_PROVISIONAL_ONLY_NO_DURABLE_NO_CANONICAL_NO_PERSISTENCE_NO_PROVIDER_NO_PLANNER_NO_UI_NO_PAWN_AUTHORITY",
+        "biases": [
+          "UNCERTAINTY",
+          "WARMTH"
+        ],
+        "created_tick": 6000,
+        "expires_tick": 21000,
+        "families": [
+          [
+            "AMBIGUITY",
+            4000
+          ],
+          [
+            "TRUST",
+            2134
+          ],
+          [
+            "WELLBEING",
+            1333
+          ]
+        ],
+        "presentation_mode": "ICON",
+        "reaction_id": "contextual-reaction:db6fadb03ad7b760a47faf32b474b520",
+        "relationship_overlay": [
+          {
+            "cap_bps": 800,
+            "confidence_adjusted_bps": -2200,
+            "dimension": "custom_obligation",
+            "overlay_bps": -176,
+            "source_bps": -2200
+          }
+        ]
+      },
+      "name": "unknown_namespaced_dimensions",
+      "proposal_fingerprint": "841786ed896a0ba3098f267f4ab23d922cf39b27f394cb9fc2af5d178fac4339",
+      "request_fingerprint": "cc1bed99305dab84b650129ee25dd82e98e0acc535940b3b46c5e9aad7703750"
+    },
+    {
+      "dialogue_receipt_fingerprint": "a2921d12b86ca230102dc294658cc02ee82d5406bb724ac51f9a486bf8938409",
+      "display_receipt_fingerprint": "e37e5e75451b956bca6eab119c9920f21e48d3f41fa6175072f5df26e5ba9252",
+      "expected": {
+        "active_reaction_fingerprint": "0ef0c39506578ae84a3e6d150c1b0c503b296cc446da6f3ee21557c270e0f3a7",
+        "admission_receipt_fingerprint": "c86c28710b60d717dfb7b46f6eb41ce4c85976bb63fc21e9a02d31eaf202c42c",
+        "admitted_tick": 6001,
+        "affect_overlay": [
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": 705,
+            "dimension": "valence",
+            "overlay_bps": 105,
+            "source_bps": 1166
+          },
+          {
+            "cap_bps": 1500,
+            "confidence_adjusted_bps": -19,
+            "dimension": "certainty",
+            "overlay_bps": -2,
+            "source_bps": -33
+          }
+        ],
+        "attempt_fingerprint": "c3f9c861bd43a72778257102d5cc20f33f3b88139cb07522fdc0dd1ae5c59fdd",
+        "attempt_id": "contextual-admission-attempt:eb70891eec91e860653bfff3b2cd3fb5",
+        "authority": "SESSION_LOCAL_PROVISIONAL_ONLY_NO_DURABLE_NO_CANONICAL_NO_PERSISTENCE_NO_PROVIDER_NO_PLANNER_NO_UI_NO_PAWN_AUTHORITY",
+        "biases": [
+          "UNCERTAINTY",
+          "WARMTH"
+        ],
+        "created_tick": 6000,
+        "expires_tick": 21000,
+        "families": [
+          [
+            "TRUST",
+            1129
+          ],
+          [
+            "WELLBEING",
+            705
+          ],
+          [
+            "AMBIGUITY",
+            484
+          ]
+        ],
+        "presentation_mode": "NONE",
+        "reaction_id": "contextual-reaction:b0604a96a681188b2ab401051bed3e85",
+        "relationship_overlay": []
+      },
+      "name": "low_intensity_none_presentation",
+      "proposal_fingerprint": "47cf8db14b609c63f8fb5392174b31842e918a9b67de5d63abd7bb3630c9e84a",
+      "request_fingerprint": "373d7f5fdd15c8e542648fb50d7789a04ab85c63d50e858b0c4845a0feff41a7"
+    }
+  ],
+  "schema": "mosaic.0.3i.shared-deterministic-fixtures.v1",
+  "v38_formal_gate_digest": "f44b00eee5a2fe8d7609bbd80caa79948caf388760f2e33765ec64ad50c3e0d8",
+  "v39_corrected_gate_digest": "c8557ab218dc0a6136a960cfb495dd4853e5dd3ad81d8eadd7b36082b1b47819",
+  "v43_formal_gate_digest": "045ef8a2fd6084c183ced7d2ec9516b3289a309f0b3c55963a895746c70de0d8",
+  "v44_formal_gate_digest": "50fcd9611b04799e50a2e3e71d2402abbbade4343a96e8b56daf479805361ef5"
+}
