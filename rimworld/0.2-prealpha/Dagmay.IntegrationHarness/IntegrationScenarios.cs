@@ -55,7 +55,6 @@ namespace Dagmay.IntegrationHarness
 
         public static IReadOnlyList<ScenarioDefinition> All(int gate3SoakCycles = 250, int deterministicSeed = 2031)
         {
-            VerifyContextualProvisionalReactionAdmission();
             return new[]
             {
                 new ScenarioDefinition("LongHistoryContinuityAndPersistence", LongHistoryContinuityAndPersistenceAsync),
@@ -74,6 +73,7 @@ namespace Dagmay.IntegrationHarness
                 new ScenarioDefinition("ContextualDevelopmentalRetrieval", () => ContextualDevelopmentalRetrievalAsync(gate3SoakCycles)),
                 new ScenarioDefinition("GroundedDevelopmentalContextMaterialization", () => GroundedDevelopmentalContextMaterializationAsync(gate3SoakCycles)),
                 new ScenarioDefinition("GroundedCompoundAppraisal", () => GroundedCompoundAppraisalAsync(gate3SoakCycles)),
+                new ScenarioDefinition("ContextualProvisionalReaction", ContextualProvisionalReactionAsync),
                 new ScenarioDefinition("LongHistoryRetrievalBenchmark", LongHistoryRetrievalBenchmarkAsync),
                 new ScenarioDefinition(
                     "DurableAppraisalAdmissionStress",
