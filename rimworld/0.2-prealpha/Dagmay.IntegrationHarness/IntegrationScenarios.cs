@@ -55,6 +55,7 @@ namespace Dagmay.IntegrationHarness
 
         public static IReadOnlyList<ScenarioDefinition> All(int gate3SoakCycles = 250, int deterministicSeed = 2031)
         {
+            VerifyContextualProvisionalReactionAdmission();
             return new[]
             {
                 new ScenarioDefinition("LongHistoryContinuityAndPersistence", LongHistoryContinuityAndPersistenceAsync),

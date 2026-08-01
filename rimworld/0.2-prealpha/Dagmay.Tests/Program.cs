@@ -333,6 +333,7 @@ namespace Dagmay.Tests
             Mosaic03FContextualDevelopmentalRetrievalContractTests.AddTo(tests);
             Mosaic03GGroundedDevelopmentalContextMaterializationContractTests.AddTo(tests);
             Mosaic03HGroundedCompoundAppraisalContractTests.AddTo(tests);
+            Mosaic03IContextualProvisionalAdmissionContractTests.AddTo(tests);
             var testSet = Environment.GetEnvironmentVariable("MOSAIC_TEST_SET");
             var testPrefix = Environment.GetEnvironmentVariable("MOSAIC_TEST_PREFIX");
             if (string.Equals(testSet, "V41", StringComparison.Ordinal))
