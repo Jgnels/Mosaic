@@ -230,7 +230,7 @@ namespace Dagmay.Core.Appraisal
             if(_activeKey.TryGetValue(key,out var existingId))
             {
                 var existing=_items[existingId]; var existingReceipt=_receipts[existing.AdmissionReceiptFingerprint];
-                if(existing.AttemptId==attempt.AttemptId&&existing.RequestFingerprint==request.Fingerprint)
+                if(existing.AttemptId==attempt.AttemptId&&existing.AttemptFingerprint==attempt.Fingerprint&&existing.RequestFingerprint==request.Fingerprint)
                     return Tuple.Create(existing,existingReceipt);
                 throw new InvalidOperationException("Conflicting active admission.");
             }

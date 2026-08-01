@@ -252,7 +252,8 @@ namespace Dagmay.Core.Appraisal
             if (!string.Equals(display.SessionId, SessionId, StringComparison.Ordinal) ||
                 !display.AudienceIds.Contains(Proposal.OwnerId, StringComparer.Ordinal))
                 throw new ArgumentException("Foreign session or proposal owner was not a witness.");
-            if (!ReferenceEquals(dialogue.DisplayReceipt, display) || !dialogue.VerifyFingerprint())
+            if (dialogue.Outcome != ContextualAdmissionOutcome.ObservedSuccess ||
+                !ReferenceEquals(dialogue.DisplayReceipt, display) || !dialogue.VerifyFingerprint())
                 throw new ArgumentException("Untrusted display/dialogue binding.");
             if (!string.Equals(Proposal.CurrentEventId, dialogue.EventId, StringComparison.Ordinal) ||
                 !string.Equals(Proposal.CurrentEventHash, dialogue.EventHash, StringComparison.Ordinal))
@@ -423,7 +424,7 @@ namespace Dagmay.Core.Appraisal
             string reactionId, string receiptFingerprint, ContextualProvisionalAdmissionAttempt attempt,
             long admittedTick, ContextualReactionState state, string fingerprint)
         {
-            ReactionId = reactionId; AttemptId = attempt.AttemptId; AdmissionReceiptFingerprint = receiptFingerprint;
+            ReactionId = reactionId; AttemptId = attempt.AttemptId; AttemptFingerprint = attempt.Fingerprint; AdmissionReceiptFingerprint = receiptFingerprint;
             RequestFingerprint = attempt.RequestFingerprint; ProposalFingerprint = attempt.ProposalFingerprint;
             OwnerId = attempt.OwnerId; LineageId = attempt.LineageId; CounterpartId = attempt.CounterpartId;
             UtteranceId = attempt.UtteranceId; ConversationId = attempt.ConversationId; SpeakerId = attempt.SpeakerId;
@@ -440,7 +441,7 @@ namespace Dagmay.Core.Appraisal
 
         private ContextualProvisionalReaction(ContextualProvisionalReaction source, ContextualReactionState state, string fingerprint)
         {
-            ReactionId=source.ReactionId; AttemptId=source.AttemptId; AdmissionReceiptFingerprint=source.AdmissionReceiptFingerprint;
+            ReactionId=source.ReactionId; AttemptId=source.AttemptId; AttemptFingerprint=source.AttemptFingerprint; AdmissionReceiptFingerprint=source.AdmissionReceiptFingerprint;
             RequestFingerprint=source.RequestFingerprint; ProposalFingerprint=source.ProposalFingerprint; OwnerId=source.OwnerId;
             LineageId=source.LineageId; CounterpartId=source.CounterpartId; UtteranceId=source.UtteranceId;
             ConversationId=source.ConversationId; SpeakerId=source.SpeakerId; CurrentEventId=source.CurrentEventId;
@@ -453,6 +454,7 @@ namespace Dagmay.Core.Appraisal
         }
         public string ReactionId { get; }
         public string AttemptId { get; }
+        public string AttemptFingerprint { get; }
         public string AdmissionReceiptFingerprint { get; }
         public string RequestFingerprint { get; }
         public string ProposalFingerprint { get; }

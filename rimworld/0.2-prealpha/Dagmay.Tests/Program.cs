@@ -342,6 +342,8 @@ namespace Dagmay.Tests
                 tests = tests.Skip(tests.Count - 145).Take(58).ToList();
             else if (string.Equals(testSet, "V43", StringComparison.Ordinal))
                 tests = tests.Skip(tests.Count - 87).ToList();
+            else if (string.Equals(testSet, "V44", StringComparison.Ordinal))
+                tests = tests.Skip(tests.Count - Mosaic03IContextualProvisionalAdmissionContractTests.Names.Length).ToList();
             else if (!string.IsNullOrWhiteSpace(testPrefix))
                 tests = tests.Where(value => value.Name.StartsWith(testPrefix, StringComparison.Ordinal)).ToList();
 
