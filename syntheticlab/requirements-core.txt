@@ -1,0 +1,5 @@
+# SyntheticLab core/reference code intentionally has no mandatory third-party
+# Python dependency at the current consolidation checkpoint.
+#
+# Optional external MiniGrid experiments use:
+#   requirements-external-minigrid.txt
