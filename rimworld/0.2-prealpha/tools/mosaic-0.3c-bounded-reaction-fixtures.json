@@ -1,0 +1,120 @@
+{
+  "schema": "mosaic.v38.bounded-reaction-fixture-firewall.v1",
+  "source_contract": "Mosaic.Core.BoundedReactionLifecycle.v1",
+  "source_gate_digest": "f44b00eee5a2fe8d7609bbd80caa79948caf388760f2e33765ec64ad50c3e0d8",
+  "cases": [
+    {
+      "id": "valid-observed-success",
+      "expected": "accepted",
+      "session_id": "session-a",
+      "release_attempt_id": "1111111111111111111111111111111111111111111111111111111111111111",
+      "receipt_id": "2111111111111111111111111111111111111111111111111111111111111111",
+      "utterance_id": "utterance-a",
+      "conversation_id": "conversation-a",
+      "speaker_id": "owner-a",
+      "recipient_id": null,
+      "audience_ids": ["owner-a"],
+      "exact_text_hash": "3111111111111111111111111111111111111111111111111111111111111111",
+      "displayed_tick": 120,
+      "checkpoint_generation": 7,
+      "outcome": "OBSERVED_SUCCESS",
+      "source_contract": "Mosaic.Core.BoundedReactionLifecycle.v1",
+      "source_gate_digest": "f44b00eee5a2fe8d7609bbd80caa79948caf388760f2e33765ec64ad50c3e0d8"
+    },
+    {
+      "id": "missing-session",
+      "expected": "rejected",
+      "mutation": "missing_session"
+    },
+    {
+      "id": "blank-attempt",
+      "expected": "rejected",
+      "mutation": "blank_attempt"
+    },
+    {
+      "id": "malformed-receipt-id",
+      "expected": "rejected",
+      "mutation": "malformed_receipt_id"
+    },
+    {
+      "id": "missing-utterance",
+      "expected": "rejected",
+      "mutation": "missing_utterance"
+    },
+    {
+      "id": "missing-conversation",
+      "expected": "rejected",
+      "mutation": "missing_conversation"
+    },
+    {
+      "id": "missing-speaker",
+      "expected": "rejected",
+      "mutation": "missing_speaker"
+    },
+    {
+      "id": "recipient-not-audience",
+      "expected": "rejected",
+      "mutation": "recipient_not_audience"
+    },
+    {
+      "id": "empty-audience",
+      "expected": "rejected",
+      "mutation": "empty_audience"
+    },
+    {
+      "id": "unsorted-audience",
+      "expected": "rejected",
+      "mutation": "unsorted_audience"
+    },
+    {
+      "id": "duplicate-audience",
+      "expected": "rejected",
+      "mutation": "duplicate_audience"
+    },
+    {
+      "id": "speaker-not-witness",
+      "expected": "rejected",
+      "mutation": "speaker_not_witness"
+    },
+    {
+      "id": "malformed-text-hash",
+      "expected": "rejected",
+      "mutation": "malformed_text_hash"
+    },
+    {
+      "id": "negative-displayed-tick",
+      "expected": "rejected",
+      "mutation": "negative_displayed_tick"
+    },
+    {
+      "id": "negative-checkpoint",
+      "expected": "rejected",
+      "mutation": "negative_checkpoint"
+    },
+    {
+      "id": "unknown-outcome",
+      "expected": "rejected",
+      "mutation": "unknown_outcome"
+    },
+    {
+      "id": "foreign-contract",
+      "expected": "rejected",
+      "mutation": "foreign_contract"
+    },
+    {
+      "id": "foreign-digest",
+      "expected": "rejected",
+      "mutation": "foreign_digest"
+    },
+    {
+      "id": "raw-dialogue-field",
+      "expected": "rejected",
+      "mutation": "raw_dialogue_field"
+    },
+    {
+      "id": "unknown-field",
+      "expected": "rejected",
+      "mutation": "unknown_field"
+    }
+  ]
+}

@@ -2,12 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Dagmay.Core.Appraisal;
 using Dagmay.Core.Contracts;
 using Dagmay.Core.Identity;
 using Dagmay.Core.Memory;
 using Dagmay.Core.Persistence;
+using Dagmay.Core.Presentation;
 using Dagmay.Core.Reflection;
 using Dagmay.Core.Relationships;
 using Dagmay.Core.Scheduling;
@@ -63,12 +66,171 @@ namespace Dagmay.IntegrationHarness
                 new ScenarioDefinition("FailureIsolation", FailureIsolationAsync),
                 new ScenarioDefinition("DeterminismObserverLifecycleClosure", DeterminismObserverLifecycleClosureAsync),
                 new ScenarioDefinition("ReadOnlyDecisionTraceFoundation", ReadOnlyDecisionTraceFoundationAsync),
+                new ScenarioDefinition("ReadOnlySocialEventEnvelope", ReadOnlySocialEventEnvelopeAsync),
+                new ScenarioDefinition("BoundedReactionLifecycle", BoundedReactionLifecycleAsync),
+                new ScenarioDefinition("ProvisionalDialogueAppraisal", ProvisionalDialogueAppraisalAsync),
+                new ScenarioDefinition("DurableAppraisalAdmission", DurableAppraisalAdmissionAsync),
+                new ScenarioDefinition("ContextualDevelopmentalRetrieval", () => ContextualDevelopmentalRetrievalAsync(gate3SoakCycles)),
+                new ScenarioDefinition("GroundedDevelopmentalContextMaterialization", () => GroundedDevelopmentalContextMaterializationAsync(gate3SoakCycles)),
+                new ScenarioDefinition("GroundedCompoundAppraisal", () => GroundedCompoundAppraisalAsync(gate3SoakCycles)),
                 new ScenarioDefinition("LongHistoryRetrievalBenchmark", LongHistoryRetrievalBenchmarkAsync),
+                new ScenarioDefinition(
+                    "DurableAppraisalAdmissionStress",
+                    () => DurableAppraisalAdmissionStressAsync(50_000),
+                    includeByDefault: false),
                 new ScenarioDefinition(
                     "Gate3OfflineSoak",
                     () => Gate3OfflineSoakAsync(gate3SoakCycles, deterministicSeed),
                     includeByDefault: false)
             };
+        }
+
+        private static Task<ScenarioExecution> ProvisionalDialogueAppraisalAsync()
+        {
+            var assertions = new HarnessAssert();
+            var owner = IndividualId.Parse("e3000000000000000000000000000001");
+            var v37 = V38GroundedDecision(owner);
+            var v38Lifecycle = V38Lifecycle(owner);
+            var ticket = v38Lifecycle.Prepare(V38Source(v37, owner, "v39-chain", 100), 500);
+            var attempt = v38Lifecycle.BeginAttempt(ticket.TicketId, 110);
+            var observed = V38TrustedReceipt(ticket, attempt, "v39-observed", 120);
+            assertions.True(
+                v38Lifecycle.ObserveReceipt(observed, 120) is not null,
+                "v37 grounded affect reaches v39 only through a genuine v38 observed-success receipt.");
+
+            var cues = new[]
+            {
+                new ProvisionalSpeechCue(
+                    ProvisionalCueType.Gratitude,
+                    0.65m,
+                    true,
+                    0,
+                    ProvisionalFactuality.SpeechAct,
+                    new[] { "ev-v39-chain" }),
+                new ProvisionalSpeechCue(
+                    ProvisionalCueType.Uncertainty,
+                    0.70m,
+                    true,
+                    0,
+                    ProvisionalFactuality.ClaimOnly,
+                    new[] { "ev-v39-chain" })
+            }.OrderBy(value => value.CueType.ToString(), StringComparer.Ordinal).ToArray();
+            var input = new ProvisionalDialogueAppraisalInput(
+                owner.ToString(),
+                observed,
+                cues,
+                new[]
+                {
+                    new ProvisionalKnowledgeEvidence(
+                        "ev-v39-chain",
+                        owner.ToString(),
+                        v37.SourceEvidenceIds[0].ToString(),
+                        ProvisionalPrivacy.OwnerPrivate,
+                        true,
+                        100,
+                        ProvisionalFactuality.VerifiedFact)
+                },
+                V38Hash("canonical-affect-before"),
+                3,
+                V38Hash("canonical-relationship-before"),
+                5,
+                new ProvisionalTraitProfile());
+            var store = new ProvisionalDialogueAppraisalStore(observed.SessionId);
+            var appraisal = store.Activate(store.Prepare(input).AppraisalId, observed.DisplayedTick);
+            var overlay = store.EffectiveOverlay(owner.ToString(), observed.ConversationId, observed.DisplayedTick);
+            assertions.True(
+                overlay.Affect.Valence > 0m &&
+                overlay.Affect.Certainty < 0m &&
+                !appraisal.DirectCanonicalMutation &&
+                !appraisal.DirectPawnAuthority,
+                "v39 produces one bounded compound provisional overlay without canonical or pawn authority.");
+
+            var packet = store.ProposePromotion(
+                appraisal.AppraisalId,
+                "dialogue-event-v39-chain",
+                9,
+                ProvisionalAffectDelta.Zero,
+                new ProvisionalRelationshipDelta(resentment: 0.01m),
+                "admission-receipt-v39-chain");
+            var failed = CanonicalApplicationReceipt.CreateFailure(
+                packet.PacketId,
+                owner.ToString(),
+                packet.AdmittedDialogueEventId,
+                9,
+                packet.ExpectedAffectFingerprint,
+                packet.ExpectedAffectVersion,
+                packet.ExpectedRelationshipFingerprint,
+                packet.ExpectedRelationshipVersion);
+            assertions.Equal(
+                ProvisionalAppraisalState.Active,
+                store.ObserveApplicationReceipt(failed).State,
+                "A failed canonical attempt removes its packet but leaves the provisional overlay active.");
+            packet = store.ProposePromotion(
+                appraisal.AppraisalId,
+                "dialogue-event-v39-chain",
+                9,
+                ProvisionalAffectDelta.Zero,
+                new ProvisionalRelationshipDelta(resentment: 0.01m),
+                "admission-receipt-v39-chain");
+            var successful = V39TrustedApplication(
+                packet,
+                packet.ExpectedAffectFingerprint,
+                packet.ExpectedAffectVersion,
+                V38Hash("canonical-relationship-after"),
+                packet.ExpectedRelationshipVersion!.Value + 1);
+            assertions.Equal(
+                ProvisionalAppraisalState.Promoted,
+                store.ObserveApplicationReceipt(successful).State,
+                "Observed canonical success advances only the targeted relationship store and removes the overlay.");
+            assertions.True(
+                store.ActiveCount() == 0 &&
+                store.PendingPacketCount == 0 &&
+                store.CompletedCount == 1,
+                "Successful v39 reconciliation leaves no live overlay or pending authority packet.");
+
+            return Task.FromResult(new ScenarioExecution(
+                assertions.Assertions,
+                new Dictionary<string, long>(StringComparer.Ordinal)
+                {
+                    ["focusedContracts"] = 42,
+                    ["activeAfterSuccess"] = store.ActiveCount(),
+                    ["pendingAfterSuccess"] = store.PendingPacketCount,
+                    ["completed"] = store.CompletedCount
+                },
+                new Dictionary<string, string>(StringComparer.Ordinal)
+                {
+                    ["gateDigest"] = "c8557ab218dc0a6136a960cfb495dd4853e5dd3ad81d8eadd7b36082b1b47819",
+                    ["sourceReceiptFingerprint"] = observed.ReceiptFingerprint,
+                    ["completionChain"] = store.CompletedChain
+                }));
+        }
+
+        private static CanonicalApplicationReceipt V39TrustedApplication(
+            DurableApplicationPacket packet,
+            string affectFingerprint,
+            long affectVersion,
+            string relationshipFingerprint,
+            long relationshipVersion)
+        {
+            var method = typeof(CanonicalApplicationReceipt).GetMethod(
+                "CreateTrusted",
+                BindingFlags.Static | BindingFlags.NonPublic)
+                ?? throw new HarnessAssertionException("Trusted canonical application receipt factory is unavailable.");
+            return (CanonicalApplicationReceipt)(method.Invoke(
+                null,
+                new object?[]
+                {
+                    packet.PacketId,
+                    packet.PerspectiveOwnerId,
+                    packet.AdmittedDialogueEventId,
+                    packet.ExpectedCheckpointGeneration,
+                    true,
+                    affectFingerprint,
+                    affectVersion,
+                    relationshipFingerprint,
+                    relationshipVersion,
+                    CanonicalApplicationReceipt.SourceContractValue
+                }) ?? throw new HarnessAssertionException("Trusted canonical application receipt factory returned null."));
         }
 
         private static Task<ScenarioExecution> LongHistoryContinuityAndPersistenceAsync()

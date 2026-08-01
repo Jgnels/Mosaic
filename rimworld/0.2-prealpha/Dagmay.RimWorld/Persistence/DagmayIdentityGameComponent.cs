@@ -63,6 +63,8 @@ namespace Dagmay.RimWorld.Persistence
             new ReflectionBudgetGate(ReflectionBudgetPolicy.ConservativePersonalDefault);
         private readonly Dictionary<string, PawnObservationSnapshot> _observations =
             new Dictionary<string, PawnObservationSnapshot>(StringComparer.Ordinal);
+        private readonly ReadOnlySocialEventEnvelopeCapture _readOnlyEventEnvelopeCapture =
+            new ReadOnlySocialEventEnvelopeCapture();
         private readonly ConcurrentQueue<CompletedReflectionCall> _completedReflectionCalls =
             new ConcurrentQueue<CompletedReflectionCall>();
         private readonly HashSet<ReflectionTaskId> _invalidatedInFlightTasks =
@@ -112,6 +114,7 @@ namespace Dagmay.RimWorld.Persistence
         public static DagmayIdentityGameComponent? Current { get; private set; }
 
         public event Action<RimWorldSocialDialogueTrigger>? SocialDialogueTriggerCaptured;
+        public event Action<ReadOnlyRimWorldEventProjection>? ReadOnlyEventEnvelopeCaptured;
 
         public RimWorldConversationHistoryData BuildConversationHistoryData(
             IndividualId? selectedIndividualId,
@@ -814,13 +817,29 @@ namespace Dagmay.RimWorld.Persistence
                     _experiencePosition,
                     _experienceLastHash);
 
-                _eventLedger.Append(factualEvent);
+                var eventAppend = _eventLedger.Append(factualEvent);
                 _perceptionSources[encoded.Perception.Id] = encoded.Perception.SourceEventId;
                 _memoryIndex.Add(encoded.Memory);
                 _experienceRecords.Add(record);
                 _experiencePosition = appended.Position;
                 _experienceLastHash = appended.EntryHash;
                 state = encoded.UpdatedState;
+                if (factualEvent.GameTick.HasValue)
+                {
+                    var projection = _readOnlyEventEnvelopeCapture.TryCapture(
+                        experienceJournalAdmitted: true,
+                        eventLedgerAdmitted: eventAppend.Status == EventAppendStatus.Appended,
+                        factualEvent.Id,
+                        factualEvent.GameTick.Value,
+                        factualEvent.Kind,
+                        factualEvent.FactualPayload.ToDictionary(
+                            pair => pair.Key,
+                            pair => pair.Value,
+                            StringComparer.Ordinal),
+                        state.Id,
+                        dialogueRecipient?.Id);
+                    if (projection is not null) NotifyReadOnlyEventEnvelope(projection);
+                }
                 QueueEventReflection(state, factualEvent);
                 if (IsSocialCertificationKind(change.Kind))
                 {
@@ -2002,6 +2021,31 @@ namespace Dagmay.RimWorld.Persistence
                     Log.Warning(
                         $"[Dagmay] {DagmayBuildInfo.Version} dialogue trigger subscriber failed safely: "
                         + exception.Message);
+                }
+            }
+        }
+
+        private void NotifyReadOnlyEventEnvelope(ReadOnlyRimWorldEventProjection projection)
+        {
+            var envelope = projection.Envelope;
+            Log.Message(
+                $"[Dagmay] 0.3 shadow event envelope; kind={envelope.EventKind}; "
+                + $"EventId={envelope.EventId}; actor={envelope.ActorId!.Value}; "
+                + $"target={envelope.TargetId!.Value}; outcome={envelope.OutcomeState}; "
+                + $"privacy={envelope.PrivacyDomain}; witnesses={projection.WitnessIds.Count}; "
+                + $"actionAuthority={envelope.DirectActionAuthority.ToString().ToLowerInvariant()}");
+
+            var handlers = ReadOnlyEventEnvelopeCaptured;
+            if (handlers is null) return;
+            foreach (Action<ReadOnlyRimWorldEventProjection> handler in handlers.GetInvocationList())
+            {
+                try
+                {
+                    handler(projection);
+                }
+                catch (Exception)
+                {
+                    Log.Warning("[Dagmay] 0.3 shadow event envelope subscriber failed safely.");
                 }
             }
         }

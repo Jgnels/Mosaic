@@ -1,0 +1,756 @@
+{
+  "scenarios": [
+    {
+      "context_packet_fingerprint": "696deb84a5c33f64a21be5bb3425a1658dc5f7a080c5421e64421c8f9010411a",
+      "current_seed_fingerprint": "b5dab21531ada32a10152af0d7949c649638adfd6967e7fff4af38e963fabf77",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 1800,
+            "dimension": "valence",
+            "historical_evidence_bps": 666,
+            "proposed_bps": 2466
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 1200,
+            "dimension": "certainty",
+            "historical_evidence_bps": 533,
+            "proposed_bps": 1733
+          }
+        ],
+        "confidence_bps": 10000,
+        "families": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 1875,
+            "family": "TRUST",
+            "historical_evidence_bps": 801,
+            "net_evidence_bps": 2676,
+            "source_count": 2
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 2625,
+            "family": "GRATITUDE",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 2625,
+            "source_count": 1
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 0,
+            "family": "RESENTMENT",
+            "historical_evidence_bps": 1000,
+            "net_evidence_bps": 1000,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 2676,
+        "proposal_fingerprint": "b1c267ce7b1d5826f39ad665807eddcdf1c065376dcddfc2beb3577223609a73",
+        "proposal_id": "appraisal-proposal:0e19e3bd0909f6b16e0ada0dfdf0896c",
+        "regime": "REPEATED_PATTERN",
+        "relationship_considerations": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 1500,
+            "dimension": "trust",
+            "historical_evidence_bps": 801,
+            "proposed_bps": 2301
+          }
+        ],
+        "uncertainty_codes": [
+          "CONTRADICTORY_HISTORY_PRESERVED",
+          "LOWER_RANKED_FAMILIES_OMITTED",
+          "MEMORY_CONTEXT_HAS_NO_INVENTED_DIRECTION",
+          "UNUSED_ROLE_CAP_NOT_RENORMALIZED"
+        ],
+        "why_count": 12
+      },
+      "name": "rescue_compound_default",
+      "request_fingerprint": "1db0d1b897fd704d48ae04fef419acb6cc0f309d253b1422f9e372b91d4e2520"
+    },
+    {
+      "context_packet_fingerprint": "3eb89be4a6c2e76f7d2aca39dc2ad958d63a7ece412e635ee26229e1c2b2c19d",
+      "current_seed_fingerprint": "f972a5d59c6bcb62cf4718368b8b9f20f084f20621a28802128bc5567bfe6d5d",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": -1260,
+            "dimension": "valence",
+            "historical_evidence_bps": -1399,
+            "proposed_bps": -2659
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 900,
+            "dimension": "anger",
+            "historical_evidence_bps": 337,
+            "proposed_bps": 1237
+          }
+        ],
+        "confidence_bps": 10000,
+        "families": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 2333,
+            "family": "RESENTMENT",
+            "historical_evidence_bps": 1721,
+            "net_evidence_bps": 4054,
+            "source_count": 2
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 2167,
+            "family": "BETRAYAL",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 2167,
+            "source_count": 1
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 0,
+            "family": "SUSPICION",
+            "historical_evidence_bps": 2043,
+            "net_evidence_bps": 2043,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 4054,
+        "proposal_fingerprint": "bb0e44691e7c85601872c5f76b3f4745cd1e638accbf929d84006fb7607a4d11",
+        "proposal_id": "appraisal-proposal:20001945959870806198c730a9740ff5",
+        "regime": "REPEATED_PATTERN",
+        "relationship_considerations": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": -1080,
+            "dimension": "trust",
+            "historical_evidence_bps": -2043,
+            "proposed_bps": -3123
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 1260,
+            "dimension": "resentment",
+            "historical_evidence_bps": 1721,
+            "proposed_bps": 2981
+          }
+        ],
+        "uncertainty_codes": [
+          "LOWER_RANKED_FAMILIES_OMITTED"
+        ],
+        "why_count": 14
+      },
+      "name": "abandonment_repeated",
+      "request_fingerprint": "46b6fac62ba9007108a7a4b7a9bfb59d423df70b521af4fcfeccb15dd291cace"
+    },
+    {
+      "context_packet_fingerprint": "17253da8be73e0d0f3bc1a9e91ad326ec1b8dcb20589ab49720bd2dce229d29d",
+      "current_seed_fingerprint": "8233727a94f7d0c9db0741600f9d282f77ad853af7508eca744586880cd9b33b",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": -2000,
+            "dimension": "certainty",
+            "historical_evidence_bps": 0,
+            "proposed_bps": -2000
+          },
+          {
+            "confidence_bps": 5253,
+            "contradictory": true,
+            "current_evidence_bps": 2500,
+            "dimension": "valence",
+            "historical_evidence_bps": -778,
+            "proposed_bps": 1722
+          }
+        ],
+        "confidence_bps": 6518,
+        "families": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 3824,
+            "family": "SUSPICION",
+            "historical_evidence_bps": 2722,
+            "net_evidence_bps": 6546,
+            "source_count": 2
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 2676,
+            "family": "GRATITUDE",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 2676,
+            "source_count": 1
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 0,
+            "family": "DISTRESS",
+            "historical_evidence_bps": 778,
+            "net_evidence_bps": 778,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 6546,
+        "proposal_fingerprint": "ff3823153937054e88712aeb64aaa7e09af8bcb23d83aaf4b4afd6be563b51d7",
+        "proposal_id": "appraisal-proposal:4766e9c0357742edcb03f8623cf4a028",
+        "regime": "CONTRADICTORY_HISTORY",
+        "relationship_considerations": [
+          {
+            "confidence_bps": 6896,
+            "contradictory": true,
+            "current_evidence_bps": 500,
+            "dimension": "trust",
+            "historical_evidence_bps": -2722,
+            "proposed_bps": -2222
+          }
+        ],
+        "uncertainty_codes": [
+          "CONTRADICTION_PRESERVED",
+          "CURRENT_AND_HISTORY_DISAGREE"
+        ],
+        "why_count": 8
+      },
+      "name": "enemy_gift_ambivalent",
+      "request_fingerprint": "0af25f171e319087ddedd2915839be5d22313d37356811a7d794361aeaf81311"
+    },
+    {
+      "context_packet_fingerprint": "d9b849f04b45302af568e10406b2a713211174c9b1f92828834d85d8fea8b595",
+      "current_seed_fingerprint": "40c7b52afd9c5a4269d19dea24fa90f0c0ef4c11746d1597fc8b412d86197efb",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": -1500,
+            "dimension": "valence",
+            "historical_evidence_bps": -1000,
+            "proposed_bps": -2500
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 808,
+            "dimension": "certainty",
+            "historical_evidence_bps": 0,
+            "proposed_bps": 808
+          }
+        ],
+        "confidence_bps": 10000,
+        "families": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 2864,
+            "family": "HEARTBREAK",
+            "historical_evidence_bps": 2000,
+            "net_evidence_bps": 4864,
+            "source_count": 2
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 1636,
+            "family": "RESENTMENT",
+            "historical_evidence_bps": 1000,
+            "net_evidence_bps": 2636,
+            "source_count": 2
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 0,
+            "family": "DISTRESS",
+            "historical_evidence_bps": 1000,
+            "net_evidence_bps": 1000,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 4864,
+        "proposal_fingerprint": "99d1351df7c265c3b2b8c94ffad983af873e1a7472e17de835832834ec0f37f0",
+        "proposal_id": "appraisal-proposal:596bbd1e57b046b3a9b0f94c50944294",
+        "regime": "REPEATED_PATTERN",
+        "relationship_considerations": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": -1384,
+            "dimension": "affection",
+            "historical_evidence_bps": -2000,
+            "proposed_bps": -3384
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 808,
+            "dimension": "resentment",
+            "historical_evidence_bps": 1000,
+            "proposed_bps": 1808
+          }
+        ],
+        "uncertainty_codes": [],
+        "why_count": 10
+      },
+      "name": "romantic_rejection",
+      "request_fingerprint": "445c44a3ddc943fd6d2e5c499838ca6fa085f825e5a8155e8e7c32685b205bfb"
+    },
+    {
+      "context_packet_fingerprint": "5dfc309f50a6cd1a8a7179e97bccf31e859555899d3f8cebc520035010ce2f64",
+      "current_seed_fingerprint": "a7aef3259e4312651e92832330cec3e28145c9f37727cc54f31ec2f544c43a4a",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 5217,
+            "dimension": "certainty",
+            "historical_evidence_bps": 0,
+            "proposed_bps": 5217
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 4783,
+            "dimension": "valence",
+            "historical_evidence_bps": 0,
+            "proposed_bps": 4783
+          }
+        ],
+        "confidence_bps": 10000,
+        "families": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 6500,
+            "family": "PRIDE",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 6500,
+            "source_count": 1
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 3500,
+            "family": "WELLBEING",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 3500,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 6500,
+        "proposal_fingerprint": "1b4f0f091d52cdc5705324eb9b66facfe0fcb0c8339ffe09f4e295c767335a9d",
+        "proposal_id": "appraisal-proposal:0338b13a52219770014a47fa1ff875ec",
+        "regime": "NO_HISTORY",
+        "relationship_considerations": [],
+        "uncertainty_codes": [
+          "NO_ELIGIBLE_HISTORICAL_CONTEXT",
+          "NO_HISTORICAL_CONTEXT_USED"
+        ],
+        "why_count": 5
+      },
+      "name": "personal_success_no_relationship",
+      "request_fingerprint": "56d778c1c0854337b39863a21f5f259fc602e66a18ac8ded7671592f9884939a"
+    },
+    {
+      "context_packet_fingerprint": "696deb84a5c33f64a21be5bb3425a1658dc5f7a080c5421e64421c8f9010411a",
+      "current_seed_fingerprint": "457d32f1a49b594733efa21cd3a75092947364b5957578cceb59a8a2c04875dc",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 6358,
+            "contradictory": true,
+            "current_evidence_bps": -2394,
+            "dimension": "certainty",
+            "historical_evidence_bps": 533,
+            "proposed_bps": -1861
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 957,
+            "dimension": "valence",
+            "historical_evidence_bps": 666,
+            "proposed_bps": 1623
+          }
+        ],
+        "confidence_bps": 7044,
+        "families": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 2423,
+            "family": "PRIDE",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 2423,
+            "source_count": 1
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 2077,
+            "family": "AMBIGUITY",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 2077,
+            "source_count": 1
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 0,
+            "family": "RESENTMENT",
+            "historical_evidence_bps": 1000,
+            "net_evidence_bps": 1000,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 2423,
+        "proposal_fingerprint": "90bd3df09070229f55ed64e4198b324572a5f8fb5c381ec0d1ee05408d788b10",
+        "proposal_id": "appraisal-proposal:559015ff7068d0b6a9d21a9dffa2716c",
+        "regime": "REPEATED_PATTERN",
+        "relationship_considerations": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 1149,
+            "dimension": "respect",
+            "historical_evidence_bps": 0,
+            "proposed_bps": 1149
+          }
+        ],
+        "uncertainty_codes": [
+          "CONTRADICTION_PRESERVED",
+          "CONTRADICTORY_HISTORY_PRESERVED",
+          "LOWER_RANKED_FAMILIES_OMITTED",
+          "MEMORY_CONTEXT_HAS_NO_INVENTED_DIRECTION",
+          "UNUSED_ROLE_CAP_NOT_RENORMALIZED"
+        ],
+        "why_count": 12
+      },
+      "name": "enemy_harmed_ambiguity",
+      "request_fingerprint": "6fb27bc0ca19aa2b51ff39f2f112c4fd1ef4fa30e1ba524cf6c62b843bd59b8b"
+    },
+    {
+      "context_packet_fingerprint": "5dfc309f50a6cd1a8a7179e97bccf31e859555899d3f8cebc520035010ce2f64",
+      "current_seed_fingerprint": "1fe0fe5ef66def9ee38455c30d8811e2ccc187add45ce2dacae69cbc5fa6371b",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 1000,
+            "dimension": "valence",
+            "historical_evidence_bps": 0,
+            "proposed_bps": 1000
+          }
+        ],
+        "confidence_bps": 5500,
+        "families": [
+          {
+            "confidence_bps": 1000,
+            "contradictory": false,
+            "current_evidence_bps": 1,
+            "family": "WELLBEING",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 1,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 1000,
+        "proposal_fingerprint": "3ab940eb5ab26a81ebc1e3327e12577509e3126a962b38a468496fe17d543d39",
+        "proposal_id": "appraisal-proposal:b582ea458311a54959eac6ba76eff6f7",
+        "regime": "NO_HISTORY",
+        "relationship_considerations": [],
+        "uncertainty_codes": [
+          "NO_ELIGIBLE_HISTORICAL_CONTEXT",
+          "NO_HISTORICAL_CONTEXT_USED"
+        ],
+        "why_count": 2
+      },
+      "name": "no_history_fallback_positive",
+      "request_fingerprint": "32a843cd951acc0742226612c9cb221dce09b61cdeed2b7f690d900edeb3277a"
+    },
+    {
+      "context_packet_fingerprint": "5dfc309f50a6cd1a8a7179e97bccf31e859555899d3f8cebc520035010ce2f64",
+      "current_seed_fingerprint": "1aa6ec61257821a295505ff25929cde0b5b22e374985ca94ed295a543b048391",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": -1000,
+            "dimension": "valence",
+            "historical_evidence_bps": 0,
+            "proposed_bps": -1000
+          }
+        ],
+        "confidence_bps": 5500,
+        "families": [
+          {
+            "confidence_bps": 1000,
+            "contradictory": false,
+            "current_evidence_bps": 1,
+            "family": "DISTRESS",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 1,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 1000,
+        "proposal_fingerprint": "42c99fbdbb0e7fc2be9a983064353c7aa3f37c854b6a76974f658bf0b3345e45",
+        "proposal_id": "appraisal-proposal:944256168c1e0f71ba06f66360b91db6",
+        "regime": "NO_HISTORY",
+        "relationship_considerations": [],
+        "uncertainty_codes": [
+          "NO_ELIGIBLE_HISTORICAL_CONTEXT",
+          "NO_HISTORICAL_CONTEXT_USED"
+        ],
+        "why_count": 2
+      },
+      "name": "no_history_fallback_negative",
+      "request_fingerprint": "e698500ab8fdf06944faf8afb1b9fb1bdfae97ebb924a4e672037cdbf1b74e79"
+    },
+    {
+      "context_packet_fingerprint": "696deb84a5c33f64a21be5bb3425a1658dc5f7a080c5421e64421c8f9010411a",
+      "current_seed_fingerprint": "90135ef29493c2ed0772c87db8325db73da7a45af58de481a6bee57231582840",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 8000,
+            "dimension": "threat",
+            "historical_evidence_bps": 0,
+            "proposed_bps": 8000
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 0,
+            "dimension": "valence",
+            "historical_evidence_bps": 444,
+            "proposed_bps": 444
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 0,
+            "dimension": "certainty",
+            "historical_evidence_bps": 355,
+            "proposed_bps": 355
+          }
+        ],
+        "confidence_bps": 10000,
+        "families": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 8000,
+            "family": "FEAR",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 8000,
+            "source_count": 1
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 0,
+            "family": "RESENTMENT",
+            "historical_evidence_bps": 667,
+            "net_evidence_bps": 667,
+            "source_count": 1
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 0,
+            "family": "TRUST",
+            "historical_evidence_bps": 534,
+            "net_evidence_bps": 534,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 8000,
+        "proposal_fingerprint": "27cea96dd46c06a94d002a226d81e14af2b8197e7206cc7b7eb8ece9fb6e072f",
+        "proposal_id": "appraisal-proposal:50bbf8208c40b9a0f280090576f52cb6",
+        "regime": "OVERWHELMING_CURRENT",
+        "relationship_considerations": [],
+        "uncertainty_codes": [
+          "CONTRADICTORY_HISTORY_PRESERVED",
+          "LOWER_RANKED_FAMILIES_OMITTED",
+          "MEMORY_CONTEXT_HAS_NO_INVENTED_DIRECTION",
+          "UNUSED_ROLE_CAP_NOT_RENORMALIZED"
+        ],
+        "why_count": 9
+      },
+      "name": "overwhelming_current",
+      "request_fingerprint": "b324e70b95c31717e2b23c07d144b8f09f02fb15b9240f1e8216d0e2b23824d9"
+    },
+    {
+      "context_packet_fingerprint": "7a90316313b69a33a47f5c5515ec2744865fc54ed19ce9bb4c5a4ef22a37727f",
+      "current_seed_fingerprint": "70d925214ac9b5b157805be13c5bb11dae8db56c17e165cc97642b3af4413ea3",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 3000,
+            "dimension": "valence",
+            "historical_evidence_bps": 0,
+            "proposed_bps": 3000
+          }
+        ],
+        "confidence_bps": 10000,
+        "families": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 4000,
+            "family": "GRATITUDE",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 4000,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 4000,
+        "proposal_fingerprint": "712f914241d6e20daa740fc7e8fcc7ace3232cff91c66176db9ad04cc3072452",
+        "proposal_id": "appraisal-proposal:fc886f372c736ef4e26fa0a0a90ad13d",
+        "regime": "NO_HISTORY",
+        "relationship_considerations": [],
+        "uncertainty_codes": [
+          "MEMORY_CONTEXT_HAS_NO_INVENTED_DIRECTION",
+          "NO_DIRECTIONAL_DURABLE_EVIDENCE",
+          "UNUSED_ROLE_CAP_NOT_RENORMALIZED"
+        ],
+        "why_count": 3
+      },
+      "name": "memory_only_context",
+      "request_fingerprint": "82cd5f0e0aac9001650a8b417a46765bf9510dcf226ae6fc7e5919247fb177a5"
+    },
+    {
+      "context_packet_fingerprint": "cd54570fef73b7818bb20d795e58a3ac3528fb557383fdbb2db118a058459147",
+      "current_seed_fingerprint": "6c6e602a7e6f2745eaa046d723c7012c517b6adafe9fd81ddd40c4ba0c7640eb",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 1000,
+            "dimension": "valence",
+            "historical_evidence_bps": 0,
+            "proposed_bps": 1000
+          }
+        ],
+        "confidence_bps": 10000,
+        "families": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 0,
+            "family": "RESPECT",
+            "historical_evidence_bps": 4000,
+            "net_evidence_bps": 4000,
+            "source_count": 1
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 3000,
+            "family": "GRATITUDE",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 3000,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 5000,
+        "proposal_fingerprint": "dc8920b10e5d5d937eebfe3627f10818aae4d088e77ad1a73c8000e81275a2da",
+        "proposal_id": "appraisal-proposal:7fae34ded1610a44ce6281536dc3e70d",
+        "regime": "BALANCED",
+        "relationship_considerations": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 1000,
+            "dimension": "respect",
+            "historical_evidence_bps": 4000,
+            "proposed_bps": 5000
+          }
+        ],
+        "uncertainty_codes": [],
+        "why_count": 5
+      },
+      "name": "respect_not_pride",
+      "request_fingerprint": "e4b71baa333a3a5ad146c1befb87f464725a4623835a1a0713ae329558ffa4c8"
+    },
+    {
+      "context_packet_fingerprint": "37ff263e87270120d4420ec55fb49f400d7123154a9579b3ff53ca38b17b1ea8",
+      "current_seed_fingerprint": "e7211ceb43cac5f88ac446bb0f66ef9728c38c4555ea7b5c176c714caa2767fc",
+      "expected": {
+        "affect_dimensions": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 4000,
+            "dimension": "valence",
+            "historical_evidence_bps": 0,
+            "proposed_bps": 4000
+          }
+        ],
+        "confidence_bps": 10000,
+        "families": [
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 5000,
+            "family": "PRIDE",
+            "historical_evidence_bps": 0,
+            "net_evidence_bps": 5000,
+            "source_count": 1
+          },
+          {
+            "confidence_bps": 10000,
+            "contradictory": false,
+            "current_evidence_bps": 0,
+            "family": "TRUST",
+            "historical_evidence_bps": 4000,
+            "net_evidence_bps": 4000,
+            "source_count": 1
+          }
+        ],
+        "intensity_bps": 5000,
+        "proposal_fingerprint": "d5d00c515e4c75fa8adcddc176af31c768bf99d40de118616cecf9963c9e49ce",
+        "proposal_id": "appraisal-proposal:bb8e33c3ae057db31a957459a40359be",
+        "regime": "BALANCED",
+        "relationship_considerations": [],
+        "uncertainty_codes": [
+          "HISTORY_NOT_ALLOWED_TO_CREATE_RELATIONSHIP_CHANGE"
+        ],
+        "why_count": 4
+      },
+      "name": "history_cannot_create_relationship_change",
+      "request_fingerprint": "f418c28f6ec8f18712abc029ca6403f8fed58963c3193917df3b1200586fc921"
+    }
+  ],
+  "schema": "mosaic.0.3h.shared-deterministic-fixtures.v1",
+  "v42_formal_gate_digest": "c48b1e977c96b0450f97e8579e158cfe2353e412ba6dbcdf30e4056cbdd5edb9",
+  "v43_formal_gate_digest": "045ef8a2fd6084c183ced7d2ec9516b3289a309f0b3c55963a895746c70de0d8"
+}

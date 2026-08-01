@@ -10,5 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Dagmay.Core\Dagmay.Core.csproj" />
     <ProjectReference Include="..\Dagmay.Providers\Dagmay.Providers.csproj" />
+    <Compile Include="..\Dagmay.RimWorld\Perception\ReadOnlySocialEventEnvelopeAdapter.cs" Link="RimWorldPure\ReadOnlySocialEventEnvelopeAdapter.cs" />
   </ItemGroup>
 </Project>
