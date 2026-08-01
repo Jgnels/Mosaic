@@ -69,35 +69,17 @@ It binds trusted observed-display/dialogue evidence and the exact v43 proposal c
 
 ## Current project constraint
 
-The project has accumulated architecture and offline certification faster than equivalent end-to-end live/player-value evidence. The immediate goal is therefore **not another cognition milestone**.
+The project has accumulated architecture and offline certification faster than equivalent end-to-end live/player-value evidence. Phase-0 repository hygiene and external source-level review are complete enough to proceed to measurement, but the immediate goal remains **not another cognition milestone**.
 
-`v45` and later architecture are frozen until the following are complete:
-
-1. Phase-0 repository hygiene and external red-team review;
-2. major consolidation decisions;
-3. a live RimWorld 0.3 shadow vertical slice connecting real game evidence through v41 → v42 → v43 → v44;
-4. player-visible evaluation of continuity, contextual appropriateness, distinctiveness, naturalness, repetition, and memorability;
-5. architecture review deciding whether later complexity earns its cost.
+`v45` and later architecture are frozen until semantic-ingress measurement, live validation, player-visible evaluation of continuity, contextual appropriateness, distinctiveness, naturalness, repetition, and memorability, and an architecture review establish that later complexity earns its cost.
 
 ## Next authorized action
 
-**Repository consolidation only. No new cognition.**
+**Experiment 0A semantic-ingress/opportunity telemetry only. No new cognition.**
 
-Phase 0 may:
+Measure current Mosaic social triggers, pair-linked Thought memories, pair-linked PlayLog social interactions, Tales involving enrolled pawns, dialogue preparation/presentation outcomes, unique and repeated pairs, prior same-pair history depth, and cross-source overlap. The telemetry is bounded and read-only: no canonical writes, dialogue changes, provider calls, HistoryEvent hook, pawn/job authority, or v41-v44 runtime wiring.
 
-- correct stale startup/root documentation;
-- make active vs historical surfaces explicit;
-- define a compact AI/developer startup path;
-- make Python/SyntheticLab environment requirements explicit;
-- prepare external source-level red-team review.
-
-Phase 0 must **not** yet delete or archive controversial source surfaces before external review. In particular, keep visible for review:
-
-- `rimworld/0.1-closure-candidate/`;
-- full current `syntheticlab/`;
-- pre-pivot welfare/governance research;
-- v41–v44 contracts;
-- existing test/certification infrastructure.
+See `research/SEMANTIC_INGRESS_AND_EPISTEMIC_MODEL.md` for the binding epistemic model, vanilla semantic-source map, experiment constraints, and evidence-dependent branch. v41 is preserved for one conditional equal-budget retrieval ablation rather than automatically wired or deleted. v45 remains frozen.
 
 ## Binding objective
 

@@ -345,3 +345,23 @@ Dialogue retrieval exposes only a bounded relationship-sensitive summary with
 exact EventIds and rejects private or observer-only evidence. The projection is
 context and appraisal input, not canonical fact, automatic belief, relationship
 mutation, goal, plan, or gameplay authority.
+
+## D-050 - Prefer vanilla semantic ingress while preserving epistemic distinctions
+Status: Accepted direction; experiment-gated
+
+Prefer RimWorld's semantically named HistoryEvents, PlayLog interactions, Thought/PawnObserver
+evidence, Tales, Battle/BattleLog episodes, Records, lifecycle and developmental transitions, and
+WorldPawns continuity over reconstructing meaning from raw scalar changes. A globally recorded fact
+does not become omniscient character knowledge: happened, participated, perceived, learned, and
+currently known or remembered remain distinguishable. Ephemeral current context does not
+automatically become durable autobiography.
+
+## D-051 - Opportunity telemetry precedes cognition expansion
+Status: Accepted; Experiment 0A authorized
+
+Measure current social triggers, pair-linked Thoughts and PlayLog interactions, enrolled-pawn Tales,
+dialogue outcomes, repeat pairs, history depth, and bounded cross-source overlap before adding live
+cognition. The v41-v44 chain remains unwired; v41 is preserved for one conditional equal-budget
+retrieval ablation only if telemetry shows rich repeated same-pair histories, rather than being
+automatically wired or automatically deleted. Durable appraisal remains dormant, v45 remains
+frozen, and the existing dialogue outbox and reflection persistence remain intact.
