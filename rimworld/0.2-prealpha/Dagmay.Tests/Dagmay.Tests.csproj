@@ -11,6 +11,7 @@
     <ProjectReference Include="..\Dagmay.Core\Dagmay.Core.csproj" />
     <ProjectReference Include="..\Dagmay.Providers\Dagmay.Providers.csproj" />
     <Compile Include="..\Dagmay.RimWorld\Diagnostics\SocialPathCertificationReport.cs" Link="RimWorldPure\SocialPathCertificationReport.cs" />
+    <Compile Include="..\Dagmay.RimWorld\Diagnostics\Experiment0ATelemetry.cs" Link="RimWorldPure\Experiment0ATelemetry.cs" />
     <Compile Include="..\Dagmay.RimWorld\Persistence\IdentitySaveCheckpointPolicy.cs" Link="RimWorldPure\IdentitySaveCheckpointPolicy.cs" />
     <Compile Include="..\Dagmay.RimWorld\Persistence\SaveManifestSafetyPolicy.cs" Link="RimWorldPure\SaveManifestSafetyPolicy.cs" />
     <Compile Include="..\Dagmay.RimWorld\Reflection\PostLoadReflectionCheckpointGate.cs" Link="RimWorldPure\PostLoadReflectionCheckpointGate.cs" />

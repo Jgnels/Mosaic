@@ -174,7 +174,7 @@ else {
     $Report.Add("No social-path certification sidecar was found for active StoreId $ActiveStoreId. Generate a material social event, save, reload, then collect logs again.") | Out-Null
     $Report.Add("") | Out-Null
 }
-$NoteworthyPattern = '(?i)\[Dagmay\]|Exception|\berror\b|Could not resolve|Could not load|quarantin|mismatch|read-only|ThreadAbort|SOCIAL PATH CERTIFICATION'
+$NoteworthyPattern = '(?i)\[(?:Dagmay|Mosaic)\]|Exception|\berror\b|Could not resolve|Could not load|quarantin|mismatch|read-only|ThreadAbort|SOCIAL PATH CERTIFICATION'
 
 foreach ($SourceLog in $SourceLogs) {
     $Lines = @(Get-Content -LiteralPath $SourceLog)
@@ -182,16 +182,16 @@ foreach ($SourceLog in $SourceLogs) {
     $Report.Add("Lines: $($Lines.Count)") | Out-Null
     $Report.Add("") | Out-Null
 
-    $Report.Add("--- Dagmay lines ---") | Out-Null
-    $DagmayFound = $false
+    $Report.Add("--- Mosaic/Dagmay lines ---") | Out-Null
+    $MosaicOrDagmayFound = $false
     for ($Index = 0; $Index -lt $Lines.Count; $Index++) {
-        if ($Lines[$Index] -match '\[Dagmay\]') {
-            $DagmayFound = $true
+        if ($Lines[$Index] -match '\[(?:Dagmay|Mosaic)\]') {
+            $MosaicOrDagmayFound = $true
             $Report.Add(("{0:D6}: {1}" -f ($Index + 1), (Protect-PrivateText $Lines[$Index]))) | Out-Null
         }
     }
-    if (-not $DagmayFound) {
-        $Report.Add("No [Dagmay] lines were found in this log.") | Out-Null
+    if (-not $MosaicOrDagmayFound) {
+        $Report.Add("No [Mosaic] or [Dagmay] lines were found in this log.") | Out-Null
     }
     $Report.Add("") | Out-Null
 

@@ -6,6 +6,7 @@ using System.Threading;
 using Dagmay.Core.Contracts;
 using Dagmay.Core.Dialogue;
 using Dagmay.RimWorld.Bootstrap;
+using Dagmay.RimWorld.Diagnostics;
 using Dagmay.RimWorld.Persistence;
 using UnityEngine;
 using Verse;
@@ -18,8 +19,14 @@ namespace Dagmay.RimWorld.Dialogue
     /// </summary>
     public sealed class RimWorldDialogueGameComponent : GameComponent
     {
+        private const long TelemetryPollIntervalTicks = 600;
+        private const long TelemetrySummaryIntervalTicks = 60000;
+
         private readonly Game _game;
         private readonly Stopwatch _clock = Stopwatch.StartNew();
+        private readonly Experiment0ATelemetry _experimentTelemetry =
+            new Experiment0ATelemetry();
+        private readonly RimWorldExperiment0ASemanticPoller _experimentPoller;
         private readonly OfflineRimWorldDialoguePipeline _pipeline =
             new OfflineRimWorldDialoguePipeline();
         private readonly RimWorldSpeechBubblePresenter _presenter =
@@ -31,10 +38,13 @@ namespace Dagmay.RimWorld.Dialogue
         private DagmayIdentityGameComponent? _identity;
         private bool _disposed;
         private int _presentationThreadFailed;
+        private long _lastTelemetryPollTick = -1;
+        private long _nextTelemetrySummaryTick = TelemetrySummaryIntervalTicks;
 
         public RimWorldDialogueGameComponent(Game game)
         {
             _game = game ?? throw new ArgumentNullException(nameof(game));
+            _experimentPoller = new RimWorldExperiment0ASemanticPoller(_experimentTelemetry);
             _presenter.PresentationCompleted += OnPresentationCompleted;
             _presenter.PresentationAbandoned += OnPresentationAbandoned;
         }
@@ -52,6 +62,8 @@ namespace Dagmay.RimWorld.Dialogue
                 return;
             }
             EnsureAttached();
+            var tick = Find.TickManager?.TicksGame ?? 0;
+            PollExperiment0A(tick);
             if (!TryEnterPresentationLifecycle()) return;
             _presenter.Update(_clock.ElapsedMilliseconds);
         }
@@ -108,13 +120,23 @@ namespace Dagmay.RimWorld.Dialogue
 
         private void OnSocialDialogueTriggerCaptured(RimWorldSocialDialogueTrigger trigger)
         {
-            if (_disposed ||
-                Volatile.Read(ref _presentationThreadFailed) != 0 ||
-                !ReferenceEquals(Verse.Current.Game, _game))
+            if (_disposed || !ReferenceEquals(Verse.Current.Game, _game)) return;
+            RecordCurrentTrigger(trigger);
+            if (Volatile.Read(ref _presentationThreadFailed) != 0)
             {
+                _experimentTelemetry.RecordDialoguePreparation(
+                    false,
+                    "presentation_thread_failed");
                 return;
             }
-            if (!_presenter.IsRuntimeThreadBound) return;
+            if (!_presenter.IsRuntimeThreadBound)
+            {
+                _experimentTelemetry.RecordDialoguePreparation(
+                    false,
+                    "presentation_thread_unbound");
+                return;
+            }
+            var preparationRecorded = false;
             try
             {
                 _presenter.ValidateRuntimeThread(Thread.CurrentThread.ManagedThreadId);
@@ -133,6 +155,10 @@ namespace Dagmay.RimWorld.Dialogue
                         CancellationToken.None)
                     .GetAwaiter()
                     .GetResult();
+                _experimentTelemetry.RecordDialoguePreparation(
+                    result.IsPrepared,
+                    result.Status.ToString());
+                preparationRecorded = true;
                 if (!result.IsPrepared || result.Prepared is null)
                 {
                     Log.Message(
@@ -156,9 +182,15 @@ namespace Dagmay.RimWorld.Dialogue
                     _pendingReplies[prepared.PresentationRow.UtteranceId] = trigger;
                     RemoveEvicted(enqueue.EvictedUtteranceId);
                 }
+                else
+                {
+                    _experimentTelemetry.RecordPresentation(string.Empty);
+                }
             }
             catch (Exception exception)
             {
+                if (!preparationRecorded)
+                    _experimentTelemetry.RecordDialoguePreparation(false, "exception");
                 Log.Warning(
                     $"[Dagmay] {DagmayBuildInfo.Version} fake dialogue path failed safely: "
                     + exception.Message);
@@ -181,6 +213,8 @@ namespace Dagmay.RimWorld.Dialogue
             if (_disposed) return;
             try
             {
+                _experimentTelemetry.RecordPresentation(
+                    result.Receipt?.Channel.ToString() ?? string.Empty);
                 if (!_pending.TryGetValue(result.Row.UtteranceId, out var prepared)) return;
                 _pending.Remove(result.Row.UtteranceId);
                 _pendingReplies.TryGetValue(
@@ -237,6 +271,9 @@ namespace Dagmay.RimWorld.Dialogue
                     CancellationToken.None)
                 .GetAwaiter()
                 .GetResult();
+            _experimentTelemetry.RecordDialoguePreparation(
+                result.IsPrepared,
+                "reply_" + result.Status);
             if (!result.IsPrepared || result.Prepared is null)
             {
                 Log.Message(
@@ -256,6 +293,7 @@ namespace Dagmay.RimWorld.Dialogue
                 _clock.ElapsedMilliseconds);
             if (!IsAccepted(enqueue.Status))
             {
+                _experimentTelemetry.RecordPresentation(string.Empty);
                 Log.Message(
                     $"[Dagmay] {DagmayBuildInfo.Version} bounded reply presentation skipped; "
                     + $"status={enqueue.Status}; ConversationId={prepared.Request.ConversationId}.");
@@ -286,6 +324,7 @@ namespace Dagmay.RimWorld.Dialogue
         private void OnPresentationAbandoned(DialoguePresentationRow row)
         {
             if (_disposed) return;
+            _experimentTelemetry.RecordPresentation(string.Empty);
             _pending.Remove(row.UtteranceId);
             _pendingReplies.Remove(row.UtteranceId);
         }
@@ -293,6 +332,7 @@ namespace Dagmay.RimWorld.Dialogue
         private void DisposeAdapter()
         {
             if (_disposed) return;
+            LogExperiment0ASummary("final", Find.TickManager?.TicksGame ?? 0);
             _disposed = true;
             if (_identity is not null)
                 _identity.SocialDialogueTriggerCaptured -= OnSocialDialogueTriggerCaptured;
@@ -302,6 +342,89 @@ namespace Dagmay.RimWorld.Dialogue
             _presenter.Dispose();
             _pending.Clear();
             _pendingReplies.Clear();
+        }
+
+        private void RecordCurrentTrigger(RimWorldSocialDialogueTrigger trigger)
+        {
+            try
+            {
+                var priorDepth = trigger.PriorRelationshipEvidence
+                    .Concat(trigger.RecipientPriorRelationshipEvidence)
+                    .Select(value => value.EventId)
+                    .Distinct()
+                    .Count();
+                _experimentTelemetry.RecordObservation(new Experiment0AObservation(
+                    Experiment0ASource.CurrentTrigger,
+                    "trigger:" + trigger.SourceEventId,
+                    trigger.ObservedAtTick,
+                    trigger.ObservedAtTick,
+                    new[]
+                    {
+                        trigger.Speaker.IndividualId.ToString(),
+                        trigger.Recipient.IndividualId.ToString()
+                    },
+                    priorDepth));
+            }
+            catch (Exception)
+            {
+                _experimentTelemetry.RecordSourceFailure(Experiment0ASource.CurrentTrigger);
+            }
+        }
+
+        private void PollExperiment0A(long tick)
+        {
+            if (tick < 0 ||
+                tick == _lastTelemetryPollTick ||
+                tick % TelemetryPollIntervalTicks != 0)
+            {
+                return;
+            }
+
+            _lastTelemetryPollTick = tick;
+            var identity = _identity;
+            if (identity is not null)
+            {
+                try
+                {
+                    var enrolled = identity.CreateObserverSnapshot().Individuals
+                        .Where(value => value.HasIdentity)
+                        .ToDictionary(
+                            value => value.ExternalId,
+                            value => value.IndividualId,
+                            StringComparer.Ordinal);
+                    _experimentPoller.Poll(enrolled, tick);
+                }
+                catch (Exception)
+                {
+                    _experimentTelemetry.RecordSourceFailure(Experiment0ASource.Thought);
+                    _experimentTelemetry.RecordSourceFailure(Experiment0ASource.PlayLog);
+                    _experimentTelemetry.RecordSourceFailure(Experiment0ASource.Tale);
+                }
+            }
+
+            if (tick >= _nextTelemetrySummaryTick)
+            {
+                LogExperiment0ASummary("periodic", tick);
+                _nextTelemetrySummaryTick = tick > long.MaxValue - TelemetrySummaryIntervalTicks
+                    ? long.MaxValue
+                    : tick + TelemetrySummaryIntervalTicks;
+            }
+        }
+
+        private void LogExperiment0ASummary(string phase, long tick)
+        {
+            try
+            {
+                Log.Message(
+                    "[Mosaic] " + DagmayBuildInfo.Version + " "
+                    + _experimentTelemetry.Snapshot().ToLogLine(phase, Math.Max(0, tick)));
+            }
+            catch (Exception exception)
+            {
+                Log.Warning(
+                    "[Mosaic] " + DagmayBuildInfo.Version
+                    + " Experiment 0A summary failed safely: " + exception.Message);
+            }
         }
     }
 }
