@@ -334,7 +334,11 @@ namespace Dagmay.Tests
                 (nameof(ProviderContractTests.GoogleTransportUsesHeaderAndStructuredSchemaAsync), ProviderContractTests.GoogleTransportUsesHeaderAndStructuredSchemaAsync),
                 (nameof(ProviderContractTests.GoogleRateLimitIsRetryableAsync), ProviderContractTests.GoogleRateLimitIsRetryableAsync)
             };
-            Mosaic03EDurableAppraisalAdmissionContractTests.AddTo(tests);
+            tests.Add((nameof(CheckpointRecoverabilityContractTests.IdentityCheckpointSurvivesOwnerSequenceAndOneHundredWrites), Sync(CheckpointRecoverabilityContractTests.IdentityCheckpointSurvivesOwnerSequenceAndOneHundredWrites)));
+            tests.Add((nameof(CheckpointRecoverabilityContractTests.IdentityCheckpointIsImmutableIdempotentAndFailsClosedWhenCorrupt), Sync(CheckpointRecoverabilityContractTests.IdentityCheckpointIsImmutableIdempotentAndFailsClosedWhenCorrupt)));
+            tests.Add((nameof(CheckpointRecoverabilityContractTests.ReflectionCheckpointSurvivesOneHundredWritesAndRejectsConflict), Sync(CheckpointRecoverabilityContractTests.ReflectionCheckpointSurvivesOneHundredWritesAndRejectsConflict)));
+            tests.Add((nameof(CheckpointRecoverabilityContractTests.JournalRollbackRestoresExactPrefixAndPreservesFutureBytes), Sync(CheckpointRecoverabilityContractTests.JournalRollbackRestoresExactPrefixAndPreservesFutureBytes)));
+            tests.Add((nameof(CheckpointRecoverabilityContractTests.MultipleCompletedSavesRemainExactlyRecoverable), Sync(CheckpointRecoverabilityContractTests.MultipleCompletedSavesRemainExactlyRecoverable)));            Mosaic03EDurableAppraisalAdmissionContractTests.AddTo(tests);
             Mosaic03FContextualDevelopmentalRetrievalContractTests.AddTo(tests);
             Mosaic03GGroundedDevelopmentalContextMaterializationContractTests.AddTo(tests);
             Mosaic03HGroundedCompoundAppraisalContractTests.AddTo(tests);

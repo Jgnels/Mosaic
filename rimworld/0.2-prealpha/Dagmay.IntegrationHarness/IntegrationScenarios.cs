@@ -60,6 +60,7 @@ namespace Dagmay.IntegrationHarness
                 new ScenarioDefinition("LongHistoryContinuityAndPersistence", LongHistoryContinuityAndPersistenceAsync),
                 new ScenarioDefinition("ProviderOutageDurableQueueRecovery", ProviderOutageDurableQueueRecoveryAsync),
                 new ScenarioDefinition("CheckpointRollbackForwardRecovery", CheckpointRollbackForwardRecoveryAsync),
+                new ScenarioDefinition("CheckpointRecoverability", CheckpointRecoverabilityAsync),
                 new ScenarioDefinition("SocialPerspectiveAndPrivacy", SocialPerspectiveAndPrivacyAsync),
                 new ScenarioDefinition("DialogueOfflineEndToEnd", DialogueOfflineEndToEndAsync),
                 new ScenarioDefinition("PersistenceTorture", PersistenceTortureAsync),

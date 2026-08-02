@@ -76,7 +76,9 @@ namespace Dagmay.RimWorld.Persistence
         private RimWorldReflectionProviderSelection? _providerSelection;
         private string _storeId = string.Empty;
         private long _generation;
+        private long _identityGenerationFloor;
         private long _reflectionGeneration;
+        private long _reflectionGenerationFloor;
         private long _dialogueCheckpointGeneration;
         private List<string> _manifestExternalIds = new List<string>();
         private List<string> _manifestIndividualIds = new List<string>();
@@ -313,7 +315,11 @@ namespace Dagmay.RimWorld.Persistence
                     _reflectionCheckpointGate.CompleteRimWorldSaveCheckpoint();
                     _postLoadCheckpointPauseNoticeLogged = false;
                 }
-                if (_writesEnabled) BuildManifest();
+                if (_writesEnabled)
+                {
+                    BuildManifest();
+                    PreserveCurrentSaveCheckpoints();
+                }
                 WriteSocialPathCertificationReport(postLoadAudit: false);
             }
 
@@ -350,7 +356,9 @@ namespace Dagmay.RimWorld.Persistence
             if (_initialized) return;
             _storeId = Guid.NewGuid().ToString("N");
             _generation = 0;
+            _identityGenerationFloor = 0;
             _reflectionGeneration = 0;
+            _reflectionGenerationFloor = 0;
             _dialogueCheckpointGeneration = 0;
             _experiencePosition = 0;
             _experienceLastHash = string.Empty;
@@ -402,6 +410,7 @@ namespace Dagmay.RimWorld.Persistence
             }
 
             var parsedStoreId = decision.StoreId.Value;
+            _identityGenerationFloor = _archive.GetGenerationFloor(GetArchivePath(), parsedStoreId);
             var result = _archive.Load(GetArchivePath(), parsedStoreId, _generation);
             if (result.Status == ArchiveLoadStatus.NotFound)
             {
@@ -494,17 +503,17 @@ namespace Dagmay.RimWorld.Persistence
                 _experienceRecoveryDiagnostic =
                     $"The verified external experience journal is ahead of the loaded RimWorld save checkpoint by {aheadBy} record(s) "
                     + $"(save={_experiencePosition}, external={result.Records.Count}). "
-                    + "Dagmay loaded only the checkpointed prefix and paused experience writes. "
-                    + "Restricted Observer can explicitly adopt the verified external head if preserving the newer Dagmay history is intended.";
+                    + "Mosaic loaded only the checkpointed prefix and paused experience writes. "
+                    + "Restricted Observer can restore the exact loaded-save prefix (recommended) or explicitly adopt the future head.";
                 DisableExperienceWrites(_experienceRecoveryDiagnostic);
                 return;
             }
 
             var actualPosition = result.Records.Count;
             DisableExperienceWrites(
-                "The experience journal head does not match the RimWorld save checkpoint and no verified forward-only recovery was found. "
+                "The experience journal head does not match the RimWorld save checkpoint and no exact verified prefix was found. "
                 + $"Save checkpoint position={_experiencePosition}; external journal position={actualPosition}. "
-                + "Dagmay will not guess which history is authoritative.");
+                + "Mosaic will not guess which history is authoritative.");
         }
 
         private bool CheckpointMatchesVerifiedPrefix(ExperienceJournalLoadResult result)
@@ -541,13 +550,57 @@ namespace Dagmay.RimWorld.Persistence
 
         public string ExperienceRecoveryDiagnostic => _experienceRecoveryDiagnostic;
 
+        public bool RestoreExactRimWorldExperienceCheckpoint(out string diagnostic)
+        {
+            diagnostic = string.Empty;
+            var pending = _pendingExperienceRecovery;
+            if (!_initialized || pending is null || !_writesEnabled)
+            {
+                diagnostic = !_writesEnabled
+                    ? "The loaded save cannot establish a new experience branch while identity storage is read-only."
+                    : "No verified ahead journal is available for exact-checkpoint restoration.";
+                return false;
+            }
+            if (!CheckpointMatchesVerifiedPrefix(pending) || pending.Records.Count <= _experiencePosition)
+            {
+                diagnostic = "The verified journal no longer contains the exact loaded-save prefix. No state was changed.";
+                return false;
+            }
+
+            try
+            {
+                var result = _experienceJournal.RestoreVerifiedPrefix(
+                    GetExperienceJournalPath(),
+                    _experiencePosition,
+                    _experienceLastHash);
+                _experienceWritesEnabled = true;
+                _storageSafetyPauseNoticeLogged = false;
+                _pendingExperienceRecovery = null;
+                _experienceRecoveryDiagnostic = string.Empty;
+                Log.Warning(
+                    $"[Dagmay] {DagmayBuildInfo.Version} ADMINISTRATIVE RECOVERY restored the external experience journal "
+                    + $"to the exact loaded RimWorld save checkpoint at position {_experiencePosition}. "
+                    + $"The verified future journal was preserved immutably at {result.PreservedFuturePath}.");
+                diagnostic = "Restored the canonical experience journal to the exact loaded-save prefix. "
+                    + "The verified post-checkpoint history remains preserved as a non-canonical recovery artifact.";
+                return true;
+            }
+            catch (Exception exception)
+            {
+                DisableExperienceWrites("Exact-checkpoint experience restoration failed safely: " + exception.Message);
+                diagnostic = "Restoration failed safely; experience storage remains read-only. " + exception.Message;
+                return false;
+            }
+        }
         public bool AdoptVerifiedExternalExperienceHead(out string diagnostic)
         {
             diagnostic = string.Empty;
             var pending = _pendingExperienceRecovery;
-            if (!_initialized || pending is null)
+            if (!_initialized || pending is null || !_writesEnabled)
             {
-                diagnostic = "No verified forward-only experience recovery is available for the current game.";
+                diagnostic = !_writesEnabled
+                    ? "External experience cannot be adopted while identity storage is read-only."
+                    : "No verified forward-only experience recovery is available for the current game.";
                 return false;
             }
 
@@ -597,6 +650,7 @@ namespace Dagmay.RimWorld.Persistence
                 return;
             }
 
+            _reflectionGenerationFloor = _reflectionStore.GetGenerationFloor(GetReflectionStorePath(), expectedStoreId);
             var result = _reflectionStore.Load(GetReflectionStorePath(), expectedStoreId, _reflectionGeneration);
             if (result.Status == ReflectionStoreLoadStatus.NotFound)
             {
@@ -624,9 +678,10 @@ namespace Dagmay.RimWorld.Persistence
             _reflectionAudit = new List<ReflectionAuditRecord>(result.Snapshot.AuditRecords);
             _reflectionGeneration = result.Snapshot.Generation;
             _reflectionStoreWasNew = false;
-            if (result.Status == ReflectionStoreLoadStatus.RecoveredFromBackup)
+            if (result.Status == ReflectionStoreLoadStatus.RecoveredFromBackup
+                && !_reflectionStore.HasValidCheckpoint(GetReflectionStorePath(), expectedStoreId, _reflectionGeneration))
             {
-                DisableReflectionWrites(result.Diagnostic + $" No automatic overwrite will occur in Version {DagmayBuildInfo.Version}.");
+                DisableReflectionWrites(result.Diagnostic + $" No automatic overwrite will occur in Version {DagmayBuildInfo.Version} because no matching immutable checkpoint exists.");
             }
         }
 
@@ -652,9 +707,10 @@ namespace Dagmay.RimWorld.Persistence
 
             foreach (var record in snapshot.Records) _identities.Add(record.ExternalEntityId, record.State);
 
-            if (result.Status == ArchiveLoadStatus.RecoveredFromBackup)
+            if (result.Status == ArchiveLoadStatus.RecoveredFromBackup
+                && !_archive.HasValidCheckpoint(GetArchivePath(), expectedStoreId, _generation))
             {
-                DisableWrites(result.Diagnostic + $" No automatic overwrite will occur in Version {DagmayBuildInfo.Version}.");
+                DisableWrites(result.Diagnostic + $" No automatic overwrite will occur in Version {DagmayBuildInfo.Version} because no matching immutable checkpoint exists.");
             }
         }
 
@@ -2421,6 +2477,7 @@ namespace Dagmay.RimWorld.Persistence
                 var snapshot = CreateIdentitySnapshot(null, null);
                 _archive.Save(GetArchivePath(), snapshot);
                 _generation = snapshot.Generation;
+                _identityGenerationFloor = Math.Max(_identityGenerationFloor, snapshot.Generation);
             }
             catch (Exception exception)
             {
@@ -2448,6 +2505,7 @@ namespace Dagmay.RimWorld.Persistence
                 var snapshot = CreateIdentitySnapshot(externalId, replacement);
                 _archive.Save(GetArchivePath(), snapshot);
                 _generation = snapshot.Generation;
+                _identityGenerationFloor = Math.Max(_identityGenerationFloor, snapshot.Generation);
                 _identities[externalId] = replacement;
                 return true;
             }
@@ -2474,7 +2532,7 @@ namespace Dagmay.RimWorld.Persistence
 
             return new IdentityArchiveSnapshot(
                 Guid.Parse(_storeId),
-                _generation + 1,
+                Math.Max(_generation, _identityGenerationFloor) + 1,
                 DateTimeOffset.UtcNow,
                 records);
         }
@@ -2491,12 +2549,13 @@ namespace Dagmay.RimWorld.Persistence
             {
                 var snapshot = new ReflectionStoreSnapshot(
                     Guid.Parse(_storeId),
-                    _reflectionGeneration + 1,
+                    Math.Max(_reflectionGeneration, _reflectionGenerationFloor) + 1,
                     DateTimeOffset.UtcNow,
                     _reflectionQueue.Snapshot(),
                     _reflectionAudit);
                 _reflectionStore.Save(GetReflectionStorePath(), snapshot);
                 _reflectionGeneration = snapshot.Generation;
+                _reflectionGenerationFloor = Math.Max(_reflectionGenerationFloor, snapshot.Generation);
                 _reflectionDirty = false;
                 _reflectionStoreWasNew = false;
                 return true;
@@ -2508,6 +2567,31 @@ namespace Dagmay.RimWorld.Persistence
             }
         }
 
+        private void PreserveCurrentSaveCheckpoints()
+        {
+            if (!Guid.TryParse(_storeId, out var storeId) || storeId == Guid.Empty)
+                throw new InvalidDataException("Cannot preserve save checkpoints for an invalid store ID.");
+
+            if (_generation > 0 || _manifestExternalIds.Count > 0)
+            {
+                var identity = _archive.Load(GetArchivePath(), storeId, _generation);
+                if (identity.Snapshot is null
+                    || identity.Status == ArchiveLoadStatus.NotFound
+                    || identity.Status == ArchiveLoadStatus.Unrecoverable)
+                    throw new InvalidDataException("Cannot preserve the exact identity generation referenced by the RimWorld save. " + identity.Diagnostic);
+                _archive.PreserveCheckpoint(GetArchivePath(), identity.Snapshot);
+            }
+
+            if (_reflectionGeneration > 0)
+            {
+                var reflection = _reflectionStore.Load(GetReflectionStorePath(), storeId, _reflectionGeneration);
+                if (reflection.Snapshot is null
+                    || reflection.Status == ReflectionStoreLoadStatus.NotFound
+                    || reflection.Status == ReflectionStoreLoadStatus.Unrecoverable)
+                    throw new InvalidDataException("Cannot preserve the exact reflection generation referenced by the RimWorld save. " + reflection.Diagnostic);
+                _reflectionStore.PreserveCheckpoint(GetReflectionStorePath(), reflection.Snapshot);
+            }
+        }
         private void BuildManifest()
         {
             _manifestExternalIds.Clear();

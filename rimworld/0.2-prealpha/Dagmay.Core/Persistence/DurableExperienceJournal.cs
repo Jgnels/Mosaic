@@ -100,6 +100,25 @@ namespace Dagmay.Core.Persistence
         public string EntryHash { get; }
     }
 
+    public enum ExperienceJournalRollbackStatus
+    {
+        AlreadyExact,
+        RestoredExactPrefix
+    }
+
+    public sealed class ExperienceJournalRollbackResult
+    {
+        public ExperienceJournalRollbackResult(ExperienceJournalRollbackStatus status, string preservedFuturePath, string diagnostic)
+        {
+            Status = status;
+            PreservedFuturePath = preservedFuturePath ?? string.Empty;
+            Diagnostic = diagnostic ?? string.Empty;
+        }
+
+        public ExperienceJournalRollbackStatus Status { get; }
+        public string PreservedFuturePath { get; }
+        public string Diagnostic { get; }
+    }
     public sealed class DurableExperienceJournal
     {
         public const int MaximumRecordCount = 100000;
@@ -238,6 +257,103 @@ namespace Dagmay.Core.Persistence
             }
         }
 
+        public ExperienceJournalRollbackResult RestoreVerifiedPrefix(
+            string path,
+            long expectedPosition,
+            string expectedLastHash)
+        {
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentException("Journal path is required.", nameof(path));
+            if (expectedPosition < 0) throw new ArgumentOutOfRangeException(nameof(expectedPosition));
+            if (expectedLastHash is null) throw new ArgumentNullException(nameof(expectedLastHash));
+            var loaded = Load(path);
+            if (loaded.Status != ExperienceJournalLoadStatus.Loaded)
+                throw new InvalidDataException("Only a completely verified experience journal can be restored.");
+            if (loaded.Records.Count < expectedPosition)
+                throw new InvalidDataException("Experience journal is behind the requested save checkpoint.");
+            var actualPrefixHash = expectedPosition == 0
+                ? string.Empty
+                : loaded.EntryHashes[checked((int)expectedPosition - 1)];
+            if (!FixedTimeEquals(actualPrefixHash, expectedLastHash))
+                throw new InvalidDataException("Experience journal prefix does not match the requested save checkpoint hash.");
+            if (loaded.Records.Count == expectedPosition)
+            {
+                if (!FixedTimeEquals(loaded.LastHash, expectedLastHash))
+                    throw new InvalidDataException("Experience journal head does not match the requested save checkpoint hash.");
+                return new ExperienceJournalRollbackResult(
+                    ExperienceJournalRollbackStatus.AlreadyExact,
+                    string.Empty,
+                    "Experience journal already equals the RimWorld save checkpoint.");
+            }
+
+            var fullPath = Path.GetFullPath(path);
+            var originalBytes = File.ReadAllBytes(fullPath);
+            var artifactPath = GetRollbackArtifactPath(
+                fullPath,
+                expectedPosition,
+                expectedLastHash,
+                loaded.Records.Count,
+                loaded.LastHash);
+            ImmutableCheckpointFile.Preserve(artifactPath, originalBytes);
+
+            var prefixLength = PrefixByteLength(originalBytes, expectedPosition);
+            var temporaryPath = fullPath + ".rollback.tmp";
+            try
+            {
+                using (var stream = new FileStream(temporaryPath, FileMode.Create, FileAccess.Write, FileShare.None, 4096, FileOptions.WriteThrough))
+                {
+                    stream.Write(originalBytes, 0, prefixLength);
+                    stream.Flush();
+                }
+                File.Replace(temporaryPath, fullPath, null, true);
+            }
+            finally
+            {
+                if (File.Exists(temporaryPath)) File.Delete(temporaryPath);
+            }
+
+            var verified = Load(fullPath);
+            if (verified.Status != ExperienceJournalLoadStatus.Loaded
+                || verified.Records.Count != expectedPosition
+                || !FixedTimeEquals(verified.LastHash, expectedLastHash))
+                throw new InvalidDataException("Restored experience journal failed exact checkpoint verification.");
+            return new ExperienceJournalRollbackResult(
+                ExperienceJournalRollbackStatus.RestoredExactPrefix,
+                artifactPath,
+                "Experience journal was restored to the exact RimWorld save prefix; the verified future head was preserved immutably.");
+        }
+
+        public string GetRollbackArtifactPath(
+            string path,
+            long expectedPosition,
+            string expectedLastHash,
+            long futurePosition,
+            string futureLastHash)
+        {
+            var fullPath = Path.GetFullPath(path);
+            var directory = Path.GetDirectoryName(fullPath);
+            if (string.IsNullOrWhiteSpace(directory)) throw new InvalidOperationException("Experience recovery directory is invalid.");
+            var journalName = Path.GetFileNameWithoutExtension(fullPath);
+            var artifactKey = ComputeChecksum(Utf8.GetBytes(
+                expectedPosition.ToString(CultureInfo.InvariantCulture) + "\n" + expectedLastHash + "\n"
+                + futurePosition.ToString(CultureInfo.InvariantCulture) + "\n" + futureLastHash));
+            return Path.Combine(directory, "Recovery", journalName,
+                "p" + expectedPosition.ToString(CultureInfo.InvariantCulture)
+                + "-h" + futurePosition.ToString(CultureInfo.InvariantCulture)
+                + "-" + artifactKey + ".journal");
+        }
+
+        private static int PrefixByteLength(byte[] bytes, long position)
+        {
+            if (position == 0) return 0;
+            var lines = 0L;
+            for (var index = 0; index < bytes.Length; index++)
+            {
+                if (bytes[index] != (byte)'\n') continue;
+                lines++;
+                if (lines == position) return index + 1;
+            }
+            throw new InvalidDataException("Verified journal bytes do not contain the requested prefix boundary.");
+        }
         private static byte[] EncodeRecord(ExperienceJournalRecord record)
         {
             var document = new XDocument(

@@ -24,6 +24,7 @@ namespace Dagmay.RimWorld.Observer
         private DateTimeOffset _nextSnapshotRefreshUtc = DateTimeOffset.MinValue;
         private bool _observerUnlockPending;
         private bool _experienceRecoveryConfirmPending;
+        private bool _exactExperienceRestoreConfirmPending;
 
         public void Draw(Rect inRect, DagmayModSettings settings)
         {
@@ -61,7 +62,7 @@ namespace Dagmay.RimWorld.Observer
                 string.Equals(value.ExternalId, _selectedExternalId, StringComparison.Ordinal)
                 && value.HasIdentity);
             var viewHeight = 1100f + ((snapshot?.Individuals.Count ?? 0) * 36f);
-            if (component?.ExperienceRecoveryAvailable == true) viewHeight += 210f;
+            if (component?.ExperienceRecoveryAvailable == true) viewHeight += 330f;
             if (component is not null && _selectedMindExternalId.Length > 0)
             {
                 var mindForHeight = component.CreateOrdinaryMindSnapshot(_selectedMindExternalId);
@@ -310,73 +311,75 @@ namespace Dagmay.RimWorld.Observer
             if (component.ExperienceRecoveryAvailable)
             {
                 Section(ref y, viewWidth, "Continuity recovery required");
-                Label(
-                    ref y,
-                    viewWidth,
-                    component.ExperienceRecoveryDiagnostic,
-                    86f);
-
+                Label(ref y, viewWidth, component.ExperienceRecoveryDiagnostic, 86f);
                 if (!settings.RestrictedObserverEnabled)
                 {
-                    Label(
-                        ref y,
-                        viewWidth,
-                        "Experience writes remain paused. Unlock Restricted Observer Mode to access the explicit administrative recovery control.",
-                        54f);
+                    Label(ref y, viewWidth,
+                        "Experience writes remain paused. Unlock Restricted Observer Mode to access explicit administrative recovery controls.", 54f);
                 }
-                else if (!_experienceRecoveryConfirmPending)
+                else if (_exactExperienceRestoreConfirmPending)
                 {
-                    if (Widgets.ButtonText(
-                        new Rect(0f, y, Math.Min(520f, viewWidth), LineHeight + 4f),
-                        "Adopt verified external experience head…"))
+                    Label(ref y, viewWidth,
+                        "Confirmation: make the loaded RimWorld save checkpoint authoritative. Verified post-checkpoint history will not be loaded into the rolled-back world; it will be preserved byte-for-byte as a non-canonical recovery artifact.", 78f);
+                    var width = Math.Min(330f, (viewWidth - 8f) / 2f);
+                    if (Widgets.ButtonText(new Rect(0f, y, width, LineHeight + 4f), "Confirm exact-save restore"))
                     {
-                        _experienceRecoveryConfirmPending = true;
-                        _lastAction = "Confirmation required: this recovery preserves newer Dagmay memories even if the loaded RimWorld save is older.";
+                        _lastAction = component.RestoreExactRimWorldExperienceCheckpoint(out var result)
+                            ? result
+                            : "Recovery was not applied: " + result;
+                        _exactExperienceRestoreConfirmPending = false;
+                        InvalidateSnapshot();
                     }
-
-                    y += LineHeight + 10f;
-                }
-                else
-                {
-                    Label(
-                        ref y,
-                        viewWidth,
-                        "Confirmation: adopt the verified append-only external Dagmay experience history. This may preserve memories of events that occurred after the loaded RimWorld save point. It does not replace IndividualId or LineageId. Save under a new name immediately afterward.",
-                        78f);
-                    var recoveryWidth = Math.Min(330f, (viewWidth - 8f) / 2f);
-                    if (Widgets.ButtonText(
-                        new Rect(0f, y, recoveryWidth, LineHeight + 4f),
-                        "Confirm continuity recovery"))
+                    if (Widgets.ButtonText(new Rect(width + 8f, y, width, LineHeight + 4f), "Cancel"))
                     {
-                        if (component.AdoptVerifiedExternalExperienceHead(out var recoveryDiagnostic))
-                        {
-                            _lastAction = recoveryDiagnostic;
-                        }
-                        else
-                        {
-                            _lastAction = "Recovery was not applied: " + recoveryDiagnostic;
-                        }
-
+                        _exactExperienceRestoreConfirmPending = false;
+                        _lastAction = "Experience recovery cancelled; read-only safety mode remains active.";
+                    }
+                    y += LineHeight + 12f;
+                }
+                else if (_experienceRecoveryConfirmPending)
+                {
+                    Label(ref y, viewWidth,
+                        "Confirmation: adopt the verified append-only external Mosaic experience history. This imports memories of events that may have occurred after the loaded RimWorld save point. Save under a new name immediately afterward.", 78f);
+                    var width = Math.Min(330f, (viewWidth - 8f) / 2f);
+                    if (Widgets.ButtonText(new Rect(0f, y, width, LineHeight + 4f), "Confirm future-head adoption"))
+                    {
+                        _lastAction = component.AdoptVerifiedExternalExperienceHead(out var result)
+                            ? result
+                            : "Recovery was not applied: " + result;
                         _experienceRecoveryConfirmPending = false;
                         InvalidateSnapshot();
                     }
-
-                    if (Widgets.ButtonText(
-                        new Rect(recoveryWidth + 8f, y, recoveryWidth, LineHeight + 4f),
-                        "Cancel"))
+                    if (Widgets.ButtonText(new Rect(width + 8f, y, width, LineHeight + 4f), "Cancel"))
                     {
                         _experienceRecoveryConfirmPending = false;
                         _lastAction = "Experience recovery cancelled; read-only safety mode remains active.";
                     }
-
                     y += LineHeight + 12f;
+                }
+                else
+                {
+                    if (Widgets.ButtonText(new Rect(0f, y, Math.Min(620f, viewWidth), LineHeight + 4f),
+                        "Restore exact loaded-save checkpoint (recommended)…"))
+                    {
+                        _exactExperienceRestoreConfirmPending = true;
+                        _lastAction = "Confirmation required: post-checkpoint history will remain preserved but non-canonical.";
+                    }
+                    y += LineHeight + 8f;
+                    if (Widgets.ButtonText(new Rect(0f, y, Math.Min(620f, viewWidth), LineHeight + 4f),
+                        "Adopt verified future experience head…"))
+                    {
+                        _experienceRecoveryConfirmPending = true;
+                        _lastAction = "Confirmation required: this imports newer Mosaic history into the loaded older world state.";
+                    }
+                    y += LineHeight + 10f;
                 }
             }
             else
             {
                 _experienceRecoveryConfirmPending = false;
+                _exactExperienceRestoreConfirmPending = false;
             }
-
             Section(ref y, viewWidth, "Colonist enrollment");
             Label(
                 ref y,
