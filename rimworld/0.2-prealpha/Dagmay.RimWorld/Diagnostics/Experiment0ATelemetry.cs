@@ -122,7 +122,7 @@ namespace Dagmay.RimWorld.Diagnostics
             UniquePairsBySource = uniquePairs;
             RepeatedPairEventsBySource = repeatedPairs;
             PriorSamePairHistoryDepthCurrentTrigger = triggerDepth;
-            PriorSamePairHistoryDepthSemanticSource = semanticDepth;
+            PriorObservedPairEpisodeDepthSemanticSource = semanticDepth;
             OverlapCounts300 = overlap300;
             OverlapCounts600 = overlap600;
             OverlapCounts1200 = overlap1200;
@@ -147,7 +147,7 @@ namespace Dagmay.RimWorld.Diagnostics
         public IReadOnlyDictionary<string, long> UniquePairsBySource { get; }
         public IReadOnlyDictionary<string, long> RepeatedPairEventsBySource { get; }
         public IReadOnlyDictionary<string, long> PriorSamePairHistoryDepthCurrentTrigger { get; }
-        public IReadOnlyDictionary<string, long> PriorSamePairHistoryDepthSemanticSource { get; }
+        public IReadOnlyDictionary<string, long> PriorObservedPairEpisodeDepthSemanticSource { get; }
         public IReadOnlyDictionary<string, long> OverlapCounts300 { get; }
         public IReadOnlyDictionary<string, long> OverlapCounts600 { get; }
         public IReadOnlyDictionary<string, long> OverlapCounts1200 { get; }
@@ -179,7 +179,7 @@ namespace Dagmay.RimWorld.Diagnostics
                 + ";unique_pairs_by_source=" + Map(UniquePairsBySource)
                 + ";repeated_pair_events_by_source=" + Map(RepeatedPairEventsBySource)
                 + ";prior_same_pair_history_depth_current_trigger=" + Map(PriorSamePairHistoryDepthCurrentTrigger)
-                + ";prior_same_pair_history_depth_semantic_source=" + Map(PriorSamePairHistoryDepthSemanticSource)
+                + ";prior_observed_pair_episode_depth_semantic_source=" + Map(PriorObservedPairEpisodeDepthSemanticSource)
                 + ";overlap_counts_300=" + Map(OverlapCounts300)
                 + ";overlap_counts_600=" + Map(OverlapCounts600)
                 + ";overlap_counts_1200=" + Map(OverlapCounts1200)

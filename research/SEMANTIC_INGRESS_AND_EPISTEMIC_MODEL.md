@@ -48,6 +48,19 @@ Observe only current Mosaic social triggers, pair-linked Thought memories, pair-
 social interactions, Tales involving enrolled pawns, dialogue prepare/presentation outcomes, unique
 and repeated pairs, and prior same-pair history depth.
 
+The two history-depth measures have distinct meanings:
+
+- `prior_same_pair_history_depth_current_trigger` is the actual existing grounded relationship
+  evidence available to the current dialogue trigger.
+- `prior_observed_pair_episode_depth_semantic_source` is a diagnostic within-run opportunity-density
+  proxy only. It is **not** durable Mosaic autobiography and must not by itself authorize the v41
+  retrieval ablation.
+
+Tale pair combinations are co-concern/correlation pairs only and must not be interpreted as directed
+relationship evidence. The v41 qualification gate must rely on actual usable prior history at real
+dialogue opportunities, especially the current-trigger history-depth distribution, not the
+semantic-source proxy.
+
 Use bounded counters and a small recent-correlation buffer. Retain raw ticks and stable participant
 IDs sufficient for later overlap analysis, but no raw dialogue, prompts, journal payloads, or private
 memories. Do not count multiple channels from one plausible episode as independent opportunities.

@@ -183,8 +183,13 @@ namespace Dagmay.Tests
                 "Only same-pair cross-source evidence inside 600 ticks overlaps.");
             TestAssert.Equal(1L, snapshot.PriorSamePairHistoryDepthCurrentTrigger["4_7"],
                 "Current-trigger depth must use the supplied usable canonical history.");
-            TestAssert.Equal(2L, snapshot.PriorSamePairHistoryDepthSemanticSource["0"],
+            TestAssert.Equal(2L, snapshot.PriorObservedPairEpisodeDepthSemanticSource["0"],
                 "The first independent A/B and A/C semantic opportunities start at depth zero.");
+            var log = snapshot.ToLogLine("test", 2000);
+            TestAssert.True(log.Contains("prior_observed_pair_episode_depth_semantic_source="),
+                "The semantic-source depth field must identify itself as a within-run observed-pair episode proxy.");
+            TestAssert.False(log.Contains("prior_same_pair_history_depth_semantic_source="),
+                "The semantic-source proxy must not be labeled as durable same-pair history.");
         }
 
         public static void Experiment0AMalformedReflectionFailsClosedAndTelemetryAddsNoCognitionAuthority()
